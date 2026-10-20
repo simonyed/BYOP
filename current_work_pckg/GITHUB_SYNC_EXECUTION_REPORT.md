@@ -3,6 +3,7 @@
 - 日期：2026-10-20（UTC 约 18:00–19:00）
 - 仓库：<https://github.com/simonyed/BYOP>；本地分支 `byop` → 远端 `main`（SSH，用户 simonyed）
 - 执行前 HEAD：`9cc88ee8`；本次内容提交：`504bd5f1`（已推送）；本报告与 `unit_tests.log` 在其后的一次提交中推送（SHA 见文末第 9 节）
+- 存放位置：2026-10-20 按新存储规范从 `workflow/byop/docs/` 移到 `current_work_pckg/`（内容未改，文中 docs/ 路径指当时的位置）
 - 范围：只改动 `.gitignore`、文档镜像、日志摘录和同步脚本，**不改数学模型、输入参数数值或正在运行的仿真**
 
 ## 1. 执行前 `.gitignore` 的问题

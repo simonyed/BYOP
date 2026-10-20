@@ -1,7 +1,7 @@
 # BYOP ERCOT Rearchitecture v1.0 (2026-10-20) — run guide
 
-Work package: `work_pkgs/BYOP_ERCOT_Rearchitecture_Work_Package/BYOP_ERCOT_Rearchitecture_Work_Package_v1.0_2026-10-20.md`
-(local). Decisions, evidence and the execution report are in that folder's `deliverables/`.
+Work package, decision log and reports: `current_work_pckg/` at the repository root (work package
+`BYOP_ERCOT_Rearchitecture_Work_Package_v1.0_2026-10-20.md`). Parameter sources: `byop/inputs/poi/SOURCE_EVIDENCE_REGISTER.csv`.
 
 The rearchitecture adds an electrical backbone, a POI deliverability layer and an S2 developer stage with an ex-ante
 joint grid offer **on top of** the existing v2.4.0 LP (`v240_mech.py`) and the v2.5.0 TX-ERM aggregation
