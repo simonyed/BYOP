@@ -1,0 +1,27 @@
+# BYOP LP-Core v2.2.9 WP0 ERCOT texas/8s, Gurobi barrier; BASE-01 C: technical retirement + ERM (PRM-01 A) + per-zone onwind CF scaling (WIND-01 A)
+# Topology keys mirror work_package/configs/lp_core.yaml spatial.ercot.
+run:
+  name: "BYOP_ERCOT7s"
+  disable_progressbar: true
+
+scenario:
+  interconnect: [texas]
+  planning_horizons: [2030]
+  simpl: [20]
+  clusters: [8s]
+  ll: [v1.0]
+  opts: [REM-ERM-3h]  # PRM-01 A: upstream ERM adequacy constraint (erm all 0.15 default)
+  sector: ""
+
+model_topology:
+  transmission_network: 'reeds'
+  topological_boundaries: 'reeds_zone'
+
+solving:
+  solver:
+    name: gurobi
+    options: gurobi-default
+
+# BASE-01 C (user 2026-10-18): existing units cannot retire early for economic reasons
+electricity:
+  retirement: technical

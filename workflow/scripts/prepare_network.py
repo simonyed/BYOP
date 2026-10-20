@@ -12,6 +12,7 @@ as.
 """
 
 import logging
+import os
 import re
 
 import numpy as np
@@ -364,6 +365,21 @@ if __name__ == "__main__":
     n.investment_period_weightings["objective"] = objective_w
 
     set_line_s_max_pu(n, transport_model, params.lines["s_max_pu"])
+
+    # BYOP local patch (WIND-01 A, 2026-10-18): scale onwind availability per bus so the existing ERCOT
+    # fleet matches EIA-923 2019-2023 observed CF. File is not a tracked rule input: force-rerun this
+    # rule whenever it changes. Absent file = upstream behaviour.
+    # v2.5.0: file selectable per run (config key byop_onwind_cf_scaling); default unchanged (legacy 8s run)
+    byop_cf_file = snakemake.config.get("byop_onwind_cf_scaling", "config/byop_onwind_cf_scaling.csv")
+    if os.path.exists(byop_cf_file):
+        cf_factor = pd.read_csv(byop_cf_file).set_index("bus")["factor"]
+        onwind = n.generators.index[n.generators.carrier == "onwind"]
+        onwind = onwind.intersection(n.generators_t.p_max_pu.columns)
+        factors = n.generators.loc[onwind, "bus"].map(cf_factor)
+        if factors.isna().any():
+            raise ValueError(f"WIND-01 patch: no factor for buses {sorted(n.generators.loc[factors.index[factors.isna()], 'bus'].unique())}")
+        n.generators_t.p_max_pu[onwind] = n.generators_t.p_max_pu[onwind] * factors
+        logger.info(f"WIND-01 patch: scaled p_max_pu of {len(onwind)} onwind generators by {factors.round(4).to_dict()}")
 
     # temporal averaging
     time_resolution = params.time_resolution

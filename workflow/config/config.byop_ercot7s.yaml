@@ -1,0 +1,23 @@
+# BYOP LP-Core v2.2.9 — WP0 native ERCOT texas/8s run (SPATIAL-ERCOT-01 A; 7s not buildable) (sparse overlay).
+# Topology keys mirror work_package/configs/lp_core.yaml spatial.ercot.
+run:
+  name: "BYOP_ERCOT7s"
+  disable_progressbar: true
+
+scenario:
+  interconnect: [texas]
+  planning_horizons: [2030]
+  simpl: [20]
+  clusters: [8s]
+  ll: [v1.0]
+  opts: [REM-3h]
+  sector: ""
+
+model_topology:
+  transmission_network: 'reeds'
+  topological_boundaries: 'reeds_zone'
+
+solving:
+  solver:
+    name: highs
+    options: highs-default

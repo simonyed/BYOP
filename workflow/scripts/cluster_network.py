@@ -272,6 +272,15 @@ def clustering_for_n_clusters(
         "rec_trading_zone": "first",
         "original_reeds_zone": "first",
     }
+    # BYOP local patch (RAMP-01 A, 2026-10-18): NaN ramp limits mean "no limit" in PyPSA, but
+    # capacity_weighted_average sums weighted values and turns all-NaN groups into 0, pinning
+    # VRE/hydro at 0 MW. A limit of 1.0 p.u. per snapshot is equivalent to unlimited; only NaNs change.
+    for col in ["ramp_limit_up", "ramp_limit_down"]:
+        if col in n.generators:
+            n_nan = int(n.generators[col].isna().sum())
+            if n_nan:
+                logger.info(f"RAMP-01 patch: filling {n_nan} NaN generator {col} with 1.0 before clustering.")
+                n.generators[col] = n.generators[col].fillna(1.0)
     clustering = get_clustering_from_busmap(
         n,
         busmap,

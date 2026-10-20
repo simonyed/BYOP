@@ -1,0 +1,29 @@
+# BYOP v2.5.0 CNY-01 (ERCOT_Grid_Bottlenecks v0.3 sec.10.3): ERCOT county ReEDS/NARIS transport network.
+# Legacy 7-zone config.byop_ercot8s_gurobi.yaml is untouched (read-only regression).
+# Same weather / costs / retirement / ERM / solver as the 8s config; only the spatial topology differs.
+run:
+  name: "BYOP_ERCOT_County"
+  disable_progressbar: true
+
+scenario:
+  interconnect: [texas]
+  planning_horizons: [2030]
+  simpl: [""]
+  clusters: [192s]   # = measured unique n.buses.county in elec_b.nc (D250-03)
+  ll: [v1.0]
+  opts: [REM-ERM-3h]
+  sector: ""
+
+model_topology:
+  transmission_network: "reeds"
+  topological_boundaries: "county"
+  interface_transmission_limits: false
+
+solving:
+  solver:
+    name: gurobi
+    options: gurobi-default
+
+electricity:
+  retirement: technical
+byop_onwind_cf_scaling: config/byop_onwind_cf_scaling_county.csv  # WIND-01-C (D250-07): parent reeds_zone factor per county bus
