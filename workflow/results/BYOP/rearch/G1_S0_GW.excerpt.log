@@ -1,0 +1,63 @@
+# excerpt of G1_S0_GW.log (45262242 bytes, sha256 674dbf87967c812980fca0d9a55a6815912417f631cc82ef66fb62fe572e9109), made 2026-10-20T18:52:56Z
+# kept: tracebacks / errors / warnings from rearch & linopy, termination lines, last 60 lines; dropped: solver iteration rows
+# ---- last 60 lines
+Reading time = 14.45 seconds
+obj: 5400053 rows, 2794451 columns, 11101533 nonzeros
+Set parameter Threads to value 8
+Set parameter Method to value 2
+Set parameter Crossover to value 0
+Set parameter BarHomogeneous to value 1
+Set parameter BarConvTol to value 1e-05
+Set parameter OptimalityTol to value 0.0001
+Set parameter FeasibilityTol to value 0.001
+Set parameter ScaleFlag to value 1
+Set parameter Seed to value 123
+Set parameter AggFill to value 0
+Set parameter PreDual to value 0
+Set parameter GURO_PAR_BARDENSETHRESH to value 200
+Set parameter LogFile to value "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/rearch/G1_S0_GW/solver_S0.log"
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Ubuntu 20.04.6 LTS")
+
+CPU model: Intel(R) Core(TM) i9-10920X CPU @ 3.50GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 12 physical cores, 24 logical processors, using up to 8 threads
+
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+Optimize a model with 5400053 rows, 2794451 columns and 11101533 nonzeros
+Model fingerprint: 0x81e64144
+Coefficient statistics:
+  Matrix range     [3e-03, 2e+03]
+  Objective range  [6e-01, 1e+06]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e-02, 2e+06]
+Presolve removed 2773573 rows and 823128 columns (presolve time = 6s) ...
+Presolve removed 2779456 rows and 823128 columns
+Presolve time: 9.47s
+Presolved: 2620597 rows, 1977206 columns, 8087990 nonzeros
+Elapsed ordering time = 5s
+Elapsed ordering time = 13s
+Elapsed ordering time = 15s
+Elapsed ordering time = 20s
+Elapsed ordering time = 25s
+Elapsed ordering time = 30s
+Ordering time: 34.78s
+
+Barrier statistics:
+ Dense cols : 1105
+ AA' NZ     : 1.078e+07
+ Factor NZ  : 1.148e+08 (roughly 3.0 GB of memory)
+ Factor Ops : 1.615e+11 (roughly 1 second per iteration)
+ Threads    : 8
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   2.47129850e+15 -1.99022485e+15  1.40e+06 2.33e+05  5.37e+10    56s
+   1   2.22998115e+15 -1.84540816e+15  1.18e+06 7.00e+05  4.45e+10    61s
+   2   1.92195646e+15 -1.75313490e+15  9.36e+05 6.29e+05  3.78e+10    64s
+   3   1.71757432e+15 -1.64558834e+15  7.91e+05 5.47e+05  3.26e+10    68s
+   4   1.02812029e+15 -1.01498646e+15  4.49e+05 3.53e+05  1.58e+10    73s
+   5   6.10616207e+14 -5.42014450e+14  2.59e+05 1.81e+05  6.45e+09    78s
+   6   8.21080081e+13 -2.53077760e+14  4.25e+04 8.32e+04  1.15e+09    83s
+   7   1.80921912e+13 -1.35284923e+14  4.55e+03 4.42e+04  3.11e+08    88s
+   8   9.78336291e+12 -4.76634135e+13  2.03e+03 1.63e+04  9.67e+07    92s
+   9   7.09838181e+12 -2.09951518e+13  1.11e+03 7.85e+03  4.09e+07    96s
+  10   5.30250033e+12 -1.41501469e+13  6.14e+02 5.62e+03  2.46e+07    99s

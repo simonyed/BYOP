@@ -324,16 +324,40 @@ slurm-*.err
 !workflow/byop/build/
 
 # BYOP results and BYOP build logs are tracked so runs can be reviewed on GitHub (user 2026-10-20).
-# Only small result files: networks (.nc/.pkl), per-run code snapshots (code sha256 is in each manifest) and pid files stay out.
+# The two `!.../**` re-includes below would also readmit every bulk/binary format excluded earlier in this file, so the
+# exclusions are RE-APPLIED after them (last match wins). Kept out: networks / bulk data (.nc .pkl .parquet .gpkg .tif
+# .tiff), archives (.zip .tar.gz), pid files, Python caches and per-run code/ snapshots (code sha256 is in every
+# case_manifest.json). Files > 10 MB cannot be expressed here: work_pkgs/_tools/sync_pypsa_usa.sh only pulls files
+# < 5 MB from L2 and refuses to commit any staged file > 10 MB.
 !workflow/results/
 workflow/results/*
 !workflow/results/BYOP/
 !workflow/results/BYOP/**
-workflow/results/BYOP/**/*.nc
-workflow/results/BYOP/**/*.pkl
-workflow/results/BYOP/**/*.pid
-workflow/results/BYOP/**/code/
 !workflow/logs/
 workflow/logs/*
 !workflow/logs/byop/
 !workflow/logs/byop/**
+workflow/results/BYOP/**/*.nc
+workflow/results/BYOP/**/*.pkl
+workflow/results/BYOP/**/*.parquet
+workflow/results/BYOP/**/*.gpkg
+workflow/results/BYOP/**/*.tif
+workflow/results/BYOP/**/*.tiff
+workflow/results/BYOP/**/*.zip
+workflow/results/BYOP/**/*.tar.gz
+workflow/results/BYOP/**/*.pid
+workflow/results/BYOP/**/*.pyc
+workflow/results/BYOP/**/__pycache__/
+workflow/results/BYOP/**/code/
+workflow/logs/byop/**/*.nc
+workflow/logs/byop/**/*.pkl
+workflow/logs/byop/**/*.parquet
+workflow/logs/byop/**/*.gpkg
+workflow/logs/byop/**/*.tif
+workflow/logs/byop/**/*.tiff
+workflow/logs/byop/**/*.zip
+workflow/logs/byop/**/*.tar.gz
+workflow/logs/byop/**/*.pid
+
+# local Python environments (the uv .venv carries its own '*' ignore; made explicit here)
+.venv/

@@ -176,3 +176,4 @@ INFO:linopy.model:Solver options:
  - PreDual: 0
  - GURO_PAR_BARDENSETHRESH: 200
 INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 10.09s

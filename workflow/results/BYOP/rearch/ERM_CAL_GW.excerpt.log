@@ -1,0 +1,66 @@
+# excerpt of ERM_CAL_GW.log (45266697 bytes, sha256 b994aa9cf539eee860f81cc7b67f04f292e1783c2c27559ddeea8fd58910a893), made 2026-10-20T18:52:56Z
+# kept: tracebacks / errors / warnings from rearch & linopy, termination lines, last 60 lines; dropped: solver iteration rows
+637532:Barrier solved model in 50 iterations and 37.77 seconds (23.71 work units)
+637533:Optimal objective -6.27503432e+11
+637537:Termination condition: optimal
+# ---- last 60 lines
+  49  -6.27503037e+11 -6.27503855e+11  5.82e-04 4.48e+05  8.69e-01    37s
+  50  -6.27503432e+11 -6.27503821e+11  2.22e-04 3.07e+05  4.53e-01    38s
+
+Barrier solved model in 50 iterations and 37.77 seconds (23.71 work units)
+Optimal objective -6.27503432e+11
+
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 3677017 primals, 9959367 duals
+Objective: -6.28e+11
+Solver: gurobi
+Runtime: 38.13s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The variable 'M2-erm_margin' could not be mapped to the network component because the component 'M2' does not exist.
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Kirchhoff-Voltage-Law, V240-reuse_right_p630 7 gas_steam 2025fleet r2028 were not assigned to the network.
+{
+ "decision": "ERM-02 B (TAMU)",
+ "margin_by_period": {
+  "2026": 0.15000000179601058,
+  "2027": 0.15000000179379613,
+  "2028": 0.13956370436391752,
+  "2029": 0.10402331095791673,
+  "2030": 0.08874015470221863,
+  "2031": 0.061831206550707396
+ },
+ "termination": "optimal",
+ "load_shed_MWh": 2187443.6003825986,
+ "setting": {
+  "setting": "G-W",
+  "relax": [],
+  "case": "base",
+  "gas_case": "base",
+  "pclr_hours": 200.0,
+  "pclr_max_consec_h": 12.0,
+  "s2_iter": 3,
+  "competing": 1.0,
+  "line_lead": null,
+  "offer_tol": 0.001,
+  "clusters": "64s",
+  "s2_modes": [
+   "GO_F",
+   "GO_C",
+   "GF",
+   "IS"
+  ]
+ },
+ "cfg": {
+  "periods": "annual",
+  "start": 2026,
+  "end": 2031,
+  "sample_weeks": 26,
+  "bg_traj": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/inputs/load/background_load_growth_states_AEO2023_reference.csv"
+ },
+ "baseline_sha256": "19034285be0aa9b9906ab5b0e03778f3a16e7c1c39e97ac97b368d9097cafadb",
+ "seconds": 107.1,
+ "n_vars": 2794457
+}

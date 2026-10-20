@@ -1,1 +1,2 @@
 {"timestamp_utc": "2026-10-20T18:10:53.323061+00:00", "run_id": "rearch_R1_GK_20261020T174558Z", "case_id": "R1_GK", "event": "optimization_solved", "status": "SOLVER_OPTIMAL", "message": "obj 7.234043e+10; vars 2794451; int 0; 1480s", "scenario": "S0"}
+{"timestamp_utc": "2026-10-20T18:32:15.967895+00:00", "run_id": "rearch_R1_GK_20261020T174558Z", "case_id": "R1_GK", "event": "optimization_solved", "status": "SOLVER_OPTIMAL", "message": "obj 5.907387e+10; vars 2816780; int 0; 1283s", "scenario": "S1"}
