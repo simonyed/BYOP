@@ -376,6 +376,10 @@ if __name__ == "__main__":
         onwind = n.generators.index[n.generators.carrier == "onwind"]
         onwind = onwind.intersection(n.generators_t.p_max_pu.columns)
         factors = n.generators.loc[onwind, "bus"].map(cf_factor)
+        # Rearchitecture WP-A: TAMU cluster buses ("p63 0", ...) are not in the file -> use their reeds_zone factor
+        if factors.isna().any() and "reeds_zone" in n.buses:
+            zone_of = n.generators.loc[onwind, "bus"].map(n.buses.reeds_zone)
+            factors = factors.fillna(zone_of.map(cf_factor))
         if factors.isna().any():
             raise ValueError(f"WIND-01 patch: no factor for buses {sorted(n.generators.loc[factors.index[factors.isna()], 'bus'].unique())}")
         n.generators_t.p_max_pu[onwind] = n.generators_t.p_max_pu[onwind] * factors

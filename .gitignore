@@ -319,3 +319,6 @@ slurm-*.err
 !workflow/repo_data/**
 !workflow/geodata_repo/**
 !natura.tiff
+
+# BYOP executed builders (the generic Python build/ ignore above must not hide them)
+!workflow/byop/build/

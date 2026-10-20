@@ -728,7 +728,7 @@ def ledgers(n, tag, v, case_id, run_id, byop_fixed_scen=False):
     for comp, d, cap in [('Generator', g, 'p_nom_opt'), ('StorageUnit', su, 'p_nom_opt'), ('Link', l, 'p_nom_opt')]:
         sel = d[(d.p_nom_extendable | d.carrier.str.startswith('byop_')) & ~d.carrier.isin(['compute_IT', 'AIDC_training'])]
         if comp == 'Link':
-            sel = sel[sel.index.str.endswith('_fwd') & (sel.carrier == 'AC_exp')]
+            sel = sel[sel.index.astype(str).str.endswith('_fwd') & (sel.carrier == 'AC_exp')]   # astype: empty Link table (no links in G-W)
         for name, r in sel.iterrows():
             MW = float(r[cap])
             if MW < 0.5:
@@ -781,7 +781,7 @@ def ledgers(n, tag, v, case_id, run_id, byop_fixed_scen=False):
     if pct is not None and sub_in_net:
         for name in g.index.intersection(pct.index):
             ptc_adj[name] = float(pct.ptc[name])
-    is_op = ~g.carrier.isin(['compute_IT', 'AIDC_training', 'load_shed', 'grid_purchase'])
+    is_op = ~g.carrier.isin(['compute_IT', 'AIDC_training', 'load_shed', 'grid_purchase', 'dc_curtail'])   # dc_curtail: lost compute, not a resource (rearch PCLR)
     opcost_t = (n.generators_t.p.loc[:, is_op] * (mc.loc[:, is_op] + ptc_adj[is_op])).mul(w, axis=0).groupby(level=0).sum().sum(axis=1)
     shed = n.generators_t.p[[f'{z} load_shed' for z in ZONES]].mul(w, axis=0).groupby(level=0).sum().sum(axis=1)
     svc = []

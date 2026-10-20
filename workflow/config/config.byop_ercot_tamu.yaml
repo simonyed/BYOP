@@ -1,0 +1,47 @@
+# BYOP Rearchitecture WP-A (2026-10-20): ERCOT electrical backbone from the synthetic BE/TAMU nodal network.
+# Legacy configs (config.byop_ercot8s_gurobi.yaml = 7-zone, config.byop_ercot_county.yaml = county NARIS) are untouched.
+# Same weather / costs / retirement / ERM / solver as the 8s and county configs; only the transmission dataset and the
+# clustering differ:
+#   transmission_network tamu  -> AC lines with impedances (DC power flow / KVL), not a transport model
+#   simpl ""                   -> resource layer = TAMU substation level (no kmeans pre-clustering)
+#   clusters 64s               -> greedy-modularity (electrical connectivity) aggregation inside each ReEDS zone
+#                                 (the zone is only the clustering partition, not a county/state cut); 64 is a trial
+#                                 size within the 40-80 range of the work package, not a claim about ERCOT's real zones
+#   focus_weights              -> the default load-weighted split gave West/Far West (p60/p61/p62) ONE node each (trial
+#                                 60s build, 2026-10-20), which hides the Permian/Abilene interfaces the POI layer needs;
+#                                 fixed split p48 1 | p60 5 | p61 5 | p62 8 | p63 16 | p64 8 | p65 10 | p67 11 (= 64)
+# The BE/TAMU network is SYNTHETIC: cluster buses are not real substations; cross-zone line ratings are calibrated by
+# PyPSA-USA to ReEDS NARIS reeds_zone interfaces and re-audited by byop/build/build_2025_baseline_tamu.py.
+run:
+  name: "BYOP_ERCOT_TAMU"
+  disable_progressbar: true
+
+scenario:
+  interconnect: [texas]
+  planning_horizons: [2030]
+  simpl: [""]
+  clusters: [64s]
+  ll: [v1.0]
+  opts: [REM-ERM-3h]
+  sector: ""
+
+model_topology:
+  transmission_network: "tamu"
+  topological_boundaries: "reeds_zone"
+  interface_transmission_limits: false
+
+clustering:
+  cluster_network:
+    algorithm: modularity
+
+focus_weights: {p48: 0.015625, p60: 0.078125, p61: 0.078125, p62: 0.125, p63: 0.25, p64: 0.125, p65: 0.15625, p67: 0.171875}
+
+solving:
+  solver:
+    name: gurobi
+    options: gurobi-default
+
+electricity:
+  retirement: technical
+# WIND-01: per-bus factor file; TAMU cluster buses fall back to their reeds_zone factor (prepare_network patch)
+byop_onwind_cf_scaling: config/byop_onwind_cf_scaling.csv
