@@ -17,6 +17,13 @@ dconf
 # edit through `git add -f`.
 /workflow/config/*
 !/workflow/config/.gitkeep
+# BYOP project (simonyed/BYOP): key model designs and parameters in workflow/config are ALWAYS tracked
+#   config.byop_*.yaml  run configurations (7-zone legacy, ERCOT county v2.5.0, ...)
+#   byop_*.csv          parameter files read by the patched scripts (WIND-01 onwind CF scaling, ...)
+!/workflow/config/config.byop_*.yaml
+!/workflow/config/byop_*.csv
+# never track secrets (EIA key) even if a broader rule is added later
+/workflow/config/config.api.yaml
 
 # generated files
 results/
