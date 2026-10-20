@@ -58,13 +58,14 @@ BASE_TAMU = BP.RESULTS / 'baseline_2025_tamu/baseline_2025_tamu_prepared.nc'
 POI_REG = BP.INPUTS / 'poi/POI_REGISTER.csv'
 POI_REQ = BP.INPUTS / 'poi/POI_REQUESTS.csv'
 GRID_PROJ = BP.INPUTS / 'poi/GRID_PROJECTS.csv'
+BASE_ASSETS = BP.INPUTS / 'grid/COMMITTED_BASE_ASSETS.csv'   # D3: committed TPIT increments shared by all scenarios
 SUBS = Path('resources/BYOP_ERCOT_TAMU/networks/texas/elec_s.nc')
 GAS_FIRED = V.GAS_FIRED
 MDQ_PROXY = {'L1': 250000.0, 'L2': 100000.0}       # MMBtu/d lateral sizing proxy when no verified MDQ (RESEARCH_ASSUMPTION)
 GAS_L2 = dict(lead=3.0, cost=100.0)                # L2 unknown: conservative lateral lead (y) / cost (USD/kW)
 UPGRADE_LIFE = 40
 MODES = ['GO_F', 'GO_C', 'GF', 'IS']
-GCFG = dict(setting='G-U', relax=[], case='base', gas_case='base', pclr_hours=200.0, pclr_max_consec_h=12.0,
+GCFG = dict(base_assets='main', setting='G-U', relax=[], case='base', gas_case='base', pclr_hours=200.0, pclr_max_consec_h=12.0,
             s2_iter=3, competing=1.0, line_lead=None, offer_tol=1e-3, clusters='64s')
 SITES: dict = {}
 STATE = M.STATE
@@ -193,6 +194,41 @@ def tech_ra_relaxed():
 
 
 _tech_orig = M.tech
+
+
+def add_base_assets(n):
+    """D3 (researcher 2026-10-20): committed TPIT transmission (COMMITTED_BASE_ASSETS.csv, built from the TPIT evidence
+    ledger) as common baseline assets of EVERY setting and scenario: fixed controllable Link pair at the interface level,
+    partial first-year availability from the ISD. 'main' = MAIN_COMMITTED only; 'sens' = + SENSITIVITY_PLANNED; 'none'."""
+    mode = GCFG.get('base_assets', 'main')
+    if mode == 'none' or not BASE_ASSETS.exists():
+        STATE['base_assets'] = []
+        return []
+    a = pd.read_csv(BASE_ASSETS)
+    a = a[a.case.isin(['MAIN'] if mode == 'main' else ['MAIN', 'SENSITIVITY'])]
+    if 'AC_base_committed' not in n.carriers.index:
+        n.add('Carrier', 'AC_base_committed', co2_emissions=0.0)
+    out = []
+    for r in a.itertuples():
+        if r.bus0 not in n.buses.index or r.bus1 not in n.buses.index or not r.MW == r.MW:
+            out.append(dict(asset=r.asset_id, status='SKIPPED_NOT_MAPPED_OR_NO_MW'))
+            continue
+        bp = M.first_period(float(r.ISD))
+        if bp is None:
+            out.append(dict(asset=r.asset_id, status='OUTSIDE_WINDOW'))
+            continue
+        avail = pd.Series(0.0, index=n.snapshots)
+        for q in M.periods():
+            avail.loc[q] = M.avail_frac(bp, float(r.ISD), q)
+        for suf, x0, x1 in (('fwd', r.bus0, r.bus1), ('rev', r.bus1, r.bus0)):
+            nm = f'{r.asset_id}_{suf}'
+            n.add('Link', nm, bus0=x0, bus1=x1, carrier='AC_base_committed', p_nom=float(r.MW), p_nom_extendable=False,
+                  build_year=bp, lifetime=60, efficiency=1.0, capital_cost=0.0)
+            n.links_t.p_max_pu[nm] = avail.values
+        out.append(dict(asset=r.asset_id, case=r.case, bus0=r.bus0, bus1=r.bus1, ISD=float(r.ISD), MW=float(r.MW), build_period=bp,
+                        status='COMMON_BASELINE_ASSET', tpit=r.tpit_project_ids))
+    STATE['base_assets'] = out
+    return out
 
 
 def add_grid_projects(n):
@@ -445,6 +481,7 @@ def build_rearch(config, scen, v, **kw):
     M.tech = tech_ra_relaxed
     STATE['poi_up'] = {}
     n, mult = _build_v240(config, scen, v, **kw)
+    add_base_assets(n)
     add_grid_projects(n)
     add_competing_load(n)
     relax_upstream(n)
@@ -752,6 +789,7 @@ def main():
     ap.add_argument('--relax', nargs='*', default=[], help='S1 attribution relaxations: POI UP RA PROC')
     ap.add_argument('--attribution', action='store_true', help='also run S1_xPOI / S1_xUP / S1_xRA / S1_xPROC / S1_xALL')
     ap.add_argument('--competing', type=float, default=1.0)
+    ap.add_argument('--base-assets', default='main', choices=['main', 'sens', 'none'], help='D3 committed TPIT baseline assets')
     ap.add_argument('--line-lead', type=float, default=None)
     ap.add_argument('--pclr-hours', type=float, default=200.0); ap.add_argument('--pclr-max-consec-h', type=float, default=12.0)
     ap.add_argument('--s2-modes', nargs='*', default=MODES); ap.add_argument('--s2-iter', type=int, default=3)
@@ -772,7 +810,7 @@ def main():
     global BASE_TAMU
     if a.base:
         BASE_TAMU = Path(a.base)
-    GCFG.update(setting=a.setting, case=a.case, gas_case=a.gas_case, relax=list(a.relax), competing=a.competing,
+    GCFG.update(base_assets=a.base_assets, setting=a.setting, case=a.case, gas_case=a.gas_case, relax=list(a.relax), competing=a.competing,
                 line_lead=a.line_lead, pclr_hours=a.pclr_hours, pclr_max_consec_h=a.pclr_max_consec_h, s2_modes=a.s2_modes,
                 s2_iter=a.s2_iter)
     M.CFG.update(periods='annual', start=a.start, end=a.end, cost_basis='repaired', public_subsidy='without', tariff=a.tariff,
@@ -864,6 +902,14 @@ def main():
                                                        timestamp_utc=datetime.now(timezone.utc).isoformat()), indent=1, default=str))
         pr = n.buses_t.marginal_price[[z for z in M.ZONES]].copy()
         pr.to_csv(out / f'prices_{tag}.csv.gz')
+        # D3 diagnostics: background load shed per bus and year (MWh/yr, sampled snapshots weighted to the year)
+        sc = n.generators.index[n.generators.carrier == 'load_shed']
+        if len(sc):
+            sh = n.generators_t.p[sc].mul(n.snapshot_weightings.generators, axis=0).groupby(level=0).sum()
+            sh.columns = [n.generators.bus[c] for c in sh.columns]
+            sh = sh.loc[:, sh.sum() > 1e-3].T
+            sh.index.name = 'bus'
+            sh.to_csv(out / f'shed_by_bus_{tag}.csv')
         ev('optimization_solved', 'SOLVER_OPTIMAL' if res['termination'] == 'optimal' else 'FAIL',
            f"obj {res['objective']:.6e}; vars {res['n_vars']}; int {res['integer_vars']}; {time.time() - t0:.0f}s", scenario=tag)
         return n, mult
@@ -969,7 +1015,7 @@ def main():
                inputs_sha256={p.name: M.sha(p) for p in [POI_REG, POI_REQ, GRID_PROJ, M.TECH, BP.PUE, BP.TASK]},
                code_sha256={p.name: M.sha(p) for p in [Path(__file__), HERE / 'v240_mech.py', HERE / 'v250_mech.py',
                                                          HERE / 'wp2_ercot_s0_s1.py', HERE / 'wp2_ercot_s1_real.py']},
-               grid_projects=STATE.get('grid_projects'), competing=STATE.get('competing'), pypsa=pypsa.__version__,
+               base_assets=STATE.get('base_assets'), grid_projects=STATE.get('grid_projects'), competing=STATE.get('competing'), pypsa=pypsa.__version__,
                timestamp_utc=datetime.now(timezone.utc).isoformat())
     (out / 'case_manifest.json').write_text(json.dumps(man, indent=2, default=str))
     print(json.dumps(dict(case=a.case_id, status=man['status'], checks=checks), indent=1, default=str))
