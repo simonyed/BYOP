@@ -1,0 +1,41 @@
+T_PNM,tech,zone,RetireYear,status,MW,units,HR,start,lat,lon
+Cedar Bayou,o-g-s,p67,2027,(OP) Operating,749.0,1,11221.0,1972,29.75,-94.9256
+O W Sommers,o-g-s,p65,2027,(OP) Operating,420.0,1,11177.0,1972,29.308056,-98.3242
+Sim Gideon,o-g-s,p64,2027,(OP) Operating,335.0,1,11014.0,1972,30.1456,-97.2708
+T H Wharton,gas-cc,p67,2027,(OP) Operating,324.0,6,9472.0,1972,29.9417,-95.5306
+Nueces Bay,gas-cc,p65,2027,(OP) Operating,319.0,1,7733.0,1972,27.819412,-97.4192
+R W Miller,o-g-s,p63,2027,(OP) Operating,118.0,1,12119.0,1972,32.6581,-98.3103
+J K Spruce,coaloldscr,p65,2028,(OP) Operating,560.0,1,10177.0,1992,29.309722,-98.3203
+Lake Hubbard,o-g-s,p63,2028,(OP) Operating,523.0,1,11873.0,1973,32.8358,-96.5458
+Spencer,o-g-s,p63,2028,(OP) Operating,61.0,1,14476.0,1973,33.1975,-97.1061
+Big Spring Wind Power Facility,wind-ons,p60,2028,(OP) Operating,34.3,1,,1998,32.2075,-101.3883
+Coleto Creek,coaloldscr,p65,2029,(OP) Operating,655.0,1,10672.0,1980,28.7128,-97.21417
+O W Sommers,o-g-s,p65,2029,(OP) Operating,410.0,1,11410.0,1974,29.308056,-98.3242
+T H Wharton,gas-cc,p67,2029,(OP) Operating,328.0,4,9472.0,1974,29.9417,-95.5306
+Barney M Davis,o-g-s,p65,2029,(OP) Operating,292.0,1,13017.0,1974,27.6064,-97.3117
+T H Wharton,gas-ct,p67,2030,(OP) Operating,336.0,6,13892.0,1975,29.9417,-95.5306
+R W Miller,o-g-s,p63,2030,(OP) Operating,195.0,1,12584.0,1975,32.6581,-98.3103
+Bryan (TX),gas-ct,p64,2030,(OP) Operating,21.0,1,17263.0,1975,30.64741,-96.37232
+Handley,o-g-s,p63,2031,(OP) Operating,435.0,1,13488.0,1976,32.7283,-97.2192
+Greens Bayou,gas-ct,p67,2031,(OP) Operating,327.0,6,14795.5,1976,29.822201,-95.21943
+Barney M Davis,gas-cc,p65,2031,(OP) Operating,319.0,1,7819.0,1976,27.6064,-97.3117
+King Mountain Wind Ranch 1,wind-ons,p62,2031,(OP) Operating,278.0,1,,2001,31.2092,-102.2417
+Trent Wind Farm,wind-ons,p60,2031,(OP) Operating,152.0,1,,2001,32.4301,-100.2357
+Ray Olinger,o-g-s,p63,2031,(OP) Operating,138.0,1,14190.0,1976,33.068055,-96.45248
+NWP Indian Mesa Wind Farm,wind-ons,p61,2031,(OP) Operating,82.5,1,,2001,30.931467,-102.2014
+Woodward Mountain I,wind-ons,p61,2031,(OP) Operating,82.0,1,,2001,30.9514,-102.4141
+Woodward Mountain II,wind-ons,p61,2031,(OP) Operating,78.0,1,,2001,30.9514,-102.4141
+W A Parish,o-g-s,p67,2032,(OP) Operating,664.0,1,11313.0,1977,29.4828,-95.6311
+Handley,o-g-s,p63,2032,(OP) Operating,435.0,1,13190.0,1977,32.7283,-97.2192
+Desert Sky,wind-ons,p61,2032,(OP) Operating,167.7,1,,2002,30.9178,-102.0867
+Flower Valley I,battery_li,p61,2032,(OP) Operating,9.9,1,,2021,31.197283,-103.3618
+W A Parish,o-g-s,p67,2033,(OP) Operating,663.0,1,11323.0,1978,29.4828,-95.6311
+Brazos Wind Farm,wind-ons,p60,2033,(OP) Operating,182.4,1,,2003,32.94793,-101.1478
+Dansby,o-g-s,p64,2033,(OP) Operating,110.0,1,14980.0,1978,30.7217,-96.4608
+Powerlane Plant,o-g-s,p63,2033,(OP) Operating,41.0,1,25000.0,1978,33.1707,-96.1264
+Sweetwater Wind 1 LLC,wind-ons,p60,2033,(OP) Operating,37.5,1,,2003,32.3606,-100.3389
+W A Parish,o-g-s,p67,2035,(OP) Operating,577.0,1,11332.0,1980,29.4828,-95.6311
+Horse Hollow Wind Energy Center,wind-ons,p61,2035,(OP) Operating,213.0,1,,2005,32.214024,-100.0571
+Sweetwater Wind 3 LLC,wind-ons,p60,2035,(OP) Operating,144.0,1,,2005,32.290833,-100.4219
+Callahan Divide Wind Energy Center,wind-ons,p61,2035,(OP) Operating,114.0,1,,2005,32.303889,-100.0217
+Sweetwater Wind 2 LLC,wind-ons,p60,2035,(OP) Operating,98.8,1,,2005,32.3472,-100.3703

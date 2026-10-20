@@ -1,0 +1,49 @@
+{
+  "gce": {
+    "grid": "G-R",
+    "gas_gate": "contract",
+    "s2_rule": "sf",
+    "erm_scope": "tx",
+    "dem_scale": 1.0
+  },
+  "corridor_audit": {
+    "grid": "G-R",
+    "lead_years": 4,
+    "first_period": null,
+    "eligible": 111,
+    "not_eligible": 341,
+    "eligible_existing_MW": 98926.2
+  },
+  "erm_tx": {
+    "scope": "tx",
+    "n_bus_rows_summed": 185,
+    "poi_coeff_snapshot0": -1.15
+  },
+  "dc_counties": {
+    "p48029": "Bexar",
+    "p48113": "Dallas",
+    "p48121": "Denton",
+    "p48453": "Travis"
+  },
+  "firm_mdq": {
+    "p48029": null,
+    "p48113": null,
+    "p48121": null,
+    "p48453": null
+  },
+  "line_leads": {
+    "low": 3,
+    "base": 4,
+    "high": 5
+  },
+  "n_zones": 185,
+  "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_county/baseline_2025_county_prepared.nc",
+  "base_sha256": "3ec8ece55404cfb671ab8218293721fcf15fda6bb78c95a504e32d2d6e33a439",
+  "cohorts_sha256": "248ebb2055c69ac8cc2a84835007c1b6de3a94346b5bee2f3c2140cb25cb34c8",
+  "tpit_map_sha256": "3fd0a742d241479ad7d798e77ea31c3c612f8895be7d5a90f542d51ef79051ec",
+  "code_sha256": {
+    "v250_mech.py": "8809a2dcf5921bc4134c638477e2fe574e657ffbf1805ff1bf75f1db5ad9b794",
+    "v240_mech.py": "e2a64af4f9a4cd3db706635ef9d7a51b798e9148d56dbedd79733beff958324e"
+  },
+  "poi": "county_proxy_poi: K_POI unknown; POI link = PUE x G (G = D, GRID-01); not a certified POI"
+}

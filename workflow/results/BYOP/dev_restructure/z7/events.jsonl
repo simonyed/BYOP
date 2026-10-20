@@ -1,0 +1,1 @@
+{"timestamp_utc": "2026-10-20T14:40:06.468955+00:00", "run_id": "v240_RS_7ZONE_20261020T143953Z", "case_id": "RS_7ZONE", "event": "optimization_solved", "status": "SOLVER_OPTIMAL", "message": "obj -4.809870e+09; vars 36262; int 0; 11s", "scenario": "S1"}

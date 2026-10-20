@@ -1,0 +1,109 @@
+{
+  "status": "BASELINE_2025_BUILT",
+  "reeds_commit": "eb75a6bc664297492b38a40782df294666269971",
+  "inputs": {
+    "generator_db": "cb3b16ab33a5bcac18fbb17e75dc7dd7fbc924fb9d7a30765319b79c770510d3",
+    "county2zone": "60123e6ac1261a3b17a09de47c904b382db39abdc3d7e1918fca1067692d45ea",
+    "lpf": "f47e57d674a4fa50254523cdc90cb41c29410af8bf751a54ab1221f0d2b3d0c7",
+    "ercot_native_load_2025": "23664b0cddb047692f6cac26a4300e987c6309795395d394bf2dc223f37b53aa",
+    "county_shapes_dbf": "e498cc3e61d32323f58b34f6a6f566a1f928b990ce0201aef97ea790aa8e7ec9",
+    "prepared_8s": "afdcf5b3ec4e8189a8e919d2f3b5292bb82d3b6cb8fd26bfffb61dda2069a99b"
+  },
+  "fleet_2025_MW_by_carrier": {
+    "CCGT": 35914.3,
+    "OCGT": 8815.7,
+    "battery": 12768.4,
+    "biomass": 123.0,
+    "coal": 10774.0,
+    "gas_steam": 11848.3,
+    "hydro": 535.4,
+    "nuclear": 4980.0,
+    "onwind": 40028.8,
+    "solar": 29262.7
+  },
+  "fleet_2025_MW_by_zone": {
+    "p60": 21214.2,
+    "p61": 13285.1,
+    "p62": 8555.6,
+    "p63": 49830.7,
+    "p64": 11336.4,
+    "p65": 30625.1,
+    "p67": 20203.5
+  },
+  "committed_MW_by_year": {
+    "2026": 12110.8,
+    "2027": 2950.4,
+    "2028": 125.0
+  },
+  "committed_MW_by_carrier": {
+    "battery": 5106.9,
+    "gas_steam": 9.9,
+    "onwind": 1279.2,
+    "solar": 8790.2
+  },
+  "zone_assignment_MW": {
+    "nearest_analysis_zone_from_p48": 6210.6,
+    "nearest_analysis_zone_from_p50": 1224.0,
+    "nearest_analysis_zone_from_p66": 1.2,
+    "network_county": 145107.9,
+    "reeds_county2zone": 2506.9
+  },
+  "unmapped_reeds_techs": [],
+  "load": {
+    "source": "ERCOT Native_Load_2025.xlsx (sha256 23664b0cddb047692f6cac26a4300e987c6309795395d394bf2dc223f37b53aa)",
+    "ercot_native_2025_TWh": 488.233578542299,
+    "ercot_native_peak_MW_1h": 83679.001697,
+    "weather_zone_split": {
+      "COAST->p63": 0.0024,
+      "COAST->p64": 0.0703,
+      "COAST->p65": 0.0185,
+      "COAST->p67": 0.9088,
+      "EAST->p63": 1.0,
+      "FWEST->p60": 0.2593,
+      "FWEST->p61": 0.1617,
+      "FWEST->p62": 0.579,
+      "NCENT->p63": 1.0,
+      "NORTH->p60": 0.1305,
+      "NORTH->p63": 0.8695,
+      "SCENT->p61": 0.001,
+      "SCENT->p63": 0.0865,
+      "SCENT->p64": 0.5326,
+      "SCENT->p65": 0.3799,
+      "SOUTH->p65": 1.0,
+      "WEST->p60": 0.3992,
+      "WEST->p61": 0.3931,
+      "WEST->p63": 0.1914,
+      "WEST->p64": 0.0163
+    },
+    "ercot_2025_TWh": 488.23357854151,
+    "zone_share": {
+      "p60": 0.0487,
+      "p61": 0.0316,
+      "p62": 0.0777,
+      "p63": 0.3528,
+      "p64": 0.1038,
+      "p65": 0.145,
+      "p67": 0.2404
+    },
+    "peak_MW_3h": 83403.65211433332,
+    "shape_year": 2025
+  },
+  "removed_old_existing": {
+    "generators": 45,
+    "storage_units": 7,
+    "old_MW_by_carrier": {
+      "CCGT": 46718.4,
+      "OCGT": 25800.9,
+      "biomass": 194.7,
+      "coal": 13763.7,
+      "hydro": 555.1,
+      "nuclear": 5138.6,
+      "oil": 887.2,
+      "onwind": 38557.3,
+      "solar": 49325.5
+    }
+  },
+  "added_components": 116,
+  "output": "..\\..\\work_package_v2\\outputs\\baseline_2025\\baseline_2025_prepared.nc",
+  "output_sha256": "74ed60a70813187062236d75aac9b0bada0f772cb9f1adc16ab3fa749b986677"
+}

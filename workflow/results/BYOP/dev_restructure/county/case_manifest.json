@@ -1,0 +1,1365 @@
+{
+  "run_id": "v240_RS_COUNTY_20261020T143841Z",
+  "case_id": "RS_COUNTY",
+  "cfg": {
+    "bg_traj": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/inputs/load/background_load_growth_states_AEO2023_reference.csv",
+    "tv_share_byop": 1.0,
+    "tv_share_public": 1.0,
+    "periods": "annual",
+    "start": 2026,
+    "end": 2027,
+    "decision_year": 2026,
+    "years": 1,
+    "cost_basis": "repaired",
+    "public_subsidy": "without",
+    "tariff": "energy",
+    "reuse": "on",
+    "reuse_case": "base",
+    "frac_cod": true,
+    "flex": true,
+    "poi_lead": 0,
+    "byop_case": "base",
+    "public_case": "base",
+    "byop_techs": [
+      "RICE",
+      "SOFC_NG"
+    ],
+    "sample_weeks": 4,
+    "bg_growth": 0.0,
+    "line_exp": true,
+    "erm15": false,
+    "threads": 8,
+    "social_r": 0.02,
+    "private_wacc": 0.07,
+    "v": 2800000.0,
+    "v_private": null,
+    "dem_scale": 1.0,
+    "smoke": true
+  },
+  "argv": [
+    "byop/model/v250_mech.py",
+    "--case-id",
+    "RS_COUNTY",
+    "--out",
+    "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/dev_restructure/county",
+    "--smoke",
+    "--start",
+    "2026",
+    "--end",
+    "2027",
+    "--erm-cal",
+    "results/BYOP/p1/ERM_CAL/erm02_calibration.json",
+    "--threads",
+    "8",
+    "--scenarios",
+    "S1"
+  ],
+  "status": "CASE_SOLVED",
+  "checks": {
+    "true_LP": true,
+    "all_optimal": true,
+    "S1_zero_equals_S0": null,
+    "S2_off_equals_S1": null,
+    "no_load_shed": true,
+    "no_public_offer_before_COD": true,
+    "dc_energy_balance": true,
+    "served_le_requested": true,
+    "private_stage_LP": null
+  },
+  "solves": {
+    "S1": {
+      "tag": "S1",
+      "status": "ok",
+      "termination": "optimal",
+      "objective": -4815957808.281342,
+      "seconds": 38.2,
+      "n_vars": 515139,
+      "n_cons": 1015129,
+      "integer_vars": 0,
+      "erm_dc_mode": "B",
+      "erm_poi_coeff_snapshot0": null
+    }
+  },
+  "erm_cal": {
+    "2026": 0.15000000178660367,
+    "2027": 0.15000000176484218,
+    "2028": 0.139304013285116,
+    "2029": 0.10376632185166779,
+    "2030": 0.08848491393764557,
+    "2031": 0.061122637142073666
+  },
+  "baseline": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_county/baseline_2025_county_prepared.nc",
+  "baseline_sha256": "3ec8ece55404cfb671ab8218293721fcf15fda6bb78c95a504e32d2d6e33a439",
+  "code_sha256": {
+    "v240_mech.py": "e2a64af4f9a4cd3db706635ef9d7a51b798e9148d56dbedd79733beff958324e",
+    "wp2_ercot_s0_s1.py": "314830e337c5c4b63ef4992f5fca6cee741240d3e015c6599902f76fec93c6a9",
+    "wp2_ercot_s1_real.py": "1469c8d6c8c8f810330a3030ae18dbc46072ef809e9f7d7591e8fab2e7a2e480"
+  },
+  "tech_sha256": "127e5a97b5177eb4242d4df33c516ddf09d480a4d5d1da4523dd75605ab99eea",
+  "bg_traj": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/inputs/load/background_load_growth_states_AEO2023_reference.csv",
+  "bg_traj_sha256": "8fc098183b479520d63175cb9d58523f4a1acf1255f2c645dcc04e6861b60700",
+  "bg_factor_by_period": {
+    "TX": {
+      "2026": 1.0093269780764036,
+      "2027": 1.0192185210366336
+    }
+  },
+  "cohorts_sha256": "248ebb2055c69ac8cc2a84835007c1b6de3a94346b5bee2f3c2140cb25cb34c8",
+  "pypsa": "1.3.0",
+  "byop": {
+    "RICE": {
+      "social": {
+        "carrier": "RICE",
+        "case": "base",
+        "overnight_per_MW": 2450000.0,
+        "fom": 43000.0,
+        "life": 25,
+        "annual": 168490.07412261696,
+        "rate": 0.02,
+        "annual_social": 168490.07412261696,
+        "annual_private": 253235.76719063072,
+        "mc": 33.46105,
+        "r": 1.25,
+        "lead": 2.0,
+        "cod": 2028.0,
+        "first_period": null
+      },
+      "private": {
+        "carrier": "RICE",
+        "case": "base",
+        "overnight_per_MW": 2450000.0,
+        "fom": 43000.0,
+        "life": 25,
+        "annual": 253235.76719063072,
+        "rate": 0.07,
+        "annual_social": 168490.07412261696,
+        "annual_private": 253235.76719063072,
+        "mc": 33.46105,
+        "r": 1.25,
+        "lead": 2.0,
+        "cod": 2028.0,
+        "first_period": null
+      }
+    },
+    "SOFC_NG": {
+      "social": {
+        "carrier": "SOFC_NG",
+        "case": "base",
+        "overnight_per_MW": 7953000.0,
+        "fom": 37770.0,
+        "life": 15,
+        "annual": 656715.9808061911,
+        "rate": 0.02,
+        "annual_social": 656715.9808061911,
+        "annual_private": 910966.6502471047,
+        "mc": 21.35611,
+        "r": 1.1,
+        "lead": 0.5,
+        "cod": 2026.5,
+        "first_period": 2026
+      },
+      "private": {
+        "carrier": "SOFC_NG",
+        "case": "base",
+        "overnight_per_MW": 7953000.0,
+        "fom": 37770.0,
+        "life": 15,
+        "annual": 910966.6502471047,
+        "rate": 0.07,
+        "annual_social": 656715.9808061911,
+        "annual_private": 910966.6502471047,
+        "mc": 21.35611,
+        "r": 1.1,
+        "lead": 0.5,
+        "cod": 2026.5,
+        "first_period": 2026
+      }
+    }
+  },
+  "reuse_params": {
+    "annual": 66698.97917979745,
+    "rate": 0.02,
+    "annual_social": 66698.97917979745,
+    "annual_private": 71356.6254091047,
+    "refurb": 150.0,
+    "sustain": 15.0,
+    "fom": 35.0,
+    "lead": 1.0
+  },
+  "reuse_pool": [
+    {
+      "asset_id": "p48029 gas_steam 2025fleet r2027",
+      "zone": "p48029",
+      "MW": 420.0,
+      "retire_year": 2027,
+      "COD": 2027,
+      "build_period": 2027,
+      "pub": "p48029 gas_steam 2025fleet r2027 Rpub",
+      "dc": null,
+      "carrier": "gas_steam"
+    }
+  ],
+  "corridors": [
+    {
+      "corridor": "p48001||p48225",
+      "cap_MW": 22.7085,
+      "capital_cost_per_MW_yr": 3222.374003876315,
+      "first_period": null,
+      "bus0": "p48001",
+      "bus1": "p48225",
+      "existing_MW": 23.301,
+      "tpit_projects": "66202B"
+    },
+    {
+      "corridor": "p48005||p48073",
+      "cap_MW": 299.19875,
+      "capital_cost_per_MW_yr": 4435.445881121344,
+      "first_period": null,
+      "bus0": "p48005",
+      "bus1": "p48073",
+      "existing_MW": 448.0,
+      "tpit_projects": "109904"
+    },
+    {
+      "corridor": "p48005||p48225",
+      "cap_MW": 77.22735,
+      "capital_cost_per_MW_yr": 3917.3996048633585,
+      "first_period": null,
+      "bus0": "p48005",
+      "bus1": "p48225",
+      "existing_MW": 71.6927,
+      "tpit_projects": "110002"
+    },
+    {
+      "corridor": "p48005||p48347",
+      "cap_MW": 261.58685,
+      "capital_cost_per_MW_yr": 2307.1128147468817,
+      "first_period": null,
+      "bus0": "p48005",
+      "bus1": "p48347",
+      "existing_MW": 202.8868,
+      "tpit_projects": "109890|109894"
+    },
+    {
+      "corridor": "p48009||p48503",
+      "cap_MW": 1040.1509,
+      "capital_cost_per_MW_yr": 2694.747602933127,
+      "first_period": null,
+      "bus0": "p48009",
+      "bus1": "p48503",
+      "existing_MW": 1285.7077,
+      "tpit_projects": "110294"
+    },
+    {
+      "corridor": "p48013||p48029",
+      "cap_MW": 204.25689999999997,
+      "capital_cost_per_MW_yr": 3505.59986315104,
+      "first_period": null,
+      "bus0": "p48013",
+      "bus1": "p48029",
+      "existing_MW": 213.9739,
+      "tpit_projects": "75255A"
+    },
+    {
+      "corridor": "p48013||p48255",
+      "cap_MW": 1335.6887000000002,
+      "capital_cost_per_MW_yr": 3443.7406082912034,
+      "first_period": null,
+      "bus0": "p48013",
+      "bus1": "p48255",
+      "existing_MW": 1309.0081,
+      "tpit_projects": "110189|110459"
+    },
+    {
+      "corridor": "p48013||p48311",
+      "cap_MW": 139.38265,
+      "capital_cost_per_MW_yr": 3413.5938091064395,
+      "first_period": null,
+      "bus0": "p48013",
+      "bus1": "p48311",
+      "existing_MW": 179.7982,
+      "tpit_projects": "110455"
+    },
+    {
+      "corridor": "p48015||p48089",
+      "cap_MW": 129.23375000000001,
+      "capital_cost_per_MW_yr": 2220.09381453335,
+      "first_period": null,
+      "bus0": "p48015",
+      "bus1": "p48089",
+      "existing_MW": 40.5358,
+      "tpit_projects": "109912"
+    },
+    {
+      "corridor": "p48019||p48325",
+      "cap_MW": 72.8973,
+      "capital_cost_per_MW_yr": 2708.1135366510553,
+      "first_period": null,
+      "bus0": "p48019",
+      "bus1": "p48325",
+      "existing_MW": 49.9421,
+      "tpit_projects": "110695"
+    },
+    {
+      "corridor": "p48021||p48055",
+      "cap_MW": 1146.7341999999999,
+      "capital_cost_per_MW_yr": 2424.460291781232,
+      "first_period": null,
+      "bus0": "p48021",
+      "bus1": "p48055",
+      "existing_MW": 1320.0,
+      "tpit_projects": "104635"
+    },
+    {
+      "corridor": "p48021||p48149",
+      "cap_MW": 1886.72535,
+      "capital_cost_per_MW_yr": 2587.301643708145,
+      "first_period": null,
+      "bus0": "p48021",
+      "bus1": "p48149",
+      "existing_MW": 1632.4782,
+      "tpit_projects": "103303|109918"
+    },
+    {
+      "corridor": "p48021||p48453",
+      "cap_MW": 3118.41005,
+      "capital_cost_per_MW_yr": 2943.1297064845485,
+      "first_period": null,
+      "bus0": "p48021",
+      "bus1": "p48453",
+      "existing_MW": 3696.6608,
+      "tpit_projects": "91312|110185|99831"
+    },
+    {
+      "corridor": "p48025||p48255",
+      "cap_MW": 43.50605,
+      "capital_cost_per_MW_yr": 3137.0829950686416,
+      "first_period": null,
+      "bus0": "p48025",
+      "bus1": "p48255",
+      "existing_MW": 38.0,
+      "tpit_projects": "90008|84900"
+    },
+    {
+      "corridor": "p48027||p48331",
+      "cap_MW": 2420.8016500000003,
+      "capital_cost_per_MW_yr": 2867.2353439337244,
+      "first_period": null,
+      "bus0": "p48027",
+      "bus1": "p48331",
+      "existing_MW": 2177.6033,
+      "tpit_projects": "110026|99350|110020|66206A"
+    },
+    {
+      "corridor": "p48027||p48491",
+      "cap_MW": 3132.4713,
+      "capital_cost_per_MW_yr": 2448.880388332086,
+      "first_period": null,
+      "bus0": "p48027",
+      "bus1": "p48491",
+      "existing_MW": 2925.0363,
+      "tpit_projects": "110122"
+    },
+    {
+      "corridor": "p48029||p48091",
+      "cap_MW": 95.18825,
+      "capital_cost_per_MW_yr": 2722.8718612062785,
+      "first_period": null,
+      "bus0": "p48029",
+      "bus1": "p48091",
+      "existing_MW": 162.8772,
+      "tpit_projects": "110478"
+    },
+    {
+      "corridor": "p48029||p48187",
+      "cap_MW": 3943.2250999999997,
+      "capital_cost_per_MW_yr": 3206.1053585033746,
+      "first_period": null,
+      "bus0": "p48029",
+      "bus1": "p48187",
+      "existing_MW": 4326.3745,
+      "tpit_projects": "110675"
+    },
+    {
+      "corridor": "p48029||p48255",
+      "cap_MW": 1058.0,
+      "capital_cost_per_MW_yr": 4823.317058524638,
+      "first_period": null,
+      "bus0": "p48029",
+      "bus1": "p48255",
+      "existing_MW": 1058.0,
+      "tpit_projects": "84902|100018|100020"
+    },
+    {
+      "corridor": "p48029||p48259",
+      "cap_MW": 1272.0864,
+      "capital_cost_per_MW_yr": 3457.2770918256456,
+      "first_period": null,
+      "bus0": "p48029",
+      "bus1": "p48259",
+      "existing_MW": 1268.831,
+      "tpit_projects": "109908|110653"
+    },
+    {
+      "corridor": "p48029||p48325",
+      "cap_MW": 436.0421,
+      "capital_cost_per_MW_yr": 3080.8869252040145,
+      "first_period": null,
+      "bus0": "p48029",
+      "bus1": "p48325",
+      "existing_MW": 428.0221,
+      "tpit_projects": "84892|84894"
+    },
+    {
+      "corridor": "p48033||p48115",
+      "cap_MW": 151.43970000000002,
+      "capital_cost_per_MW_yr": 2135.334335539323,
+      "first_period": null,
+      "bus0": "p48033",
+      "bus1": "p48115",
+      "existing_MW": 116.8794,
+      "tpit_projects": "99419|81034"
+    },
+    {
+      "corridor": "p48039||p48167",
+      "cap_MW": 1181.9974000000002,
+      "capital_cost_per_MW_yr": 2323.098498621042,
+      "first_period": null,
+      "bus0": "p48039",
+      "bus1": "p48167",
+      "existing_MW": 1075.5749,
+      "tpit_projects": "103257|103344A"
+    },
+    {
+      "corridor": "p48039||p48201",
+      "cap_MW": 39.8688,
+      "capital_cost_per_MW_yr": 3142.8614800585106,
+      "first_period": null,
+      "bus0": "p48039",
+      "bus1": "p48201",
+      "existing_MW": 39.8688,
+      "tpit_projects": "109648C"
+    },
+    {
+      "corridor": "p48041||p48051",
+      "cap_MW": 24.6682,
+      "capital_cost_per_MW_yr": 2034.6160781008896,
+      "first_period": null,
+      "bus0": "p48041",
+      "bus1": "p48051",
+      "existing_MW": 24.6682,
+      "tpit_projects": "6666"
+    },
+    {
+      "corridor": "p48041||p48395",
+      "cap_MW": 1351.1314499999999,
+      "capital_cost_per_MW_yr": 2454.513472696167,
+      "first_period": null,
+      "bus0": "p48041",
+      "bus1": "p48395",
+      "existing_MW": 1438.1254,
+      "tpit_projects": "99103"
+    },
+    {
+      "corridor": "p48043||p48377",
+      "cap_MW": 51.00065,
+      "capital_cost_per_MW_yr": 4727.285871603788,
+      "first_period": null,
+      "bus0": "p48043",
+      "bus1": "p48377",
+      "existing_MW": 54.3186,
+      "tpit_projects": "50898"
+    },
+    {
+      "corridor": "p48047||p48273",
+      "cap_MW": 122.16045,
+      "capital_cost_per_MW_yr": 3814.3327707063872,
+      "first_period": null,
+      "bus0": "p48047",
+      "bus1": "p48273",
+      "existing_MW": 198.5059,
+      "tpit_projects": "73061"
+    },
+    {
+      "corridor": "p48051||p48287",
+      "cap_MW": 43.303200000000004,
+      "capital_cost_per_MW_yr": 2198.5681468386374,
+      "first_period": null,
+      "bus0": "p48051",
+      "bus1": "p48287",
+      "existing_MW": 14.6597,
+      "tpit_projects": "104605"
+    },
+    {
+      "corridor": "p48055||p48149",
+      "cap_MW": 1431.8965,
+      "capital_cost_per_MW_yr": 3764.0965605952238,
+      "first_period": null,
+      "bus0": "p48055",
+      "bus1": "p48149",
+      "existing_MW": 939.8083,
+      "tpit_projects": "110128"
+    },
+    {
+      "corridor": "p48055||p48187",
+      "cap_MW": 1233.3804,
+      "capital_cost_per_MW_yr": 2444.917556078282,
+      "first_period": null,
+      "bus0": "p48055",
+      "bus1": "p48187",
+      "existing_MW": 1235.2882,
+      "tpit_projects": "104639"
+    },
+    {
+      "corridor": "p48055||p48453",
+      "cap_MW": 474.24465,
+      "capital_cost_per_MW_yr": 3429.2424773654884,
+      "first_period": null,
+      "bus0": "p48055",
+      "bus1": "p48453",
+      "existing_MW": 663.5308,
+      "tpit_projects": "71408"
+    },
+    {
+      "corridor": "p48057||p48469",
+      "cap_MW": 267.18045,
+      "capital_cost_per_MW_yr": 2908.7832845565877,
+      "first_period": null,
+      "bus0": "p48057",
+      "bus1": "p48469",
+      "existing_MW": 261.0462,
+      "tpit_projects": "73441|50876|75989|110348"
+    },
+    {
+      "corridor": "p48059||p48133",
+      "cap_MW": 181.5614,
+      "capital_cost_per_MW_yr": 2558.390151976435,
+      "first_period": null,
+      "bus0": "p48059",
+      "bus1": "p48133",
+      "existing_MW": 165.3028,
+      "tpit_projects": "55217|90027"
+    },
+    {
+      "corridor": "p48061||p48215",
+      "cap_MW": 1358.9195,
+      "capital_cost_per_MW_yr": 4173.229504105109,
+      "first_period": null,
+      "bus0": "p48061",
+      "bus1": "p48215",
+      "existing_MW": 1346.981,
+      "tpit_projects": "110866|80579|110834|110399"
+    },
+    {
+      "corridor": "p48077||p48337",
+      "cap_MW": 226.2118,
+      "capital_cost_per_MW_yr": 2347.338574284473,
+      "first_period": null,
+      "bus0": "p48077",
+      "bus1": "p48337",
+      "existing_MW": 206.2555,
+      "tpit_projects": "77174"
+    },
+    {
+      "corridor": "p48081||p48399",
+      "cap_MW": 141.00655,
+      "capital_cost_per_MW_yr": 2534.009771938013,
+      "first_period": null,
+      "bus0": "p48081",
+      "bus1": "p48399",
+      "existing_MW": 194.315,
+      "tpit_projects": "98628"
+    },
+    {
+      "corridor": "p48081||p48431",
+      "cap_MW": 1780.64345,
+      "capital_cost_per_MW_yr": 2386.9250998771704,
+      "first_period": null,
+      "bus0": "p48081",
+      "bus1": "p48431",
+      "existing_MW": 1664.3205,
+      "tpit_projects": "98556"
+    },
+    {
+      "corridor": "p48081||p48441",
+      "cap_MW": 52.883,
+      "capital_cost_per_MW_yr": 3762.9915482038505,
+      "first_period": null,
+      "bus0": "p48081",
+      "bus1": "p48441",
+      "existing_MW": 71.9693,
+      "tpit_projects": "98626"
+    },
+    {
+      "corridor": "p48085||p48147",
+      "cap_MW": 2058.6468999999997,
+      "capital_cost_per_MW_yr": 3307.457568608246,
+      "first_period": null,
+      "bus0": "p48085",
+      "bus1": "p48147",
+      "existing_MW": 500.1909,
+      "tpit_projects": "110284"
+    },
+    {
+      "corridor": "p48085||p48181",
+      "cap_MW": 394.90905000000004,
+      "capital_cost_per_MW_yr": 2740.007660363783,
+      "first_period": null,
+      "bus0": "p48085",
+      "bus1": "p48181",
+      "existing_MW": 104.8663,
+      "tpit_projects": "110274"
+    },
+    {
+      "corridor": "p48085||p48231",
+      "cap_MW": 78.43165,
+      "capital_cost_per_MW_yr": 2314.9681439990463,
+      "first_period": null,
+      "bus0": "p48085",
+      "bus1": "p48231",
+      "existing_MW": 61.0341,
+      "tpit_projects": "105747"
+    },
+    {
+      "corridor": "p48089||p48481",
+      "cap_MW": 237.26205,
+      "capital_cost_per_MW_yr": 2809.6177036046615,
+      "first_period": null,
+      "bus0": "p48089",
+      "bus1": "p48481",
+      "existing_MW": 257.0,
+      "tpit_projects": "78483"
+    },
+    {
+      "corridor": "p48091||p48187",
+      "cap_MW": 271.66805,
+      "capital_cost_per_MW_yr": 2321.168019206721,
+      "first_period": null,
+      "bus0": "p48091",
+      "bus1": "p48187",
+      "existing_MW": 63.1775,
+      "tpit_projects": "66023"
+    },
+    {
+      "corridor": "p48093||p48193",
+      "cap_MW": 41.24995,
+      "capital_cost_per_MW_yr": 2600.884384943416,
+      "first_period": null,
+      "bus0": "p48093",
+      "bus1": "p48193",
+      "existing_MW": 54.805,
+      "tpit_projects": "99629"
+    },
+    {
+      "corridor": "p48095||p48399",
+      "cap_MW": 29.415,
+      "capital_cost_per_MW_yr": 2979.267672044113,
+      "first_period": null,
+      "bus0": "p48095",
+      "bus1": "p48399",
+      "existing_MW": 30.0,
+      "tpit_projects": "6572"
+    },
+    {
+      "corridor": "p48097||p48121",
+      "cap_MW": 316.95495,
+      "capital_cost_per_MW_yr": 2701.745457745742,
+      "first_period": null,
+      "bus0": "p48097",
+      "bus1": "p48121",
+      "existing_MW": 472.5436,
+      "tpit_projects": "91611"
+    },
+    {
+      "corridor": "p48105||p48435",
+      "cap_MW": 190.76069999999999,
+      "capital_cost_per_MW_yr": 4235.105038598889,
+      "first_period": null,
+      "bus0": "p48105",
+      "bus1": "p48435",
+      "existing_MW": 173.5214,
+      "tpit_projects": "91906"
+    },
+    {
+      "corridor": "p48109||p48389",
+      "cap_MW": 259.7392243389458,
+      "capital_cost_per_MW_yr": 3835.849662641359,
+      "first_period": null,
+      "bus0": "p48109",
+      "bus1": "p48389",
+      "existing_MW": 475.6913,
+      "tpit_projects": "87021|99018"
+    },
+    {
+      "corridor": "p48113||p48213",
+      "cap_MW": 1773.06455,
+      "capital_cost_per_MW_yr": 5536.373697951713,
+      "first_period": null,
+      "bus0": "p48113",
+      "bus1": "p48213",
+      "existing_MW": 756.3397,
+      "tpit_projects": "105755"
+    },
+    {
+      "corridor": "p48113||p48349",
+      "cap_MW": 1755.09005,
+      "capital_cost_per_MW_yr": 4639.693493266825,
+      "first_period": null,
+      "bus0": "p48113",
+      "bus1": "p48349",
+      "existing_MW": 1242.4827,
+      "tpit_projects": "105759"
+    },
+    {
+      "corridor": "p48113||p48439",
+      "cap_MW": 2540.0303000000004,
+      "capital_cost_per_MW_yr": 2417.7278573586796,
+      "first_period": null,
+      "bus0": "p48113",
+      "bus1": "p48439",
+      "existing_MW": 2765.2168,
+      "tpit_projects": "6777|64239"
+    },
+    {
+      "corridor": "p48121||p48439",
+      "cap_MW": 2181.76635,
+      "capital_cost_per_MW_yr": 2783.9322295658453,
+      "first_period": null,
+      "bus0": "p48121",
+      "bus1": "p48439",
+      "existing_MW": 1840.0552,
+      "tpit_projects": "72940"
+    },
+    {
+      "corridor": "p48127||p48507",
+      "cap_MW": 177.29725,
+      "capital_cost_per_MW_yr": 2794.2724813027417,
+      "first_period": null,
+      "bus0": "p48127",
+      "bus1": "p48507",
+      "existing_MW": 163.4295,
+      "tpit_projects": "67915"
+    },
+    {
+      "corridor": "p48135||p48329",
+      "cap_MW": 1524.22275,
+      "capital_cost_per_MW_yr": 2362.8924954569657,
+      "first_period": null,
+      "bus0": "p48135",
+      "bus1": "p48329",
+      "existing_MW": 1524.964,
+      "tpit_projects": "81240|71187"
+    },
+    {
+      "corridor": "p48135||p48475",
+      "cap_MW": 584.0062,
+      "capital_cost_per_MW_yr": 3357.0095413585586,
+      "first_period": null,
+      "bus0": "p48135",
+      "bus1": "p48475",
+      "existing_MW": 422.6775,
+      "tpit_projects": "81440"
+    },
+    {
+      "corridor": "p48137||p48435",
+      "cap_MW": 32.614850000000004,
+      "capital_cost_per_MW_yr": 3428.3450992223748,
+      "first_period": null,
+      "bus0": "p48137",
+      "bus1": "p48435",
+      "existing_MW": 37.0,
+      "tpit_projects": "51005"
+    },
+    {
+      "corridor": "p48139||p48217",
+      "cap_MW": 2171.03035,
+      "capital_cost_per_MW_yr": 2714.7226449416776,
+      "first_period": null,
+      "bus0": "p48139",
+      "bus1": "p48217",
+      "existing_MW": 2150.6618,
+      "tpit_projects": "78369"
+    },
+    {
+      "corridor": "p48139||p48251",
+      "cap_MW": 1309.84545,
+      "capital_cost_per_MW_yr": 2715.757791782746,
+      "first_period": null,
+      "bus0": "p48139",
+      "bus1": "p48251",
+      "existing_MW": 913.0761,
+      "tpit_projects": "109845"
+    },
+    {
+      "corridor": "p48139||p48349",
+      "cap_MW": 2291.80895,
+      "capital_cost_per_MW_yr": 2397.2074177579166,
+      "first_period": null,
+      "bus0": "p48139",
+      "bus1": "p48349",
+      "existing_MW": 1775.6005,
+      "tpit_projects": "78367"
+    },
+    {
+      "corridor": "p48145||p48309",
+      "cap_MW": 75.0504,
+      "capital_cost_per_MW_yr": 2229.4725992204144,
+      "first_period": null,
+      "bus0": "p48145",
+      "bus1": "p48309",
+      "existing_MW": 102.5291,
+      "tpit_projects": "110006"
+    },
+    {
+      "corridor": "p48147||p48181",
+      "cap_MW": 555.0426,
+      "capital_cost_per_MW_yr": 2664.235348522667,
+      "first_period": null,
+      "bus0": "p48147",
+      "bus1": "p48181",
+      "existing_MW": 266.0008,
+      "tpit_projects": "109805|110647"
+    },
+    {
+      "corridor": "p48147||p48277",
+      "cap_MW": 1369.6415000000002,
+      "capital_cost_per_MW_yr": 2534.475666972211,
+      "first_period": null,
+      "bus0": "p48147",
+      "bus1": "p48277",
+      "existing_MW": 628.2391,
+      "tpit_projects": "68700|110290"
+    },
+    {
+      "corridor": "p48149||p48477",
+      "cap_MW": 368.87915,
+      "capital_cost_per_MW_yr": 3565.153984175816,
+      "first_period": null,
+      "bus0": "p48149",
+      "bus1": "p48477",
+      "existing_MW": 441.3502,
+      "tpit_projects": "109888"
+    },
+    {
+      "corridor": "p48151||p48253",
+      "cap_MW": 45.41525,
+      "capital_cost_per_MW_yr": 2165.979083290992,
+      "first_period": null,
+      "bus0": "p48151",
+      "bus1": "p48253",
+      "existing_MW": 52.1374,
+      "tpit_projects": "73055"
+    },
+    {
+      "corridor": "p48157||p48201",
+      "cap_MW": 4458.41065,
+      "capital_cost_per_MW_yr": 2048.6773886345695,
+      "first_period": null,
+      "bus0": "p48157",
+      "bus1": "p48201",
+      "existing_MW": 3646.377,
+      "tpit_projects": "109761"
+    },
+    {
+      "corridor": "p48161||p48213",
+      "cap_MW": 2195.1119,
+      "capital_cost_per_MW_yr": 3407.8487505497833,
+      "first_period": null,
+      "bus0": "p48161",
+      "bus1": "p48213",
+      "existing_MW": 2226.4258,
+      "tpit_projects": "99626"
+    },
+    {
+      "corridor": "p48161||p48289",
+      "cap_MW": 3166.21525,
+      "capital_cost_per_MW_yr": 2601.3737160465616,
+      "first_period": null,
+      "bus0": "p48161",
+      "bus1": "p48289",
+      "existing_MW": 3145.7018,
+      "tpit_projects": "99620"
+    },
+    {
+      "corridor": "p48163||p48325",
+      "cap_MW": 138.2153,
+      "capital_cost_per_MW_yr": 3078.193085855849,
+      "first_period": null,
+      "bus0": "p48163",
+      "bus1": "p48325",
+      "existing_MW": 160.2164,
+      "tpit_projects": "76768|55873|73063"
+    },
+    {
+      "corridor": "p48167||p48201",
+      "cap_MW": 1105.7334,
+      "capital_cost_per_MW_yr": 2917.5112825597,
+      "first_period": null,
+      "bus0": "p48167",
+      "bus1": "p48201",
+      "existing_MW": 905.4668,
+      "tpit_projects": "109648B"
+    },
+    {
+      "corridor": "p48173||p48227",
+      "cap_MW": 287.0104,
+      "capital_cost_per_MW_yr": 1966.679598323708,
+      "first_period": null,
+      "bus0": "p48173",
+      "bus1": "p48227",
+      "existing_MW": 217.9615,
+      "tpit_projects": "98878"
+    },
+    {
+      "corridor": "p48201||p48339",
+      "cap_MW": 2.0984,
+      "capital_cost_per_MW_yr": 2927.1327108071027,
+      "first_period": null,
+      "bus0": "p48201",
+      "bus1": "p48339",
+      "existing_MW": 2.0984,
+      "tpit_projects": "90161A"
+    },
+    {
+      "corridor": "p48207||p48275",
+      "cap_MW": 1810.3911,
+      "capital_cost_per_MW_yr": 2310.5307381925527,
+      "first_period": null,
+      "bus0": "p48207",
+      "bus1": "p48275",
+      "existing_MW": 987.1387,
+      "tpit_projects": "72999|59394"
+    },
+    {
+      "corridor": "p48213||p48257",
+      "cap_MW": 102.79480000000001,
+      "capital_cost_per_MW_yr": 3138.6919685507337,
+      "first_period": null,
+      "bus0": "p48213",
+      "bus1": "p48257",
+      "existing_MW": 140.7992,
+      "tpit_projects": "110395"
+    },
+    {
+      "corridor": "p48213||p48423",
+      "cap_MW": 60.4593,
+      "capital_cost_per_MW_yr": 2944.7507804225374,
+      "first_period": null,
+      "bus0": "p48213",
+      "bus1": "p48423",
+      "existing_MW": 65.5382,
+      "tpit_projects": "66289C"
+    },
+    {
+      "corridor": "p48215||p48427",
+      "cap_MW": 253.57175,
+      "capital_cost_per_MW_yr": 3139.922705405348,
+      "first_period": null,
+      "bus0": "p48215",
+      "bus1": "p48427",
+      "existing_MW": 224.0297,
+      "tpit_projects": "66101"
+    },
+    {
+      "corridor": "p48217||p48309",
+      "cap_MW": 2701.4019500000004,
+      "capital_cost_per_MW_yr": 2702.1788875017896,
+      "first_period": null,
+      "bus0": "p48217",
+      "bus1": "p48309",
+      "existing_MW": 2836.7067,
+      "tpit_projects": "71910B|110223"
+    },
+    {
+      "corridor": "p48217||p48349",
+      "cap_MW": 99.30754999999999,
+      "capital_cost_per_MW_yr": 3157.69033918628,
+      "first_period": null,
+      "bus0": "p48217",
+      "bus1": "p48349",
+      "existing_MW": 78.6151,
+      "tpit_projects": "110010|110232"
+    },
+    {
+      "corridor": "p48227||p48329",
+      "cap_MW": 919.694,
+      "capital_cost_per_MW_yr": 2833.9780829939473,
+      "first_period": null,
+      "bus0": "p48227",
+      "bus1": "p48329",
+      "existing_MW": 885.388,
+      "tpit_projects": "81236|81268|81296A|81296B|110587"
+    },
+    {
+      "corridor": "p48227||p48335",
+      "cap_MW": 3243.0538500000002,
+      "capital_cost_per_MW_yr": 2141.201328438616,
+      "first_period": null,
+      "bus0": "p48227",
+      "bus1": "p48335",
+      "existing_MW": 3682.1269,
+      "tpit_projects": "81152|81299"
+    },
+    {
+      "corridor": "p48237||p48363",
+      "cap_MW": 145.913,
+      "capital_cost_per_MW_yr": 3020.6942630366307,
+      "first_period": null,
+      "bus0": "p48237",
+      "bus1": "p48363",
+      "existing_MW": 148.4159,
+      "tpit_projects": "66492B"
+    },
+    {
+      "corridor": "p48237||p48497",
+      "cap_MW": 2411.98695,
+      "capital_cost_per_MW_yr": 2427.122730204182,
+      "first_period": null,
+      "bus0": "p48237",
+      "bus1": "p48497",
+      "existing_MW": 3386.5717,
+      "tpit_projects": "66492C"
+    },
+    {
+      "corridor": "p48239||p48321",
+      "cap_MW": 211.0,
+      "capital_cost_per_MW_yr": 3143.7046633596447,
+      "first_period": null,
+      "bus0": "p48239",
+      "bus1": "p48321",
+      "existing_MW": 211.0,
+      "tpit_projects": "70882"
+    },
+    {
+      "corridor": "p48239||p48469",
+      "cap_MW": 549.7248,
+      "capital_cost_per_MW_yr": 2263.7640288987027,
+      "first_period": null,
+      "bus0": "p48239",
+      "bus1": "p48469",
+      "existing_MW": 640.4137,
+      "tpit_projects": "76777|59086"
+    },
+    {
+      "corridor": "p48247||p48479",
+      "cap_MW": 1273.7415,
+      "capital_cost_per_MW_yr": 5598.128850177833,
+      "first_period": null,
+      "bus0": "p48247",
+      "bus1": "p48479",
+      "existing_MW": 1218.483,
+      "tpit_projects": "67322"
+    },
+    {
+      "corridor": "p48249||p48273",
+      "cap_MW": 118.7424,
+      "capital_cost_per_MW_yr": 2921.433656067075,
+      "first_period": null,
+      "bus0": "p48249",
+      "bus1": "p48273",
+      "existing_MW": 157.0,
+      "tpit_projects": "64065"
+    },
+    {
+      "corridor": "p48253||p48441",
+      "cap_MW": 1554.02245,
+      "capital_cost_per_MW_yr": 2361.6676071068196,
+      "first_period": null,
+      "bus0": "p48253",
+      "bus1": "p48441",
+      "existing_MW": 1731.5433,
+      "tpit_projects": "90063|98599|90065"
+    },
+    {
+      "corridor": "p48263||p48415",
+      "cap_MW": 111.31809999999999,
+      "capital_cost_per_MW_yr": 2413.939384031092,
+      "first_period": null,
+      "bus0": "p48263",
+      "bus1": "p48415",
+      "existing_MW": 92.6963,
+      "tpit_projects": "110729"
+    },
+    {
+      "corridor": "p48273||p48355",
+      "cap_MW": 2307.07615,
+      "capital_cost_per_MW_yr": 2092.4507484541728,
+      "first_period": null,
+      "bus0": "p48273",
+      "bus1": "p48355",
+      "existing_MW": 3111.1995,
+      "tpit_projects": "64067"
+    },
+    {
+      "corridor": "p48277||p48387",
+      "cap_MW": 148.86915,
+      "capital_cost_per_MW_yr": 2440.526369755433,
+      "first_period": null,
+      "bus0": "p48277",
+      "bus1": "p48387",
+      "existing_MW": 143.8815,
+      "tpit_projects": "109808"
+    },
+    {
+      "corridor": "p48277||p48449",
+      "cap_MW": 877.4518,
+      "capital_cost_per_MW_yr": 4339.213419389745,
+      "first_period": null,
+      "bus0": "p48277",
+      "bus1": "p48449",
+      "existing_MW": 1037.1626,
+      "tpit_projects": "92852A"
+    },
+    {
+      "corridor": "p48293||p48395",
+      "cap_MW": 2426.3668,
+      "capital_cost_per_MW_yr": 3182.98460860091,
+      "first_period": null,
+      "bus0": "p48293",
+      "bus1": "p48395",
+      "existing_MW": 1989.4805,
+      "tpit_projects": "110649"
+    },
+    {
+      "corridor": "p48301||p48495",
+      "cap_MW": 295.1325,
+      "capital_cost_per_MW_yr": 2457.062426505429,
+      "first_period": null,
+      "bus0": "p48301",
+      "bus1": "p48495",
+      "existing_MW": 464.9003,
+      "tpit_projects": "76696"
+    },
+    {
+      "corridor": "p48317||p48329",
+      "cap_MW": 395.34389999999996,
+      "capital_cost_per_MW_yr": 2619.1064719950564,
+      "first_period": null,
+      "bus0": "p48317",
+      "bus1": "p48329",
+      "existing_MW": 458.342,
+      "tpit_projects": "73436"
+    },
+    {
+      "corridor": "p48323||p48465",
+      "cap_MW": 122.0,
+      "capital_cost_per_MW_yr": 8514.0661006488,
+      "first_period": null,
+      "bus0": "p48323",
+      "bus1": "p48465",
+      "existing_MW": 122.0,
+      "tpit_projects": "55626"
+    },
+    {
+      "corridor": "p48331||p48395",
+      "cap_MW": 260.8619,
+      "capital_cost_per_MW_yr": 2678.810515852309,
+      "first_period": null,
+      "bus0": "p48331",
+      "bus1": "p48395",
+      "existing_MW": 317.2192,
+      "tpit_projects": "110022|110032"
+    },
+    {
+      "corridor": "p48331||p48491",
+      "cap_MW": 210.79019999999997,
+      "capital_cost_per_MW_yr": 3133.629255135526,
+      "first_period": null,
+      "bus0": "p48331",
+      "bus1": "p48491",
+      "existing_MW": 287.3314,
+      "tpit_projects": "99239B"
+    },
+    {
+      "corridor": "p48335||p48353",
+      "cap_MW": 1971.5304999999998,
+      "capital_cost_per_MW_yr": 2144.974678916348,
+      "first_period": null,
+      "bus0": "p48335",
+      "bus1": "p48353",
+      "existing_MW": 1998.194,
+      "tpit_projects": "93088A"
+    },
+    {
+      "corridor": "p48335||p48415",
+      "cap_MW": 1543.8061,
+      "capital_cost_per_MW_yr": 2369.6988383655635,
+      "first_period": null,
+      "bus0": "p48335",
+      "bus1": "p48415",
+      "existing_MW": 1492.2439,
+      "tpit_projects": "72011B|72011A"
+    },
+    {
+      "corridor": "p48353||p48417",
+      "cap_MW": 957.1588999999999,
+      "capital_cost_per_MW_yr": 5789.40474018603,
+      "first_period": null,
+      "bus0": "p48353",
+      "bus1": "p48417",
+      "existing_MW": 957.4127,
+      "tpit_projects": "99549"
+    },
+    {
+      "corridor": "p48355||p48409",
+      "cap_MW": 1558.6178,
+      "capital_cost_per_MW_yr": 1718.38131865592,
+      "first_period": null,
+      "bus0": "p48355",
+      "bus1": "p48409",
+      "existing_MW": 1545.8853,
+      "tpit_projects": "81783"
+    },
+    {
+      "corridor": "p48367||p48439",
+      "cap_MW": 2295.48285,
+      "capital_cost_per_MW_yr": 2421.0861518397355,
+      "first_period": null,
+      "bus0": "p48367",
+      "bus1": "p48439",
+      "existing_MW": 3041.3644,
+      "tpit_projects": "105326"
+    },
+    {
+      "corridor": "p48371||p48389",
+      "cap_MW": 190.6475,
+      "capital_cost_per_MW_yr": 5447.3812602525095,
+      "first_period": null,
+      "bus0": "p48371",
+      "bus1": "p48389",
+      "existing_MW": 148.4884,
+      "tpit_projects": "77805|92278|91941|91939|102955"
+    },
+    {
+      "corridor": "p48371||p48461",
+      "cap_MW": 1313.9713000000002,
+      "capital_cost_per_MW_yr": 4623.1438297227605,
+      "first_period": null,
+      "bus0": "p48371",
+      "bus1": "p48461",
+      "existing_MW": 1777.5377,
+      "tpit_projects": "102795|102795"
+    },
+    {
+      "corridor": "p48371||p48475",
+      "cap_MW": 25.83335,
+      "capital_cost_per_MW_yr": 4574.110078343506,
+      "first_period": null,
+      "bus0": "p48371",
+      "bus1": "p48475",
+      "existing_MW": 42.0,
+      "tpit_projects": "93624"
+    },
+    {
+      "corridor": "p48389||p48475",
+      "cap_MW": 218.7576,
+      "capital_cost_per_MW_yr": 2905.2865605136853,
+      "first_period": null,
+      "bus0": "p48389",
+      "bus1": "p48475",
+      "existing_MW": 180.0444,
+      "tpit_projects": "87017"
+    },
+    {
+      "corridor": "p48399||p48451",
+      "cap_MW": 241.62875,
+      "capital_cost_per_MW_yr": 3322.649125007795,
+      "first_period": null,
+      "bus0": "p48399",
+      "bus1": "p48451",
+      "existing_MW": 255.8135,
+      "tpit_projects": "55421"
+    },
+    {
+      "corridor": "p48435||p48465",
+      "cap_MW": 169.5,
+      "capital_cost_per_MW_yr": 4513.920332111631,
+      "first_period": null,
+      "bus0": "p48435",
+      "bus1": "p48465",
+      "existing_MW": 185.0,
+      "tpit_projects": "52070"
+    },
+    {
+      "corridor": "p48453||p48491",
+      "cap_MW": 2205.44395,
+      "capital_cost_per_MW_yr": 2302.714965747131,
+      "first_period": null,
+      "bus0": "p48453",
+      "bus1": "p48491",
+      "existing_MW": 2254.8324,
+      "tpit_projects": "110024"
+    },
+    {
+      "corridor": "p48463||p48507",
+      "cap_MW": 177.3435,
+      "capital_cost_per_MW_yr": 3098.323520317839,
+      "first_period": null,
+      "bus0": "p48463",
+      "bus1": "p48507",
+      "existing_MW": 187.5252,
+      "tpit_projects": "57910"
+    },
+    {
+      "corridor": "p48475||p48495",
+      "cap_MW": 441.77329999999995,
+      "capital_cost_per_MW_yr": 2033.9479623197426,
+      "first_period": null,
+      "bus0": "p48475",
+      "bus1": "p48495",
+      "existing_MW": 292.9093,
+      "tpit_projects": "87431"
+    }
+  ],
+  "study_new": [
+    {
+      "zone": "p48029",
+      "period": 2026,
+      "D_IT_MW": 127.05021629551426,
+      "G_IT_MW": 127.05021629551426
+    },
+    {
+      "zone": "p48029",
+      "period": 2027,
+      "D_IT_MW": 284.8532431543632,
+      "G_IT_MW": 284.8532431543632
+    },
+    {
+      "zone": "p48113",
+      "period": 2026,
+      "D_IT_MW": 161.7002752852,
+      "G_IT_MW": 161.7002752852
+    },
+    {
+      "zone": "p48113",
+      "period": 2027,
+      "D_IT_MW": 362.5404912873714,
+      "G_IT_MW": 362.5404912873714
+    },
+    {
+      "zone": "p48121",
+      "period": 2026,
+      "D_IT_MW": 254.1004325910286,
+      "G_IT_MW": 254.1004325910286
+    },
+    {
+      "zone": "p48121",
+      "period": 2027,
+      "D_IT_MW": 569.7064863087267,
+      "G_IT_MW": 569.7064863087267
+    },
+    {
+      "zone": "p48453",
+      "period": 2026,
+      "D_IT_MW": 23.100039326457143,
+      "G_IT_MW": 23.100039326457143
+    },
+    {
+      "zone": "p48453",
+      "period": 2027,
+      "D_IT_MW": 51.79149875533878,
+      "G_IT_MW": 51.79149875533878
+    }
+  ],
+  "timestamp_utc": "2026-10-20T14:39:51.266712+00:00"
+}

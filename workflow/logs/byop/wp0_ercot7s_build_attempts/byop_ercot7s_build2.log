@@ -1,0 +1,718 @@
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2559322
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+D:\BYOP_impact\pypsa-usa\.venv\Lib\site-packages\pulp\apis\gurobi_api.py:170: UserWarning: GUROBI error: Unknown parameter '_test'.
+  warnings.warn("GUROBI error: {}.".format(e))
+Config file repo_data/config/config.slurm.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.common.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.plotting.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.api.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.sector.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.default.yaml is extended by additional config specified via the command line.
+Config file config/config.api.yaml is extended by additional config specified via the command line.
+Config file config/config.slurm.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                         count
+------------------------  -------
+add_demand                      1
+add_electricity                 1
+add_extra_components            1
+add_sectors                     1
+aggregate_to_substations        1
+build_base_network              1
+build_bus_regions               1
+build_electrical_demand         1
+build_renewable_profiles        3
+build_shapes                    1
+cluster_network                 1
+cluster_resources               1
+prepare_network                 1
+retrieve_nrel_efs_data          1
+solve_network                   1
+total                          17
+
+Select jobs to execute...
+
+[Sun Oct 18 12:33:51 2026]
+rule build_shapes:
+    input: data/breakthrough_network/base_grid/zone.csv, repo_data/geospatial/NERC_Regions/NERC_Regions_Subregions.shp, repo_data/geospatial/Reeds_Shapes/rb_and_ba_areas.shp, repo_data/geospatial/BA_shapes_new/Modified_BE_BA_Shapes.shp, repo_data/geospatial/BOEM_CA_OSW_GIS/CA_OSW_BOEM_CallAreas.shp, data/eez/conus_eez.shp, data/counties/cb_2020_us_county_500k.shp
+    output: resources/BYOP_ERCOT7s/geospatial/texas/country_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/onshore_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/offshore_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/state_boundaries.geojson, resources/BYOP_ERCOT7s/geospatial/texas/reeds_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/county_shapes.geojson
+    log: logs/build_shapes/texas.log
+    jobid: 9
+    benchmark: benchmarks/BYOP_ERCOT7s/texas/build_shapes
+    reason: Missing output files: resources/BYOP_ERCOT7s/geospatial/texas/offshore_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/state_boundaries.geojson, resources/BYOP_ERCOT7s/geospatial/texas/reeds_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/onshore_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/county_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/country_shapes.geojson
+    wildcards: interconnect=texas
+    resources: tmpdir=C:\Users\67084\AppData\Local\Temp, walltime=00:30:00, mem_mb=5000, mem_mib=4769
+
+[Sun Oct 18 12:33:51 2026]
+rule retrieve_nrel_efs_data:
+    output: data/nrel_efs/EFSLoadProfile_Reference_Moderate.csv
+    log: logs/retrieve/retrieve_efs_Reference_Moderate.log
+    jobid: 27
+    reason: Code has changed since last execution
+    wildcards: efs_case=Reference, efs_speed=Moderate
+    resources: tmpdir=C:\Users\67084\AppData\Local\Temp, mem_mb=5000, mem_mib=4769
+
+INFO:__main__:Building GIS Shapes for texas Interconnect
+INFO:__main__:Downloading EFS zenodo repository from 'https://data.nlr.gov/system/files/126/EFSLoadProfile_Reference_Moderate.zip'.
+  0% (0 of 100) |                        | Elapsed Time: 0:00:00 ETA:  --:--:--
+  0% (0 of 100) |                        | Elapsed Time: 0:00:00 ETA:  --:--:--
+  0% (0 of 100) |                        | Elapsed Time: 0:00:00 ETA:  --:--:--
+  0% (0 of 100) |                        | Elapsed Time: 0:00:00 ETA:  --:--:--
+  0% (0 of 100) |                        | Elapsed Time: 0:00:00 ETA:  --:--:--
+  1% (1 of 100) |                        | Elapsed Time: 0:00:00 ETA:   0:01:00
+INFO:pyogrio._io:Created 1 records
+  1% (1 of 100) |                        | Elapsed Time: 0:00:00 ETA:   0:01:17
+  2% (2 of 100) |                        | Elapsed Time: 0:00:00 ETA:   0:00:45
+INFO:pyogrio._io:Created 1 records
+  2% (2 of 100) |                        | Elapsed Time: 0:00:01 ETA:   0:00:50
+  3% (3 of 100) |                        | Elapsed Time: 0:00:01 ETA:   0:00:50
+  3% (3 of 100) |                        | Elapsed Time: 0:00:01 ETA:   0:00:44
+  4% (4 of 100) |                        | Elapsed Time: 0:00:01 ETA:   0:00:36
+  4% (4 of 100) |                        | Elapsed Time: 0:00:01 ETA:   0:00:40
+  5% (5 of 100) |#                       | Elapsed Time: 0:00:01 ETA:   0:00:33
+  5% (5 of 100) |#                       | Elapsed Time: 0:00:01 ETA:   0:00:36
+  5% (5 of 100) |#                       | Elapsed Time: 0:00:02 ETA:   0:00:39
+  7% (7 of 100) |#                       | Elapsed Time: 0:00:02 ETA:   0:00:38
+  7% (7 of 100) |#                       | Elapsed Time: 0:00:02 ETA:   0:00:27
+  8% (8 of 100) |#                       | Elapsed Time: 0:00:02 ETA:   0:00:23
+  9% (9 of 100) |##                      | Elapsed Time: 0:00:02 ETA:   0:00:23
+  9% (9 of 100) |##                      | Elapsed Time: 0:00:02 ETA:   0:00:20
+INFO:pyogrio._io:Created 8 records
+ 10% (10 of 100) |##                     | Elapsed Time: 0:00:02 ETA:   0:00:20
+ 11% (11 of 100) |##                     | Elapsed Time: 0:00:02 ETA:   0:00:20
+ 11% (11 of 100) |##                     | Elapsed Time: 0:00:02 ETA:   0:00:18
+ 12% (12 of 100) |##                     | Elapsed Time: 0:00:02 ETA:   0:00:18
+ 12% (12 of 100) |##                     | Elapsed Time: 0:00:03 ETA:   0:00:18
+ 13% (13 of 100) |##                     | Elapsed Time: 0:00:03 ETA:   0:00:18
+ 13% (13 of 100) |##                     | Elapsed Time: 0:00:03 ETA:   0:00:17
+ 13% (13 of 100) |##                     | Elapsed Time: 0:00:03 ETA:   0:00:17
+ 14% (14 of 100) |###                    | Elapsed Time: 0:00:03 ETA:   0:00:16
+ 14% (14 of 100) |###                    | Elapsed Time: 0:00:03 ETA:   0:00:17
+ 15% (15 of 100) |###                    | Elapsed Time: 0:00:03 ETA:   0:00:15
+ 15% (15 of 100) |###                    | Elapsed Time: 0:00:03 ETA:   0:00:17
+ 15% (15 of 100) |###                    | Elapsed Time: 0:00:03 ETA:   0:00:18
+ 16% (16 of 100) |###                    | Elapsed Time: 0:00:04 ETA:   0:00:16
+INFO:pyogrio._io:Created 8 records
+ 16% (16 of 100) |###                    | Elapsed Time: 0:00:04 ETA:   0:00:15
+ 16% (16 of 100) |###                    | Elapsed Time: 0:00:04 ETA:   0:00:16
+ 17% (17 of 100) |###                    | Elapsed Time: 0:00:04 ETA:   0:00:18
+ 17% (17 of 100) |###                    | Elapsed Time: 0:00:04 ETA:   0:00:19
+ 17% (17 of 100) |###                    | Elapsed Time: 0:00:04 ETA:   0:00:20
+ 18% (18 of 100) |####                   | Elapsed Time: 0:00:04 ETA:   0:00:19
+ 18% (18 of 100) |####                   | Elapsed Time: 0:00:04 ETA:   0:00:21
+ 18% (18 of 100) |####                   | Elapsed Time: 0:00:04 ETA:   0:00:24
+ 19% (19 of 100) |####                   | Elapsed Time: 0:00:05 ETA:   0:00:23
+ 19% (19 of 100) |####                   | Elapsed Time: 0:00:05 ETA:   0:00:27
+ 19% (19 of 100) |####                   | Elapsed Time: 0:00:05 ETA:   0:00:27
+ 19% (19 of 100) |####                   | Elapsed Time: 0:00:05 ETA:   0:00:32
+ 20% (20 of 100) |####                   | Elapsed Time: 0:00:05 ETA:   0:00:28
+ 20% (20 of 100) |####                   | Elapsed Time: 0:00:05 ETA:   0:00:27
+ 20% (20 of 100) |####                   | Elapsed Time: 0:00:05 ETA:   0:00:33
+ 20% (20 of 100) |####                   | Elapsed Time: 0:00:05 ETA:   0:00:32
+ 21% (21 of 100) |####                   | Elapsed Time: 0:00:05 ETA:   0:00:32
+ 21% (21 of 100) |####                   | Elapsed Time: 0:00:06 ETA:   0:00:32
+ 21% (21 of 100) |####                   | Elapsed Time: 0:00:06 ETA:   0:00:32
+ 21% (21 of 100) |####                   | Elapsed Time: 0:00:06 ETA:   0:00:32
+ 22% (22 of 100) |#####                  | Elapsed Time: 0:00:06 ETA:   0:00:32
+ 22% (22 of 100) |#####                  | Elapsed Time: 0:00:06 ETA:   0:00:32
+ 22% (22 of 100) |#####                  | Elapsed Time: 0:00:06 ETA:   0:00:32
+ 22% (22 of 100) |#####                  | Elapsed Time: 0:00:06 ETA:   0:00:40
+ 23% (23 of 100) |#####                  | Elapsed Time: 0:00:06 ETA:   0:00:32
+ 23% (23 of 100) |#####                  | Elapsed Time: 0:00:06 ETA:   0:00:31
+ 23% (23 of 100) |#####                  | Elapsed Time: 0:00:07 ETA:   0:00:39
+ 23% (23 of 100) |#####                  | Elapsed Time: 0:00:07 ETA:   0:00:38
+ 23% (23 of 100) |#####                  | Elapsed Time: 0:00:07 ETA:   0:00:41
+ 24% (24 of 100) |#####                  | Elapsed Time: 0:00:07 ETA:   0:00:30
+ 24% (24 of 100) |#####                  | Elapsed Time: 0:00:07 ETA:   0:00:38
+ 24% (24 of 100) |#####                  | Elapsed Time: 0:00:07 ETA:   0:00:38
+ 24% (24 of 100) |#####                  | Elapsed Time: 0:00:07 ETA:   0:00:38
+ 24% (24 of 100) |#####                  | Elapsed Time: 0:00:07 ETA:   0:00:39
+ 25% (25 of 100) |#####                  | Elapsed Time: 0:00:08 ETA:   0:00:39
+ 25% (25 of 100) |#####                  | Elapsed Time: 0:00:08 ETA:   0:00:39
+ 25% (25 of 100) |#####                  | Elapsed Time: 0:00:08 ETA:   0:00:38
+ 25% (25 of 100) |#####                  | Elapsed Time: 0:00:08 ETA:   0:00:38
+ 25% (25 of 100) |#####                  | Elapsed Time: 0:00:08 ETA:   0:00:52
+ 25% (25 of 100) |#####                  | Elapsed Time: 0:00:08 ETA:   0:00:52
+ 26% (26 of 100) |#####                  | Elapsed Time: 0:00:08 ETA:   0:00:51
+ 26% (26 of 100) |#####                  | Elapsed Time: 0:00:08 ETA:   0:00:38
+ 26% (26 of 100) |#####                  | Elapsed Time: 0:00:08 ETA:   0:00:50
+ 26% (26 of 100) |#####                  | Elapsed Time: 0:00:09 ETA:   0:00:51
+ 26% (26 of 100) |#####                  | Elapsed Time: 0:00:09 ETA:   0:00:50
+ 26% (26 of 100) |#####                  | Elapsed Time: 0:00:09 ETA:   0:00:50
+ 26% (26 of 100) |#####                  | Elapsed Time: 0:00:09 ETA:   0:00:50
+ 27% (27 of 100) |######                 | Elapsed Time: 0:00:09 ETA:   0:00:49
+ 27% (27 of 100) |######                 | Elapsed Time: 0:00:09 ETA:   0:00:49
+ 27% (27 of 100) |######                 | Elapsed Time: 0:00:09 ETA:   0:00:49
+ 27% (27 of 100) |######                 | Elapsed Time: 0:00:09 ETA:   0:00:49
+ 27% (27 of 100) |######                 | Elapsed Time: 0:00:09 ETA:   0:00:52
+ 27% (27 of 100) |######                 | Elapsed Time: 0:00:10 ETA:   0:00:50
+ 28% (28 of 100) |######                 | Elapsed Time: 0:00:10 ETA:   0:00:48
+ 28% (28 of 100) |######                 | Elapsed Time: 0:00:10 ETA:   0:00:48
+ 28% (28 of 100) |######                 | Elapsed Time: 0:00:10 ETA:   0:00:48
+ 28% (28 of 100) |######                 | Elapsed Time: 0:00:10 ETA:   0:00:48
+ 28% (28 of 100) |######                 | Elapsed Time: 0:00:10 ETA:   0:00:48
+ 28% (28 of 100) |######                 | Elapsed Time: 0:00:10 ETA:   0:00:50
+ 29% (29 of 100) |######                 | Elapsed Time: 0:00:10 ETA:   0:00:47
+ 29% (29 of 100) |######                 | Elapsed Time: 0:00:10 ETA:   0:00:47
+ 29% (29 of 100) |######                 | Elapsed Time: 0:00:11 ETA:   0:00:47
+ 29% (29 of 100) |######                 | Elapsed Time: 0:00:11 ETA:   0:00:47
+ 29% (29 of 100) |######                 | Elapsed Time: 0:00:11 ETA:   0:00:49
+ 30% (30 of 100) |######                 | Elapsed Time: 0:00:11 ETA:   0:00:36
+ 30% (30 of 100) |######                 | Elapsed Time: 0:00:11 ETA:   0:00:36
+ 30% (30 of 100) |######                 | Elapsed Time: 0:00:11 ETA:   0:00:49
+ 30% (30 of 100) |######                 | Elapsed Time: 0:00:11 ETA:   0:00:49
+ 30% (30 of 100) |######                 | Elapsed Time: 0:00:11 ETA:   0:00:49
+ 30% (30 of 100) |######                 | Elapsed Time: 0:00:11 ETA:   0:00:46
+ 31% (31 of 100) |#######                | Elapsed Time: 0:00:11 ETA:   0:00:46
+ 31% (31 of 100) |#######                | Elapsed Time: 0:00:12 ETA:   0:00:35
+ 31% (31 of 100) |#######                | Elapsed Time: 0:00:12 ETA:   0:00:47
+ 31% (31 of 100) |#######                | Elapsed Time: 0:00:12 ETA:   0:00:47
+ 31% (31 of 100) |#######                | Elapsed Time: 0:00:12 ETA:   0:00:47
+ 31% (31 of 100) |#######                | Elapsed Time: 0:00:12 ETA:   0:00:46
+ 32% (32 of 100) |#######                | Elapsed Time: 0:00:12 ETA:   0:00:46
+ 32% (32 of 100) |#######                | Elapsed Time: 0:00:12 ETA:   0:00:34
+ 32% (32 of 100) |#######                | Elapsed Time: 0:00:12 ETA:   0:00:45
+ 32% (32 of 100) |#######                | Elapsed Time: 0:00:12 ETA:   0:00:45
+ 32% (32 of 100) |#######                | Elapsed Time: 0:00:13 ETA:   0:00:45
+ 32% (32 of 100) |#######                | Elapsed Time: 0:00:13 ETA:   0:00:48
+ 33% (33 of 100) |#######                | Elapsed Time: 0:00:13 ETA:   0:00:33
+ 33% (33 of 100) |#######                | Elapsed Time: 0:00:13 ETA:   0:00:46
+ 33% (33 of 100) |#######                | Elapsed Time: 0:00:13 ETA:   0:00:46
+ 33% (33 of 100) |#######                | Elapsed Time: 0:00:13 ETA:   0:00:46
+ 33% (33 of 100) |#######                | Elapsed Time: 0:00:13 ETA:   0:00:47
+ 33% (33 of 100) |#######                | Elapsed Time: 0:00:13 ETA:   0:00:45
+ 34% (34 of 100) |#######                | Elapsed Time: 0:00:13 ETA:   0:00:33
+ 34% (34 of 100) |#######                | Elapsed Time: 0:00:14 ETA:   0:00:35
+ 34% (34 of 100) |#######                | Elapsed Time: 0:00:14 ETA:   0:00:35
+ 34% (34 of 100) |#######                | Elapsed Time: 0:00:14 ETA:   0:00:44
+ 34% (34 of 100) |#######                | Elapsed Time: 0:00:14 ETA:   0:00:48
+ 35% (35 of 100) |########               | Elapsed Time: 0:00:14 ETA:   0:00:47
+ 35% (35 of 100) |########               | Elapsed Time: 0:00:14 ETA:   0:00:34
+ 35% (35 of 100) |########               | Elapsed Time: 0:00:14 ETA:   0:00:34
+ 35% (35 of 100) |########               | Elapsed Time: 0:00:14 ETA:   0:00:44
+ 35% (35 of 100) |########               | Elapsed Time: 0:00:15 ETA:   0:00:47
+ 36% (36 of 100) |########               | Elapsed Time: 0:00:15 ETA:   0:00:46
+ 36% (36 of 100) |########               | Elapsed Time: 0:00:15 ETA:   0:00:33
+ 36% (36 of 100) |########               | Elapsed Time: 0:00:15 ETA:   0:00:45
+ 36% (36 of 100) |########               | Elapsed Time: 0:00:15 ETA:   0:00:43
+ 36% (36 of 100) |########               | Elapsed Time: 0:00:15 ETA:   0:00:46
+ 37% (37 of 100) |########               | Elapsed Time: 0:00:15 ETA:   0:00:32
+ 37% (37 of 100) |########               | Elapsed Time: 0:00:16 ETA:   0:00:42
+ 37% (37 of 100) |########               | Elapsed Time: 0:00:16 ETA:   0:00:45
+ 37% (37 of 100) |########               | Elapsed Time: 0:00:16 ETA:   0:00:44
+ 38% (38 of 100) |########               | Elapsed Time: 0:00:16 ETA:   0:00:43
+ 38% (38 of 100) |########               | Elapsed Time: 0:00:16 ETA:   0:00:34
+ 38% (38 of 100) |########               | Elapsed Time: 0:00:16 ETA:   0:00:42
+ 38% (38 of 100) |########               | Elapsed Time: 0:00:16 ETA:   0:00:45
+ 38% (38 of 100) |########               | Elapsed Time: 0:00:17 ETA:   0:00:43
+ 38% (38 of 100) |########               | Elapsed Time: 0:00:17 ETA:   0:00:43
+ 38% (38 of 100) |########               | Elapsed Time: 0:00:17 ETA:   0:00:45
+ 39% (39 of 100) |########               | Elapsed Time: 0:00:17 ETA:   0:00:42
+ 39% (39 of 100) |########               | Elapsed Time: 0:00:17 ETA:   0:00:42
+ 39% (39 of 100) |########               | Elapsed Time: 0:00:17 ETA:   0:00:43
+ 39% (39 of 100) |########               | Elapsed Time: 0:00:17 ETA:   0:00:41
+ 39% (39 of 100) |########               | Elapsed Time: 0:00:17 ETA:   0:00:41
+ 39% (39 of 100) |########               | Elapsed Time: 0:00:17 ETA:   0:00:41
+ 40% (40 of 100) |#########              | Elapsed Time: 0:00:17 ETA:   0:00:40
+ 40% (40 of 100) |#########              | Elapsed Time: 0:00:18 ETA:   0:00:42
+ 40% (40 of 100) |#########              | Elapsed Time: 0:00:18 ETA:   0:00:41
+ 40% (40 of 100) |#########              | Elapsed Time: 0:00:18 ETA:   0:00:40
+ 40% (40 of 100) |#########              | Elapsed Time: 0:00:18 ETA:   0:00:42
+ 40% (40 of 100) |#########              | Elapsed Time: 0:00:18 ETA:   0:00:42
+ 40% (40 of 100) |#########              | Elapsed Time: 0:00:18 ETA:   0:00:44
+ 41% (41 of 100) |#########              | Elapsed Time: 0:00:18 ETA:   0:00:40
+ 41% (41 of 100) |#########              | Elapsed Time: 0:00:18 ETA:   0:00:41
+ 41% (41 of 100) |#########              | Elapsed Time: 0:00:18 ETA:   0:00:40
+ 41% (41 of 100) |#########              | Elapsed Time: 0:00:19 ETA:   0:00:39
+ 41% (41 of 100) |#########              | Elapsed Time: 0:00:19 ETA:   0:00:42
+ 42% (42 of 100) |#########              | Elapsed Time: 0:00:19 ETA:   0:00:41
+ 42% (42 of 100) |#########              | Elapsed Time: 0:00:19 ETA:   0:00:38
+ 42% (42 of 100) |#########              | Elapsed Time: 0:00:19 ETA:   0:00:40
+ 42% (42 of 100) |#########              | Elapsed Time: 0:00:19 ETA:   0:00:38
+ 42% (42 of 100) |#########              | Elapsed Time: 0:00:19 ETA:   0:00:38
+ 42% (42 of 100) |#########              | Elapsed Time: 0:00:19 ETA:   0:00:38
+ 42% (42 of 100) |#########              | Elapsed Time: 0:00:19 ETA:   0:00:40
+ 43% (43 of 100) |#########              | Elapsed Time: 0:00:19 ETA:   0:00:38
+ 43% (43 of 100) |#########              | Elapsed Time: 0:00:20 ETA:   0:00:38
+ 43% (43 of 100) |#########              | Elapsed Time: 0:00:20 ETA:   0:00:38
+ 43% (43 of 100) |#########              | Elapsed Time: 0:00:20 ETA:   0:00:38
+ 43% (43 of 100) |#########              | Elapsed Time: 0:00:20 ETA:   0:00:38
+ 43% (43 of 100) |#########              | Elapsed Time: 0:00:20 ETA:   0:00:38
+ 44% (44 of 100) |##########             | Elapsed Time: 0:00:20 ETA:   0:00:28
+ 44% (44 of 100) |##########             | Elapsed Time: 0:00:20 ETA:   0:00:38
+ 44% (44 of 100) |##########             | Elapsed Time: 0:00:20 ETA:   0:00:38
+ 44% (44 of 100) |##########             | Elapsed Time: 0:00:21 ETA:   0:00:38
+ 44% (44 of 100) |##########             | Elapsed Time: 0:00:21 ETA:   0:00:39
+ 45% (45 of 100) |##########             | Elapsed Time: 0:00:21 ETA:   0:00:38
+ 45% (45 of 100) |##########             | Elapsed Time: 0:00:21 ETA:   0:00:29
+ 45% (45 of 100) |##########             | Elapsed Time: 0:00:21 ETA:   0:00:38
+ 45% (45 of 100) |##########             | Elapsed Time: 0:00:21 ETA:   0:00:38
+ 45% (45 of 100) |##########             | Elapsed Time: 0:00:21 ETA:   0:00:37
+ 45% (45 of 100) |##########             | Elapsed Time: 0:00:21 ETA:   0:00:39
+ 46% (46 of 100) |##########             | Elapsed Time: 0:00:21 ETA:   0:00:27
+ 46% (46 of 100) |##########             | Elapsed Time: 0:00:22 ETA:   0:00:36
+ 46% (46 of 100) |##########             | Elapsed Time: 0:00:22 ETA:   0:00:37
+ 46% (46 of 100) |##########             | Elapsed Time: 0:00:22 ETA:   0:00:37
+ 46% (46 of 100) |##########             | Elapsed Time: 0:00:22 ETA:   0:00:37
+ 47% (47 of 100) |##########             | Elapsed Time: 0:00:22 ETA:   0:00:27
+ 47% (47 of 100) |##########             | Elapsed Time: 0:00:22 ETA:   0:00:27
+ 47% (47 of 100) |##########             | Elapsed Time: 0:00:22 ETA:   0:00:36
+ 47% (47 of 100) |##########             | Elapsed Time: 0:00:22 ETA:   0:00:35
+ 47% (47 of 100) |##########             | Elapsed Time: 0:00:22 ETA:   0:00:35
+ 48% (48 of 100) |###########            | Elapsed Time: 0:00:23 ETA:   0:00:26
+ 48% (48 of 100) |###########            | Elapsed Time: 0:00:23 ETA:   0:00:26
+ 48% (48 of 100) |###########            | Elapsed Time: 0:00:23 ETA:   0:00:27
+ 48% (48 of 100) |###########            | Elapsed Time: 0:00:23 ETA:   0:00:35
+ 48% (48 of 100) |###########            | Elapsed Time: 0:00:23 ETA:   0:00:35
+ 48% (48 of 100) |###########            | Elapsed Time: 0:00:23 ETA:   0:00:35
+ 49% (49 of 100) |###########            | Elapsed Time: 0:00:23 ETA:   0:00:25
+INFO:pyogrio._io:Created 3,234 records
+ 49% (49 of 100) |###########            | Elapsed Time: 0:00:23 ETA:   0:00:26
+ 49% (49 of 100) |###########            | Elapsed Time: 0:00:23 ETA:   0:00:35
+ 49% (49 of 100) |###########            | Elapsed Time: 0:00:24 ETA:   0:00:35
+ 49% (49 of 100) |###########            | Elapsed Time: 0:00:24 ETA:   0:00:35
+ 50% (50 of 100) |###########            | Elapsed Time: 0:00:24 ETA:   0:00:25
+ 50% (50 of 100) |###########            | Elapsed Time: 0:00:24 ETA:   0:00:25
+ 50% (50 of 100) |###########            | Elapsed Time: 0:00:24 ETA:   0:00:34
+ 50% (50 of 100) |###########            | Elapsed Time: 0:00:24 ETA:   0:00:34
+ 50% (50 of 100) |###########            | Elapsed Time: 0:00:24 ETA:   0:00:34
+ 51% (51 of 100) |###########            | Elapsed Time: 0:00:24 ETA:   0:00:24
+ 51% (51 of 100) |###########            | Elapsed Time: 0:00:24 ETA:   0:00:24
+ 51% (51 of 100) |###########            | Elapsed Time: 0:00:25 ETA:   0:00:25
+ 51% (51 of 100) |###########            | Elapsed Time: 0:00:25 ETA:   0:00:32
+ 51% (51 of 100) |###########            | Elapsed Time: 0:00:25 ETA:   0:00:32
+ 51% (51 of 100) |###########            | Elapsed Time: 0:00:25 ETA:   0:00:34
+ 52% (52 of 100) |###########            | Elapsed Time: 0:00:25 ETA:   0:00:24
+ 52% (52 of 100) |###########            | Elapsed Time: 0:00:25 ETA:   0:00:24
+ 52% (52 of 100) |###########            | Elapsed Time: 0:00:25 ETA:   0:00:26
+ 52% (52 of 100) |###########            | Elapsed Time: 0:00:25 ETA:   0:00:32
+ 52% (52 of 100) |###########            | Elapsed Time: 0:00:25 ETA:   0:00:32
+ 53% (53 of 100) |############           | Elapsed Time: 0:00:26 ETA:   0:00:23
+ 53% (53 of 100) |############           | Elapsed Time: 0:00:26 ETA:   0:00:23
+ 53% (53 of 100) |############           | Elapsed Time: 0:00:26 ETA:   0:00:23
+ 53% (53 of 100) |############           | Elapsed Time: 0:00:26 ETA:   0:00:23
+ 53% (53 of 100) |############           | Elapsed Time: 0:00:26 ETA:   0:00:33
+ 54% (54 of 100) |############           | Elapsed Time: 0:00:26 ETA:   0:00:23
+ 54% (54 of 100) |############           | Elapsed Time: 0:00:26 ETA:   0:00:24
+ 54% (54 of 100) |############           | Elapsed Time: 0:00:26 ETA:   0:00:24
+ 54% (54 of 100) |############           | Elapsed Time: 0:00:26 ETA:   0:00:31
+ 54% (54 of 100) |############           | Elapsed Time: 0:00:26 ETA:   0:00:31
+ 55% (55 of 100) |############           | Elapsed Time: 0:00:27 ETA:   0:00:23
+ 55% (55 of 100) |############           | Elapsed Time: 0:00:27 ETA:   0:00:23
+ 55% (55 of 100) |############           | Elapsed Time: 0:00:27 ETA:   0:00:22
+ 55% (55 of 100) |############           | Elapsed Time: 0:00:27 ETA:   0:00:22
+ 56% (56 of 100) |############           | Elapsed Time: 0:00:27 ETA:   0:00:22
+ 56% (56 of 100) |############           | Elapsed Time: 0:00:27 ETA:   0:00:22
+ 56% (56 of 100) |############           | Elapsed Time: 0:00:27 ETA:   0:00:23
+ 56% (56 of 100) |############           | Elapsed Time: 0:00:27 ETA:   0:00:23
+INFO:__main__:Building Offshore GIS shapes with Exclusive Economic Zones shapes
+ 56% (56 of 100) |############           | Elapsed Time: 0:00:27 ETA:   0:00:23
+ 56% (56 of 100) |############           | Elapsed Time: 0:00:28 ETA:   0:00:30
+ 57% (57 of 100) |#############          | Elapsed Time: 0:00:28 ETA:   0:00:22
+ 57% (57 of 100) |#############          | Elapsed Time: 0:00:28 ETA:   0:00:22
+ 57% (57 of 100) |#############          | Elapsed Time: 0:00:28 ETA:   0:00:23
+ 57% (57 of 100) |#############          | Elapsed Time: 0:00:28 ETA:   0:00:22
+ 57% (57 of 100) |#############          | Elapsed Time: 0:00:28 ETA:   0:00:30
+ 58% (58 of 100) |#############          | Elapsed Time: 0:00:28 ETA:   0:00:21
+ 58% (58 of 100) |#############          | Elapsed Time: 0:00:28 ETA:   0:00:21
+INFO:pyogrio._io:Created 1 records
+ 58% (58 of 100) |#############          | Elapsed Time: 0:00:29 ETA:   0:00:22
+ 58% (58 of 100) |#############          | Elapsed Time: 0:00:29 ETA:   0:00:22
+ 58% (58 of 100) |#############          | Elapsed Time: 0:00:29 ETA:   0:00:30
+ 58% (58 of 100) |#############          | Elapsed Time: 0:00:29 ETA:   0:00:28
+Benchmark: unable to collect cpu and memory benchmark statistics
+[Sun Oct 18 12:34:30 2026]
+Finished job 9.
+1 of 17 steps (6%) done
+Select jobs to execute...
+
+[Sun Oct 18 12:34:30 2026]
+rule build_base_network:
+    input: data/population/DECENNIALDHC2020.P1-Data.csv, data/breakthrough_network/base_grid/bus.csv, data/breakthrough_network/base_grid/branch.csv, data/breakthrough_network/base_grid/dcline.csv, data/breakthrough_network/base_grid/bus2sub.csv, data/breakthrough_network/base_grid/sub.csv, resources/BYOP_ERCOT7s/geospatial/texas/onshore_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/offshore_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/state_boundaries.geojson, resources/BYOP_ERCOT7s/geospatial/texas/reeds_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/county_shapes.geojson, repo_data/ReEDS_Constraints/membership.csv
+    output: resources/BYOP_ERCOT7s/busmaps/texas/bus2sub.csv, resources/BYOP_ERCOT7s/busmaps/texas/sub.csv, resources/BYOP_ERCOT7s/geospatial/texas/bus_gis.csv, resources/BYOP_ERCOT7s/geospatial/texas/lines_gis.csv, resources/BYOP_ERCOT7s/networks/texas/elec_base_network.nc
+    log: logs/create_network/texas.log
+    jobid: 12
+    benchmark: benchmarks/BYOP_ERCOT7s/texas/build_base_network
+    reason: Missing output files: resources/BYOP_ERCOT7s/busmaps/texas/sub.csv, resources/BYOP_ERCOT7s/networks/texas/elec_base_network.nc, resources/BYOP_ERCOT7s/busmaps/texas/bus2sub.csv; Input files updated by another job: resources/BYOP_ERCOT7s/geospatial/texas/offshore_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/onshore_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/county_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/state_boundaries.geojson, resources/BYOP_ERCOT7s/geospatial/texas/reeds_shapes.geojson
+    wildcards: interconnect=texas
+    resources: tmpdir=C:\Users\67084\AppData\Local\Temp, mem_mb=5000, mem_mib=4769, walltime=00:30:00
+
+ 59% (59 of 100) |#############          | Elapsed Time: 0:00:29 ETA:   0:00:22
+ 59% (59 of 100) |#############          | Elapsed Time: 0:00:29 ETA:   0:00:28
+ 59% (59 of 100) |#############          | Elapsed Time: 0:00:29 ETA:   0:00:28
+ 59% (59 of 100) |#############          | Elapsed Time: 0:00:29 ETA:   0:00:28
+ 59% (59 of 100) |#############          | Elapsed Time: 0:00:29 ETA:   0:00:28
+ 59% (59 of 100) |#############          | Elapsed Time: 0:00:30 ETA:   0:00:28
+ 60% (60 of 100) |#############          | Elapsed Time: 0:00:30 ETA:   0:00:27
+ 60% (60 of 100) |#############          | Elapsed Time: 0:00:30 ETA:   0:00:27
+ 60% (60 of 100) |#############          | Elapsed Time: 0:00:30 ETA:   0:00:27
+ 60% (60 of 100) |#############          | Elapsed Time: 0:00:30 ETA:   0:00:27
+ 60% (60 of 100) |#############          | Elapsed Time: 0:00:30 ETA:   0:00:27
+ 60% (60 of 100) |#############          | Elapsed Time: 0:00:30 ETA:   0:00:27
+ 60% (60 of 100) |#############          | Elapsed Time: 0:00:30 ETA:   0:00:40
+ 60% (60 of 100) |#############          | Elapsed Time: 0:00:30 ETA:   0:00:40
+ 61% (61 of 100) |##############         | Elapsed Time: 0:00:31 ETA:   0:00:27
+ 61% (61 of 100) |##############         | Elapsed Time: 0:00:31 ETA:   0:00:26
+ 61% (61 of 100) |##############         | Elapsed Time: 0:00:31 ETA:   0:00:27
+ 61% (61 of 100) |##############         | Elapsed Time: 0:00:31 ETA:   0:00:27
+ 61% (61 of 100) |##############         | Elapsed Time: 0:00:31 ETA:   0:00:26
+ 61% (61 of 100) |##############         | Elapsed Time: 0:00:31 ETA:   0:00:39
+ 62% (62 of 100) |##############         | Elapsed Time: 0:00:31 ETA:   0:00:38
+ 62% (62 of 100) |##############         | Elapsed Time: 0:00:31 ETA:   0:00:25
+ 62% (62 of 100) |##############         | Elapsed Time: 0:00:31 ETA:   0:00:25
+ 62% (62 of 100) |##############         | Elapsed Time: 0:00:31 ETA:   0:00:25
+ 62% (62 of 100) |##############         | Elapsed Time: 0:00:32 ETA:   0:00:25
+ 62% (62 of 100) |##############         | Elapsed Time: 0:00:32 ETA:   0:00:26
+ 62% (62 of 100) |##############         | Elapsed Time: 0:00:32 ETA:   0:00:38
+ 63% (63 of 100) |##############         | Elapsed Time: 0:00:32 ETA:   0:00:25
+ 63% (63 of 100) |##############         | Elapsed Time: 0:00:32 ETA:   0:00:26
+ 63% (63 of 100) |##############         | Elapsed Time: 0:00:32 ETA:   0:00:25
+ 63% (63 of 100) |##############         | Elapsed Time: 0:00:32 ETA:   0:00:25
+ 63% (63 of 100) |##############         | Elapsed Time: 0:00:32 ETA:   0:00:25
+ 63% (63 of 100) |##############         | Elapsed Time: 0:00:32 ETA:   0:00:25
+ 64% (64 of 100) |##############         | Elapsed Time: 0:00:33 ETA:   0:00:24
+ 64% (64 of 100) |##############         | Elapsed Time: 0:00:33 ETA:   0:00:24
+ 64% (64 of 100) |##############         | Elapsed Time: 0:00:33 ETA:   0:00:24
+ 64% (64 of 100) |##############         | Elapsed Time: 0:00:33 ETA:   0:00:25
+ 64% (64 of 100) |##############         | Elapsed Time: 0:00:33 ETA:   0:00:24
+ 64% (64 of 100) |##############         | Elapsed Time: 0:00:33 ETA:   0:00:24
+ 64% (64 of 100) |##############         | Elapsed Time: 0:00:33 ETA:   0:00:25
+ 65% (65 of 100) |##############         | Elapsed Time: 0:00:33 ETA:   0:00:24
+ 65% (65 of 100) |##############         | Elapsed Time: 0:00:33 ETA:   0:00:24
+ 65% (65 of 100) |##############         | Elapsed Time: 0:00:33 ETA:   0:00:24
+ 65% (65 of 100) |##############         | Elapsed Time: 0:00:34 ETA:   0:00:24
+ 65% (65 of 100) |##############         | Elapsed Time: 0:00:34 ETA:   0:00:25
+ 65% (65 of 100) |##############         | Elapsed Time: 0:00:34 ETA:   0:00:24
+ 65% (65 of 100) |##############         | Elapsed Time: 0:00:34 ETA:   0:00:24
+ 66% (66 of 100) |###############        | Elapsed Time: 0:00:34 ETA:   0:00:23
+ 66% (66 of 100) |###############        | Elapsed Time: 0:00:34 ETA:   0:00:23
+ 66% (66 of 100) |###############        | Elapsed Time: 0:00:34 ETA:   0:00:23
+ 66% (66 of 100) |###############        | Elapsed Time: 0:00:34 ETA:   0:00:23
+ 66% (66 of 100) |###############        | Elapsed Time: 0:00:34 ETA:   0:00:23
+ 66% (66 of 100) |###############        | Elapsed Time: 0:00:35 ETA:   0:00:23
+ 67% (67 of 100) |###############        | Elapsed Time: 0:00:35 ETA:   0:00:22
+ 67% (67 of 100) |###############        | Elapsed Time: 0:00:35 ETA:   0:00:23
+ 67% (67 of 100) |###############        | Elapsed Time: 0:00:35 ETA:   0:00:22
+ 67% (67 of 100) |###############        | Elapsed Time: 0:00:35 ETA:   0:00:22
+ 67% (67 of 100) |###############        | Elapsed Time: 0:00:35 ETA:   0:00:23
+ 67% (67 of 100) |###############        | Elapsed Time: 0:00:35 ETA:   0:00:22
+ 68% (68 of 100) |###############        | Elapsed Time: 0:00:35 ETA:   0:00:21
+ 68% (68 of 100) |###############        | Elapsed Time: 0:00:35 ETA:   0:00:22
+ 68% (68 of 100) |###############        | Elapsed Time: 0:00:36 ETA:   0:00:22
+ 68% (68 of 100) |###############        | Elapsed Time: 0:00:36 ETA:   0:00:22
+ 68% (68 of 100) |###############        | Elapsed Time: 0:00:36 ETA:   0:00:21
+ 68% (68 of 100) |###############        | Elapsed Time: 0:00:36 ETA:   0:00:22
+ 69% (69 of 100) |###############        | Elapsed Time: 0:00:36 ETA:   0:00:21
+ 69% (69 of 100) |###############        | Elapsed Time: 0:00:36 ETA:   0:00:21
+ 69% (69 of 100) |###############        | Elapsed Time: 0:00:36 ETA:   0:00:21
+ 69% (69 of 100) |###############        | Elapsed Time: 0:00:36 ETA:   0:00:21
+ 69% (69 of 100) |###############        | Elapsed Time: 0:00:36 ETA:   0:00:21
+ 70% (70 of 100) |################       | Elapsed Time: 0:00:37 ETA:   0:00:15
+ 70% (70 of 100) |################       | Elapsed Time: 0:00:37 ETA:   0:00:20
+ 70% (70 of 100) |################       | Elapsed Time: 0:00:37 ETA:   0:00:20
+ 70% (70 of 100) |################       | Elapsed Time: 0:00:37 ETA:   0:00:20
+ 70% (70 of 100) |################       | Elapsed Time: 0:00:37 ETA:   0:00:20
+ 70% (70 of 100) |################       | Elapsed Time: 0:00:37 ETA:   0:00:20
+ 71% (71 of 100) |################       | Elapsed Time: 0:00:37 ETA:   0:00:19
+ 71% (71 of 100) |################       | Elapsed Time: 0:00:37 ETA:   0:00:15
+ 71% (71 of 100) |################       | Elapsed Time: 0:00:37 ETA:   0:00:19
+ 71% (71 of 100) |################       | Elapsed Time: 0:00:38 ETA:   0:00:20
+ 71% (71 of 100) |################       | Elapsed Time: 0:00:38 ETA:   0:00:19
+ 72% (72 of 100) |################       | Elapsed Time: 0:00:38 ETA:   0:00:14
+ 72% (72 of 100) |################       | Elapsed Time: 0:00:38 ETA:   0:00:14
+ 72% (72 of 100) |################       | Elapsed Time: 0:00:38 ETA:   0:00:14
+ 72% (72 of 100) |################       | Elapsed Time: 0:00:38 ETA:   0:00:14
+ 72% (72 of 100) |################       | Elapsed Time: 0:00:38 ETA:   0:00:19
+ 72% (72 of 100) |################       | Elapsed Time: 0:00:38 ETA:   0:00:19
+ 73% (73 of 100) |################       | Elapsed Time: 0:00:38 ETA:   0:00:18
+ 73% (73 of 100) |################       | Elapsed Time: 0:00:39 ETA:   0:00:14
+ 73% (73 of 100) |################       | Elapsed Time: 0:00:39 ETA:   0:00:18
+ 73% (73 of 100) |################       | Elapsed Time: 0:00:39 ETA:   0:00:18
+ 73% (73 of 100) |################       | Elapsed Time: 0:00:39 ETA:   0:00:18
+ 74% (74 of 100) |#################      | Elapsed Time: 0:00:39 ETA:   0:00:13
+ 74% (74 of 100) |#################      | Elapsed Time: 0:00:39 ETA:   0:00:13
+ 74% (74 of 100) |#################      | Elapsed Time: 0:00:39 ETA:   0:00:13
+ 74% (74 of 100) |#################      | Elapsed Time: 0:00:39 ETA:   0:00:17
+ 75% (75 of 100) |#################      | Elapsed Time: 0:00:39 ETA:   0:00:16
+ 75% (75 of 100) |#################      | Elapsed Time: 0:00:39 ETA:   0:00:13
+ 75% (75 of 100) |#################      | Elapsed Time: 0:00:40 ETA:   0:00:13
+ 75% (75 of 100) |#################      | Elapsed Time: 0:00:40 ETA:   0:00:13
+ 75% (75 of 100) |#################      | Elapsed Time: 0:00:40 ETA:   0:00:17
+ 76% (76 of 100) |#################      | Elapsed Time: 0:00:40 ETA:   0:00:12
+ 76% (76 of 100) |#################      | Elapsed Time: 0:00:40 ETA:   0:00:12
+ 76% (76 of 100) |#################      | Elapsed Time: 0:00:40 ETA:   0:00:12
+ 76% (76 of 100) |#################      | Elapsed Time: 0:00:40 ETA:   0:00:12
+ 77% (77 of 100) |#################      | Elapsed Time: 0:00:40 ETA:   0:00:09
+ 77% (77 of 100) |#################      | Elapsed Time: 0:00:41 ETA:   0:00:11
+ 77% (77 of 100) |#################      | Elapsed Time: 0:00:41 ETA:   0:00:11
+ 77% (77 of 100) |#################      | Elapsed Time: 0:00:41 ETA:   0:00:12
+ 77% (77 of 100) |#################      | Elapsed Time: 0:00:41 ETA:   0:00:11
+ 78% (78 of 100) |#################      | Elapsed Time: 0:00:41 ETA:   0:00:11
+ 78% (78 of 100) |#################      | Elapsed Time: 0:00:41 ETA:   0:00:11
+ 78% (78 of 100) |#################      | Elapsed Time: 0:00:41 ETA:   0:00:12
+ 78% (78 of 100) |#################      | Elapsed Time: 0:00:41 ETA:   0:00:12
+ 78% (78 of 100) |#################      | Elapsed Time: 0:00:41 ETA:   0:00:11
+ 78% (78 of 100) |#################      | Elapsed Time: 0:00:41 ETA:   0:00:12
+ 79% (79 of 100) |##################     | Elapsed Time: 0:00:42 ETA:   0:00:11
+ 79% (79 of 100) |##################     | Elapsed Time: 0:00:42 ETA:   0:00:10
+ 79% (79 of 100) |##################     | Elapsed Time: 0:00:42 ETA:   0:00:10
+ 79% (79 of 100) |##################     | Elapsed Time: 0:00:42 ETA:   0:00:10
+ 80% (80 of 100) |##################     | Elapsed Time: 0:00:42 ETA:   0:00:10
+ 80% (80 of 100) |##################     | Elapsed Time: 0:00:42 ETA:   0:00:10
+ 80% (80 of 100) |##################     | Elapsed Time: 0:00:42 ETA:   0:00:10
+ 80% (80 of 100) |##################     | Elapsed Time: 0:00:42 ETA:   0:00:13
+ 80% (80 of 100) |##################     | Elapsed Time: 0:00:43 ETA:   0:00:14
+ 81% (81 of 100) |##################     | Elapsed Time: 0:00:43 ETA:   0:00:13
+ 81% (81 of 100) |##################     | Elapsed Time: 0:00:43 ETA:   0:00:09
+ 81% (81 of 100) |##################     | Elapsed Time: 0:00:43 ETA:   0:00:09
+ 81% (81 of 100) |##################     | Elapsed Time: 0:00:43 ETA:   0:00:09
+ 81% (81 of 100) |##################     | Elapsed Time: 0:00:43 ETA:   0:00:12
+ 81% (81 of 100) |##################     | Elapsed Time: 0:00:43 ETA:   0:00:12
+ 82% (82 of 100) |##################     | Elapsed Time: 0:00:43 ETA:   0:00:09
+ 82% (82 of 100) |##################     | Elapsed Time: 0:00:43 ETA:   0:00:09
+ 82% (82 of 100) |##################     | Elapsed Time: 0:00:44 ETA:   0:00:09
+ 82% (82 of 100) |##################     | Elapsed Time: 0:00:44 ETA:   0:00:09
+ 82% (82 of 100) |##################     | Elapsed Time: 0:00:44 ETA:   0:00:12
+ 82% (82 of 100) |##################     | Elapsed Time: 0:00:44 ETA:   0:00:12
+ 83% (83 of 100) |###################    | Elapsed Time: 0:00:44 ETA:   0:00:08
+ 83% (83 of 100) |###################    | Elapsed Time: 0:00:44 ETA:   0:00:09
+ 83% (83 of 100) |###################    | Elapsed Time: 0:00:44 ETA:   0:00:09
+ 83% (83 of 100) |###################    | Elapsed Time: 0:00:44 ETA:   0:00:11
+INFO:build_bus_population:161 counties have no substations; their population (1.79% of total) is redistributed within each demand zone by normalization.
+ 83% (83 of 100) |###################    | Elapsed Time: 0:00:44 ETA:   0:00:12
+INFO:__main__:Adding 2000 buses to the network.
+ 84% (84 of 100) |###################    | Elapsed Time: 0:00:44 ETA:   0:00:11
+ 84% (84 of 100) |###################    | Elapsed Time: 0:00:45 ETA:   0:00:08
+ 84% (84 of 100) |###################    | Elapsed Time: 0:00:45 ETA:   0:00:08
+INFO:__main__:Adding 2346 branches as Lines to the network.
+WARNING:pypsa.network.transform:The attribute 'v_nom' is a standard attribute for other components but not for lines. This could cause confusion and it should be renamed. See also: https://go.pypsa.org/warning-attr-misleading.
+INFO:__main__:Adding 860 branches as Transformers to the network.
+WARNING:pypsa.network.transform:The attribute 'v_nom' is a standard attribute for other components but not for transformers. This could cause confusion and it should be renamed. See also: https://go.pypsa.org/warning-attr-misleading.
+WARNING:pypsa.network.transform:The attribute 'carrier' is a standard attribute for other components but not for transformers. This could cause confusion and it should be renamed. See also: https://go.pypsa.org/warning-attr-misleading.
+ 84% (84 of 100) |###################    | Elapsed Time: 0:00:45 ETA:   0:00:11
+INFO:__main__:Adding 0 dc-lines as Links to the network.
+ 84% (84 of 100) |###################    | Elapsed Time: 0:00:45 ETA:   0:00:10
+ 84% (84 of 100) |###################    | Elapsed Time: 0:00:45 ETA:   0:00:11
+ 85% (85 of 100) |###################    | Elapsed Time: 0:00:45 ETA:   0:00:07
+ 85% (85 of 100) |###################    | Elapsed Time: 0:00:45 ETA:   0:00:07
+ 85% (85 of 100) |###################    | Elapsed Time: 0:00:45 ETA:   0:00:10
+ 85% (85 of 100) |###################    | Elapsed Time: 0:00:46 ETA:   0:00:10
+ 85% (85 of 100) |###################    | Elapsed Time: 0:00:46 ETA:   0:00:10
+INFO:_helpers:[schema exit] Bus: 2041 rows, 30 cols: ['LAF_state', 'Pd', 'balancing_area', 'carrier', 'control', 'country', 'county', 'generator', 'interconnect', 'load_weight', 'location', 'nerc_reg', 'rec_trading_zone', 'reeds_ba', 'reeds_state', 'reeds_zone', 'state', 'sub_id', 'sub_network', 'substation_off', 'trans_grp', 'trans_reg', 'type', 'unit', 'v_mag_pu_max', 'v_mag_pu_min', 'v_mag_pu_set', 'v_nom', 'x', 'y']
+INFO:_helpers:[schema exit] Line: 2346 rows, 39 cols: ['active', 'b', 'b_pu', 'build_year', 'bus0', 'bus1', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'discount_rate', 'fom_cost', 'g', 'g_pu', 'interconnect', 'length', 'lifetime', 'num_parallel', 'overnight_cost', 'r', 'r_pu', 'r_pu_eff', 's_max_pu', 's_nom', 's_nom_extendable', 's_nom_max', 's_nom_min', 's_nom_mod', 's_nom_opt', 's_nom_set', 'sub_network', 'terrain_factor', 'type', 'underwater_fraction', 'v_ang_max', 'v_ang_min', 'v_nom', 'x', 'x_pu', 'x_pu_eff']
+INFO:_helpers:[schema exit] LineType: 60 rows, 8 cols: ['c_per_length', 'cross_section', 'f_nom', 'i_nom', 'mounting', 'r_per_length', 'references', 'x_per_length']
+INFO:_helpers:[schema exit] Transformer: 860 rows, 43 cols: ['active', 'b', 'b_pu', 'build_year', 'bus0', 'bus1', 'capital_cost', 'carrier', 'discount_rate', 'fom_cost', 'g', 'g_pu', 'interconnect', 'lifetime', 'model', 'num_parallel', 'overnight_cost', 'phase_shift', 'phase_shift_max', 'phase_shift_min', 'r', 'r_pu', 'r_pu_eff', 's_max_pu', 's_nom', 's_nom_extendable', 's_nom_max', 's_nom_min', 's_nom_mod', 's_nom_opt', 's_nom_set', 'sub_network', 'tap_position', 'tap_ratio', 'tap_side', 'type', 'underwater_fraction', 'v_ang_max', 'v_ang_min', 'v_nom', 'x', 'x_pu', 'x_pu_eff']
+INFO:_helpers:[schema exit] TransformerType: 14 rows, 15 cols: ['f_nom', 'i0', 'pfe', 'phase_shift', 'references', 's_nom', 'tap_max', 'tap_min', 'tap_neutral', 'tap_side', 'tap_step', 'v_nom_0', 'v_nom_1', 'vsc', 'vscr']
+ 86% (86 of 100) |###################    | Elapsed Time: 0:00:46 ETA:   0:00:09
+ 86% (86 of 100) |###################    | Elapsed Time: 0:00:46 ETA:   0:00:07
+ 86% (86 of 100) |###################    | Elapsed Time: 0:00:46 ETA:   0:00:09
+INFO:pypsa.network.io:Exported network 'PyPSA-USA' saved to 'resources/BYOP_ERCOT7s/networks/texas/elec_base_network.nc contains: line_types, lines, buses, transformers
+ 86% (86 of 100) |###################    | Elapsed Time: 0:00:46 ETA:   0:00:09
+ 86% (86 of 100) |###################    | Elapsed Time: 0:00:46 ETA:   0:00:10
+ 86% (86 of 100) |###################    | Elapsed Time: 0:00:46 ETA:   0:00:09
+ 87% (87 of 100) |####################   | Elapsed Time: 0:00:46 ETA:   0:00:08
+ 87% (87 of 100) |####################   | Elapsed Time: 0:00:47 ETA:   0:00:06
+ 87% (87 of 100) |####################   | Elapsed Time: 0:00:47 ETA:   0:00:08
+ 87% (87 of 100) |####################   | Elapsed Time: 0:00:47 ETA:   0:00:08
+ 87% (87 of 100) |####################   | Elapsed Time: 0:00:47 ETA:   0:00:08
+ 87% (87 of 100) |####################   | Elapsed Time: 0:00:47 ETA:   0:00:08
+ 87% (87 of 100) |####################   | Elapsed Time: 0:00:47 ETA:   0:00:08
+ 87% (87 of 100) |####################   | Elapsed Time: 0:00:47 ETA:   0:00:13
+ 88% (88 of 100) |####################   | Elapsed Time: 0:00:47 ETA:   0:00:12
+ 88% (88 of 100) |####################   | Elapsed Time: 0:00:47 ETA:   0:00:08
+ 88% (88 of 100) |####################   | Elapsed Time: 0:00:48 ETA:   0:00:08
+ 88% (88 of 100) |####################   | Elapsed Time: 0:00:48 ETA:   0:00:08
+ 88% (88 of 100) |####################   | Elapsed Time: 0:00:48 ETA:   0:00:08
+ 88% (88 of 100) |####################   | Elapsed Time: 0:00:48 ETA:   0:00:08
+ 88% (88 of 100) |####################   | Elapsed Time: 0:00:48 ETA:   0:00:12
+ 88% (88 of 100) |####################   | Elapsed Time: 0:00:48 ETA:   0:00:12
+ 88% (88 of 100) |####################   | Elapsed Time: 0:00:48 ETA:   0:00:12
+Benchmark: unable to collect cpu and memory benchmark statistics
+[Sun Oct 18 12:34:49 2026]
+Finished job 12.
+2 of 17 steps (12%) done
+Select jobs to execute...
+
+[Sun Oct 18 12:34:49 2026]
+rule build_bus_regions:
+    input: resources/BYOP_ERCOT7s/geospatial/texas/country_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/county_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/state_boundaries.geojson, resources/BYOP_ERCOT7s/geospatial/texas/onshore_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/reeds_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/offshore_shapes.geojson, resources/BYOP_ERCOT7s/networks/texas/elec_base_network.nc, resources/BYOP_ERCOT7s/busmaps/texas/bus2sub.csv, resources/BYOP_ERCOT7s/busmaps/texas/sub.csv
+    output: resources/BYOP_ERCOT7s/geospatial/texas/regions_onshore.geojson, resources/BYOP_ERCOT7s/geospatial/texas/regions_offshore.geojson
+    log: logs/build_bus_regions/texas.log
+    jobid: 14
+    benchmark: benchmarks/BYOP_ERCOT7s/texas/build_bus_regions
+    reason: Missing output files: resources/BYOP_ERCOT7s/geospatial/texas/regions_onshore.geojson, resources/BYOP_ERCOT7s/geospatial/texas/regions_offshore.geojson; Input files updated by another job: resources/BYOP_ERCOT7s/geospatial/texas/offshore_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/state_boundaries.geojson, resources/BYOP_ERCOT7s/busmaps/texas/sub.csv, resources/BYOP_ERCOT7s/geospatial/texas/reeds_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/onshore_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/county_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/country_shapes.geojson, resources/BYOP_ERCOT7s/networks/texas/elec_base_network.nc, resources/BYOP_ERCOT7s/busmaps/texas/bus2sub.csv
+    wildcards: interconnect=texas
+    resources: tmpdir=C:\Users\67084\AppData\Local\Temp, mem_mb=3000, mem_mib=2862, walltime=00:30:00
+
+[Sun Oct 18 12:34:49 2026]
+rule aggregate_to_substations:
+    input: resources/BYOP_ERCOT7s/busmaps/texas/bus2sub.csv, resources/BYOP_ERCOT7s/busmaps/texas/sub.csv, resources/BYOP_ERCOT7s/networks/texas/elec_base_network.nc
+    output: resources/BYOP_ERCOT7s/networks/texas/elec_b.nc, resources/BYOP_ERCOT7s/busmaps/texas/busmap_b.csv
+    log: logs/aggregate_to_substations/texas.log
+    jobid: 11
+    benchmark: benchmarks/BYOP_ERCOT7s/texas/aggregate_to_substations
+    reason: Missing output files: resources/BYOP_ERCOT7s/networks/texas/elec_b.nc; Input files updated by another job: resources/BYOP_ERCOT7s/busmaps/texas/sub.csv, resources/BYOP_ERCOT7s/networks/texas/elec_base_network.nc, resources/BYOP_ERCOT7s/busmaps/texas/bus2sub.csv
+    wildcards: interconnect=texas
+    resources: tmpdir=C:\Users\67084\AppData\Local\Temp, mem_mb=30, mem_mib=29, walltime=02:00:00
+
+ 89% (89 of 100) |####################   | Elapsed Time: 0:00:48 ETA:   0:00:07
+ 89% (89 of 100) |####################   | Elapsed Time: 0:00:48 ETA:   0:00:07
+ 89% (89 of 100) |####################   | Elapsed Time: 0:00:48 ETA:   0:00:07
+ 89% (89 of 100) |####################   | Elapsed Time: 0:00:49 ETA:   0:00:11
+ 89% (89 of 100) |####################   | Elapsed Time: 0:00:49 ETA:   0:00:11
+ 89% (89 of 100) |####################   | Elapsed Time: 0:00:49 ETA:   0:00:11
+ 89% (89 of 100) |####################   | Elapsed Time: 0:00:49 ETA:   0:00:11
+ 89% (89 of 100) |####################   | Elapsed Time: 0:00:49 ETA:   0:00:11
+ 89% (89 of 100) |####################   | Elapsed Time: 0:00:49 ETA:   0:00:11
+ 90% (90 of 100) |####################   | Elapsed Time: 0:00:49 ETA:   0:00:10
+ 90% (90 of 100) |####################   | Elapsed Time: 0:00:49 ETA:   0:00:07
+ 90% (90 of 100) |####################   | Elapsed Time: 0:00:49 ETA:   0:00:10
+ 90% (90 of 100) |####################   | Elapsed Time: 0:00:50 ETA:   0:00:10
+ 90% (90 of 100) |####################   | Elapsed Time: 0:00:50 ETA:   0:00:10
+ 90% (90 of 100) |####################   | Elapsed Time: 0:00:50 ETA:   0:00:10
+ 90% (90 of 100) |####################   | Elapsed Time: 0:00:50 ETA:   0:00:10
+ 90% (90 of 100) |####################   | Elapsed Time: 0:00:50 ETA:   0:00:10
+ 90% (90 of 100) |####################   | Elapsed Time: 0:00:50 ETA:   0:00:10
+ 91% (91 of 100) |####################   | Elapsed Time: 0:00:50 ETA:   0:00:06
+ 91% (91 of 100) |####################   | Elapsed Time: 0:00:50 ETA:   0:00:09
+ 91% (91 of 100) |####################   | Elapsed Time: 0:00:50 ETA:   0:00:09
+ 91% (91 of 100) |####################   | Elapsed Time: 0:00:51 ETA:   0:00:09
+ 91% (91 of 100) |####################   | Elapsed Time: 0:00:51 ETA:   0:00:09
+ 91% (91 of 100) |####################   | Elapsed Time: 0:00:51 ETA:   0:00:09
+ 91% (91 of 100) |####################   | Elapsed Time: 0:00:51 ETA:   0:00:09
+ 91% (91 of 100) |####################   | Elapsed Time: 0:00:51 ETA:   0:00:09
+ 91% (91 of 100) |####################   | Elapsed Time: 0:00:51 ETA:   0:00:09
+ 92% (92 of 100) |#####################  | Elapsed Time: 0:00:51 ETA:   0:00:05
+ 92% (92 of 100) |#####################  | Elapsed Time: 0:00:51 ETA:   0:00:05
+ 92% (92 of 100) |#####################  | Elapsed Time: 0:00:51 ETA:   0:00:08
+ 92% (92 of 100) |#####################  | Elapsed Time: 0:00:52 ETA:   0:00:08
+ 92% (92 of 100) |#####################  | Elapsed Time: 0:00:52 ETA:   0:00:08
+ 92% (92 of 100) |#####################  | Elapsed Time: 0:00:52 ETA:   0:00:08
+ 92% (92 of 100) |#####################  | Elapsed Time: 0:00:52 ETA:   0:00:08
+ 92% (92 of 100) |#####################  | Elapsed Time: 0:00:52 ETA:   0:00:08
+ 93% (93 of 100) |#####################  | Elapsed Time: 0:00:52 ETA:   0:00:07
+ 93% (93 of 100) |#####################  | Elapsed Time: 0:00:52 ETA:   0:00:04
+ 93% (93 of 100) |#####################  | Elapsed Time: 0:00:52 ETA:   0:00:07
+ 93% (93 of 100) |#####################  | Elapsed Time: 0:00:52 ETA:   0:00:07
+ 93% (93 of 100) |#####################  | Elapsed Time: 0:00:53 ETA:   0:00:07
+ 93% (93 of 100) |#####################  | Elapsed Time: 0:00:53 ETA:   0:00:07
+ 93% (93 of 100) |#####################  | Elapsed Time: 0:00:53 ETA:   0:00:07
+ 93% (93 of 100) |#####################  | Elapsed Time: 0:00:53 ETA:   0:00:07
+ 93% (93 of 100) |#####################  | Elapsed Time: 0:00:53 ETA:   0:00:07
+ 94% (94 of 100) |#####################  | Elapsed Time: 0:00:53 ETA:   0:00:06
+ 94% (94 of 100) |#####################  | Elapsed Time: 0:00:53 ETA:   0:00:04
+ 94% (94 of 100) |#####################  | Elapsed Time: 0:00:53 ETA:   0:00:06
+ 94% (94 of 100) |#####################  | Elapsed Time: 0:00:53 ETA:   0:00:06
+ 94% (94 of 100) |#####################  | Elapsed Time: 0:00:54 ETA:   0:00:06
+ 94% (94 of 100) |#####################  | Elapsed Time: 0:00:54 ETA:   0:00:06
+ 94% (94 of 100) |#####################  | Elapsed Time: 0:00:54 ETA:   0:00:06
+ 94% (94 of 100) |#####################  | Elapsed Time: 0:00:54 ETA:   0:00:06
+ 94% (94 of 100) |#####################  | Elapsed Time: 0:00:54 ETA:   0:00:06
+ 95% (95 of 100) |#####################  | Elapsed Time: 0:00:54 ETA:   0:00:03
+ 95% (95 of 100) |#####################  | Elapsed Time: 0:00:54 ETA:   0:00:03
+ 95% (95 of 100) |#####################  | Elapsed Time: 0:00:54 ETA:   0:00:05
+ 95% (95 of 100) |#####################  | Elapsed Time: 0:00:54 ETA:   0:00:05
+ 95% (95 of 100) |#####################  | Elapsed Time: 0:00:55 ETA:   0:00:05
+ 95% (95 of 100) |#####################  | Elapsed Time: 0:00:55 ETA:   0:00:05
+ 95% (95 of 100) |#####################  | Elapsed Time: 0:00:55 ETA:   0:00:05
+ 95% (95 of 100) |#####################  | Elapsed Time: 0:00:55 ETA:   0:00:05
+ 96% (96 of 100) |###################### | Elapsed Time: 0:00:55 ETA:   0:00:02
+ 96% (96 of 100) |###################### | Elapsed Time: 0:00:55 ETA:   0:00:02
+ 96% (96 of 100) |###################### | Elapsed Time: 0:00:55 ETA:   0:00:04
+ 96% (96 of 100) |###################### | Elapsed Time: 0:00:55 ETA:   0:00:04
+ 96% (96 of 100) |###################### | Elapsed Time: 0:00:55 ETA:   0:00:04
+ 96% (96 of 100) |###################### | Elapsed Time: 0:00:56 ETA:   0:00:04
+ 96% (96 of 100) |###################### | Elapsed Time: 0:00:56 ETA:   0:00:04
+ 97% (97 of 100) |###################### | Elapsed Time: 0:00:56 ETA:   0:00:02
+ 97% (97 of 100) |###################### | Elapsed Time: 0:00:56 ETA:   0:00:02
+ 97% (97 of 100) |###################### | Elapsed Time: 0:00:56 ETA:   0:00:02
+INFO:__main__:Building bus regions for texas Interconnect
+INFO:__main__:Built for aggregation with reeds_zone zones
+ 97% (97 of 100) |###################### | Elapsed Time: 0:00:56 ETA:   0:00:03
+ 97% (97 of 100) |###################### | Elapsed Time: 0:00:56 ETA:   0:00:03
+ 97% (97 of 100) |###################### | Elapsed Time: 0:00:56 ETA:   0:00:03
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+ 98% (98 of 100) |###################### | Elapsed Time: 0:00:56 ETA:   0:00:02
+ 98% (98 of 100) |###################### | Elapsed Time: 0:00:57 ETA:   0:00:01
+INFO:pypsa.network.io:Imported network 'PyPSA-USA' has buses, lines, line_types, transformers
+INFO:_helpers:[schema entry] Bus: 2041 rows, 30 cols: ['LAF_state', 'Pd', 'balancing_area', 'carrier', 'control', 'country', 'county', 'generator', 'interconnect', 'load_weight', 'location', 'nerc_reg', 'rec_trading_zone', 'reeds_ba', 'reeds_state', 'reeds_zone', 'state', 'sub_id', 'sub_network', 'substation_off', 'trans_grp', 'trans_reg', 'type', 'unit', 'v_mag_pu_max', 'v_mag_pu_min', 'v_mag_pu_set', 'v_nom', 'x', 'y']
+INFO:_helpers:[schema entry] Line: 2346 rows, 39 cols: ['active', 'b', 'b_pu', 'build_year', 'bus0', 'bus1', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'discount_rate', 'fom_cost', 'g', 'g_pu', 'interconnect', 'length', 'lifetime', 'num_parallel', 'overnight_cost', 'r', 'r_pu', 'r_pu_eff', 's_max_pu', 's_nom', 's_nom_extendable', 's_nom_max', 's_nom_min', 's_nom_mod', 's_nom_opt', 's_nom_set', 'sub_network', 'terrain_factor', 'type', 'underwater_fraction', 'v_ang_max', 'v_ang_min', 'v_nom', 'x', 'x_pu', 'x_pu_eff']
+INFO:_helpers:[schema entry] LineType: 60 rows, 8 cols: ['c_per_length', 'cross_section', 'f_nom', 'i_nom', 'mounting', 'r_per_length', 'references', 'x_per_length']
+INFO:_helpers:[schema entry] Transformer: 860 rows, 43 cols: ['active', 'b', 'b_pu', 'build_year', 'bus0', 'bus1', 'capital_cost', 'carrier', 'discount_rate', 'fom_cost', 'g', 'g_pu', 'interconnect', 'lifetime', 'model', 'num_parallel', 'overnight_cost', 'phase_shift', 'phase_shift_max', 'phase_shift_min', 'r', 'r_pu', 'r_pu_eff', 's_max_pu', 's_nom', 's_nom_extendable', 's_nom_max', 's_nom_min', 's_nom_mod', 's_nom_opt', 's_nom_set', 'sub_network', 'tap_position', 'tap_ratio', 'tap_side', 'type', 'underwater_fraction', 'v_ang_max', 'v_ang_min', 'v_nom', 'x', 'x_pu', 'x_pu_eff']
+INFO:_helpers:[schema entry] TransformerType: 14 rows, 15 cols: ['f_nom', 'i0', 'pfe', 'phase_shift', 'references', 's_nom', 'tap_max', 'tap_min', 'tap_neutral', 'tap_side', 'tap_step', 'v_nom_0', 'v_nom_1', 'vsc', 'vscr']
+INFO:__main__:Assigning line lengths using haversine function...
+ 98% (98 of 100) |###################### | Elapsed Time: 0:00:57 ETA:   0:00:01
+INFO:__main__:Aggregating buses to substation level...
+ 98% (98 of 100) |###################### | Elapsed Time: 0:00:57 ETA:   0:00:01
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+ 98% (98 of 100) |###################### | Elapsed Time: 0:00:57 ETA:   0:00:01
+INFO:pypsa.network.io:Imported network 'PyPSA-USA' has buses, lines, line_types, transformers
+ 98% (98 of 100) |###################### | Elapsed Time: 0:00:57 ETA:   0:00:01
+ 99% (99 of 100) |###################### | Elapsed Time: 0:00:57 ETA:   0:00:00
+ 99% (99 of 100) |###################### | Elapsed Time: 0:00:57 ETA:   0:00:00
+ 99% (99 of 100) |###################### | Elapsed Time: 0:00:57 ETA:   0:00:00
+ 99% (99 of 100) |###################### | Elapsed Time: 0:00:57 ETA:   0:00:00
+ 99% (99 of 100) |###################### | Elapsed Time: 0:00:58 ETA:   0:00:00
+ 99% (99 of 100) |###################### | Elapsed Time: 0:00:58 ETA:   0:00:00
+INFO:__main__:Extracting EFS databundle.
+EFSLoadProfile_Reference_Moderate.csv: Unsupported ZIP compression method (9: deflation-64-bit): Illegal byte sequence
+tar: Error exit delayed from previous errors
+Traceback (most recent call last):
+  File "D:\BYOP_impact\pypsa-usa\workflow\.snakemake\scripts\tmpfbyvpr_m.retrieve_databundles.py", line 69, in <module>
+    download_repository(url, rootpath, repository)
+  File "D:\BYOP_impact\pypsa-usa\workflow\.snakemake\scripts\tmpfbyvpr_m.retrieve_databundles.py", line 43, in download_repository
+    subprocess.run(cmd, check=True)
+  File "C:\Users\67084\AppData\Roaming\uv\python\cpython-3.11.17-windows-x86_64-none\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['tar', '-xf', WindowsPath('EFS.zip'), '-C', WindowsPath('data/nrel_efs')]' returned non-zero exit status 1.
+Exception ignored in: <function ProgressBarMixinBase.__del__ at 0x000001B7EAF6C680>
+Traceback (most recent call last):
+  File "D:\BYOP_impact\pypsa-usa\.venv\Lib\site-packages\progressbar\bar.py", line 130, in __del__
+  File "D:\BYOP_impact\pypsa-usa\.venv\Lib\site-packages\progressbar\bar.py", line 1035, in finish
+AttributeError: 'NoneType' object has no attribute 'now'
+[Sun Oct 18 12:34:59 2026]
+Error in rule retrieve_nrel_efs_data:
+    jobid: 27
+    output: data/nrel_efs/EFSLoadProfile_Reference_Moderate.csv
+    log: logs/retrieve/retrieve_efs_Reference_Moderate.log (check log file(s) for error details)
+
+RuleException:
+CalledProcessError in file D:\BYOP_impact\pypsa-usa\workflow\rules/retrieve.smk, line 88:
+Command 'D:/BYOP_impact/pypsa-usa/.venv/Scripts/python.exe "D:\BYOP_impact\pypsa-usa\workflow\.snakemake\scripts\tmpfbyvpr_m.retrieve_databundles.py"' returned non-zero exit status 1.
+  File "D:\BYOP_impact\pypsa-usa\workflow\rules/retrieve.smk", line 88, in __rule_retrieve_nrel_efs_data
+  File "C:\Users\67084\AppData\Roaming\uv\python\cpython-3.11.17-windows-x86_64-none\Lib\concurrent\futures\thread.py", line 58, in run
+Removing output files of failed job retrieve_nrel_efs_data since they might be corrupted:
+data/nrel_efs/EFSLoadProfile_Reference_Moderate.csv
+INFO:__main__:Building Onshore Regions
+INFO:__main__:Interconnect footprint contains 226 counties, 192 have buses, 40 are empty.
+INFO:__main__:Adding 40 empty counties as separate regions, assigned to nearest bus.
+INFO:__main__:Added 40 empty counties assigned to nearest buses.
+WARNING:pypsa.network.transform:The attribute 'v_nom' is a standard attribute for other components but not for lines. This could cause confusion and it should be renamed. See also: https://go.pypsa.org/warning-attr-misleading.
+INFO:pyogrio._io:Created 1,250 records
+INFO:_helpers:[schema exit] Bus: 2041 -> 1250 rows
+INFO:_helpers:[schema exit] Bus: +cols=['substation_lv'], -cols=['balancing_area', 'county', 'state', 'sub_id', 'substation_off']
+INFO:_helpers:[schema exit] Line: 2346 -> 1890 rows
+INFO:_helpers:[schema exit] LineType: 60 -> 59 rows
+INFO:_helpers:[schema exit] SubNetwork: 0 -> 1 rows
+INFO:_helpers:[schema exit] SubNetwork: +cols=['carrier', 'obj', 'slack_bus'], -cols=[]
+INFO:pypsa.network.io:Exported network 'Unnamed Network' saved to 'resources/BYOP_ERCOT7s/networks/texas/elec_b.nc contains: buses, sub_networks, lines
+INFO:__main__:Building Offshore Regions
+Benchmark: unable to collect cpu and memory benchmark statistics
+[Sun Oct 18 12:35:06 2026]
+Finished job 11.
+3 of 17 steps (18%) done
+INFO:pyogrio._io:Created 17 records
+Benchmark: unable to collect cpu and memory benchmark statistics
+[Sun Oct 18 12:35:06 2026]
+Finished job 14.
+4 of 17 steps (24%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake\log\2026-10-18T123345.367019.snakemake.log
+EXIT=1

@@ -1,0 +1,222 @@
+asset,MW,template,rule
+p600 0 OCGT 2025fleet r2100,397.0,p600 3 OCGT,nearest_bus
+p600 0 onwind 2025fleet r2031,152.0,p600 0 onwind existing,same_bus
+p600 0 onwind 2025fleet r2033,37.5,p600 0 onwind existing,same_bus
+p600 0 onwind 2025fleet r2035,242.8,p600 0 onwind existing,same_bus
+p600 0 onwind 2025fleet r2100,6730.200000000001,p600 0 onwind existing,same_bus
+p600 0 solar 2025fleet r2100,2460.1,p600 0 solar existing,same_bus
+p600 1 onwind 2025fleet r2033,182.4,p600 1 onwind existing,same_bus
+p600 1 onwind 2025fleet r2100,5755.4,p600 1 onwind existing,same_bus
+p600 1 solar 2025fleet r2100,1780.6,p600 1 solar existing,same_bus
+p600 2 CCGT 2025fleet r2100,212.0,p600 2 CCGT,same_bus
+p600 2 onwind 2025fleet r2028,34.3,p600 2 onwind existing,same_bus
+p600 2 onwind 2025fleet r2100,454.6,p600 2 onwind existing,same_bus
+p600 2 solar 2025fleet r2100,10.0,p600 2 solar existing,same_bus
+p600 3 onwind 2025fleet r2100,1143.8,p600 3 onwind existing,same_bus
+p600 3 solar 2025fleet r2100,320.0,p600 3 solar existing,same_bus
+p610 0 onwind 2025fleet r2031,242.5,p610 0 onwind existing,same_bus
+p610 0 onwind 2025fleet r2032,167.7,p610 0 onwind existing,same_bus
+p610 0 onwind 2025fleet r2100,4652.5,p610 0 onwind existing,same_bus
+p610 0 solar 2025fleet r2100,2841.8,p610 0 solar existing,same_bus
+p610 1 onwind 2025fleet r2035,114.0,p610 1 onwind existing,same_bus
+p610 1 onwind 2025fleet r2100,1192.0,p610 1 onwind existing,same_bus
+p610 1 solar 2025fleet r2100,360.0,p610 1 solar existing,same_bus
+p610 2 OCGT 2025fleet r2100,1.2000000000000002,p610 2 OCGT,same_bus
+p610 2 onwind 2025fleet r2035,213.0,p610 2 onwind existing,same_bus
+p610 2 onwind 2025fleet r2100,1476.9,p610 2 onwind existing,same_bus
+p610 2 solar 2025fleet r2100,401.4,p610 2 solar existing,same_bus
+p610 3 hydro 2025fleet r2100,58.0,p640 2 hydro,nearest_bus
+p610 3 onwind 2025fleet r2100,249.10000000000002,p610 3 onwind existing,same_bus
+p610 3 solar 2025fleet r2100,199.6,p610 3 solar existing,same_bus
+p610 4 solar 2025fleet r2100,561.0,p610 4 solar existing,same_bus
+p620 0 CCGT 2025fleet r2100,1533.9999999999998,p620 0 CCGT,same_bus
+p620 0 OCGT 2025fleet r2100,320.0,p620 0 OCGT,same_bus
+p620 0 onwind 2025fleet r2031,278.0,p620 0 onwind existing,same_bus
+p620 0 onwind 2025fleet r2100,124.7,p620 0 onwind existing,same_bus
+p620 0 solar 2025fleet r2100,880.0,p620 0 solar existing,same_bus
+p620 1 OCGT 2025fleet r2100,320.0,p620 1 OCGT,same_bus
+p620 1 gas_steam 2025fleet r2100,30.0,p620 1 OCGT,same_bus
+p620 1 onwind 2025fleet r2100,313.2,p620 1 onwind existing,same_bus
+p620 1 solar 2025fleet r2100,1786.6,p620 1 solar existing,same_bus
+p620 2 onwind 2025fleet r2100,471.2,p620 2 onwind existing,same_bus
+p620 4 onwind 2025fleet r2100,794.7,p620 4 onwind existing,same_bus
+p620 5 gas_steam 2025fleet r2100,15.0,p620 0 OCGT,nearest_bus
+p620 5 solar 2025fleet r2100,200.0,p620 5 solar existing,same_bus
+p620 7 solar 2025fleet r2100,108.0,p620 7 solar existing,same_bus
+p630 0 CCGT 2025fleet r2100,1391.5,p630 0 CCGT,same_bus
+p630 0 OCGT 2025fleet r2100,5.600000000000001,p630 0 OCGT,same_bus
+p630 0 biomass 2025fleet r2100,100.0,p630 0 biomass,same_bus
+p630 0 coal 2025fleet r2100,4143.0,p630 0 coal,same_bus
+p630 0 gas_steam 2025fleet r2100,922.0,p630 0 OCGT,same_bus
+p630 0 solar 2025fleet r2100,1310.4,p630 0 solar existing,same_bus
+p630 1 CCGT 2025fleet r2100,4018.0,p630 1 CCGT,same_bus
+p630 1 OCGT 2025fleet r2100,99.60000000000001,p630 1 OCGT,same_bus
+p630 1 gas_steam 2025fleet r2031,138.0,p630 1 OCGT,same_bus
+p630 1 gas_steam 2025fleet r2033,41.0,p630 1 OCGT,same_bus
+p630 1 gas_steam 2025fleet r2100,223.0,p630 1 OCGT,same_bus
+p630 1 hydro 2025fleet r2100,100.0,p630 1 hydro,same_bus
+p630 1 solar 2025fleet r2100,3636.3,p630 1 solar existing,same_bus
+p630 10 OCGT 2025fleet r2100,1.2000000000000002,p630 10 OCGT,same_bus
+p630 10 onwind 2025fleet r2100,412.8,p630 10 onwind existing,same_bus
+p630 10 solar 2025fleet r2100,309.2,p630 10 solar existing,same_bus
+p630 11 solar 2025fleet r2100,180.0,p630 11 solar existing,same_bus
+p630 12 CCGT 2025fleet r2100,2137.4,p630 12 CCGT,same_bus
+p630 12 OCGT 2025fleet r2100,274.0,p630 12 OCGT,same_bus
+p630 12 nuclear 2025fleet r2100,2400.0,p630 12 nuclear,same_bus
+p630 13 solar 2025fleet r2100,320.0,p630 13 solar existing,same_bus
+p630 2 CCGT 2025fleet r2100,763.0,p630 2 CCGT,same_bus
+p630 2 hydro 2025fleet r2100,42.0,p630 2 hydro,same_bus
+p630 2 onwind 2025fleet r2100,702.5,p630 2 onwind existing,same_bus
+p630 2 solar 2025fleet r2100,1515.8,p630 2 solar existing,same_bus
+p630 3 OCGT 2025fleet r2100,4.800000000000001,p630 3 OCGT,same_bus
+p630 3 biomass 2025fleet r2100,3.2,p630 3 biomass,same_bus
+p630 3 gas_steam 2025fleet r2028,61.0,p630 3 OCGT,same_bus
+p630 3 gas_steam 2025fleet r2100,61.0,p630 3 OCGT,same_bus
+p630 3 hydro 2025fleet r2100,2.0,p630 3 hydro,same_bus
+p630 3 solar 2025fleet r2100,7.9,p630 3 solar existing,same_bus
+p630 4 CCGT 2025fleet r2100,76.1,p630 4 CCGT,same_bus
+p630 4 OCGT 2025fleet r2100,208.0,p630 4 OCGT,same_bus
+p630 4 gas_steam 2025fleet r2027,118.0,p630 4 OCGT,same_bus
+p630 4 gas_steam 2025fleet r2030,195.0,p630 4 OCGT,same_bus
+p630 4 gas_steam 2025fleet r2100,634.0,p630 4 OCGT,same_bus
+p630 4 onwind 2025fleet r2100,2991.4,p630 4 onwind existing,same_bus
+p630 4 solar 2025fleet r2100,9.9,p630 4 solar existing,same_bus
+p630 5 CCGT 2025fleet r2100,1580.0,p630 5 CCGT,same_bus
+p630 5 OCGT 2025fleet r2100,10.8,p630 5 OCGT,same_bus
+p630 5 coal 2025fleet r2100,2015.0,p630 5 coal,same_bus
+p630 5 onwind 2025fleet r2100,1246.0,p630 5 onwind existing,same_bus
+p630 5 solar 2025fleet r2100,2440.7,p630 5 solar existing,same_bus
+p630 6 CCGT 2025fleet r2100,1620.0,p630 6 CCGT,same_bus
+p630 6 OCGT 2025fleet r2100,2.4,p630 6 OCGT,same_bus
+p630 6 biomass 2025fleet r2100,3.2,p630 6 biomass,same_bus
+p630 6 solar 2025fleet r2100,80.0,p630 6 solar,same_bus
+p630 7 CCGT 2025fleet r2100,1770.0,p630 7 CCGT,same_bus
+p630 7 biomass 2025fleet r2100,4.199999999999999,p630 7 biomass,same_bus
+p630 7 gas_steam 2025fleet r2028,523.0,p630 7 OCGT,same_bus
+p630 7 gas_steam 2025fleet r2100,392.0,p630 7 OCGT,same_bus
+p630 7 solar 2025fleet r2100,2.0,p630 7 solar existing,same_bus
+p630 8 OCGT 2025fleet r2100,1.6,p630 8 OCGT,same_bus
+p630 8 gas_steam 2025fleet r2100,808.0,p630 8 OCGT,same_bus
+p630 8 solar 2025fleet r2100,3.8,p630 8 solar existing,same_bus
+p630 9 CCGT 2025fleet r2100,1976.0,p630 9 CCGT,same_bus
+p630 9 OCGT 2025fleet r2100,226.80000000000007,p630 9 OCGT,same_bus
+p630 9 gas_steam 2025fleet r2031,435.0,p630 9 OCGT,same_bus
+p630 9 gas_steam 2025fleet r2032,435.0,p630 9 OCGT,same_bus
+p630 9 gas_steam 2025fleet r2100,375.0,p630 9 OCGT,same_bus
+p630 9 solar 2025fleet r2100,281.5,p630 9 solar existing,same_bus
+p640 0 CCGT 2025fleet r2100,860.0,p640 0 CCGT,same_bus
+p640 0 OCGT 2025fleet r2030,21.0,p640 0 OCGT,same_bus
+p640 0 OCGT 2025fleet r2100,329.5999999999999,p640 0 OCGT,same_bus
+p640 0 coal 2025fleet r2100,1615.0,p640 0 coal,same_bus
+p640 0 gas_steam 2025fleet r2033,110.0,p640 0 OCGT,same_bus
+p640 0 solar 2025fleet r2100,450.0,p640 0 solar existing,same_bus
+p640 1 CCGT 2025fleet r2100,1397.0,p640 1 CCGT,same_bus
+p640 1 OCGT 2025fleet r2100,495.50000000000006,p640 1 OCGT,same_bus
+p640 1 gas_steam 2025fleet r2027,335.0,p640 1 OCGT,same_bus
+p640 1 gas_steam 2025fleet r2100,273.5,p640 1 OCGT,same_bus
+p640 1 hydro 2025fleet r2100,222.3,p640 1 hydro,same_bus
+p640 1 solar 2025fleet r2100,176.6,p640 1 solar existing,same_bus
+p640 2 CCGT 2025fleet r2100,516.0,p640 2 CCGT,same_bus
+p640 2 hydro 2025fleet r2100,71.0,p640 2 hydro,same_bus
+p640 2 solar 2025fleet r2100,1.5,p640 2 solar existing,same_bus
+p640 3 OCGT 2025fleet r2100,1.6,p640 3 OCGT,same_bus
+p640 3 biomass 2025fleet r2100,4.800000000000001,p640 3 biomass,same_bus
+p640 4 CCGT 2025fleet r2100,2735.5,p640 4 CCGT,same_bus
+p640 4 OCGT 2025fleet r2100,180.0,p640 4 OCGT,same_bus
+p640 4 biomass 2025fleet r2100,3.2,p640 4 biomass,same_bus
+p640 4 hydro 2025fleet r2100,3.6,p640 4 hydro,same_bus
+p640 4 solar 2025fleet r2100,4.9,p640 4 solar existing,same_bus
+p640 5 solar 2025fleet r2100,7.5,p640 5 solar existing,same_bus
+p640 6 solar 2025fleet r2100,10.0,p640 6 solar existing,same_bus
+p650 0 CCGT 2025fleet r2100,520.0,p650 0 CCGT,same_bus
+p650 0 OCGT 2025fleet r2100,382.9999999999999,p650 0 OCGT,same_bus
+p650 0 biomass 2025fleet r2100,4.4,p650 0 biomass,same_bus
+p650 0 solar 2025fleet r2100,83.4,p650 0 solar existing,same_bus
+p650 1 CCGT 2025fleet r2027,319.0,p650 1 CCGT,same_bus
+p650 1 CCGT 2025fleet r2100,1186.0,p650 1 CCGT,same_bus
+p650 1 OCGT 2025fleet r2100,6.000000000000002,p650 1 OCGT,same_bus
+p650 1 onwind 2025fleet r2100,2253.2,p650 1 onwind existing,same_bus
+p650 1 solar 2025fleet r2100,881.7,p650 1 solar existing,same_bus
+p650 2 OCGT 2025fleet r2100,201.60000000000002,p650 2 OCGT,same_bus
+p650 2 coal 2025fleet r2029,655.0,p650 2 coal,same_bus
+p650 2 coal 2025fleet r2100,391.0,p650 2 coal,same_bus
+p650 2 solar 2025fleet r2100,657.6,p650 2 solar existing,same_bus
+p650 3 CCGT 2025fleet r2031,319.0,p650 3 CCGT,same_bus
+p650 3 CCGT 2025fleet r2100,376.0,p650 3 CCGT,same_bus
+p650 3 OCGT 2025fleet r2100,264.6000000000001,p650 3 OCGT,same_bus
+p650 3 gas_steam 2025fleet r2029,292.0,p650 3 OCGT,same_bus
+p650 3 gas_steam 2025fleet r2100,35.0,p650 3 OCGT,same_bus
+p650 3 onwind 2025fleet r2100,3186.5,p650 3 onwind existing,same_bus
+p650 3 solar 2025fleet r2100,189.5,p650 3 solar existing,same_bus
+p650 4 OCGT 2025fleet r2100,179.0,p650 4 OCGT,same_bus
+p650 4 hydro 2025fleet r2100,36.5,p650 4 hydro,same_bus
+p650 4 onwind 2025fleet r2100,2378.6,p650 4 onwind existing,same_bus
+p650 4 solar 2025fleet r2100,1061.0,p650 4 solar existing,same_bus
+p650 5 CCGT 2025fleet r2100,1688.6999999999998,p650 5 CCGT,same_bus
+p650 5 OCGT 2025fleet r2100,222.2,p650 5 OCGT,same_bus
+p650 5 nuclear 2025fleet r2100,2580.0,p650 5 nuclear,same_bus
+p650 5 onwind 2025fleet r2100,759.9,p650 5 onwind existing,same_bus
+p650 5 solar 2025fleet r2100,1446.8,p650 5 solar existing,same_bus
+p650 6 CCGT 2025fleet r2100,1697.0,p650 6 CCGT,same_bus
+p650 6 OCGT 2025fleet r2100,1.2000000000000002,p650 6 OCGT,same_bus
+p650 6 gas_steam 2025fleet r2100,15.0,p650 6 OCGT,same_bus
+p650 6 onwind 2025fleet r2100,1075.4,p650 6 onwind existing,same_bus
+p650 7 coal 2025fleet r2028,560.0,p650 7 coal,same_bus
+p650 7 coal 2025fleet r2100,785.0,p650 7 coal,same_bus
+p650 7 gas_steam 2025fleet r2027,420.0,p650 0 OCGT,nearest_bus
+p650 7 gas_steam 2025fleet r2029,410.0,p650 0 OCGT,nearest_bus
+p650 8 CCGT 2025fleet r2100,471.0,p650 8 CCGT,same_bus
+p650 8 OCGT 2025fleet r2100,262.4,p650 8 OCGT,same_bus
+p650 8 gas_steam 2025fleet r2100,3.1,p650 8 OCGT,same_bus
+p650 8 solar 2025fleet r2100,180.0,p650 8 solar existing,same_bus
+p670 0 CCGT 2025fleet r2027,324.0,p670 0 CCGT,same_bus
+p670 0 CCGT 2025fleet r2029,328.0,p670 0 CCGT,same_bus
+p670 0 OCGT 2025fleet r2030,336.0,p670 0 OCGT,same_bus
+p670 0 OCGT 2025fleet r2100,31.999999999999993,p670 0 OCGT,same_bus
+p670 0 gas_steam 2025fleet r2100,7.5,p670 0 OCGT,same_bus
+p670 1 CCGT 2025fleet r2100,2153.0,p670 1 CCGT,same_bus
+p670 1 OCGT 2025fleet r2100,787.9999999999999,p670 1 OCGT,same_bus
+p670 1 gas_steam 2025fleet r2027,749.0,p670 1 OCGT,same_bus
+p670 1 gas_steam 2025fleet r2100,753.2000000000002,p670 1 OCGT,same_bus
+p670 10 solar 2025fleet r2100,250.0,p670 10 solar existing,same_bus
+p670 2 CCGT 2025fleet r2100,2008.1,p670 2 CCGT,same_bus
+p670 2 OCGT 2025fleet r2031,327.0,p670 2 OCGT,same_bus
+p670 2 OCGT 2025fleet r2100,540.4,p670 2 OCGT,same_bus
+p670 2 solar 2025fleet r2100,69.10000000000001,p670 2 solar existing,same_bus
+p670 3 OCGT 2025fleet r2100,1261.2000000000003,p670 3 OCGT,same_bus
+p670 3 coal 2025fleet r2100,610.0,p670 3 coal,same_bus
+p670 3 gas_steam 2025fleet r2032,664.0,p670 3 OCGT,same_bus
+p670 3 gas_steam 2025fleet r2033,663.0,p670 3 OCGT,same_bus
+p670 3 gas_steam 2025fleet r2035,577.0,p670 3 OCGT,same_bus
+p670 3 gas_steam 2025fleet r2100,1112.5,p670 3 OCGT,same_bus
+p670 4 OCGT 2025fleet r2100,367.9999999999999,p670 4 OCGT,same_bus
+p670 4 gas_steam 2025fleet r2100,22.5,p670 4 OCGT,same_bus
+p670 4 solar 2025fleet r2100,78.1,p670 4 solar existing,same_bus
+p670 5 OCGT 2025fleet r2100,1.2000000000000002,p670 5 OCGT,same_bus
+p670 6 CCGT 2025fleet r2100,1938.0,p670 6 CCGT,same_bus
+p670 6 OCGT 2025fleet r2100,304.0,p670 6 OCGT,same_bus
+p670 7 OCGT 2025fleet r2100,1.2000000000000002,p670 7 OCGT,same_bus
+p670 9 OCGT 2025fleet r2100,436.0,p670 9 OCGT,same_bus
+p670 9 solar 2025fleet r2100,1708.4,p670 9 solar existing,same_bus
+p600 0 onwind committed 2026,225.6,p600 0 onwind existing,same_bus
+p600 0 solar committed 2026,1641.1999999999998,p600 0 solar existing,same_bus
+p600 1 onwind committed 2027,152.0,p600 1 onwind existing,same_bus
+p610 0 onwind committed 2026,265.0,p610 0 onwind existing,same_bus
+p620 0 gas_steam committed 2026,9.9,p620 0 OCGT,same_bus
+p620 4 onwind committed 2026,162.1,p620 4 onwind existing,same_bus
+p620 5 solar committed 2026,334.0,p620 5 solar existing,same_bus
+p630 0 onwind committed 2027,170.0,p630 0 onwind existing,same_bus
+p630 0 solar committed 2026,276.0,p630 0 solar existing,same_bus
+p630 0 solar committed 2027,632.0,p630 0 solar existing,same_bus
+p630 1 solar committed 2026,280.9,p630 1 solar existing,same_bus
+p630 2 onwind committed 2026,304.5,p630 2 onwind existing,same_bus
+p630 2 solar committed 2026,605.0,p630 2 solar existing,same_bus
+p630 2 solar committed 2027,147.0,p630 2 solar existing,same_bus
+p630 5 solar committed 2026,1794.0,p630 5 solar existing,same_bus
+p630 7 solar committed 2026,2.3,p630 7 solar existing,same_bus
+p640 0 solar committed 2026,210.0,p640 0 solar existing,same_bus
+p640 0 solar committed 2027,600.0,p640 0 solar existing,same_bus
+p640 2 solar committed 2026,123.0,p640 2 solar existing,same_bus
+p650 1 solar committed 2026,255.2,p650 1 solar existing,same_bus
+p650 5 solar committed 2026,1101.6,p650 5 solar existing,same_bus
+p670 4 solar committed 2026,788.0,p670 4 solar existing,same_bus

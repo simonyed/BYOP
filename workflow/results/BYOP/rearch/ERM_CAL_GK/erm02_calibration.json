@@ -1,0 +1,42 @@
+{
+  "decision": "ERM-02 B (TAMU)",
+  "margin_by_period": {
+    "2026": 0.1499999999999999,
+    "2027": 0.1499999999999999,
+    "2028": 0.11220251615032173,
+    "2029": 0.05283521575940209,
+    "2030": 0.03865724382475122,
+    "2031": 0.013369741383814748
+  },
+  "termination": "optimal",
+  "load_shed_MWh": 10433094.946799835,
+  "setting": {
+    "setting": "G-K",
+    "relax": [],
+    "case": "base",
+    "gas_case": "base",
+    "pclr_hours": 200.0,
+    "pclr_max_consec_h": 12.0,
+    "s2_iter": 3,
+    "competing": 1.0,
+    "line_lead": null,
+    "offer_tol": 0.001,
+    "clusters": "64s",
+    "s2_modes": [
+      "GO_F",
+      "GO_C",
+      "GF",
+      "IS"
+    ]
+  },
+  "cfg": {
+    "periods": "annual",
+    "start": 2026,
+    "end": 2031,
+    "sample_weeks": 26,
+    "bg_traj": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/inputs/load/background_load_growth_states_AEO2023_reference.csv"
+  },
+  "baseline_sha256": "19034285be0aa9b9906ab5b0e03778f3a16e7c1c39e97ac97b368d9097cafadb",
+  "seconds": 113.5,
+  "n_vars": 2794457
+}

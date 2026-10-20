@@ -1,0 +1,239 @@
+{
+  "files": {
+    "v240_mech.py": {
+      "path": "/datasets/prgm/BYOP_impact/BYOP_ERCOT_Mechanism_Repair_v2.4.0/tools_v240/v240_mech.py",
+      "sha256": "dfdc900a6833be9d4420dd318eae13dffcdb5cbf3b4087a6bd61717e6bcae8f3",
+      "exists": true
+    },
+    "v240_path.py": {
+      "path": "/datasets/prgm/BYOP_impact/BYOP_ERCOT_Mechanism_Repair_v2.4.0/tools_v240/v240_path.py",
+      "sha256": "7ab8a7b5b665b0d482526b817f7ba24b61f47ac8156160c49a213a96ed34648e",
+      "exists": true
+    },
+    "wp2_ercot_s0_s1.py": {
+      "path": "/datasets/prgm/BYOP_impact/work_package_v2/tools/wp2_ercot_s0_s1.py",
+      "sha256": "a156d2107e20bb70a99ca15dcbcca0cf8f1a96af6a01ca18d69f9533253a93d6",
+      "exists": true
+    },
+    "wp2_ercot_s1_real.py": {
+      "path": "/datasets/prgm/BYOP_impact/work_package_v2/tools/wp2_ercot_s1_real.py",
+      "sha256": "36871916bef0529c305fb9d0ca02310ad92dd02560ef4fc8d655ebcaa5117aa4",
+      "exists": true
+    },
+    "build_2025_baseline.py": {
+      "path": "/datasets/prgm/BYOP_impact/work_package_v2/tools/build_2025_baseline.py",
+      "sha256": "14d46514511c9ebae4e641774e16c4df393472d0e8cf09ace329df9986624d8d",
+      "exists": true
+    },
+    "config.byop_ercot8s_gurobi.yaml": {
+      "path": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_ercot8s_gurobi.yaml",
+      "sha256": "34038d97ebb7e3467006012da397a3bd24749c615f44a58f03ffb4255f8e98a4",
+      "exists": true
+    },
+    "byop_onwind_cf_scaling.csv (WIND-01 8s)": {
+      "path": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/byop_onwind_cf_scaling.csv",
+      "sha256": "dbc5d64fdb6f8250baa77f5ab705cd3e3c70370bff70909346faf2629e274b0b",
+      "exists": true
+    },
+    "cluster_network.py (RAMP-01)": {
+      "path": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/scripts/cluster_network.py",
+      "sha256": "a987e820aa74a54899fdb5a4f301e5af1ae2067a7ab244d02e9fd54883ca8e44",
+      "exists": true
+    },
+    "prepare_network.py (WIND-01, v2.5.0 path key)": {
+      "path": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/scripts/prepare_network.py",
+      "sha256": "aa20edc4876a8b5248b42c519eb29549cc3617e2123ecc7c6410aac48a0a3a49",
+      "exists": true
+    },
+    "prepare_network.py.before_v250": {
+      "path": "/datasets/prgm/BYOP_impact/BYOP_ERCOT_County_v2.5.0/logs/prepare_network.py.before_v250",
+      "sha256": "2491ff32eb0fcc260d37a1c1507811ec5dfa28dee16c2a96c30be34b3f03a6fe",
+      "exists": true
+    },
+    "baseline_2025_prepared.nc": {
+      "path": "/datasets/prgm/BYOP_impact/work_package_v2/outputs/baseline_2025/baseline_2025_prepared.nc",
+      "sha256": "74ed60a70813187062236d75aac9b0bada0f772cb9f1adc16ab3fa749b986677",
+      "exists": true
+    },
+    "TECH-01_technologies_DRAFT.csv": {
+      "path": "/datasets/prgm/BYOP_impact/work_package_v2/decisions/TECH-01_technologies_DRAFT.csv",
+      "sha256": "127e5a97b5177eb4242d4df33c516ddf09d480a4d5d1da4523dd75605ab99eea",
+      "exists": true
+    },
+    "ercot_cohorts_2026_2035.csv": {
+      "path": "/datasets/prgm/BYOP_impact/work_package_v2/outputs/spatial/ercot_8s/ercot_cohorts_2026_2035.csv",
+      "sha256": "b038ecfb48fbb05c3077fe798a713752c488339654c3345dd63172c5ef02553f",
+      "exists": true
+    },
+    "background_load_growth_states_AEO2023_reference.csv": {
+      "path": "/datasets/prgm/BYOP_impact/BYOP_ERCOT_Mechanism_Repair_v2.4.0/data/background_load_growth_states_AEO2023_reference.csv",
+      "sha256": "8fc098183b479520d63175cb9d58523f4a1acf1255f2c645dcc04e6861b60700",
+      "exists": true
+    }
+  },
+  "control_group": {
+    "case": "E01_REP_v2.8M",
+    "status": "CASE_SOLVED",
+    "checks": {
+      "true_LP": true,
+      "all_optimal": true,
+      "S1_zero_equals_S0": true,
+      "S2_off_equals_S1": true,
+      "no_load_shed": true,
+      "no_public_offer_before_COD": true,
+      "dc_energy_balance": true,
+      "served_le_requested": true,
+      "private_stage_LP": true
+    },
+    "cfg": {
+      "periods": "annual",
+      "start": 2026,
+      "end": 2033,
+      "decision_year": 2026,
+      "years": 1,
+      "cost_basis": "repaired",
+      "public_subsidy": "without",
+      "tariff": "energy",
+      "reuse": "off",
+      "reuse_case": "base",
+      "frac_cod": true,
+      "poi_lead": 3,
+      "byop_case": "base",
+      "public_case": "base",
+      "byop_techs": [
+        "RICE",
+        "SOFC_NG"
+      ],
+      "sample_weeks": 4,
+      "bg_growth": 0.0,
+      "line_exp": true,
+      "erm15": false,
+      "threads": 4,
+      "social_r": 0.02,
+      "private_wacc": 0.07,
+      "v": 2800000.0,
+      "v_private": null,
+      "dem_scale": 1.0,
+      "smoke": false
+    },
+    "baseline_sha256": "74ed60a70813187062236d75aac9b0bada0f772cb9f1adc16ab3fa749b986677",
+    "code_sha256": {
+      "v240_mech.py": "8bca452e5cc2fd07fbe874d2e0e6aaccd03bb701b873a1ecff6238ab2d47d9ae",
+      "wp2_ercot_s0_s1.py": "a156d2107e20bb70a99ca15dcbcca0cf8f1a96af6a01ca18d69f9533253a93d6",
+      "wp2_ercot_s1_real.py": "36871916bef0529c305fb9d0ca02310ad92dd02560ef4fc8d655ebcaa5117aa4"
+    },
+    "scenario_summary": [
+      {
+        "scenario": "S0",
+        "social_total_USD": 53299379701.375046,
+        "served_MW_IT_year": 0.0,
+        "delay_MW_IT_year": 0.0,
+        "load_shed_MWh": 0.0070955117659364,
+        "public_new_MW": "{\"AC_exp\": 4729.6}",
+        "byop_MW": "{}",
+        "termination": "optimal"
+      },
+      {
+        "scenario": "S1",
+        "social_total_USD": 88611277065.66049,
+        "served_MW_IT_year": 10197.925144444784,
+        "delay_MW_IT_year": 13056.943632174814,
+        "load_shed_MWh": 0.0013412398264411,
+        "public_new_MW": "{\"AC_exp\": 4153.1, \"CCGT\": 1366.9, \"OCGT\": 383.5, \"solar\": 1342.4}",
+        "byop_MW": "{}",
+        "termination": "optimal"
+      },
+      {
+        "scenario": "S1_zero",
+        "social_total_USD": 53299379701.375046,
+        "served_MW_IT_year": 0.0,
+        "delay_MW_IT_year": 0.0,
+        "load_shed_MWh": 0.0070955117659364,
+        "public_new_MW": "{\"AC_exp\": 4729.6}",
+        "byop_MW": "{}",
+        "termination": "optimal"
+      },
+      {
+        "scenario": "S3",
+        "social_total_USD": 63832948025.9337,
+        "served_MW_IT_year": 21420.02609839548,
+        "delay_MW_IT_year": 1834.842678224122,
+        "load_shed_MWh": 0.000145873578047,
+        "public_new_MW": "{\"AC_exp\": 4346.9}",
+        "byop_MW": "{\"byop_RICE\": 3254.4}",
+        "termination": "optimal"
+      },
+      {
+        "scenario": "S3_mS1",
+        "social_total_USD": 88611274603.83173,
+        "served_MW_IT_year": 10197.925144444784,
+        "delay_MW_IT_year": 13056.943632174814,
+        "load_shed_MWh": 0.0029765547863061,
+        "public_new_MW": "{\"AC_exp\": 4153.0, \"CCGT\": 1366.9, \"OCGT\": 383.5, \"solar\": 1342.4}",
+        "byop_MW": "{}",
+        "termination": "optimal"
+      },
+      {
+        "scenario": "S2",
+        "social_total_USD": 63832948056.5443,
+        "served_MW_IT_year": 21420.026093661872,
+        "delay_MW_IT_year": 1834.8426829577256,
+        "load_shed_MWh": 1.4639614481307197e-05,
+        "public_new_MW": "{\"AC_exp\": 4346.9}",
+        "byop_MW": "{\"byop_RICE\": 3254.4}",
+        "termination": "optimal"
+      },
+      {
+        "scenario": "S2_off",
+        "social_total_USD": 88611277286.94878,
+        "served_MW_IT_year": 10197.925143674798,
+        "delay_MW_IT_year": 13056.943632944804,
+        "load_shed_MWh": 0.0003383310342784,
+        "public_new_MW": "{\"AC_exp\": 4153.1, \"CCGT\": 1366.9, \"OCGT\": 383.5, \"solar\": 1342.4}",
+        "byop_MW": "{}",
+        "termination": "optimal"
+      },
+      {
+        "scenario": "S3_mS2",
+        "social_total_USD": 63832946125.8499,
+        "served_MW_IT_year": 21420.026093658827,
+        "delay_MW_IT_year": 1834.8426829607715,
+        "load_shed_MWh": 0.0043440189223492,
+        "public_new_MW": "{\"AC_exp\": 4346.8}",
+        "byop_MW": "{\"byop_RICE\": 3254.4}",
+        "termination": "optimal"
+      }
+    ],
+    "baseline_2025": {
+      "fleet_2025_MW_by_carrier": {
+        "CCGT": 35914.3,
+        "OCGT": 8815.7,
+        "battery": 12768.4,
+        "biomass": 123.0,
+        "coal": 10774.0,
+        "gas_steam": 11848.3,
+        "hydro": 535.4,
+        "nuclear": 4980.0,
+        "onwind": 40028.8,
+        "solar": 29262.7
+      },
+      "committed_MW_by_year": {
+        "2026": 12110.8,
+        "2027": 2950.4,
+        "2028": 125.0
+      },
+      "zone_assignment_MW": {
+        "nearest_analysis_zone_from_p48": 6210.6,
+        "nearest_analysis_zone_from_p50": 1224.0,
+        "nearest_analysis_zone_from_p66": 1.2,
+        "network_county": 145107.9,
+        "reeds_county2zone": 2506.9
+      },
+      "load_TWh": 488.23357854151
+    },
+    "meaning_of_8s": "'8s' = 8 clusters with suffix s (aggregate all aggregatable carriers); p48 island dropped -> 7 analysis zones"
+  },
+  "note": {
+    "legacy_reproduction": "v2.4.0 E00 already showed bit-for-bit reproduction of v2.3.0 M4 objectives; the v2.5.0 prepare_network.py change only reads the WIND-01 file path from a config key whose default is the old path, so the 8s pipeline output is unchanged (rebuild not needed)"
+  }
+}

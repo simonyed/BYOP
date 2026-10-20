@@ -1,0 +1,119 @@
+/datasets/prgm/pypsa-usa/.venv/lib/python3.11/site-packages/pypsa/network/io.py:2082: FutureWarning:
+
+pandas infers the `str` dtype for string data since its version 3.0. PyPSA still converts it back to numpy object dtype on import, but will keep it from PyPSA 2.0 on. Set `pypsa.options.api.legacy_string_dtype` explicitly to suppress this warning.
+
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, links, loads, storage_units, sub_networks
+/datasets/prgm/BYOP_impact/pypsa-usa/workflow/../../BYOP_ERCOT_County_v2.5.0/tools_v250/build_2025_baseline_county.py:63: DeprecatedWarning:
+
+static is deprecated as of 1.0.0 and will be removed in 2.0.0. Use `self.components.<component>.static` instead.
+
+/datasets/prgm/BYOP_impact/pypsa-usa/workflow/../../BYOP_ERCOT_County_v2.5.0/tools_v250/build_2025_baseline_county.py:88: DeprecatedWarning:
+
+static is deprecated as of 1.0.0 and will be removed in 2.0.0. Use `self.components.<component>.static` instead.
+
+/datasets/prgm/pypsa-usa/.venv/lib/python3.11/site-packages/pypsa/network/io.py:1508: PerformanceWarning:
+
+DataFrame is highly fragmented.  This is usually the result of calling `frame.insert` many times, which has poor performance.  Consider joining all columns at once using pd.concat(axis=1) instead. To get a de-fragmented frame, use `newframe = frame.copy()`
+
+INFO:pypsa.network.io:Exported network 'Unnamed Network' saved to '/datasets/prgm/BYOP_impact/BYOP_ERCOT_County_v2.5.0/outputs/baseline_2025_county/baseline_2025_county_prepared.nc contains: carriers, storage_units, sub_networks, generators, buses, links, loads, global_constraints
+{
+ "status": "BASELINE_2025_COUNTY_BUILT",
+ "reeds_commit": "eb75a6bc664297492b38a40782df294666269971",
+ "prep": "resources/BYOP_ERCOT_County/networks/texas/elec_s_c192s_ec_lv1.0_REM-ERM-3h_E.nc",
+ "prep_sha256": "7825bb43682a41426f9ced1e31bf6e811c4a27eb74f9dcba634b299fdfe09102",
+ "native_load_sha256": "23664b0cddb047692f6cac26a4300e987c6309795395d394bf2dc223f37b53aa",
+ "island": {
+  "dropped_buses": [
+   "p48065",
+   "p48087",
+   "p48129",
+   "p48211",
+   "p48393"
+  ],
+  "removed_tie_links_MW": {
+   "p48129||p48191_fwd": 8.9929,
+   "p48129||p48191_rev": 13.3587
+  },
+  "rule": "D250-10: SPP p48 counties dropped; ERCO units re-hung to nearest ERCOT county bus",
+  "components": [
+   185,
+   2
+  ],
+  "small_components": [
+   [
+    "p48045",
+    "p48191"
+   ]
+  ],
+  "rehung_unreachable_buses": [
+   "p48191",
+   "p48045"
+  ]
+ },
+ "county_buses": 185,
+ "ercot_counties": 198,
+ "counties_without_bus": 13,
+ "load_buses": 185,
+ "itl_links": 904,
+ "itl_MW_total_fwd": 312160.8020030507,
+ "fleet_2025_MW_by_carrier": {
+  "CCGT": 35914.3,
+  "OCGT": 8815.7,
+  "battery": 12768.4,
+  "biomass": 123.0,
+  "coal": 10774.0,
+  "gas_steam": 11848.3,
+  "hydro": 535.4,
+  "nuclear": 4980.0,
+  "onwind": 40028.8,
+  "solar": 29262.7
+ },
+ "fleet_2025_MW_total": 155050.6,
+ "committed_MW_by_year": {
+  "2026": 12110.8,
+  "2027": 2950.4,
+  "2028": 125.0
+ },
+ "fleet_MW_by_rule": {
+  "nearest_county_bus": 10092.7,
+  "own_county_bus": 144957.9
+ },
+ "template_rule_MW": {
+  "nearest_bus": 4245.1,
+  "same_bus": 148116.4
+ },
+ "unmapped_reeds_techs": [],
+ "load": {
+  "ercot_native_2025_TWh": 488.233578542299,
+  "ercot_2025_TWh_model": 488.23357854151,
+  "peak_MW_3h": 83403.65211433335,
+  "top10_county_share": {
+   "p48201": 0.1348,
+   "p48113": 0.0901,
+   "p48439": 0.0646,
+   "p48029": 0.0559,
+   "p48039": 0.0375,
+   "p48085": 0.0341,
+   "p48453": 0.0337,
+   "p48107": 0.026,
+   "p48121": 0.0257,
+   "p48329": 0.0216
+  }
+ },
+ "itl_2025_calibration": {
+  "n_rows": 18,
+  "total_uplift_MW": 2621.7,
+  "counties": [
+   "p48095",
+   "p48101",
+   "p48107",
+   "p48109",
+   "p48235",
+   "p48339",
+   "p48499"
+  ]
+ },
+ "output": "/datasets/prgm/BYOP_impact/BYOP_ERCOT_County_v2.5.0/outputs/baseline_2025_county/baseline_2025_county_prepared.nc",
+ "output_sha256": "ecb185e508a1b5a4302cabe9df274ac8aae720be4e1bc46cc862fa660a5da61a"
+}

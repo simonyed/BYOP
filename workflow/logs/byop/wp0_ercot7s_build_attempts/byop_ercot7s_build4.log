@@ -1,0 +1,135 @@
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2559322
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+D:\BYOP_impact\pypsa-usa\.venv\Lib\site-packages\pulp\apis\gurobi_api.py:170: UserWarning: GUROBI error: Unknown parameter '_test'.
+  warnings.warn("GUROBI error: {}.".format(e))
+Config file repo_data/config/config.slurm.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.common.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.plotting.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.api.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.sector.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.default.yaml is extended by additional config specified via the command line.
+Config file config/config.api.yaml is extended by additional config specified via the command line.
+Config file config/config.slurm.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                         count
+------------------------  -------
+add_demand                      1
+add_electricity                 1
+add_extra_components            1
+add_sectors                     1
+build_electrical_demand         1
+build_renewable_profiles        3
+cluster_network                 1
+cluster_resources               1
+prepare_network                 1
+solve_network                   1
+total                          12
+
+Select jobs to execute...
+
+[Sun Oct 18 12:36:21 2026]
+rule cluster_resources:
+    input: resources/BYOP_ERCOT7s/networks/texas/elec_b.nc, resources/BYOP_ERCOT7s/geospatial/texas/regions_onshore.geojson, resources/BYOP_ERCOT7s/geospatial/texas/regions_offshore.geojson
+    output: resources/BYOP_ERCOT7s/networks/texas/elec_s20.nc, resources/BYOP_ERCOT7s/geospatial/texas/regions_onshore_s20.geojson, resources/BYOP_ERCOT7s/geospatial/texas/regions_offshore_s20.geojson, resources/BYOP_ERCOT7s/busmaps/texas/busmap_s20.csv
+    log: logs/cluster_resources/texas/elec_s20.log
+    jobid: 10
+    benchmark: benchmarks/BYOP_ERCOT7s/texas/cluster_resources_elec_s20
+    reason: Missing output files: resources/BYOP_ERCOT7s/networks/texas/elec_s20.nc, resources/BYOP_ERCOT7s/geospatial/texas/regions_offshore_s20.geojson, resources/BYOP_ERCOT7s/busmaps/texas/busmap_s20.csv, resources/BYOP_ERCOT7s/geospatial/texas/regions_onshore_s20.geojson
+    wildcards: interconnect=texas, simpl=20
+    resources: tmpdir=C:\Users\67084\AppData\Local\Temp, mem_mb=39, mem_mib=38, walltime=05:00:00
+
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, lines, sub_networks
+INFO:_helpers:[schema entry] Bus: 1250 rows, 26 cols: ['LAF_state', 'Pd', 'carrier', 'control', 'country', 'generator', 'interconnect', 'load_weight', 'location', 'nerc_reg', 'rec_trading_zone', 'reeds_ba', 'reeds_state', 'reeds_zone', 'sub_network', 'substation_lv', 'trans_grp', 'trans_reg', 'type', 'unit', 'v_mag_pu_max', 'v_mag_pu_min', 'v_mag_pu_set', 'v_nom', 'x', 'y']
+INFO:_helpers:[schema entry] Line: 1890 rows, 39 cols: ['active', 'b', 'b_pu', 'build_year', 'bus0', 'bus1', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'discount_rate', 'fom_cost', 'g', 'g_pu', 'interconnect', 'length', 'lifetime', 'num_parallel', 'overnight_cost', 'r', 'r_pu', 'r_pu_eff', 's_max_pu', 's_nom', 's_nom_extendable', 's_nom_max', 's_nom_min', 's_nom_mod', 's_nom_opt', 's_nom_set', 'sub_network', 'terrain_factor', 'type', 'underwater_fraction', 'v_ang_max', 'v_ang_min', 'v_nom', 'x', 'x_pu', 'x_pu_eff']
+INFO:_helpers:[schema entry] LineType: 59 rows, 8 cols: ['c_per_length', 'cross_section', 'f_nom', 'i_nom', 'mounting', 'r_per_length', 'references', 'x_per_length']
+INFO:_helpers:[schema entry] TransformerType: 14 rows, 15 cols: ['f_nom', 'i0', 'pfe', 'phase_shift', 'references', 's_nom', 'tap_max', 'tap_min', 'tap_neutral', 'tap_side', 'tap_step', 'v_nom_0', 'v_nom_1', 'vsc', 'vscr']
+INFO:_helpers:[schema entry] SubNetwork: 1 rows, 3 cols: ['carrier', 'obj', 'slack_bus']
+INFO:__main__:cluster_simpl runs before loads/generators are attached; using weighting_strategy='population' (n.buses.load_weight) regardless of configured 'demand-capacity'.
+WARNING:pypsa.network.transform:The attribute 'v_nom' is a standard attribute for other components but not for lines. This could cause confusion and it should be renamed. See also: https://go.pypsa.org/warning-attr-misleading.
+INFO:pyogrio._io:Created 20 records
+INFO:pyogrio._io:Created 3 records
+INFO:_helpers:[schema exit] Bus: 1250 -> 20 rows
+INFO:_helpers:[schema exit] Line: 1890 -> 43 rows
+INFO:pypsa.network.io:Exported network 'Unnamed Network' saved to 'resources/BYOP_ERCOT7s/networks/texas/elec_s20.nc contains: sub_networks, buses, lines
+Benchmark: unable to collect cpu and memory benchmark statistics
+[Sun Oct 18 12:36:53 2026]
+Finished job 10.
+1 of 12 steps (8%) done
+Select jobs to execute...
+
+[Sun Oct 18 12:36:53 2026]
+rule build_electrical_demand:
+    input: resources/BYOP_ERCOT7s/networks/texas/elec_s20.nc, data/nrel_efs/EFSLoadProfile_Reference_Moderate.csv, data/nrel_efs/EFSLoadProfile_Reference_Moderate.csv
+    output: resources/BYOP_ERCOT7s/demand/texas/power_electricity_s20.csv, resources/BYOP_ERCOT7s/demand/texas/power_zonal_components_s20.parquet
+    log: logs/BYOP_ERCOT7s/texas/power_build_demand_s20.log
+    jobid: 26
+    benchmark: benchmarks/BYOP_ERCOT7s/texas/power_build_demand_s20
+    reason: Missing output files: resources/BYOP_ERCOT7s/demand/texas/power_electricity_s20.csv; Input files updated by another job: resources/BYOP_ERCOT7s/networks/texas/elec_s20.nc
+    wildcards: interconnect=texas, end_use=power, simpl=20
+    threads: 2
+    resources: tmpdir=C:\Users\67084\AppData\Local\Temp, mem_mb=112756, mem_mib=107533, walltime=00:50:00
+
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, lines, sub_networks
+INFO:__main__:Building Load Data using EFS demand
+INFO:__main__:Setting load allocation factors based on bus load_weight
+WARNING:__main__:No bus carries demand key(s) ['Alabama', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']; 410566.7 MW of mean demand is DROPPED. Per key: {'Alabama': 11166.3, 'Arizona': 10207.3, 'Arkansas': 5844.5, 'California': 32490.2, 'Colorado': 7416.2, 'Connecticut': 3214.4, 'Delaware': 1303.2, 'Florida': 28414.0, 'Georgia': 17287.4, 'Idaho': 3195.1, 'Illinois': 16817.5, 'Indiana': 12313.7, 'Iowa': 5680.6, 'Kansas': 4741.2, 'Kentucky': 10978.5, 'Louisiana': 10455.6, 'Maine': 1219.7, 'Maryland': 8696.4, 'Massachusetts': 6041.6, 'Michigan': 12041.3, 'Minnesota': 8475.0, 'Mississippi': 6106.1, 'Missouri': 10069.3, 'Montana': 1920.9, 'Nebraska': 3731.1, 'Nevada': 4733.2, 'New Hampshire': 1151.8, 'New Jersey': 8891.1, 'New Mexico': 2993.6, 'New York': 16239.8, 'North Carolina': 16764.1, 'North Dakota': 1619.5, 'Ohio': 17907.5, 'Oklahoma': 6785.0, 'Oregon': 6450.4, 'Pennsylvania': 16868.0, 'Rhode Island': 824.9, 'South Carolina': 10135.9, 'South Dakota': 1441.8, 'Tennessee': 12721.9, 'Utah': 3930.2, 'Vermont': 591.7, 'Virginia': 13842.2, 'Washington': 12666.4, 'West Virginia': 3721.3, 'Wisconsin': 8061.3, 'Wyoming': 2398.3}.
+INFO:__main__:Assigning efs demand scaling method
+INFO:__main__:No demand formatting required
+Benchmark: unable to collect cpu and memory benchmark statistics
+[Sun Oct 18 12:38:27 2026]
+Finished job 26.
+2 of 12 steps (17%) done
+Select jobs to execute...
+
+[Sun Oct 18 12:38:27 2026]
+rule build_renewable_profiles:
+    input: data/copernicus/PROBAV_LC100_global_v3.0.1_2019-nrt_Discrete-Classification-map_USA_EPSG-4326.tif, data/natura.tiff, data/gebco/gebco_2023_n55.0_s10.0_w-126.0_e-65.0.tif, resources/BYOP_ERCOT7s/geospatial/texas/country_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/offshore_shapes.geojson, repo_data/geospatial/CEC_GIS/CEC_Wind_BaseScreen_epsg3310.tif, repo_data/geospatial/CEC_GIS/CEC_Solar_BaseScreen_epsg3310.tif, repo_data/geospatial/boem_osw_planning_areas.tif, resources/BYOP_ERCOT7s/geospatial/texas/regions_offshore_s20.geojson, resources/BYOP_ERCOT7s/geospatial/texas/regions_offshore.geojson, data/nrel_exclusion/derived/avail_offwind_floating_reference.nc, data/nrel_exclusion/derived/caps_offwind_floating_reference.nc, data/godeeep/rcp85cooler/wind_gen_cf_2030_125m_compressed.nc, resources/BYOP_ERCOT7s/busmaps/texas/busmap_s20.csv
+    output: resources/BYOP_ERCOT7s/profiles/texas/2030/profile_offwind_floating_s20.nc
+    log: logs/BYOP_ERCOT7s/texas/build_renewable_profile_offwind_floating_2030_s20.log
+    jobid: 18
+    benchmark: benchmarks/BYOP_ERCOT7s/texas/build_renewable_profiles_offwind_floating_2030_s20
+    reason: Missing output files: resources/BYOP_ERCOT7s/profiles/texas/2030/profile_offwind_floating_s20.nc; Input files updated by another job: resources/BYOP_ERCOT7s/geospatial/texas/regions_offshore_s20.geojson, resources/BYOP_ERCOT7s/busmaps/texas/busmap_s20.csv
+    wildcards: interconnect=texas, planning_horizon=2030, technology=offwind_floating, simpl=20
+    threads: 6
+    resources: tmpdir=C:\Users\67084\AppData\Local\Temp, mem_mb=32000, mem_mib=30518, walltime=04:00:00
+
+INFO:__main__:Loading godeeep renewable data...
+INFO:__main__:Using GODEEEP CF year 2030 for scenario 'rcp85cooler'
+INFO:__main__:Using renewable snapshots for year 2030: 2030-01-01 00:00 to 2031-01-01 00:00 (inclusive end)
+INFO:__main__:NREL access scenario: reference
+WARNING:__main__:NREL caps remap (offwind_floating): 98/104 entries have no busmap match (out of the run footprint) — dropping 258710.5 MW p_nom_max, 97.5% of the national total. Border regions straddling the footprint edge lose their out-of-footprint capacity entirely; see nrel_caps_reassign in config.common.yaml for opt-in recovery.
+INFO:__main__:Remapped NREL caps to 2 cluster buses.
+Traceback (most recent call last):
+  File "D:\BYOP_impact\pypsa-usa\workflow\.snakemake\scripts\tmptnh7yhzt.build_renewable_profiles.py", line 529, in <module>
+    mapping_sub = get_cell_to_bus_mapping(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\BYOP_impact\pypsa-usa\workflow\rules\..\scripts\nrel_exclusion\aggregate_godeeep_weighted.py", line 87, in get_cell_to_bus_mapping
+    print(f"[mapping] cache MISS, building \u2192 {cache_path}")
+  File "C:\Users\67084\AppData\Roaming\uv\python\cpython-3.11.17-windows-x86_64-none\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2192' in position 31: character maps to <undefined>
+[Sun Oct 18 12:38:49 2026]
+Error in rule build_renewable_profiles:
+    jobid: 18
+    input: data/copernicus/PROBAV_LC100_global_v3.0.1_2019-nrt_Discrete-Classification-map_USA_EPSG-4326.tif, data/natura.tiff, data/gebco/gebco_2023_n55.0_s10.0_w-126.0_e-65.0.tif, resources/BYOP_ERCOT7s/geospatial/texas/country_shapes.geojson, resources/BYOP_ERCOT7s/geospatial/texas/offshore_shapes.geojson, repo_data/geospatial/CEC_GIS/CEC_Wind_BaseScreen_epsg3310.tif, repo_data/geospatial/CEC_GIS/CEC_Solar_BaseScreen_epsg3310.tif, repo_data/geospatial/boem_osw_planning_areas.tif, resources/BYOP_ERCOT7s/geospatial/texas/regions_offshore_s20.geojson, resources/BYOP_ERCOT7s/geospatial/texas/regions_offshore.geojson, data/nrel_exclusion/derived/avail_offwind_floating_reference.nc, data/nrel_exclusion/derived/caps_offwind_floating_reference.nc, data/godeeep/rcp85cooler/wind_gen_cf_2030_125m_compressed.nc, resources/BYOP_ERCOT7s/busmaps/texas/busmap_s20.csv
+    output: resources/BYOP_ERCOT7s/profiles/texas/2030/profile_offwind_floating_s20.nc
+    log: logs/BYOP_ERCOT7s/texas/build_renewable_profile_offwind_floating_2030_s20.log (check log file(s) for error details)
+
+RuleException:
+CalledProcessError in file D:\BYOP_impact\pypsa-usa\workflow\rules/build_electricity.smk, line 348:
+Command 'D:/BYOP_impact/pypsa-usa/.venv/Scripts/python.exe "D:\BYOP_impact\pypsa-usa\workflow\.snakemake\scripts\tmptnh7yhzt.build_renewable_profiles.py"' returned non-zero exit status 1.
+  File "D:\BYOP_impact\pypsa-usa\workflow\rules/build_electricity.smk", line 348, in __rule_build_renewable_profiles
+  File "C:\Users\67084\AppData\Roaming\uv\python\cpython-3.11.17-windows-x86_64-none\Lib\concurrent\futures\thread.py", line 58, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake\log\2026-10-18T123614.748503.snakemake.log
+EXIT=1

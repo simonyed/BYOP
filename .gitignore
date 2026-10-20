@@ -322,3 +322,18 @@ slurm-*.err
 
 # BYOP executed builders (the generic Python build/ ignore above must not hide them)
 !workflow/byop/build/
+
+# BYOP results and BYOP build logs are tracked so runs can be reviewed on GitHub (user 2026-10-20).
+# Only small result files: networks (.nc/.pkl), per-run code snapshots (code sha256 is in each manifest) and pid files stay out.
+!workflow/results/
+workflow/results/*
+!workflow/results/BYOP/
+!workflow/results/BYOP/**
+workflow/results/BYOP/**/*.nc
+workflow/results/BYOP/**/*.pkl
+workflow/results/BYOP/**/*.pid
+workflow/results/BYOP/**/code/
+!workflow/logs/
+workflow/logs/*
+!workflow/logs/byop/
+!workflow/logs/byop/**

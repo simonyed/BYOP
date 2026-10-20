@@ -1,0 +1,1 @@
+{"timestamp_utc": "2026-10-20T10:43:49.569079+00:00", "run_id": "v240_P1_GC_20261020T100529Z", "case_id": "P1_GC", "event": "optimization_solved", "status": "SOLVER_OPTIMAL", "message": "obj 6.152343e+09; vars 7932937; int 0; 2289s", "scenario": "S1"}

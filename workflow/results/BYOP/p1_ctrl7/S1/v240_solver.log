@@ -1,0 +1,220 @@
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, links, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, links, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:pypsa.optimization.window:Building the multi-period model over a MultiIndex `snapshot`. Opt into the flat representation via `pypsa.options.optimization.model_snapshot_index = 'flat'`.
+INFO:opts.reserves:Adding ERM constraint for TX with reserve level 0.15
+INFO:opts.reserves:Added ERM constraint for TX
+INFO:opts.bidirectional_link:Added 22 bidirectional link constraints
+INFO:opts.sector:Demand response not enabled
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver logs written to `/datasets/prgm/BYOP_impact/BYOP_ERCOT_County_v2.5.0/outputs/p1_ctrl7/S1/solver_S0.log`.
+INFO:linopy.model:Solver options:
+ - threads: 4
+ - method: 2
+ - crossover: 0
+ - BarHomogeneous: 1
+ - BarConvTol: 1e-05
+ - OptimalityTol: 0.0001
+ - FeasibilityTol: 0.001
+ - ScaleFlag: 1
+ - Seed: 123
+ - AggFill: 0
+ - PreDual: 0
+ - GURO_PAR_BARDENSETHRESH: 200
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 1.5s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 568705 primals, 1504317 duals
+Objective: 4.24e+10
+Solver: gurobi
+Runtime: 20.50s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints bidirectional_link_p60||p61_exp2030, bidirectional_link_p60||p61_exp2031, bidirectional_link_p60||p62_exp2030, bidirectional_link_p60||p62_exp2031, bidirectional_link_p60||p63_exp2030, bidirectional_link_p60||p63_exp2031, bidirectional_link_p61||p62_exp2030, bidirectional_link_p61||p62_exp2031, bidirectional_link_p61||p63_exp2030, bidirectional_link_p61||p63_exp2031, bidirectional_link_p61||p64_exp2030, bidirectional_link_p61||p64_exp2031, bidirectional_link_p61||p65_exp2030, bidirectional_link_p61||p65_exp2031, bidirectional_link_p63||p64_exp2030, bidirectional_link_p63||p64_exp2031, bidirectional_link_p64||p65_exp2030, bidirectional_link_p64||p65_exp2031, bidirectional_link_p64||p67_exp2030, bidirectional_link_p64||p67_exp2031, bidirectional_link_p65||p67_exp2030, bidirectional_link_p65||p67_exp2031, V240-reuse_right_p63 gas_steam 2025fleet r2027, V240-reuse_right_p63 gas_steam 2025fleet r2028, V240-reuse_right_p63 gas_steam 2025fleet r2030, V240-reuse_right_p63 gas_steam 2025fleet r2031, V240-reuse_right_p64 OCGT 2025fleet r2030, V240-reuse_right_p64 gas_steam 2025fleet r2027, V240-reuse_right_p65 CCGT 2025fleet r2027, V240-reuse_right_p65 CCGT 2025fleet r2031, V240-reuse_right_p65 gas_steam 2025fleet r2027, V240-reuse_right_p65 gas_steam 2025fleet r2029, M2-line_sym_p60||p61_exp2030_fwd, M2-line_sym_p60||p61_exp2031_fwd, M2-line_cap_p60||p61, M2-line_sym_p60||p62_exp2030_fwd, M2-line_sym_p60||p62_exp2031_fwd, M2-line_cap_p60||p62, M2-line_sym_p60||p63_exp2030_fwd, M2-line_sym_p60||p63_exp2031_fwd, M2-line_cap_p60||p63, M2-line_sym_p61||p62_exp2030_fwd, M2-line_sym_p61||p62_exp2031_fwd, M2-line_cap_p61||p62, M2-line_sym_p61||p63_exp2030_fwd, M2-line_sym_p61||p63_exp2031_fwd, M2-line_cap_p61||p63, M2-line_sym_p61||p64_exp2030_fwd, M2-line_sym_p61||p64_exp2031_fwd, M2-line_cap_p61||p64, M2-line_sym_p61||p65_exp2030_fwd, M2-line_sym_p61||p65_exp2031_fwd, M2-line_cap_p61||p65, M2-line_sym_p63||p64_exp2030_fwd, M2-line_sym_p63||p64_exp2031_fwd, M2-line_cap_p63||p64, M2-line_sym_p64||p65_exp2030_fwd, M2-line_sym_p64||p65_exp2031_fwd, M2-line_cap_p64||p65, M2-line_sym_p64||p67_exp2030_fwd, M2-line_sym_p64||p67_exp2031_fwd, M2-line_cap_p64||p67, M2-line_sym_p65||p67_exp2030_fwd, M2-line_sym_p65||p67_exp2031_fwd, M2-line_cap_p65||p67 were not assigned to the network.
+INFO:opts.reserves:Storing ERM data from optimization results
+INFO:v240:S0: {"v_social": 2800000.0, "v_private": 2800000.0, "public_resource_capex_PV_USD": 119061380.17631821, "byop_resource_capex_PV_USD": 0.0, "byop_private_capex_PV_USD": 0.0, "system_operating_PV_USD": 42294385555.72805, "byop_fuel_PV_USD": 0.0, "load_shed_MWh": 2.3343114597217568e-06, "load_shed_PV_USD": 0.022648409716209753, "social_delay_loss_PV_USD": 0.0, "served_MW_IT_year": 0.0, "delay_MW_IT_year": 0.0, "requested_MW_IT_year": 0.0, "transfer_energy_PV_social_USD": 0.0, "tax_credit_PV_USD": 0.0, "objective": 42425544095.32694, "social_real_resource_cost_USD": 42413446935.92702, "social_total_USD": 42413446935.92702, "private_total_USD": 0.0, "objective_plus_service_value": 42425544095.32694, "integer_vars": 0, "n_vars": 432289, "n_cons": 807653, "solve_seconds": 38.7}
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, links, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:opts.reserves:Adding ERM constraint for TX with reserve level 0.15
+INFO:opts.reserves:Added ERM constraint for TX
+INFO:opts.bidirectional_link:Added 22 bidirectional link constraints
+INFO:opts.sector:Demand response not enabled
+INFO:wp2:ERM-DC-01 B: added (1+0.15) x POI flow of 18 POIs to GlobalConstraint-TX_ERM
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver logs written to `/datasets/prgm/BYOP_impact/BYOP_ERCOT_County_v2.5.0/outputs/p1_ctrl7/S1/solver_S1.log`.
+INFO:linopy.model:Solver options:
+ - threads: 4
+ - method: 2
+ - crossover: 0
+ - BarHomogeneous: 1
+ - BarConvTol: 1e-05
+ - OptimalityTol: 0.0001
+ - FeasibilityTol: 0.001
+ - ScaleFlag: 1
+ - Seed: 123
+ - AggFill: 0
+ - PreDual: 0
+ - GURO_PAR_BARDENSETHRESH: 200
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 1.72s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 617125 primals, 1656549 duals
+Objective: 7.15e+09
+Solver: gurobi
+Runtime: 19.74s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints bidirectional_link_p60||p61_exp2030, bidirectional_link_p60||p61_exp2031, bidirectional_link_p60||p62_exp2030, bidirectional_link_p60||p62_exp2031, bidirectional_link_p60||p63_exp2030, bidirectional_link_p60||p63_exp2031, bidirectional_link_p61||p62_exp2030, bidirectional_link_p61||p62_exp2031, bidirectional_link_p61||p63_exp2030, bidirectional_link_p61||p63_exp2031, bidirectional_link_p61||p64_exp2030, bidirectional_link_p61||p64_exp2031, bidirectional_link_p61||p65_exp2030, bidirectional_link_p61||p65_exp2031, bidirectional_link_p63||p64_exp2030, bidirectional_link_p63||p64_exp2031, bidirectional_link_p64||p65_exp2030, bidirectional_link_p64||p65_exp2031, bidirectional_link_p64||p67_exp2030, bidirectional_link_p64||p67_exp2031, bidirectional_link_p65||p67_exp2030, bidirectional_link_p65||p67_exp2031, M2-train_cap_DC_p63 train2026, M2-train_daily_DC_p63 train2026, M2-serve_cap_DC_p63 S2026, M2-train_cap_DC_p63 train2027, M2-train_daily_DC_p63 train2027, M2-serve_cap_DC_p63 S2027, M2-train_cap_DC_p63 train2028, M2-train_daily_DC_p63 train2028, M2-serve_cap_DC_p63 S2028, M2-train_cap_DC_p63 train2029, M2-train_daily_DC_p63 train2029, M2-serve_cap_DC_p63 S2029, M2-train_cap_DC_p63 train2030, M2-train_daily_DC_p63 train2030, M2-serve_cap_DC_p63 S2030, M2-train_cap_DC_p63 train2031, M2-train_daily_DC_p63 train2031, M2-serve_cap_DC_p63 S2031, M2-train_cap_DC_p64 train2026, M2-train_daily_DC_p64 train2026, M2-serve_cap_DC_p64 S2026, M2-train_cap_DC_p64 train2027, M2-train_daily_DC_p64 train2027, M2-serve_cap_DC_p64 S2027, M2-train_cap_DC_p64 train2028, M2-train_daily_DC_p64 train2028, M2-serve_cap_DC_p64 S2028, M2-train_cap_DC_p64 train2029, M2-train_daily_DC_p64 train2029, M2-serve_cap_DC_p64 S2029, M2-train_cap_DC_p64 train2030, M2-train_daily_DC_p64 train2030, M2-serve_cap_DC_p64 S2030, M2-train_cap_DC_p64 train2031, M2-train_daily_DC_p64 train2031, M2-serve_cap_DC_p64 S2031, M2-train_cap_DC_p65 train2026, M2-train_daily_DC_p65 train2026, M2-serve_cap_DC_p65 S2026, M2-train_cap_DC_p65 train2027, M2-train_daily_DC_p65 train2027, M2-serve_cap_DC_p65 S2027, M2-train_cap_DC_p65 train2028, M2-train_daily_DC_p65 train2028, M2-serve_cap_DC_p65 S2028, M2-train_cap_DC_p65 train2029, M2-train_daily_DC_p65 train2029, M2-serve_cap_DC_p65 S2029, M2-train_cap_DC_p65 train2030, M2-train_daily_DC_p65 train2030, M2-serve_cap_DC_p65 S2030, M2-train_cap_DC_p65 train2031, M2-train_daily_DC_p65 train2031, M2-serve_cap_DC_p65 S2031, V240-reuse_right_p63 gas_steam 2025fleet r2027, V240-reuse_right_p63 gas_steam 2025fleet r2028, V240-reuse_right_p63 gas_steam 2025fleet r2030, V240-reuse_right_p63 gas_steam 2025fleet r2031, V240-reuse_right_p64 OCGT 2025fleet r2030, V240-reuse_right_p64 gas_steam 2025fleet r2027, V240-reuse_right_p65 CCGT 2025fleet r2027, V240-reuse_right_p65 CCGT 2025fleet r2031, V240-reuse_right_p65 gas_steam 2025fleet r2027, V240-reuse_right_p65 gas_steam 2025fleet r2029, M2-line_sym_p60||p61_exp2030_fwd, M2-line_sym_p60||p61_exp2031_fwd, M2-line_cap_p60||p61, M2-line_sym_p60||p62_exp2030_fwd, M2-line_sym_p60||p62_exp2031_fwd, M2-line_cap_p60||p62, M2-line_sym_p60||p63_exp2030_fwd, M2-line_sym_p60||p63_exp2031_fwd, M2-line_cap_p60||p63, M2-line_sym_p61||p62_exp2030_fwd, M2-line_sym_p61||p62_exp2031_fwd, M2-line_cap_p61||p62, M2-line_sym_p61||p63_exp2030_fwd, M2-line_sym_p61||p63_exp2031_fwd, M2-line_cap_p61||p63, M2-line_sym_p61||p64_exp2030_fwd, M2-line_sym_p61||p64_exp2031_fwd, M2-line_cap_p61||p64, M2-line_sym_p61||p65_exp2030_fwd, M2-line_sym_p61||p65_exp2031_fwd, M2-line_cap_p61||p65, M2-line_sym_p63||p64_exp2030_fwd, M2-line_sym_p63||p64_exp2031_fwd, M2-line_cap_p63||p64, M2-line_sym_p64||p65_exp2030_fwd, M2-line_sym_p64||p65_exp2031_fwd, M2-line_cap_p64||p65, M2-line_sym_p64||p67_exp2030_fwd, M2-line_sym_p64||p67_exp2031_fwd, M2-line_cap_p64||p67, M2-line_sym_p65||p67_exp2030_fwd, M2-line_sym_p65||p67_exp2031_fwd, M2-line_cap_p65||p67 were not assigned to the network.
+INFO:opts.reserves:Storing ERM data from optimization results
+INFO:v240:S1: {"v_social": 2800000.0, "v_private": 2800000.0, "public_resource_capex_PV_USD": 851151011.2705162, "byop_resource_capex_PV_USD": 0.0, "byop_private_capex_PV_USD": 0.0, "system_operating_PV_USD": 43471163440.44834, "byop_fuel_PV_USD": 0.0, "load_shed_MWh": 2.0884099918968572e-06, "load_shed_PV_USD": 0.020210987216365633, "social_delay_loss_PV_USD": -0.0026123053157290754, "served_MW_IT_year": 14190.351030329979, "delay_MW_IT_year": -9.79593295369341e-10, "requested_MW_IT_year": 14190.351030328999, "transfer_energy_PV_social_USD": 1669559782.9517417, "tax_credit_PV_USD": 0.0, "objective": 7146915544.93264, "social_real_resource_cost_USD": 44322314451.73907, "social_total_USD": 44322314451.73646, "private_total_USD": 1428412272.3037717, "objective_plus_service_value": 44334387333.88185, "integer_vars": 0, "n_vars": 450469, "n_cons": 826139, "solve_seconds": 41.1}
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, links, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:opts.reserves:Adding ERM constraint for TX with reserve level 0.15
+INFO:opts.reserves:Added ERM constraint for TX
+INFO:opts.bidirectional_link:Added 22 bidirectional link constraints
+INFO:opts.sector:Demand response not enabled
+INFO:wp2:ERM-DC-01 B: added (1+0.15) x POI flow of 18 POIs to GlobalConstraint-TX_ERM
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver logs written to `/datasets/prgm/BYOP_impact/BYOP_ERCOT_County_v2.5.0/outputs/p1_ctrl7/S1/solver_S3.log`.
+INFO:linopy.model:Solver options:
+ - threads: 4
+ - method: 2
+ - crossover: 0
+ - BarHomogeneous: 1
+ - BarConvTol: 1e-05
+ - OptimalityTol: 0.0001
+ - FeasibilityTol: 0.001
+ - ScaleFlag: 1
+ - Seed: 123
+ - AggFill: 0
+ - PreDual: 0
+ - GURO_PAR_BARDENSETHRESH: 200
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 2.4s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 668237 primals, 1816565 duals
+Objective: 7.15e+09
+Solver: gurobi
+Runtime: 24.87s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints bidirectional_link_p60||p61_exp2030, bidirectional_link_p60||p61_exp2031, bidirectional_link_p60||p62_exp2030, bidirectional_link_p60||p62_exp2031, bidirectional_link_p60||p63_exp2030, bidirectional_link_p60||p63_exp2031, bidirectional_link_p61||p62_exp2030, bidirectional_link_p61||p62_exp2031, bidirectional_link_p61||p63_exp2030, bidirectional_link_p61||p63_exp2031, bidirectional_link_p61||p64_exp2030, bidirectional_link_p61||p64_exp2031, bidirectional_link_p61||p65_exp2030, bidirectional_link_p61||p65_exp2031, bidirectional_link_p63||p64_exp2030, bidirectional_link_p63||p64_exp2031, bidirectional_link_p64||p65_exp2030, bidirectional_link_p64||p65_exp2031, bidirectional_link_p64||p67_exp2030, bidirectional_link_p64||p67_exp2031, bidirectional_link_p65||p67_exp2030, bidirectional_link_p65||p67_exp2031, M2-train_cap_DC_p63 train2026, M2-train_daily_DC_p63 train2026, M2-serve_cap_DC_p63 S2026, FLEX-conn_DC_p63 S2026, FLEX-backing_DC_p63 S2026, M2-train_cap_DC_p63 train2027, M2-train_daily_DC_p63 train2027, M2-serve_cap_DC_p63 S2027, FLEX-conn_DC_p63 S2027, FLEX-backing_DC_p63 S2027, M2-train_cap_DC_p63 train2028, M2-train_daily_DC_p63 train2028, M2-serve_cap_DC_p63 S2028, FLEX-conn_DC_p63 S2028, FLEX-backing_DC_p63 S2028, M2-train_cap_DC_p63 train2029, M2-train_daily_DC_p63 train2029, M2-serve_cap_DC_p63 S2029, FLEX-conn_DC_p63 S2029, FLEX-backing_DC_p63 S2029, M2-train_cap_DC_p63 train2030, M2-train_daily_DC_p63 train2030, M2-serve_cap_DC_p63 S2030, FLEX-conn_DC_p63 S2030, FLEX-backing_DC_p63 S2030, M2-train_cap_DC_p63 train2031, M2-train_daily_DC_p63 train2031, M2-serve_cap_DC_p63 S2031, FLEX-conn_DC_p63 S2031, FLEX-backing_DC_p63 S2031, M2-train_cap_DC_p64 train2026, M2-train_daily_DC_p64 train2026, M2-serve_cap_DC_p64 S2026, FLEX-conn_DC_p64 S2026, FLEX-backing_DC_p64 S2026, M2-train_cap_DC_p64 train2027, M2-train_daily_DC_p64 train2027, M2-serve_cap_DC_p64 S2027, FLEX-conn_DC_p64 S2027, FLEX-backing_DC_p64 S2027, M2-train_cap_DC_p64 train2028, M2-train_daily_DC_p64 train2028, M2-serve_cap_DC_p64 S2028, FLEX-conn_DC_p64 S2028, FLEX-backing_DC_p64 S2028, M2-train_cap_DC_p64 train2029, M2-train_daily_DC_p64 train2029, M2-serve_cap_DC_p64 S2029, FLEX-conn_DC_p64 S2029, FLEX-backing_DC_p64 S2029, M2-train_cap_DC_p64 train2030, M2-train_daily_DC_p64 train2030, M2-serve_cap_DC_p64 S2030, FLEX-conn_DC_p64 S2030, FLEX-backing_DC_p64 S2030, M2-train_cap_DC_p64 train2031, M2-train_daily_DC_p64 train2031, M2-serve_cap_DC_p64 S2031, FLEX-conn_DC_p64 S2031, FLEX-backing_DC_p64 S2031, M2-train_cap_DC_p65 train2026, M2-train_daily_DC_p65 train2026, M2-serve_cap_DC_p65 S2026, FLEX-conn_DC_p65 S2026, FLEX-backing_DC_p65 S2026, M2-train_cap_DC_p65 train2027, M2-train_daily_DC_p65 train2027, M2-serve_cap_DC_p65 S2027, FLEX-conn_DC_p65 S2027, FLEX-backing_DC_p65 S2027, M2-train_cap_DC_p65 train2028, M2-train_daily_DC_p65 train2028, M2-serve_cap_DC_p65 S2028, FLEX-conn_DC_p65 S2028, FLEX-backing_DC_p65 S2028, M2-train_cap_DC_p65 train2029, M2-train_daily_DC_p65 train2029, M2-serve_cap_DC_p65 S2029, FLEX-conn_DC_p65 S2029, FLEX-backing_DC_p65 S2029, M2-train_cap_DC_p65 train2030, M2-train_daily_DC_p65 train2030, M2-serve_cap_DC_p65 S2030, FLEX-conn_DC_p65 S2030, FLEX-backing_DC_p65 S2030, M2-train_cap_DC_p65 train2031, M2-train_daily_DC_p65 train2031, M2-serve_cap_DC_p65 S2031, FLEX-conn_DC_p65 S2031, FLEX-backing_DC_p65 S2031, V240-reuse_right_p63 gas_steam 2025fleet r2027, V240-reuse_right_p63 gas_steam 2025fleet r2028, V240-reuse_right_p63 gas_steam 2025fleet r2030, V240-reuse_right_p63 gas_steam 2025fleet r2031, V240-reuse_right_p64 OCGT 2025fleet r2030, V240-reuse_right_p64 gas_steam 2025fleet r2027, V240-reuse_right_p65 CCGT 2025fleet r2027, V240-reuse_right_p65 CCGT 2025fleet r2031, V240-reuse_right_p65 gas_steam 2025fleet r2027, V240-reuse_right_p65 gas_steam 2025fleet r2029, M2-line_sym_p60||p61_exp2030_fwd, M2-line_sym_p60||p61_exp2031_fwd, M2-line_cap_p60||p61, M2-line_sym_p60||p62_exp2030_fwd, M2-line_sym_p60||p62_exp2031_fwd, M2-line_cap_p60||p62, M2-line_sym_p60||p63_exp2030_fwd, M2-line_sym_p60||p63_exp2031_fwd, M2-line_cap_p60||p63, M2-line_sym_p61||p62_exp2030_fwd, M2-line_sym_p61||p62_exp2031_fwd, M2-line_cap_p61||p62, M2-line_sym_p61||p63_exp2030_fwd, M2-line_sym_p61||p63_exp2031_fwd, M2-line_cap_p61||p63, M2-line_sym_p61||p64_exp2030_fwd, M2-line_sym_p61||p64_exp2031_fwd, M2-line_cap_p61||p64, M2-line_sym_p61||p65_exp2030_fwd, M2-line_sym_p61||p65_exp2031_fwd, M2-line_cap_p61||p65, M2-line_sym_p63||p64_exp2030_fwd, M2-line_sym_p63||p64_exp2031_fwd, M2-line_cap_p63||p64, M2-line_sym_p64||p65_exp2030_fwd, M2-line_sym_p64||p65_exp2031_fwd, M2-line_cap_p64||p65, M2-line_sym_p64||p67_exp2030_fwd, M2-line_sym_p64||p67_exp2031_fwd, M2-line_cap_p64||p67, M2-line_sym_p65||p67_exp2030_fwd, M2-line_sym_p65||p67_exp2031_fwd, M2-line_cap_p65||p67 were not assigned to the network.
+INFO:opts.reserves:Storing ERM data from optimization results
+INFO:v240:S3: {"v_social": 2800000.0, "v_private": 2800000.0, "public_resource_capex_PV_USD": 851150906.2705696, "byop_resource_capex_PV_USD": 0.0, "byop_private_capex_PV_USD": 0.0, "system_operating_PV_USD": 43471163546.538, "byop_fuel_PV_USD": 0.0, "load_shed_MWh": 8.774561342493681e-08, "load_shed_PV_USD": 0.0008510505833053216, "social_delay_loss_PV_USD": 0.00011722910982448295, "served_MW_IT_year": 14190.351030328955, "delay_MW_IT_year": 4.522959784480918e-11, "requested_MW_IT_year": 14190.351030329, "transfer_energy_PV_social_USD": 1669559765.661797, "tax_credit_PV_USD": 0.0, "objective": 7146915544.3646555, "social_real_resource_cost_USD": 44322314452.809425, "social_total_USD": 44322314452.80954, "private_total_USD": 1428412257.5003672, "objective_plus_service_value": 44334387333.313866, "integer_vars": 0, "n_vars": 478733, "n_cons": 866539, "solve_seconds": 57.0}
+WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['DC_p63'], dtype='object', name='name')
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-06
+ - OutputFlag: 0
+ - Threads: 4
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 0.25s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 25562 primals, 53236 duals
+Objective: -2.23e+10
+Solver: gurobi
+Runtime: 0.10s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Generator-ext-p-lower, Generator-ext-p-upper, M2-train_cap_DC_p63 train2026, M2-train_daily_DC_p63 train2026, M2-serve_cap_DC_p63 S2026, FLEX-conn_DC_p63 S2026, FLEX-backing_DC_p63 S2026, M2-train_cap_DC_p63 train2027, M2-train_daily_DC_p63 train2027, M2-serve_cap_DC_p63 S2027, FLEX-conn_DC_p63 S2027, FLEX-backing_DC_p63 S2027, M2-train_cap_DC_p63 train2028, M2-train_daily_DC_p63 train2028, M2-serve_cap_DC_p63 S2028, FLEX-conn_DC_p63 S2028, FLEX-backing_DC_p63 S2028, M2-train_cap_DC_p63 train2029, M2-train_daily_DC_p63 train2029, M2-serve_cap_DC_p63 S2029, FLEX-conn_DC_p63 S2029, FLEX-backing_DC_p63 S2029, M2-train_cap_DC_p63 train2030, M2-train_daily_DC_p63 train2030, M2-serve_cap_DC_p63 S2030, FLEX-conn_DC_p63 S2030, FLEX-backing_DC_p63 S2030, M2-train_cap_DC_p63 train2031, M2-train_daily_DC_p63 train2031, M2-serve_cap_DC_p63 S2031, FLEX-conn_DC_p63 S2031, FLEX-backing_DC_p63 S2031 were not assigned to the network.
+WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['DC_p64'], dtype='object', name='name')
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-06
+ - OutputFlag: 0
+ - Threads: 4
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 0.37s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 24216 primals, 50544 duals
+Objective: -1.24e+09
+Solver: gurobi
+Runtime: 0.11s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Generator-ext-p-lower, Generator-ext-p-upper, M2-train_cap_DC_p64 train2026, M2-train_daily_DC_p64 train2026, M2-serve_cap_DC_p64 S2026, FLEX-conn_DC_p64 S2026, FLEX-backing_DC_p64 S2026, M2-train_cap_DC_p64 train2027, M2-train_daily_DC_p64 train2027, M2-serve_cap_DC_p64 S2027, FLEX-conn_DC_p64 S2027, FLEX-backing_DC_p64 S2027, M2-train_cap_DC_p64 train2028, M2-train_daily_DC_p64 train2028, M2-serve_cap_DC_p64 S2028, FLEX-conn_DC_p64 S2028, FLEX-backing_DC_p64 S2028, M2-train_cap_DC_p64 train2029, M2-train_daily_DC_p64 train2029, M2-serve_cap_DC_p64 S2029, FLEX-conn_DC_p64 S2029, FLEX-backing_DC_p64 S2029, M2-train_cap_DC_p64 train2030, M2-train_daily_DC_p64 train2030, M2-serve_cap_DC_p64 S2030, FLEX-conn_DC_p64 S2030, FLEX-backing_DC_p64 S2030, M2-train_cap_DC_p64 train2031, M2-train_daily_DC_p64 train2031, M2-serve_cap_DC_p64 S2031, FLEX-conn_DC_p64 S2031, FLEX-backing_DC_p64 S2031 were not assigned to the network.
+WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['DC_p65'], dtype='object', name='name')
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-06
+ - OutputFlag: 0
+ - Threads: 4
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 0.35s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 25562 primals, 53236 duals
+Objective: -6.81e+09
+Solver: gurobi
+Runtime: 0.13s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Generator-ext-p-lower, Generator-ext-p-upper, M2-train_cap_DC_p65 train2026, M2-train_daily_DC_p65 train2026, M2-serve_cap_DC_p65 S2026, FLEX-conn_DC_p65 S2026, FLEX-backing_DC_p65 S2026, M2-train_cap_DC_p65 train2027, M2-train_daily_DC_p65 train2027, M2-serve_cap_DC_p65 S2027, FLEX-conn_DC_p65 S2027, FLEX-backing_DC_p65 S2027, M2-train_cap_DC_p65 train2028, M2-train_daily_DC_p65 train2028, M2-serve_cap_DC_p65 S2028, FLEX-conn_DC_p65 S2028, FLEX-backing_DC_p65 S2028, M2-train_cap_DC_p65 train2029, M2-train_daily_DC_p65 train2029, M2-serve_cap_DC_p65 S2029, FLEX-conn_DC_p65 S2029, FLEX-backing_DC_p65 S2029, M2-train_cap_DC_p65 train2030, M2-train_daily_DC_p65 train2030, M2-serve_cap_DC_p65 S2030, FLEX-conn_DC_p65 S2030, FLEX-backing_DC_p65 S2030, M2-train_cap_DC_p65 train2031, M2-train_daily_DC_p65 train2031, M2-serve_cap_DC_p65 S2031, FLEX-conn_DC_p65 S2031, FLEX-backing_DC_p65 S2031 were not assigned to the network.
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, links, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:opts.reserves:Adding ERM constraint for TX with reserve level 0.15
+INFO:opts.reserves:Added ERM constraint for TX
+INFO:opts.bidirectional_link:Added 22 bidirectional link constraints
+INFO:opts.sector:Demand response not enabled
+INFO:wp2:ERM-DC-01 B: added (1+0.15) x POI flow of 18 POIs to GlobalConstraint-TX_ERM
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver logs written to `/datasets/prgm/BYOP_impact/BYOP_ERCOT_County_v2.5.0/outputs/p1_ctrl7/S1/solver_S2.log`.
+INFO:linopy.model:Solver options:
+ - threads: 4
+ - method: 2
+ - crossover: 0
+ - BarHomogeneous: 1
+ - BarConvTol: 1e-05
+ - OptimalityTol: 0.0001
+ - FeasibilityTol: 0.001
+ - ScaleFlag: 1
+ - Seed: 123
+ - AggFill: 0
+ - PreDual: 0
+ - GURO_PAR_BARDENSETHRESH: 200
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 2.12s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 668197 primals, 1816485 duals
+Objective: 7.15e+09
+Solver: gurobi
+Runtime: 20.37s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints bidirectional_link_p60||p61_exp2030, bidirectional_link_p60||p61_exp2031, bidirectional_link_p60||p62_exp2030, bidirectional_link_p60||p62_exp2031, bidirectional_link_p60||p63_exp2030, bidirectional_link_p60||p63_exp2031, bidirectional_link_p61||p62_exp2030, bidirectional_link_p61||p62_exp2031, bidirectional_link_p61||p63_exp2030, bidirectional_link_p61||p63_exp2031, bidirectional_link_p61||p64_exp2030, bidirectional_link_p61||p64_exp2031, bidirectional_link_p61||p65_exp2030, bidirectional_link_p61||p65_exp2031, bidirectional_link_p63||p64_exp2030, bidirectional_link_p63||p64_exp2031, bidirectional_link_p64||p65_exp2030, bidirectional_link_p64||p65_exp2031, bidirectional_link_p64||p67_exp2030, bidirectional_link_p64||p67_exp2031, bidirectional_link_p65||p67_exp2030, bidirectional_link_p65||p67_exp2031, M2-train_cap_DC_p63 train2026, M2-train_daily_DC_p63 train2026, M2-serve_cap_DC_p63 S2026, FLEX-conn_DC_p63 S2026, FLEX-backing_DC_p63 S2026, M2-train_cap_DC_p63 train2027, M2-train_daily_DC_p63 train2027, M2-serve_cap_DC_p63 S2027, FLEX-conn_DC_p63 S2027, FLEX-backing_DC_p63 S2027, M2-train_cap_DC_p63 train2028, M2-train_daily_DC_p63 train2028, M2-serve_cap_DC_p63 S2028, FLEX-conn_DC_p63 S2028, FLEX-backing_DC_p63 S2028, M2-train_cap_DC_p63 train2029, M2-train_daily_DC_p63 train2029, M2-serve_cap_DC_p63 S2029, FLEX-conn_DC_p63 S2029, FLEX-backing_DC_p63 S2029, M2-train_cap_DC_p63 train2030, M2-train_daily_DC_p63 train2030, M2-serve_cap_DC_p63 S2030, FLEX-conn_DC_p63 S2030, FLEX-backing_DC_p63 S2030, M2-train_cap_DC_p63 train2031, M2-train_daily_DC_p63 train2031, M2-serve_cap_DC_p63 S2031, FLEX-conn_DC_p63 S2031, FLEX-backing_DC_p63 S2031, M2-train_cap_DC_p64 train2026, M2-train_daily_DC_p64 train2026, M2-serve_cap_DC_p64 S2026, FLEX-conn_DC_p64 S2026, FLEX-backing_DC_p64 S2026, M2-train_cap_DC_p64 train2027, M2-train_daily_DC_p64 train2027, M2-serve_cap_DC_p64 S2027, FLEX-conn_DC_p64 S2027, FLEX-backing_DC_p64 S2027, M2-train_cap_DC_p64 train2028, M2-train_daily_DC_p64 train2028, M2-serve_cap_DC_p64 S2028, FLEX-conn_DC_p64 S2028, FLEX-backing_DC_p64 S2028, M2-train_cap_DC_p64 train2029, M2-train_daily_DC_p64 train2029, M2-serve_cap_DC_p64 S2029, FLEX-conn_DC_p64 S2029, FLEX-backing_DC_p64 S2029, M2-train_cap_DC_p64 train2030, M2-train_daily_DC_p64 train2030, M2-serve_cap_DC_p64 S2030, FLEX-conn_DC_p64 S2030, FLEX-backing_DC_p64 S2030, M2-train_cap_DC_p64 train2031, M2-train_daily_DC_p64 train2031, M2-serve_cap_DC_p64 S2031, FLEX-conn_DC_p64 S2031, FLEX-backing_DC_p64 S2031, M2-train_cap_DC_p65 train2026, M2-train_daily_DC_p65 train2026, M2-serve_cap_DC_p65 S2026, FLEX-conn_DC_p65 S2026, FLEX-backing_DC_p65 S2026, M2-train_cap_DC_p65 train2027, M2-train_daily_DC_p65 train2027, M2-serve_cap_DC_p65 S2027, FLEX-conn_DC_p65 S2027, FLEX-backing_DC_p65 S2027, M2-train_cap_DC_p65 train2028, M2-train_daily_DC_p65 train2028, M2-serve_cap_DC_p65 S2028, FLEX-conn_DC_p65 S2028, FLEX-backing_DC_p65 S2028, M2-train_cap_DC_p65 train2029, M2-train_daily_DC_p65 train2029, M2-serve_cap_DC_p65 S2029, FLEX-conn_DC_p65 S2029, FLEX-backing_DC_p65 S2029, M2-train_cap_DC_p65 train2030, M2-train_daily_DC_p65 train2030, M2-serve_cap_DC_p65 S2030, FLEX-conn_DC_p65 S2030, FLEX-backing_DC_p65 S2030, M2-train_cap_DC_p65 train2031, M2-train_daily_DC_p65 train2031, M2-serve_cap_DC_p65 S2031, FLEX-conn_DC_p65 S2031, FLEX-backing_DC_p65 S2031, V240-reuse_right_p63 gas_steam 2025fleet r2027, V240-reuse_right_p63 gas_steam 2025fleet r2028, V240-reuse_right_p63 gas_steam 2025fleet r2030, V240-reuse_right_p63 gas_steam 2025fleet r2031, V240-reuse_right_p64 OCGT 2025fleet r2030, V240-reuse_right_p64 gas_steam 2025fleet r2027, V240-reuse_right_p65 CCGT 2025fleet r2027, V240-reuse_right_p65 CCGT 2025fleet r2031, V240-reuse_right_p65 gas_steam 2025fleet r2027, V240-reuse_right_p65 gas_steam 2025fleet r2029, M2-line_sym_p60||p61_exp2030_fwd, M2-line_sym_p60||p61_exp2031_fwd, M2-line_cap_p60||p61, M2-line_sym_p60||p62_exp2030_fwd, M2-line_sym_p60||p62_exp2031_fwd, M2-line_cap_p60||p62, M2-line_sym_p60||p63_exp2030_fwd, M2-line_sym_p60||p63_exp2031_fwd, M2-line_cap_p60||p63, M2-line_sym_p61||p62_exp2030_fwd, M2-line_sym_p61||p62_exp2031_fwd, M2-line_cap_p61||p62, M2-line_sym_p61||p63_exp2030_fwd, M2-line_sym_p61||p63_exp2031_fwd, M2-line_cap_p61||p63, M2-line_sym_p61||p64_exp2030_fwd, M2-line_sym_p61||p64_exp2031_fwd, M2-line_cap_p61||p64, M2-line_sym_p61||p65_exp2030_fwd, M2-line_sym_p61||p65_exp2031_fwd, M2-line_cap_p61||p65, M2-line_sym_p63||p64_exp2030_fwd, M2-line_sym_p63||p64_exp2031_fwd, M2-line_cap_p63||p64, M2-line_sym_p64||p65_exp2030_fwd, M2-line_sym_p64||p65_exp2031_fwd, M2-line_cap_p64||p65, M2-line_sym_p64||p67_exp2030_fwd, M2-line_sym_p64||p67_exp2031_fwd, M2-line_cap_p64||p67, M2-line_sym_p65||p67_exp2030_fwd, M2-line_sym_p65||p67_exp2031_fwd, M2-line_cap_p65||p67 were not assigned to the network.
+INFO:opts.reserves:Storing ERM data from optimization results
+INFO:v240:S2: {"v_social": 2800000.0, "v_private": 2800000.0, "public_resource_capex_PV_USD": 851150903.7053103, "byop_resource_capex_PV_USD": 0.0, "byop_private_capex_PV_USD": 0.0, "system_operating_PV_USD": 43471163549.08185, "byop_fuel_PV_USD": 0.0, "load_shed_MWh": 2.3679345501795257e-06, "load_shed_PV_USD": 0.02293708646934917, "social_delay_loss_PV_USD": -0.003295516272983854, "served_MW_IT_year": 14190.351030330236, "delay_MW_IT_year": -1.2358007950297178e-09, "requested_MW_IT_year": 14190.351030329, "transfer_energy_PV_social_USD": 1669559734.7792575, "tax_credit_PV_USD": 0.0, "objective": 7146915546.617888, "social_real_resource_cost_USD": 44322314452.81009, "social_total_USD": 44322314452.80679, "private_total_USD": 1428412230.6644914, "objective_plus_service_value": 44334387335.5671, "integer_vars": 0, "n_vars": 478693, "n_cons": 866459, "solve_seconds": 50.1}

@@ -1,0 +1,89 @@
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2559322
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+D:\BYOP_impact\pypsa-usa\.venv\Lib\site-packages\pulp\apis\gurobi_api.py:170: UserWarning: GUROBI error: Unknown parameter '_test'.
+  warnings.warn("GUROBI error: {}.".format(e))
+Config file repo_data/config/config.slurm.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.common.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.plotting.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.api.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.sector.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.default.yaml is extended by additional config specified via the command line.
+Config file config/config.api.yaml is extended by additional config specified via the command line.
+Config file config/config.slurm.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                         count
+------------------------  -------
+add_demand                      1
+add_electricity                 1
+add_extra_components            1
+add_sectors                     1
+build_electrical_demand         1
+build_renewable_profiles        3
+cluster_network                 1
+cluster_resources               1
+prepare_network                 1
+solve_network                   1
+total                          12
+
+Select jobs to execute...
+
+[Sun Oct 18 12:35:29 2026]
+rule cluster_resources:
+    input: resources/BYOP_ERCOT7s/networks/texas/elec_b.nc, resources/BYOP_ERCOT7s/geospatial/texas/regions_onshore.geojson, resources/BYOP_ERCOT7s/geospatial/texas/regions_offshore.geojson
+    output: resources/BYOP_ERCOT7s/networks/texas/elec_s20.nc, resources/BYOP_ERCOT7s/geospatial/texas/regions_onshore_s20.geojson, resources/BYOP_ERCOT7s/geospatial/texas/regions_offshore_s20.geojson, resources/BYOP_ERCOT7s/busmaps/texas/busmap_s20.csv
+    log: logs/cluster_resources/texas/elec_s20.log
+    jobid: 10
+    benchmark: benchmarks/BYOP_ERCOT7s/texas/cluster_resources_elec_s20
+    reason: Missing output files: resources/BYOP_ERCOT7s/geospatial/texas/regions_offshore_s20.geojson, resources/BYOP_ERCOT7s/busmaps/texas/busmap_s20.csv, resources/BYOP_ERCOT7s/geospatial/texas/regions_onshore_s20.geojson, resources/BYOP_ERCOT7s/networks/texas/elec_s20.nc
+    wildcards: interconnect=texas, simpl=20
+    resources: tmpdir=C:\Users\67084\AppData\Local\Temp, mem_mb=39, mem_mib=38, walltime=05:00:00
+
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, lines, sub_networks
+INFO:_helpers:[schema entry] Bus: 1250 rows, 26 cols: ['LAF_state', 'Pd', 'carrier', 'control', 'country', 'generator', 'interconnect', 'load_weight', 'location', 'nerc_reg', 'rec_trading_zone', 'reeds_ba', 'reeds_state', 'reeds_zone', 'sub_network', 'substation_lv', 'trans_grp', 'trans_reg', 'type', 'unit', 'v_mag_pu_max', 'v_mag_pu_min', 'v_mag_pu_set', 'v_nom', 'x', 'y']
+INFO:_helpers:[schema entry] Line: 1890 rows, 39 cols: ['active', 'b', 'b_pu', 'build_year', 'bus0', 'bus1', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'discount_rate', 'fom_cost', 'g', 'g_pu', 'interconnect', 'length', 'lifetime', 'num_parallel', 'overnight_cost', 'r', 'r_pu', 'r_pu_eff', 's_max_pu', 's_nom', 's_nom_extendable', 's_nom_max', 's_nom_min', 's_nom_mod', 's_nom_opt', 's_nom_set', 'sub_network', 'terrain_factor', 'type', 'underwater_fraction', 'v_ang_max', 'v_ang_min', 'v_nom', 'x', 'x_pu', 'x_pu_eff']
+INFO:_helpers:[schema entry] LineType: 59 rows, 8 cols: ['c_per_length', 'cross_section', 'f_nom', 'i_nom', 'mounting', 'r_per_length', 'references', 'x_per_length']
+INFO:_helpers:[schema entry] TransformerType: 14 rows, 15 cols: ['f_nom', 'i0', 'pfe', 'phase_shift', 'references', 's_nom', 'tap_max', 'tap_min', 'tap_neutral', 'tap_side', 'tap_step', 'v_nom_0', 'v_nom_1', 'vsc', 'vscr']
+INFO:_helpers:[schema entry] SubNetwork: 1 rows, 3 cols: ['carrier', 'obj', 'slack_bus']
+INFO:__main__:cluster_simpl runs before loads/generators are attached; using weighting_strategy='population' (n.buses.load_weight) regardless of configured 'demand-capacity'.
+WARNING:pyomo.solvers:Could not locate the 'ipopt' executable, which is required for solver ipopt
+Traceback (most recent call last):
+  File "D:\BYOP_impact\pypsa-usa\workflow\.snakemake\scripts\tmp_apreceu.cluster_simpl.py", line 113, in <module>
+    clustering = clustering_for_n_clusters(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\BYOP_impact\pypsa-usa\workflow\rules\..\scripts\cluster_network.py", line 253, in clustering_for_n_clusters
+    busmap = busmap_for_n_clusters(
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\BYOP_impact\pypsa-usa\workflow\rules\..\scripts\cluster_network.py", line 178, in busmap_for_n_clusters
+    n_clusters_per_region = distribute_clusters(
+                            ^^^^^^^^^^^^^^^^^^^^
+  File "D:\BYOP_impact\pypsa-usa\workflow\rules\..\scripts\cluster_network.py", line 134, in distribute_clusters
+    results = opt.solve(m)
+              ^^^^^^^^^^^^
+  File "D:\BYOP_impact\pypsa-usa\.venv\Lib\site-packages\pyomo\opt\base\solvers.py", line 533, in solve
+    self.available(exception_flag=True)
+  File "D:\BYOP_impact\pypsa-usa\.venv\Lib\site-packages\pyomo\opt\solver\shellcmd.py", line 141, in available
+    raise ApplicationError(msg % self.name)
+pyomo.common.errors.ApplicationError: No executable found for solver 'ipopt'
+[Sun Oct 18 12:35:43 2026]
+Error in rule cluster_resources:
+    jobid: 10
+    input: resources/BYOP_ERCOT7s/networks/texas/elec_b.nc, resources/BYOP_ERCOT7s/geospatial/texas/regions_onshore.geojson, resources/BYOP_ERCOT7s/geospatial/texas/regions_offshore.geojson
+    output: resources/BYOP_ERCOT7s/networks/texas/elec_s20.nc, resources/BYOP_ERCOT7s/geospatial/texas/regions_onshore_s20.geojson, resources/BYOP_ERCOT7s/geospatial/texas/regions_offshore_s20.geojson, resources/BYOP_ERCOT7s/busmaps/texas/busmap_s20.csv
+    log: logs/cluster_resources/texas/elec_s20.log (check log file(s) for error details)
+
+RuleException:
+CalledProcessError in file D:\BYOP_impact\pypsa-usa\workflow\rules/build_electricity.smk, line 978:
+Command 'D:/BYOP_impact/pypsa-usa/.venv/Scripts/python.exe "D:\BYOP_impact\pypsa-usa\workflow\.snakemake\scripts\tmp_apreceu.cluster_simpl.py"' returned non-zero exit status 1.
+  File "D:\BYOP_impact\pypsa-usa\workflow\rules/build_electricity.smk", line 978, in __rule_cluster_resources
+  File "C:\Users\67084\AppData\Roaming\uv\python\cpython-3.11.17-windows-x86_64-none\Lib\concurrent\futures\thread.py", line 58, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake\log\2026-10-18T123523.731262.snakemake.log
+EXIT=1

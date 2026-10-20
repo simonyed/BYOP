@@ -1,0 +1,377 @@
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2559322
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+D:\BYOP_impact\pypsa-usa\.venv\Lib\site-packages\pulp\apis\gurobi_api.py:170: UserWarning: GUROBI error: Unknown parameter '_test'.
+  warnings.warn("GUROBI error: {}.".format(e))
+Config file repo_data/config/config.slurm.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.common.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.plotting.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.api.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.sector.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.default.yaml is extended by additional config specified via the command line.
+Config file config/config.api.yaml is extended by additional config specified via the command line.
+Config file config/config.slurm.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Provided cores: 6
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                     count
+--------------------  -------
+add_extra_components        1
+add_sectors                 1
+cluster_network             1
+prepare_network             1
+solve_network               1
+total                       5
+
+Select jobs to execute...
+
+[Sun Oct 18 14:09:04 2026]
+rule cluster_network:
+    input: resources/BYOP_ERCOT7s/networks/texas/elec_s20_l_pp.pkl, resources/BYOP_ERCOT7s/geospatial/texas/regions_onshore_s20.geojson, resources/BYOP_ERCOT7s/geospatial/texas/regions_offshore_s20.geojson, resources/BYOP_ERCOT7s/costs/costs_2030.csv, repo_data/ReEDS_Constraints/transmission/transmission_capacity_init_AC_ba_NARIS2024.csv, repo_data/ReEDS_Constraints/transmission/transmission_capacity_init_AC_county_NARIS2024.csv, repo_data/ReEDS_Constraints/transmission/transmission_capacity_init_AC_transgrp_NARIS2024.csv, repo_data/ReEDS_Constraints/transmission/transmission_distance_cost_500kVac_ba.csv, repo_data/ReEDS_Constraints/transmission/transmission_distance_cost_500kVac_county.csv, repo_data/ReEDS_Constraints/transmission/transmission_capacity_init_AC_state_NARIS2024.csv, repo_data/ReEDS_Constraints/transmission/transmission_distance_cost_500kVac_state.csv
+    output: resources/BYOP_ERCOT7s/networks/texas/elec_s20_c8s.nc, resources/BYOP_ERCOT7s/geospatial/texas/regions_onshore_s20_8s.geojson, resources/BYOP_ERCOT7s/geospatial/texas/regions_offshore_s20_8s.geojson, resources/BYOP_ERCOT7s/busmaps/texas/busmap_s20_8s.csv, resources/BYOP_ERCOT7s/busmaps/texas/linemap_s20_8s.csv
+    log: logs/cluster_network/texas/elec_s20_c8s.log
+    jobid: 4
+    benchmark: benchmarks/cluster_network/texas/elec_s20_c8s
+    reason: Forced execution
+    wildcards: interconnect=texas, simpl=20, clusters=8s
+    resources: tmpdir=C:\Users\67084\AppData\Local\Temp, walltime=04:00:00, mem_mb=2814, mem_mib=2684
+
+INFO:_helpers:[schema entry] Bus: 20 rows, 25 cols: ['Pd', 'carrier', 'control', 'country', 'generator', 'interconnect', 'load_weight', 'location', 'nerc_reg', 'rec_trading_zone', 'reeds_ba', 'reeds_state', 'reeds_zone', 'sub_network', 'substation_lv', 'trans_grp', 'trans_reg', 'type', 'unit', 'v_mag_pu_max', 'v_mag_pu_min', 'v_mag_pu_set', 'v_nom', 'x', 'y']
+INFO:_helpers:[schema entry] Carrier: 16 rows, 5 cols: ['co2_emissions', 'color', 'max_growth', 'max_relative_growth', 'nice_name']
+INFO:_helpers:[schema entry] Generator: 1612 rows, 51 cols: ['active', 'ba_eia', 'build_year', 'bus', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'committable', 'control', 'discount_rate', 'down_time_before', 'e_sum_max', 'e_sum_min', 'efficiency', 'fom_cost', 'fuel_cost', 'heat_rate', 'lifetime', 'maintainable', 'maintenance_duration', 'maintenance_events', 'maintenance_pu', 'marginal_cost', 'marginal_cost_quadratic', 'min_down_time', 'min_up_time', 'overnight_cost', 'p_init', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'q_set', 'ramp_limit_down', 'ramp_limit_shut_down', 'ramp_limit_start_up', 'ramp_limit_up', 'shut_down_cost', 'sign', 'stand_by_cost', 'start_up_cost', 'type', 'up_time_before', 'vom_cost', 'weight']
+INFO:_helpers:[schema entry] Load: 20 rows, 7 cols: ['active', 'bus', 'carrier', 'p_set', 'q_set', 'sign', 'type']
+INFO:_helpers:[schema entry] StorageUnit: 318 rows, 40 cols: ['active', 'build_year', 'bus', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'control', 'cyclic_state_of_charge', 'cyclic_state_of_charge_per_period', 'discount_rate', 'efficiency_dispatch', 'efficiency_store', 'fom_cost', 'inflow', 'lifetime', 'marginal_cost', 'marginal_cost_quadratic', 'marginal_cost_storage', 'max_hours', 'overnight_cost', 'p_dispatch_set', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'p_store_set', 'q_set', 'sign', 'spill_cost', 'standing_loss', 'state_of_charge_initial', 'state_of_charge_initial_per_period', 'state_of_charge_set', 'type']
+INFO:_helpers:[schema entry] Line: 43 rows, 39 cols: ['active', 'b', 'b_pu', 'build_year', 'bus0', 'bus1', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'discount_rate', 'fom_cost', 'g', 'g_pu', 'interconnect', 'length', 'lifetime', 'num_parallel', 'overnight_cost', 'r', 'r_pu', 'r_pu_eff', 's_max_pu', 's_nom', 's_nom_extendable', 's_nom_max', 's_nom_min', 's_nom_mod', 's_nom_opt', 's_nom_set', 'sub_network', 'terrain_factor', 'type', 'underwater_fraction', 'v_ang_max', 'v_ang_min', 'v_nom', 'x', 'x_pu', 'x_pu_eff']
+INFO:_helpers:[schema entry] LineType: 59 rows, 8 cols: ['c_per_length', 'cross_section', 'f_nom', 'i_nom', 'mounting', 'r_per_length', 'references', 'x_per_length']
+INFO:_helpers:[schema entry] TransformerType: 14 rows, 15 cols: ['f_nom', 'i0', 'pfe', 'phase_shift', 'references', 's_nom', 'tap_max', 'tap_min', 'tap_neutral', 'tap_side', 'tap_step', 'v_nom_0', 'v_nom_1', 'vsc', 'vscr']
+INFO:_helpers:[schema entry] SubNetwork: 1 rows, 3 cols: ['carrier', 'obj', 'slack_bus']
+INFO:__main__:Aggregating to transport model with reeds_zone zones.
+INFO:__main__:Using Transport Model.
+INFO:__main__:RAMP-01 patch: filling 64 NaN generator ramp_limit_up with 1.0 before clustering.
+INFO:__main__:RAMP-01 patch: filling 64 NaN generator ramp_limit_down with 1.0 before clustering.
+WARNING:pypsa.network.transform:The attribute 'v_nom' is a standard attribute for other components but not for lines. This could cause confusion and it should be renamed. See also: https://go.pypsa.org/warning-attr-misleading.
+WARNING:pypsa.network.transform:The attribute 'vom_cost' is not a standard attribute for generators. Did you mean 'fom_cost'? See also: https://go.pypsa.org/warning-attr-typo.
+WARNING:__main__:Network configuration contains 1 disconnected buses. 
+INFO:__main__:Replaced Lines with Links for zonal model configuration.
+INFO:_helpers:[schema exit] Bus: 20 -> 8 rows
+INFO:_helpers:[schema exit] Generator: 1612 -> 52 rows
+INFO:_helpers:[schema exit] Generator: +cols=['land_region'], -cols=[]
+INFO:_helpers:[schema exit] Load: 20 -> 8 rows
+INFO:_helpers:[schema exit] Link: 0 -> 22 rows
+INFO:_helpers:[schema exit] Link: +cols=['active', 'build_year', 'bus0', 'bus1', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'committable', 'cyclic_delay', 'delay', 'discount_rate', 'down_time_before', 'efficiency', 'fom_cost', 'length', 'lifetime', 'maintainable', 'maintenance_duration', 'maintenance_events', 'maintenance_pu', 'marginal_cost', 'marginal_cost_quadratic', 'min_down_time', 'min_up_time', 'overnight_cost', 'p_init', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'ramp_limit_down', 'ramp_limit_shut_down', 'ramp_limit_start_up', 'ramp_limit_up', 'shut_down_cost', 'stand_by_cost', 'start_up_cost', 'terrain_factor', 'type', 'up_time_before'], -cols=[]
+INFO:_helpers:[schema exit] StorageUnit: 318 -> 7 rows
+INFO:pypsa.network.io:Exported network 'Unnamed Network' saved to 'resources/BYOP_ERCOT7s/networks/texas/elec_s20_c8s.nc contains: storage_units, links, carriers, generators, buses, sub_networks, loads
+INFO:pyogrio._io:Created 8 records
+INFO:pyogrio._io:Created 2 records
+INFO:__main__:Saved clustered network to resources/BYOP_ERCOT7s/networks/texas/elec_s20_c8s.nc
+Benchmark: unable to collect cpu and memory benchmark statistics
+[Sun Oct 18 14:09:23 2026]
+Finished job 4.
+1 of 5 steps (20%) done
+Select jobs to execute...
+
+[Sun Oct 18 14:09:23 2026]
+rule add_extra_components:
+    input: resources/BYOP_ERCOT7s/networks/texas/elec_s20_c8s.nc, resources/BYOP_ERCOT7s/costs/costs_2030.csv, resources/BYOP_ERCOT7s/geospatial/texas/regions_onshore_s20_8s.geojson, repo_data/ReEDS_Constraints/transmission/transmission_capacity_init_AC_ba_NARIS2024.csv, repo_data/ReEDS_Constraints/membership.csv, resources/BYOP_ERCOT7s/networks/texas/remote_units_s20.pkl, data/counties/cb_2020_us_county_500k.shp
+    output: resources/BYOP_ERCOT7s/networks/texas/elec_s20_c8s_ec.nc
+    log: logs/add_extra_components/texas/elec_s20_c8s_ec.log
+    jobid: 3
+    benchmark: benchmarks/BYOP_ERCOT7s/texas/add_extra_components_elec_s20_c8s_ec
+    reason: Input files updated by another job: resources/BYOP_ERCOT7s/geospatial/texas/regions_onshore_s20_8s.geojson, resources/BYOP_ERCOT7s/networks/texas/elec_s20_c8s.nc
+    wildcards: interconnect=texas, simpl=20, clusters=8s
+    resources: tmpdir=C:\Users\67084\AppData\Local\Temp, mem_mb=422, mem_mib=403, walltime=00:30:00
+
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, links, loads, storage_units, sub_networks
+INFO:_helpers:[schema entry] Bus: 8 rows, 25 cols: ['Pd', 'carrier', 'control', 'country', 'generator', 'interconnect', 'load_weight', 'location', 'nerc_reg', 'rec_trading_zone', 'reeds_ba', 'reeds_state', 'reeds_zone', 'sub_network', 'substation_lv', 'trans_grp', 'trans_reg', 'type', 'unit', 'v_mag_pu_max', 'v_mag_pu_min', 'v_mag_pu_set', 'v_nom', 'x', 'y']
+INFO:_helpers:[schema entry] Carrier: 16 rows, 5 cols: ['co2_emissions', 'color', 'max_growth', 'max_relative_growth', 'nice_name']
+INFO:_helpers:[schema entry] Generator: 52 rows, 52 cols: ['active', 'ba_eia', 'build_year', 'bus', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'committable', 'control', 'discount_rate', 'down_time_before', 'e_sum_max', 'e_sum_min', 'efficiency', 'fom_cost', 'fuel_cost', 'heat_rate', 'land_region', 'lifetime', 'maintainable', 'maintenance_duration', 'maintenance_events', 'maintenance_pu', 'marginal_cost', 'marginal_cost_quadratic', 'min_down_time', 'min_up_time', 'overnight_cost', 'p_init', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'q_set', 'ramp_limit_down', 'ramp_limit_shut_down', 'ramp_limit_start_up', 'ramp_limit_up', 'shut_down_cost', 'sign', 'stand_by_cost', 'start_up_cost', 'type', 'up_time_before', 'vom_cost', 'weight']
+INFO:_helpers:[schema entry] Load: 8 rows, 7 cols: ['active', 'bus', 'carrier', 'p_set', 'q_set', 'sign', 'type']
+INFO:_helpers:[schema entry] Link: 22 rows, 46 cols: ['active', 'build_year', 'bus0', 'bus1', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'committable', 'cyclic_delay', 'delay', 'discount_rate', 'down_time_before', 'efficiency', 'fom_cost', 'length', 'lifetime', 'maintainable', 'maintenance_duration', 'maintenance_events', 'maintenance_pu', 'marginal_cost', 'marginal_cost_quadratic', 'min_down_time', 'min_up_time', 'overnight_cost', 'p_init', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'ramp_limit_down', 'ramp_limit_shut_down', 'ramp_limit_start_up', 'ramp_limit_up', 'shut_down_cost', 'stand_by_cost', 'start_up_cost', 'terrain_factor', 'type', 'up_time_before']
+INFO:_helpers:[schema entry] StorageUnit: 7 rows, 40 cols: ['active', 'build_year', 'bus', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'control', 'cyclic_state_of_charge', 'cyclic_state_of_charge_per_period', 'discount_rate', 'efficiency_dispatch', 'efficiency_store', 'fom_cost', 'inflow', 'lifetime', 'marginal_cost', 'marginal_cost_quadratic', 'marginal_cost_storage', 'max_hours', 'overnight_cost', 'p_dispatch_set', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'p_store_set', 'q_set', 'sign', 'spill_cost', 'standing_loss', 'state_of_charge_initial', 'state_of_charge_initial_per_period', 'state_of_charge_set', 'type']
+INFO:_helpers:[schema entry] LineType: 59 rows, 8 cols: ['c_per_length', 'cross_section', 'f_nom', 'i_nom', 'mounting', 'r_per_length', 'references', 'x_per_length']
+INFO:_helpers:[schema entry] TransformerType: 14 rows, 15 cols: ['f_nom', 'i0', 'pfe', 'phase_shift', 'references', 's_nom', 'tap_max', 'tap_min', 'tap_neutral', 'tap_side', 'tap_step', 'v_nom_0', 'v_nom_1', 'vsc', 'vscr']
+INFO:_helpers:[schema entry] SubNetwork: 1 rows, 3 cols: ['carrier', 'obj', 'slack_bus']
+WARNING:__main__:CO2 emissions for carriers {'battery', 'AC'} not defined in cost data.
+INFO:__main__:DR not applied as allowable shift is 0
+INFO:_helpers:[schema exit] Carrier: 16 -> 19 rows
+INFO:_helpers:[schema exit] Generator: 52 -> 103 rows
+INFO:_helpers:[schema exit] StorageUnit: 7 -> 23 rows
+INFO:pypsa.network.io:Exported network 'Unnamed Network' saved to 'resources/BYOP_ERCOT7s/networks/texas/elec_s20_c8s_ec.nc contains: generators, loads, links, carriers, sub_networks, buses, storage_units
+Benchmark: unable to collect cpu and memory benchmark statistics
+[Sun Oct 18 14:09:36 2026]
+Finished job 3.
+2 of 5 steps (40%) done
+Select jobs to execute...
+
+[Sun Oct 18 14:09:36 2026]
+rule prepare_network:
+    input: resources/BYOP_ERCOT7s/networks/texas/elec_s20_c8s_ec.nc, resources/BYOP_ERCOT7s/costs/costs_2030.csv
+    output: resources/BYOP_ERCOT7s/networks/texas/elec_s20_c8s_ec_lv1.0_REM-3h.nc
+    log: logs/prepare_network/texas/elec_s20_c8s_ec_lv1.0_REM-3h.log
+    jobid: 2
+    benchmark: benchmarks/BYOP_ERCOT7s/texas/prepare_network_elec_s20_c8s_ec_lv1.0_REM-3h
+    reason: Input files updated by another job: resources/BYOP_ERCOT7s/networks/texas/elec_s20_c8s_ec.nc
+    wildcards: interconnect=texas, simpl=20, clusters=8s, ll=v1.0, opts=REM-3h
+    resources: tmpdir=C:\Users\67084\AppData\Local\Temp, walltime=00:30:00, mem_mb=180, mem_mib=172
+
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, links, loads, storage_units, sub_networks
+INFO:_helpers:[schema entry] Bus: 8 rows, 25 cols: ['Pd', 'carrier', 'control', 'country', 'generator', 'interconnect', 'load_weight', 'location', 'nerc_reg', 'rec_trading_zone', 'reeds_ba', 'reeds_state', 'reeds_zone', 'sub_network', 'substation_lv', 'trans_grp', 'trans_reg', 'type', 'unit', 'v_mag_pu_max', 'v_mag_pu_min', 'v_mag_pu_set', 'v_nom', 'x', 'y']
+INFO:_helpers:[schema entry] Carrier: 19 rows, 5 cols: ['co2_emissions', 'color', 'max_growth', 'max_relative_growth', 'nice_name']
+INFO:_helpers:[schema entry] Generator: 103 rows, 52 cols: ['active', 'ba_eia', 'build_year', 'bus', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'committable', 'control', 'discount_rate', 'down_time_before', 'e_sum_max', 'e_sum_min', 'efficiency', 'fom_cost', 'fuel_cost', 'heat_rate', 'land_region', 'lifetime', 'maintainable', 'maintenance_duration', 'maintenance_events', 'maintenance_pu', 'marginal_cost', 'marginal_cost_quadratic', 'min_down_time', 'min_up_time', 'overnight_cost', 'p_init', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'q_set', 'ramp_limit_down', 'ramp_limit_shut_down', 'ramp_limit_start_up', 'ramp_limit_up', 'shut_down_cost', 'sign', 'stand_by_cost', 'start_up_cost', 'type', 'up_time_before', 'vom_cost', 'weight']
+INFO:_helpers:[schema entry] Load: 8 rows, 7 cols: ['active', 'bus', 'carrier', 'p_set', 'q_set', 'sign', 'type']
+INFO:_helpers:[schema entry] Link: 22 rows, 46 cols: ['active', 'build_year', 'bus0', 'bus1', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'committable', 'cyclic_delay', 'delay', 'discount_rate', 'down_time_before', 'efficiency', 'fom_cost', 'length', 'lifetime', 'maintainable', 'maintenance_duration', 'maintenance_events', 'maintenance_pu', 'marginal_cost', 'marginal_cost_quadratic', 'min_down_time', 'min_up_time', 'overnight_cost', 'p_init', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'ramp_limit_down', 'ramp_limit_shut_down', 'ramp_limit_start_up', 'ramp_limit_up', 'shut_down_cost', 'stand_by_cost', 'start_up_cost', 'terrain_factor', 'type', 'up_time_before']
+INFO:_helpers:[schema entry] StorageUnit: 23 rows, 40 cols: ['active', 'build_year', 'bus', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'control', 'cyclic_state_of_charge', 'cyclic_state_of_charge_per_period', 'discount_rate', 'efficiency_dispatch', 'efficiency_store', 'fom_cost', 'inflow', 'lifetime', 'marginal_cost', 'marginal_cost_quadratic', 'marginal_cost_storage', 'max_hours', 'overnight_cost', 'p_dispatch_set', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'p_store_set', 'q_set', 'sign', 'spill_cost', 'standing_loss', 'state_of_charge_initial', 'state_of_charge_initial_per_period', 'state_of_charge_set', 'type']
+INFO:_helpers:[schema entry] LineType: 59 rows, 8 cols: ['c_per_length', 'cross_section', 'f_nom', 'i_nom', 'mounting', 'r_per_length', 'references', 'x_per_length']
+INFO:_helpers:[schema entry] TransformerType: 14 rows, 15 cols: ['f_nom', 'i0', 'pfe', 'phase_shift', 'references', 's_nom', 'tap_max', 'tap_min', 'tap_neutral', 'tap_side', 'tap_step', 'v_nom_0', 'v_nom_1', 'vsc', 'vscr']
+INFO:_helpers:[schema entry] SubNetwork: 1 rows, 3 cols: ['carrier', 'obj', 'slack_bus']
+INFO:__main__:Resampling the network to 3h
+WARNING:pypsa.network.transform:The attribute 'vom_cost' is not a standard attribute for generators. Did you mean 'fom_cost'? See also: https://go.pypsa.org/warning-attr-typo.
+INFO:__main__:Setting transmission limit for v to 1.0
+INFO:__main__:Limiting line extensions to 20000 MW
+INFO:__main__:Limiting link extensions to 20000 MW
+INFO:_helpers:[schema exit] GlobalConstraint: 0 -> 1 rows
+INFO:_helpers:[schema exit] GlobalConstraint: +cols=['bus', 'carrier_attribute', 'constant', 'investment_period', 'mu', 'sense', 'type'], -cols=[]
+INFO:pypsa.network.io:Exported network 'Unnamed Network' saved to 'resources/BYOP_ERCOT7s/networks/texas/elec_s20_c8s_ec_lv1.0_REM-3h.nc contains: carriers, generators, buses, links, sub_networks, global_constraints, storage_units, loads
+Benchmark: unable to collect cpu and memory benchmark statistics
+[Sun Oct 18 14:09:49 2026]
+Finished job 2.
+3 of 5 steps (60%) done
+Select jobs to execute...
+
+[Sun Oct 18 14:09:49 2026]
+rule add_sectors:
+    input: resources/BYOP_ERCOT7s/networks/texas/elec_s20_c8s_ec_lv1.0_REM-3h.nc, resources/BYOP_ERCOT7s/costs/sector_costs_2030.csv
+    output: resources/BYOP_ERCOT7s/networks/texas/elec_s20_c8s_ec_lv1.0_REM-3h_E.nc
+    log: logs/add_sectors/texas/elec_s20_c8s_ec_lv1.0_REM-3h_E.log
+    jobid: 1
+    benchmark: benchmarks/BYOP_ERCOT7s/texas/add_sectors_elec_s20_c8s_ec_lv1.0_REM-3h_E
+    reason: Input files updated by another job: resources/BYOP_ERCOT7s/networks/texas/elec_s20_c8s_ec_lv1.0_REM-3h.nc
+    wildcards: interconnect=texas, simpl=20, clusters=8s, ll=v1.0, opts=REM-3h, sector=E
+    resources: tmpdir=C:\Users\67084\AppData\Local\Temp, mem_mb=4000, mem_mib=3815
+
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, links, loads, storage_units, sub_networks
+INFO:_helpers:[schema entry] Bus: 8 rows, 25 cols: ['Pd', 'carrier', 'control', 'country', 'generator', 'interconnect', 'load_weight', 'location', 'nerc_reg', 'rec_trading_zone', 'reeds_ba', 'reeds_state', 'reeds_zone', 'sub_network', 'substation_lv', 'trans_grp', 'trans_reg', 'type', 'unit', 'v_mag_pu_max', 'v_mag_pu_min', 'v_mag_pu_set', 'v_nom', 'x', 'y']
+INFO:_helpers:[schema entry] Carrier: 19 rows, 5 cols: ['co2_emissions', 'color', 'max_growth', 'max_relative_growth', 'nice_name']
+INFO:_helpers:[schema entry] Generator: 103 rows, 52 cols: ['active', 'ba_eia', 'build_year', 'bus', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'committable', 'control', 'discount_rate', 'down_time_before', 'e_sum_max', 'e_sum_min', 'efficiency', 'fom_cost', 'fuel_cost', 'heat_rate', 'land_region', 'lifetime', 'maintainable', 'maintenance_duration', 'maintenance_events', 'maintenance_pu', 'marginal_cost', 'marginal_cost_quadratic', 'min_down_time', 'min_up_time', 'overnight_cost', 'p_init', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'q_set', 'ramp_limit_down', 'ramp_limit_shut_down', 'ramp_limit_start_up', 'ramp_limit_up', 'shut_down_cost', 'sign', 'stand_by_cost', 'start_up_cost', 'type', 'up_time_before', 'vom_cost', 'weight']
+INFO:_helpers:[schema entry] Load: 8 rows, 7 cols: ['active', 'bus', 'carrier', 'p_set', 'q_set', 'sign', 'type']
+INFO:_helpers:[schema entry] Link: 22 rows, 46 cols: ['active', 'build_year', 'bus0', 'bus1', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'committable', 'cyclic_delay', 'delay', 'discount_rate', 'down_time_before', 'efficiency', 'fom_cost', 'length', 'lifetime', 'maintainable', 'maintenance_duration', 'maintenance_events', 'maintenance_pu', 'marginal_cost', 'marginal_cost_quadratic', 'min_down_time', 'min_up_time', 'overnight_cost', 'p_init', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'ramp_limit_down', 'ramp_limit_shut_down', 'ramp_limit_start_up', 'ramp_limit_up', 'shut_down_cost', 'stand_by_cost', 'start_up_cost', 'terrain_factor', 'type', 'up_time_before']
+INFO:_helpers:[schema entry] StorageUnit: 23 rows, 40 cols: ['active', 'build_year', 'bus', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'control', 'cyclic_state_of_charge', 'cyclic_state_of_charge_per_period', 'discount_rate', 'efficiency_dispatch', 'efficiency_store', 'fom_cost', 'inflow', 'lifetime', 'marginal_cost', 'marginal_cost_quadratic', 'marginal_cost_storage', 'max_hours', 'overnight_cost', 'p_dispatch_set', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'p_store_set', 'q_set', 'sign', 'spill_cost', 'standing_loss', 'state_of_charge_initial', 'state_of_charge_initial_per_period', 'state_of_charge_set', 'type']
+INFO:_helpers:[schema entry] LineType: 59 rows, 8 cols: ['c_per_length', 'cross_section', 'f_nom', 'i_nom', 'mounting', 'r_per_length', 'references', 'x_per_length']
+INFO:_helpers:[schema entry] TransformerType: 14 rows, 15 cols: ['f_nom', 'i0', 'pfe', 'phase_shift', 'references', 's_nom', 'tap_max', 'tap_min', 'tap_neutral', 'tap_side', 'tap_step', 'v_nom_0', 'v_nom_1', 'vsc', 'vscr']
+INFO:_helpers:[schema entry] GlobalConstraint: 1 rows, 7 cols: ['bus', 'carrier_attribute', 'constant', 'investment_period', 'mu', 'sense', 'type']
+INFO:_helpers:[schema entry] SubNetwork: 1 rows, 3 cols: ['carrier', 'obj', 'slack_bus']
+INFO:pypsa.network.io:Exported network 'Unnamed Network' saved to 'resources/BYOP_ERCOT7s/networks/texas/elec_s20_c8s_ec_lv1.0_REM-3h_E.nc contains: links, carriers, storage_units, loads, sub_networks, buses, generators, global_constraints
+Benchmark: unable to collect cpu and memory benchmark statistics
+[Sun Oct 18 14:10:00 2026]
+Finished job 1.
+4 of 5 steps (80%) done
+Select jobs to execute...
+
+[Sun Oct 18 14:10:00 2026]
+rule solve_network:
+    input: resources/BYOP_ERCOT7s/networks/texas/elec_s20_c8s_ec_lv1.0_REM-3h_E.nc, repo_data/ReEDS_Constraints/transmission/transmission_capacity_init_AC_ba_NARIS2024.csv, repo_data/config/policy_constraints/reeds/prm_annual.csv, repo_data/config/policy_constraints/reeds/rps_fraction.csv, repo_data/config/policy_constraints/reeds/ces_fraction.csv, repo_data/config/policy_constraints/transmission_interface_limits.csv
+    output: results/BYOP_ERCOT7s/texas/networks/elec_s20_c8s_ec_lv1.0_REM-3h_E.nc, results/BYOP_ERCOT7s/texas/configs/config.elec_s20_c8s_lv1.0_REM-3h_E.yaml
+    log: logs\BYOP_ERCOT7s\solve_network\texas\elec_s20_c8s_ec_lv1.0_REM-3h_E_solver.log, logs/BYOP_ERCOT7s/solve_network/texas/elec_s20_c8s_ec_lv1.0_REM-3h_E_python.log
+    jobid: 0
+    benchmark: benchmarks/BYOP_ERCOT7s/solve_network/texas/elec_s20_c8s_ec_lv1.0_REM-3h_E
+    reason: Input files updated by another job: resources/BYOP_ERCOT7s/networks/texas/elec_s20_c8s_ec_lv1.0_REM-3h_E.nc
+    wildcards: interconnect=texas, simpl=20, clusters=8s, ll=v1.0, opts=REM-3h, sector=E
+    threads: 6
+    resources: tmpdir=C:\Users\67084\AppData\Local\Temp, walltime=20:00:00, mem_mb=1950, mem_mib=1860
+
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, links, loads, storage_units, sub_networks
+INFO:_helpers:[schema entry] Bus: 8 rows, 25 cols: ['Pd', 'carrier', 'control', 'country', 'generator', 'interconnect', 'load_weight', 'location', 'nerc_reg', 'rec_trading_zone', 'reeds_ba', 'reeds_state', 'reeds_zone', 'sub_network', 'substation_lv', 'trans_grp', 'trans_reg', 'type', 'unit', 'v_mag_pu_max', 'v_mag_pu_min', 'v_mag_pu_set', 'v_nom', 'x', 'y']
+INFO:_helpers:[schema entry] Carrier: 19 rows, 5 cols: ['co2_emissions', 'color', 'max_growth', 'max_relative_growth', 'nice_name']
+INFO:_helpers:[schema entry] Generator: 103 rows, 52 cols: ['active', 'ba_eia', 'build_year', 'bus', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'committable', 'control', 'discount_rate', 'down_time_before', 'e_sum_max', 'e_sum_min', 'efficiency', 'fom_cost', 'fuel_cost', 'heat_rate', 'land_region', 'lifetime', 'maintainable', 'maintenance_duration', 'maintenance_events', 'maintenance_pu', 'marginal_cost', 'marginal_cost_quadratic', 'min_down_time', 'min_up_time', 'overnight_cost', 'p_init', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'q_set', 'ramp_limit_down', 'ramp_limit_shut_down', 'ramp_limit_start_up', 'ramp_limit_up', 'shut_down_cost', 'sign', 'stand_by_cost', 'start_up_cost', 'type', 'up_time_before', 'vom_cost', 'weight']
+INFO:_helpers:[schema entry] Load: 8 rows, 7 cols: ['active', 'bus', 'carrier', 'p_set', 'q_set', 'sign', 'type']
+INFO:_helpers:[schema entry] Link: 22 rows, 46 cols: ['active', 'build_year', 'bus0', 'bus1', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'committable', 'cyclic_delay', 'delay', 'discount_rate', 'down_time_before', 'efficiency', 'fom_cost', 'length', 'lifetime', 'maintainable', 'maintenance_duration', 'maintenance_events', 'maintenance_pu', 'marginal_cost', 'marginal_cost_quadratic', 'min_down_time', 'min_up_time', 'overnight_cost', 'p_init', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'ramp_limit_down', 'ramp_limit_shut_down', 'ramp_limit_start_up', 'ramp_limit_up', 'shut_down_cost', 'stand_by_cost', 'start_up_cost', 'terrain_factor', 'type', 'up_time_before']
+INFO:_helpers:[schema entry] StorageUnit: 23 rows, 40 cols: ['active', 'build_year', 'bus', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'control', 'cyclic_state_of_charge', 'cyclic_state_of_charge_per_period', 'discount_rate', 'efficiency_dispatch', 'efficiency_store', 'fom_cost', 'inflow', 'lifetime', 'marginal_cost', 'marginal_cost_quadratic', 'marginal_cost_storage', 'max_hours', 'overnight_cost', 'p_dispatch_set', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'p_store_set', 'q_set', 'sign', 'spill_cost', 'standing_loss', 'state_of_charge_initial', 'state_of_charge_initial_per_period', 'state_of_charge_set', 'type']
+INFO:_helpers:[schema entry] LineType: 59 rows, 8 cols: ['c_per_length', 'cross_section', 'f_nom', 'i_nom', 'mounting', 'r_per_length', 'references', 'x_per_length']
+INFO:_helpers:[schema entry] TransformerType: 14 rows, 15 cols: ['f_nom', 'i0', 'pfe', 'phase_shift', 'references', 's_nom', 'tap_max', 'tap_min', 'tap_neutral', 'tap_side', 'tap_step', 'v_nom_0', 'v_nom_1', 'vsc', 'vscr']
+INFO:_helpers:[schema entry] GlobalConstraint: 1 rows, 7 cols: ['bus', 'carrier_attribute', 'constant', 'investment_period', 'mu', 'sense', 'type']
+INFO:_helpers:[schema entry] SubNetwork: 1 rows, 3 cols: ['carrier', 'obj', 'slack_bus']
+INFO:__main__:No expandable lines found. Skipping iterative solving.
+D:\BYOP_impact\pypsa-usa\workflow\.snakemake\scripts\tmp5_iwn8wd.solve_network.py:245: FutureWarning:
+
+The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+
+INFO:pypsa.optimization.window:Building the multi-period model over a MultiIndex `snapshot`. Opt into the flat representation via `pypsa.options.optimization.model_snapshot_index = 'flat'`.
+WARNING:pypsa.optimization.constraints:StorageUnits ['p60 battery', 'p61 battery', 'p62 battery', 'p63 battery', 'p64 battery', 'p65 battery', 'p67 battery', 'p48 4hr_battery_storage_2030', 'p60 4hr_battery_storage_2030', 'p61 4hr_battery_storage_2030', 'p62 4hr_battery_storage_2030', 'p63 4hr_battery_storage_2030', 'p64 4hr_battery_storage_2030', 'p65 4hr_battery_storage_2030', 'p67 4hr_battery_storage_2030', 'p48 8hr_battery_storage_2030', 'p60 8hr_battery_storage_2030', 'p61 8hr_battery_storage_2030', 'p62 8hr_battery_storage_2030', 'p63 8hr_battery_storage_2030', 'p64 8hr_battery_storage_2030', 'p65 8hr_battery_storage_2030', 'p67 8hr_battery_storage_2030']: Per-period cyclic (cyclic_state_of_charge_per_period=True) overrides global cyclic (cyclic_state_of_charge=True). Storage will cycle within each investment period, not across the entire horizon.
+C:\Users\67084\AppData\Roaming\uv\python\cpython-3.11.17-windows-x86_64-none\Lib\contextlib.py:81: FutureWarning:
+
+Passing an int for `transmission_losses` is deprecated and will be removed in PyPSA 2.0. Explicitly pass {'mode': 'tangents', 'segments': 2} (current behavior) or use the new secant-based losses via `transmission_losses=True`.
+
+D:\BYOP_impact\pypsa-usa\.venv\Lib\site-packages\linopy\common.py:306: UserWarning:
+
+Coordinates across variables not equal. Perform outer join.
+
+D:\BYOP_impact\pypsa-usa\.venv\Lib\site-packages\linopy\common.py:306: UserWarning:
+
+Coordinates across variables not equal. Perform outer join.
+
+INFO:opts.land:Adding land-use constraints
+INFO:opts.bidirectional_link:No bidirectional link candidates found (no _fwd or _rev at the end of the names)
+INFO:opts.sector:Demand response not enabled
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver logs written to `logs\BYOP_ERCOT7s\solve_network\texas\elec_s20_c8s_ec_lv1.0_REM-3h_E_solver.log`.
+INFO:linopy.model:Solver options:
+ - threads: 8
+ - method: 2
+ - crossover: 0
+ - BarHomogeneous: 1
+ - BarConvTol: 1e-05
+ - OptimalityTol: 0.0001
+ - FeasibilityTol: 0.001
+ - ScaleFlag: 1
+ - Seed: 123
+ - AggFill: 0
+ - PreDual: 0
+ - GURO_PAR_BARDENSETHRESH: 200
+INFO:linopy.io:Writing objective.
+Writing constraints.:   0%|[38;2;128;191;255m          [0m| 0/26 [00:00<?, ?it/s]Writing constraints.:  27%|[38;2;128;191;255m██▋       [0m| 7/26 [00:00<00:00, 51.49it/s]Writing constraints.:  50%|[38;2;128;191;255m█████     [0m| 13/26 [00:00<00:00, 33.18it/s]Writing constraints.:  88%|[38;2;128;191;255m████████▊ [0m| 23/26 [00:00<00:00, 50.11it/s]Writing constraints.: 100%|[38;2;128;191;255m██████████[0m| 26/26 [00:00<00:00, 43.95it/s]
+Writing continuous variables.:   0%|[38;2;128;191;255m          [0m| 0/7 [00:00<?, ?it/s]Writing continuous variables.: 100%|[38;2;128;191;255m██████████[0m| 7/7 [00:00<00:00, 152.90it/s]
+INFO:linopy.io: Writing time: 0.68s
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2559322
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+Read LP format model from file C:\Users\67084\AppData\Local\Temp\linopy-problem-qbr7l6sh.lp
+Reading time = 3.48 seconds
+obj: 1766558 rows, 563651 columns, 3793012 nonzeros
+Set parameter Threads to value 8
+Set parameter Method to value 2
+Set parameter Crossover to value 0
+Set parameter BarHomogeneous to value 1
+Set parameter BarConvTol to value 1e-05
+Set parameter OptimalityTol to value 0.0001
+Set parameter FeasibilityTol to value 0.001
+Set parameter ScaleFlag to value 1
+Set parameter Seed to value 123
+Set parameter AggFill to value 0
+Set parameter PreDual to value 0
+Set parameter GURO_PAR_BARDENSETHRESH to value 200
+Set parameter LogFile to value "D:\BYOP_impact\pypsa-usa\workflow\logs\BYOP_ERCOT7s\solve_network\texas\elec_s20_c8s_ec_lv1.0_REM-3h_E_solver.log"
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (win64 - Windows 11+.0 (26200.2))
+
+CPU model: Intel(R) Core(TM) i7-10700 CPU @ 2.90GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 8 physical cores, 16 logical processors, using up to 8 threads
+
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+Optimize a model with 1766558 rows, 563651 columns and 3793012 nonzeros
+Model fingerprint: 0xd0733206
+Coefficient statistics:
+  Matrix range     [1e-02, 9e+00]
+  Objective range  [3e-02, 6e+05]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e-03, 3e+06]
+Presolve removed 959878 rows and 22619 columns
+Presolve time: 1.65s
+Presolved: 806680 rows, 541032 columns, 2601171 nonzeros
+Elapsed ordering time = 5s
+Ordering time: 8.86s
+
+Barrier statistics:
+ Dense cols : 91
+ AA' NZ     : 3.737e+06
+ Factor NZ  : 1.963e+07 (roughly 700 MB of memory)
+ Factor Ops : 2.819e+09 (less than 1 second per iteration)
+ Threads    : 8
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   4.83574793e+11 -1.14897643e+13  2.18e+05 9.02e+01  2.45e+08    12s
+   1   3.86911362e+11 -9.92434478e+12  1.24e+05 2.85e+03  7.68e+07    12s
+   2   3.76706925e+11 -8.21470932e+12  1.09e+05 1.03e+03  5.35e+07    13s
+   3   4.26387009e+11 -6.80142630e+12  8.09e+04 5.28e+02  3.52e+07    13s
+   4   1.11860349e+11 -4.41228582e+11  6.19e+03 3.12e+01  7.84e+05    14s
+   5   6.97199307e+10 -1.55439424e+11  3.06e+03 7.07e+00  2.59e+05    14s
+   6   5.26129103e+10 -6.16744490e+10  2.04e+03 6.66e+00  1.19e+05    15s
+   7   3.06540469e+10 -3.26792803e+10  9.61e+02 3.07e+00  5.80e+04    16s
+   8   2.29470377e+10 -1.48602059e+10  6.24e+02 2.21e+00  3.28e+04    16s
+   9   1.95723300e+10 -5.74415010e+09  4.95e+02 1.31e+00  2.16e+04    17s
+  10   1.67183529e+10 -1.74617645e+09  3.91e+02 8.87e-01  1.55e+04    17s
+  11   1.51641517e+10 -4.57977270e+08  3.36e+02 7.36e-01  1.30e+04    18s
+  12   1.46087949e+10  3.81711902e+08  3.16e+02 6.26e-01  1.18e+04    18s
+  13   1.21018196e+10  1.11123532e+09  2.25e+02 5.42e-01  8.93e+03    19s
+  14   1.08109654e+10  1.79892095e+09  1.80e+02 4.59e-01  7.25e+03    20s
+  15   1.02517492e+10  2.56106145e+09  1.60e+02 3.72e-01  6.14e+03    20s
+  16   9.43230157e+09  3.42393351e+09  1.32e+02 2.68e-01  4.74e+03    21s
+  17   8.86736490e+09  3.94585449e+09  1.13e+02 1.97e-01  3.85e+03    22s
+  18   8.37201314e+09  4.35578566e+09  9.73e+01 1.39e-01  3.11e+03    23s
+  19   7.64161055e+09  4.56233572e+09  7.36e+01 1.10e-01  2.36e+03    23s
+  20   7.18457956e+09  4.75906524e+09  5.87e+01 8.29e-02  1.85e+03    24s
+  21   6.61622991e+09  4.99449194e+09  4.02e+01 5.08e-02  1.22e+03    25s
+  22   6.33543710e+09  5.05643625e+09  3.10e+01 4.24e-02  9.60e+02    25s
+  23   6.14947437e+09  5.19226670e+09  2.50e+01 2.48e-02  7.11e+02    26s
+  24   5.97270549e+09  5.25656941e+09  1.92e+01 1.60e-02  5.28e+02    27s
+  25   5.85406491e+09  5.30257480e+09  1.54e+01 9.74e-03  4.04e+02    27s
+  26   5.72832137e+09  5.32469068e+09  1.13e+01 6.93e-03  2.95e+02    28s
+  27   5.62412752e+09  5.34298530e+09  7.89e+00 4.75e-03  2.05e+02    29s
+  28   5.57493922e+09  5.36317411e+09  6.27e+00 2.37e-03  1.53e+02    29s
+  29   5.53037552e+09  5.37192047e+09  4.78e+00 1.47e-03  1.14e+02    30s
+  30   5.48297053e+09  5.37610006e+09  3.19e+00 1.05e-03  7.69e+01    31s
+  31   5.46119175e+09  5.37818922e+09  2.46e+00 8.55e-04  5.97e+01    32s
+  32   5.44819737e+09  5.38251035e+09  2.02e+00 4.99e-04  4.71e+01    32s
+  33   5.43458971e+09  5.38476050e+09  1.56e+00 2.92e-04  3.57e+01    33s
+  34   5.41937693e+09  5.38581484e+09  1.05e+00 2.04e-04  2.40e+01    34s
+  35   5.41334825e+09  5.38671778e+09  8.43e-01 1.29e-04  1.91e+01    34s
+  36   5.41279291e+09  5.38691416e+09  8.21e-01 1.18e-04  1.85e+01    35s
+  37   5.40604345e+09  5.38810719e+09  5.83e-01 5.64e-05  1.28e+01    36s
+  38   5.40175370e+09  5.38829281e+09  4.35e-01 4.42e-05  9.62e+00    37s
+  39   5.39873101e+09  5.38856797e+09  3.30e-01 3.02e-05  7.26e+00    37s
+  40   5.39568780e+09  5.38869318e+09  2.25e-01 2.24e-05  5.00e+00    38s
+  41   5.39382060e+09  5.38886211e+09  1.61e-01 1.32e-05  3.54e+00    39s
+  42   5.39357034e+09  5.38889372e+09  1.52e-01 1.20e-05  3.34e+00    39s
+  43   5.39230883e+09  5.38898296e+09  1.08e-01 7.40e-06  2.37e+00    40s
+  44   5.39164746e+09  5.38908486e+09  8.51e-02 4.01e-06  1.83e+00    41s
+  45   5.39100960e+09  5.38910762e+09  6.29e-02 2.77e-06  1.36e+00    41s
+  46   5.39058007e+09  5.38914337e+09  4.81e-02 1.88e-06  1.03e+00    42s
+  47   5.39001780e+09  5.38915599e+09  2.87e-02 6.92e-07  6.15e-01    43s
+  48   5.38984609e+09  5.38918351e+09  2.27e-02 2.83e-07  4.73e-01    43s
+  49   5.38973215e+09  5.38918769e+09  1.87e-02 2.26e-07  3.88e-01    44s
+  50   5.38951808e+09  5.38919261e+09  1.12e-02 1.39e-05  2.32e-01    45s
+  51   5.38950693e+09  5.38919776e+09  1.08e-02 1.03e-05  2.21e-01    45s
+  52   5.38942374e+09  5.38920052e+09  7.85e-03 3.09e-04  1.59e-01    46s
+  53   5.38942220e+09  5.38920162e+09  7.80e-03 2.35e-04  1.57e-01    47s
+  54   5.38932037e+09  5.38920210e+09  4.17e-03 2.04e-04  8.44e-02    47s
+  55   5.38927182e+09  5.38920350e+09  2.43e-03 7.66e-05  4.87e-02    48s
+  56   5.38926441e+09  5.38920407e+09  2.17e-03 4.91e-05  4.30e-02    49s
+  57   5.38925390e+09  5.38920427e+09  1.79e-03 2.94e-05  3.54e-02    49s
+  58   5.38923819e+09  5.38920439e+09  1.22e-03 2.36e-05  2.41e-02    50s
+  59   5.38923280e+09  5.38920466e+09  1.02e-03 1.49e-05  2.01e-02    50s
+  60   5.38922381e+09  5.38920472e+09  7.00e-04 1.30e-05  1.36e-02    51s
+  61   5.38921273e+09  5.38920498e+09  2.90e-04 4.70e-06  5.52e-03    52s
+  62   5.38920738e+09  5.38920506e+09  1.12e-04 4.95e-05  1.65e-03    53s
+  63   5.38920559e+09  5.38920510e+09  2.48e-05 1.29e-04  3.50e-04    54s
+  64   5.38920529e+09  5.38920511e+09  1.20e-05 8.35e-04  1.31e-04    54s
+  65   5.38920522e+09  5.38920513e+09  7.18e-06 1.08e-03  7.16e-05    55s
+
+Barrier solved model in 65 iterations and 55.09 seconds (37.57 work units)
+Optimal objective 5.38920522e+09
+
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 566571 primals, 1825183 duals
+Objective: 5.39e+09
+Solver: gurobi
+Runtime: 55.21s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints land_use_constraint were not assigned to the network.
+INFO:_helpers:[schema exit] SubNetwork: 1 -> 8 rows
+INFO:pypsa.network.io:Exported network 'Unnamed Network' saved to 'results/BYOP_ERCOT7s/texas/networks/elec_s20_c8s_ec_lv1.0_REM-3h_E.nc contains: generators, links, sub_networks, loads, carriers, storage_units, global_constraints, buses
+Benchmark: unable to collect cpu and memory benchmark statistics
+[Sun Oct 18 14:11:25 2026]
+Finished job 0.
+5 of 5 steps (100%) done
+Complete log: .snakemake\log\2026-10-18T140858.586319.snakemake.log
+EXIT=0

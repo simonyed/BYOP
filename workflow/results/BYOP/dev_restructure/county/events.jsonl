@@ -1,0 +1,1 @@
+{"timestamp_utc": "2026-10-20T14:39:51.191180+00:00", "run_id": "v240_RS_COUNTY_20261020T143841Z", "case_id": "RS_COUNTY", "event": "optimization_solved", "status": "SOLVER_OPTIMAL", "message": "obj -4.815958e+09; vars 515139; int 0; 57s", "scenario": "S1"}

@@ -1,0 +1,21 @@
+{
+  "decision": "ERM-02 B",
+  "margin_by_period": {
+    "2026": 0.15000000178660367,
+    "2027": 0.15000000176484218,
+    "2028": 0.139304013285116,
+    "2029": 0.10376632185166779,
+    "2030": 0.08848491393764557,
+    "2031": 0.061122637142073666
+  },
+  "termination": "optimal",
+  "cfg": {
+    "periods": "annual",
+    "start": 2026,
+    "end": 2031,
+    "sample_weeks": 26,
+    "bg_growth": 0.0,
+    "bg_traj": "/datasets/prgm/BYOP_impact/BYOP_ERCOT_Mechanism_Repair_v2.4.0/data/background_load_growth_states_AEO2023_reference.csv"
+  },
+  "baseline_sha256": "3ec8ece55404cfb671ab8218293721fcf15fda6bb78c95a504e32d2d6e33a439"
+}

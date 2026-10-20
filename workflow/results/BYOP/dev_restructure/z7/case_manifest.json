@@ -1,0 +1,366 @@
+{
+  "run_id": "v240_RS_7ZONE_20261020T143953Z",
+  "case_id": "RS_7ZONE",
+  "cfg": {
+    "bg_traj": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/inputs/load/background_load_growth_states_AEO2023_reference.csv",
+    "tv_share_byop": 1.0,
+    "tv_share_public": 1.0,
+    "periods": "annual",
+    "start": 2026,
+    "end": 2027,
+    "decision_year": 2026,
+    "years": 1,
+    "cost_basis": "repaired",
+    "public_subsidy": "without",
+    "tariff": "energy",
+    "reuse": "on",
+    "reuse_case": "base",
+    "frac_cod": true,
+    "flex": true,
+    "poi_lead": 0,
+    "byop_case": "base",
+    "public_case": "base",
+    "byop_techs": [
+      "RICE",
+      "SOFC_NG"
+    ],
+    "sample_weeks": 4,
+    "bg_growth": 0.0,
+    "line_exp": true,
+    "erm15": false,
+    "threads": 8,
+    "social_r": 0.02,
+    "private_wacc": 0.07,
+    "v": 2800000.0,
+    "v_private": null,
+    "dem_scale": 1.0,
+    "smoke": true
+  },
+  "argv": [
+    "byop/model/v240_mech.py",
+    "--case-id",
+    "RS_7ZONE",
+    "--out",
+    "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/dev_restructure/z7",
+    "--smoke",
+    "--start",
+    "2026",
+    "--end",
+    "2027",
+    "--threads",
+    "8",
+    "--scenarios",
+    "S1"
+  ],
+  "status": "CASE_SOLVED",
+  "checks": {
+    "true_LP": true,
+    "all_optimal": true,
+    "S1_zero_equals_S0": null,
+    "S2_off_equals_S1": null,
+    "no_load_shed": true,
+    "no_public_offer_before_COD": true,
+    "dc_energy_balance": true,
+    "served_le_requested": true,
+    "private_stage_LP": null
+  },
+  "solves": {
+    "S1": {
+      "tag": "S1",
+      "status": "ok",
+      "termination": "optimal",
+      "objective": -4809869775.948553,
+      "seconds": 8.0,
+      "n_vars": 36262,
+      "n_cons": 81906,
+      "integer_vars": 0,
+      "erm_dc_mode": "B",
+      "erm_poi_coeff_snapshot0": -1.15
+    }
+  },
+  "erm_cal": null,
+  "baseline": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_7zone/baseline_2025_prepared.nc",
+  "baseline_sha256": "74ed60a70813187062236d75aac9b0bada0f772cb9f1adc16ab3fa749b986677",
+  "code_sha256": {
+    "v240_mech.py": "e2a64af4f9a4cd3db706635ef9d7a51b798e9148d56dbedd79733beff958324e",
+    "wp2_ercot_s0_s1.py": "314830e337c5c4b63ef4992f5fca6cee741240d3e015c6599902f76fec93c6a9",
+    "wp2_ercot_s1_real.py": "1469c8d6c8c8f810330a3030ae18dbc46072ef809e9f7d7591e8fab2e7a2e480"
+  },
+  "tech_sha256": "127e5a97b5177eb4242d4df33c516ddf09d480a4d5d1da4523dd75605ab99eea",
+  "bg_traj": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/inputs/load/background_load_growth_states_AEO2023_reference.csv",
+  "bg_traj_sha256": "8fc098183b479520d63175cb9d58523f4a1acf1255f2c645dcc04e6861b60700",
+  "bg_factor_by_period": {
+    "TX": {
+      "2026": 1.0093269780764036,
+      "2027": 1.0192185210366336
+    }
+  },
+  "cohorts_sha256": "b038ecfb48fbb05c3077fe798a713752c488339654c3345dd63172c5ef02553f",
+  "pypsa": "1.3.0",
+  "byop": {
+    "RICE": {
+      "social": {
+        "carrier": "RICE",
+        "case": "base",
+        "overnight_per_MW": 2450000.0,
+        "fom": 43000.0,
+        "life": 25,
+        "annual": 168490.07412261696,
+        "rate": 0.02,
+        "annual_social": 168490.07412261696,
+        "annual_private": 253235.76719063072,
+        "mc": 33.46105,
+        "r": 1.25,
+        "lead": 2.0,
+        "cod": 2028.0,
+        "first_period": null
+      },
+      "private": {
+        "carrier": "RICE",
+        "case": "base",
+        "overnight_per_MW": 2450000.0,
+        "fom": 43000.0,
+        "life": 25,
+        "annual": 253235.76719063072,
+        "rate": 0.07,
+        "annual_social": 168490.07412261696,
+        "annual_private": 253235.76719063072,
+        "mc": 33.46105,
+        "r": 1.25,
+        "lead": 2.0,
+        "cod": 2028.0,
+        "first_period": null
+      }
+    },
+    "SOFC_NG": {
+      "social": {
+        "carrier": "SOFC_NG",
+        "case": "base",
+        "overnight_per_MW": 7953000.0,
+        "fom": 37770.0,
+        "life": 15,
+        "annual": 656715.9808061911,
+        "rate": 0.02,
+        "annual_social": 656715.9808061911,
+        "annual_private": 910966.6502471047,
+        "mc": 21.35611,
+        "r": 1.1,
+        "lead": 0.5,
+        "cod": 2026.5,
+        "first_period": 2026
+      },
+      "private": {
+        "carrier": "SOFC_NG",
+        "case": "base",
+        "overnight_per_MW": 7953000.0,
+        "fom": 37770.0,
+        "life": 15,
+        "annual": 910966.6502471047,
+        "rate": 0.07,
+        "annual_social": 656715.9808061911,
+        "annual_private": 910966.6502471047,
+        "mc": 21.35611,
+        "r": 1.1,
+        "lead": 0.5,
+        "cod": 2026.5,
+        "first_period": 2026
+      }
+    }
+  },
+  "reuse_params": {
+    "annual": 66698.97917979745,
+    "rate": 0.02,
+    "annual_social": 66698.97917979745,
+    "annual_private": 71356.6254091047,
+    "refurb": 150.0,
+    "sustain": 15.0,
+    "fom": 35.0,
+    "lead": 1.0
+  },
+  "reuse_pool": [
+    {
+      "asset_id": "p63 gas_steam 2025fleet r2027",
+      "zone": "p63",
+      "MW": 118.0,
+      "retire_year": 2027,
+      "COD": 2027,
+      "build_period": 2027,
+      "pub": "p63 gas_steam 2025fleet r2027 Rpub",
+      "dc": null,
+      "carrier": "gas_steam"
+    },
+    {
+      "asset_id": "p64 gas_steam 2025fleet r2027",
+      "zone": "p64",
+      "MW": 335.0,
+      "retire_year": 2027,
+      "COD": 2027,
+      "build_period": 2027,
+      "pub": "p64 gas_steam 2025fleet r2027 Rpub",
+      "dc": null,
+      "carrier": "gas_steam"
+    },
+    {
+      "asset_id": "p65 CCGT 2025fleet r2027",
+      "zone": "p65",
+      "MW": 319.0,
+      "retire_year": 2027,
+      "COD": 2027,
+      "build_period": 2027,
+      "pub": "p65 CCGT 2025fleet r2027 Rpub",
+      "dc": null,
+      "carrier": "CCGT"
+    },
+    {
+      "asset_id": "p65 gas_steam 2025fleet r2027",
+      "zone": "p65",
+      "MW": 420.0,
+      "retire_year": 2027,
+      "COD": 2027,
+      "build_period": 2027,
+      "pub": "p65 gas_steam 2025fleet r2027 Rpub",
+      "dc": null,
+      "carrier": "gas_steam"
+    }
+  ],
+  "corridors": [
+    {
+      "corridor": "p60||p61",
+      "cap_MW": 4339.436,
+      "capital_cost_per_MW_yr": 9487.221965480387,
+      "first_period": null,
+      "bus0": "p60",
+      "bus1": "p61",
+      "existing_MW": 4270.071
+    },
+    {
+      "corridor": "p60||p62",
+      "cap_MW": 3669.9584999999997,
+      "capital_cost_per_MW_yr": 3874.1739065406514,
+      "first_period": null,
+      "bus0": "p60",
+      "bus1": "p62",
+      "existing_MW": 3303.403
+    },
+    {
+      "corridor": "p60||p63",
+      "cap_MW": 7963.2205,
+      "capital_cost_per_MW_yr": 24494.942389355238,
+      "first_period": null,
+      "bus0": "p60",
+      "bus1": "p63",
+      "existing_MW": 10383.198
+    },
+    {
+      "corridor": "p61||p62",
+      "cap_MW": 1352.3829999999998,
+      "capital_cost_per_MW_yr": 6444.0199183514505,
+      "first_period": null,
+      "bus0": "p61",
+      "bus1": "p62",
+      "existing_MW": 1522.014
+    },
+    {
+      "corridor": "p61||p63",
+      "cap_MW": 4595.433,
+      "capital_cost_per_MW_yr": 33593.37067153942,
+      "first_period": null,
+      "bus0": "p61",
+      "bus1": "p63",
+      "existing_MW": 3393.601
+    },
+    {
+      "corridor": "p61||p64",
+      "cap_MW": 3458.2455,
+      "capital_cost_per_MW_yr": 28077.158636902564,
+      "first_period": null,
+      "bus0": "p61",
+      "bus1": "p64",
+      "existing_MW": 3008.9
+    },
+    {
+      "corridor": "p61||p65",
+      "cap_MW": 185.90699999999998,
+      "capital_cost_per_MW_yr": 26322.34394118361,
+      "first_period": null,
+      "bus0": "p61",
+      "bus1": "p65",
+      "existing_MW": 186.352
+    },
+    {
+      "corridor": "p63||p64",
+      "cap_MW": 9420.5425,
+      "capital_cost_per_MW_yr": 17932.58005785109,
+      "first_period": null,
+      "bus0": "p63",
+      "bus1": "p64",
+      "existing_MW": 7909.854
+    },
+    {
+      "corridor": "p64||p65",
+      "cap_MW": 5580.386,
+      "capital_cost_per_MW_yr": 7611.781649522213,
+      "first_period": null,
+      "bus0": "p64",
+      "bus1": "p65",
+      "existing_MW": 6488.427
+    },
+    {
+      "corridor": "p64||p67",
+      "cap_MW": 4729.9575,
+      "capital_cost_per_MW_yr": 13758.248951298172,
+      "first_period": null,
+      "bus0": "p64",
+      "bus1": "p67",
+      "existing_MW": 3318.409
+    },
+    {
+      "corridor": "p65||p67",
+      "cap_MW": 4328.3445,
+      "capital_cost_per_MW_yr": 17664.84347627859,
+      "first_period": null,
+      "bus0": "p65",
+      "bus1": "p67",
+      "existing_MW": 4331.51
+    }
+  ],
+  "study_new": [
+    {
+      "zone": "p63",
+      "period": 2026,
+      "D_IT_MW": 415.8007078762286,
+      "G_IT_MW": 415.8007078762286
+    },
+    {
+      "zone": "p63",
+      "period": 2027,
+      "D_IT_MW": 932.2469775960981,
+      "G_IT_MW": 932.2469775960981
+    },
+    {
+      "zone": "p64",
+      "period": 2026,
+      "D_IT_MW": 23.100039326457143,
+      "G_IT_MW": 23.100039326457143
+    },
+    {
+      "zone": "p64",
+      "period": 2027,
+      "D_IT_MW": 51.79149875533878,
+      "G_IT_MW": 51.79149875533878
+    },
+    {
+      "zone": "p65",
+      "period": 2026,
+      "D_IT_MW": 127.05021629551426,
+      "G_IT_MW": 127.05021629551426
+    },
+    {
+      "zone": "p65",
+      "period": 2027,
+      "D_IT_MW": 284.8532431543632,
+      "G_IT_MW": 284.8532431543632
+    }
+  ],
+  "timestamp_utc": "2026-10-20T14:40:06.504217+00:00"
+}

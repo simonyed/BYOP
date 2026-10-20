@@ -1,0 +1,15 @@
+zone,carrier,period,first_period,lead,earliest_COD
+p60,4hr_battery_storage,2027,2027,1.0,2027.0
+p60,8hr_battery_storage,2027,2027,1.0,2027.0
+p61,4hr_battery_storage,2027,2027,1.0,2027.0
+p61,8hr_battery_storage,2027,2027,1.0,2027.0
+p62,4hr_battery_storage,2027,2027,1.0,2027.0
+p62,8hr_battery_storage,2027,2027,1.0,2027.0
+p63,4hr_battery_storage,2027,2027,1.0,2027.0
+p63,8hr_battery_storage,2027,2027,1.0,2027.0
+p64,4hr_battery_storage,2027,2027,1.0,2027.0
+p64,8hr_battery_storage,2027,2027,1.0,2027.0
+p65,4hr_battery_storage,2027,2027,1.0,2027.0
+p65,8hr_battery_storage,2027,2027,1.0,2027.0
+p67,4hr_battery_storage,2027,2027,1.0,2027.0
+p67,8hr_battery_storage,2027,2027,1.0,2027.0

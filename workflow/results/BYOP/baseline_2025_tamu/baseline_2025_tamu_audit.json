@@ -1,0 +1,218 @@
+{
+  "status": "BASELINE_2025_TAMU_BUILT",
+  "clusters": "64s",
+  "interface_rule": "reeds_sum",
+  "reeds_commit": "eb75a6bc664297492b38a40782df294666269971",
+  "prep": "resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_c64s_ec_lv1.0_REM-ERM-3h_E.nc",
+  "prep_sha256": "78ec376e6e9dc7dfffb8e8a79f3520952113677c7b4e2de71764dd5644516eb2",
+  "subs_sha256": "b1ff33fa70492ac41b128b523008f99540931f5fd5deb3a020d3498587de5aa3",
+  "busmap_sha256": "cff00f44515511f24755ada82cfb1ce9a0adfc08485e02ee265064fa8b3b397d",
+  "native_load_sha256": "23664b0cddb047692f6cac26a4300e987c6309795395d394bf2dc223f37b53aa",
+  "island": {
+    "pypsa_usa_lines_after_calibration": 57,
+    "rebuilt_lines": 165,
+    "dropped_non_ercot_buses": [
+      "p480 0"
+    ],
+    "removed_tie_lines_MVA": {
+      "TL0": 2207.0,
+      "TL1": 2768.0,
+      "TL2": 2020.0
+    },
+    "components": [
+      63
+    ]
+  },
+  "n_buses": 63,
+  "n_lines": 162,
+  "n_substations_ercot": 1240,
+  "duplicate_corridors": 0,
+  "negative_ratings": 0,
+  "n_links_AC_DC": 0,
+  "import_generators": 0,
+  "buses_by_zone": {
+    "p63": 16,
+    "p67": 11,
+    "p65": 10,
+    "p62": 8,
+    "p64": 8,
+    "p60": 5,
+    "p61": 5
+  },
+  "fleet_2025_MW_by_carrier": {
+    "CCGT": 35914.3,
+    "OCGT": 8815.7,
+    "battery": 12768.4,
+    "biomass": 123.0,
+    "coal": 10774.0,
+    "gas_steam": 11848.3,
+    "hydro": 535.4,
+    "nuclear": 4980.0,
+    "onwind": 40028.8,
+    "solar": 29262.7
+  },
+  "fleet_2025_MW_total": 155050.6,
+  "committed_MW_by_year": {
+    "2026": 12110.8,
+    "2027": 2950.4,
+    "2028": 125.0
+  },
+  "fleet_MW_far_from_substation": 5690.599999999999,
+  "template_rule_MW": {
+    "nearest_bus": 1300.0,
+    "same_bus": 151061.5
+  },
+  "unmapped_reeds_techs": [],
+  "load": {
+    "ercot_native_2025_TWh": 488.233578542299,
+    "model_TWh": 488.23357854151,
+    "peak_MW_3h": 83403.65211433334,
+    "counties": 197,
+    "county_rule_counts": {
+      "substations_in_county": 187,
+      "nearest_substation": 10
+    }
+  },
+  "interfaces": [
+    {
+      "zone_pair": "p60||p61",
+      "reeds_interface": "p60||p61",
+      "reeds_MW_max_dir": 4408.801,
+      "n_crossing_lines": 7,
+      "tamu_raw_sum_MW": 2671.8999999999996,
+      "pypsa_usa_per_line_MW": 4408.801,
+      "pypsa_usa_overcount_factor": 7.0,
+      "applied_sum_MW": 4408.801,
+      "rule": "reeds_sum"
+    },
+    {
+      "zone_pair": "p60||p62",
+      "reeds_interface": "p60||p62",
+      "reeds_MW_max_dir": 4036.514,
+      "n_crossing_lines": 4,
+      "tamu_raw_sum_MW": 3637.2,
+      "pypsa_usa_per_line_MW": 4036.514,
+      "pypsa_usa_overcount_factor": 4.0,
+      "applied_sum_MW": 4036.5140000000006,
+      "rule": "reeds_sum"
+    },
+    {
+      "zone_pair": "p60||p63",
+      "reeds_interface": "p60||p63",
+      "reeds_MW_max_dir": 10383.198,
+      "n_crossing_lines": 3,
+      "tamu_raw_sum_MW": 6799.099999999999,
+      "pypsa_usa_per_line_MW": 10383.198,
+      "pypsa_usa_overcount_factor": 3.0,
+      "applied_sum_MW": 10383.198,
+      "rule": "reeds_sum"
+    },
+    {
+      "zone_pair": "p61||p62",
+      "reeds_interface": "p61||p62",
+      "reeds_MW_max_dir": 1522.014,
+      "n_crossing_lines": 3,
+      "tamu_raw_sum_MW": 1653.6799999999998,
+      "pypsa_usa_per_line_MW": 1522.014,
+      "pypsa_usa_overcount_factor": 3.0,
+      "applied_sum_MW": 1522.0139999999994,
+      "rule": "reeds_sum"
+    },
+    {
+      "zone_pair": "p61||p63",
+      "reeds_interface": "p61||p63",
+      "reeds_MW_max_dir": 5797.265,
+      "n_crossing_lines": 6,
+      "tamu_raw_sum_MW": 1773.8,
+      "pypsa_usa_per_line_MW": 5797.265,
+      "pypsa_usa_overcount_factor": 6.0,
+      "applied_sum_MW": 5797.265000000001,
+      "rule": "reeds_sum"
+    },
+    {
+      "zone_pair": "p61||p64",
+      "reeds_interface": "p61||p64",
+      "reeds_MW_max_dir": 3907.591,
+      "n_crossing_lines": 3,
+      "tamu_raw_sum_MW": 310.09999999999997,
+      "pypsa_usa_per_line_MW": 3907.5909999999994,
+      "pypsa_usa_overcount_factor": 3.0,
+      "applied_sum_MW": 3907.5909999999994,
+      "rule": "reeds_sum"
+    },
+    {
+      "zone_pair": "p61||p65",
+      "reeds_interface": "p61||p65",
+      "reeds_MW_max_dir": 186.352,
+      "n_crossing_lines": 3,
+      "tamu_raw_sum_MW": 520.8,
+      "pypsa_usa_per_line_MW": 186.35200000000003,
+      "pypsa_usa_overcount_factor": 3.0,
+      "applied_sum_MW": 186.35200000000003,
+      "rule": "reeds_sum"
+    },
+    {
+      "zone_pair": "p63||p64",
+      "reeds_interface": "p63||p64",
+      "reeds_MW_max_dir": 10931.231,
+      "n_crossing_lines": 8,
+      "tamu_raw_sum_MW": 8082.200000000001,
+      "pypsa_usa_per_line_MW": 10931.231,
+      "pypsa_usa_overcount_factor": 8.0,
+      "applied_sum_MW": 10931.231,
+      "rule": "reeds_sum"
+    },
+    {
+      "zone_pair": "p63||p67",
+      "reeds_interface": "",
+      "reeds_MW_max_dir": NaN,
+      "n_crossing_lines": 1,
+      "tamu_raw_sum_MW": 452.9,
+      "pypsa_usa_per_line_MW": NaN,
+      "pypsa_usa_overcount_factor": NaN,
+      "applied_sum_MW": 452.9,
+      "rule": "reeds_sum"
+    },
+    {
+      "zone_pair": "p64||p65",
+      "reeds_interface": "p64||p65",
+      "reeds_MW_max_dir": 6488.427,
+      "n_crossing_lines": 13,
+      "tamu_raw_sum_MW": 12555.2,
+      "pypsa_usa_per_line_MW": 6488.427,
+      "pypsa_usa_overcount_factor": 13.0,
+      "applied_sum_MW": 6488.426999999999,
+      "rule": "reeds_sum"
+    },
+    {
+      "zone_pair": "p64||p67",
+      "reeds_interface": "p64||p67",
+      "reeds_MW_max_dir": 6141.506,
+      "n_crossing_lines": 3,
+      "tamu_raw_sum_MW": 3780.7,
+      "pypsa_usa_per_line_MW": 6141.506000000001,
+      "pypsa_usa_overcount_factor": 3.0,
+      "applied_sum_MW": 6141.506000000001,
+      "rule": "reeds_sum"
+    },
+    {
+      "zone_pair": "p65||p67",
+      "reeds_interface": "p65||p67",
+      "reeds_MW_max_dir": 4331.51,
+      "n_crossing_lines": 4,
+      "tamu_raw_sum_MW": 2954.0,
+      "pypsa_usa_per_line_MW": 4331.51,
+      "pypsa_usa_overcount_factor": 4.0,
+      "applied_sum_MW": 4331.51,
+      "rule": "reeds_sum"
+    }
+  ],
+  "calibration": {
+    "termination": "optimal",
+    "residual_shed_MWh": 102.20466561114219,
+    "n_lines": 18,
+    "total_uplift_MVA": 4993.9
+  },
+  "output": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu/baseline_2025_tamu_prepared.nc",
+  "output_sha256": "19034285be0aa9b9906ab5b0e03778f3a16e7c1c39e97ac97b368d9097cafadb"
+}

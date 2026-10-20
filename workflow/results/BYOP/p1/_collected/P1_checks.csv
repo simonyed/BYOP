@@ -1,0 +1,4 @@
+case,grid,gas_gate,s2_rule,status,check_true_LP,check_all_optimal,check_S1_zero_equals_S0,check_S2_off_equals_S1,check_no_load_shed,check_no_public_offer_before_COD,check_dc_energy_balance,check_served_le_requested,check_private_stage_LP
+P1_GC,G-C,contract,sf,CASE_CHECK_FAIL,True,True,,,False,True,True,True,
+P1_GR,G-R,contract,sf,CASE_CHECK_FAIL,True,True,,,False,True,True,True,True
+P1_GR_GE,G-R,evidence,sf,CASE_CHECK_FAIL,True,True,,,False,True,True,True,True

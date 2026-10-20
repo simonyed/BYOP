@@ -1,0 +1,108 @@
+{
+  "status": "BASELINE_2025_COUNTY_BUILT",
+  "reeds_commit": "eb75a6bc664297492b38a40782df294666269971",
+  "prep": "resources/BYOP_ERCOT_County/networks/texas/elec_s_c192s_ec_lv1.0_REM-ERM-3h_E.nc",
+  "prep_sha256": "7825bb43682a41426f9ced1e31bf6e811c4a27eb74f9dcba634b299fdfe09102",
+  "inputs": {
+    "ReEDS_generator_database_final_EIA-NEMS.csv": "cb3b16ab33a5bcac18fbb17e75dc7dd7fbc924fb9d7a30765319b79c770510d3",
+    "county_state_lpf.csv": "f47e57d674a4fa50254523cdc90cb41c29410af8bf751a54ab1221f0d2b3d0c7",
+    "tl_2022_us_county.dbf": "e498cc3e61d32323f58b34f6a6f566a1f928b990ce0201aef97ea790aa8e7ec9",
+    "tl_2022_us_county.cpg": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824",
+    "county2zone.csv": "60123e6ac1261a3b17a09de47c904b382db39abdc3d7e1918fca1067692d45ea"
+  },
+  "native_load_sha256": "23664b0cddb047692f6cac26a4300e987c6309795395d394bf2dc223f37b53aa",
+  "island": {
+    "dropped_buses": [
+      "p48065",
+      "p48087",
+      "p48129",
+      "p48211",
+      "p48393"
+    ],
+    "removed_tie_links_MW": {
+      "p48129||p48191_fwd": 8.9929,
+      "p48129||p48191_rev": 13.3587
+    },
+    "rule": "D250-10: SPP p48 counties dropped; ERCO units re-hung to nearest ERCOT county bus",
+    "components": [
+      185,
+      2
+    ],
+    "small_components": [
+      [
+        "p48045",
+        "p48191"
+      ]
+    ],
+    "rehung_unreachable_buses": [
+      "p48191",
+      "p48045"
+    ]
+  },
+  "county_buses": 185,
+  "ercot_counties": 198,
+  "counties_without_bus": 13,
+  "load_buses": 185,
+  "itl_links": 904,
+  "itl_MW_total_fwd": 311586.6359960516,
+  "fleet_2025_MW_by_carrier": {
+    "CCGT": 35914.3,
+    "OCGT": 8815.7,
+    "battery": 12768.4,
+    "biomass": 123.0,
+    "coal": 10774.0,
+    "gas_steam": 11848.3,
+    "hydro": 535.4,
+    "nuclear": 4980.0,
+    "onwind": 40028.8,
+    "solar": 29262.7
+  },
+  "fleet_2025_MW_total": 155050.6,
+  "committed_MW_by_year": {
+    "2026": 12110.8,
+    "2027": 2950.4,
+    "2028": 125.0
+  },
+  "fleet_MW_by_rule": {
+    "nearest_county_bus": 10092.7,
+    "own_county_bus": 144957.9
+  },
+  "template_rule_MW": {
+    "nearest_bus": 4245.1,
+    "same_bus": 148116.4
+  },
+  "unmapped_reeds_techs": [],
+  "load": {
+    "ercot_native_2025_TWh": 488.233578542299,
+    "ercot_2025_TWh_model": 488.23357854151,
+    "peak_MW_3h": 83403.65211433335,
+    "top10_county_share": {
+      "p48201": 0.1348,
+      "p48113": 0.0901,
+      "p48439": 0.0646,
+      "p48029": 0.0559,
+      "p48039": 0.0375,
+      "p48085": 0.0341,
+      "p48453": 0.0337,
+      "p48107": 0.026,
+      "p48121": 0.0257,
+      "p48329": 0.0216
+    }
+  },
+  "itl_2025_calibration": {
+    "n_rows": 13,
+    "total_uplift_MW": 3699.4,
+    "counties": [
+      "p48101",
+      "p48107",
+      "p48109",
+      "p48235",
+      "p48291",
+      "p48339",
+      "p48411",
+      "p48499"
+    ]
+  },
+  "output": "/datasets/prgm/BYOP_impact/BYOP_ERCOT_County_v2.5.0/outputs/baseline_2025_county/baseline_2025_county_prepared.nc",
+  "output_sha256": "3ec8ece55404cfb671ab8218293721fcf15fda6bb78c95a504e32d2d6e33a439"
+}

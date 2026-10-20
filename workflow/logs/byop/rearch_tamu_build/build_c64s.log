@@ -1,0 +1,391 @@
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2559322
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+/datasets/prgm/pypsa-usa/.venv/lib/python3.11/site-packages/pulp/apis/gurobi_api.py:170: UserWarning: GUROBI error: Unknown parameter '_test'.
+  warnings.warn("GUROBI error: {}.".format(e))
+Config file repo_data/config/config.slurm.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.common.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.plotting.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.api.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.sector.yaml is extended by additional config specified via the command line.
+Config file repo_data/config/config.default.yaml is extended by additional config specified via the command line.
+Config file config/config.api.yaml is extended by additional config specified via the command line.
+Config file config/config.slurm.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 16
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job stats:
+job                         count
+------------------------  -------
+add_demand                      1
+add_electricity                 1
+add_extra_components            1
+add_sectors                     1
+build_electrical_demand         1
+build_renewable_profiles        3
+cluster_network                 1
+cluster_resources               1
+prepare_network                 1
+total                          11
+
+Select jobs to execute...
+
+[Tue Oct 20 11:40:04 2026]
+rule cluster_resources:
+    input: resources/BYOP_ERCOT_TAMU/networks/texas/elec_b.nc, resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_onshore.geojson, resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_offshore.geojson
+    output: resources/BYOP_ERCOT_TAMU/networks/texas/elec_s.nc, resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_onshore_s.geojson, resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_offshore_s.geojson, resources/BYOP_ERCOT_TAMU/busmaps/texas/busmap_s.csv
+    log: logs/cluster_resources/texas/elec_s.log
+    jobid: 9
+    benchmark: benchmarks/BYOP_ERCOT_TAMU/texas/cluster_resources_elec_s
+    reason: Params have changed since last execution
+    wildcards: interconnect=texas, simpl=
+    resources: tmpdir=/tmp, mem_mb=39, mem_mib=38, walltime=05:00:00
+
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, lines, sub_networks
+INFO:_helpers:[schema entry] Bus: 1250 rows, 26 cols: ['LAF_state', 'Pd', 'carrier', 'control', 'country', 'generator', 'interconnect', 'load_weight', 'location', 'nerc_reg', 'rec_trading_zone', 'reeds_ba', 'reeds_state', 'reeds_zone', 'sub_network', 'substation_lv', 'trans_grp', 'trans_reg', 'type', 'unit', 'v_mag_pu_max', 'v_mag_pu_min', 'v_mag_pu_set', 'v_nom', 'x', 'y']
+INFO:_helpers:[schema entry] Line: 1890 rows, 39 cols: ['active', 'b', 'b_pu', 'build_year', 'bus0', 'bus1', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'discount_rate', 'fom_cost', 'g', 'g_pu', 'interconnect', 'length', 'lifetime', 'num_parallel', 'overnight_cost', 'r', 'r_pu', 'r_pu_eff', 's_max_pu', 's_nom', 's_nom_extendable', 's_nom_max', 's_nom_min', 's_nom_mod', 's_nom_opt', 's_nom_set', 'sub_network', 'terrain_factor', 'type', 'underwater_fraction', 'v_ang_max', 'v_ang_min', 'v_nom', 'x', 'x_pu', 'x_pu_eff']
+INFO:_helpers:[schema entry] LineType: 59 rows, 8 cols: ['c_per_length', 'cross_section', 'f_nom', 'i_nom', 'mounting', 'r_per_length', 'references', 'x_per_length']
+INFO:_helpers:[schema entry] TransformerType: 14 rows, 15 cols: ['f_nom', 'i0', 'pfe', 'phase_shift', 'references', 's_nom', 'tap_max', 'tap_min', 'tap_neutral', 'tap_side', 'tap_step', 'v_nom_0', 'v_nom_1', 'vsc', 'vscr']
+INFO:_helpers:[schema entry] SubNetwork: 1 rows, 3 cols: ['carrier', 'obj', 'slack_bus']
+INFO:pyogrio._io:Created 1,250 records
+INFO:pyogrio._io:Created 17 records
+INFO:pypsa.network.io:Exported network 'Unnamed Network' saved to 'resources/BYOP_ERCOT_TAMU/networks/texas/elec_s.nc contains: lines, sub_networks, buses
+[Tue Oct 20 11:40:08 2026]
+Finished job 9.
+1 of 11 steps (9%) done
+Select jobs to execute...
+
+[Tue Oct 20 11:40:08 2026]
+rule build_renewable_profiles:
+    input: data/copernicus/PROBAV_LC100_global_v3.0.1_2019-nrt_Discrete-Classification-map_USA_EPSG-4326.tif, data/natura.tiff, data/gebco/gebco_2023_n55.0_s10.0_w-126.0_e-65.0.tif, resources/BYOP_ERCOT_TAMU/geospatial/texas/country_shapes.geojson, resources/BYOP_ERCOT_TAMU/geospatial/texas/offshore_shapes.geojson, repo_data/geospatial/CEC_GIS/CEC_Wind_BaseScreen_epsg3310.tif, repo_data/geospatial/CEC_GIS/CEC_Solar_BaseScreen_epsg3310.tif, repo_data/geospatial/boem_osw_planning_areas.tif, resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_offshore_s.geojson, resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_offshore.geojson, data/nrel_exclusion/derived/avail_offwind_floating_reference.nc, data/nrel_exclusion/derived/caps_offwind_floating_reference.nc, data/godeeep/rcp85cooler/wind_gen_cf_2030_125m_compressed.nc, resources/BYOP_ERCOT_TAMU/busmaps/texas/busmap_s.csv
+    output: resources/BYOP_ERCOT_TAMU/profiles/texas/2030/profile_offwind_floating_s.nc
+    log: logs/BYOP_ERCOT_TAMU/texas/build_renewable_profile_offwind_floating_2030_s.log
+    jobid: 17
+    benchmark: benchmarks/BYOP_ERCOT_TAMU/texas/build_renewable_profiles_offwind_floating_2030_s
+    reason: Input files updated by another job: resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_offshore_s.geojson, resources/BYOP_ERCOT_TAMU/busmaps/texas/busmap_s.csv
+    wildcards: interconnect=texas, planning_horizon=2030, technology=offwind_floating, simpl=
+    threads: 8
+    resources: tmpdir=/tmp, mem_mb=32000, mem_mib=30518, walltime=04:00:00
+
+[Tue Oct 20 11:40:08 2026]
+rule build_electrical_demand:
+    input: resources/BYOP_ERCOT_TAMU/networks/texas/elec_s.nc, data/nrel_efs/EFSLoadProfile_Reference_Moderate.csv, data/nrel_efs/EFSLoadProfile_Reference_Moderate.csv
+    output: resources/BYOP_ERCOT_TAMU/demand/texas/power_electricity_s.csv, resources/BYOP_ERCOT_TAMU/demand/texas/power_zonal_components_s.parquet
+    log: logs/BYOP_ERCOT_TAMU/texas/power_build_demand_s.log
+    jobid: 25
+    benchmark: benchmarks/BYOP_ERCOT_TAMU/texas/power_build_demand_s
+    reason: Input files updated by another job: resources/BYOP_ERCOT_TAMU/networks/texas/elec_s.nc
+    wildcards: interconnect=texas, end_use=power, simpl=
+    threads: 2
+    resources: tmpdir=/tmp, mem_mb=112786, mem_mib=107562, walltime=00:50:00
+
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, lines, sub_networks
+INFO:__main__:Building Load Data using EFS demand
+INFO:__main__:Loading godeeep renewable data...
+INFO:__main__:Using GODEEEP CF year 2030 for scenario 'rcp85cooler'
+INFO:__main__:Using renewable snapshots for year 2030: 2030-01-01 00:00 to 2031-01-01 00:00 (inclusive end)
+INFO:__main__:NREL access scenario: reference
+WARNING:__main__:NREL caps remap (offwind_floating): 98/104 entries have no busmap match (out of the run footprint) — dropping 258710.5 MW p_nom_max, 97.5% of the national total. Border regions straddling the footprint edge lose their out-of-footprint capacity entirely; see nrel_caps_reassign in config.common.yaml for opt-in recovery.
+INFO:__main__:Remapped NREL caps to 6 cluster buses.
+INFO:__main__:Cell→substation mapping: 17 substations, 168 cell rows
+INFO:__main__:Profile: (8760, 6)  Capacities: (6,)
+[mapping] cache HIT: resources/BYOP_ERCOT_TAMU/profiles/texas/nrel_mapping_cache/cell_to_bus_3610ed5092fd.parquet
+[Tue Oct 20 11:40:24 2026]
+Finished job 17.
+2 of 11 steps (18%) done
+Select jobs to execute...
+
+[Tue Oct 20 11:40:24 2026]
+rule build_renewable_profiles:
+    input: data/copernicus/PROBAV_LC100_global_v3.0.1_2019-nrt_Discrete-Classification-map_USA_EPSG-4326.tif, data/natura.tiff, resources/BYOP_ERCOT_TAMU/geospatial/texas/country_shapes.geojson, resources/BYOP_ERCOT_TAMU/geospatial/texas/offshore_shapes.geojson, repo_data/geospatial/CEC_GIS/CEC_Wind_BaseScreen_epsg3310.tif, repo_data/geospatial/CEC_GIS/CEC_Solar_BaseScreen_epsg3310.tif, repo_data/geospatial/boem_osw_planning_areas.tif, resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_onshore_s.geojson, resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_onshore.geojson, data/nrel_exclusion/derived/avail_onwind_reference.nc, data/nrel_exclusion/derived/caps_onwind_reference.nc, data/godeeep/rcp85cooler/wind_gen_cf_2030_125m_compressed.nc, resources/BYOP_ERCOT_TAMU/busmaps/texas/busmap_s.csv
+    output: resources/BYOP_ERCOT_TAMU/profiles/texas/2030/profile_onwind_s.nc
+    log: logs/BYOP_ERCOT_TAMU/texas/build_renewable_profile_onwind_2030_s.log
+    jobid: 6
+    benchmark: benchmarks/BYOP_ERCOT_TAMU/texas/build_renewable_profiles_onwind_2030_s
+    reason: Input files updated by another job: resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_onshore_s.geojson, resources/BYOP_ERCOT_TAMU/busmaps/texas/busmap_s.csv
+    wildcards: interconnect=texas, planning_horizon=2030, technology=onwind, simpl=
+    threads: 8
+    resources: tmpdir=/tmp, mem_mb=32000, mem_mib=30518, walltime=04:00:00
+
+INFO:__main__:Loading godeeep renewable data...
+INFO:__main__:Using GODEEEP CF year 2030 for scenario 'rcp85cooler'
+INFO:__main__:Using renewable snapshots for year 2030: 2030-01-01 00:00 to 2031-01-01 00:00 (inclusive end)
+INFO:__main__:NREL access scenario: reference
+WARNING:__main__:NREL caps remap (onwind): 17089/17890 entries have no busmap match (out of the run footprint) — dropping 8829732.0 MW p_nom_max, 91.0% of the national total. Border regions straddling the footprint edge lose their out-of-footprint capacity entirely; see nrel_caps_reassign in config.common.yaml for opt-in recovery.
+INFO:__main__:Remapped NREL caps to 801 cluster buses.
+INFO:__main__:Cell→substation mapping: 1250 substations, 4824 cell rows
+INFO:__main__:Profile: (8760, 801)  Capacities: (801,)
+[mapping] cache HIT: resources/BYOP_ERCOT_TAMU/profiles/texas/nrel_mapping_cache/cell_to_bus_3bf5953fcc36.parquet
+[Tue Oct 20 11:40:42 2026]
+Finished job 6.
+3 of 11 steps (27%) done
+Select jobs to execute...
+
+[Tue Oct 20 11:40:42 2026]
+rule build_renewable_profiles:
+    input: data/copernicus/PROBAV_LC100_global_v3.0.1_2019-nrt_Discrete-Classification-map_USA_EPSG-4326.tif, data/natura.tiff, resources/BYOP_ERCOT_TAMU/geospatial/texas/country_shapes.geojson, resources/BYOP_ERCOT_TAMU/geospatial/texas/offshore_shapes.geojson, repo_data/geospatial/CEC_GIS/CEC_Wind_BaseScreen_epsg3310.tif, repo_data/geospatial/CEC_GIS/CEC_Solar_BaseScreen_epsg3310.tif, repo_data/geospatial/boem_osw_planning_areas.tif, resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_onshore_s.geojson, resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_onshore.geojson, data/nrel_exclusion/derived/avail_solar_reference.nc, data/nrel_exclusion/derived/caps_solar_reference.nc, data/godeeep/rcp85cooler/solar_gen_cf_2030_compressed.nc, resources/BYOP_ERCOT_TAMU/busmaps/texas/busmap_s.csv
+    output: resources/BYOP_ERCOT_TAMU/profiles/texas/2030/profile_solar_s.nc
+    log: logs/BYOP_ERCOT_TAMU/texas/build_renewable_profile_solar_2030_s.log
+    jobid: 20
+    benchmark: benchmarks/BYOP_ERCOT_TAMU/texas/build_renewable_profiles_solar_2030_s
+    reason: Input files updated by another job: resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_onshore_s.geojson, resources/BYOP_ERCOT_TAMU/busmaps/texas/busmap_s.csv
+    wildcards: interconnect=texas, planning_horizon=2030, technology=solar, simpl=
+    threads: 8
+    resources: tmpdir=/tmp, mem_mb=32000, mem_mib=30518, walltime=04:00:00
+
+INFO:__main__:Loading godeeep renewable data...
+INFO:__main__:Using GODEEEP CF year 2030 for scenario 'rcp85cooler'
+INFO:__main__:Using renewable snapshots for year 2030: 2030-01-01 00:00 to 2031-01-01 00:00 (inclusive end)
+INFO:__main__:NREL access scenario: reference
+WARNING:__main__:NREL caps remap (solar): 20376/21283 entries have no busmap match (out of the run footprint) — dropping 66840168.0 MW p_nom_max, 87.9% of the national total. Border regions straddling the footprint edge lose their out-of-footprint capacity entirely; see nrel_caps_reassign in config.common.yaml for opt-in recovery.
+INFO:__main__:Remapped NREL caps to 907 cluster buses.
+INFO:__main__:Cell→substation mapping: 1250 substations, 4824 cell rows
+WARNING:nrel_exclusion.aggregate_godeeep_weighted:capacity CF weighting: 1 substations have zero land availability but 14.8 MW of NREL p_nom_max. master drops them from the profile file entirely (HF-24); their capacity is retained here on the cluster's availability-weighted CF (14.8 MW sit in clusters with no availability at all).
+INFO:__main__:Profile: (8760, 907)  Capacities: (907,)
+[mapping] cache HIT: resources/BYOP_ERCOT_TAMU/profiles/texas/nrel_mapping_cache/cell_to_bus_3bf5953fcc36.parquet
+[Tue Oct 20 11:41:00 2026]
+Finished job 20.
+4 of 11 steps (36%) done
+INFO:__main__:Setting load allocation factors based on bus load_weight
+WARNING:__main__:No bus carries demand key(s) ['Alabama', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']; 410566.7 MW of mean demand is DROPPED. Per key: {'Alabama': 11166.3, 'Arizona': 10207.3, 'Arkansas': 5844.5, 'California': 32490.2, 'Colorado': 7416.2, 'Connecticut': 3214.4, 'Delaware': 1303.2, 'Florida': 28414.0, 'Georgia': 17287.4, 'Idaho': 3195.1, 'Illinois': 16817.5, 'Indiana': 12313.7, 'Iowa': 5680.6, 'Kansas': 4741.2, 'Kentucky': 10978.5, 'Louisiana': 10455.6, 'Maine': 1219.7, 'Maryland': 8696.4, 'Massachusetts': 6041.6, 'Michigan': 12041.3, 'Minnesota': 8475.0, 'Mississippi': 6106.1, 'Missouri': 10069.3, 'Montana': 1920.9, 'Nebraska': 3731.1, 'Nevada': 4733.2, 'New Hampshire': 1151.8, 'New Jersey': 8891.1, 'New Mexico': 2993.6, 'New York': 16239.8, 'North Carolina': 16764.1, 'North Dakota': 1619.5, 'Ohio': 17907.5, 'Oklahoma': 6785.0, 'Oregon': 6450.4, 'Pennsylvania': 16868.0, 'Rhode Island': 824.9, 'South Carolina': 10135.9, 'South Dakota': 1441.8, 'Tennessee': 12721.9, 'Utah': 3930.2, 'Vermont': 591.7, 'Virginia': 13842.2, 'Washington': 12666.4, 'West Virginia': 3721.3, 'Wisconsin': 8061.3, 'Wyoming': 2398.3}.
+INFO:__main__:Assigning efs demand scaling method
+INFO:__main__:No demand formatting required
+[Tue Oct 20 11:41:38 2026]
+Finished job 25.
+5 of 11 steps (45%) done
+Select jobs to execute...
+
+[Tue Oct 20 11:41:38 2026]
+rule add_demand:
+    input: resources/BYOP_ERCOT_TAMU/networks/texas/elec_s.nc, resources/BYOP_ERCOT_TAMU/demand/texas/power_electricity_s.csv
+    output: resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_dem.nc
+    log: logs/BYOP_ERCOT_TAMU/texas/elec_s_add_demand.log
+    jobid: 24
+    benchmark: benchmarks/BYOP_ERCOT_TAMU/texas/elec_s_add_demand
+    reason: Input files updated by another job: resources/BYOP_ERCOT_TAMU/demand/texas/power_electricity_s.csv, resources/BYOP_ERCOT_TAMU/networks/texas/elec_s.nc
+    wildcards: interconnect=texas, simpl=
+    resources: tmpdir=/tmp, mem_mb=2456, mem_mib=2343, walltime=02:00:00
+
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, lines, sub_networks
+INFO:_helpers:[schema entry] Bus: 1250 rows, 26 cols: ['LAF_state', 'Pd', 'carrier', 'control', 'country', 'generator', 'interconnect', 'load_weight', 'location', 'nerc_reg', 'rec_trading_zone', 'reeds_ba', 'reeds_state', 'reeds_zone', 'sub_network', 'substation_lv', 'trans_grp', 'trans_reg', 'type', 'unit', 'v_mag_pu_max', 'v_mag_pu_min', 'v_mag_pu_set', 'v_nom', 'x', 'y']
+INFO:_helpers:[schema entry] Line: 1890 rows, 39 cols: ['active', 'b', 'b_pu', 'build_year', 'bus0', 'bus1', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'discount_rate', 'fom_cost', 'g', 'g_pu', 'interconnect', 'length', 'lifetime', 'num_parallel', 'overnight_cost', 'r', 'r_pu', 'r_pu_eff', 's_max_pu', 's_nom', 's_nom_extendable', 's_nom_max', 's_nom_min', 's_nom_mod', 's_nom_opt', 's_nom_set', 'sub_network', 'terrain_factor', 'type', 'underwater_fraction', 'v_ang_max', 'v_ang_min', 'v_nom', 'x', 'x_pu', 'x_pu_eff']
+INFO:_helpers:[schema entry] LineType: 59 rows, 8 cols: ['c_per_length', 'cross_section', 'f_nom', 'i_nom', 'mounting', 'r_per_length', 'references', 'x_per_length']
+INFO:_helpers:[schema entry] TransformerType: 14 rows, 15 cols: ['f_nom', 'i0', 'pfe', 'phase_shift', 'references', 's_nom', 'tap_max', 'tap_min', 'tap_neutral', 'tap_side', 'tap_step', 'v_nom_0', 'v_nom_1', 'vsc', 'vscr']
+INFO:_helpers:[schema entry] SubNetwork: 1 rows, 3 cols: ['carrier', 'obj', 'slack_bus']
+INFO:__main__:Electricity demand added to network
+INFO:_helpers:[schema exit] Load: 0 -> 1247 rows
+INFO:_helpers:[schema exit] Load: +cols=['active', 'bus', 'carrier', 'p_set', 'q_set', 'sign', 'type'], -cols=[]
+INFO:pypsa.network.io:Exported network 'Unnamed Network' saved to 'resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_dem.nc contains: lines, sub_networks, buses, loads
+[Tue Oct 20 11:42:14 2026]
+Finished job 24.
+6 of 11 steps (55%) done
+Select jobs to execute...
+
+[Tue Oct 20 11:42:14 2026]
+rule add_electricity:
+    input: resources/BYOP_ERCOT_TAMU/prices/texas/state_ng_power_prices.csv, resources/BYOP_ERCOT_TAMU/prices/texas/state_coal_power_prices.csv, resources/BYOP_ERCOT_TAMU/prices/texas/ba_ng_power_prices.csv, resources/BYOP_ERCOT_TAMU/profiles/texas/2030/profile_onwind_s.nc, resources/BYOP_ERCOT_TAMU/profiles/texas/2030/profile_offwind_floating_s.nc, resources/BYOP_ERCOT_TAMU/profiles/texas/2030/profile_solar_s.nc, repo_data/locational_multipliers/natural-gas-430mw.csv, repo_data/locational_multipliers/hydro-100mw.csv, repo_data/locational_multipliers/natural-gas-20mw.csv, repo_data/locational_multipliers/biomass-50mw.csv, repo_data/locational_multipliers/offshore-wind-40x10mw.csv, repo_data/locational_multipliers/biomass-retrofit-300mw.csv, repo_data/locational_multipliers/natural-gas-430mw-90ccs.csv, repo_data/locational_multipliers/natural-gas-240mw.csv, repo_data/locational_multipliers/battery-storage-2hr-50mw.csv, repo_data/locational_multipliers/nuclear-1117mw.csv, repo_data/locational_multipliers/natural-gas-100mw.csv, repo_data/locational_multipliers/smr-600mw.csv, repo_data/locational_multipliers/geothermal-50mw.csv, repo_data/locational_multipliers/natural-gas-retrofit-1100mw.csv, repo_data/locational_multipliers/csp-100mw.csv, repo_data/locational_multipliers/natural-gas-1100mw.csv, repo_data/locational_multipliers/fuel-cell-10mw.csv, repo_data/locational_multipliers/coal-ultra-supercritical.csv, repo_data/locational_multipliers/coal-ultra-supercritical-90ccs.csv, repo_data/locational_multipliers/onshore-wind-200mw.csv, repo_data/locational_multipliers/coal-ultra-supercritical-30ccs.csv, repo_data/locational_multipliers/spv-150mw.csv, repo_data/locational_multipliers/battery-storage-4hr-50mw.csv, repo_data/locational_multipliers/onshore-wind-50mw.csv, repo_data/locational_multipliers/spv-tracking-150mw.csv, resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_dem.nc, resources/BYOP_ERCOT_TAMU/costs/costs_2030.csv, repo_data/geospatial/Reeds_Shapes/rb_and_ba_areas.shp, repo_data/ReEDS_Constraints/membership.csv, resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_onshore_s.geojson, resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_offshore_s.geojson, resources/BYOP_ERCOT_TAMU/geospatial/texas/reeds_shapes.geojson, resources/powerplants/powerplants.csv, data/breakthrough_network/base_grid/plant.csv, data/breakthrough_network/base_grid/hydro.csv, resources/BYOP_ERCOT_TAMU/busmaps/texas/bus2sub.csv, resources/BYOP_ERCOT_TAMU/busmaps/texas/busmap_s.csv, resources/BYOP_ERCOT_TAMU/prices/texas/pudl_fuel_costs.csv
+    output: resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_l_pp.pkl, resources/BYOP_ERCOT_TAMU/networks/texas/remote_units_s.pkl
+    log: logs/BYOP_ERCOT_TAMU/texas/elec_s_add_electricity.log
+    jobid: 4
+    benchmark: benchmarks/BYOP_ERCOT_TAMU/texas/elec_s_add_electricity
+    reason: Input files updated by another job: resources/BYOP_ERCOT_TAMU/profiles/texas/2030/profile_solar_s.nc, resources/BYOP_ERCOT_TAMU/profiles/texas/2030/profile_onwind_s.nc, resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_dem.nc, resources/BYOP_ERCOT_TAMU/profiles/texas/2030/profile_offwind_floating_s.nc, resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_offshore_s.geojson, resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_onshore_s.geojson, resources/BYOP_ERCOT_TAMU/busmaps/texas/busmap_s.csv
+    wildcards: interconnect=texas, simpl=
+    resources: tmpdir=/tmp, mem_mb=3332, mem_mib=3178, walltime=04:00:00
+
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, lines, loads, sub_networks
+INFO:_helpers:[schema entry] Bus: 1250 rows, 26 cols: ['LAF_state', 'Pd', 'carrier', 'control', 'country', 'generator', 'interconnect', 'load_weight', 'location', 'nerc_reg', 'rec_trading_zone', 'reeds_ba', 'reeds_state', 'reeds_zone', 'sub_network', 'substation_lv', 'trans_grp', 'trans_reg', 'type', 'unit', 'v_mag_pu_max', 'v_mag_pu_min', 'v_mag_pu_set', 'v_nom', 'x', 'y']
+INFO:_helpers:[schema entry] Load: 1247 rows, 7 cols: ['active', 'bus', 'carrier', 'p_set', 'q_set', 'sign', 'type']
+INFO:_helpers:[schema entry] Line: 1890 rows, 39 cols: ['active', 'b', 'b_pu', 'build_year', 'bus0', 'bus1', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'discount_rate', 'fom_cost', 'g', 'g_pu', 'interconnect', 'length', 'lifetime', 'num_parallel', 'overnight_cost', 'r', 'r_pu', 'r_pu_eff', 's_max_pu', 's_nom', 's_nom_extendable', 's_nom_max', 's_nom_min', 's_nom_mod', 's_nom_opt', 's_nom_set', 'sub_network', 'terrain_factor', 'type', 'underwater_fraction', 'v_ang_max', 'v_ang_min', 'v_nom', 'x', 'x_pu', 'x_pu_eff']
+INFO:_helpers:[schema entry] LineType: 59 rows, 8 cols: ['c_per_length', 'cross_section', 'f_nom', 'i_nom', 'mounting', 'r_per_length', 'references', 'x_per_length']
+INFO:_helpers:[schema entry] TransformerType: 14 rows, 15 cols: ['f_nom', 'i0', 'pfe', 'phase_shift', 'references', 's_nom', 'tap_max', 'tap_min', 'tap_neutral', 'tap_side', 'tap_step', 'v_nom_0', 'v_nom_1', 'vsc', 'vscr']
+INFO:_helpers:[schema entry] SubNetwork: 1 rows, 3 cols: ['carrier', 'obj', 'slack_bus']
+INFO:__main__:Honoring announced retirements: dropping 248 units (47296 MW) with a planned retirement date on or before 2030.
+WARNING:__main__:Zone-constrained plant match is inert: no value of plants['country'] appears in n.buses['reeds_zone'] (county codes vs ReEDS zone codes). Every plant is placed by the unconstrained nearest-point match.
+INFO:__main__:Adding 1548 generators with capacities [GW] 
+carrier
+CCGT       47.02
+OCGT       25.92
+biomass     0.19
+coal       13.76
+nuclear     5.14
+oil         0.89
+Name: p_nom, dtype: float64
+INFO:__main__:Added Batteries as Storage Units to the network.
+25.84 GW Power Capacity 
+44.29 GWh Energy Capacity
+INFO:__main__:No PHS storage units found in powerplants.csv.
+INFO:__main__:Loading multi-horizon solar profiles for planning horizons: [2030]
+INFO:__main__:Adding solar capacity-factor profiles to the network.
+INFO:__main__:Loading multi-horizon onwind profiles for planning horizons: [2030]
+INFO:__main__:Adding onwind capacity-factor profiles to the network.
+INFO:__main__:Loading multi-horizon offwind_floating profiles for planning horizons: [2030]
+INFO:__main__:Adding offwind_floating capacity-factor profiles to the network.
+INFO:__main__:There are 0.9015 GW of solar plants that are not in the network. See git issue #16.
+INFO:__main__:49.84 GW of solar capacity added.
+INFO:__main__:There are 1.9032 GW of onwind plants that are not in the network. See git issue #16.
+INFO:__main__:42.69 GW of onwind capacity added.
+INFO:__main__:Remapped breakthrough plants through bus2sub/busmap_s: kept 598 of 14050 plants on this network.
+INFO:__main__:Adding 22 hydro generators to the network.
+INFO:_helpers:[schema exit] Bus: +cols=[], -cols=['LAF_state']
+INFO:_helpers:[schema exit] Carrier: 0 -> 16 rows
+INFO:_helpers:[schema exit] Carrier: +cols=['co2_emissions', 'color', 'max_growth', 'max_relative_growth', 'nice_name'], -cols=[]
+INFO:_helpers:[schema exit] Generator: 0 -> 3283 rows
+INFO:_helpers:[schema exit] Generator: +cols=['active', 'ba_eia', 'build_year', 'bus', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'committable', 'control', 'discount_rate', 'down_time_before', 'e_sum_max', 'e_sum_min', 'efficiency', 'fom_cost', 'fuel_cost', 'heat_rate', 'lifetime', 'maintainable', 'maintenance_duration', 'maintenance_events', 'maintenance_pu', 'marginal_cost', 'marginal_cost_quadratic', 'min_down_time', 'min_up_time', 'overnight_cost', 'p_init', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'q_set', 'ramp_limit_down', 'ramp_limit_shut_down', 'ramp_limit_start_up', 'ramp_limit_up', 'shut_down_cost', 'sign', 'stand_by_cost', 'start_up_cost', 'type', 'up_time_before', 'vom_cost', 'weight'], -cols=[]
+INFO:_helpers:[schema exit] StorageUnit: 0 -> 318 rows
+INFO:_helpers:[schema exit] StorageUnit: +cols=['active', 'build_year', 'bus', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'control', 'cyclic_state_of_charge', 'cyclic_state_of_charge_per_period', 'discount_rate', 'efficiency_dispatch', 'efficiency_store', 'fom_cost', 'inflow', 'lifetime', 'marginal_cost', 'marginal_cost_quadratic', 'marginal_cost_storage', 'max_hours', 'overnight_cost', 'p_dispatch_set', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'p_store_set', 'q_set', 'sign', 'spill_cost', 'standing_loss', 'state_of_charge_initial', 'state_of_charge_initial_per_period', 'state_of_charge_set', 'type'], -cols=[]
+[Tue Oct 20 11:44:16 2026]
+Finished job 4.
+7 of 11 steps (64%) done
+Select jobs to execute...
+
+[Tue Oct 20 11:44:16 2026]
+rule cluster_network:
+    input: resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_l_pp.pkl, resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_onshore_s.geojson, resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_offshore_s.geojson, resources/BYOP_ERCOT_TAMU/costs/costs_2030.csv, repo_data/ReEDS_Constraints/transmission/transmission_capacity_init_AC_ba_NARIS2024.csv, repo_data/ReEDS_Constraints/transmission/transmission_capacity_init_AC_county_NARIS2024.csv, repo_data/ReEDS_Constraints/transmission/transmission_capacity_init_AC_transgrp_NARIS2024.csv, repo_data/ReEDS_Constraints/transmission/transmission_distance_cost_500kVac_ba.csv, repo_data/ReEDS_Constraints/transmission/transmission_distance_cost_500kVac_county.csv, repo_data/ReEDS_Constraints/transmission/transmission_capacity_init_AC_state_NARIS2024.csv, repo_data/ReEDS_Constraints/transmission/transmission_distance_cost_500kVac_state.csv
+    output: resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_c64s.nc, resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_onshore_s_64s.geojson, resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_offshore_s_64s.geojson, resources/BYOP_ERCOT_TAMU/busmaps/texas/busmap_s_64s.csv, resources/BYOP_ERCOT_TAMU/busmaps/texas/linemap_s_64s.csv
+    log: logs/cluster_network/texas/elec_s_c64s.log
+    jobid: 3
+    benchmark: benchmarks/cluster_network/texas/elec_s_c64s
+    reason: Missing output files: resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_c64s.nc, resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_onshore_s_64s.geojson; Input files updated by another job: resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_offshore_s.geojson, resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_onshore_s.geojson, resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_l_pp.pkl
+    wildcards: interconnect=texas, simpl=, clusters=64s
+    resources: tmpdir=/tmp, walltime=04:00:00, mem_mb=6934, mem_mib=6613
+
+INFO:_helpers:[schema entry] Bus: 1250 rows, 25 cols: ['Pd', 'carrier', 'control', 'country', 'generator', 'interconnect', 'load_weight', 'location', 'nerc_reg', 'rec_trading_zone', 'reeds_ba', 'reeds_state', 'reeds_zone', 'sub_network', 'substation_lv', 'trans_grp', 'trans_reg', 'type', 'unit', 'v_mag_pu_max', 'v_mag_pu_min', 'v_mag_pu_set', 'v_nom', 'x', 'y']
+INFO:_helpers:[schema entry] Carrier: 16 rows, 5 cols: ['co2_emissions', 'color', 'max_growth', 'max_relative_growth', 'nice_name']
+INFO:_helpers:[schema entry] Generator: 3283 rows, 51 cols: ['active', 'ba_eia', 'build_year', 'bus', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'committable', 'control', 'discount_rate', 'down_time_before', 'e_sum_max', 'e_sum_min', 'efficiency', 'fom_cost', 'fuel_cost', 'heat_rate', 'lifetime', 'maintainable', 'maintenance_duration', 'maintenance_events', 'maintenance_pu', 'marginal_cost', 'marginal_cost_quadratic', 'min_down_time', 'min_up_time', 'overnight_cost', 'p_init', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'q_set', 'ramp_limit_down', 'ramp_limit_shut_down', 'ramp_limit_start_up', 'ramp_limit_up', 'shut_down_cost', 'sign', 'stand_by_cost', 'start_up_cost', 'type', 'up_time_before', 'vom_cost', 'weight']
+INFO:_helpers:[schema entry] Load: 1247 rows, 7 cols: ['active', 'bus', 'carrier', 'p_set', 'q_set', 'sign', 'type']
+INFO:_helpers:[schema entry] StorageUnit: 318 rows, 40 cols: ['active', 'build_year', 'bus', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'control', 'cyclic_state_of_charge', 'cyclic_state_of_charge_per_period', 'discount_rate', 'efficiency_dispatch', 'efficiency_store', 'fom_cost', 'inflow', 'lifetime', 'marginal_cost', 'marginal_cost_quadratic', 'marginal_cost_storage', 'max_hours', 'overnight_cost', 'p_dispatch_set', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'p_store_set', 'q_set', 'sign', 'spill_cost', 'standing_loss', 'state_of_charge_initial', 'state_of_charge_initial_per_period', 'state_of_charge_set', 'type']
+INFO:_helpers:[schema entry] Line: 1890 rows, 39 cols: ['active', 'b', 'b_pu', 'build_year', 'bus0', 'bus1', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'discount_rate', 'fom_cost', 'g', 'g_pu', 'interconnect', 'length', 'lifetime', 'num_parallel', 'overnight_cost', 'r', 'r_pu', 'r_pu_eff', 's_max_pu', 's_nom', 's_nom_extendable', 's_nom_max', 's_nom_min', 's_nom_mod', 's_nom_opt', 's_nom_set', 'sub_network', 'terrain_factor', 'type', 'underwater_fraction', 'v_ang_max', 'v_ang_min', 'v_nom', 'x', 'x_pu', 'x_pu_eff']
+INFO:_helpers:[schema entry] LineType: 59 rows, 8 cols: ['c_per_length', 'cross_section', 'f_nom', 'i_nom', 'mounting', 'r_per_length', 'references', 'x_per_length']
+INFO:_helpers:[schema entry] TransformerType: 14 rows, 15 cols: ['f_nom', 'i0', 'pfe', 'phase_shift', 'references', 's_nom', 'tap_max', 'tap_min', 'tap_neutral', 'tap_side', 'tap_step', 'v_nom_0', 'v_nom_1', 'vsc', 'vscr']
+INFO:_helpers:[schema entry] SubNetwork: 1 rows, 3 cols: ['carrier', 'obj', 'slack_bus']
+WARNING:__main__:Using custom focus weights for determining number of clusters.
+INFO:__main__:RAMP-01 patch: filling 1735 NaN generator ramp_limit_up with 1.0 before clustering.
+INFO:__main__:RAMP-01 patch: filling 1735 NaN generator ramp_limit_down with 1.0 before clustering.
+WARNING:pypsa.network.transform:The attribute 'v_nom' is a standard attribute for other components but not for lines. This could cause confusion and it should be renamed. See also: https://go.pypsa.org/warning-attr-misleading.
+WARNING:pypsa.network.transform:The attribute 'vom_cost' is not a standard attribute for generators. Did you mean 'fom_cost'? See also: https://go.pypsa.org/warning-attr-typo.
+INFO:__main__:Applying REEDS transmission capacity corrections to TAMU network...
+INFO:__main__:Calibrate TAMU transmission capacity...
+INFO:__main__:REEDS capacity corrections completed: 57 lines updated with REEDS data, 108 lines removed (not in REEDS data)
+INFO:__main__:Added 0 missing lines from REEDS data that were not present in TAMU network
+INFO:_helpers:[schema exit] Bus: 1250 -> 64 rows
+INFO:_helpers:[schema exit] Generator: 3283 -> 243 rows
+INFO:_helpers:[schema exit] Generator: +cols=['carrier_base', 'land_region'], -cols=[]
+INFO:_helpers:[schema exit] Load: 1247 -> 64 rows
+INFO:_helpers:[schema exit] StorageUnit: 318 -> 49 rows
+INFO:_helpers:[schema exit] Line: 1890 -> 57 rows
+INFO:pypsa.network.io:Exported network 'Unnamed Network' saved to 'resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_c64s.nc contains: lines, storage_units, carriers, sub_networks, generators, buses, loads
+INFO:pyogrio._io:Created 64 records
+INFO:pyogrio._io:Created 6 records
+INFO:__main__:Saved clustered network to resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_c64s.nc
+[Tue Oct 20 11:44:57 2026]
+Finished job 3.
+8 of 11 steps (73%) done
+Select jobs to execute...
+
+[Tue Oct 20 11:44:57 2026]
+rule add_extra_components:
+    input: resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_c64s.nc, resources/BYOP_ERCOT_TAMU/costs/costs_2030.csv, resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_onshore_s_64s.geojson, repo_data/ReEDS_Constraints/membership.csv, resources/BYOP_ERCOT_TAMU/networks/texas/remote_units_s.pkl, data/counties/cb_2020_us_county_500k.shp
+    output: resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_c64s_ec.nc
+    log: logs/add_extra_components/texas/elec_s_c64s_ec.log
+    jobid: 2
+    benchmark: benchmarks/BYOP_ERCOT_TAMU/texas/add_extra_components_elec_s_c64s_ec
+    reason: Missing output files: resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_c64s_ec.nc; Input files updated by another job: resources/BYOP_ERCOT_TAMU/networks/texas/remote_units_s.pkl, resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_c64s.nc, resources/BYOP_ERCOT_TAMU/geospatial/texas/regions_onshore_s_64s.geojson
+    wildcards: interconnect=texas, simpl=, clusters=64s
+    resources: tmpdir=/tmp, mem_mb=624, mem_mib=596, walltime=00:30:00
+
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, lines, loads, storage_units, sub_networks
+INFO:_helpers:[schema entry] Bus: 64 rows, 25 cols: ['Pd', 'carrier', 'control', 'country', 'generator', 'interconnect', 'load_weight', 'location', 'nerc_reg', 'rec_trading_zone', 'reeds_ba', 'reeds_state', 'reeds_zone', 'sub_network', 'substation_lv', 'trans_grp', 'trans_reg', 'type', 'unit', 'v_mag_pu_max', 'v_mag_pu_min', 'v_mag_pu_set', 'v_nom', 'x', 'y']
+INFO:_helpers:[schema entry] Carrier: 16 rows, 5 cols: ['co2_emissions', 'color', 'max_growth', 'max_relative_growth', 'nice_name']
+INFO:_helpers:[schema entry] Generator: 243 rows, 53 cols: ['active', 'ba_eia', 'build_year', 'bus', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'carrier_base', 'committable', 'control', 'discount_rate', 'down_time_before', 'e_sum_max', 'e_sum_min', 'efficiency', 'fom_cost', 'fuel_cost', 'heat_rate', 'land_region', 'lifetime', 'maintainable', 'maintenance_duration', 'maintenance_events', 'maintenance_pu', 'marginal_cost', 'marginal_cost_quadratic', 'min_down_time', 'min_up_time', 'overnight_cost', 'p_init', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'q_set', 'ramp_limit_down', 'ramp_limit_shut_down', 'ramp_limit_start_up', 'ramp_limit_up', 'shut_down_cost', 'sign', 'stand_by_cost', 'start_up_cost', 'type', 'up_time_before', 'vom_cost', 'weight']
+INFO:_helpers:[schema entry] Load: 64 rows, 7 cols: ['active', 'bus', 'carrier', 'p_set', 'q_set', 'sign', 'type']
+INFO:_helpers:[schema entry] StorageUnit: 49 rows, 40 cols: ['active', 'build_year', 'bus', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'control', 'cyclic_state_of_charge', 'cyclic_state_of_charge_per_period', 'discount_rate', 'efficiency_dispatch', 'efficiency_store', 'fom_cost', 'inflow', 'lifetime', 'marginal_cost', 'marginal_cost_quadratic', 'marginal_cost_storage', 'max_hours', 'overnight_cost', 'p_dispatch_set', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'p_store_set', 'q_set', 'sign', 'spill_cost', 'standing_loss', 'state_of_charge_initial', 'state_of_charge_initial_per_period', 'state_of_charge_set', 'type']
+INFO:_helpers:[schema entry] Line: 57 rows, 39 cols: ['active', 'b', 'b_pu', 'build_year', 'bus0', 'bus1', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'discount_rate', 'fom_cost', 'g', 'g_pu', 'interconnect', 'length', 'lifetime', 'num_parallel', 'overnight_cost', 'r', 'r_pu', 'r_pu_eff', 's_max_pu', 's_nom', 's_nom_extendable', 's_nom_max', 's_nom_min', 's_nom_mod', 's_nom_opt', 's_nom_set', 'sub_network', 'terrain_factor', 'type', 'underwater_fraction', 'v_ang_max', 'v_ang_min', 'v_nom', 'x', 'x_pu', 'x_pu_eff']
+INFO:_helpers:[schema entry] LineType: 59 rows, 8 cols: ['c_per_length', 'cross_section', 'f_nom', 'i_nom', 'mounting', 'r_per_length', 'references', 'x_per_length']
+INFO:_helpers:[schema entry] TransformerType: 14 rows, 15 cols: ['f_nom', 'i0', 'pfe', 'phase_shift', 'references', 's_nom', 'tap_max', 'tap_min', 'tap_neutral', 'tap_side', 'tap_step', 'v_nom_0', 'v_nom_1', 'vsc', 'vscr']
+INFO:_helpers:[schema entry] SubNetwork: 1 rows, 3 cols: ['carrier', 'obj', 'slack_bus']
+WARNING:__main__:CO2 emissions for carriers {'AC', 'battery'} not defined in cost data.
+INFO:__main__:DR not applied as allowable shift is 0
+INFO:_helpers:[schema exit] Carrier: 16 -> 19 rows
+INFO:_helpers:[schema exit] Generator: 243 -> 442 rows
+INFO:_helpers:[schema exit] StorageUnit: 49 -> 177 rows
+INFO:pypsa.network.io:Exported network 'Unnamed Network' saved to 'resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_c64s_ec.nc contains: carriers, buses, loads, lines, sub_networks, storage_units, generators
+[Tue Oct 20 11:45:20 2026]
+Finished job 2.
+9 of 11 steps (82%) done
+Select jobs to execute...
+
+[Tue Oct 20 11:45:20 2026]
+rule prepare_network:
+    input: resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_c64s_ec.nc, resources/BYOP_ERCOT_TAMU/costs/costs_2030.csv
+    output: resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_c64s_ec_lv1.0_REM-ERM-3h.nc
+    log: logs/prepare_network/texas/elec_s_c64s_ec_lv1.0_REM-ERM-3h.log
+    jobid: 1
+    benchmark: benchmarks/BYOP_ERCOT_TAMU/texas/prepare_network_elec_s_c64s_ec_lv1.0_REM-ERM-3h
+    reason: Missing output files: resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_c64s_ec_lv1.0_REM-ERM-3h.nc; Input files updated by another job: resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_c64s_ec.nc
+    wildcards: interconnect=texas, simpl=, clusters=64s, ll=v1.0, opts=REM-ERM-3h
+    resources: tmpdir=/tmp, walltime=00:30:00, mem_mb=912, mem_mib=870
+
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, lines, loads, storage_units, sub_networks
+INFO:_helpers:[schema entry] Bus: 64 rows, 25 cols: ['Pd', 'carrier', 'control', 'country', 'generator', 'interconnect', 'load_weight', 'location', 'nerc_reg', 'rec_trading_zone', 'reeds_ba', 'reeds_state', 'reeds_zone', 'sub_network', 'substation_lv', 'trans_grp', 'trans_reg', 'type', 'unit', 'v_mag_pu_max', 'v_mag_pu_min', 'v_mag_pu_set', 'v_nom', 'x', 'y']
+INFO:_helpers:[schema entry] Carrier: 19 rows, 5 cols: ['co2_emissions', 'color', 'max_growth', 'max_relative_growth', 'nice_name']
+INFO:_helpers:[schema entry] Generator: 442 rows, 53 cols: ['active', 'ba_eia', 'build_year', 'bus', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'carrier_base', 'committable', 'control', 'discount_rate', 'down_time_before', 'e_sum_max', 'e_sum_min', 'efficiency', 'fom_cost', 'fuel_cost', 'heat_rate', 'land_region', 'lifetime', 'maintainable', 'maintenance_duration', 'maintenance_events', 'maintenance_pu', 'marginal_cost', 'marginal_cost_quadratic', 'min_down_time', 'min_up_time', 'overnight_cost', 'p_init', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'q_set', 'ramp_limit_down', 'ramp_limit_shut_down', 'ramp_limit_start_up', 'ramp_limit_up', 'shut_down_cost', 'sign', 'stand_by_cost', 'start_up_cost', 'type', 'up_time_before', 'vom_cost', 'weight']
+INFO:_helpers:[schema entry] Load: 64 rows, 7 cols: ['active', 'bus', 'carrier', 'p_set', 'q_set', 'sign', 'type']
+INFO:_helpers:[schema entry] StorageUnit: 177 rows, 40 cols: ['active', 'build_year', 'bus', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'control', 'cyclic_state_of_charge', 'cyclic_state_of_charge_per_period', 'discount_rate', 'efficiency_dispatch', 'efficiency_store', 'fom_cost', 'inflow', 'lifetime', 'marginal_cost', 'marginal_cost_quadratic', 'marginal_cost_storage', 'max_hours', 'overnight_cost', 'p_dispatch_set', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'p_store_set', 'q_set', 'sign', 'spill_cost', 'standing_loss', 'state_of_charge_initial', 'state_of_charge_initial_per_period', 'state_of_charge_set', 'type']
+INFO:_helpers:[schema entry] Line: 57 rows, 39 cols: ['active', 'b', 'b_pu', 'build_year', 'bus0', 'bus1', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'discount_rate', 'fom_cost', 'g', 'g_pu', 'interconnect', 'length', 'lifetime', 'num_parallel', 'overnight_cost', 'r', 'r_pu', 'r_pu_eff', 's_max_pu', 's_nom', 's_nom_extendable', 's_nom_max', 's_nom_min', 's_nom_mod', 's_nom_opt', 's_nom_set', 'sub_network', 'terrain_factor', 'type', 'underwater_fraction', 'v_ang_max', 'v_ang_min', 'v_nom', 'x', 'x_pu', 'x_pu_eff']
+INFO:_helpers:[schema entry] LineType: 59 rows, 8 cols: ['c_per_length', 'cross_section', 'f_nom', 'i_nom', 'mounting', 'r_per_length', 'references', 'x_per_length']
+INFO:_helpers:[schema entry] TransformerType: 14 rows, 15 cols: ['f_nom', 'i0', 'pfe', 'phase_shift', 'references', 's_nom', 'tap_max', 'tap_min', 'tap_neutral', 'tap_side', 'tap_step', 'v_nom_0', 'v_nom_1', 'vsc', 'vscr']
+INFO:_helpers:[schema entry] SubNetwork: 1 rows, 3 cols: ['carrier', 'obj', 'slack_bus']
+INFO:__main__:N-1 security margin of lines set to 0.7
+INFO:__main__:WIND-01 patch: scaled p_max_pu of 84 onwind generators by {'p480 0 onwind existing': 0.8239, 'p600 0 onwind existing': 0.6513, 'p600 1 onwind existing': 0.6513, 'p600 2 onwind existing': 0.6513, 'p600 3 onwind existing': 0.6513, 'p600 4 onwind': 0.6513, 'p610 0 onwind existing': 0.7499, 'p610 1 onwind existing': 0.7499, 'p610 2 onwind existing': 0.7499, 'p610 3 onwind existing': 0.7499, 'p610 4 onwind': 0.7499, 'p620 0 onwind existing': 0.6105, 'p620 1 onwind existing': 0.6105, 'p620 2 onwind existing': 0.6105, 'p620 3 onwind': 0.6105, 'p620 4 onwind existing': 0.6105, 'p620 5 onwind': 0.6105, 'p620 6 onwind': 0.6105, 'p620 7 onwind': 0.6105, 'p630 0 onwind existing': 0.6647, 'p630 1 onwind': 0.6647, 'p630 10 onwind existing': 0.6647, 'p630 11 onwind': 0.6647, 'p630 12 onwind': 0.6647, 'p630 13 onwind': 0.6647, 'p630 14 onwind': 0.6647, 'p630 15 onwind': 0.6647, 'p630 2 onwind existing': 0.6647, 'p630 3 onwind': 0.6647, 'p630 4 onwind existing': 0.6647, 'p630 5 onwind existing': 0.6647, 'p630 6 onwind': 0.6647, 'p630 7 onwind': 0.6647, 'p630 8 onwind': 0.6647, 'p630 9 onwind': 0.6647, 'p640 0 onwind': 0.6524, 'p640 1 onwind': 0.6524, 'p640 2 onwind': 0.6524, 'p640 3 onwind': 0.6524, 'p640 4 onwind': 0.6524, 'p640 5 onwind': 0.6524, 'p640 6 onwind': 0.6524, 'p640 7 onwind': 0.6524, 'p650 0 onwind': 0.5172, 'p650 1 onwind existing': 0.5172, 'p650 2 onwind': 0.5172, 'p650 3 onwind existing': 0.5172, 'p650 4 onwind existing': 0.5172, 'p650 5 onwind existing': 0.5172, 'p650 6 onwind existing': 0.5172, 'p650 8 onwind': 0.5172, 'p650 9 onwind': 0.5172, 'p670 0 onwind': 0.6524, 'p670 1 onwind': 0.6524, 'p670 10 onwind': 0.6524, 'p670 2 onwind': 0.6524, 'p670 3 onwind': 0.6524, 'p670 4 onwind': 0.6524, 'p670 5 onwind': 0.6524, 'p670 8 onwind': 0.6524, 'p670 9 onwind': 0.6524, 'p480 0 onwind': 0.8239, 'p600 0 onwind': 0.6513, 'p600 1 onwind': 0.6513, 'p600 2 onwind': 0.6513, 'p600 3 onwind': 0.6513, 'p610 0 onwind': 0.7499, 'p610 1 onwind': 0.7499, 'p610 2 onwind': 0.7499, 'p610 3 onwind': 0.7499, 'p620 0 onwind': 0.6105, 'p620 1 onwind': 0.6105, 'p620 2 onwind': 0.6105, 'p620 4 onwind': 0.6105, 'p630 0 onwind': 0.6647, 'p630 10 onwind': 0.6647, 'p630 2 onwind': 0.6647, 'p630 4 onwind': 0.6647, 'p630 5 onwind': 0.6647, 'p650 1 onwind': 0.5172, 'p650 3 onwind': 0.5172, 'p650 4 onwind': 0.5172, 'p650 5 onwind': 0.5172, 'p650 6 onwind': 0.5172}
+INFO:__main__:Resampling the network to 3h
+WARNING:pypsa.network.transform:The attribute 'vom_cost' is not a standard attribute for generators. Did you mean 'fom_cost'? See also: https://go.pypsa.org/warning-attr-typo.
+WARNING:pypsa.network.transform:The attribute 'v_nom' is a standard attribute for other components but not for lines. This could cause confusion and it should be renamed. See also: https://go.pypsa.org/warning-attr-misleading.
+INFO:__main__:Setting transmission limit for v to 1.0
+INFO:__main__:Limiting line extensions to 20000 MW
+INFO:__main__:Limiting link extensions to 20000 MW
+INFO:_helpers:[schema exit] GlobalConstraint: 0 -> 1 rows
+INFO:_helpers:[schema exit] GlobalConstraint: +cols=['bus', 'carrier_attribute', 'constant', 'investment_period', 'mu', 'sense', 'type'], -cols=[]
+INFO:pypsa.network.io:Exported network 'Unnamed Network' saved to 'resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_c64s_ec_lv1.0_REM-ERM-3h.nc contains: loads, global_constraints, storage_units, buses, sub_networks, generators, carriers, lines
+[Tue Oct 20 11:45:42 2026]
+Finished job 1.
+10 of 11 steps (91%) done
+Select jobs to execute...
+
+[Tue Oct 20 11:45:42 2026]
+rule add_sectors:
+    input: resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_c64s_ec_lv1.0_REM-ERM-3h.nc, resources/BYOP_ERCOT_TAMU/costs/sector_costs_2030.csv
+    output: resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_c64s_ec_lv1.0_REM-ERM-3h_E.nc
+    log: logs/add_sectors/texas/elec_s_c64s_ec_lv1.0_REM-ERM-3h_E.log
+    jobid: 0
+    benchmark: benchmarks/BYOP_ERCOT_TAMU/texas/add_sectors_elec_s_c64s_ec_lv1.0_REM-ERM-3h_E
+    reason: Input files updated by another job: resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_c64s_ec_lv1.0_REM-ERM-3h.nc
+    wildcards: interconnect=texas, simpl=, clusters=64s, ll=v1.0, opts=REM-ERM-3h, sector=E
+    resources: tmpdir=/tmp, mem_mb=4000, mem_mib=3815
+
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:_helpers:[schema entry] Bus: 64 rows, 25 cols: ['Pd', 'carrier', 'control', 'country', 'generator', 'interconnect', 'load_weight', 'location', 'nerc_reg', 'rec_trading_zone', 'reeds_ba', 'reeds_state', 'reeds_zone', 'sub_network', 'substation_lv', 'trans_grp', 'trans_reg', 'type', 'unit', 'v_mag_pu_max', 'v_mag_pu_min', 'v_mag_pu_set', 'v_nom', 'x', 'y']
+INFO:_helpers:[schema entry] Carrier: 19 rows, 5 cols: ['co2_emissions', 'color', 'max_growth', 'max_relative_growth', 'nice_name']
+INFO:_helpers:[schema entry] Generator: 442 rows, 53 cols: ['active', 'ba_eia', 'build_year', 'bus', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'carrier_base', 'committable', 'control', 'discount_rate', 'down_time_before', 'e_sum_max', 'e_sum_min', 'efficiency', 'fom_cost', 'fuel_cost', 'heat_rate', 'land_region', 'lifetime', 'maintainable', 'maintenance_duration', 'maintenance_events', 'maintenance_pu', 'marginal_cost', 'marginal_cost_quadratic', 'min_down_time', 'min_up_time', 'overnight_cost', 'p_init', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'q_set', 'ramp_limit_down', 'ramp_limit_shut_down', 'ramp_limit_start_up', 'ramp_limit_up', 'shut_down_cost', 'sign', 'stand_by_cost', 'start_up_cost', 'type', 'up_time_before', 'vom_cost', 'weight']
+INFO:_helpers:[schema entry] Load: 64 rows, 7 cols: ['active', 'bus', 'carrier', 'p_set', 'q_set', 'sign', 'type']
+INFO:_helpers:[schema entry] StorageUnit: 177 rows, 40 cols: ['active', 'build_year', 'bus', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'control', 'cyclic_state_of_charge', 'cyclic_state_of_charge_per_period', 'discount_rate', 'efficiency_dispatch', 'efficiency_store', 'fom_cost', 'inflow', 'lifetime', 'marginal_cost', 'marginal_cost_quadratic', 'marginal_cost_storage', 'max_hours', 'overnight_cost', 'p_dispatch_set', 'p_max_pu', 'p_min_pu', 'p_nom', 'p_nom_extendable', 'p_nom_max', 'p_nom_min', 'p_nom_mod', 'p_nom_opt', 'p_nom_set', 'p_set', 'p_store_set', 'q_set', 'sign', 'spill_cost', 'standing_loss', 'state_of_charge_initial', 'state_of_charge_initial_per_period', 'state_of_charge_set', 'type']
+INFO:_helpers:[schema entry] Line: 57 rows, 39 cols: ['active', 'b', 'b_pu', 'build_year', 'bus0', 'bus1', 'capital_cost', 'capital_cost_piecewise_opt', 'carrier', 'discount_rate', 'fom_cost', 'g', 'g_pu', 'interconnect', 'length', 'lifetime', 'num_parallel', 'overnight_cost', 'r', 'r_pu', 'r_pu_eff', 's_max_pu', 's_nom', 's_nom_extendable', 's_nom_max', 's_nom_min', 's_nom_mod', 's_nom_opt', 's_nom_set', 'sub_network', 'terrain_factor', 'type', 'underwater_fraction', 'v_ang_max', 'v_ang_min', 'v_nom', 'x', 'x_pu', 'x_pu_eff']
+INFO:_helpers:[schema entry] LineType: 59 rows, 8 cols: ['c_per_length', 'cross_section', 'f_nom', 'i_nom', 'mounting', 'r_per_length', 'references', 'x_per_length']
+INFO:_helpers:[schema entry] TransformerType: 14 rows, 15 cols: ['f_nom', 'i0', 'pfe', 'phase_shift', 'references', 's_nom', 'tap_max', 'tap_min', 'tap_neutral', 'tap_side', 'tap_step', 'v_nom_0', 'v_nom_1', 'vsc', 'vscr']
+INFO:_helpers:[schema entry] GlobalConstraint: 1 rows, 7 cols: ['bus', 'carrier_attribute', 'constant', 'investment_period', 'mu', 'sense', 'type']
+INFO:_helpers:[schema entry] SubNetwork: 1 rows, 3 cols: ['carrier', 'obj', 'slack_bus']
+INFO:pypsa.network.io:Exported network 'Unnamed Network' saved to 'resources/BYOP_ERCOT_TAMU/networks/texas/elec_s_c64s_ec_lv1.0_REM-ERM-3h_E.nc contains: lines, storage_units, sub_networks, carriers, global_constraints, loads, buses, generators
+[Tue Oct 20 11:45:50 2026]
+Finished job 0.
+11 of 11 steps (100%) done
+Complete log: .snakemake/log/2026-10-20T114002.762175.snakemake.log
+EXIT=0

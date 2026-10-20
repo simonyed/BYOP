@@ -1,0 +1,9 @@
+county,county_name,tech,gas_fired,gate_mode,firm_mdq_mmbtu_day,firm_transport_right_verified,gas_lateral_meter_verified,air_permit_gate,power_poi_gate,status,assumption,n_assets
+p48029,Bexar,RICE,True,evidence,,False,False,"TECH-01 lead (generic site, no permit record)","county_proxy_poi (K_POI unknown, not bounded)",CLOSED_EVIDENCE_MISSING,EVIDENCE_ONLY,4
+p48029,Bexar,SOFC_NG,True,evidence,,False,False,"TECH-01 lead (generic site, no permit record)","county_proxy_poi (K_POI unknown, not bounded)",CLOSED_EVIDENCE_MISSING,EVIDENCE_ONLY,6
+p48113,Dallas,RICE,True,evidence,,False,False,"TECH-01 lead (generic site, no permit record)","county_proxy_poi (K_POI unknown, not bounded)",CLOSED_EVIDENCE_MISSING,EVIDENCE_ONLY,4
+p48113,Dallas,SOFC_NG,True,evidence,,False,False,"TECH-01 lead (generic site, no permit record)","county_proxy_poi (K_POI unknown, not bounded)",CLOSED_EVIDENCE_MISSING,EVIDENCE_ONLY,6
+p48121,Denton,RICE,True,evidence,,False,False,"TECH-01 lead (generic site, no permit record)","county_proxy_poi (K_POI unknown, not bounded)",CLOSED_EVIDENCE_MISSING,EVIDENCE_ONLY,4
+p48121,Denton,SOFC_NG,True,evidence,,False,False,"TECH-01 lead (generic site, no permit record)","county_proxy_poi (K_POI unknown, not bounded)",CLOSED_EVIDENCE_MISSING,EVIDENCE_ONLY,6
+p48453,Travis,RICE,True,evidence,,False,False,"TECH-01 lead (generic site, no permit record)","county_proxy_poi (K_POI unknown, not bounded)",CLOSED_EVIDENCE_MISSING,EVIDENCE_ONLY,4
+p48453,Travis,SOFC_NG,True,evidence,,False,False,"TECH-01 lead (generic site, no permit record)","county_proxy_poi (K_POI unknown, not bounded)",CLOSED_EVIDENCE_MISSING,EVIDENCE_ONLY,6

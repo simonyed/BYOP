@@ -1,0 +1,665 @@
+{
+  "run_id": "v240_CTRL7_S1_20261020T104532Z",
+  "case_id": "CTRL7_S1",
+  "cfg": {
+    "bg_traj": "/datasets/prgm/BYOP_impact/BYOP_ERCOT_Mechanism_Repair_v2.4.0/data/background_load_growth_states_AEO2023_reference.csv",
+    "tv_share_byop": 1.0,
+    "tv_share_public": 1.0,
+    "periods": "annual",
+    "start": 2026,
+    "end": 2031,
+    "decision_year": 2026,
+    "years": 1,
+    "cost_basis": "repaired",
+    "public_subsidy": "without",
+    "tariff": "energy",
+    "reuse": "on",
+    "reuse_case": "base",
+    "frac_cod": true,
+    "flex": true,
+    "poi_lead": 0,
+    "byop_case": "base",
+    "public_case": "base",
+    "byop_techs": [
+      "RICE",
+      "SOFC_NG"
+    ],
+    "sample_weeks": 26,
+    "bg_growth": 0.0,
+    "line_exp": true,
+    "erm15": false,
+    "threads": 4,
+    "social_r": 0.02,
+    "private_wacc": 0.07,
+    "v": 2800000.0,
+    "v_private": null,
+    "dem_scale": 1.0,
+    "smoke": false
+  },
+  "argv": [
+    "/datasets/prgm/BYOP_impact/BYOP_ERCOT_Mechanism_Repair_v2.4.0/tools_v240/v240_mech.py",
+    "--case-id",
+    "CTRL7_S1",
+    "--out",
+    "/datasets/prgm/BYOP_impact/BYOP_ERCOT_County_v2.5.0/outputs/p1_ctrl7/S1",
+    "--start",
+    "2026",
+    "--end",
+    "2031",
+    "--sample-weeks",
+    "26",
+    "--threads",
+    "4",
+    "--erm-cal",
+    "/datasets/prgm/BYOP_impact/BYOP_ERCOT_County_v2.5.0/outputs/p1_ctrl7/CAL/erm02_calibration.json",
+    "--scenarios",
+    "S0",
+    "S1",
+    "S3",
+    "S2"
+  ],
+  "status": "CASE_SOLVED",
+  "checks": {
+    "true_LP": true,
+    "all_optimal": true,
+    "S1_zero_equals_S0": null,
+    "S2_off_equals_S1": null,
+    "no_load_shed": true,
+    "no_public_offer_before_COD": true,
+    "dc_energy_balance": true,
+    "served_le_requested": true,
+    "private_stage_LP": true
+  },
+  "solves": {
+    "S0": {
+      "tag": "S0",
+      "status": "ok",
+      "termination": "optimal",
+      "objective": 42425544095.32694,
+      "seconds": 38.7,
+      "n_vars": 432289,
+      "n_cons": 807653,
+      "integer_vars": 0,
+      "erm_dc_mode": "B",
+      "erm_poi_coeff_snapshot0": null
+    },
+    "S1": {
+      "tag": "S1",
+      "status": "ok",
+      "termination": "optimal",
+      "objective": 7146915544.93264,
+      "seconds": 41.1,
+      "n_vars": 450469,
+      "n_cons": 826139,
+      "integer_vars": 0,
+      "erm_dc_mode": "B",
+      "erm_poi_coeff_snapshot0": -1.15
+    },
+    "S3": {
+      "tag": "S3",
+      "status": "ok",
+      "termination": "optimal",
+      "objective": 7146915544.3646555,
+      "seconds": 57.0,
+      "n_vars": 478733,
+      "n_cons": 866539,
+      "integer_vars": 0,
+      "erm_dc_mode": "B",
+      "erm_poi_coeff_snapshot0": -1.15
+    },
+    "S2_private": [
+      {
+        "zone": "p63",
+        "private_objective": -22322276494.77796,
+        "termination": "optimal",
+        "integer_vars": 0,
+        "S": {
+          "2026": 415.8007078762286,
+          "2027": 932.2469775960981,
+          "2028": 1511.6463754722367,
+          "2029": 2076.6273048088165,
+          "2030": 2556.031800888662,
+          "2031": 2933.21085564049
+        },
+        "K": {
+          "SOFC_NG_2026": 1.4681372653809745e-11,
+          "SOFC_NG_2027": 1.3270792190187728e-11,
+          "RICE_2028": 4.13064056938954e-11,
+          "SOFC_NG_2028": 1.135181277806892e-11,
+          "RICE_2029": 4.270065046232844e-11,
+          "SOFC_NG_2029": 1.1776089847111065e-11,
+          "RICE_2030": 4.393562264799655e-11,
+          "SOFC_NG_2030": 1.2124944614403829e-11,
+          "RICE_2031": 4.5609600273828875e-11,
+          "SOFC_NG_2031": 1.3221717927987957e-11
+        },
+        "R": {
+          "p63 gas_steam 2025fleet r2027": 2.582719370689451e-10,
+          "p63 gas_steam 2025fleet r2028": 2.2171649910728942e-10,
+          "p63 gas_steam 2025fleet r2030": 1.719539524598793e-10,
+          "p63 gas_steam 2025fleet r2031": 1.5352851490669776e-10
+        },
+        "mean_lmp": 27.08375076594835,
+        "mean_adder": 0.0,
+        "planned_grid_energy_payment_PV_private": 1040530770.4338274,
+        "planned_capacity_payment_PV_private": 0.0
+      },
+      {
+        "zone": "p64",
+        "private_objective": -1238529390.3049507,
+        "termination": "optimal",
+        "integer_vars": 0,
+        "S": {
+          "2026": 23.10003932645714,
+          "2027": 51.79149875533877,
+          "2028": 83.98035419290203,
+          "2029": 115.3681836004898,
+          "2030": 142.00176671603674,
+          "2031": 162.9561586466939
+        },
+        "K": {
+          "SOFC_NG_2026": 4.218433744721956e-12,
+          "SOFC_NG_2027": 3.7430604042293234e-12,
+          "RICE_2028": 1.349828884680604e-11,
+          "SOFC_NG_2028": 3.873832212038338e-12,
+          "RICE_2029": 1.3886557688774878e-11,
+          "SOFC_NG_2029": 4.008086264972486e-12,
+          "RICE_2030": 1.4236843063047875e-11,
+          "SOFC_NG_2030": 4.143085366553445e-12,
+          "RICE_2031": 1.4758770399685565e-11,
+          "SOFC_NG_2031": 4.2906397430054785e-12
+        },
+        "R": {
+          "p64 OCGT 2025fleet r2030": 4.824388209236509e-11,
+          "p64 gas_steam 2025fleet r2027": 6.471518151886221e-11
+        },
+        "mean_lmp": 27.71952187842821,
+        "mean_adder": 0.0,
+        "planned_grid_energy_payment_PV_private": 59404346.660312034,
+        "planned_capacity_payment_PV_private": 0.0
+      },
+      {
+        "zone": "p65",
+        "private_objective": -6810158398.089269,
+        "termination": "optimal",
+        "integer_vars": 0,
+        "S": {
+          "2026": 127.050216295514,
+          "2027": 284.853243154363,
+          "2028": 461.8919480609609,
+          "2029": 634.5250098026934,
+          "2030": 781.0097169382014,
+          "2031": 896.2588725568157
+        },
+        "K": {
+          "SOFC_NG_2026": 2.2299606254151003e-10,
+          "SOFC_NG_2027": 1.9957051691215556e-10,
+          "RICE_2028": 7.067037298913607e-10,
+          "SOFC_NG_2028": 2.0689625845030252e-10,
+          "RICE_2029": 7.289728699554552e-10,
+          "SOFC_NG_2029": 2.142950163699891e-10,
+          "RICE_2030": 7.565236736664735e-10,
+          "SOFC_NG_2030": 2.2213339448353765e-10,
+          "RICE_2031": 7.796581702808625e-10,
+          "SOFC_NG_2031": 2.2965519476175186e-10
+        },
+        "R": {
+          "p65 CCGT 2025fleet r2027": 3.569749879424306e-09,
+          "p65 CCGT 2025fleet r2031": 3.877523890199194e-09,
+          "p65 gas_steam 2025fleet r2027": 2.621308250248404e-09,
+          "p65 gas_steam 2025fleet r2029": 2.5633382728692798e-09
+        },
+        "mean_lmp": 27.859142013618502,
+        "mean_adder": 0.0,
+        "planned_grid_energy_payment_PV_private": 328477155.2008795,
+        "planned_capacity_payment_PV_private": 0.0
+      }
+    ],
+    "S2": {
+      "tag": "S2",
+      "status": "ok",
+      "termination": "optimal",
+      "objective": 7146915546.617888,
+      "seconds": 50.1,
+      "n_vars": 478693,
+      "n_cons": 866459,
+      "integer_vars": 0,
+      "erm_dc_mode": "B",
+      "erm_poi_coeff_snapshot0": -1.15
+    }
+  },
+  "erm_cal": {
+    "2026": 0.14999999359766503,
+    "2027": 0.14999999887565973,
+    "2028": 0.13034117106254528,
+    "2029": 0.09531666352814239,
+    "2030": 0.08008192627302746,
+    "2031": 0.05292636060740796
+  },
+  "baseline": "../../work_package_v2/outputs/baseline_2025/baseline_2025_prepared.nc",
+  "baseline_sha256": "74ed60a70813187062236d75aac9b0bada0f772cb9f1adc16ab3fa749b986677",
+  "code_sha256": {
+    "v240_mech.py": "dfdc900a6833be9d4420dd318eae13dffcdb5cbf3b4087a6bd61717e6bcae8f3",
+    "wp2_ercot_s0_s1.py": "a156d2107e20bb70a99ca15dcbcca0cf8f1a96af6a01ca18d69f9533253a93d6",
+    "wp2_ercot_s1_real.py": "36871916bef0529c305fb9d0ca02310ad92dd02560ef4fc8d655ebcaa5117aa4"
+  },
+  "tech_sha256": "127e5a97b5177eb4242d4df33c516ddf09d480a4d5d1da4523dd75605ab99eea",
+  "bg_traj": "/datasets/prgm/BYOP_impact/BYOP_ERCOT_Mechanism_Repair_v2.4.0/data/background_load_growth_states_AEO2023_reference.csv",
+  "bg_traj_sha256": "8fc098183b479520d63175cb9d58523f4a1acf1255f2c645dcc04e6861b60700",
+  "bg_factor_by_period": {
+    "TX": {
+      "2026": 1.0093269780764036,
+      "2027": 1.0192185210366336,
+      "2028": 1.0322521785425705,
+      "2029": 1.0430801025367442,
+      "2030": 1.0502804799159968,
+      "2031": 1.0574303656916748
+    }
+  },
+  "cohorts_sha256": "b038ecfb48fbb05c3077fe798a713752c488339654c3345dd63172c5ef02553f",
+  "pypsa": "1.3.0",
+  "byop": {
+    "RICE": {
+      "social": {
+        "carrier": "RICE",
+        "case": "base",
+        "overnight_per_MW": 2450000.0,
+        "fom": 43000.0,
+        "life": 25,
+        "annual": 168490.07412261696,
+        "rate": 0.02,
+        "annual_social": 168490.07412261696,
+        "annual_private": 253235.76719063072,
+        "mc": 33.46105,
+        "r": 1.25,
+        "lead": 2.0,
+        "cod": 2028.0,
+        "first_period": 2028
+      },
+      "private": {
+        "carrier": "RICE",
+        "case": "base",
+        "overnight_per_MW": 2450000.0,
+        "fom": 43000.0,
+        "life": 25,
+        "annual": 253235.76719063072,
+        "rate": 0.07,
+        "annual_social": 168490.07412261696,
+        "annual_private": 253235.76719063072,
+        "mc": 33.46105,
+        "r": 1.25,
+        "lead": 2.0,
+        "cod": 2028.0,
+        "first_period": 2028
+      }
+    },
+    "SOFC_NG": {
+      "social": {
+        "carrier": "SOFC_NG",
+        "case": "base",
+        "overnight_per_MW": 7953000.0,
+        "fom": 37770.0,
+        "life": 15,
+        "annual": 656715.9808061911,
+        "rate": 0.02,
+        "annual_social": 656715.9808061911,
+        "annual_private": 910966.6502471047,
+        "mc": 21.35611,
+        "r": 1.1,
+        "lead": 0.5,
+        "cod": 2026.5,
+        "first_period": 2026
+      },
+      "private": {
+        "carrier": "SOFC_NG",
+        "case": "base",
+        "overnight_per_MW": 7953000.0,
+        "fom": 37770.0,
+        "life": 15,
+        "annual": 910966.6502471047,
+        "rate": 0.07,
+        "annual_social": 656715.9808061911,
+        "annual_private": 910966.6502471047,
+        "mc": 21.35611,
+        "r": 1.1,
+        "lead": 0.5,
+        "cod": 2026.5,
+        "first_period": 2026
+      }
+    }
+  },
+  "reuse_params": {
+    "annual": 66698.97917979745,
+    "rate": 0.02,
+    "annual_social": 66698.97917979745,
+    "annual_private": 71356.6254091047,
+    "refurb": 150.0,
+    "sustain": 15.0,
+    "fom": 35.0,
+    "lead": 1.0
+  },
+  "reuse_pool": [
+    {
+      "asset_id": "p63 gas_steam 2025fleet r2027",
+      "zone": "p63",
+      "MW": 118.0,
+      "retire_year": 2027,
+      "COD": 2027,
+      "build_period": 2027,
+      "pub": "p63 gas_steam 2025fleet r2027 Rpub",
+      "dc": "DC_p63 BYOP R p63 gas_steam 2025fleet r2027",
+      "carrier": "gas_steam"
+    },
+    {
+      "asset_id": "p63 gas_steam 2025fleet r2028",
+      "zone": "p63",
+      "MW": 584.0,
+      "retire_year": 2028,
+      "COD": 2028,
+      "build_period": 2028,
+      "pub": "p63 gas_steam 2025fleet r2028 Rpub",
+      "dc": "DC_p63 BYOP R p63 gas_steam 2025fleet r2028",
+      "carrier": "gas_steam"
+    },
+    {
+      "asset_id": "p63 gas_steam 2025fleet r2030",
+      "zone": "p63",
+      "MW": 195.0,
+      "retire_year": 2030,
+      "COD": 2030,
+      "build_period": 2030,
+      "pub": "p63 gas_steam 2025fleet r2030 Rpub",
+      "dc": "DC_p63 BYOP R p63 gas_steam 2025fleet r2030",
+      "carrier": "gas_steam"
+    },
+    {
+      "asset_id": "p63 gas_steam 2025fleet r2031",
+      "zone": "p63",
+      "MW": 573.0,
+      "retire_year": 2031,
+      "COD": 2031,
+      "build_period": 2031,
+      "pub": "p63 gas_steam 2025fleet r2031 Rpub",
+      "dc": "DC_p63 BYOP R p63 gas_steam 2025fleet r2031",
+      "carrier": "gas_steam"
+    },
+    {
+      "asset_id": "p64 OCGT 2025fleet r2030",
+      "zone": "p64",
+      "MW": 21.0,
+      "retire_year": 2030,
+      "COD": 2030,
+      "build_period": 2030,
+      "pub": "p64 OCGT 2025fleet r2030 Rpub",
+      "dc": "DC_p64 BYOP R p64 OCGT 2025fleet r2030",
+      "carrier": "OCGT"
+    },
+    {
+      "asset_id": "p64 gas_steam 2025fleet r2027",
+      "zone": "p64",
+      "MW": 335.0,
+      "retire_year": 2027,
+      "COD": 2027,
+      "build_period": 2027,
+      "pub": "p64 gas_steam 2025fleet r2027 Rpub",
+      "dc": "DC_p64 BYOP R p64 gas_steam 2025fleet r2027",
+      "carrier": "gas_steam"
+    },
+    {
+      "asset_id": "p65 CCGT 2025fleet r2027",
+      "zone": "p65",
+      "MW": 319.0,
+      "retire_year": 2027,
+      "COD": 2027,
+      "build_period": 2027,
+      "pub": "p65 CCGT 2025fleet r2027 Rpub",
+      "dc": "DC_p65 BYOP R p65 CCGT 2025fleet r2027",
+      "carrier": "CCGT"
+    },
+    {
+      "asset_id": "p65 CCGT 2025fleet r2031",
+      "zone": "p65",
+      "MW": 319.0,
+      "retire_year": 2031,
+      "COD": 2031,
+      "build_period": 2031,
+      "pub": "p65 CCGT 2025fleet r2031 Rpub",
+      "dc": "DC_p65 BYOP R p65 CCGT 2025fleet r2031",
+      "carrier": "CCGT"
+    },
+    {
+      "asset_id": "p65 gas_steam 2025fleet r2027",
+      "zone": "p65",
+      "MW": 420.0,
+      "retire_year": 2027,
+      "COD": 2027,
+      "build_period": 2027,
+      "pub": "p65 gas_steam 2025fleet r2027 Rpub",
+      "dc": "DC_p65 BYOP R p65 gas_steam 2025fleet r2027",
+      "carrier": "gas_steam"
+    },
+    {
+      "asset_id": "p65 gas_steam 2025fleet r2029",
+      "zone": "p65",
+      "MW": 702.0,
+      "retire_year": 2029,
+      "COD": 2029,
+      "build_period": 2029,
+      "pub": "p65 gas_steam 2025fleet r2029 Rpub",
+      "dc": "DC_p65 BYOP R p65 gas_steam 2025fleet r2029",
+      "carrier": "gas_steam"
+    }
+  ],
+  "corridors": [
+    {
+      "corridor": "p60||p61",
+      "cap_MW": 4339.436,
+      "capital_cost_per_MW_yr": 9487.221965480387,
+      "first_period": 2030,
+      "bus0": "p60",
+      "bus1": "p61",
+      "existing_MW": 4270.071
+    },
+    {
+      "corridor": "p60||p62",
+      "cap_MW": 3669.9584999999997,
+      "capital_cost_per_MW_yr": 3874.1739065406514,
+      "first_period": 2030,
+      "bus0": "p60",
+      "bus1": "p62",
+      "existing_MW": 3303.403
+    },
+    {
+      "corridor": "p60||p63",
+      "cap_MW": 7963.2205,
+      "capital_cost_per_MW_yr": 24494.942389355238,
+      "first_period": 2030,
+      "bus0": "p60",
+      "bus1": "p63",
+      "existing_MW": 10383.198
+    },
+    {
+      "corridor": "p61||p62",
+      "cap_MW": 1352.3829999999998,
+      "capital_cost_per_MW_yr": 6444.0199183514505,
+      "first_period": 2030,
+      "bus0": "p61",
+      "bus1": "p62",
+      "existing_MW": 1522.014
+    },
+    {
+      "corridor": "p61||p63",
+      "cap_MW": 4595.433,
+      "capital_cost_per_MW_yr": 33593.37067153942,
+      "first_period": 2030,
+      "bus0": "p61",
+      "bus1": "p63",
+      "existing_MW": 3393.601
+    },
+    {
+      "corridor": "p61||p64",
+      "cap_MW": 3458.2455,
+      "capital_cost_per_MW_yr": 28077.158636902564,
+      "first_period": 2030,
+      "bus0": "p61",
+      "bus1": "p64",
+      "existing_MW": 3008.9
+    },
+    {
+      "corridor": "p61||p65",
+      "cap_MW": 185.90699999999998,
+      "capital_cost_per_MW_yr": 26322.34394118361,
+      "first_period": 2030,
+      "bus0": "p61",
+      "bus1": "p65",
+      "existing_MW": 186.352
+    },
+    {
+      "corridor": "p63||p64",
+      "cap_MW": 9420.5425,
+      "capital_cost_per_MW_yr": 17932.58005785109,
+      "first_period": 2030,
+      "bus0": "p63",
+      "bus1": "p64",
+      "existing_MW": 7909.854
+    },
+    {
+      "corridor": "p64||p65",
+      "cap_MW": 5580.386,
+      "capital_cost_per_MW_yr": 7611.781649522213,
+      "first_period": 2030,
+      "bus0": "p64",
+      "bus1": "p65",
+      "existing_MW": 6488.427
+    },
+    {
+      "corridor": "p64||p67",
+      "cap_MW": 4729.9575,
+      "capital_cost_per_MW_yr": 13758.248951298172,
+      "first_period": 2030,
+      "bus0": "p64",
+      "bus1": "p67",
+      "existing_MW": 3318.409
+    },
+    {
+      "corridor": "p65||p67",
+      "cap_MW": 4328.3445,
+      "capital_cost_per_MW_yr": 17664.84347627859,
+      "first_period": 2030,
+      "bus0": "p65",
+      "bus1": "p67",
+      "existing_MW": 4331.51
+    }
+  ],
+  "study_new": [
+    {
+      "zone": "p63",
+      "period": 2026,
+      "D_IT_MW": 415.8007078762286,
+      "G_IT_MW": 415.8007078762286
+    },
+    {
+      "zone": "p63",
+      "period": 2027,
+      "D_IT_MW": 932.2469775960981,
+      "G_IT_MW": 932.2469775960981
+    },
+    {
+      "zone": "p63",
+      "period": 2028,
+      "D_IT_MW": 1511.6463754722367,
+      "G_IT_MW": 1511.6463754722367
+    },
+    {
+      "zone": "p63",
+      "period": 2029,
+      "D_IT_MW": 2076.6273048088165,
+      "G_IT_MW": 2076.6273048088165
+    },
+    {
+      "zone": "p63",
+      "period": 2030,
+      "D_IT_MW": 2556.0318008886616,
+      "G_IT_MW": 2556.0318008886616
+    },
+    {
+      "zone": "p63",
+      "period": 2031,
+      "D_IT_MW": 2933.21085564049,
+      "G_IT_MW": 2933.21085564049
+    },
+    {
+      "zone": "p64",
+      "period": 2026,
+      "D_IT_MW": 23.100039326457143,
+      "G_IT_MW": 23.100039326457143
+    },
+    {
+      "zone": "p64",
+      "period": 2027,
+      "D_IT_MW": 51.79149875533878,
+      "G_IT_MW": 51.79149875533878
+    },
+    {
+      "zone": "p64",
+      "period": 2028,
+      "D_IT_MW": 83.98035419290204,
+      "G_IT_MW": 83.98035419290204
+    },
+    {
+      "zone": "p64",
+      "period": 2029,
+      "D_IT_MW": 115.3681836004898,
+      "G_IT_MW": 115.3681836004898
+    },
+    {
+      "zone": "p64",
+      "period": 2030,
+      "D_IT_MW": 142.00176671603674,
+      "G_IT_MW": 142.00176671603674
+    },
+    {
+      "zone": "p64",
+      "period": 2031,
+      "D_IT_MW": 162.9561586466939,
+      "G_IT_MW": 162.9561586466939
+    },
+    {
+      "zone": "p65",
+      "period": 2026,
+      "D_IT_MW": 127.05021629551426,
+      "G_IT_MW": 127.05021629551426
+    },
+    {
+      "zone": "p65",
+      "period": 2027,
+      "D_IT_MW": 284.8532431543632,
+      "G_IT_MW": 284.8532431543632
+    },
+    {
+      "zone": "p65",
+      "period": 2028,
+      "D_IT_MW": 461.8919480609611,
+      "G_IT_MW": 461.8919480609611
+    },
+    {
+      "zone": "p65",
+      "period": 2029,
+      "D_IT_MW": 634.5250098026937,
+      "G_IT_MW": 634.5250098026937
+    },
+    {
+      "zone": "p65",
+      "period": 2030,
+      "D_IT_MW": 781.0097169382018,
+      "G_IT_MW": 781.0097169382018
+    },
+    {
+      "zone": "p65",
+      "period": 2031,
+      "D_IT_MW": 896.2588725568161,
+      "G_IT_MW": 896.2588725568161
+    }
+  ],
+  "timestamp_utc": "2026-10-20T10:49:46.220909+00:00"
+}
