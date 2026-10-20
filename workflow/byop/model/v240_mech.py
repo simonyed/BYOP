@@ -781,7 +781,7 @@ def ledgers(n, tag, v, case_id, run_id, byop_fixed_scen=False):
     if pct is not None and sub_in_net:
         for name in g.index.intersection(pct.index):
             ptc_adj[name] = float(pct.ptc[name])
-    is_op = ~g.carrier.isin(['compute_IT', 'AIDC_training', 'load_shed', 'grid_purchase', 'dc_curtail'])   # dc_curtail: lost compute, not a resource (rearch PCLR)
+    is_op = ~g.carrier.isin(['compute_IT', 'AIDC_training', 'load_shed', 'grid_purchase', 'dc_curtail', 'dc_interrupt'])   # dc_curtail: lost compute, not a resource (rearch PCLR)
     opcost_t = (n.generators_t.p.loc[:, is_op] * (mc.loc[:, is_op] + ptc_adj[is_op])).mul(w, axis=0).groupby(level=0).sum().sum(axis=1)
     shed = n.generators_t.p[[f'{z} load_shed' for z in ZONES]].mul(w, axis=0).groupby(level=0).sum().sum(axis=1)
     svc = []

@@ -1,0 +1,1 @@
+{"timestamp_utc": "2026-10-20T22:10:47.253099+00:00", "run_id": "rearch_S0D_main_20261020T220102Z", "case_id": "S0D_main", "event": "optimization_solved", "status": "SOLVER_OPTIMAL", "message": "obj 3.434242e+10; vars 1300211; int 0; 569s", "scenario": "S0"}

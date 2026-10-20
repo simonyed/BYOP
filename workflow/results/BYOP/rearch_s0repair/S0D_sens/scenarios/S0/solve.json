@@ -1,0 +1,21 @@
+{
+ "case_id": "S0D_sens",
+ "case_group": "S0D_sens",
+ "run_id": "rearch_S0D_sens_20261020T220102Z",
+ "scenario": "S0",
+ "relax": [],
+ "setting": "G-W",
+ "solve": {
+  "tag": "S0",
+  "status": "ok",
+  "termination": "optimal",
+  "objective": 34152616245.615826,
+  "seconds": 550.9,
+  "n_vars": 1302675,
+  "n_cons": 2703989,
+  "integer_vars": 0,
+  "erm_dc_mode": "B",
+  "erm_poi_coeff_snapshot0": null
+ },
+ "timestamp_utc": "2026-10-20T22:10:39.993310+00:00"
+}

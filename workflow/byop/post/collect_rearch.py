@@ -14,8 +14,11 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-ATTR = {'S1_xPOI': 'POI equipment', 'S1_xUP': 'upstream transmission', 'S1_xRA': 'system resource adequacy',
-        'S1_xPROC': 'procedural/study'}
+ATTR_V1 = {'S1_xPOI': 'POI equipment', 'S1_xUP': 'upstream transmission', 'S1_xRA': 'system resource adequacy',
+           'S1_xPROC': 'procedural/study'}
+ATTR_V2 = {'S1E_xPOI': 'POI equipment', 'S1E_xUP': 'upstream transmission', 'S1E_xRA': 'system resource adequacy',
+           'S1E_xPROC': 'procedural/study'}     # P0-2: attribution on the strict earliest base S1_EARLIEST
+ATTR = dict(ATTR_V1)
 
 
 def first_full(df):
@@ -112,23 +115,25 @@ def main():
             x.to_csv(out / f'S2_MODES_{cid}.csv', index=False)
     poi = pd.concat(POI, ignore_index=True) if POI else pd.DataFrame()
     for grp, pg in (poi.groupby('case_group') if len(poi) else []):
-        base = pg[pg.scenario == 'S1'].drop_duplicates(['site', 'year']).set_index(['site', 'year'])
+        v2 = (pg.scenario == 'S1_EARLIEST').any()
+        btag, ATTRg, xall_tag = ('S1_EARLIEST', ATTR_V2, 'S1E_xALL') if v2 else ('S1', ATTR_V1, 'S1_xALL')
+        base = pg[pg.scenario == btag].drop_duplicates(['site', 'year']).set_index(['site', 'year'])
         if not len(base):
             continue
-        for sc in ATTR:
+        for sc in ATTRg:
             x = pg[pg.scenario == sc].drop_duplicates(['site', 'year']).set_index(['site', 'year'])
             if len(x):
-                m_ = (poi.case_group == grp) & (poi.scenario == 'S1')
+                m_ = (poi.case_group == grp) & (poi.scenario == btag)
                 poi.loc[m_, f'gain_{sc}_MW_IT'] = (x.served_IT_MW - base.served_IT_MW).reindex(
                     pd.MultiIndex.from_frame(poi.loc[m_, ['site', 'year']])).values
-        if not (pg.scenario == 'S1_xALL').any():
+        if not (pg.scenario == xall_tag).any():
             continue
-        xall = pg[pg.scenario == 'S1_xALL'].drop_duplicates(['site', 'year']).set_index(['site', 'year'])
+        xall = pg[pg.scenario == xall_tag].drop_duplicates(['site', 'year']).set_index(['site', 'year'])
         for (s, y), r in base.iterrows():
             gains = {lab: float(pg[(pg.scenario == sc) & (pg.site == s) & (pg.year == y)].served_IT_MW.iloc[0] - r.served_IT_MW)
-                     if ((pg.scenario == sc) & (pg.site == s) & (pg.year == y)).any() else np.nan for sc, lab in ATTR.items()}
+                     if ((pg.scenario == sc) & (pg.site == s) & (pg.year == y)).any() else np.nan for sc, lab in ATTRg.items()}
             tot = float(xall.served_IT_MW.get((s, y), np.nan) - r.served_IT_MW)
-            row = dict(case_group=grp, setting=r.setting, site=s, year=y, requested_IT_MW=r.requested_IT_MW,
+            row = dict(case_group=grp, base=btag, setting=r.setting, site=s, year=y, requested_IT_MW=r.requested_IT_MW,
                        S1_served_IT_MW=r.served_IT_MW, S1_unserved_IT_MW=r.unserved_IT_MW, gain_all_relaxed_MW_IT=tot, **gains)
             vals = [v for v in gains.values() if v == v]
             row['combined/uncertain'] = tot - sum(vals)
@@ -146,8 +151,10 @@ def main():
     for cid, g in cmp_.groupby('case_group'):
         c = g.drop_duplicates('scenario').set_index('scenario')
         get = lambda s, k: float(c[k][s]) if s in c.index else np.nan
-        for a_, b_, lab in [('S1', 'S0', 'S1-S0 (AIDC impact)'), ('S2', 'S1', 'S2-S1 (BYOP impact)'), ('S2', 'S3', 'S2-S3 (actual service)'),
-                            ('S2', 'S3_mS2', 'S2-S3 matched to S2 service'), ('S1', 'S3_mS1', 'S1-S3 matched to S1 service')]:
+        s1 = 'S1_ECON' if 'S1_ECON' in c.index else 'S1'
+        for a_, b_, lab in [(s1, 'S0', 'S1-S0 (AIDC impact)'), ('S2', s1, 'S2-S1 (BYOP impact)'), ('S2', 'S3', 'S2-S3 (actual service)'),
+                            ('S2', 'S3_mS2', 'S2-S3 matched to S2 service'), (s1, 'S3_mS1', 'S1-S3 matched to S1 service'),
+                            ('S1_EARLIEST', s1, 'S1_EARLIEST - S1_ECON (economic under-service)')]:
             rows.append(dict(case=cid, setting=g.setting.iloc[0], comparison=lab,
                              d_social_real_resource_cost_USD=get(a_, 'social_real_resource_cost_USD') - get(b_, 'social_real_resource_cost_USD'),
                              d_served_MW_IT_yr=get(a_, 'served_MW_IT_yr') - get(b_, 'served_MW_IT_yr'),
@@ -185,7 +192,7 @@ def main():
     print(cmp_.to_string(max_cols=20)[:6000])
     print(pd.DataFrame(rows).to_string())
     if len(att):
-        print(att.groupby(['case_group', 'site'])[[*ATTR.values(), 'combined/uncertain', 'S1_unserved_IT_MW']].sum().round(1).to_string())
+        print(att.groupby(['case_group', 'site'])[[*ATTR_V1.values(), 'combined/uncertain', 'S1_unserved_IT_MW']].sum().round(1).to_string())
 
 
 if __name__ == '__main__':

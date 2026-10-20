@@ -45,7 +45,7 @@ def world(tmp_path):
     n = pypsa.Network()
     n.set_snapshots(pd.MultiIndex.from_product([YEARS, ts], names=['period', 'timestep']))
     n.investment_periods = YEARS
-    n.snapshot_weightings.loc[:, :] = 3.0 * 52
+    n.snapshot_weightings = n.snapshot_weightings * 0.0 + 3.0 * 52   # not .loc[:, :] = (breaks the MultiIndex with pandas 3)
     n.investment_period_weightings.loc[:, 'years'] = 1.0
     n.investment_period_weightings.loc[:, 'objective'] = [M.w_social(p) for p in YEARS]
     yield n

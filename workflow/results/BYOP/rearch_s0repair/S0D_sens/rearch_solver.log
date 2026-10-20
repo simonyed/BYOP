@@ -1,0 +1,46 @@
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, lines, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, lines, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, lines, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:pypsa.optimization.window:Building the multi-period model over a MultiIndex `snapshot`. Opt into the flat representation via `pypsa.options.optimization.model_snapshot_index = 'flat'`.
+INFO:opts.reserves:Adding ERM constraint for TX with reserve level 0.15
+INFO:opts.reserves:Added ERM constraint for TX
+INFO:opts.bidirectional_link:No bidirectional link candidates found (no _fwd or _rev at the end of the names)
+INFO:opts.sector:Demand response not enabled
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver logs written to `results/BYOP/rearch_s0repair/S0D_sens/solver_S0.log`.
+INFO:linopy.model:Solver options:
+ - threads: 3
+ - method: 2
+ - crossover: 0
+ - BarHomogeneous: 1
+ - BarConvTol: 1e-05
+ - OptimalityTol: 0.0001
+ - FeasibilityTol: 0.001
+ - ScaleFlag: 1
+ - Seed: 123
+ - AggFill: 0
+ - PreDual: 0
+ - GURO_PAR_BARDENSETHRESH: 200
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 2.6s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 1619635 primals, 4431021 duals
+Objective: 3.42e+10
+Solver: gurobi
+Runtime: 503.72s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Kirchhoff-Voltage-Law, V240-reuse_right_p630 7 gas_steam 2025fleet r2028 were not assigned to the network.
