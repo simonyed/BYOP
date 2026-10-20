@@ -1,0 +1,70 @@
+
+Gurobi 11.0.3 (linux64) logging started Tue Oct 20 17:08:21 2026
+
+Set parameter LogFile to value "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/rearch/R1_GW/solver_S1_zero.log"
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Ubuntu 20.04.6 LTS")
+
+CPU model: Intel(R) Core(TM) i9-10920X CPU @ 3.50GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 12 physical cores, 24 logical processors, using up to 7 threads
+
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+Optimize a model with 5423701 rows, 2816780 columns and 11151078 nonzeros
+Model fingerprint: 0x68b058d1
+Coefficient statistics:
+  Matrix range     [3e-03, 2e+03]
+  Objective range  [6e-01, 3e+06]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e-02, 2e+06]
+Presolve removed 2801253 rows and 845457 columns (presolve time = 5s) ...
+Presolve removed 2807136 rows and 845457 columns
+Presolve time: 8.98s
+Presolved: 2616565 rows, 1977206 columns, 8087318 nonzeros
+Elapsed ordering time = 5s
+Elapsed ordering time = 12s
+Elapsed ordering time = 16s
+Elapsed ordering time = 20s
+Elapsed ordering time = 25s
+Ordering time: 31.37s
+
+Barrier statistics:
+ Dense cols : 1105
+ AA' NZ     : 1.083e+07
+ Factor NZ  : 1.192e+08 (roughly 3.0 GB of memory)
+ Factor Ops : 1.764e+11 (roughly 1 second per iteration)
+ Threads    : 7
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   2.47099906e+15 -1.99027730e+15  1.40e+06 2.33e+05  5.37e+10    52s
+   1   2.19920564e+15 -1.82633741e+15  1.15e+06 6.96e+05  4.38e+10    58s
+   2   1.92113725e+15 -1.74610920e+15  9.26e+05 6.36e+05  3.79e+10    65s
+   3   1.71877379e+15 -1.64221718e+15  7.84e+05 5.56e+05  3.28e+10    72s
+   4   1.05838148e+15 -9.75186007e+14  4.57e+05 3.47e+05  1.58e+10    81s
+   5   6.15245994e+14 -5.59751858e+14  2.61e+05 1.91e+05  6.74e+09    90s
+   6   8.20891983e+13 -2.81846293e+14  4.16e+04 9.58e+04  1.30e+09    99s
+   7   2.10932939e+13 -9.09613864e+13  5.78e+03 3.09e+04  2.31e+08   108s
+   8   1.00201863e+13 -3.47394749e+13  2.54e+03 1.20e+04  7.38e+07   117s
+   9   6.53789039e+12 -1.64033292e+13  1.20e+03 6.37e+03  3.16e+07   125s
+  10   5.00481726e+12 -1.15890565e+13  7.31e+02 4.75e+03  2.00e+07   132s
+  11   3.90020052e+12 -7.20263649e+12  4.44e+02 3.24e+03  1.15e+07   138s
+  12   3.02797807e+12 -5.41778658e+12  2.72e+02 2.59e+03  7.63e+06   144s
+  13   2.24326741e+12 -2.59177288e+12  1.47e+02 1.50e+03  3.63e+06   151s
+  14   1.59086968e+12 -1.09784843e+12  7.98e+01 8.39e+02  1.64e+06   159s
+  15   1.20043398e+12 -7.71245676e+11  5.15e+01 6.30e+02  1.04e+06   167s
+  16   9.28740922e+11 -4.84134197e+11  3.49e+01 4.58e+02  6.61e+05   176s
+  17   6.55482972e+11 -2.36310300e+11  2.10e+01 3.02e+02  3.66e+05   181s
+  18   5.52900893e+11 -1.40651183e+11  1.67e+01 2.28e+02  2.63e+05   186s
+  19   4.56634479e+11 -1.04152627e+11  1.28e+01 1.96e+02  2.04e+05   191s
+  20   4.24392892e+11 -7.57555619e+10  1.16e+01 1.71e+02  1.77e+05   196s
+  21   3.53385303e+11 -3.76282246e+10  9.13e+00 1.32e+02  1.30e+05   201s
+  22   3.36756589e+11 -3.37881608e+10  8.56e+00 1.28e+02  1.23e+05   206s
+  23   3.24592337e+11 -2.51843413e+10  8.15e+00 1.18e+02  1.14e+05   209s
+  24   3.14348018e+11 -1.96792220e+10  7.82e+00 1.12e+02  1.08e+05   214s
+  25   2.72283990e+11 -7.64923111e+09  6.42e+00 9.70e+01  8.80e+04   219s
+  26   2.47923509e+11  2.79389129e+09  5.64e+00 8.45e+01  7.54e+04   224s
+  27   2.30465611e+11  8.49418805e+09  5.09e+00 7.71e+01  6.73e+04   229s
+  28   2.13052323e+11  1.53040504e+10  4.56e+00 6.79e+01  5.89e+04   234s
+  29   2.00736691e+11  2.46190206e+10  4.19e+00 5.47e+01  5.07e+04   239s
+  30   1.95009885e+11  2.54435080e+10  4.01e+00 5.36e+01  4.87e+04   243s
+  31   1.86446217e+11  2.66240524e+10  3.76e+00 5.15e+01  4.58e+04   248s
+  32   1.78827491e+11  2.88423844e+10  3.53e+00 4.81e+01  4.27e+04   251s
