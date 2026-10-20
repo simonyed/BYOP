@@ -1,0 +1,65 @@
+
+Gurobi 11.0.3 (linux64) logging started Tue Oct 20 15:07:19 2026
+
+Set parameter LogFile to value "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/rearch/R1_GK/solver_S1_xRA.log"
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Ubuntu 20.04.6 LTS")
+
+CPU model: Intel(R) Core(TM) i9-10920X CPU @ 3.50GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 12 physical cores, 24 logical processors, using up to 7 threads
+
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+Optimize a model with 7264237 rows, 3652596 columns and 15217280 nonzeros
+Model fingerprint: 0x34070b56
+Coefficient statistics:
+  Matrix range     [3e-03, 2e+03]
+  Objective range  [6e-01, 3e+06]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e-02, 2e+06]
+Presolve removed 3664371 rows and 884793 columns (presolve time = 5s) ...
+Presolve removed 3664595 rows and 885017 columns (presolve time = 10s) ...
+Presolve removed 3670478 rows and 885017 columns
+Presolve time: 13.94s
+Presolved: 3593759 rows, 2773462 columns, 11271139 nonzeros
+Elapsed ordering time = 5s
+Elapsed ordering time = 10s
+Elapsed ordering time = 21s
+Elapsed ordering time = 26s
+Elapsed ordering time = 30s
+Elapsed ordering time = 35s
+Elapsed ordering time = 40s
+Elapsed ordering time = 53s
+Elapsed ordering time = 56s
+Elapsed ordering time = 60s
+Elapsed ordering time = 65s
+Elapsed ordering time = 70s
+Elapsed ordering time = 75s
+Elapsed ordering time = 85s
+Elapsed ordering time = 85s
+Elapsed ordering time = 90s
+Elapsed ordering time = 95s
+Elapsed ordering time = 100s
+Elapsed ordering time = 105s
+Elapsed ordering time = 118s
+Elapsed ordering time = 120s
+Elapsed ordering time = 125s
+Elapsed ordering time = 130s
+Elapsed ordering time = 135s
+Elapsed ordering time = 140s
+Elapsed ordering time = 155s
+Elapsed ordering time = 160s
+Elapsed ordering time = 165s
+Elapsed ordering time = 170s
+Elapsed ordering time = 175s
+Elapsed ordering time = 180s
+Ordering time: 190.02s
+
+Barrier statistics:
+ Dense cols : 1861
+ AA' NZ     : 1.330e+07
+ Factor NZ  : 2.607e+08 (roughly 5.0 GB of memory)
+ Factor Ops : 1.471e+12 (roughly 5 seconds per iteration)
+ Threads    : 7
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   1.20369007e+15 -1.82248450e+15  2.53e+06 1.91e+05  1.01e+11   293s

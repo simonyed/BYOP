@@ -763,8 +763,11 @@ def main():
     ap.add_argument('--erm-cal', default=None); ap.add_argument('--calibrate', action='store_true')
     ap.add_argument('--v', type=float, default=2.8e6); ap.add_argument('--threads', type=int, default=8)
     ap.add_argument('--base', default=None)
+    ap.add_argument('--case-group', default=None, help='logical case several parallel sub-runs belong to (default: case-id); '
+                    'collect_rearch.py merges sub-runs of one group for attribution / differences')
     ap.add_argument('--scenarios', nargs='*', default=['S0', 'S1', 'S1_zero', 'S3', 'S3_mS1', 'S2', 'S2_off', 'S3_mS2'])
     a = ap.parse_args()
+    a.case_group = a.case_group or a.case_id
     global BASE_TAMU
     if a.base:
         BASE_TAMU = Path(a.base)
@@ -848,6 +851,16 @@ def main():
                     poi_upgrade_MW=float(pl.groupby('site').poi_upgrade_MW_cum.max().sum()) if len(pl) else 0.0)
         LED.append(led); SVC.append(svc); SUM.append(summ); RES[tag] = res; POIL.append(pl); UPL.append(upl)
         DUA.append(M.duals(n, tag, a.case_id, run_id))
+        # per-scenario checkpoint: a scenario's tables are on disk as soon as it is solved, so a case can be split
+        # over parallel processes (--case-group) or survive a later crash without losing finished solves
+        ck = out / 'scenarios' / tag
+        ck.mkdir(parents=True, exist_ok=True)
+        pd.DataFrame([summ]).to_csv(ck / 'scenario_summary.csv', index=False)
+        for nm, df_ in (('ledger', led), ('service', svc), ('poi_ledger', pl), ('poi_upgrade_ledger', upl), ('duals', DUA[-1])):
+            df_.to_csv(ck / f'{nm}.csv', index=False)
+        (ck / 'solve.json').write_text(json.dumps(dict(case_id=a.case_id, case_group=a.case_group, run_id=run_id, scenario=tag,
+                                                       relax=GCFG['relax'], setting=GCFG['setting'], solve=res,
+                                                       timestamp_utc=datetime.now(timezone.utc).isoformat()), indent=1, default=str))
         pr = n.buses_t.marginal_price[[z for z in M.ZONES]].copy()
         pr.to_csv(out / f'prices_{tag}.csv.gz')
         ev('optimization_solved', 'SOLVER_OPTIMAL' if res['termination'] == 'optimal' else 'FAIL',
@@ -947,7 +960,7 @@ def main():
         no_service_before_grid_or_byop=bool(((pl1.served_IT_MW * pl1.PUE) <= pl1.equipment_total_MW + 1e-2).all()) if len(pl1) else None,
         s2_consistent=bool(not consistency or all(c['gap_IT_MW'] <= max(0.5, 1e-3 * c['planned_IT_MW']) for c in consistency if c['iteration'] == max(x['iteration'] for x in consistency))),
         private_stage_LP=all(p_['integer_vars'] == 0 for p_ in priv_log) if priv_log else None)
-    man = dict(run_id=run_id, case_id=a.case_id, gcfg=GCFG, cfg=dict(M.CFG), argv=sys.argv, checks=checks, solves=RES,
+    man = dict(run_id=run_id, case_id=a.case_id, case_group=a.case_group, gcfg=GCFG, cfg=dict(M.CFG), argv=sys.argv, checks=checks, solves=RES,
                status='CASE_SOLVED' if all(x in (True, None) for x in checks.values()) else 'CASE_CHECK_FAIL',
                sites={k: {kk: vv for kk, vv in s.items()} for k, s in SITES.items()}, erm_cal=STATE.get('erm_cal'),
                baseline=str(BASE_TAMU), baseline_sha256=M.sha(BASE_TAMU),

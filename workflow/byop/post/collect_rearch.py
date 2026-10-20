@@ -50,30 +50,10 @@ def main():
         summ = pd.read_csv(case / 'scenario_summary.csv')
         pl = pd.read_csv(case / 'poi_ledger.csv') if (case / 'poi_ledger.csv').stat().st_size > 2 else pd.DataFrame()
         led = pd.read_csv(case / 'ledger.csv') if (case / 'ledger.csv').stat().st_size > 2 else pd.DataFrame()
+        grp = man.get('case_group', cid)
         if len(pl):
-            pl.insert(0, 'case', cid); pl.insert(1, 'setting', man['gcfg']['setting'])
-            base = pl[pl.scenario == 'S1'].set_index(['site', 'year'])
-            for sc, lab in ATTR.items():
-                x = pl[pl.scenario == sc].set_index(['site', 'year'])
-                if len(x) and len(base):
-                    pl.loc[pl.scenario == 'S1', f'gain_{sc}_MW_IT'] = (x.served_IT_MW - base.served_IT_MW).reindex(
-                        pd.MultiIndex.from_frame(pl.loc[pl.scenario == 'S1', ['site', 'year']])).values
+            pl.insert(0, 'case', cid); pl.insert(1, 'case_group', grp); pl.insert(2, 'setting', man['gcfg']['setting'])
             POI.append(pl)
-            if len(base) and (pl.scenario == 'S1_xALL').any():
-                xall = pl[pl.scenario == 'S1_xALL'].set_index(['site', 'year'])
-                for (s, y), r in base.iterrows():
-                    gains = {lab: float(pl[(pl.scenario == sc) & (pl.site == s) & (pl.year == y)].served_IT_MW.sum() - r.served_IT_MW)
-                             if (pl.scenario == sc).any() else np.nan for sc, lab in ATTR.items()}
-                    tot = float(xall.served_IT_MW.get((s, y), np.nan) - r.served_IT_MW)
-                    row = dict(case=cid, setting=man['gcfg']['setting'], site=s, year=y, requested_IT_MW=r.requested_IT_MW,
-                               S1_served_IT_MW=r.served_IT_MW, S1_unserved_IT_MW=r.unserved_IT_MW, gain_all_relaxed_MW_IT=tot, **gains)
-                    single = sum(v for v in gains.values() if v == v)
-                    row['combined/uncertain'] = tot - single
-                    row['unexplained_after_all_relaxed'] = float(r.requested_IT_MW - xall.served_IT_MW.get((s, y), np.nan))
-                    row['dominant_cause'] = (max(gains, key=lambda k: gains[k] if gains[k] == gains[k] else -1)
-                                             if r.unserved_IT_MW > 0.5 and max(v for v in gains.values() if v == v) > 0.5 else
-                                             ('combined/uncertain' if r.unserved_IT_MW > 0.5 else 'none (served)'))
-                    ATT.append(row)
         ff = first_full(pl) if len(pl) else {}
         # assets
         if len(led):
@@ -107,7 +87,7 @@ def main():
             gp['resource_path'] = 'committed'
             ASSET.append(gp)
         for r in summ.itertuples():
-            row = dict(case=cid, setting=man['gcfg']['setting'], scenario=r.scenario, relax=getattr(r, 'relax', 'none'),
+            row = dict(case=cid, case_group=man.get('case_group', cid), setting=man['gcfg']['setting'], scenario=r.scenario, relax=getattr(r, 'relax', 'none'),
                        served_MW_IT_yr=r.served_MW_IT_year, unserved_MW_IT_yr=r.delay_MW_IT_year,
                        social_real_resource_cost_USD=r.social_real_resource_cost_USD,
                        public_resource_capex_PV_USD=r.public_resource_capex_PV_USD, byop_resource_capex_PV_USD=r.byop_resource_capex_PV_USD,
@@ -131,14 +111,40 @@ def main():
             x = pd.read_csv(dm); x.insert(0, 'case', cid)
             x.to_csv(out / f'S2_MODES_{cid}.csv', index=False)
     poi = pd.concat(POI, ignore_index=True) if POI else pd.DataFrame()
+    for grp, pg in (poi.groupby('case_group') if len(poi) else []):
+        base = pg[pg.scenario == 'S1'].drop_duplicates(['site', 'year']).set_index(['site', 'year'])
+        if not len(base):
+            continue
+        for sc in ATTR:
+            x = pg[pg.scenario == sc].drop_duplicates(['site', 'year']).set_index(['site', 'year'])
+            if len(x):
+                m_ = (poi.case_group == grp) & (poi.scenario == 'S1')
+                poi.loc[m_, f'gain_{sc}_MW_IT'] = (x.served_IT_MW - base.served_IT_MW).reindex(
+                    pd.MultiIndex.from_frame(poi.loc[m_, ['site', 'year']])).values
+        if not (pg.scenario == 'S1_xALL').any():
+            continue
+        xall = pg[pg.scenario == 'S1_xALL'].drop_duplicates(['site', 'year']).set_index(['site', 'year'])
+        for (s, y), r in base.iterrows():
+            gains = {lab: float(pg[(pg.scenario == sc) & (pg.site == s) & (pg.year == y)].served_IT_MW.iloc[0] - r.served_IT_MW)
+                     if ((pg.scenario == sc) & (pg.site == s) & (pg.year == y)).any() else np.nan for sc, lab in ATTR.items()}
+            tot = float(xall.served_IT_MW.get((s, y), np.nan) - r.served_IT_MW)
+            row = dict(case_group=grp, setting=r.setting, site=s, year=y, requested_IT_MW=r.requested_IT_MW,
+                       S1_served_IT_MW=r.served_IT_MW, S1_unserved_IT_MW=r.unserved_IT_MW, gain_all_relaxed_MW_IT=tot, **gains)
+            vals = [v for v in gains.values() if v == v]
+            row['combined/uncertain'] = tot - sum(vals)
+            row['unexplained_after_all_relaxed'] = float(r.requested_IT_MW - xall.served_IT_MW.get((s, y), np.nan))
+            row['dominant_cause'] = (max(gains, key=lambda k: gains[k] if gains[k] == gains[k] else -1)
+                                     if r.unserved_IT_MW > 0.5 and vals and max(vals) > 0.5 else
+                                     ('combined/uncertain' if r.unserved_IT_MW > 0.5 else 'none (served)'))
+            ATT.append(row)
     poi.to_csv(out / 'POI_DELIVERABILITY_LEDGER.csv', index=False)
     att = pd.DataFrame(ATT); att.to_csv(out / 'DELAY_ATTRIBUTION.csv', index=False)
     (pd.concat(ASSET, ignore_index=True) if ASSET else pd.DataFrame()).to_csv(out / 'ASSET_COMMITMENT_LEDGER.csv', index=False)
     cmp_ = pd.DataFrame(CMP)
     # matched-service and headline differences per case (social real resource cost)
     rows = []
-    for cid, g in cmp_.groupby('case'):
-        c = g.set_index('scenario')
+    for cid, g in cmp_.groupby('case_group'):
+        c = g.drop_duplicates('scenario').set_index('scenario')
         get = lambda s, k: float(c[k][s]) if s in c.index else np.nan
         for a_, b_, lab in [('S1', 'S0', 'S1-S0 (AIDC impact)'), ('S2', 'S1', 'S2-S1 (BYOP impact)'), ('S2', 'S3', 'S2-S3 (actual service)'),
                             ('S2', 'S3_mS2', 'S2-S3 matched to S2 service'), ('S1', 'S3_mS1', 'S1-S3 matched to S1 service')]:
@@ -171,7 +177,7 @@ def main():
             fig.savefig(out / 'served_trajectories.png', dpi=150)
         if len(att):
             cols = list(ATTR.values()) + ['combined/uncertain']
-            t = att.groupby(['case', 'site'])[cols].sum().clip(lower=0)
+            t = att.groupby(['case_group', 'site'])[cols].sum().clip(lower=0)
             ax = t.plot.bar(stacked=True, figsize=(10, 4)); ax.set_ylabel('S1 served gain when relaxed (MW_IT-yr)')
             plt.tight_layout(); plt.savefig(out / 'delay_attribution.png', dpi=150)
     except Exception as e:
@@ -179,7 +185,7 @@ def main():
     print(cmp_.to_string(max_cols=20)[:6000])
     print(pd.DataFrame(rows).to_string())
     if len(att):
-        print(att.groupby(['case', 'site'])[[*ATTR.values(), 'combined/uncertain', 'S1_unserved_IT_MW']].sum().round(1).to_string())
+        print(att.groupby(['case_group', 'site'])[[*ATTR.values(), 'combined/uncertain', 'S1_unserved_IT_MW']].sum().round(1).to_string())
 
 
 if __name__ == '__main__':

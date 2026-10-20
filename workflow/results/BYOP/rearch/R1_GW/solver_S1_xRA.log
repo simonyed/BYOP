@@ -1,0 +1,29 @@
+
+Gurobi 11.0.3 (linux64) logging started Tue Oct 20 15:12:35 2026
+
+Set parameter LogFile to value "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/rearch/R1_GW/solver_S1_xRA.log"
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Ubuntu 20.04.6 LTS")
+
+CPU model: Intel(R) Core(TM) i9-10920X CPU @ 3.50GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 12 physical cores, 24 logical processors, using up to 7 threads
+
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+Optimize a model with 7264237 rows, 3652596 columns and 15249536 nonzeros
+Model fingerprint: 0xa02f95e2
+Coefficient statistics:
+  Matrix range     [3e-03, 2e+03]
+  Objective range  [6e-01, 3e+06]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e-02, 2e+06]
+Presolve removed 3663465 rows and 883663 columns (presolve time = 5s) ...
+Presolve removed 3665939 rows and 885017 columns (presolve time = 11s) ...
+Presolve removed 3665939 rows and 885017 columns (presolve time = 15s) ...
+Presolve removed 3671822 rows and 885017 columns
+Presolve time: 19.13s
+Presolved: 3592415 rows, 2773462 columns, 11300707 nonzeros
+Elapsed ordering time = 5s
+Elapsed ordering time = 10s
+Elapsed ordering time = 23s
+Elapsed ordering time = 26s
+Elapsed ordering time = 30s
+Elapsed ordering time = 36s
