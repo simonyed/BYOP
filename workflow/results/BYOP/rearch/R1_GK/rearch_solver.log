@@ -177,3 +177,49 @@ INFO:linopy.model:Solver options:
  - GURO_PAR_BARDENSETHRESH: 200
 INFO:linopy.io:Writing objective.
 INFO:linopy.io: Writing time: 4.68s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 4656228 primals, 13012039 duals
+Objective: 3.44e+10
+Solver: gurobi
+Runtime: 2804.06s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Kirchhoff-Voltage-Law, M2-train_cap_DC_ABI_TAY train2026, M2-train_daily_DC_ABI_TAY train2026, M2-train_cap_DC_ABI_TAY train2027, M2-train_daily_DC_ABI_TAY train2027, M2-train_cap_DC_ABI_TAY train2028, M2-train_daily_DC_ABI_TAY train2028, M2-train_cap_DC_ABI_TAY train2029, M2-train_daily_DC_ABI_TAY train2029, M2-train_cap_DC_ABI_TAY train2030, M2-train_daily_DC_ABI_TAY train2030, M2-train_cap_DC_ABI_TAY train2031, M2-train_daily_DC_ABI_TAY train2031, M2-train_cap_DC_DFW_KAU train2026, M2-train_daily_DC_DFW_KAU train2026, M2-train_cap_DC_DFW_KAU train2027, M2-train_daily_DC_DFW_KAU train2027, M2-train_cap_DC_DFW_KAU train2028, M2-train_daily_DC_DFW_KAU train2028, M2-train_cap_DC_DFW_KAU train2029, M2-train_daily_DC_DFW_KAU train2029, M2-train_cap_DC_DFW_KAU train2030, M2-train_daily_DC_DFW_KAU train2030, M2-train_cap_DC_DFW_KAU train2031, M2-train_daily_DC_DFW_KAU train2031, M2-train_cap_DC_PEC_REE train2026, M2-train_daily_DC_PEC_REE train2026, M2-train_cap_DC_PEC_REE train2027, M2-train_daily_DC_PEC_REE train2027, M2-train_cap_DC_PEC_REE train2028, M2-train_daily_DC_PEC_REE train2028, M2-train_cap_DC_PEC_REE train2029, M2-train_daily_DC_PEC_REE train2029, M2-train_cap_DC_PEC_REE train2030, M2-train_daily_DC_PEC_REE train2030, M2-train_cap_DC_PEC_REE train2031, M2-train_daily_DC_PEC_REE train2031, V240-reuse_right_p630 7 gas_steam 2025fleet r2028, POI-eq_DC_ABI_TAY S2026, M2-serve_cap_DC_ABI_TAY S2026, POI-eq_DC_ABI_TAY S2027, M2-serve_cap_DC_ABI_TAY S2027, POI-eq_DC_ABI_TAY S2028, M2-serve_cap_DC_ABI_TAY S2028, POI-eq_DC_ABI_TAY S2029, M2-serve_cap_DC_ABI_TAY S2029, POI-eq_DC_ABI_TAY S2030, M2-serve_cap_DC_ABI_TAY S2030, POI-eq_DC_ABI_TAY S2031, M2-serve_cap_DC_ABI_TAY S2031, POI-eq_DC_DFW_KAU S2026, M2-serve_cap_DC_DFW_KAU S2026, POI-eq_DC_DFW_KAU S2027, M2-serve_cap_DC_DFW_KAU S2027, POI-eq_DC_DFW_KAU S2028, M2-serve_cap_DC_DFW_KAU S2028, POI-eq_DC_DFW_KAU S2029, M2-serve_cap_DC_DFW_KAU S2029, POI-eq_DC_DFW_KAU S2030, M2-serve_cap_DC_DFW_KAU S2030, POI-eq_DC_DFW_KAU S2031, M2-serve_cap_DC_DFW_KAU S2031, POI-eq_DC_PEC_REE S2026, M2-serve_cap_DC_PEC_REE S2026, POI-eq_DC_PEC_REE S2027, M2-serve_cap_DC_PEC_REE S2027, POI-eq_DC_PEC_REE S2028, M2-serve_cap_DC_PEC_REE S2028, POI-eq_DC_PEC_REE S2029, M2-serve_cap_DC_PEC_REE S2029, POI-eq_DC_PEC_REE S2030, M2-serve_cap_DC_PEC_REE S2030, POI-eq_DC_PEC_REE S2031, M2-serve_cap_DC_PEC_REE S2031 were not assigned to the network.
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:opts.reserves:Adding ERM constraint for TX with reserve level 0.15
+INFO:opts.reserves:Added ERM constraint for TX
+INFO:opts.bidirectional_link:No bidirectional link candidates found (no _fwd or _rev at the end of the names)
+INFO:opts.sector:Demand response not enabled
+INFO:wp2:ERM-DC-01 B: added (1+0.15) x POI flow of 18 POIs to GlobalConstraint-TX_ERM
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver logs written to `results/BYOP/rearch/R1_GK/solver_S1_xPROC.log`.
+INFO:linopy.model:Solver options:
+ - threads: 7
+ - method: 2
+ - crossover: 0
+ - BarHomogeneous: 1
+ - BarConvTol: 1e-05
+ - OptimalityTol: 0.0001
+ - FeasibilityTol: 0.001
+ - ScaleFlag: 1
+ - Seed: 123
+ - AggFill: 0
+ - PreDual: 0
+ - GURO_PAR_BARDENSETHRESH: 200
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 4.91s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 3732156 primals, 10164085 duals
+Objective: 5.87e+10
+Solver: gurobi
+Runtime: 1226.19s
+Solver model: available
+Solver message: 2
+

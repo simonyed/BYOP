@@ -22,6 +22,7 @@
 | `BYOP_ERCOT_Rearchitecture_Work_Package_v1.0_2026-10-20.md` | 工作包原文 | 研究者提供 |
 | `DECISION_LOG_REARCHITECTURE.md` | 空间、POI、气源、模式等决策及其状态 | 草稿，持续更新 |
 | `GITHUB_SYNC_EXECUTION_REPORT.md` | GitHub 同步规则检查与完善报告 | 完成（2026-10-20） |
+| `INTERIM_PROGRESS_REPORT_2026-10-20.md` | 中期进度：求解状态、S1 各场址服务量、发现的问题 | IN_PROGRESS（20:30 UTC） |
 | `EXECUTION_REPORT_FOR_PUBLISHER.md` | 工作包要求的执行情况报告 | 尚未编写，主要算例完成后写入本文件夹 |
 
 参数来源登记表在 `workflow/byop/inputs/poi/SOURCE_EVIDENCE_REGISTER.csv`；运行说明在 `workflow/byop/README_REARCHITECTURE.md`。
