@@ -1,0 +1,14 @@
+........                                                                 [100%]
+=============================== warnings summary ===============================
+workflow/byop/tests/test_rearch_units.py: 11 warnings
+  /datasets/prgm/uv-python/cpython-3.11.17-linux-x86_64-gnu/lib/python3.11/contextlib.py:81: FutureWarning:
+  
+  The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+
+workflow/byop/tests/test_rearch_units.py: 44 warnings
+  /datasets/prgm/pypsa-usa/.venv/lib/python3.11/site-packages/linopy/common.py:306: UserWarning:
+  
+  Coordinates across variables not equal. Perform outer join.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+8 passed, 55 warnings in 62.91s (0:01:02)
