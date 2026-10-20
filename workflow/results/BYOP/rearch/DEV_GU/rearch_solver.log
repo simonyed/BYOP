@@ -1859,3 +1859,25 @@ INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Kirchhoff-
 INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
 INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
 INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:opts.reserves:Adding ERM constraint for TX with reserve level 0.15
+INFO:opts.reserves:Added ERM constraint for TX
+INFO:opts.bidirectional_link:Added 324 bidirectional link constraints
+INFO:opts.sector:Demand response not enabled
+INFO:wp2:ERM-DC-01 B: added (1+0.15) x POI flow of 18 POIs to GlobalConstraint-TX_ERM
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver logs written to `results/BYOP/rearch/DEV_GU/solver_S2_off.log`.
+INFO:linopy.model:Solver options:
+ - threads: 10
+ - method: 2
+ - crossover: 0
+ - BarHomogeneous: 1
+ - BarConvTol: 1e-05
+ - OptimalityTol: 0.0001
+ - FeasibilityTol: 0.001
+ - ScaleFlag: 1
+ - Seed: 123
+ - AggFill: 0
+ - PreDual: 0
+ - GURO_PAR_BARDENSETHRESH: 200
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 11.3s
