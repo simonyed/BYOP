@@ -31,7 +31,7 @@ def first_full(df):
         last_gap = int(gap.year.max()) if len(gap) else None
         out[(sc, s)] = dict(first_full_service_year=int(ok.year.min()) if len(ok) else None,
                             full_service_from=(last_gap + 1) if last_gap is not None and last_gap < int(g.year.max()) else
-                            (None if last_gap is not None else int(g[g.requested_IT_MW > 0].year.min())),
+                            (None if last_gap is not None or not (g.requested_IT_MW > 0).any() else int(g[g.requested_IT_MW > 0].year.min())),
                             unserved_MW_IT_yr=float(g.unserved_IT_MW.sum()))
     return out
 

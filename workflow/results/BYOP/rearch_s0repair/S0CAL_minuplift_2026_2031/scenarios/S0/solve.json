@@ -1,0 +1,21 @@
+{
+ "case_id": "S0CAL_minuplift_2026_2031",
+ "case_group": "S0CAL_minuplift_2026_2031",
+ "run_id": "rearch_S0CAL_minuplift_2026_2031_20261020T223651Z",
+ "scenario": "S0",
+ "relax": [],
+ "setting": "G-W",
+ "solve": {
+  "tag": "S0",
+  "status": "ok",
+  "termination": "optimal",
+  "objective": 78987693712.18225,
+  "seconds": 1756.5,
+  "n_vars": 3232919,
+  "n_cons": 6276989,
+  "integer_vars": 0,
+  "erm_dc_mode": "B",
+  "erm_poi_coeff_snapshot0": null
+ },
+ "timestamp_utc": "2026-10-20T23:06:33.623866+00:00"
+}
