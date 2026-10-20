@@ -703,6 +703,7 @@ def poi_ledger(n, tag, case_id):
                          unserved_IT_MW=d['D'] - S, PUE=d['pue'], equipment_fixed_MW=fixed, equipment_total_MW=eq,
                          poi_upgrade_MW_cum=sum(U.values()), firm_entitlement_used_MW=float(ff.max()) if len(ff) else 0.0,
                          conditional_peak_MW=float(cf.max()) if len(cf) else 0.0,
+                         total_import_peak_MW=float((ff + cf.reindex(ff.index).fillna(0.0)).max()) if len(ff) > 1 else (float(ff.max()) if len(ff) else 0.0),
                          firm_import_MWh=float((ff * w[sl]).sum()) if len(ff) > 1 else 0.0,
                          conditional_import_MWh=float((cf * w[sl]).sum()) if len(cf) > 1 else 0.0,
                          curtailed_MWh=float((cu * w[sl]).sum()) if len(cu) > 1 else 0.0,
@@ -956,7 +957,8 @@ def main():
         dc_energy_balance=bool((energy_resid(svc, poil).abs() <= 1e-3 * svc.facility_load_MWh_per_yr.clip(lower=1.0) + 1.0).all())
         if len(svc) and len(poil) else None,
         S2_off_equals_S1=bool(rel('S2_off', 'S1') < 1e-4) if {'S2_off', 'S1'} <= set(cs.index) else None,
-        poi_flow_le_equipment=bool((poil.firm_entitlement_used_MW + poil.conditional_peak_MW <= poil.equipment_total_MW * (1 + 1e-5) + 1e-2).all()) if len(poil) else None,
+        # simultaneous firm + conditional import (the LP limit is per snapshot; the sum of the two separate peaks is not)
+        poi_flow_le_equipment=bool((poil.total_import_peak_MW <= poil.equipment_total_MW * (1 + 1e-5) + 1e-2).all()) if len(poil) else None,
         no_service_before_grid_or_byop=bool(((pl1.served_IT_MW * pl1.PUE) <= pl1.equipment_total_MW + 1e-2).all()) if len(pl1) else None,
         s2_consistent=bool(not consistency or all(c['gap_IT_MW'] <= max(0.5, 1e-3 * c['planned_IT_MW']) for c in consistency if c['iteration'] == max(x['iteration'] for x in consistency))),
         private_stage_LP=all(p_['integer_vars'] == 0 for p_ in priv_log) if priv_log else None)
