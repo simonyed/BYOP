@@ -231,7 +231,11 @@ def add_base_assets(n):
     return out
 
 
-S0CAL_COST = 2.0e4   # USD/MW-yr = 2 MWh of shedding per MW and year (same ratio as the 2025 rule D250-20: 2e6 / 1e6)
+# D3 3.5 minimum-uplift rule: shedding is made prohibitive (1e8 USD/MWh) and the uplift far dearer than any dispatch saving
+# (1e7 USD/MW-yr >> price spread x 8760 h), so the LP removes background shedding with the least uplift MW and never
+# buys line capacity for economics (a first try at 2e4 USD/MW-yr bought 11 GW, mostly congestion relief - rejected)
+S0CAL_COST = 1.0e7
+S0CAL_SHED = 1.0e8
 
 
 def add_s0_calibration(n, scen):
@@ -252,6 +256,7 @@ def add_s0_calibration(n, scen):
         x = pd.DataFrame(L).set_index('name')
         n.add('Link', x.index, **{c: x[c].values for c in x.columns})
         STATE['s0cal_pairs'] = [f'S0CAL_{name}' for name in n.lines.index]
+        n.generators.loc[n.generators.carrier == 'load_shed', 'marginal_cost'] = S0CAL_SHED
     elif GCFG.get('s0_cal_file'):
         c = pd.read_csv(GCFG['s0_cal_file'])
         for r in c[c.added_MW > 0.5].itertuples():
@@ -1043,7 +1048,7 @@ def main():
                 ln = b[len('S0CAL_'):]
                 rows.append(dict(line=ln, bus0=n.lines.bus0[ln], bus1=n.lines.bus1[ln], existing_MVA=float(n.lines.s_nom[ln]),
                                  s_max_pu=float(n.lines.s_max_pu[ln]), added_MW=mw, evidence_level='B',
-                                 derivation=f'S0_{M.periods()[0]}_{M.periods()[-1]}_CALIBRATION (min uplift, {S0CAL_COST:.0f} USD/MW-yr vs shed {M.SHED_COST:.0f} USD/MWh)'))
+                                 derivation=f'S0_{M.periods()[0]}_{M.periods()[-1]}_CALIBRATION (min uplift: {S0CAL_COST:.0e} USD/MW-yr vs shed {S0CAL_SHED:.0e} USD/MWh)'))
             cal = pd.DataFrame(rows)
             cal.to_csv(out / 'S0_CALIBRATION.csv', index=False)
             ev('s0_calibration', 'DONE', f"{int((cal.added_MW > 0.5).sum())} lines, {cal.added_MW.sum():.0f} MW")

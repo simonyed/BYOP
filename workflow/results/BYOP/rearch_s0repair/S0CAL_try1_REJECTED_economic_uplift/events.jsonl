@@ -1,0 +1,2 @@
+{"timestamp_utc": "2026-10-20T22:35:14.229261+00:00", "run_id": "rearch_S0CAL_main_2026_2031_20261020T221351Z", "case_id": "S0CAL_main_2026_2031", "event": "s0_calibration", "status": "DONE", "message": "25 lines, 11008 MW"}
+{"timestamp_utc": "2026-10-20T22:35:14.787900+00:00", "run_id": "rearch_S0CAL_main_2026_2031_20261020T221351Z", "case_id": "S0CAL_main_2026_2031", "event": "optimization_solved", "status": "SOLVER_OPTIMAL", "message": "obj 4.209533e+10; vars 3232919; int 0; 1268s", "scenario": "S0"}

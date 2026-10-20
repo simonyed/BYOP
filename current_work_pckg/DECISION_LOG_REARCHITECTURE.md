@@ -50,3 +50,22 @@
 | 编号 | 决策 | 状态 |
 |---|---|---|
 | RA-D01 | 本轮未把 TAMU + POI + S2 接入 `v240_path.py` 年度 approve-and-commit 控制器；所有结果为 2026–2031 静态多期 LP（筛查分辨率：每年 2 个抽样周，3 h）。2036–2050、2040/45/50 里程碑、SOFC 2026.5 首年、2040–2044 退役衔接、终值处理均**未在新架构中运行** | 未实施（下一阶段 P0/P1） |
+
+## E. 研究者确认的 P0 决策（`BYOP_ERCOT_P0_RESEARCHER_DECISIONS_2026-10-20.md`）及落实情况
+
+状态取值另加：**已确认·已实现·待验收**（代码与单元测试完成，尚未在小 ERCOT 算例和正式算例中验收）。
+
+| 编号 | 决策 | 落实方式（代码位置） | 状态 |
+|---|---|---|---|
+| RA-P01 | 已投运 IT 容量跨年不下降，只有请求取消时才能按取消量减少（P0-1） | `rearch_mech.extra_rearch`：`P01-online_monotone_*` 约束 | 已确认·已实现·待验收 |
+| RA-P01b | 非计划中断（`dc_interrupt`）与合同 PCLR 中断（`dc_curtail`）分别建模、分别计价、分别记账；二者之和在每个时段不超过实际设施负荷 | `add_dc_poi` 中的 `dc_interrupt` 生成器；`P01-intr_le_load_*` 约束；`poi_ledger` 增加 `interrupt_MWh`；汇总表分别输出 `interruption_loss_PV_USD` 和 `curtailment_loss_PV_USD` | 已确认·已实现·待验收 |
+| RA-D2a | 中断价格按年动态计算：`c = v / E_unit`，E_unit 为按快照权重折算的全年设施用电量（MWh/MW_IT）。一个 MW_IT 全年中断的损失正好等于 v | `add_dc_poi`；`STATE['interrupt_price']` 写入 manifest；单元测试 `test_value_consistency` | 已确认·已实现·单元测试通过 |
+| RA-D2b | PCLR 合同中断改用同一价格口径（原为 `v/(8760·PUE)`，约 278 美元/MWh） | `add_dc_poi`：`dc_curtail` 的边际成本取 `c_interrupt` | 已确认·已实现 |
+| RA-D2c | 非计划中断上限为全年计划设施电量的 0.5%（敏感性 0% 和 2%）；严格 Firm 基准（S1_EARLIEST）中不允许中断 | `--interrupt-cap`；`P01-intr_cap_*` 约束；`STATE['firm_strict']` | 已确认·已实现·单元测试通过 |
+| RA-D2d | 既有用户保护：每个母线、每个时段的背景负荷切负荷不超过 S0_repaired 的冻结值 + 0.001 MW | S0 求解后冻结 `S0_shed_by_snapshot_frozen.csv.gz`；其余情景加 `D24-no_harm_existing_customers` 约束；manifest 输出最大越限值；单元测试 `test_no_harm_existing_customers` | 已确认·已实现·单元测试通过 |
+| RA-D2e | 切负荷惩罚仍为 1e4 美元/MWh（优化用）；社会损失另按 Brattle 2024 ERCOT VOLL 35,685 美元/MWh 报告 | 汇总表：`existing_customer_shed_loss_PV_USD` 与 `..._VOLL_PV_USD` | 已确认·已实现 |
+| RA-P02 / D1 | 严格最早可交付的纯电网基准 `S1_EARLIEST`（P0-2）：A1 逐年最大化各场址投运量之和（早年优先）→ A2 在合格场址之间做 max-min（R = min(D, 独立可交付量) > 0 才参与）→ B 在固定轨迹下最小化成本。用 Gurobi 分层多目标实现，仍为连续 LP；出现 `LEXIMIN_ZERO_LOCK` 时如实报告。`S1_ECON` 保留作对照；电网报价和延迟归因都改以 `S1_EARLIEST` 为基准 | `lex_presolve()`、`independent_it()`；`main()` 中的 `S1_EARLIEST` / `S1_ECON` / `S1E_x*`；单元测试 `test_earliest_ge_econ_and_maxmin`、`test_earliest_monotone_in_options`、`test_ineligible_site_does_not_lock_maxmin` | 已确认·已实现·单元测试通过 |
+| RA-D1b | 本项目的 max-min 是透明的数学实现，**不是 ERCOT Batch Zero 正式规定的算法** | 写入报告 | 已确认 |
+| RA-D3a | TPIT 证据台账：330 条西部/远西部 ≥138 kV 记录，按纳入类别分类。MAIN = 在建且为跨簇 345 kV 线路（仅 DWB Stage 2，2026-06-30，按 ERCOT 估计 +1,000 MW）；SENSITIVITY = 已规划且经 RPG 审查（DWB Stage 5 2028–29、West Texas 345 kV 重建 2026–29，MW 为代理值）；同步调相机、765 kV（仅 2031 年起）、变电站、概念项目和取消项目均排除 | `work_pkgs/.../tpit_farwest/build_tpit_farwest_ledger.py` → `workflow/byop/inputs/grid/TPIT_FARWEST_EVIDENCE_LEDGER.csv`、`COMMITTED_BASE_ASSETS.csv`；`rearch_mech.add_base_assets`（所有情景共用的基准资产，不计内生投资） | 已确认·已实现 |
+| RA-D3b | S0 修复：加入 DWB Stage 2 后，2026–2029 年（G-W）S0 切负荷由 640 GWh 降到 374 GWh；剩余部分主要在合成网络的小簇（`p630 13/14`、`p630 2`）以及 `p600 1`/`p620 1–2`。模型远西部负荷约 9.3–9.6 GW，**低于 ERCOT 公布的 9,500 MW + 1,000 MW 可送达能力**，说明是模型网络偏弱，不是真实瓶颈 → 按 D3 3.5 做定向校准：最小线路增容，按 2e4 美元/MW·年计价，作为所有情景共用、不计成本的基准资产 | `--s0-calibrate` / `--s0-cal-file`；`results/BYOP/rearch_s0repair/` | 已确认·校准运行中 |
+| RA-D3c | 局限：真实的远西部压力来自负荷增长（ERCOT 预测 2028 年约 16 GW），而模型的背景负荷按德州统一的 AEO 增长率，远西部只有约 9.6 GW。是否引入 ERCOT 远西部负荷预测需研究者另行决定 | — | 待研究者决定 |
