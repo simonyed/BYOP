@@ -1,0 +1,2 @@
+{"timestamp_utc": "2026-10-21T20:51:39.010074+00:00", "run_id": "rearch_MAINLINE_V13_GREAL_MID_S0CAL_20261021T192707Z", "case_id": "MAINLINE_V13_GREAL_MID_S0CAL", "event": "s0_calibration", "status": "DONE", "message": "9 lines, 1096 MW"}
+{"timestamp_utc": "2026-10-21T20:51:39.701655+00:00", "run_id": "rearch_MAINLINE_V13_GREAL_MID_S0CAL_20261021T192707Z", "case_id": "MAINLINE_V13_GREAL_MID_S0CAL", "event": "optimization_solved", "status": "SOLVER_OPTIMAL", "message": "obj 1.144580e+11; vars 4594318; int 0; 5061s", "scenario": "S0"}

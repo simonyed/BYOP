@@ -1,0 +1,603 @@
+{
+  "run_id": "rearch_MAINLINE_V13_GREAL_MID_S0CAL_20261021T192707Z",
+  "case_id": "MAINLINE_V13_GREAL_MID_S0CAL",
+  "case_group": "MAINLINE_V13_GREAL_MID_S0CAL",
+  "gcfg": {
+    "regional_dc": "off",
+    "regional_dc_scenario": "mid",
+    "competing_voll": null,
+    "s0_calibrate": true,
+    "s0_cal_file": null,
+    "interrupt_cap": 0.005,
+    "no_harm": true,
+    "base_assets": "main",
+    "setting": "G-REAL",
+    "relax": [],
+    "case": "base",
+    "gas_case": "base",
+    "pclr_hours": 200.0,
+    "pclr_max_consec_h": 12.0,
+    "s2_iter": 3,
+    "competing": 0.0,
+    "line_lead": null,
+    "offer_tol": 0.001,
+    "clusters": "64s",
+    "s2_modes": [
+      "GO_F",
+      "GO_C",
+      "GF",
+      "IS"
+    ]
+  },
+  "cfg": {
+    "bg_traj": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/inputs/load/background_load_growth_states_AEO2023_reference.csv",
+    "tv_share_byop": 1.0,
+    "tv_share_public": 1.0,
+    "periods": "annual",
+    "start": 2026,
+    "end": 2031,
+    "decision_year": 2026,
+    "years": 1,
+    "cost_basis": "repaired",
+    "public_subsidy": "without",
+    "tariff": "energy",
+    "reuse": "on",
+    "reuse_case": "base",
+    "frac_cod": true,
+    "flex": false,
+    "poi_lead": 0,
+    "byop_case": "base",
+    "public_case": "base",
+    "byop_techs": [
+      "RICE",
+      "SOFC_NG",
+      "OCGT_aero",
+      "WIND",
+      "PV",
+      "BESS"
+    ],
+    "sample_weeks": 26,
+    "bg_growth": 0.0,
+    "line_exp": true,
+    "erm15": false,
+    "threads": 8,
+    "social_r": 0.02,
+    "private_wacc": 0.07,
+    "v": 2800000.0,
+    "v_private": null,
+    "dem_scale": 1.0,
+    "smoke": false,
+    "gas_by_year": {
+      "2026": 3.738,
+      "2027": 3.513,
+      "2028": 3.576,
+      "2029": 3.768,
+      "2030": 4.443,
+      "2031": 4.857
+    },
+    "tech_v13": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/inputs/tech/MAINLINE_V13_TECH_DEFAULTS.csv",
+    "firm_full_year": true
+  },
+  "argv": [
+    "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/model/rearch_mech.py",
+    "--case-id",
+    "MAINLINE_V13_GREAL_MID_S0CAL",
+    "--out",
+    "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/mainline/MAINLINE_V13_GREAL_MID_S0CAL",
+    "--mainline",
+    "--config",
+    "config/config.byop_ercot_mainline.yaml",
+    "--start",
+    "2026",
+    "--end",
+    "2031",
+    "--sample-weeks",
+    "26",
+    "--threads",
+    "8",
+    "--erm-cal",
+    "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/mainline/MAINLINE_V13_GREAL_MID_ERMCAL/erm02_calibration.json",
+    "--s0-calibrate",
+    "--scenarios",
+    "S0"
+  ],
+  "checks": {
+    "true_LP": true,
+    "all_optimal": true,
+    "S1_zero_equals_S0": null,
+    "no_load_shed": true,
+    "served_le_requested": null,
+    "dc_energy_balance": null,
+    "S2_off_equals_S1": null,
+    "online_IT_monotone": null,
+    "no_harm_existing_customers": null,
+    "interruption_within_cap": null,
+    "lex_presolve_optimal": true,
+    "poi_flow_le_equipment": null,
+    "no_service_before_grid_or_byop": null,
+    "s2_consistent": true,
+    "s2_converged": null,
+    "private_stage_LP": null
+  },
+  "solves": {
+    "S0": {
+      "tag": "S0",
+      "status": "ok",
+      "termination": "optimal",
+      "objective": 114458041035.40538,
+      "seconds": 5049.0,
+      "n_vars": 4594318,
+      "n_cons": 8162093,
+      "integer_vars": 0,
+      "erm_dc_mode": "B",
+      "erm_poi_coeff_snapshot0": null
+    }
+  },
+  "s2_selection": null,
+  "scenarios_requested": [
+    "S0"
+  ],
+  "status": "CASE_SOLVED",
+  "sites": {
+    "p600 0": {
+      "site": "p600 0",
+      "name": "p600 0 aggregated POI (Coreweave Helios)",
+      "bus": "p600 0",
+      "substation": null,
+      "sub_dist_deg": 0.0,
+      "parent_rule": "EPOCH_TAMU64_BUS (D12)",
+      "lat": 33.780639,
+      "lon": -100.867099,
+      "E0": 1630.0,
+      "cod0": 2026.0,
+      "preapproved": true,
+      "E0rows": [
+        {
+          "MW": 800.0,
+          "cod": 2026.0,
+          "pre": true,
+          "site": "Coreweave Helios"
+        },
+        {
+          "MW": 830.0,
+          "cod": 2028.0,
+          "pre": true,
+          "site": "Coreweave Helios"
+        }
+      ],
+      "U_max": 2000.0,
+      "U_lead": 3.0,
+      "U_cost": 160000.0,
+      "proc": 2028.0,
+      "pclr": 125.8,
+      "pclr_off": 0.0,
+      "gas_level": "L2",
+      "mdq": 100000.0,
+      "lat_lead": 3.0,
+      "lat_cost": 100000.0,
+      "onsite_re": 419.4,
+      "profile": "MAINLINE_RESEARCH_COHORT",
+      "confidence": "C",
+      "proc0": 2028.0
+    },
+    "p610 2": {
+      "site": "p610 2",
+      "name": "p610 2 aggregated POI (OpenAI Stargate Abilene; Crusoe Abilene Expansion)",
+      "bus": "p610 2",
+      "substation": null,
+      "sub_dist_deg": 0.0,
+      "parent_rule": "EPOCH_TAMU64_BUS (D12)",
+      "lat": 32.494232,
+      "lon": -99.800907,
+      "E0": 955.6,
+      "cod0": 2026.0,
+      "preapproved": true,
+      "E0rows": [
+        {
+          "MW": 955.6,
+          "cod": 2026.0,
+          "pre": true,
+          "site": "OpenAI Stargate Abilene"
+        }
+      ],
+      "U_max": 2000.0,
+      "U_lead": 3.0,
+      "U_cost": 160000.0,
+      "proc": 2028.0,
+      "pclr": 449.3,
+      "pclr_off": 0.0,
+      "gas_level": "L1",
+      "mdq": 250000.0,
+      "lat_lead": 1.0,
+      "lat_cost": 30000.0,
+      "onsite_re": 1497.5,
+      "profile": "MAINLINE_RESEARCH_COHORT",
+      "confidence": "C",
+      "proc0": 2028.0
+    },
+    "p630 2": {
+      "site": "p630 2",
+      "name": "p630 2 aggregated POI (Google Red Oak)",
+      "bus": "p630 2",
+      "substation": null,
+      "sub_dist_deg": 0.0,
+      "parent_rule": "EPOCH_TAMU64_BUS (D12)",
+      "lat": 32.529976,
+      "lon": -96.799788,
+      "E0": 89.1,
+      "cod0": 2026.0,
+      "preapproved": false,
+      "E0rows": [
+        {
+          "MW": 89.1,
+          "cod": 2026.0,
+          "pre": false,
+          "site": "Google Red Oak"
+        }
+      ],
+      "U_max": 2000.0,
+      "U_lead": 3.0,
+      "U_cost": 160000.0,
+      "proc": 2028.0,
+      "pclr": 26.5,
+      "pclr_off": 0.0,
+      "gas_level": "L2",
+      "mdq": 100000.0,
+      "lat_lead": 3.0,
+      "lat_cost": 100000.0,
+      "onsite_re": 88.4,
+      "profile": "MAINLINE_RESEARCH_COHORT",
+      "confidence": "C",
+      "proc0": 2028.0
+    },
+    "p630 4": {
+      "site": "p630 4",
+      "name": "p630 4 aggregated POI (OpenAI Stargate Shackelford)",
+      "bus": "p630 4",
+      "substation": null,
+      "sub_dist_deg": 0.0,
+      "parent_rule": "EPOCH_TAMU64_BUS (D12)",
+      "lat": 32.54088,
+      "lon": -99.54544,
+      "E0": 0,
+      "cod0": null,
+      "preapproved": false,
+      "E0rows": [],
+      "U_max": 2000.0,
+      "U_lead": 3.0,
+      "U_cost": 160000.0,
+      "proc": 2028.0,
+      "pclr": 442.9,
+      "pclr_off": 0.0,
+      "gas_level": "L1",
+      "mdq": 250000.0,
+      "lat_lead": 1.0,
+      "lat_cost": 60000.0,
+      "onsite_re": 1476.3,
+      "profile": "MAINLINE_RESEARCH_COHORT",
+      "confidence": "C",
+      "proc0": 2028.0
+    },
+    "p630 5": {
+      "site": "p630 5",
+      "name": "p630 5 aggregated POI (Meta Temple)",
+      "bus": "p630 5",
+      "substation": null,
+      "sub_dist_deg": 0.0,
+      "parent_rule": "EPOCH_TAMU64_BUS (D12)",
+      "lat": 31.127901,
+      "lon": -97.359168,
+      "E0": 30.1,
+      "cod0": 2026.0,
+      "preapproved": false,
+      "E0rows": [
+        {
+          "MW": 30.1,
+          "cod": 2026.0,
+          "pre": false,
+          "site": "Meta Temple"
+        }
+      ],
+      "U_max": 2000.0,
+      "U_lead": 3.0,
+      "U_cost": 160000.0,
+      "proc": 2028.0,
+      "pclr": 9.0,
+      "pclr_off": 0.0,
+      "gas_level": "L2",
+      "mdq": 100000.0,
+      "lat_lead": 3.0,
+      "lat_cost": 100000.0,
+      "onsite_re": 29.9,
+      "profile": "MAINLINE_RESEARCH_COHORT",
+      "confidence": "C",
+      "proc0": 2028.0
+    },
+    "p630 6": {
+      "site": "p630 6",
+      "name": "p630 6 aggregated POI (Google Midlothian)",
+      "bus": "p630 6",
+      "substation": null,
+      "sub_dist_deg": 0.0,
+      "parent_rule": "EPOCH_TAMU64_BUS (D12)",
+      "lat": 32.44757,
+      "lon": -97.055726,
+      "E0": 119.1,
+      "cod0": 2026.0,
+      "preapproved": false,
+      "E0rows": [
+        {
+          "MW": 79.8,
+          "cod": 2026.0,
+          "pre": true,
+          "site": "Google Midlothian"
+        },
+        {
+          "MW": 39.3,
+          "cod": 2026.0,
+          "pre": false,
+          "site": "Google Midlothian"
+        }
+      ],
+      "U_max": 2000.0,
+      "U_lead": 3.0,
+      "U_cost": 160000.0,
+      "proc": 2028.0,
+      "pclr": 35.5,
+      "pclr_off": 0.0,
+      "gas_level": "L2",
+      "mdq": 100000.0,
+      "lat_lead": 3.0,
+      "lat_cost": 100000.0,
+      "onsite_re": 118.3,
+      "profile": "MAINLINE_RESEARCH_COHORT",
+      "confidence": "C",
+      "proc0": 2028.0
+    },
+    "p630 9": {
+      "site": "p630 9",
+      "name": "p630 9 aggregated POI (CoreWeave Denton TX)",
+      "bus": "p630 9",
+      "substation": null,
+      "sub_dist_deg": 0.0,
+      "parent_rule": "EPOCH_TAMU64_BUS (D12)",
+      "lat": 33.219574,
+      "lon": -97.19708,
+      "E0": 248.7,
+      "cod0": 2026.0,
+      "preapproved": false,
+      "E0rows": [
+        {
+          "MW": 225.6,
+          "cod": 2026.0,
+          "pre": true,
+          "site": "CoreWeave Denton TX"
+        },
+        {
+          "MW": 23.1,
+          "cod": 2027.0,
+          "pre": false,
+          "site": "CoreWeave Denton TX"
+        }
+      ],
+      "U_max": 2000.0,
+      "U_lead": 3.0,
+      "U_cost": 160000.0,
+      "proc": 2028.0,
+      "pclr": 74.1,
+      "pclr_off": 0.0,
+      "gas_level": "L2",
+      "mdq": 100000.0,
+      "lat_lead": 3.0,
+      "lat_cost": 100000.0,
+      "onsite_re": 246.9,
+      "profile": "MAINLINE_RESEARCH_COHORT",
+      "confidence": "C",
+      "proc0": 2028.0
+    },
+    "p650 0": {
+      "site": "p650 0",
+      "name": "p650 0 aggregated POI (Vantage TX1; Microsoft SAT40; Microsoft SAT14)",
+      "bus": "p650 0",
+      "substation": null,
+      "sub_dist_deg": 0.0,
+      "parent_rule": "EPOCH_TAMU64_BUS (D12)",
+      "lat": 29.43551666666667,
+      "lon": -98.752879,
+      "E0": 180.4,
+      "cod0": 2026.0,
+      "preapproved": false,
+      "E0rows": [
+        {
+          "MW": 37.0,
+          "cod": 2026.0,
+          "pre": true,
+          "site": "Vantage TX1"
+        },
+        {
+          "MW": 111.0,
+          "cod": 2027.0,
+          "pre": false,
+          "site": "Vantage TX1"
+        },
+        {
+          "MW": 32.4,
+          "cod": 2026.0,
+          "pre": true,
+          "site": "Microsoft SAT14"
+        }
+      ],
+      "U_max": 2000.0,
+      "U_lead": 3.0,
+      "U_cost": 160000.0,
+      "proc": 2028.0,
+      "pclr": 53.7,
+      "pclr_off": 0.0,
+      "gas_level": "L2",
+      "mdq": 100000.0,
+      "lat_lead": 3.0,
+      "lat_cost": 100000.0,
+      "onsite_re": 179.2,
+      "profile": "MAINLINE_RESEARCH_COHORT",
+      "confidence": "C",
+      "proc0": 2028.0
+    }
+  },
+  "erm_cal": {
+    "2026": 0.08196186899865143,
+    "2027": 0.052523234525577944,
+    "2028": 0.025608607107620918,
+    "2029": -0.005940221273159851,
+    "2030": -0.019528522016520444,
+    "2031": -0.04174515609302243
+  },
+  "baseline": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu/baseline_2025_tamu_prepared.nc",
+  "baseline_sha256": "19034285be0aa9b9906ab5b0e03778f3a16e7c1c39e97ac97b368d9097cafadb",
+  "inputs_sha256": {
+    "POI_REGISTER.csv": "d2f37909d559e16526ca47fb0794ecbe0cc1ae4c4ff0913afadb32fbef70a1f3",
+    "POI_REQUESTS.csv": "737d808551f9220ef0dc5ff4ff1fbffef9731659829a619c2737568688a692dd",
+    "GRID_PROJECTS.csv": "bb05fdc16768852436e792186067b88e931f9055fd35674b5394e5ba13c5e5d8",
+    "TECH-01_technologies_DRAFT.csv": "127e5a97b5177eb4242d4df33c516ddf09d480a4d5d1da4523dd75605ab99eea",
+    "state_pue_2022_2050.csv": "2a2c2453b3dfdfbea09e955e7b510d1f47fb5ef36d685966a709b1f9ef4cfa74",
+    "yearly_task_parameters_2022_2050.csv": "8a0bdeb02bd32efcbc1d1c6b759e56336d9c8db7be857db9920c2a9a89c1c9d4",
+    "GREAL_POI_ASSUMPTIONS.csv": "9b7fa75c49ac1d6defd523e708f0670cc3543bceea956503029744a93bb4ed34",
+    "GREAL_POI_E0_SCHEDULE.csv": "bce7c787b5d71d84a6a5228f99f903f71f936be7b2abc9ffcfed35251347d449",
+    "GREAL_R_ASSET_POOL.csv": "62d4979eaee408b7beda9c15bdad9a0fbd7518c814a9beeac82cc1214a270340",
+    "MAINLINE_RESEARCH_COHORTS_TAMU64.csv": "5373983ea59e2f7696ffb14e914fdc8d0e3e8186879f6e17b60c78c41ac2e173",
+    "MAINLINE_INHERITED_RAMP_2025.csv": "15c3501df57835381346ef8eff42b3b2201dbd32393ca46161852076e2682a4e",
+    "ERCOT_WIND_SOLAR_POTENTIAL.csv": "aba7a41e4fbd0a51e22f41231c1d054bf3e260415bd282dd470c83e87f763b56",
+    "MAINLINE_V13_TECH_DEFAULTS.csv": "b2fb58e38fcb61f4ab9d3868d195a9de5c9d3c0c2171bdaff09c3465cf691752",
+    "MAINLINE_V13_GAS_PRICES_2026_2031.csv": "d57aafea4808de4789da0c4ff27c4bf3c564ced64927efe050f6d55e839efa9e"
+  },
+  "mainline": {
+    "gate": {
+      "approved": true,
+      "reasons": [],
+      "head": "a0104ac6cf63ff9e66c20a8e3b676156d356d0bd",
+      "approved_git_sha": "8636c08d4b9dd11e7624f6fb52f92c91cf439ad0",
+      "config": "config/config.byop_ercot_mainline.yaml"
+    },
+    "stress": {
+      "days": [
+        {
+          "kind": "LOW_WEST_WIND_HIGH_LOAD",
+          "day": "2030-09-15",
+          "mean_load_MW": 63239.71282116667,
+          "mean_west_wind_MW": 943.0112930961957,
+          "max_net_load_MW": 65158.20282384675
+        },
+        {
+          "kind": "MAX_NET_LOAD",
+          "day": "2030-07-31",
+          "mean_load_MW": 68550.57724258333,
+          "mean_west_wind_MW": 2856.622981024098,
+          "max_net_load_MW": 70034.39255869575
+        },
+        {
+          "kind": "WINTER_PEAK",
+          "day": "2030-02-19",
+          "mean_load_MW": 72103.14446870833,
+          "mean_west_wind_MW": 10232.768766689705,
+          "max_net_load_MW": 65298.89412259769
+        }
+      ],
+      "snapshots": 24,
+      "added_outside_sample": 24,
+      "weight_total_h": 8760.0
+    },
+    "inherited_ramp": {
+      "file": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/inputs/dc/MAINLINE_INHERITED_RAMP_2025.csv",
+      "sha256": "15c3501df57835381346ef8eff42b3b2201dbd32393ca46161852076e2682a4e",
+      "buses": [
+        {
+          "bus": "p610 2",
+          "IT_MW": 180.77,
+          "facility_MW_peak": 209.09665900000002
+        },
+        {
+          "bus": "p630 2",
+          "IT_MW": 49.79,
+          "facility_MW_peak": 57.592093000000006
+        },
+        {
+          "bus": "p630 5",
+          "IT_MW": 142.42,
+          "facility_MW_peak": 164.737214
+        },
+        {
+          "bus": "p630 9",
+          "IT_MW": 62.13,
+          "facility_MW_peak": 71.86577100000001
+        },
+        {
+          "bus": "p650 0",
+          "IT_MW": 25.62,
+          "facility_MW_peak": 29.634654
+        }
+      ],
+      "IT_MW": 460.73
+    },
+    "gas": {
+      "n": 213,
+      "by_year": {
+        "2026": 3.738,
+        "2027": 3.513,
+        "2028": 3.576,
+        "2029": 3.768,
+        "2030": 4.443,
+        "2031": 4.857
+      },
+      "flat_reference": 3.19
+    }
+  },
+  "code_sha256": {
+    "rearch_mech.py": "4924e542011c79a6f04647270b885e59f18b2b9e48fbb9d458ef5255c8222fe3",
+    "v240_mech.py": "1f352288375386c97811f44449592049d4cef881b42ab32e25c77283db183ef5",
+    "v250_mech.py": "60e98be4b883d843c7eca63fd109b982c8d3bb47785cac11a8f030578a0360a1",
+    "wp2_ercot_s0_s1.py": "c4d4d790d24aa7ecb1aa40a7ea3b43de03f37e67301459625ab144400aa6d1d4",
+    "wp2_ercot_s1_real.py": "df5765cfc61016c78088178e42172a4ac828f5cff332d9fc6b254cc8173e08e8"
+  },
+  "code_sha256_basis": "hashed at process start",
+  "interrupt_price": {},
+  "s0_calibration": null,
+  "base_assets": [
+    {
+      "asset": "DWB_Stage_2",
+      "case": "MAIN",
+      "bus0": "p620 4",
+      "bus1": "p620 0",
+      "ISD": 2026.49,
+      "MW": 1000.0,
+      "build_period": 2026,
+      "status": "COMMON_BASELINE_ASSET",
+      "tpit": "69709;102815"
+    }
+  ],
+  "grid_projects": [
+    {
+      "project": "PBRP-765-A",
+      "name": "Bell County East - Big Hill - Sand Lake 765 kV import path",
+      "bus0": "p630 5",
+      "bus1": "p620 1",
+      "ISD": 2031.0,
+      "MW": 2400.0,
+      "build_period": 2031,
+      "status": "COMMITTED_IN_MODEL",
+      "cost_treatment": "sunk/committed in every scenario (excluded from S-differences)"
+    },
+    {
+      "project": "PBRP-765-B",
+      "name": "Howard - Solstice 765 kV import path",
+      "bus0": "p650 7",
+      "bus1": "p610 4",
+      "ISD": 2031.5,
+      "MW": 2400.0,
+      "build_period": 2031,
+      "status": "COMMITTED_IN_MODEL",
+      "cost_treatment": "sunk/committed in every scenario (excluded from S-differences)"
+    }
+  ],
+  "competing": null,
+  "pypsa": "1.3.0",
+  "timestamp_utc": "2026-10-21T20:51:39.731416+00:00"
+}

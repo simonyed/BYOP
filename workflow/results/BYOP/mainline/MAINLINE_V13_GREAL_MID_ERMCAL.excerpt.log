@@ -1,0 +1,48 @@
+# excerpt of MAINLINE_V13_GREAL_MID_ERMCAL.log (80M, 1173488 lines, sha256 94ad9019018717ced15dc6c210186b69f1731eff8aa1883a4d06e92927574d08); full log on L2 only
+1173330:Optimize a model with 7104651 rows, 4065232 columns and 14552541 nonzeros
+1173343:Presolved: 973017 rows, 684954 columns, 3024856 nonzeros
+1173424:Barrier solved model in 67 iterations and 54.31 seconds (41.48 work units)
+1173425:Optimal objective -2.57438025e+10
+1173428:Status: ok
+1173449: "termination": "optimal",
+# --- last 40 lines
+ "termination": "optimal",
+ "load_shed_MWh": 1394106.4179812167,
+ "setting": {
+  "regional_dc": "off",
+  "regional_dc_scenario": "mid",
+  "competing_voll": null,
+  "s0_calibrate": false,
+  "s0_cal_file": null,
+  "interrupt_cap": 0.005,
+  "no_harm": true,
+  "base_assets": "main",
+  "setting": "G-REAL",
+  "relax": [],
+  "case": "base",
+  "gas_case": "base",
+  "pclr_hours": 200.0,
+  "pclr_max_consec_h": 12.0,
+  "s2_iter": 3,
+  "competing": 0.0,
+  "line_lead": null,
+  "offer_tol": 0.001,
+  "clusters": "64s",
+  "s2_modes": [
+   "GO_F",
+   "GO_C",
+   "GF",
+   "IS"
+  ]
+ },
+ "cfg": {
+  "periods": "annual",
+  "start": 2026,
+  "end": 2031,
+  "sample_weeks": 26,
+  "bg_traj": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/inputs/load/background_load_growth_states_AEO2023_reference.csv"
+ },
+ "baseline_sha256": "19034285be0aa9b9906ab5b0e03778f3a16e7c1c39e97ac97b368d9097cafadb",
+ "seconds": 166.7,
+ "n_vars": 4065232
+}

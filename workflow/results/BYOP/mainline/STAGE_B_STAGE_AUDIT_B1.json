@@ -1,0 +1,106 @@
+{
+ "stage": "B1_step0",
+ "git_head": "a0104ac6cf63ff9e66c20a8e3b676156d356d0bd",
+ "approved_git_sha": "8636c08d4b9dd11e7624f6fb52f92c91cf439ad0",
+ "run_authorization": "APPROVED (researcher 2026-10-21: step0 only)",
+ "gate_approved_ERMCAL": true,
+ "gate_approved_S0CAL": true,
+ "baseline_sha256": "19034285be0aa9b9906ab5b0e03778f3a16e7c1c39e97ac97b368d9097cafadb",
+ "code_sha256": {
+  "rearch_mech.py": "4924e542011c79a6f04647270b885e59f18b2b9e48fbb9d458ef5255c8222fe3",
+  "v240_mech.py": "1f352288375386c97811f44449592049d4cef881b42ab32e25c77283db183ef5",
+  "v250_mech.py": "60e98be4b883d843c7eca63fd109b982c8d3bb47785cac11a8f030578a0360a1",
+  "wp2_ercot_s0_s1.py": "c4d4d790d24aa7ecb1aa40a7ea3b43de03f37e67301459625ab144400aa6d1d4",
+  "wp2_ercot_s1_real.py": "df5765cfc61016c78088178e42172a4ac828f5cff332d9fc6b254cc8173e08e8"
+ },
+ "inputs_sha256": {
+  "POI_REGISTER.csv": "d2f37909d559e16526ca47fb0794ecbe0cc1ae4c4ff0913afadb32fbef70a1f3",
+  "POI_REQUESTS.csv": "737d808551f9220ef0dc5ff4ff1fbffef9731659829a619c2737568688a692dd",
+  "GRID_PROJECTS.csv": "bb05fdc16768852436e792186067b88e931f9055fd35674b5394e5ba13c5e5d8",
+  "TECH-01_technologies_DRAFT.csv": "127e5a97b5177eb4242d4df33c516ddf09d480a4d5d1da4523dd75605ab99eea",
+  "state_pue_2022_2050.csv": "2a2c2453b3dfdfbea09e955e7b510d1f47fb5ef36d685966a709b1f9ef4cfa74",
+  "yearly_task_parameters_2022_2050.csv": "8a0bdeb02bd32efcbc1d1c6b759e56336d9c8db7be857db9920c2a9a89c1c9d4",
+  "GREAL_POI_ASSUMPTIONS.csv": "9b7fa75c49ac1d6defd523e708f0670cc3543bceea956503029744a93bb4ed34",
+  "GREAL_POI_E0_SCHEDULE.csv": "bce7c787b5d71d84a6a5228f99f903f71f936be7b2abc9ffcfed35251347d449",
+  "GREAL_R_ASSET_POOL.csv": "62d4979eaee408b7beda9c15bdad9a0fbd7518c814a9beeac82cc1214a270340",
+  "MAINLINE_RESEARCH_COHORTS_TAMU64.csv": "5373983ea59e2f7696ffb14e914fdc8d0e3e8186879f6e17b60c78c41ac2e173",
+  "MAINLINE_INHERITED_RAMP_2025.csv": "15c3501df57835381346ef8eff42b3b2201dbd32393ca46161852076e2682a4e",
+  "ERCOT_WIND_SOLAR_POTENTIAL.csv": "aba7a41e4fbd0a51e22f41231c1d054bf3e260415bd282dd470c83e87f763b56",
+  "MAINLINE_V13_TECH_DEFAULTS.csv": "b2fb58e38fcb61f4ab9d3868d195a9de5c9d3c0c2171bdaff09c3465cf691752",
+  "MAINLINE_V13_GAS_PRICES_2026_2031.csv": "d57aafea4808de4789da0c4ff27c4bf3c564ced64927efe050f6d55e839efa9e"
+ },
+ "solver_calls": [
+  {
+   "case": "MAINLINE_V13_GREAL_MID_ERMCAL",
+   "scenario": "ERM02_calibration",
+   "termination": "optimal",
+   "seconds": 166.7,
+   "n_vars": 4065232
+  },
+  {
+   "case": "MAINLINE_V13_GREAL_MID_S0CAL",
+   "scenario": "S0 (s0_calibrate)",
+   "status": "ok",
+   "termination": "optimal",
+   "seconds": 5049.0,
+   "n_vars": 4594318,
+   "n_cons": 8162093,
+   "integer_vars": 0,
+   "objective": 114458041035.40538
+  }
+ ],
+ "snapshots_per_period": 136,
+ "periods": [
+  2026,
+  2027,
+  2028,
+  2029,
+  2030,
+  2031
+ ],
+ "stress": {
+  "days": [
+   {
+    "kind": "LOW_WEST_WIND_HIGH_LOAD",
+    "day": "2030-09-15",
+    "mean_load_MW": 63239.71282116667,
+    "mean_west_wind_MW": 943.0112930961957,
+    "max_net_load_MW": 65158.20282384675
+   },
+   {
+    "kind": "MAX_NET_LOAD",
+    "day": "2030-07-31",
+    "mean_load_MW": 68550.57724258333,
+    "mean_west_wind_MW": 2856.622981024098,
+    "max_net_load_MW": 70034.39255869575
+   },
+   {
+    "kind": "WINTER_PEAK",
+    "day": "2030-02-19",
+    "mean_load_MW": 72103.14446870833,
+    "mean_west_wind_MW": 10232.768766689705,
+    "max_net_load_MW": 65298.89412259769
+   }
+  ],
+  "snapshots": 24,
+  "added_outside_sample": 24,
+  "weight_total_h": 8760.0
+ },
+ "outputs": {
+  "erm_margin_by_period": {
+   "2026": 0.08196186899865143,
+   "2027": 0.052523234525577944,
+   "2028": 0.025608607107620918,
+   "2029": -0.005940221273159851,
+   "2030": -0.019528522016520444,
+   "2031": -0.04174515609302243
+  },
+  "s0_calibration_lines": 9,
+  "s0_calibration_MW": 1095.6237013311218,
+  "s0_calibration_sha256": "30bf497ef009f3e120d43f7d6c2995fe0b7d82ffce9d1df2b5629131397454d5",
+  "erm_calibration_sha256": "7d0c02f1245ebba31d26cb303cd154600e0a6626853d7d2c2910a1a268807a19"
+ },
+ "failed_items": [],
+ "SCIENTIFIC_USE": "NOT_APPLICABLE (calibration stage; no AIDC scenario)",
+ "next": "STOP: researcher review of STAGE_B1_CALIBRATION_REPORT.md before B2 pilot_s01"
+}

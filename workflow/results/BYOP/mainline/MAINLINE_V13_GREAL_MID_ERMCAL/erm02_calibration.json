@@ -1,0 +1,50 @@
+{
+  "decision": "ERM-02 B (TAMU)",
+  "margin_by_period": {
+    "2026": 0.08196186899865143,
+    "2027": 0.052523234525577944,
+    "2028": 0.025608607107620918,
+    "2029": -0.005940221273159851,
+    "2030": -0.019528522016520444,
+    "2031": -0.04174515609302243
+  },
+  "termination": "optimal",
+  "load_shed_MWh": 1394106.4179812167,
+  "setting": {
+    "regional_dc": "off",
+    "regional_dc_scenario": "mid",
+    "competing_voll": null,
+    "s0_calibrate": false,
+    "s0_cal_file": null,
+    "interrupt_cap": 0.005,
+    "no_harm": true,
+    "base_assets": "main",
+    "setting": "G-REAL",
+    "relax": [],
+    "case": "base",
+    "gas_case": "base",
+    "pclr_hours": 200.0,
+    "pclr_max_consec_h": 12.0,
+    "s2_iter": 3,
+    "competing": 0.0,
+    "line_lead": null,
+    "offer_tol": 0.001,
+    "clusters": "64s",
+    "s2_modes": [
+      "GO_F",
+      "GO_C",
+      "GF",
+      "IS"
+    ]
+  },
+  "cfg": {
+    "periods": "annual",
+    "start": 2026,
+    "end": 2031,
+    "sample_weeks": 26,
+    "bg_traj": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/inputs/load/background_load_growth_states_AEO2023_reference.csv"
+  },
+  "baseline_sha256": "19034285be0aa9b9906ab5b0e03778f3a16e7c1c39e97ac97b368d9097cafadb",
+  "seconds": 166.7,
+  "n_vars": 4065232
+}

@@ -1,0 +1,7 @@
+{
+ "approved": true,
+ "reasons": [],
+ "head": "a0104ac6cf63ff9e66c20a8e3b676156d356d0bd",
+ "approved_git_sha": "8636c08d4b9dd11e7624f6fb52f92c91cf439ad0",
+ "config": "config/config.byop_ercot_mainline.yaml"
+}
