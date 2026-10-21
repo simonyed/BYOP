@@ -35,6 +35,15 @@
 | `MAINLINE_V13_AUDIT_RESPONSE.md` | 对独立审计的逐项回应与修复 | 完成 |
 | `MAINLINE_V13_RETURN_MANIFEST.md` | GitHub 文件清单、本地大文件、提交 SHA、下一阶段所需文件 | 完成 |
 
+**Stage B**（`BYOP_ERCOT_StageB_Pilot_Execution_Work_Package_v1.0_2026-10-21.md`）：
+
+| 文件 | 内容 | 状态 |
+|---|---|---|
+| `BYOP_ERCOT_StageB_Pilot_Execution_Work_Package_v1.0_2026-10-21.md` | Stage B 工作包原文 | 研究者提供 |
+| `STAGE_B_B0_CODE_FIX_REPORT.md` | B0：S2_final 一致性修复、分步入口、测试 | 完成 |
+| `STAGE_B_PRE_RUN_AUDIT.md` | B0 结束时的运行前审计 | 等待研究者批准 SHA |
+| `STAGE_B_B0_RETURN_MANIFEST.md` | B0 交付清单 | 完成 |
+
 运行说明见 `workflow/byop/README.md` 的 Mainline v1.3 一节。
 
 ## 新工作包到来时

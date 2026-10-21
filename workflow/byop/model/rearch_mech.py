@@ -1248,6 +1248,26 @@ def developer_stage(config, s1_net, v_priv, mult, reuse_on, iteration):
     return K, R, rights, out
 
 
+def select_s2_final(it, converged, SUM, LED, SVC, POIL, UPL, DUA, out=None):
+    """Stage B B0 (S2 / M4 consistency): the LAST S2 iteration (the one whose public delivery S3_mS2 fixes) is copied
+    under the single formal label 'S2_final' in every scenario table (S2_selected_iteration column); the raw iteration
+    tags S2 / S2_it2 / S2_it3 stay as diagnostic rows and are never summed into formal results. converged = the public
+    S2 LP of that iteration delivered the developer plan (gap <= max(0.5, 1e-3 x plan) at every bus-year)."""
+    tag = 'S2' if it == 1 else f'S2_it{it}'
+    for L in (LED, SVC, POIL, UPL, DUA):
+        add = [df[df.scenario == tag].assign(scenario='S2_final', S2_selected_iteration=it)
+               for df in list(L) if len(df) and 'scenario' in df and (df.scenario == tag).any()]
+        L.extend(add)
+    SUM.extend([dict(x, scenario='S2_final', S2_selected_iteration=it, S2_converged=bool(converged))
+                for x in list(SUM) if x.get('scenario') == tag])
+    sel = dict(selected_iteration=int(it), selected_tag=tag, formal_label='S2_final', converged=bool(converged))
+    if out is not None:      # checkpoint of the formal label next to the raw iteration
+        ck = Path(out) / 'scenarios' / 'S2_final'
+        ck.mkdir(parents=True, exist_ok=True)
+        (ck / 'S2_SELECTION.json').write_text(json.dumps(sel, indent=1))
+    return sel
+
+
 def label_mode(S, firm_MWh, cond_MWh, byop_MW):
     """D3 ex-post supply-mode label of one site-year (no mode variable in the LP): IS = served with zero public import;
     GF = public import + own capacity; GO_C = import incl. conditional, no own capacity; GO_F = firm import only"""
@@ -1790,6 +1810,10 @@ def main():
                     o_['firm_stress'] = min(o_['firm'], max(0.0, float(n2.links_t.p0[f][sl][sm_].max())) if (f in n2.links_t.p0 and sm_.any()) else o_['firm'])
         saved['S2_service'] = {(d['zone'], d['period']): float(n2.generators.p_nom_opt[d['S']]) for d in STATE['dc']}
         saved['K'] = K
+        if ML['on']:     # Stage B B0: the last S2 iteration is S2_final (S3_mS2 fixes ITS public delivered service)
+            STATE['s2_selection'] = select_s2_final(it, not bad, SUM, LED, SVC, POIL, UPL, DUA, out)
+            ev('s2_final', 'CONVERGED' if not bad else 'NOT_CONVERGED',
+               f"S2_final = {STATE['s2_selection']['selected_tag']} (iteration {it})")
         if 'S2_off' in a.scenarios:
             STATE['cond_public'] = {s: False for s in SITES}
             go('S2_off', byop=byop, byop_fixed={k: 0.0 for k in K}, rfixed={k: 0.0 for k in R} if reuse_on else None)
@@ -1836,8 +1860,10 @@ def main():
         poi_flow_le_equipment=bool((poil.total_import_peak_MW <= poil.equipment_total_MW * (1 + 1e-5) + 1e-2).all()) if len(poil) else None,
         no_service_before_grid_or_byop=bool(((pl1.served_IT_MW * pl1.PUE) <= pl1.equipment_total_MW + 1e-2).all()) if len(pl1) else None,
         s2_consistent=bool(not consistency or all(c['gap_IT_MW'] <= max(0.5, 1e-3 * c['planned_IT_MW']) for c in consistency if c['iteration'] == max(x['iteration'] for x in consistency))),
+        s2_converged=STATE['s2_selection']['converged'] if STATE.get('s2_selection') else None,
         private_stage_LP=all(p_['integer_vars'] == 0 for p_ in priv_log) if priv_log else None)
     man = dict(run_id=run_id, case_id=a.case_id, case_group=a.case_group, gcfg=GCFG, cfg=dict(M.CFG), argv=sys.argv, checks=checks, solves=RES,
+               s2_selection=STATE.get('s2_selection'), scenarios_requested=list(a.scenarios),
                status='CASE_SOLVED' if all(x in (True, None) for x in checks.values()) else 'CASE_CHECK_FAIL',
                sites={k: {kk: vv for kk, vv in s.items()} for k, s in SITES.items()}, erm_cal=STATE.get('erm_cal'),
                baseline=str(BASE_TAMU), baseline_sha256=M.sha(BASE_TAMU),

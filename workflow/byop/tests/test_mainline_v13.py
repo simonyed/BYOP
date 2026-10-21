@@ -254,7 +254,7 @@ def test_p0_2_matched_service_in_formal_run(R):
     line = [l for l in run.splitlines() if l.strip().startswith('run)')][0]
     assert '--scenarios' not in line                                         # formal run uses the config list
     c = (BY / 'post/collect_mainline.py').read_text(encoding='utf-8')
-    assert 'service_trajectory_identical' in c and 'SCIENTIFIC_USE' in c
+    assert 'matched_service_valid' in c and 'SCIENTIFIC_USE' in c          # Stage B B0: strict 48-key S2_final vs S3_mS2 check
 
 
 def test_p0_4_stress_certified_offer(R):
@@ -279,3 +279,149 @@ def test_p1_reporting_fields(R):
         assert f in src
     assert "STATE.setdefault('approval_year', {})[f'{base}_exp{p}_fwd']" in inspect.getsource(R.add_line_expansion_tamu)
     assert 'ay[r.name] = int(r.build_year - l_)' in inspect.getsource(R.ml_public_candidates)
+
+
+# ------------------------------------------------------------------------------------------------ Stage B B0 (2026-10-21)
+B0_SITES = ['p600 0', 'p610 2', 'p630 2', 'p630 4', 'p630 5', 'p630 6', 'p630 9', 'p650 0']
+B0_YEARS = list(range(2026, 2032))
+
+
+def _cm():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('collect_mainline_b0', BY / 'post/collect_mainline.py')
+    cm = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(cm)
+    return cm
+
+
+def _synthetic_case(tmp, R, n_iter=2, converged=True, drop_key=False, dup_key=False, gap=0.0):
+    """synthetic solved case written through the REAL selection code (no network, no solver): iteration k has
+    served = 10 k MW IT, cost = 1e9 k USD, public MW = 100 k; S3_mS2 fixes the LAST iteration's service"""
+    import json as _j
+    SUM, LED, SVC, POIL, UPL, DUA = [], [], [], [], [], []
+    base = ['S0', 'S1_EARLIEST', 'S3']
+    tags = ['S2'] + [f'S2_it{k}' for k in range(2, n_iter + 1)]
+    def add(tag, k):
+        SUM.append(dict(scenario=tag, social_real_resource_cost_USD=1e9 * k, load_shed_MWh=0.0))
+        POIL.append(pd.DataFrame([dict(scenario=tag, site=s, year=y, requested_IT_MW=100.0, served_IT_MW=10.0 * k, unserved_IT_MW=100 - 10.0 * k,
+                                       equipment_total_MW=500.0, total_import_peak_MW=1.0) for s in B0_SITES for y in B0_YEARS]))
+        LED.append(pd.DataFrame([dict(scenario=tag, asset_id=f'pub_{tag}', component='Generator', carrier='solar', asset_boundary='UTILITY',
+                                      resource_path='public', zone='p610 2', commit_year=2027, build_period=2029, year=2030,
+                                      capacity_MW=100.0 * k, social_annuity_USD_per_MW_yr=1.0, private_annuity_USD_per_MW_yr=1.0,
+                                      resource_capex_PV_USD=1.0, private_capex_PV_USD=1.0, dispatch_MWh_per_yr=0.0)]))
+        for L in (SVC, UPL, DUA):
+            L.append(pd.DataFrame([dict(scenario=tag, x=k)]))
+    for t in base:
+        add(t, 1)
+    for k, t in enumerate(tags, start=1):
+        add(t, k)
+    sel = R.select_s2_final(n_iter, converged, SUM, LED, SVC, POIL, UPL, DUA, tmp)
+    m3 = POIL[-1][POIL[-1].scenario == 'S2_final'].assign(scenario='S3_mS2')     # S3_mS2 = last iteration's delivery
+    if gap:
+        m3.loc[m3.index[0], 'served_IT_MW'] += gap
+    if drop_key:
+        m3 = m3.iloc[1:]
+    if dup_key:
+        m3 = pd.concat([m3, m3.iloc[:1]])
+    POIL.append(m3)
+    SUM.append(dict(scenario='S3_mS2', social_real_resource_cost_USD=0.5e9 * n_iter, load_shed_MWh=0.0))
+    pd.DataFrame(SUM).to_csv(tmp / 'scenario_summary.csv', index=False)
+    pd.concat(POIL).to_csv(tmp / 'poi_ledger.csv', index=False)
+    pd.concat(LED).to_csv(tmp / 'ledger.csv', index=False)
+    pd.DataFrame([dict(iteration=k, site=s, year=y, mode='GF', BYOP_capacity_MW=float(k)) for k in range(1, n_iter + 1)
+                  for s in B0_SITES for y in B0_YEARS]).to_csv(tmp / 'S2_developer_modes.csv', index=False)
+    pd.DataFrame([dict(iteration=k, site=s, year=y, planned_IT_MW=10.0 * k, gap_IT_MW=0.0 if (converged or k < n_iter) else 5.0)
+                  for k in range(1, n_iter + 1) for s in B0_SITES for y in B0_YEARS]).to_csv(tmp / 'S2_consistency.csv', index=False)
+    chk = dict(true_LP=True, all_optimal=True, no_harm_existing_customers=True, served_le_requested=True, online_IT_monotone=True,
+               dc_energy_balance=True)
+    (tmp / 'case_manifest.json').write_text(_j.dumps(dict(checks=chk, s2_selection=sel)))
+    return sel
+
+
+def _gate(tmp):
+    g = pd.read_csv(tmp / 'MAINLINE_GATE_CHECKS.csv').set_index('check').result
+    return g
+
+
+def test_b0_two_iterations_select_last(R, tmp_path):
+    sel = _synthetic_case(tmp_path, R, n_iter=2)
+    assert sel == dict(selected_iteration=2, selected_tag='S2_it2', formal_label='S2_final', converged=True)
+    _cm().collect(tmp_path)
+    sm = pd.read_csv(tmp_path / 'MAINLINE_SCENARIO_SUMMARY.csv')
+    assert set(sm.scenario) == {'S0', 'S1_EARLIEST', 'S3', 'S2_final', 'S3_mS2'}                # raw S2 / S2_it2 not formal
+    assert float(sm[sm.scenario == 'S2_final'].social_real_resource_cost_USD.iloc[0]) == 2e9           # cost from iteration 2
+    dl = pd.read_csv(tmp_path / 'MAINLINE_BUS_DELIVERY_AND_DELAY.csv')
+    assert set(dl.scenario) == {'S0', 'S1_EARLIEST', 'S3', 'S2_final', 'S3_mS2'} and (dl[dl.scenario == 'S2_final'].served_IT_MW == 20.0).all()
+    inv = pd.read_csv(tmp_path / 'MAINLINE_PUBLIC_INVESTMENT_DELTA.csv')
+    assert float(inv.S2_final.sum()) == 200.0 and 'S2' not in inv and 'S2_it2' not in inv                # not summed with iteration 1
+    md = pd.read_csv(tmp_path / 'MAINLINE_S2_MODES_TECH.csv')
+    assert (md.iteration == 2).all() and len(md) == 48                                                    # developer table of iteration 2
+    diag = pd.read_csv(tmp_path / 'MAINLINE_DIAGNOSTIC_S2_ITERATIONS.csv')
+    assert set(diag.scenario) == {'S2', 'S2_it2'}
+    ms = pd.read_csv(tmp_path / 'MAINLINE_MATCHED_SERVICE_COST.csv').iloc[0]
+    assert ms.gap_status == 'VALID' and ms.S2_final_social_real_USD == 2e9 and ms.matched_service_max_abs_gap_IT_MW == 0.0
+    g = _gate(tmp_path)
+    assert g['SCIENTIFIC_USE'] == 'ALLOWED' and str(g['selected_S2_iteration']) == '2' and str(g['matched_service_48_keys_present']) == 'True'
+
+
+def test_b0_single_iteration_unchanged(R, tmp_path):
+    sel = _synthetic_case(tmp_path, R, n_iter=1)
+    assert sel['selected_tag'] == 'S2' and sel['selected_iteration'] == 1
+    _cm().collect(tmp_path)
+    sm = pd.read_csv(tmp_path / 'MAINLINE_SCENARIO_SUMMARY.csv').set_index('scenario')
+    raw = pd.read_csv(tmp_path / 'scenario_summary.csv').set_index('scenario')
+    assert sm.social_real_resource_cost_USD['S2_final'] == raw.social_real_resource_cost_USD['S2']      # identical to the one round
+    assert _gate(tmp_path)['SCIENTIFIC_USE'] == 'ALLOWED'
+
+
+@pytest.mark.parametrize('kw, why', [(dict(drop_key=True), 'matched_service_48_keys_present'),
+                                     (dict(dup_key=True), 'matched_service_keys_unique'),
+                                     (dict(gap=0.6), 'matched_service_valid'),
+                                     (dict(converged=False), 's2_converged')])
+def test_b0_blocked_cases(R, tmp_path, kw, why):
+    _synthetic_case(tmp_path, R, n_iter=3 if 'converged' in kw else 2, **kw)
+    _cm().collect(tmp_path)
+    g = _gate(tmp_path)
+    assert g['SCIENTIFIC_USE'].startswith('BLOCKED') and why in g['SCIENTIFIC_USE']
+    if 'converged' not in kw:
+        assert pd.read_csv(tmp_path / 'MAINLINE_MATCHED_SERVICE_COST.csv').gap_status.iloc[0] == 'INVALID_DIAGNOSTIC_ONLY'
+
+
+def test_b0_missing_check_is_not_a_pass(R, tmp_path):
+    import json as _j
+    _synthetic_case(tmp_path, R, n_iter=1)
+    m = _j.loads((tmp_path / 'case_manifest.json').read_text())
+    m['checks']['no_harm_existing_customers'] = None                                       # missing -> not a pass
+    (tmp_path / 'case_manifest.json').write_text(_j.dumps(m))
+    _cm().collect(tmp_path)
+    assert 'no_harm_existing_customers' in _gate(tmp_path)['SCIENTIFIC_USE']
+
+
+def test_b0_pilot_s01_is_partial(R, tmp_path):
+    import json as _j
+    pd.DataFrame([dict(scenario=s, social_real_resource_cost_USD=1.0) for s in ('S0', 'S1_EARLIEST')]).to_csv(tmp_path / 'scenario_summary.csv', index=False)
+    (tmp_path / 'case_manifest.json').write_text(_j.dumps(dict(checks=dict(true_LP=True, all_optimal=True, no_harm_existing_customers=True,
+                                                                          served_le_requested=True, online_IT_monotone=True))))
+    _cm().collect(tmp_path)
+    g = _gate(tmp_path)
+    assert g['phase'] == 'PARTIAL_PILOT' and g['SCIENTIFIC_USE'].startswith('PARTIAL_PILOT')
+
+
+def test_b0_run_entry_command_assembly():
+    """DRY=1: commands only; pilot entries carry no --attribution; pilot_s01 = S0 S1_EARLIEST; pilot_core = config list"""
+    import shutil, subprocess
+    bash = shutil.which('bash')
+    if bash is None:
+        pytest.skip('bash not available')
+    def cmd(stage):
+        r = subprocess.run([bash, str(BY / 'run/run_mainline.sh'), stage], capture_output=True, text=True, env={**__import__('os').environ, 'DRY': '1'})
+        return [l for l in r.stdout.splitlines() if l.startswith('CMD ')]
+    s01, core, attr, full = cmd('pilot_s01'), cmd('pilot_core'), cmd('attribution'), cmd('run')
+    assert len(s01) == len(core) == len(attr) == len(full) == 1
+    assert '--attribution' not in s01[0] and '--scenarios S0 S1_EARLIEST' in s01[0] and '_PILOT_S01' in s01[0]
+    assert '--attribution' not in core[0] and '--scenarios' not in core[0] and '_PILOT_CORE' in core[0]
+    assert '--attribution' in attr[0] and '--attribution' in full[0]
+    outs = {c.split('--out ')[1].split()[0] for c in s01 + core + attr + full}
+    assert len(outs) == 4                                                                   # separate case directories
+    for c in s01 + core + attr + full:
+        assert '--mainline' in c and '--erm-cal' in c and '--s0-cal-file' in c
