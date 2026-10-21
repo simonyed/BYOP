@@ -23,6 +23,7 @@ Copied 2026-10-20 from the work packages (now in D:\BYOP_impact\work_pkgs, local
 - Result: 8 buses (p630 4 Shackelford, p610 2 Abilene, p600 0 Dickens, p630 9 Denton, p650 0 San Antonio, p630 6 Midlothian, p630 2 Red Oak, p630 5 Temple).
 - Goodnight (Armstrong County) is outside ERCOT and excluded.
 - The 3 representative test POIs are not included.
+- All ERCOT Epoch sites are treated as grid load (RA-DC-SPATIAL-06). This includes Shackelford, designed off-grid, and the Abilene campuses, which have on-site gas. Off-grid and behind-the-meter treatment is revisited when BYOP modes are applied to the regional demand.
 
 **Source.** Epoch AI, "AI data centers", https://epoch.ai/data/ai-data-centers, CC-BY-4.0, retrieved 2026-10-21. The raw zip and CSVs are local only, under `work_pkgs/BYOP_ERCOT_Rearchitecture_Work_Package/epoch_ai/raw/`. The producer is `epoch_ai/build_epoch_tamu_allocation.py` (work_pkgs).
 
