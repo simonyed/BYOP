@@ -10,7 +10,8 @@
 | 仓库 | <https://github.com/simonyed/BYOP> |
 | 分支 | `mainline-v13-stageA`：<https://github.com/simonyed/BYOP/tree/mainline-v13-stageA> |
 | Stage A 代码 / 输入 / 测试提交 | `edc5ed8c09eed4920693e1e9eef2a6545c30018f` |
-| 报告补充提交（只改本文件和 Stage A 报告，填入上面的 SHA） | 该分支上紧随其后的一个提交 |
+| 报告补充提交 | `efca9d0a9bf4e5777fc5db4c0a92b9b46b604dd0` |
+| 独立审计 P0 修复提交（代码 / 输入 / 测试 / 报告） | `__COMMIT_C__` |
 | 基线 | `main` = `be2c6904`（v1.3 起草时的 HEAD）；**没有合并到 `main`** |
 | PR | 尚未创建（本机没有 `gh` CLI）。创建链接：<https://github.com/simonyed/BYOP/compare/main...mainline-v13-stageA?expand=1> |
 | L2 | `/datasets/prgm/BYOP_impact/pypsa-usa`：工作文件与本地逐字节一致；HEAD 指向同一分支和提交（同步工具已改为支持功能分支） |

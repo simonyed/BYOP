@@ -17,7 +17,7 @@ CODE = ['workflow/byop/model/rearch_mech.py', 'workflow/byop/model/v240_mech.py'
         'workflow/byop/build/build_mainline_inputs.py', 'workflow/byop/build/build_reeds2_potential.py',
         'workflow/byop/tests/test_mainline_v13.py', 'workflow/byop/tests/structural_mainline_v13.py',
         'workflow/scripts/solve_network.py', 'workflow/scripts/prepare_network.py']
-INPUTS = ['dc/MAINLINE_RESEARCH_COHORTS_TAMU64.csv', 'dc/MAINLINE_INHERITED_RAMP_2025.csv', 'dc/MAINLINE_AIDC_RECONCILIATION.csv',
+INPUTS = ['dc/EPOCH_TX_TIMELINE_EVIDENCE.csv', 'dc/MAINLINE_RESEARCH_COHORTS_TAMU64.csv', 'dc/MAINLINE_INHERITED_RAMP_2025.csv', 'dc/MAINLINE_AIDC_RECONCILIATION.csv',
           'dc/MAINLINE_BUS_SITE_POI_MAP.csv', 'dc/ercot_cohorts_2026_2035_tamu64.csv', 'dc/ERCOT_DC_TOTALS_2026_2035.csv',
           'dc/EPOCH_TX_SITES_TAMU64.csv', 'dc/state_pue_2022_2050.csv', 'dc/yearly_task_parameters_2022_2050.csv', 'dc/hourly_inference_trace.csv',
           'poi/GREAL_POI_ASSUMPTIONS.csv', 'poi/GREAL_POI_E0_SCHEDULE.csv', 'poi/GREAL_R_ASSET_POOL.csv', 'poi/GRID_PROJECTS.csv',

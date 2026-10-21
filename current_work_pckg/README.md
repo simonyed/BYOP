@@ -31,6 +31,8 @@
 | `MAINLINE_V13_DATA_REGISTER.csv` | 数据来源、版本、单位、转换脚本、哈希 | 完成 |
 | `MAINLINE_V13_DECISION_LOG.md` | D11–D15 均为 CONFIRMED；新问题 ML13-01..09 标为 REVIEW_REQUIRED | 待研究者审计 |
 | `MAINLINE_V13_PRE_RUN_MANIFEST.json` | 代码和输入的 SHA-256、拟运行命令、运行环境；运行门控会核对 | `NOT_APPROVED` |
+| `BYOP_Mainline_v1.3_StageA_Independent_Audit_2026-10-21.md` | 研究者方的 Stage A 独立审计（P0-1..5、P1-1..7） | 研究者提供 |
+| `MAINLINE_V13_AUDIT_RESPONSE.md` | 对独立审计的逐项回应与修复 | 完成 |
 | `MAINLINE_V13_RETURN_MANIFEST.md` | GitHub 文件清单、本地大文件、提交 SHA、下一阶段所需文件 | 完成 |
 
 运行说明见 `workflow/byop/README.md` 的 Mainline v1.3 一节。

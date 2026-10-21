@@ -74,8 +74,19 @@ def test_qa_cod_approval_cohorts(R):
 
 
 def test_qa_cod_existing_vs_new():
+    # audit P0-3: existing (observed energized) / verified approval / planned-unverified are separate rows; only the first
+    # two are preapproved; a planned row waits for the procedural earliest grid COD in eq_terms()
     e0 = rd('poi/GREAL_POI_E0_SCHEDULE.csv')
-    assert e0.preapproved.all() and (e0.MW > 0).all()                     # existing / approved equipment rows
+    assert (e0.MW > 0).all()
+    cls = e0.evidence_class.str.split(' ').str[0].str.split('/').str[0]
+    assert set(cls) == {'VERIFIED_APPROVAL', 'EXISTING_ENERGIZED', 'PLANNED_UNVERIFIED'}
+    assert (e0.preapproved == cls.isin(['VERIFIED_APPROVAL', 'EXISTING_ENERGIZED'])).all()
+    tl = rd('dc/EPOCH_TX_TIMELINE_EVIDENCE.csv')
+    st = rd('dc/EPOCH_TX_SITES_TAMU64.csv').set_index('site')
+    for r in e0[cls == 'EXISTING_ENERGIZED'].itertuples():       # existing <= observed operational IT - end-2025 stock
+        obs = tl[(tl.site == r.site) & tl.observed_by_as_of].IT_MW.max()
+        assert r.MW <= (obs - st.IT_MW_2025[r.site]) * 1.1567 + 0.1, r.site
+    assert not e0.site.isin(['OpenAI Stargate Shackelford', 'Crusoe Abilene Expansion']).any()   # ML13-02: upgrade path only
     pool = rd('poi/GREAL_R_ASSET_POOL.csv')
     assert len(pool) == 0                                                 # D14: no verified reusable unit -> empty
 
@@ -214,3 +225,57 @@ def test_qa_param_code_uses_v13(R):
         assert p['case'] == 'v13'
     assert M.byop_params('RICE', 'social')['r'] == 1.25 and M.byop_params('SOFC_NG', 'social')['r'] == 1.10   # TECH-01 base firm proxy
     assert set(R.ML_TECHS) == set(M.V13_ID)
+
+
+# ------------------------------------------------------------------------------------------------ audit P0 fixes (2026-10-21)
+def test_p0_1_inherited_ramp_shed_is_booked(R):
+    """synthetic ledger (no network, no solver): inherited-ramp shed enters load_shed / social books once"""
+    from types import SimpleNamespace
+    M = R.M
+    idx = pd.MultiIndex.from_product([M.periods(), pd.date_range('2030-01-01', periods=2, freq='3h')], names=['period', 'timestep'])
+    g = pd.DataFrame(dict(carrier=['load_shed', 'load_shed', 'OCGT']), index=['p610 2 load_shed', 'p610 2 inherited_ramp_unserved', 'gas'])
+    p = pd.DataFrame(0.0, index=idx, columns=g.index)
+    p.loc[(2027, slice(None)), 'p610 2 inherited_ramp_unserved'] = 10.0          # 10 MW in both 2027 snapshots
+    n = SimpleNamespace(generators=g, generators_t=SimpleNamespace(p=p), snapshots=idx,
+                        snapshot_weightings=pd.DataFrame(dict(generators=1.5), index=idx))
+    summ = dict(load_shed_MWh=7.0, load_shed_PV_USD=70.0, social_real_resource_cost_USD=1000.0, social_total_USD=2000.0)
+    R.ml_shed_accounting(n, summ)
+    pv = 30.0 * M.SHED_COST * M.df(2027, M.CFG['social_r'])
+    assert summ['inherited_ramp_unserved_MWh'] == 30.0 and summ['native_background_unserved_MWh'] == 7.0
+    assert summ['load_shed_MWh'] == 37.0 and abs(summ['load_shed_PV_USD'] - (70.0 + pv)) < 1e-6
+    assert abs(summ['social_real_resource_cost_USD'] - (1000.0 + pv)) < 1e-6 and abs(summ['social_total_USD'] - (2000.0 + pv)) < 1e-6
+    assert 'ml_shed_accounting(n, summ)' in inspect.getsource(R.main)
+
+
+def test_p0_2_matched_service_in_formal_run(R):
+    sc = R.ml_config_scenarios(WF / 'config/config.byop_ercot_mainline.yaml')
+    assert set(R.ML_REQUIRED_SCENARIOS) <= set(sc) and 'S3_mS2' in sc
+    run = (BY / 'run/run_mainline.sh').read_text(encoding='utf-8')
+    line = [l for l in run.splitlines() if l.strip().startswith('run)')][0]
+    assert '--scenarios' not in line                                         # formal run uses the config list
+    c = (BY / 'post/collect_mainline.py').read_text(encoding='utf-8')
+    assert 'service_trajectory_identical' in c and 'SCIENTIFIC_USE' in c
+
+
+def test_p0_4_stress_certified_offer(R):
+    src = inspect.getsource(R.s1_offer)
+    assert 'firm_stress' in src and 'stress_mask' in src
+    d = inspect.getsource(R.add_dc_poi)
+    assert "off.get('firm_stress', firm_mw) / firm_mw" in d                  # dev purchase at stress <= certified
+    assert "o_['firm_stress']" in inspect.getsource(R.main)                   # re-offer also updates the certified part
+    c = (BY / 'post/collect_mainline.py').read_text(encoding='utf-8')
+    assert 's2_public_delivers_developer_plan' in c
+
+
+def test_p0_5_inherited_ramp_before_s0_calibration(R):
+    b = inspect.getsource(R.build_rearch)
+    assert b.index('add_inherited_ramp(n)') < b.index('add_s0_calibration(n, scen)')
+    assert "n.generators.carrier == 'load_shed', 'marginal_cost'] = S0CAL_SHED" in inspect.getsource(R.add_s0_calibration)
+
+
+def test_p1_reporting_fields(R):
+    src = inspect.getsource(R.poi_ledger)
+    for f in ('pclr_trigger_hours_weighted', 'pclr_curtailed_hours_weighted', 'pclr_max_consecutive_sampled_h'):
+        assert f in src
+    assert "STATE.setdefault('approval_year', {})[f'{base}_exp{p}_fwd']" in inspect.getsource(R.add_line_expansion_tamu)
+    assert 'ay[r.name] = int(r.build_year - l_)' in inspect.getsource(R.ml_public_candidates)

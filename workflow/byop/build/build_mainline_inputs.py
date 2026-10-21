@@ -57,10 +57,20 @@ E0 = [
      'additional 830 MW approved Jan 2026 after LLIS, AEP Texas service agreement; COD = new station proxy (2 y)', SRC['HELIOS']),
     ('p610 2', 'OpenAI Stargate Abilene', None, 2026.0, True, 'VERIFIED_APPROVAL/DERIVED_MW',
      '1.2 GW approved ERCOT interconnection (Lancium) minus end-2025 stock facility MW', SRC['ABILENE']),
-    ('p630 9', 'CoreWeave Denton TX', None, 2026.0, True, 'PROXY',
-     'former bitcoin-mining interconnection reused; 260 MW critical IT contracted to CoreWeave x PUE minus end-2025 stock', SRC['DENTON']),
 ]
-CAMPUS = ['Google Red Oak', 'Meta Temple', 'Google Midlothian', 'Vantage TX1', 'Microsoft SAT14', 'Microsoft SAT40']   # utility campus service sized for the Epoch build-out (PROXY)
+# Independent audit P0-3 (2026-10-21): campus equipment is no longer the Epoch final build-out at 2026. Each Epoch timeline
+# step of an existing grid-served campus is classified from the dated timeline (raw Epoch data_center_timelines.csv,
+# extracted to inputs/dc/EPOCH_TX_TIMELINE_EVIDENCE.csv):
+#   EXISTING_ENERGIZED   observed operational on or before AS_OF (no estimate wording): physical service exists ->
+#                        preapproved, earliest year = year of observed energization (year-level convention of the cohorts)
+#   PLANNED_UNVERIFIED   future or estimated step without interconnection evidence -> NOT preapproved: earliest COD =
+#                        max(Epoch estimated year, procedural earliest grid COD of the bus), bounded research proxy
+# Verified ERCOT approvals (Helios, Abilene) stay as dated VERIFIED_APPROVAL rows above; Shackelford (ML13-02) and the
+# Crusoe Abilene expansion have no grid evidence and use the POI-upgrade path only.
+CAMPUS = ['Google Red Oak', 'Meta Temple', 'Google Midlothian', 'Vantage TX1', 'Microsoft SAT14', 'Microsoft SAT40', 'CoreWeave Denton TX']
+AS_OF = pd.Timestamp('2026-10-21')
+ESTIMATE = r'[Ee]stimat|projected|scheduled|[Bb]ased on the stated'     # imagery / earnings-call wording ('based on satellite imagery') = observed
+TIMELINE_RAW = Path('D:/BYOP_impact/work_pkgs/BYOP_ERCOT_Rearchitecture_Work_Package/epoch_ai/raw/epoch_frontier_data_centers_2026-10-21/data_center_timelines.csv')
 GAS = {   # bus: (level, lateral lead low/base/high y, lateral cost low/base/high USD/kW, note)
     'p610 2': ('L1', (0.5, 1.0, 2.0), (15, 30, 60), 'on-site aeroderivative turbines permitted at the Abilene campus (gas supply infrastructure exists; firm MDQ not public)'),
     'p630 4': ('L1', (0.5, 1.0, 2.0), (30, 60, 120), 'Vantage-VoltaGrid gas microgrid plan reported for Frontier (firm MDQ not public)'),
@@ -82,7 +92,7 @@ def main():
                          'own shed variable protected by no-harm; not a POI Firm right for research demand')
     ramp['evidence_class'] = 'DERIVED (Epoch AI timeline end-2025 minus time-weighted 2025 average)'
     ramp = ramp[ramp.inherited_ramp_IT_MW > 0]
-    ramp.to_csv(INP / 'dc/MAINLINE_INHERITED_RAMP_2025.csv', index=False)
+    ramp.to_csv(INP / 'dc/MAINLINE_INHERITED_RAMP_2025.csv', index=False, lineterminator=chr(10))
     # ---------------- research cohorts
     rc = coh.copy()
     rr = ramp.set_index('bus').inherited_ramp_IT_MW
@@ -94,7 +104,7 @@ def main():
     rc['IT_MW'] = rc.IT_MW.clip(lower=0.0)
     rc['quality'] = 'RESEARCH_NEW_AIDC (approved total x Epoch geography minus D11 inherited ramp)'
     rc['status'] = 'MAINLINE v1.3 (D11)'
-    rc.to_csv(INP / 'dc/MAINLINE_RESEARCH_COHORTS_TAMU64.csv', index=False)
+    rc.to_csv(INP / 'dc/MAINLINE_RESEARCH_COHORTS_TAMU64.csv', index=False, lineterminator=chr(10))
     # ---------------- reconciliation
     rec = []
     for (sc, y), g in rc.groupby(['scenario', 'request_year']):
@@ -106,7 +116,7 @@ def main():
     rec = pd.DataFrame(rec)
     rec['research_cum_IT_MW'] = rec.groupby('scenario').research_new_IT_MW.cumsum()
     rec['check'] = np.where(rec.sum_check_MW.abs() < 1e-3, 'PASS', 'FAIL')
-    rec.to_csv(INP / 'dc/MAINLINE_AIDC_RECONCILIATION.csv', index=False)
+    rec.to_csv(INP / 'dc/MAINLINE_AIDC_RECONCILIATION.csv', index=False, lineterminator=chr(10))
     assert (rec.check == 'PASS').all()
     # ---------------- E0 schedule
     st = sites.set_index('site')
@@ -118,16 +128,39 @@ def main():
         if mw is None and s == 'CoreWeave Denton TX':
             mw = 260.0 * pue(2026) - stock_fac(s)
         e0.append(dict(bus=bus, site=s, MW=round(mw, 1), COD=cod, preapproved=pre, evidence_class=ev, basis=basis, source=src))
+    tl_f = INP / 'dc/EPOCH_TX_TIMELINE_EVIDENCE.csv'
+    if TIMELINE_RAW.exists():      # refresh the small tracked extract from the local raw Epoch file
+        t = pd.read_csv(TIMELINE_RAW)
+        t = t[t['Data center'].isin(set(sites.site))].copy()
+        t['date'] = pd.to_datetime(t.Date)
+        t['status_text'] = t['Construction status'].astype(str).str.replace(r'\s+', ' ', regex=True).str.slice(0, 240)
+        t['estimate_wording'] = t.status_text.str.contains(ESTIMATE, regex=True)
+        t['observed_by_as_of'] = (t.date <= AS_OF) & ~t.estimate_wording
+        t = t.rename(columns={'Data center': 'site', 'IT power (MW)': 'IT_MW', 'Power (MW)': 'power_MW'})
+        t['raw_sha256'] = __import__('hashlib').sha256(TIMELINE_RAW.read_bytes()).hexdigest()
+        t[['site', 'Date', 'IT_MW', 'power_MW', 'estimate_wording', 'observed_by_as_of', 'status_text', 'raw_sha256']].to_csv(tl_f, index=False, lineterminator=chr(10))
+    tl = pd.read_csv(tl_f)
+    tl['date'] = pd.to_datetime(tl.Date)
     for s in CAMPUS:
         r = st.loc[s]
-        yrs = [y for y in range(2026, 2036) if r[f'IT_MW_{y}'] > r[f'IT_MW_{y - 1}'] + 1e-6]
-        mw = float(r.power_MW_final) - stock_fac(s)
-        if mw > 0 and yrs:
-            e0.append(dict(bus=r.bus, site=s, MW=round(mw, 1), COD=float(yrs[0]), preapproved=True, evidence_class='PROXY',
-                           basis='existing utility campus service assumed sized for the Epoch-listed build-out (facility power_MW_final minus end-2025 stock); COD = first Epoch increment year',
-                           source=SRC['EPOCH']))
+        g = tl[tl.site == s].sort_values('date')
+        prev = float(r.IT_MW_2025)                     # end-2025 stock (its own use is not research equipment)
+        obs = g[g.observed_by_as_of]
+        it_obs = max(prev, float(obs.IT_MW.max()) if len(obs) else prev)
+        if it_obs > prev + 1e-6:
+            d0 = obs[obs.IT_MW >= it_obs - 1e-6].date.min()
+            e0.append(dict(bus=r.bus, site=s, MW=round((it_obs - prev) * pue(2026), 1), COD=float(max(2026, d0.year)), preapproved=True,
+                           evidence_class='EXISTING_ENERGIZED (Epoch observed)', basis=f'Epoch timeline: {it_obs:.0f} MW IT operational by {d0.date()} '
+                           f'minus end-2025 stock {prev:.0f} MW IT, x PUE 2026', source=SRC['EPOCH']))
+            prev = it_obs
+        for x in g[(~g.observed_by_as_of) & (g.IT_MW > prev + 1e-6)].itertuples():
+            e0.append(dict(bus=r.bus, site=s, MW=round((x.IT_MW - prev) * pue(2026), 1), COD=float(max(2026, x.date.year)), preapproved=False,
+                           evidence_class='PLANNED_UNVERIFIED (PROXY)', basis=f'Epoch {"estimate" if x.estimate_wording else "future step"} {x.IT_MW:.0f} MW IT on {x.date.date()}; '
+                           'no interconnection evidence -> earliest COD = max(Epoch year, procedural earliest grid COD)', source=SRC['EPOCH']))
+            prev = float(x.IT_MW)
     e0 = pd.DataFrame(e0)
-    e0.to_csv(INP / 'poi/GREAL_POI_E0_SCHEDULE.csv', index=False)
+    e0 = e0[e0.MW > 0.05].reset_index(drop=True)          # timeline rows without an IT increase carry no equipment
+    e0.to_csv(INP / 'poi/GREAL_POI_E0_SCHEDULE.csv', index=False, lineterminator=chr(10))
     # ---------------- aggregated POI per bus (D12)
     mid = rc[(rc.scenario == 'mid') & (rc.request_year <= 2031)].groupby('region_id').IT_MW.sum()
     poi = []
@@ -151,16 +184,16 @@ def main():
             ev_procedure='PROXY (ERCOT Batch Zero: allocation 2027, energization >= 2028)', ev_pclr='PROXY (30 % of 2031 research facility MW)',
             ev_gas=f'{lv} PROXY', ev_onsite_renewable='PROXY (adjacent-land cap = 1.0 x 2031 research facility MW per technology; ReEDS bus cap shared with public)',
             confidence='C', run_status='PENDING_RESEARCHER_AUDIT', procedural_basis=SRC['BATCH0']))
-    pd.DataFrame(poi).to_csv(INP / 'poi/GREAL_POI_ASSUMPTIONS.csv', index=False)
+    pd.DataFrame(poi).to_csv(INP / 'poi/GREAL_POI_ASSUMPTIONS.csv', index=False, lineterminator=chr(10))
     mp = sites[['site', 'owner', 'users', 'bus', 'county', 'lat', 'lon', 'geocode_precision', 'bus_alt', 'bus_boundary_tie',
                 'IT_MW_2025_avg', 'IT_MW_2025', 'IT_carryover_2025_MW', 'IT_add_after_2025_MW', 'power_MW_final']].copy()
     mp['poi_id'] = mp.bus
     mp['poi_rule'] = 'D12: one aggregated POI per Epoch bus; site equipment rows in GREAL_POI_E0_SCHEDULE.csv are not shared rights of other campuses'
     mp['e0_rows'] = mp.site.map(e0.groupby('site').MW.sum()).fillna(0.0)
     mp['boundary_tie_note'] = np.where(mp.bus_boundary_tie, 'Shackelford tie p630 4 (10.6 km) vs p610 2 (10.8 km): nearest kept, flagged (not silently resolved)', '')
-    mp.to_csv(INP / 'dc/MAINLINE_BUS_SITE_POI_MAP.csv', index=False)
+    mp.to_csv(INP / 'dc/MAINLINE_BUS_SITE_POI_MAP.csv', index=False, lineterminator=chr(10))
     pd.DataFrame(columns=['asset_id', 'bus', 'carrier', 'MW', 'unit_status', 'capacity_right', 'available_COD', 'evidence', 'source']).to_csv(
-        INP / 'poi/GREAL_R_ASSET_POOL.csv', index=False)
+        INP / 'poi/GREAL_R_ASSET_POOL.csv', index=False, lineterminator=chr(10))
     # ---------------- grid projects
     gp = []
     for r in pd.read_csv(INP / 'grid/COMMITTED_BASE_ASSETS.csv').itertuples():
@@ -178,7 +211,7 @@ def main():
                    in_GREAL='COMMON_BASELINE (re-derived in Stage B step 0 with the G-REAL background incl. the inherited ramp)', bus0='7 lines', bus1='', ISD=2026,
                    MW='571 MW (v1.0) -> re-derived', cost='zero-cost calibration, evidence B, never triggered by research AIDC',
                    evidence_class='DERIVED', source='results/BYOP/rearch_s0repair/S0CAL_minuplift_2026_2031/S0_CALIBRATION.csv'))
-    pd.DataFrame(gp).to_csv(INP / 'grid/GREAL_GRID_PROJECTS.csv', index=False)
+    pd.DataFrame(gp).to_csv(INP / 'grid/GREAL_GRID_PROJECTS.csv', index=False, lineterminator=chr(10))
     # ---------------- background load reconciliation
     bl = pd.read_csv(BASE / 'BUS_LEDGER.csv', index_col=0)
     tr = pd.read_csv(INP / 'load/background_load_growth_states_AEO2023_reference.csv')
@@ -194,7 +227,7 @@ def main():
                          research_AIDC_cum_IT_MW_mid=rmid, research_AIDC_facility_MW_mid=rmid * pue(y),
                          overlap_rule='AEO2023 Reference growth carries no explicit large-load AIDC queue; ERCOT LTLF large-load officer letters are NOT added (they would double count the Epoch AIDC); no competing queued load at the AIDC buses',
                          evidence_class='DERIVED'))
-    pd.DataFrame(rows).to_csv(INP / 'grid/GREAL_BACKGROUND_LOAD_RECONCILIATION.csv', index=False)
+    pd.DataFrame(rows).to_csv(INP / 'grid/GREAL_BACKGROUND_LOAD_RECONCILIATION.csv', index=False, lineterminator=chr(10))
     print(rec[rec.scenario == 'mid'].to_string())
     print(e0.to_string())
 

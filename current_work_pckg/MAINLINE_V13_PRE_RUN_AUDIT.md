@@ -23,7 +23,7 @@
 
 | 测试 | 结果 | 文件 |
 |---|---|---|
-| 静态测试 `test_mainline_v13.py`（QA-DC、COD、BESS、FIRM、SPACE、COST、LP、DELAY-CAUSE、STRESS-FIRM、GEOGRAPHY、BRIDGE、PARAM，共 16 项） | L2 上 **16/16 通过**；本地 6 项纯输入测试通过，其余因缺 pypsa 跳过 | `results/BYOP/mainline/static_tests.log` |
+| 静态测试 `test_mainline_v13.py`（QA-DC、COD、BESS、FIRM、SPACE、COST、LP、DELAY-CAUSE、STRESS-FIRM、GEOGRAPHY、BRIDGE、PARAM，共 16 项） | L2 上 **21/21 通过**（含审计修复测试）；本地 6 项纯输入测试通过，其余因缺 pypsa 跳过 | `results/BYOP/mainline/static_tests.log` |
 | 结构测试 `structural_mainline_v13.py`：真实 G-REAL 的 S0 / S1_EARLIEST / S3 / S2 开发商模型，只构建、不求解 | 见 Stage A 报告 §3 的最终计数；3 次求解调用均被拦截，`solver_executions = 0` | `results/BYOP/mainline/_structural/STRUCTURAL_CHECKS.csv`、`STRUCTURAL_REPORT.json` |
 | 运行门控实测 | 退出码 3，`RUN_GATE: REFUSED`（未授权、缺批准 SHA、缺 manifest） | `results/BYOP/mainline/_gate_test/RUN_GATE.json` |
 | 汇总程序冒烟测试（合成数据，本地） | 7 个表和 3 张图全部生成 | 草稿目录（未提交） |
@@ -39,7 +39,7 @@
 
 ## 3. 需要研究者确认的代理值（详见 `MAINLINE_V13_DECISION_LOG.md`）
 
-1. **ML13-01**：6 个已有园区的 POI 设备容量按 Epoch 列出的建成规模代理。
+1. **ML13-01**（审计 P0-3 后修订）：园区 POI 设备按 Epoch 时间线分为已观测投运（预批）和计划未核实（不早于 2028 年）。
 2. **ML13-02**：Shackelford 的 E0 = 0，经升级最早 2029 年接网；燃气按 L1。
 3. **ML13-03**：Helios 新增 830 MW 的 COD 取 2028。
 4. **ML13-04**：POI 升级参数（2,000 MW / 3 年 / 160 USD/kW / 程序日期 2028）。
@@ -60,6 +60,10 @@
   - 所以 2026–2027 年，任何情景都不可能靠 BYOP 加速，这是 v1.3 工期规则的直接结果。
 - **程序日期主导风险**：若延期完全由 POI 程序日期（2028）和升级工期决定，按 v1.3 §4 如实报告，不调低线路容量。
 - **运行时间**：v1.0 每个 3 场址算例要 5–7 小时。本轮模型约 4.4 M 变量，含 4 个主情景、5 次归因放松、S2 每年的字典序求解，预计显著更长（ML13-09）。
+
+## 5. 独立审计（2026-10-21）后的修订
+
+P0-1 至 P0-5 已全部修复，P1 各项已披露；逐项说明见 `MAINLINE_V13_AUDIT_RESPONSE.md`。修订后的测试计数见 `MAINLINE_V13_STAGE_A_REPORT.md` §3。
 
 ```text
 STAGE_A_STATUS: READY_FOR_RESEARCHER_AUDIT

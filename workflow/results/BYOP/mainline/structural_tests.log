@@ -12,6 +12,8 @@ INFO:opts.bidirectional_link:Added 324 bidirectional link constraints
 INFO:opts.sector:Demand response not enabled
 INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
 INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
 INFO:solve_network:No expandable lines found. Skipping iterative solving.
 INFO:opts.reserves:Adding ERM constraint for TX with reserve level 0.15
 INFO:opts.reserves:Added ERM constraint for TX
@@ -39,6 +41,7 @@ WARNING:pypsa.optimization.constraints:StorageUnits ['DC_p600 0 BYOP BESS q2026'
 [PASS] QA-STRESS-FIRM stress snapshots in every period 
 [PASS] QA-STRESS-FIRM snapshot weights sum to 8760 h per period 
 [PASS] QA-COST existing gas mc follows the yearly WSC price 
+[PASS] QA-P0-5 S0 calibration: all load_shed units incl. inherited ramp at S0CAL_SHED 
 [PASS] QA-SPACE one POI equipment row per bus-year (48) 
 [PASS] QA-COD POI upgrade first build = max(2026 + 3, 2028) = 2029 
 [PASS] QA-DELAY-CAUSE POI upgrades are approval cohorts (q in name) 
@@ -71,15 +74,16 @@ WARNING:pypsa.optimization.constraints:StorageUnits ['DC_p600 0 BYOP BESS q2026'
 [PASS] QA-LP ONE developer network for all 8 buses 
 [PASS] QA-LP developer model continuous 
 [PASS] QA-FIRM developer grid purchase capped by the S1 joint offer per bus-year 
+[PASS] QA-P0-4 developer firm purchase at stress snapshots <= stress-certified offer (0.5 here), 1.0 elsewhere 
 [PASS] QA-SPACE developer constraints: on-site / potential / gas MDQ / serve_cap 
 [PASS] QA-LP no solver was called 
 {
- "n_checks": 41,
- "n_pass": 41,
+ "n_checks": 43,
+ "n_pass": 43,
  "n_fail": 0,
  "solver_executions": 0,
  "solver_calls_intercepted": 3,
- "seconds": 179.4,
+ "seconds": 192.5,
  "stress": {
   "days": [
    {

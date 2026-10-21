@@ -69,8 +69,8 @@
 
 | 测试 | 结果 |
 |---|---|
-| 静态测试 `test_mainline_v13.py`（v1.3 §7 E2 的 12 项 QA 全覆盖） | L2：**16 / 16 通过**（`results/BYOP/mainline/static_tests.log`）<br>本地（没有 pypsa）：6 项纯输入测试通过，其余跳过 |
-| 结构测试 `structural_mainline_v13.py`：构建 G-REAL 的 S0 / S1_EARLIEST / S3 / S2 开发商四个 linopy 模型，只检查、不求解 | L2：**41 / 41 通过**<br>3 次求解调用被拦截，`solver_executions = 0`<br>文件：`results/BYOP/mainline/_structural/STRUCTURAL_CHECKS.csv`、`STRUCTURAL_REPORT.json` |
+| 静态测试 `test_mainline_v13.py`（v1.3 §7 E2 的 12 项 QA 全覆盖） | L2：**21 / 21 通过**（`results/BYOP/mainline/static_tests.log`；含审计 P0-1..5 / P1 新增的 5 项）<br>本地（没有 pypsa）：6 项纯输入测试通过，其余跳过 |
+| 结构测试 `structural_mainline_v13.py`：构建 G-REAL 的 S0 / S1_EARLIEST / S3 / S2 开发商四个 linopy 模型，只检查、不求解 | L2：**43 / 43 通过**（含审计新增的 QA-P0-4、QA-P0-5）<br>3 次求解调用被拦截，`solver_executions = 0`<br>文件：`results/BYOP/mainline/_structural/STRUCTURAL_CHECKS.csv`、`STRUCTURAL_REPORT.json` |
 | 运行门控 | `rearch_mech.py --mainline` 以退出码 3 拒绝，在构建任何网络之前（`results/BYOP/mainline/_gate_test/RUN_GATE.json`） |
 | 汇总程序冒烟测试（合成数据） | 7 个表和 3 张图全部生成 |
 
@@ -89,6 +89,10 @@
 - **其他**：光伏夜间出力为 0；BESS 为 4 小时、往返效率 0.85、按期循环 SOC。
 - **模型规模**：S3 有 4.39 M 变量、7.56 M 约束；S2 开发商模型有 0.13 M 变量。
 - **整数变量**：四个模型均为 0。
+
+## 3a. 独立审计后的修订（2026-10-21）
+
+研究者方的独立审计（`BYOP_Mainline_v1.3_StageA_Independent_Audit_2026-10-21.md`，被审计 HEAD `efca9d0a`）提出 P0-1 至 P0-5，已全部修复；P1-1 至 P1-7 已披露并补充核验字段。逐项说明见 `MAINLINE_V13_AUDIT_RESPONSE.md`。修订提交：`__COMMIT_C__`。
 
 ## 4. 阻塞项与需要研究者处理的事项
 
@@ -114,6 +118,6 @@
 STAGE_A_STATUS: READY_FOR_RESEARCHER_AUDIT
 RUN_AUTHORIZATION: NOT_APPROVED
 SOLVER_EXECUTIONS: 0
-GITHUB_HEAD: edc5ed8c09eed4920693e1e9eef2a6545c30018f (branch mainline-v13-stageA; code, inputs and tests audited in this report)
+GITHUB_HEAD: __COMMIT_C__ (branch mainline-v13-stageA; audit P0 fixes; first Stage A code commit edc5ed8c09eed4920693e1e9eef2a6545c30018f)
 NEXT_STEP: RESEARCHER_REVIEW_REQUIRED
 ```

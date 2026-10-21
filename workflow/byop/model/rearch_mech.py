@@ -235,6 +235,29 @@ def add_inherited_ramp(n):
     STATE['inherited_ramp'] = dict(file=str(ML_RAMP), sha256=M.sha(ML_RAMP), buses=rows, IT_MW=float(r.inherited_ramp_IT_MW.sum()))
 
 
+def ml_shed_accounting(n, summ):
+    """audit P0-1: the v240 ledger counts only '<bus> load_shed'; in the mainline every load_shed unit is booked:
+    native background (v240) + D11 inherited ramp ('<bus> inherited_ramp_unserved') at the same SHED_COST basis, both
+    reported separately and added to load_shed_MWh / load_shed_PV_USD / social_real_resource_cost / social_total"""
+    g = n.generators
+    inh = [x for x in g.index[g.carrier == 'load_shed'] if str(x).endswith(' inherited_ramp_unserved')]
+    w = n.snapshot_weightings.generators
+    ws = {p: M.years_p(p) * M.df(p, M.CFG['social_r']) for p in M.periods()}
+    p_ = n.generators_t.p.reindex(columns=inh).fillna(0.0) if inh else pd.DataFrame(index=n.snapshots)
+    e = p_.mul(w, axis=0).groupby(level=0).sum().sum(axis=1) if inh else pd.Series(0.0, index=M.periods())
+    mwh = float(e.sum())
+    pv = float(sum(float(e.get(p, 0.0)) * M.SHED_COST * ws[p] for p in M.periods()))
+    summ['native_background_unserved_MWh'] = summ['load_shed_MWh']
+    summ['native_background_unserved_PV_USD'] = summ['load_shed_PV_USD']
+    summ['inherited_ramp_unserved_MWh'] = mwh
+    summ['inherited_ramp_unserved_PV_USD'] = pv
+    summ['load_shed_MWh'] += mwh
+    summ['load_shed_PV_USD'] += pv
+    summ['social_real_resource_cost_USD'] += pv
+    summ['social_total_USD'] += pv
+    return summ
+
+
 def ml_public_potential(n):
     """WP-C: public onwind / solar new-build per bus capped by the remaining ReEDS2 potential (shared with BYOP in
     ml_space); the aggregate over all build periods is enforced there"""
@@ -422,6 +445,7 @@ def add_line_expansion_tamu(n):
         for p in M.periods():
             if p0 is None or p < p0:
                 continue
+            STATE.setdefault('approval_year', {})[f'{base}_exp{p}_fwd'] = p - lead     # audit P1-6 (static COD-indexed)
             for suf, b0, b1, c_ in (('fwd', l.bus0, l.bus1, cc), ('rev', l.bus1, l.bus0, 0.0)):
                 L.append(dict(name=f'{base}_exp{p}_{suf}', bus0=b0, bus1=b1, carrier='AC_exp', p_nom=0.0, p_nom_extendable=True,
                               p_nom_max=cap, capital_cost=c_, efficiency=1.0, build_year=p, lifetime=60, length=float(l.length)))
@@ -729,6 +753,10 @@ def add_dc_poi(n, dem, v, mult, byop=None, byop_fixed=None, price=None, s_fixed=
                 n.add('Generator', gname, bus=dc, carrier='grid_purchase', p_nom=firm_mw, p_nom_extendable=False,
                       build_year=p, lifetime=Y, marginal_cost=0.0)
                 n.generators_t.marginal_cost[gname] = price[s].values
+                if ML['on'] and firm_mw > 1e-6:     # P0-4: firm purchase at stress snapshots <= stress-certified offer
+                    fr = min(1.0, off.get('firm_stress', firm_mw) / firm_mw)
+                    inp = (n.snapshots.get_level_values(0) == p).astype(float)
+                    n.generators_t.p_max_pu[gname] = np.where(stress_mask(n.snapshots), fr, 1.0) * inp
                 ent['firm'] = ('Generator', gname)
                 if cond_mw > 0:
                     cn = f'{dc} gridc{p}'
@@ -847,8 +875,14 @@ def ml_public_candidates(n, templ_g, templ_s, prof):
             if name in pm and (g.bus[name], car) not in prof_:
                 prof_[(g.bus[name], car)] = pm[name].values.copy()
     STATE['re_profile'] = prof_
+    lead = {(o['zone'], o['carrier'], o['period']): o['lead'] for o in off}
     for o in off:
         o['approval_year'] = o['period'] - o['lead']           # D1: COD = approval + lead (integer public leads)
+    ay = STATE.setdefault('approval_year', {})
+    for r in STATE.get('public_cost_table', pd.DataFrame()).itertuples():
+        l_ = lead.get((r.zone, r.carrier, r.build_year))
+        if l_ is not None:
+            ay[r.name] = int(r.build_year - l_)
     return off
 
 
@@ -864,13 +898,14 @@ def build_rearch(config, scen, v, **kw):
     STATE['poi_up'] = {}
     n, mult = _build_v240(config, scen, v, **kw)
     add_base_assets(n)
+    if ML['on']:     # audit P0-5: the inherited ramp exists BEFORE the S0 calibration prices every load_shed unit
+        add_inherited_ramp(n)
     add_s0_calibration(n, scen)
     add_grid_projects(n)
     STATE['no_harm_now'] = scen != 'S0' and GCFG['no_harm'] and STATE.get('shed_S0') is not None
     add_competing_load(n)
     add_regional_dc(n)
     if ML['on']:
-        add_inherited_ramp(n)
         ml_public_potential(n)
         ml_gas_delta(n)
         if ML['stress_line_derate'] < 1.0:      # B7 optional interface derate at stress snapshots (PROXY, default off)
@@ -1057,11 +1092,15 @@ def s1_offer(n1):
         f = d['firm'][1]
         firm = float(lp[f][sl].max()) if f in lp else 0.0
         firm = max(0.0, firm) * (1 + GCFG['offer_tol'])
+        # audit P0-4: the part S1 delivered at the B7 stress snapshots, jointly with all other buses in the same KVL / ERM
+        # solution, is the stress-certified firm cap; the non-stress maximum is only shown deliverable outside stress
+        sm = stress_mask(n1.snapshots[sl]) if ML['on'] else np.zeros(int(sl.sum()), dtype=bool)
+        firm_st = (max(0.0, float(lp[f][sl][sm].max())) * (1 + GCFG['offer_tol']) if (f in lp and sm.any()) else firm)
         fixed, ups = eq_terms(s, p)
         eq = (fixed if not math.isinf(fixed) else d['pue'] * d['D'] * 1.5) + sum(c_ * float(n1.links.p_nom_opt[u]) for u, c_ in ups)
         cond = max(0.0, min(pclr_cap(s, p), eq - firm))
-        offer[(s, p)] = dict(firm=firm, cond=cond)
-        rows.append(dict(site=s, year=p, offer_firm_MW=firm, offer_cond_MW=cond, equipment_MW=eq, S1_served_MW_IT=float(n1.generators.p_nom_opt[d['S']])))
+        offer[(s, p)] = dict(firm=firm, cond=cond, firm_stress=min(firm, firm_st))
+        rows.append(dict(site=s, year=p, offer_firm_MW=firm, offer_firm_stress_certified_MW=min(firm, firm_st), offer_cond_MW=cond, equipment_MW=eq, S1_served_MW_IT=float(n1.generators.p_nom_opt[d['S']])))
     return offer, pd.DataFrame(rows)
 
 
@@ -1317,6 +1356,19 @@ def _require_gate(where):
         raise SystemExit(f'RUN_GATE: solver call refused ({where}): RUN_AUTHORIZATION not APPROVED')
 
 
+ML_REQUIRED_SCENARIOS = ['S0', 'S1_EARLIEST', 'S3', 'S2', 'S3_mS2']
+
+
+def ml_config_scenarios(cfg_path):
+    """mainline scenario list from the run config; S3_mS2 (same-service coordinated check, M4) is mandatory"""
+    import yaml
+    sc = list(yaml.safe_load(Path(cfg_path).read_text(encoding='utf-8'))['mainline']['scenarios'])
+    miss = [x for x in ML_REQUIRED_SCENARIOS if x not in sc]
+    if miss:
+        raise SystemExit(f'mainline config lacks required scenarios {miss}')
+    return sc
+
+
 def mainline_gate(cfg_path):
     """E1 run gate: APPROVED + approved code commit is HEAD or an ancestor with no code / input change since + every
     code / input SHA-256 equal to MAINLINE_V13_PRE_RUN_MANIFEST.json. Returns dict(approved, reasons, ...)"""
@@ -1400,7 +1452,15 @@ def poi_ledger(n, tag, case_id):
         ff_e = float((ff * w[sl]).sum()) if len(ff) > 1 else 0.0
         cf_e = float((cf * w[sl]).sum()) if len(cf) > 1 else 0.0
         bmw = (float(n.generators.p_nom_opt[byop].sum()) if byop else 0.0) + (float(n.storage_units.p_nom_opt[bsu].sum()) if bsu else 0.0)
-        ml_extra = dict(IT_energized_MW=S, grid_import_MWh=ff_e + cf_e, BYOP_gen_MWh=bgen, BYOP_capacity_MW=bmw,
+        wsl = w[sl]
+        trig_h = float(wsl[wsl.index.isin(STATE.get('triggers', {}).get((s, p), []))].sum())
+        cur_on = (cu.reindex(wsl.index).fillna(0.0) > 1e-6) if len(cu) > 1 else pd.Series(False, index=wsl.index)
+        run_, best_ = 0, 0
+        for v_ in cur_on.values:
+            run_ = run_ + 1 if v_ else 0
+            best_ = max(best_, run_)
+        ml_extra = dict(pclr_trigger_hours_weighted=trig_h, pclr_curtailed_hours_weighted=float(wsl[cur_on.values].sum()),
+                        pclr_max_consecutive_sampled_h=best_ * M.SNAP_HOURS, IT_energized_MW=S, grid_import_MWh=ff_e + cf_e, BYOP_gen_MWh=bgen, BYOP_capacity_MW=bmw,
                         certified_import_MW=STATE.get('offer', {}).get((s, p), {}).get('firm', float('nan')),
                         poi_eq_dual_abs=mu_eq, mode_label=label_mode(S, ff_e, cf_e, bmw),
                         stress_snapshot_min_firm_MW=float(ff[stress_mask(ff.index)].min()) if len(ff) > 1 and stress_mask(ff.index).any() else float('nan'),
@@ -1504,7 +1564,7 @@ def main():
         if a.byop_techs == ['RICE', 'SOFC_NG']:
             a.byop_techs = list(ML_TECHS)
         if a.scenarios == ['S0', 'S1_EARLIEST', 'S1_ECON', 'S1_zero', 'S3', 'S3_mS1', 'S2', 'S2_off', 'S3_mS2']:
-            a.scenarios = ['S0', 'S1_EARLIEST', 'S3', 'S2']
+            a.scenarios = ml_config_scenarios(a.config)      # audit P0-2: the config list (incl. S3_mS2) is the run list
     global BASE_TAMU
     if a.base:
         BASE_TAMU = Path(a.base)
@@ -1622,6 +1682,8 @@ def main():
         rq = n.generators.index[n.generators.index.str.endswith(' regional_dc_unserved')]
         if len(rq):              # opt-in regional DC background (--regional-dc): reported separately
             summ['regional_dc_unserved_MWh'] = float(n.generators_t.p[rq].mul(n.snapshot_weightings.generators, axis=0).sum().sum())
+        if ML['on']:
+            ml_shed_accounting(n, summ)
         summ['existing_customer_shed_loss_PV_USD'] = summ['load_shed_PV_USD']      # D2.5: optimisation penalty basis 1e4 USD/MWh
         summ['existing_customer_shed_loss_VOLL_PV_USD'] = summ['load_shed_PV_USD'] / M.SHED_COST * 35685.0   # Brattle 2024 ERCOT VOLL
         if tag != 'S0' and STATE.get('shed_S0') is not None:
@@ -1721,7 +1783,11 @@ def main():
             for d in bad:      # re-offer: what the public LP actually delivered through the firm POI
                 f = d['firm'][1]
                 sl = n2.snapshots.get_level_values(0) == d['period']
-                STATE['offer'][(d['zone'], d['period'])]['firm'] = max(0.0, float(n2.links_t.p0[f][sl].max())) if f in n2.links_t.p0 else 0.0
+                o_ = STATE['offer'][(d['zone'], d['period'])]
+                o_['firm'] = max(0.0, float(n2.links_t.p0[f][sl].max())) if f in n2.links_t.p0 else 0.0
+                if ML['on']:
+                    sm_ = stress_mask(n2.snapshots[sl])
+                    o_['firm_stress'] = min(o_['firm'], max(0.0, float(n2.links_t.p0[f][sl][sm_].max())) if (f in n2.links_t.p0 and sm_.any()) else o_['firm'])
         saved['S2_service'] = {(d['zone'], d['period']): float(n2.generators.p_nom_opt[d['S']]) for d in STATE['dc']}
         saved['K'] = K
         if 'S2_off' in a.scenarios:

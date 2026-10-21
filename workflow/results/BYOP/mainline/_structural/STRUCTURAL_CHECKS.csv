@@ -6,6 +6,7 @@ QA-LP,S0 model continuous,PASS,
 QA-STRESS-FIRM,stress snapshots in every period,PASS,"{2026: 24, 2027: 24, 2028: 24, 2029: 24, 2030: 24, 2031: 24}"
 QA-STRESS-FIRM,snapshot weights sum to 8760 h per period,PASS,
 QA-COST,existing gas mc follows the yearly WSC price,PASS,"{2026: 46.911036519098815, 2027: 44.26672543597539, 2028: 45.00713253924995, 2029: 47.26361133018194, 2030: 55.19654457955221, 2031: 60.06207697249932}"
+QA-P0-5,S0 calibration: all load_shed units incl. inherited ramp at S0CAL_SHED,PASS,{100000000.0: 68}
 QA-SPACE,one POI equipment row per bus-year (48),PASS,48
 QA-COD,"POI upgrade first build = max(2026 + 3, 2028) = 2029",PASS,"{'DC_p600 0': 2029, 'DC_p610 2': 2029, 'DC_p630 2': 2029, 'DC_p630 4': 2029, 'DC_p630 5': 2029, 'DC_p630 6': 2029, 'DC_p630 9': 2029, 'DC_p650 0': 2029}"
 QA-DELAY-CAUSE,POI upgrades are approval cohorts (q in name),PASS,
@@ -38,5 +39,6 @@ QA-STRESS-FIRM,PCLR triggers start at the stress snapshots,PASS,
 QA-LP,ONE developer network for all 8 buses,PASS,"['DC_p600 0', 'DC_p610 2', 'DC_p630 2', 'DC_p630 4', 'DC_p630 5', 'DC_p630 6', 'DC_p630 9', 'DC_p650 0']"
 QA-LP,developer model continuous,PASS,
 QA-FIRM,developer grid purchase capped by the S1 joint offer per bus-year,PASS,
+QA-P0-4,"developer firm purchase at stress snapshots <= stress-certified offer (0.5 here), 1.0 elsewhere",PASS,DC_p600 0 grid2026
 QA-SPACE,developer constraints: on-site / potential / gas MDQ / serve_cap,PASS,
 QA-LP,no solver was called,PASS,"['refused', 'refused', 'refused']"

@@ -90,15 +90,35 @@ def collect(out):
         cod = _r(out, 'byop_cod.csv')
         if len(cod) and 'byop_name' in cod:
             a = a.merge(cod[['byop_name', 'cod']].rename(columns={'byop_name': 'asset_id', 'cod': 'COD'}), on='asset_id', how='left')
+        if 'COD' not in a:
+            a['COD'] = np.nan
+        # audit P1-6: public candidates are indexed by their COD period (approval = COD - lead, static perfect foresight)
+        a['cod_basis'] = np.where(a.COD.notna(), 'approval cohort (BYOP / POI upgrade): COD = approval year + lead',
+                                  'public candidate: COD = build period; approval_year = build period - lead (static plan, not an annual commitment)')
+        a['COD'] = a.COD.fillna(a.build_period)
         w(a, 'MAINLINE_ASSET_COMMITMENT_LEDGER.csv')
+    match_ok = None
     if len(summ) and {'S2', 'S3_mS2'} <= set(summ.scenario):
         s = summ.set_index('scenario')
-        w(pd.DataFrame([dict(compare='S2 vs S3_mS2 (same service trajectory)', S2_social_real_USD=s.social_real_resource_cost_USD['S2'],
+        if len(poil):      # audit P0-2: the M4 gap is valid only on an identical served trajectory (bus x year)
+            a2 = poil[poil.scenario == 'S2'].set_index(['site', 'year']).served_IT_MW
+            a3 = poil[poil.scenario == 'S3_mS2'].set_index(['site', 'year']).served_IT_MW
+            match_ok = bool(len(a2) and (a2 - a3.reindex(a2.index)).abs().max() <= 0.5)
+        w(pd.DataFrame([dict(compare='S2 vs S3_mS2 (same service trajectory)', service_trajectory_identical=match_ok,
+                             S2_social_real_USD=s.social_real_resource_cost_USD['S2'],
                              S3_mS2_social_real_USD=s.social_real_resource_cost_USD['S3_mS2'],
                              gap_USD=s.social_real_resource_cost_USD['S2'] - s.social_real_resource_cost_USD['S3_mS2'],
                              rule='private payments to the grid are transfers: not added to the social real resource cost')]),
           'MAINLINE_MATCHED_SERVICE_COST.csv')
-    w(pd.DataFrame([dict(check=k, result=v) for k, v in (man.get('checks') or {}).items()]), 'MAINLINE_GATE_CHECKS.csv')
+    chk = dict(man.get('checks') or {})
+    chk['matched_service_trajectory_identical'] = match_ok
+    cons = _r(out, 'S2_consistency.csv')
+    if len(cons):        # audit P0-4: the S2 developer plan must be deliverable in the public S2 LP (last iteration)
+        last = cons[cons.iteration == cons.iteration.max()]
+        chk['s2_public_delivers_developer_plan'] = bool((last.gap_IT_MW <= np.maximum(0.5, 1e-3 * last.planned_IT_MW)).all())
+    bad = [k for k, v in chk.items() if v is False]
+    chk['SCIENTIFIC_USE'] = 'ALLOWED' if not bad else 'BLOCKED: ' + ', '.join(bad)
+    w(pd.DataFrame([dict(check=k, result=v) for k, v in chk.items()]), 'MAINLINE_GATE_CHECKS.csv')
     try:
         figures(out, poil, dev, led, files)
     except Exception as e:     # figures never block the tables

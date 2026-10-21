@@ -63,7 +63,7 @@
 | POI 升级 | COD = max(2026 + 工期, 程序日期)，所有建设期相同 | COD(q) = max(q + 工期, 程序日期) | `add_dc_poi` 中的 mainline 分支，名称 `POIup <bus> q<q>` |
 | 公共发电与输电 | 首个建设期 = 2026 + 工期；第 p 期建设即该期全年可用 | 不变；等价于批准年 = p − 工期（公共侧工期都是整数年）；批准年写入台账 | `ml_public_candidates()` 中的 `approval_year` |
 | 投运首年按比例可用 | 能量和 Firm 都按比例 | **能量**按比例；**Firm**（`serve_cap` 和 E0/U 设备）只计全年在运的容量 | `firm_frac()`，`CFG['firm_full_year']` |
-| 已有 / 已批设备 vs 新建 | v1.0 每个场址一个 E0 | `GREAL_POI_E0_SCHEDULE.csv` 中逐行带日期的已有或已批设备（预批的不等 Batch Zero）；新建一律通过 U 或 BYOP 批准批次；可复用资产池为空 | `eq_terms()` |
+| 已有 / 已批设备 vs 新建 | v1.0 每个场址一个 E0 | `GREAL_POI_E0_SCHEDULE.csv` 分三类（审计 P0-3）：EXISTING_ENERGIZED（Epoch 观测投运，预批）、VERIFIED_APPROVAL（预批）、PLANNED_UNVERIFIED（COD = max(Epoch 年份, 程序日期)）；新建一律通过 U 或 BYOP 批准批次；可复用资产池为空 | `eq_terms()`；`inputs/dc/EPOCH_TX_TIMELINE_EVIDENCE.csv` |
 
 ## 4. 需求、POI、可复用机组
 

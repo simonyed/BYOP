@@ -97,6 +97,15 @@ def main():
     hr = 3412.14 / float(g.efficiency[gas]) / 1000
     d = {p: float(mc[per == p].iloc[0]) for p in M.periods()}
     check('QA-COST', 'existing gas mc follows the yearly WSC price', abs((d[2030] - d[2026]) - hr * (4.443 - 3.738)) < 1e-6, d)
+    # audit P0-5: S0 calibration build -> every load_shed unit (native + inherited ramp) carries the calibration penalty
+    R.GCFG['s0_calibrate'] = True
+    n0c, _ = M.build(CONFIG, 'S0', 2.8e6)
+    R.GCFG['s0_calibrate'] = False
+    sh = n0c.generators[n0c.generators.carrier == 'load_shed']
+    check('QA-P0-5', 'S0 calibration: all load_shed units incl. inherited ramp at S0CAL_SHED',
+          len(sh) > 5 and (sh.marginal_cost == R.S0CAL_SHED).all() and int(sh.index.str.endswith(' inherited_ramp_unserved').sum()) == 5,
+          sh.marginal_cost.value_counts().to_dict())
+    del n0c
     # ------------------------------------------------------------------ S1_EARLIEST (strict, lexicographic pre-solve not built)
     STATE['firm_strict'] = True; STATE['lex'] = None
     n1, mult, m1 = build_model('S1_EARLIEST', 'S')
@@ -167,13 +176,14 @@ def main():
     STATE['offer'] = {}
     pl = R.poi_ledger(n3, 'S3', 'STRUCTURAL')
     need = ['IT_energized_MW', 'grid_import_MWh', 'BYOP_gen_MWh', 'BYOP_capacity_MW', 'certified_import_MW', 'equipment_total_MW',
-            'poi_eq_dual_abs', 'procedure_ready_year', 'earliest_grid_COD', 'mode_label']
+            'poi_eq_dual_abs', 'procedure_ready_year', 'earliest_grid_COD', 'mode_label', 'pclr_trigger_hours_weighted',
+            'pclr_curtailed_hours_weighted', 'pclr_max_consecutive_sampled_h']
     check('QA-BRIDGE', 'bus-year ledger carries the B10 / B8 fields', all(c in pl for c in need) and len(pl) == 48, [c for c in need if c not in pl])
     pl.to_csv(OUT / 'structural_poi_ledger_S3_unsolved.csv', index=False)
     # ------------------------------------------------------------------ S2 joint developer (built, not solved)
     n1.buses_t.marginal_price = pd.DataFrame(30.0, index=n1.snapshots, columns=list(M.ZONES))
-    STATE['offer'] = {(d_['zone'], d_['period']): dict(firm=R.eq_terms(d_['zone'], d_['period'])[0], cond=R.pclr_cap(d_['zone'], d_['period']))
-                      for d_ in STATE['dc']}
+    STATE['offer'] = {(d_['zone'], d_['period']): dict(firm=R.eq_terms(d_['zone'], d_['period'])[0], cond=R.pclr_cap(d_['zone'], d_['period']),
+                                                       firm_stress=0.5 * R.eq_terms(d_['zone'], d_['period'])[0]) for d_ in STATE['dc']}
     STATE['triggers'] = R.select_triggers(n1)
     trig = next(iter(STATE['triggers'].values()))
     check('QA-STRESS-FIRM', 'PCLR triggers start at the stress snapshots', bool(R.stress_mask(pd.MultiIndex.from_tuples(trig[:1])).all()) if trig else False)
@@ -183,6 +193,10 @@ def main():
     check('QA-LP', 'developer model continuous', ints(md) == 0)
     gpur = nd.generators[nd.generators.carrier == 'grid_purchase']
     check('QA-FIRM', 'developer grid purchase capped by the S1 joint offer per bus-year', len(gpur) == 48 and (gpur.p_nom_extendable == False).all())
+    gx = gpur.index[gpur.p_nom > 1.0][0]
+    ppx = nd.generators_t.p_max_pu[gx]; smd = R.stress_mask(nd.snapshots); pdx = nd.snapshots.get_level_values(0) == int(gpur.build_year[gx])
+    check('QA-P0-4', 'developer firm purchase at stress snapshots <= stress-certified offer (0.5 here), 1.0 elsewhere',
+          abs(float(ppx[pdx & smd].max()) - 0.5) < 1e-9 and abs(float(ppx[pdx & ~smd].max()) - 1.0) < 1e-9, gx)
     check('QA-SPACE', 'developer constraints: on-site / potential / gas MDQ / serve_cap', all(any(c.startswith(p_) for c in md.constraints)
           for p_ in ('ML-onsite_', 'ML-potential_', 'GAS-mdq_', 'M2-serve_cap_')))
     check('QA-LP', 'no solver was called', SOLVER_CALLS.count('refused') == 3 and not any(c != 'refused' for c in SOLVER_CALLS), SOLVER_CALLS)

@@ -22,7 +22,7 @@ mainline:
   poi_case: base                  # GREAL_POI_ASSUMPTIONS low / base / high columns
   gas_case: base
   byop_techs: [RICE, SOFC_NG, OCGT_aero, WIND, PV, BESS]   # D2 / D15; SOFC fast slots = 0 (D14), R pool empty (D14)
-  scenarios: [S0, S1_EARLIEST, S3, S2]                     # + S1_ECON, S3_mS2 internal checks (optional)
+  scenarios: [S0, S1_EARLIEST, S3, S2, S3_mS2]             # S3_mS2 = S3 at the S2 service trajectory (M4 matched service, mandatory)
   attribution: true               # B8 single-factor relaxations on S1_EARLIEST: xPOI xUP xRA xPROC xALL
   tariff: energy
   threads: 6
