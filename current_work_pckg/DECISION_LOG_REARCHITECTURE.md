@@ -99,3 +99,18 @@
 - **新数据**：Epoch AI "AI data centers"，CC-BY-4.0，2026-10-21 获取。原始数据位于 `work_pkgs/BYOP_ERCOT_Rearchitecture_Work_Package/epoch_ai/raw/`，仅保存在本地。
 - **待定**：具体分配方案由研究者选择。
 
+### RA-DC-SPATIAL-03：混合方案 C，总量严格等于低/中/高情景（研究者决定，2026-10-21）
+
+- **总量**：每个情景、每一年新增的 IT MW 都严格等于已批准的得州轨迹（`ercot_cohorts_2026_2035.csv` 的 `TX_state_IT_MW`）。
+- **地理分布与次序**：由 Epoch AI 数据决定。
+  - 2025 年后各 ERCOT 站点新增的 IT 按 Epoch 年份排成队列，各站点不早于 Epoch 给出的日期上线。
+  - 每年的情景增量先满足队列（年份早的先满足，同一年内按比例），剩余部分按各 bus 在 Epoch 增量中的占比分配。
+  - 2025 年底已投运的部分属于存量（已包含在 2025 年负荷中），不计入新增。
+- **结果**：分布在 8 个 bus 上，排除 SPP 内的 Goodnight。
+  - low：队列在 2035 年前没有全部满足。Shackelford 2035 年仅到 1,140 MW（Epoch 为 1,400 MW），Helios 到 326 MW（Epoch 为 528 MW）。
+  - mid：2031 年起出现剩余量，2035 年剩余量合计 1,220 MW。
+  - high：2030 年起出现剩余量。
+- **地址定位**：依次使用 Census、OSM、ZIP/县中心，每个站点的定位精度已逐一记录。
+- **文件与模型**：数据文件见 `workflow/byop/inputs/README.md`。模型开关为 `--regional-dc epoch_hybrid`，默认关闭。
+- **不包含**：3 个测试并网点。
+

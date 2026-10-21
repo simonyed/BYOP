@@ -1,0 +1,117 @@
+scenario,year,site,bus,epoch_year,served_IT_MW,delay_y
+high,2026,OpenAI Stargate Abilene,p610 2,2026,288.3897,0
+high,2026,Coreweave Helios,p600 0,2026,60.2333,0
+high,2026,CoreWeave Denton TX,p630 9,2026,88.981,0
+high,2026,Meta Temple,p630 5,2026,11.8641,0
+high,2026,Google Red Oak,p630 2,2026,35.1361,0
+high,2026,Vantage TX1,p650 0,2026,14.602,0
+high,2026,Google Midlothian,p630 6,2026,47.0002,0
+high,2026,Microsoft SAT14,p650 0,2026,12.7768,0
+high,2027,OpenAI Stargate Shackelford,p630 4,2027,35.8202,0
+high,2027,OpenAI Stargate Abilene,p610 2,2026,343.6103,1
+high,2027,Crusoe Abilene Expansion,p610 2,2027,57.3124,0
+high,2027,Coreweave Helios,p600 0,2026,71.7667,1
+high,2027,CoreWeave Denton TX,p630 9,2026,106.019,1
+high,2027,CoreWeave Denton TX,p630 9,2027,1.7057,0
+high,2027,Meta Temple,p630 5,2026,14.1359,1
+high,2027,Google Red Oak,p630 2,2026,41.8639,1
+high,2027,Vantage TX1,p650 0,2026,17.398,1
+high,2027,Vantage TX1,p650 0,2027,8.1875,0
+high,2027,Google Midlothian,p630 6,2026,55.9998,1
+high,2027,Microsoft SAT14,p650 0,2026,15.2232,1
+high,2028,OpenAI Stargate Shackelford,p630 4,2027,334.5025,1
+high,2028,Crusoe Abilene Expansion,p610 2,2027,535.204,1
+high,2028,CoreWeave Denton TX,p630 9,2027,15.9287,1
+high,2028,Vantage TX1,p650 0,2027,76.4577,1
+high,2029,OpenAI Stargate Shackelford,p630 4,2027,49.6773,2
+high,2029,OpenAI Stargate Shackelford,p630 4,2028,684.479,1
+high,2029,Crusoe Abilene Expansion,p610 2,2027,79.4837,2
+high,2029,Coreweave Helios,p600 0,2028,184.3903,1
+high,2029,CoreWeave Denton TX,p630 9,2027,2.3656,2
+high,2029,Vantage TX1,p650 0,2027,11.3548,2
+high,2030,OpenAI Stargate Shackelford,p630 4,2028,295.521,2
+high,2030,Coreweave Helios,p600 0,2028,79.6097,2
+high,2030,Coreweave Helios,p600 0,2029,132.0,1
+low,2026,OpenAI Stargate Abilene,p610 2,2026,291.9845,0
+low,2026,Coreweave Helios,p600 0,2026,60.9841,0
+low,2026,CoreWeave Denton TX,p630 9,2026,90.0902,0
+low,2026,Meta Temple,p630 5,2026,12.012,0
+low,2026,Google Red Oak,p630 2,2026,35.5741,0
+low,2026,Vantage TX1,p650 0,2026,14.784,0
+low,2026,Google Midlothian,p630 6,2026,47.5861,0
+low,2026,Microsoft SAT14,p650 0,2026,12.936,0
+low,2027,OpenAI Stargate Abilene,p610 2,2026,327.27,1
+low,2027,Coreweave Helios,p600 0,2026,68.3539,1
+low,2027,CoreWeave Denton TX,p630 9,2026,100.9773,1
+low,2027,Meta Temple,p630 5,2026,13.4636,1
+low,2027,Google Red Oak,p630 2,2026,39.8731,1
+low,2027,Vantage TX1,p650 0,2026,16.5706,1
+low,2027,Google Midlothian,p630 6,2026,53.3367,1
+low,2027,Microsoft SAT14,p650 0,2026,14.4993,1
+low,2028,OpenAI Stargate Shackelford,p630 4,2027,204.0267,1
+low,2028,OpenAI Stargate Abilene,p610 2,2026,12.7455,2
+low,2028,Crusoe Abilene Expansion,p610 2,2027,326.4427,1
+low,2028,Coreweave Helios,p600 0,2026,2.662,2
+low,2028,CoreWeave Denton TX,p630 9,2026,3.9325,2
+low,2028,CoreWeave Denton TX,p630 9,2027,9.7156,1
+low,2028,Meta Temple,p630 5,2026,0.5243,2
+low,2028,Google Red Oak,p630 2,2026,1.5529,2
+low,2028,Vantage TX1,p650 0,2026,0.6453,2
+low,2028,Vantage TX1,p650 0,2027,46.6347,1
+low,2028,Google Midlothian,p630 6,2026,2.0772,2
+low,2028,Microsoft SAT14,p650 0,2026,0.5647,2
+low,2029,OpenAI Stargate Shackelford,p630 4,2027,184.653,2
+low,2029,Crusoe Abilene Expansion,p610 2,2027,295.4447,2
+low,2029,CoreWeave Denton TX,p630 9,2027,8.793,2
+low,2029,Vantage TX1,p650 0,2027,42.2064,2
+low,2030,OpenAI Stargate Shackelford,p630 4,2027,31.3203,3
+low,2030,OpenAI Stargate Shackelford,p630 4,2028,233.3278,2
+low,2030,Crusoe Abilene Expansion,p610 2,2027,50.1126,3
+low,2030,Coreweave Helios,p600 0,2028,62.8556,2
+low,2030,CoreWeave Denton TX,p630 9,2027,1.4914,3
+low,2030,Vantage TX1,p650 0,2027,7.1589,3
+low,2031,OpenAI Stargate Shackelford,p630 4,2028,156.6344,3
+low,2031,Coreweave Helios,p600 0,2028,42.1954,3
+low,2032,OpenAI Stargate Shackelford,p630 4,2028,84.2826,4
+low,2032,Coreweave Helios,p600 0,2028,22.7047,4
+low,2033,OpenAI Stargate Shackelford,p630 4,2028,100.3049,5
+low,2033,Coreweave Helios,p600 0,2028,27.0209,5
+low,2034,OpenAI Stargate Shackelford,p630 4,2028,90.4663,6
+low,2034,Coreweave Helios,p600 0,2028,24.3705,6
+low,2035,OpenAI Stargate Shackelford,p630 4,2028,54.9108,7
+low,2035,Coreweave Helios,p600 0,2028,14.7923,7
+mid,2026,OpenAI Stargate Abilene,p610 2,2026,291.9845,0
+mid,2026,Coreweave Helios,p600 0,2026,60.9841,0
+mid,2026,CoreWeave Denton TX,p630 9,2026,90.0902,0
+mid,2026,Meta Temple,p630 5,2026,12.012,0
+mid,2026,Google Red Oak,p630 2,2026,35.5741,0
+mid,2026,Vantage TX1,p650 0,2026,14.784,0
+mid,2026,Google Midlothian,p630 6,2026,47.5861,0
+mid,2026,Microsoft SAT14,p650 0,2026,12.936,0
+mid,2027,OpenAI Stargate Shackelford,p630 4,2027,15.2604,0
+mid,2027,OpenAI Stargate Abilene,p610 2,2026,340.0155,1
+mid,2027,Crusoe Abilene Expansion,p610 2,2027,24.4166,0
+mid,2027,Coreweave Helios,p600 0,2026,71.0159,1
+mid,2027,CoreWeave Denton TX,p630 9,2026,104.9098,1
+mid,2027,CoreWeave Denton TX,p630 9,2027,0.7267,0
+mid,2027,Meta Temple,p630 5,2026,13.988,1
+mid,2027,Google Red Oak,p630 2,2026,41.4259,1
+mid,2027,Vantage TX1,p650 0,2026,17.216,1
+mid,2027,Vantage TX1,p650 0,2027,3.4881,0
+mid,2027,Google Midlothian,p630 6,2026,55.4139,1
+mid,2027,Microsoft SAT14,p650 0,2026,15.064,1
+mid,2028,OpenAI Stargate Shackelford,p630 4,2027,274.1915,1
+mid,2028,Crusoe Abilene Expansion,p610 2,2027,438.7064,1
+mid,2028,CoreWeave Denton TX,p630 9,2027,13.0567,1
+mid,2028,Vantage TX1,p650 0,2027,62.6723,1
+mid,2029,OpenAI Stargate Shackelford,p630 4,2027,130.5481,2
+mid,2029,OpenAI Stargate Shackelford,p630 4,2028,310.0081,1
+mid,2029,Crusoe Abilene Expansion,p610 2,2027,208.877,2
+mid,2029,Coreweave Helios,p600 0,2028,83.5124,1
+mid,2029,CoreWeave Denton TX,p630 9,2027,6.2166,2
+mid,2029,Vantage TX1,p650 0,2027,29.8396,2
+mid,2030,OpenAI Stargate Shackelford,p630 4,2028,514.0453,2
+mid,2030,Coreweave Helios,p600 0,2028,138.4775,2
+mid,2031,OpenAI Stargate Shackelford,p630 4,2028,155.9466,3
+mid,2031,Coreweave Helios,p600 0,2028,42.0101,3
+mid,2031,Coreweave Helios,p600 0,2029,132.0,2

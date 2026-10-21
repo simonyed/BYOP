@@ -68,14 +68,26 @@ def main():
         return 1400.0 * np.asarray(mw) / 1500.0
     gx = bus.reindex(g.bus)
     ax.scatter(gx.x.values, gx.y.values, s=size(g.cum_IT_MW), color=DC_C, alpha=0.78, edgecolor='white', linewidth=1.6, zorder=7)
-    off = {'p630 0': (16, -18), 'p630 5': (-14, -24), 'p650 0': (-78, -20), 'p630 3': (14, 12), 'p630 2': (14, -20),
-           'p630 9': (-64, 14), 'p620 0': (14, 6), 'p640 1': (-62, -10), 'p630 12': (-80, 4)}
-    for r in g.head(9).itertuples():
+    sites = W / 'byop/inputs/dc/EPOCH_TX_SITES_TAMU64.csv'
+    if sites.exists():           # actual (geocoded) Epoch site locations, linked to their bus
+        st = pd.read_csv(sites)
+        for r in st[st.ercot].itertuples():
+            bx, by = bus.loc[r.bus, ['x', 'y']]
+            ax.plot([r.lon, bx], [r.lat, by], color=INK, lw=0.6, ls=(0, (2, 2)), zorder=8)
+        ax.scatter(st[st.ercot].lon, st[st.ercot].lat, marker='D', s=22, facecolor='white', edgecolor=INK, linewidth=1.0, zorder=9)
+        ax.scatter(st[~st.ercot].lon, st[~st.ercot].lat, marker='D', s=22, facecolor='white', edgecolor=MUTED, linewidth=1.0, zorder=9)
+        for r in st[~st.ercot].itertuples():
+            ax.annotate(f'{r.site} (non-ERCOT, excluded)', (r.lon, r.lat), xytext=(8, -2), textcoords='offset points',
+                        fontsize=7.5, color=MUTED, zorder=9)
+    off = {'p630 4': (10, 34), 'p610 2': (-40, -46), 'p600 0': (-62, 30), 'p630 9': (26, 22), 'p650 0': (18, -18),
+           'p630 6': (40, 2), 'p630 2': (34, -16), 'p630 5': (18, -8)}
+    for r in g.head(10).itertuples():
         x, y = bus.loc[r.bus, ['x', 'y']]
         dx, dy = off.get(r.bus, (12, 6))
         ax.annotate(f'{r.bus}\n{r.cum_IT_MW:,.0f} MW', (x, y), xytext=(dx, dy), textcoords='offset points', fontsize=8.5,
-                    color=INK, zorder=8, ha='left', va='center',
-                    bbox=dict(boxstyle='round,pad=0.2', fc='white', ec='none', alpha=0.85))
+                    color=INK, zorder=10, ha='left', va='center',
+                    bbox=dict(boxstyle='round,pad=0.2', fc='white', ec='none', alpha=0.85),
+                    arrowprops=dict(arrowstyle='-', color=MUTED, lw=0.6, shrinkA=0, shrinkB=3))
 
     # legends: bubble size, lines, base
     for mw, lab in [(100, '100'), (500, '500'), (1500, '1,500')]:
@@ -86,6 +98,7 @@ def main():
     h = [plt.Line2D([], [], color=LINE_C, lw=0.8, label='Line (thin = low rating)'),
          plt.Line2D([], [], color=LINE_C, lw=3.0, label='Line (thick = high rating)'),
          plt.Line2D([], [], marker='o', ls='', color=BUS_C, ms=4, label='TAMU 64s cluster bus'),
+         plt.Line2D([], [], marker='D', ls='', mfc='white', mec=INK, ms=5, label='Epoch AI site (geocoded)'),
          plt.Rectangle((0, 0), 1, 1, fc=ERCOT_FILL, ec=ERCOT_EDGE, label='ERCOT counties'),
          plt.Rectangle((0, 0), 1, 1, fc=TX_FILL, ec=MUTED, label='Texas, non-ERCOT')]
     ax.legend(handles=h, loc='lower right', frameon=False, fontsize=9)
@@ -97,7 +110,7 @@ def main():
     lab = [f'{b}  {c.replace(";", ", ")}' for b, c in zip(g.bus, g.counties)]
     yy = np.arange(len(g))[::-1]
     axb.barh(yy, g.cum_IT_MW, color=DC_C, height=0.62, edgecolor='white', linewidth=1.0)
-    for y_, v, s_ in zip(yy, g.cum_IT_MW, g.bus_share_ercot):
+    for y_, v, s_ in zip(yy, g.cum_IT_MW, g.cum_IT_MW / total):
         axb.text(v + total * 0.006, y_, f'{v:,.0f}  ({s_:.1%})', va='center', fontsize=7.5, color=INK)
     axb.set_yticks(yy, lab, fontsize=7.5, color=INK)
     axb.set_xlim(0, g.cum_IT_MW.max() * 1.45)
@@ -111,8 +124,10 @@ def main():
 
     fig.text(0.02, 0.955, f'ERCOT data-center capacity growth after 2025 by TAMU bus — {a.scenario} scenario, cumulative to {a.year}',
              fontsize=14, color=INK, weight='bold')
-    fig.text(0.02, 0.925, f'Allocation: {ALLOC.name}, spatial_basis = {g.spatial_basis.iloc[0]}. Excludes the 3 test POIs. '
-             'Bus = cluster centroid.',
+    fig.text(0.02, 0.912, f'Totals = approved {a.scenario} trajectory; geography from Epoch AI sites (served in Epoch date order, residual by Epoch '
+             f'increment share; {g.spatial_basis.iloc[0]}, RA-DC-SPATIAL-03).\n'
+             'Diamonds = geocoded Epoch sites, dashed to their bus '
+             '(cluster centroid). Excludes the 3 test POIs.',
              fontsize=8.5, color=MUTED)
     fig.text(0.02, 0.025, f'Network: TAMU synthetic grid, 64s clusters, {len(lines)} lines (final_s_nom), {len(bus)} buses. '
              'Basemap: US Census cartographic counties 2020.', fontsize=7.5, color=MUTED)

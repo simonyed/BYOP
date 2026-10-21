@@ -1,0 +1,33 @@
+{
+ "rule": "RA-DC-SPATIAL-03 (option C, totals = approved scenarios)",
+ "source": "Epoch AI, AI data centers, https://epoch.ai/data/ai-data-centers",
+ "license": "CC-BY-4.0",
+ "retrieved": "2026-10-21",
+ "zip_sha256": "c6e13b9654268ab38faa3d134042b6c0c417c8e992379399c6c63087bb72f140",
+ "files": {
+  "chip_types.csv": "12c13600de444cf46acd8dceaa46b77ba067574819b809af3fa3481d52cf09a1",
+  "data_center_chillers.csv": "9711dcfdac0b0de82a1808717e106ea28e213c2a845b42a691ad3cd63caeb704",
+  "data_center_chip_quantities.csv": "450317cf11a8e89786fb13d774e16966785e67486e76fddb94d87b49ff538b11",
+  "data_center_cooling_towers.csv": "c9ce622e1eaf15cc70bf2445a66f17c9c2be19a3638a96c421dc7e31c3a2db66",
+  "data_center_timelines.csv": "fdd4b1c55faaad9b6d79794df10c296441a63d6fb87b21ff123a9d34aee27d95",
+  "data_centers.csv": "271e08676cbf089705f32d86439ac5ae87cef61f849a76aa8ccc6b2542eb640a"
+ },
+ "totals": {
+  "file": "byop/inputs/dc/ercot_cohorts_2026_2035.csv",
+  "column": "TX_state_IT_MW",
+  "sha256": "b038ecfb48fbb05c3077fe798a713752c488339654c3345dd63172c5ef02553f"
+ },
+ "network": {
+  "file": "results/BYOP/baseline_2025_tamu/NETWORK_MAPPING_AUDIT.csv",
+  "sha256": "dffd4a67b15646ad75a0a2f63321a9faff3ef3487516463c4697ff96d85af6f1"
+ },
+ "geocoders": [
+  "US Census onelineaddress Public_AR_Current",
+  "OSM Nominatim (road level)",
+  "ZIP / county centroid fallback"
+ ],
+ "excluded": [
+  "Goodnight"
+ ],
+ "epoch_queue_MW": 3809.0
+}
