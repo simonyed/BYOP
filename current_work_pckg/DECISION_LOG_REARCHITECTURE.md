@@ -114,3 +114,20 @@
 - **文件与模型**：数据文件见 `workflow/byop/inputs/README.md`。模型开关为 `--regional-dc epoch_hybrid`，默认关闭。
 - **不包含**：3 个测试并网点。
 
+### RA-DC-SPATIAL-04：彻底删除 PNNL 数据，只保留基于 Epoch AI 的数据（研究者决定，2026-10-21）
+
+- **新建总量文件** `workflow/byop/inputs/dc/ERCOT_DC_TOTALS_2026_2035.csv`：
+  - 只含各情景、各年的得州 IT 新增量和累计量，等于全国 IT 增量（DATA-01）× 研究者给出的得州份额（DATA-03A），不含任何空间拆分；
+  - Epoch 分配改为从这个文件读取总量，重算后的结果与原结果逐字节一致。
+- **pypsa-usa 中删除**：
+  - `ercot_cohorts_2026_2035.csv`（7 区，含 PNNL 区间份额）；
+  - `ercot_cohorts_2026_2035_county.csv`（县级，PNNL 权重）。
+- **受影响的旧模型**：v240 7 区、v250 县级、WP2 S1 读取上述文件，现在运行时会给出明确提示后停止；`rearch_mech.py` 不受影响。
+- **work_pkgs 中删除**：旧工作包（v1、v2、v2.4.0、v2.5.0）里的 PNNL 数据和 PNNL 专用工具，即
+  - 预测数据 geojson、各级区域权重、由 PNNL 导出的 cohort 文件；
+  - `prepare_pnnl_region_weights.py`、`test_pnnl_spatial_contract.py` 及其代码快照和缓存。
+- **保留的历史记录**：决策登记表、审计与合同文档、哈希清单。这些只是记录，不含 PNNL 数据。
+- **另外保留**：
+  - `workflow/byop/docs/` 中两份项目文档里对 PNNL 方法的文字描述，因为它们是 work_pkgs 原件的逐字节副本；
+  - GitHub 历史提交，因为同步规则禁止改写历史。
+

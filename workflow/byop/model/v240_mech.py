@@ -319,6 +319,9 @@ def add_line_expansion(n):
 
 def study_new_demand(scale=None):
     scale = CFG['dem_scale'] if scale is None else scale
+    if s1r.COHORTS is None:
+        raise SystemExit('DC cohorts not set: the PNNL-based 7-zone / county cohorts were deleted (RA-DC-SPATIAL-04); '
+                         'use rearch_mech.py (POI cohorts, --regional-dc epoch_hybrid) or provide a new spatial basis')
     coh = pd.read_csv(s1r.COHORTS)
     coh = coh[coh.scenario == 'mid']
     rows = []

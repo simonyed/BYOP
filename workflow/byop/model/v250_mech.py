@@ -63,7 +63,7 @@ def configure():
     M.ZONE_STATE = {z: 'TX' for z in zones}
     M.LINE_LEADS = dict(LINE_LEADS_TPIT)
     w2.EXCLUDE_ZONES = []
-    s1r.COHORTS = COHORTS_COUNTY
+    s1r.COHORTS = COHORTS_COUNTY          # None since RA-DC-SPATIAL-04 (PNNL county cohorts deleted): v240 study_new_demand stops
     GSTATE['zones'] = zones
     return n0
 

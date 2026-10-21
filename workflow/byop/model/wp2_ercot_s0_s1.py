@@ -17,7 +17,7 @@ Scenarios (all continuous LP, one 2030 investment period, 2920 x 3h snapshots):
 Acceptance tests: S1_ZERO_NEW_EQUALS_S0 (FCF-01), POI0_NO_IMPORT (FCF-03/M05),
 NO_COD_EARLY (FCF-07/M02, POI and public asset), plus FCF-10 unit/energy conservation.
 
-The single cohort is SYNTHETIC_DEV: real Texas zonal allocation needs the PNNL GIS crosswalk (NOT_RUN),
+The single cohort is SYNTHETIC_DEV: real Texas zonal allocation needs a spatial crosswalk (NOT_RUN; PNNL basis withdrawn),
 so national/state IT increments are NOT placed into ERCOT zones here.
 ERM-DC-01 B (user 2026-10-18): grid-served DC load (POI flow) is added to its zone's ERM requirement; the
 unserved-compute slack sits on the DC bus outside every ERM row, so it never earns firm credit.

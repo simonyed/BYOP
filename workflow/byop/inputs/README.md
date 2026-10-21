@@ -8,8 +8,6 @@ Copied 2026-10-20 from the work packages (now in D:\BYOP_impact\work_pkgs, local
 | `dc/state_pue_2022_2050.csv` | `work_package_v2/outputs/input_audit/pue/state_pue_2022_2050.csv` | build_post2035_state_pue.py (DATA-05) | `28c4da9100277205…` |
 | `dc/yearly_task_parameters_2022_2050.csv` | `work_package_v2/outputs/input_audit/workload/yearly_task_parameters_2022_2050.csv` | build_yearly_task_parameters.py + build_post2035_task_mix.py (TASK-01/02) | `1206faa69dd9f468…` |
 | `dc/hourly_inference_trace.csv` | `work_package_v2/data/researcher/hourly_inference_trace.csv` | researcher input (TASK-01) | `b282e1a142899f5a…` |
-| `dc/ercot_cohorts_2026_2035.csv` | `work_package_v2/outputs/spatial/ercot_8s/ercot_cohorts_2026_2035.csv` | build_ercot_cohorts.py (DATA-01/03, 7-zone) | `b038ecfb48fbb05c…` |
-| `dc/ercot_cohorts_2026_2035_county.csv` | `BYOP_ERCOT_County_v2.5.0/data/derived/ercot_cohorts_2026_2035_county.csv` | build_county_cohorts.py (D250-05) | `248ebb2055c69ac8…` |
 | `load/background_load_growth_states_AEO2023_reference.csv` | `BYOP_ERCOT_Mechanism_Repair_v2.4.0/data/background_load_growth_states_AEO2023_reference.csv` | build_bg_load_growth.py (LOAD-GROWTH-03) | `8fc098183b479520…` |
 | `grid/TPIT_TO_COUNTY_ASSET_MAP.csv` | `BYOP_ERCOT_County_v2.5.0/data/derived/TPIT_TO_COUNTY_ASSET_MAP.csv` | build_tpit_register.py (RUN-2, D250-09/12) | `3fd0a742d241479a…` |
 | `grid/TPIT_2026-07-13_project_register_v250.csv` | `BYOP_ERCOT_County_v2.5.0/data/derived/TPIT_2026-07-13_project_register_v250.csv` | build_tpit_register.py (RUN-2) | `b7697cc9d57ed153…` |
@@ -17,7 +15,7 @@ Copied 2026-10-20 from the work packages (now in D:\BYOP_impact\work_pkgs, local
 ## ERCOT data-center growth on the TAMU 64s backbone (RA-DC-SPATIAL-03, 2026-10-21)
 
 **Rule (researcher decision, option C with exact totals).**
-- Total new IT MW per scenario and year = the approved Texas trajectory (`dc/ercot_cohorts_2026_2035.csv`, column `TX_state_IT_MW`, low/mid/high; 2035 cumulative 3,347 / 5,029 / 6,747 MW). This is exactly equal every year.
+- Total new IT MW per scenario and year = the approved Texas trajectory (`dc/ERCOT_DC_TOTALS_2026_2035.csv`, low/mid/high; 2035 cumulative 3,347 / 5,029 / 6,747 MW). This is exactly equal every year.
 - Geography and order come from Epoch AI:
   - Each ERCOT Epoch site's IT power added after 2025 forms a queue by Epoch year. IT online by 2025-12-31 is stock, already in the 2025 native load.
   - Each year's new total first serves the queue (oldest Epoch year first, pro rata within a year, never earlier than the Epoch date). The remainder is residual growth, split over the Epoch buses by their share of the total Epoch post-2025 increment.
@@ -37,10 +35,11 @@ Each site's precision is in `geocode_precision`. A site maps to the nearest ERCO
 
 | File | Content | SHA-256 |
 |---|---|---|
+| `dc/ERCOT_DC_TOTALS_2026_2035.csv` | approved Texas DC IT trajectory (new and cumulative IT MW per scenario and year = national IT x researcher Texas share; DATA-01, DATA-03A; no spatial split). Extracted 2026-10-21 from the former 7-zone cohort file, whose PNNL zone split was deleted (RA-DC-SPATIAL-04) | `ad9264672f9300f2…` |
 | `dc/ERCOT_DC_CAPACITY_ALLOCATION_TAMU64.csv` | **bus x year allocation** (8 buses, 2026-2035, low/mid/high): new IT MW split into Epoch-queue and residual parts, cumulative IT MW, TX PUE, cumulative facility MW, bus coordinates, Epoch sites, counties, increment share | `fa145e17423095ee…` |
 | `dc/ercot_cohorts_2026_2035_tamu64.csv` | the same allocation in cohort format, read by `rearch_mech.py --regional-dc epoch_hybrid` | `47de6d5e675839b0…` |
 | `dc/EPOCH_TX_SITES_TAMU64.csv` | 12 Texas Epoch sites: address, geocode and precision, county, ERCOT flag, bus, year-end IT MW 2025-2035 from the Epoch timeline | `8c6dc5fb690eed91…` |
 | `dc/EPOCH_SITE_SERVICE_TAMU64.csv` | audit trail: per scenario, year and site, how much of the Epoch queue was served, and the delay versus the Epoch date | `d93d5e34f2352b2a…` |
-| `dc/EPOCH_TAMU64_PROVENANCE.json` | source, licence, raw-file hashes, geocoders, excluded sites | `5a613b1ceb1d7c47…` |
+| `dc/EPOCH_TAMU64_PROVENANCE.json` | source, licence, raw-file hashes, geocoders, excluded sites | `f36c266f311139b5…` |
 
-Model use is opt-in: `--regional-dc epoch_hybrid --regional-dc-scenario {low|mid|high}`, default `off`. The PNNL basis was withdrawn earlier the same day (RA-DC-SPATIAL-02).
+Model use is opt-in: `--regional-dc epoch_hybrid --regional-dc-scenario {low|mid|high}`, default `off`. All PNNL data was withdrawn and deleted on 2026-10-21 (RA-DC-SPATIAL-02/04). The legacy v240 / v250 / WP2 models that read the deleted 7-zone and county cohorts now stop with a message.

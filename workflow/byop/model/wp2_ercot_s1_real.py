@@ -4,7 +4,7 @@
 Run from pypsa-usa/workflow with the PyPSA-USA env:
     python byop/model/wp2_ercot_s1_real.py --out results/BYOP/wp2_ercot8s_real
 
-Cohorts: outputs/spatial/ercot_8s/ercot_cohorts_2026_2035.csv (researcher national IT x TX share x PNNL moderate/50).
+Cohorts: the PNNL-based 7-zone cohort file was deleted (RA-DC-SPATIAL-04, 2026-10-21); this WP2 run needs a new spatial basis.
 POI timing: LEAD-01 is PENDING_USER, so this run is the explicit ZERO-LEAD BOUND (POI COD = request year): every
 request <= 2030 is grid-connectable in 2030, requests 2031-2035 are added with POI build_year > 2030 and must stay off.
 Workload (configs/aidc_workload.yaml, TASK-01, 2030 row of yearly_task_parameters_2022_2050.csv):
@@ -110,6 +110,8 @@ def main():
     w2.sn.extra_functionality = extra_with_training
     pue = float(w2.PUE[(w2.PUE.st == 'TX') & (w2.PUE.year == YEAR)].pue.iloc[0])
     par = pd.read_csv(TASK).set_index('year').loc[YEAR].to_dict()
+    if COHORTS is None:
+        raise SystemExit('PNNL-based 7-zone cohorts were deleted (RA-DC-SPATIAL-04); WP2 S1 needs a new spatial basis')
     coh = pd.read_csv(COHORTS)
     config = pypsa.Network(w2.PREP).meta
 

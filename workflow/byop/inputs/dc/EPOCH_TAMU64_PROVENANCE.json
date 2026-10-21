@@ -13,9 +13,9 @@
   "data_centers.csv": "271e08676cbf089705f32d86439ac5ae87cef61f849a76aa8ccc6b2542eb640a"
  },
  "totals": {
-  "file": "byop/inputs/dc/ercot_cohorts_2026_2035.csv",
-  "column": "TX_state_IT_MW",
-  "sha256": "b038ecfb48fbb05c3077fe798a713752c488339654c3345dd63172c5ef02553f"
+  "file": "byop/inputs/dc/ERCOT_DC_TOTALS_2026_2035.csv",
+  "column": "new_IT_MW",
+  "sha256": "ad9264672f9300f25ce369744b4795aed8cace0ff68caf9ce2c8ccbc6440655c"
  },
  "network": {
   "file": "results/BYOP/baseline_2025_tamu/NETWORK_MAPPING_AUDIT.csv",

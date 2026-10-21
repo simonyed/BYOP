@@ -25,8 +25,12 @@ TECH = INPUTS / 'tech/TECH-01_technologies_DRAFT.csv'
 PUE = INPUTS / 'dc/state_pue_2022_2050.csv'
 TASK = INPUTS / 'dc/yearly_task_parameters_2022_2050.csv'
 TRACE = INPUTS / 'dc/hourly_inference_trace.csv'
-COHORTS_7ZONE = INPUTS / 'dc/ercot_cohorts_2026_2035.csv'
-COHORTS_COUNTY = INPUTS / 'dc/ercot_cohorts_2026_2035_county.csv'
+DC_TOTALS = INPUTS / 'dc/ERCOT_DC_TOTALS_2026_2035.csv'               # approved Texas DC IT trajectory, low/mid/high (DATA-01, DATA-03A)
+DC_COHORTS_TAMU64 = INPUTS / 'dc/ercot_cohorts_2026_2035_tamu64.csv'  # totals on TAMU64 buses, Epoch AI geography (RA-DC-SPATIAL-03)
+# PNNL-based 7-zone and county cohorts were deleted (RA-DC-SPATIAL-04, 2026-10-21); the v240 / v250 / WP2 runs that read
+# them need a new spatial basis before they can run again
+COHORTS_7ZONE = None
+COHORTS_COUNTY = None
 BG_LOAD_GROWTH = INPUTS / 'load/background_load_growth_states_AEO2023_reference.csv'
 TPIT_MAP = INPUTS / 'grid/TPIT_TO_COUNTY_ASSET_MAP.csv'
 
