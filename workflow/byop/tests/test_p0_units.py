@@ -128,13 +128,13 @@ def test_no_harm_existing_customers(tmp_path):
     two_sites(tmp_path, it=100.0)
     n0 = tiny(line_mw=300.0, bg=350.0)
     n0.optimize(solver_name='gurobi', solver_options=OPTS, multi_investment_periods=True)
-    sh0 = n0.generators_t.p[['B load_shed']].rename(columns={'B load_shed': 'B'})
+    sh0 = n0.generators_t.p[['B load_shed']].copy()          # frozen per generator (D2.4)
     M.STATE['shed_S0'] = sh0
     n1 = tiny(line_mw=300.0, bg=350.0)
     M.STATE['no_harm_now'] = True
     S = solve_public(n1)
     M.STATE['no_harm_now'] = False
-    assert float((n1.generators_t.p['B load_shed'] - sh0['B']).max()) <= 0.001 + 1e-6
+    assert float((n1.generators_t.p['B load_shed'] - sh0['B load_shed']).max()) <= 0.001 + 1e-6
     assert sum(S.values()) < 1e-2
 
 

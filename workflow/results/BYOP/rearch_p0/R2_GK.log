@@ -1,0 +1,14 @@
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, lines, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, lines, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, lines, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:pypsa.optimization.window:Building the multi-period model over a MultiIndex `snapshot`. Opt into the flat representation via `pypsa.options.optimization.model_snapshot_index = 'flat'`.

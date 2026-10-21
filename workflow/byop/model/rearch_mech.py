@@ -65,7 +65,7 @@ MDQ_PROXY = {'L1': 250000.0, 'L2': 100000.0}       # MMBtu/d lateral sizing prox
 GAS_L2 = dict(lead=3.0, cost=100.0)                # L2 unknown: conservative lateral lead (y) / cost (USD/kW)
 UPGRADE_LIFE = 40
 MODES = ['GO_F', 'GO_C', 'GF', 'IS']
-GCFG = dict(competing_voll=600.0, s0_calibrate=False, s0_cal_file=None, interrupt_cap=0.005, no_harm=True, base_assets='main', setting='G-U', relax=[], case='base', gas_case='base', pclr_hours=200.0, pclr_max_consec_h=12.0,
+GCFG = dict(competing_voll=None, s0_calibrate=False, s0_cal_file=None, interrupt_cap=0.005, no_harm=True, base_assets='main', setting='G-U', relax=[], case='base', gas_case='base', pclr_hours=200.0, pclr_max_consec_h=12.0,
             s2_iter=3, competing=1.0, line_lead=None, offer_tol=1e-3, clusters='64s')
 SITES: dict = {}
 STATE = M.STATE
@@ -311,13 +311,13 @@ def add_competing_load(n):
         prof = np.array([float(r[r.request_year <= p].IT_MW.sum()) * float(pue_t[(pue_t.st == 'TX') & (pue_t.year == min(p, 2035))].pue.iloc[0])
                          for p in per]) * GCFG['competing']
         n.add('Load', f'{s} competing_queue', bus=d['bus'], carrier='AC', p_set=pd.Series(prof, index=n.snapshots))
-        # D2 principle (new large loads are curtailed before existing customers): the competing queue has its own
-        # curtailment at the lost-load value of a new large load (main 600 USD/MWh, D2.1), separate from background
-        # shedding (1e4); carrier load_shed keeps the v240 ERM-row correction, the name keeps it out of the
-        # existing-customer bookkeeping (no-harm bound, S0 freeze, shed ledgers)
+        # RA-D2f (revised 2026-10-21): the competing queue has its own curtailment variable, REPORTED separately from
+        # background shedding, but priced like background shedding (SHED_COST) and protected per generator by the
+        # no-harm bound: G-K / G-U must stay a physical stress (a first version at 600 USD/MWh curtailed 2.6 TWh in
+        # S0 because curtailing was cheaper than supplying it - rejected). Carrier load_shed keeps the v240 ERM correction.
         n.add('Generator', f'{s} competing_unserved', bus=d['bus'], carrier='load_shed', p_nom=float(prof.max()) + 1.0,
-              marginal_cost=GCFG['competing_voll'], build_year=2025, lifetime=100)
-    STATE['competing'] = dict(share=GCFG['competing'], voll_USD_MWh=GCFG['competing_voll'],
+              marginal_cost=GCFG['competing_voll'] or M.SHED_COST, build_year=2025, lifetime=100)
+    STATE['competing'] = dict(share=GCFG['competing'], voll_USD_MWh=GCFG['competing_voll'] or M.SHED_COST,
                               rule='equal to the study request at each POI parent bus (STYLIZED); own curtailment at the new-load lost value')
 
 
@@ -617,12 +617,12 @@ def extra_rearch(n, snapshots):
         for a_, b_ in zip(lst[:-1], lst[1:]):
             drop = max(0.0, a_['D'] - b_['D'])
             m.add_constraints(pnom.sel(name=b_['S']) - pnom.sel(name=a_['S']) >= -drop, name=f"P01-online_monotone_{b_['S']}")
-    g_sh = n.generators[(n.generators.carrier == 'load_shed') & n.generators.index.str.endswith(' load_shed')]   # existing customers only
-    if STATE.get('no_harm_now') and len(g_sh) and 'Generator-p' in m.variables:   # D2.4 existing-customer shed <= frozen S0 (+0.001 MW)
+    g_sh = n.generators[n.generators.carrier == 'load_shed']    # background shed and competing-queue curtailment
+    if STATE.get('no_harm_now') and len(g_sh) and 'Generator-p' in m.variables:   # D2.4 shed <= frozen S0 per generator (+0.001 MW)
         sh0 = STATE['shed_S0']
         g = g_sh
-        ub = pd.DataFrame({gn: (sh0[b].reindex(snapshots).fillna(0.0).values if b in sh0 else np.zeros(len(snapshots))) + 0.001
-                           for gn, b in g.bus.items()}, index=snapshots)
+        ub = pd.DataFrame({gn: (sh0[gn].reindex(snapshots).fillna(0.0).values if gn in sh0 else np.zeros(len(snapshots))) + 0.001
+                           for gn in g.index}, index=snapshots)
         ub.index.name = 'snapshot'; ub.columns.name = 'name'
         m.add_constraints(gp_.sel(name=list(g.index), snapshot=snapshots) <= xr.DataArray(ub), name='D24-no_harm_existing_customers')
         STATE['no_harm_applied'] = len(g)
@@ -962,7 +962,7 @@ def main():
     ap.add_argument('--relax', nargs='*', default=[], help='S1 attribution relaxations: POI UP RA PROC')
     ap.add_argument('--attribution', action='store_true', help='also run S1_xPOI / S1_xUP / S1_xRA / S1_xPROC / S1_xALL')
     ap.add_argument('--competing', type=float, default=1.0)
-    ap.add_argument('--competing-voll', type=float, default=600.0, help='lost value of the competing queued load (USD/MWh)')
+    ap.add_argument('--competing-voll', type=float, default=None, help='curtailment price of the competing queued load (default = SHED_COST)')
     ap.add_argument('--s0-calibrate', action='store_true', help='D3 3.5: targeted S0 uplift calibration (S0 only); writes S0_CALIBRATION.csv')
     ap.add_argument('--s0-cal-file', default=None, help='D3 3.5: apply a S0_CALIBRATION.csv as cost-free common baseline assets')
     ap.add_argument('--base-assets', default='main', choices=['main', 'sens', 'none'], help='D3 committed TPIT baseline assets')
@@ -1065,8 +1065,8 @@ def main():
             cal.to_csv(out / 'S0_CALIBRATION.csv', index=False)
             ev('s0_calibration', 'DONE', f"{int((cal.added_MW > 0.5).sum())} lines, {cal.added_MW.sum():.0f} MW")
         if tag == 'S0':                                  # D2.4: frozen existing-customer shed of the (repaired) S0
-            sc0 = n.generators.index[(n.generators.carrier == 'load_shed') & n.generators.index.str.endswith(' load_shed')]
-            STATE['shed_S0'] = n.generators_t.p[sc0].rename(columns=n.generators.bus).T.groupby(level=0).sum().T
+            sc0 = n.generators.index[n.generators.carrier == 'load_shed']
+            STATE['shed_S0'] = n.generators_t.p[sc0].copy()      # per generator: background shed + competing queue
             STATE['shed_S0'].to_csv(out / 'S0_shed_by_snapshot_frozen.csv.gz')
         for s, d in SITES.items():          # site price columns for the v240 service ledger
             n.buses_t.marginal_price[s] = n.buses_t.marginal_price[d['bus']]
@@ -1091,13 +1091,13 @@ def main():
         if len(cq):
             e = n.generators_t.p[cq].mul(n.snapshot_weightings.generators, axis=0).groupby(level=0).sum()
             summ['competing_queue_unserved_MWh'] = float(e.sum().sum())
-            summ['competing_queue_loss_PV_USD'] = float(sum(e.loc[p].sum() * GCFG['competing_voll'] * ws[p] for p in e.index))
+            summ['competing_queue_loss_PV_USD'] = float(sum(e.loc[p].sum() * (GCFG['competing_voll'] or M.SHED_COST) * ws[p] for p in e.index))
             summ['social_total_USD'] += summ['competing_queue_loss_PV_USD']
         summ['existing_customer_shed_loss_PV_USD'] = summ['load_shed_PV_USD']      # D2.5: optimisation penalty basis 1e4 USD/MWh
         summ['existing_customer_shed_loss_VOLL_PV_USD'] = summ['load_shed_PV_USD'] / M.SHED_COST * 35685.0   # Brattle 2024 ERCOT VOLL
         if tag != 'S0' and STATE.get('shed_S0') is not None:
-            sc1 = n.generators.index[(n.generators.carrier == 'load_shed') & n.generators.index.str.endswith(' load_shed')]
-            p1 = n.generators_t.p[sc1].rename(columns=n.generators.bus).T.groupby(level=0).sum().T
+            sc1 = n.generators.index[n.generators.carrier == 'load_shed']
+            p1 = n.generators_t.p[sc1]
             diff = p1 - STATE['shed_S0'].reindex(index=p1.index, columns=p1.columns).fillna(0.0)
             summ['no_harm_max_violation_MW'] = float(diff.max().max())
         pl = poi_ledger(n, tag, a.case_id) if tag != 'S0' else pd.DataFrame()

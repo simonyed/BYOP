@@ -1,0 +1,1 @@
+{"timestamp_utc": "2026-10-21T00:29:47.887788+00:00", "run_id": "rearch_R2_GK_20261021T001537Z", "case_id": "R2_GK", "event": "optimization_solved", "status": "SOLVER_OPTIMAL", "message": "obj 4.966336e+10; vars 2817971; int 0; 838s", "scenario": "S0"}
