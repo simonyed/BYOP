@@ -44,7 +44,7 @@
 
 ## 3. 测试结果（无求解器）
 
-L2 静态测试 **21/21 通过**，结构测试 **43/43 通过**，`solver_executions = 0`（3 次求解调用被拦截）。修订提交：`__COMMIT_C__`。
+L2 静态测试 **21/21 通过**，结构测试 **43/43 通过**，`solver_executions = 0`（3 次求解调用被拦截）。修订提交：`85fa823d8e3e5034aea4774bdc3a8db63e858ab8`。
 
 ```text
 STAGE_A_STATUS: READY_FOR_RESEARCHER_AUDIT (second audit)

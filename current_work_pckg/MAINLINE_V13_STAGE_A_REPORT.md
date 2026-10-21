@@ -92,7 +92,7 @@
 
 ## 3a. 独立审计后的修订（2026-10-21）
 
-研究者方的独立审计（`BYOP_Mainline_v1.3_StageA_Independent_Audit_2026-10-21.md`，被审计 HEAD `efca9d0a`）提出 P0-1 至 P0-5，已全部修复；P1-1 至 P1-7 已披露并补充核验字段。逐项说明见 `MAINLINE_V13_AUDIT_RESPONSE.md`。修订提交：`__COMMIT_C__`。
+研究者方的独立审计（`BYOP_Mainline_v1.3_StageA_Independent_Audit_2026-10-21.md`，被审计 HEAD `efca9d0a`）提出 P0-1 至 P0-5，已全部修复；P1-1 至 P1-7 已披露并补充核验字段。逐项说明见 `MAINLINE_V13_AUDIT_RESPONSE.md`。修订提交：`85fa823d8e3e5034aea4774bdc3a8db63e858ab8`。
 
 ## 4. 阻塞项与需要研究者处理的事项
 
@@ -118,6 +118,6 @@
 STAGE_A_STATUS: READY_FOR_RESEARCHER_AUDIT
 RUN_AUTHORIZATION: NOT_APPROVED
 SOLVER_EXECUTIONS: 0
-GITHUB_HEAD: __COMMIT_C__ (branch mainline-v13-stageA; audit P0 fixes; first Stage A code commit edc5ed8c09eed4920693e1e9eef2a6545c30018f)
+GITHUB_HEAD: 85fa823d8e3e5034aea4774bdc3a8db63e858ab8 (branch mainline-v13-stageA; audit P0 fixes; first Stage A code commit edc5ed8c09eed4920693e1e9eef2a6545c30018f)
 NEXT_STEP: RESEARCHER_REVIEW_REQUIRED
 ```
