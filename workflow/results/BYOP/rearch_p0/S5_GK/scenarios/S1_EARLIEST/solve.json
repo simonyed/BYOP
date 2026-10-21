@@ -1,0 +1,105 @@
+{
+ "case_id": "S5_GK",
+ "case_group": "S5_GK",
+ "run_id": "rearch_S5_GK_20261020T231801Z",
+ "scenario": "S1_EARLIEST",
+ "relax": [],
+ "setting": "G-K",
+ "solve": {
+  "tag": "S1_EARLIEST",
+  "status": "ok",
+  "termination": "optimal",
+  "objective": 37200397622.66205,
+  "seconds": 388.4,
+  "n_vars": 1322187,
+  "n_cons": 2768298,
+  "integer_vars": 0,
+  "erm_dc_mode": "B",
+  "erm_poi_coeff_snapshot0": null,
+  "lex": {
+   "tag": "S1_EARLIEST",
+   "status": 2,
+   "optimal": true,
+   "seconds": 83.8,
+   "levels": [
+    {
+     "stage": "A1",
+     "year": 2026,
+     "value": 0.0
+    },
+    {
+     "stage": "A1",
+     "year": 2027,
+     "value": 250.0
+    },
+    {
+     "stage": "A1",
+     "year": 2028,
+     "value": 673.4003814808393
+    },
+    {
+     "stage": "A2",
+     "year": 2028,
+     "value": 1.0
+    },
+    {
+     "stage": "A1",
+     "year": 2029,
+     "value": 1041.938004688721
+    },
+    {
+     "stage": "A2",
+     "year": 2029,
+     "value": 1.0
+    }
+   ],
+   "eligibility": [
+    {
+     "year": 2026,
+     "R": {
+      "ABI_TAY": 0.0,
+      "DFW_KAU": 0.0,
+      "PEC_REE": 0.0
+     },
+     "eligible": []
+    },
+    {
+     "year": 2027,
+     "R": {
+      "ABI_TAY": 250.0,
+      "DFW_KAU": 0.0,
+      "PEC_REE": 0.0
+     },
+     "eligible": [
+      "ABI_TAY"
+     ]
+    },
+    {
+     "year": 2028,
+     "R": {
+      "ABI_TAY": 500.0,
+      "DFW_KAU": 173.4,
+      "PEC_REE": 0.0
+     },
+     "eligible": [
+      "ABI_TAY",
+      "DFW_KAU"
+     ]
+    },
+    {
+     "year": 2029,
+     "R": {
+      "ABI_TAY": 868.282,
+      "DFW_KAU": 173.656,
+      "PEC_REE": 0.0
+     },
+     "eligible": [
+      "ABI_TAY",
+      "DFW_KAU"
+     ]
+    }
+   ]
+  }
+ },
+ "timestamp_utc": "2026-10-20T23:29:42.396102+00:00"
+}

@@ -33,3 +33,1433 @@ INFO:linopy.model:Solver options:
  - GURO_PAR_BARDENSETHRESH: 200
 INFO:linopy.io:Writing objective.
 INFO:linopy.io: Writing time: 2.26s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 1628595 primals, 4448941 duals
+Objective: 3.95e+10
+Solver: gurobi
+Runtime: 237.23s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Kirchhoff-Voltage-Law, V240-reuse_right_p630 7 gas_steam 2025fleet r2028 were not assigned to the network.
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:opts.reserves:Adding ERM constraint for TX with reserve level 0.15
+INFO:opts.reserves:Added ERM constraint for TX
+INFO:opts.bidirectional_link:No bidirectional link candidates found (no _fwd or _rev at the end of the names)
+INFO:opts.sector:Demand response not enabled
+INFO:wp2:ERM-DC-01 B: added (1+0.15) x POI flow of 12 POIs to GlobalConstraint-TX_ERM
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver logs written to `/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/rearch_p0/S5_GK/solver_S1_EARLIEST.log`.
+INFO:linopy.model:Solver options:
+ - threads: 16
+ - method: 2
+ - crossover: 0
+ - BarHomogeneous: 1
+ - BarConvTol: 1e-05
+ - OptimalityTol: 0.0001
+ - FeasibilityTol: 0.001
+ - ScaleFlag: 1
+ - Seed: 123
+ - AggFill: 0
+ - PreDual: 0
+ - GURO_PAR_BARDENSETHRESH: 200
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 2.81s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 1650123 primals, 4572858 duals
+Objective: 3.72e+10
+Solver: gurobi
+Runtime: 251.10s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Kirchhoff-Voltage-Law, M2-train_cap_DC_ABI_TAY train2026, M2-train_daily_DC_ABI_TAY train2026, M2-train_cap_DC_ABI_TAY train2027, M2-train_daily_DC_ABI_TAY train2027, M2-train_cap_DC_ABI_TAY train2028, M2-train_daily_DC_ABI_TAY train2028, M2-train_cap_DC_ABI_TAY train2029, M2-train_daily_DC_ABI_TAY train2029, M2-train_cap_DC_DFW_KAU train2026, M2-train_daily_DC_DFW_KAU train2026, M2-train_cap_DC_DFW_KAU train2027, M2-train_daily_DC_DFW_KAU train2027, M2-train_cap_DC_DFW_KAU train2028, M2-train_daily_DC_DFW_KAU train2028, M2-train_cap_DC_DFW_KAU train2029, M2-train_daily_DC_DFW_KAU train2029, M2-train_cap_DC_PEC_REE train2026, M2-train_daily_DC_PEC_REE train2026, M2-train_cap_DC_PEC_REE train2027, M2-train_daily_DC_PEC_REE train2027, M2-train_cap_DC_PEC_REE train2028, M2-train_daily_DC_PEC_REE train2028, M2-train_cap_DC_PEC_REE train2029, M2-train_daily_DC_PEC_REE train2029, V240-reuse_right_p630 7 gas_steam 2025fleet r2028, POI-eq_DC_ABI_TAY S2026, M2-serve_cap_DC_ABI_TAY S2026, POI-eq_DC_ABI_TAY S2027, M2-serve_cap_DC_ABI_TAY S2027, POI-eq_DC_ABI_TAY S2028, M2-serve_cap_DC_ABI_TAY S2028, POI-eq_DC_ABI_TAY S2029, M2-serve_cap_DC_ABI_TAY S2029, POI-eq_DC_DFW_KAU S2026, M2-serve_cap_DC_DFW_KAU S2026, POI-eq_DC_DFW_KAU S2027, M2-serve_cap_DC_DFW_KAU S2027, POI-eq_DC_DFW_KAU S2028, M2-serve_cap_DC_DFW_KAU S2028, POI-eq_DC_DFW_KAU S2029, M2-serve_cap_DC_DFW_KAU S2029, POI-eq_DC_PEC_REE S2026, M2-serve_cap_DC_PEC_REE S2026, POI-eq_DC_PEC_REE S2027, M2-serve_cap_DC_PEC_REE S2027, POI-eq_DC_PEC_REE S2028, M2-serve_cap_DC_PEC_REE S2028, POI-eq_DC_PEC_REE S2029, M2-serve_cap_DC_PEC_REE S2029, P01-online_monotone_DC_ABI_TAY S2027, P01-online_monotone_DC_ABI_TAY S2028, P01-online_monotone_DC_ABI_TAY S2029, P01-online_monotone_DC_DFW_KAU S2027, P01-online_monotone_DC_DFW_KAU S2028, P01-online_monotone_DC_DFW_KAU S2029, P01-online_monotone_DC_PEC_REE S2027, P01-online_monotone_DC_PEC_REE S2028, P01-online_monotone_DC_PEC_REE S2029, D24-no_harm_existing_customers, P02-A1_2026, P02-A1_2027, P02-A1_2028, P02-A2_ABI_TAY_2028, P02-A2_DFW_KAU_2028, P02-A1_2029, P02-A2_ABI_TAY_2029, P02-A2_DFW_KAU_2029 were not assigned to the network.
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:opts.reserves:Adding ERM constraint for TX with reserve level 0.15
+INFO:opts.reserves:Added ERM constraint for TX
+INFO:opts.bidirectional_link:No bidirectional link candidates found (no _fwd or _rev at the end of the names)
+INFO:opts.sector:Demand response not enabled
+INFO:wp2:ERM-DC-01 B: added (1+0.15) x POI flow of 12 POIs to GlobalConstraint-TX_ERM
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver logs written to `/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/rearch_p0/S5_GK/solver_S1_ECON.log`.
+INFO:linopy.model:Solver options:
+ - threads: 16
+ - method: 2
+ - crossover: 0
+ - BarHomogeneous: 1
+ - BarConvTol: 1e-05
+ - OptimalityTol: 0.0001
+ - FeasibilityTol: 0.001
+ - ScaleFlag: 1
+ - Seed: 123
+ - AggFill: 0
+ - PreDual: 0
+ - GURO_PAR_BARDENSETHRESH: 200
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 3.01s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 1655499 primals, 4595710 duals
+Objective: 3.68e+10
+Solver: gurobi
+Runtime: 242.26s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Kirchhoff-Voltage-Law, M2-train_cap_DC_ABI_TAY train2026, M2-train_daily_DC_ABI_TAY train2026, M2-train_cap_DC_ABI_TAY train2027, M2-train_daily_DC_ABI_TAY train2027, M2-train_cap_DC_ABI_TAY train2028, M2-train_daily_DC_ABI_TAY train2028, M2-train_cap_DC_ABI_TAY train2029, M2-train_daily_DC_ABI_TAY train2029, M2-train_cap_DC_DFW_KAU train2026, M2-train_daily_DC_DFW_KAU train2026, M2-train_cap_DC_DFW_KAU train2027, M2-train_daily_DC_DFW_KAU train2027, M2-train_cap_DC_DFW_KAU train2028, M2-train_daily_DC_DFW_KAU train2028, M2-train_cap_DC_DFW_KAU train2029, M2-train_daily_DC_DFW_KAU train2029, M2-train_cap_DC_PEC_REE train2026, M2-train_daily_DC_PEC_REE train2026, M2-train_cap_DC_PEC_REE train2027, M2-train_daily_DC_PEC_REE train2027, M2-train_cap_DC_PEC_REE train2028, M2-train_daily_DC_PEC_REE train2028, M2-train_cap_DC_PEC_REE train2029, M2-train_daily_DC_PEC_REE train2029, V240-reuse_right_p630 7 gas_steam 2025fleet r2028, POI-eq_DC_ABI_TAY S2026, M2-serve_cap_DC_ABI_TAY S2026, POI-eq_DC_ABI_TAY S2027, M2-serve_cap_DC_ABI_TAY S2027, POI-eq_DC_ABI_TAY S2028, M2-serve_cap_DC_ABI_TAY S2028, POI-eq_DC_ABI_TAY S2029, M2-serve_cap_DC_ABI_TAY S2029, POI-eq_DC_DFW_KAU S2026, M2-serve_cap_DC_DFW_KAU S2026, POI-eq_DC_DFW_KAU S2027, M2-serve_cap_DC_DFW_KAU S2027, POI-eq_DC_DFW_KAU S2028, M2-serve_cap_DC_DFW_KAU S2028, POI-eq_DC_DFW_KAU S2029, M2-serve_cap_DC_DFW_KAU S2029, POI-eq_DC_PEC_REE S2026, M2-serve_cap_DC_PEC_REE S2026, POI-eq_DC_PEC_REE S2027, M2-serve_cap_DC_PEC_REE S2027, POI-eq_DC_PEC_REE S2028, M2-serve_cap_DC_PEC_REE S2028, POI-eq_DC_PEC_REE S2029, M2-serve_cap_DC_PEC_REE S2029, P01-intr_cap_DC_ABI_TAY S2026, P01-intr_le_load_DC_ABI_TAY S2026, P01-intr_cap_DC_ABI_TAY S2027, P01-intr_le_load_DC_ABI_TAY S2027, P01-intr_cap_DC_ABI_TAY S2028, P01-intr_le_load_DC_ABI_TAY S2028, P01-intr_cap_DC_ABI_TAY S2029, P01-intr_le_load_DC_ABI_TAY S2029, P01-intr_cap_DC_DFW_KAU S2026, P01-intr_le_load_DC_DFW_KAU S2026, P01-intr_cap_DC_DFW_KAU S2027, P01-intr_le_load_DC_DFW_KAU S2027, P01-intr_cap_DC_DFW_KAU S2028, P01-intr_le_load_DC_DFW_KAU S2028, P01-intr_cap_DC_DFW_KAU S2029, P01-intr_le_load_DC_DFW_KAU S2029, P01-intr_cap_DC_PEC_REE S2026, P01-intr_le_load_DC_PEC_REE S2026, P01-intr_cap_DC_PEC_REE S2027, P01-intr_le_load_DC_PEC_REE S2027, P01-intr_cap_DC_PEC_REE S2028, P01-intr_le_load_DC_PEC_REE S2028, P01-intr_cap_DC_PEC_REE S2029, P01-intr_le_load_DC_PEC_REE S2029, P01-online_monotone_DC_ABI_TAY S2027, P01-online_monotone_DC_ABI_TAY S2028, P01-online_monotone_DC_ABI_TAY S2029, P01-online_monotone_DC_DFW_KAU S2027, P01-online_monotone_DC_DFW_KAU S2028, P01-online_monotone_DC_DFW_KAU S2029, P01-online_monotone_DC_PEC_REE S2027, P01-online_monotone_DC_PEC_REE S2028, P01-online_monotone_DC_PEC_REE S2029, D24-no_harm_existing_customers were not assigned to the network.
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:opts.reserves:Adding ERM constraint for TX with reserve level 0.15
+INFO:opts.reserves:Added ERM constraint for TX
+INFO:opts.bidirectional_link:No bidirectional link candidates found (no _fwd or _rev at the end of the names)
+INFO:opts.sector:Demand response not enabled
+INFO:wp2:ERM-DC-01 B: added (1+0.15) x POI flow of 12 POIs to GlobalConstraint-TX_ERM
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver logs written to `/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/rearch_p0/S5_GK/solver_S1_zero.log`.
+INFO:linopy.model:Solver options:
+ - threads: 16
+ - method: 2
+ - crossover: 0
+ - BarHomogeneous: 1
+ - BarConvTol: 1e-05
+ - OptimalityTol: 0.0001
+ - FeasibilityTol: 0.001
+ - ScaleFlag: 1
+ - Seed: 123
+ - AggFill: 0
+ - PreDual: 0
+ - GURO_PAR_BARDENSETHRESH: 200
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 2.95s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 1655499 primals, 4595710 duals
+Objective: 3.95e+10
+Solver: gurobi
+Runtime: 285.69s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Kirchhoff-Voltage-Law, M2-train_cap_DC_ABI_TAY train2026, M2-train_daily_DC_ABI_TAY train2026, M2-train_cap_DC_ABI_TAY train2027, M2-train_daily_DC_ABI_TAY train2027, M2-train_cap_DC_ABI_TAY train2028, M2-train_daily_DC_ABI_TAY train2028, M2-train_cap_DC_ABI_TAY train2029, M2-train_daily_DC_ABI_TAY train2029, M2-train_cap_DC_DFW_KAU train2026, M2-train_daily_DC_DFW_KAU train2026, M2-train_cap_DC_DFW_KAU train2027, M2-train_daily_DC_DFW_KAU train2027, M2-train_cap_DC_DFW_KAU train2028, M2-train_daily_DC_DFW_KAU train2028, M2-train_cap_DC_DFW_KAU train2029, M2-train_daily_DC_DFW_KAU train2029, M2-train_cap_DC_PEC_REE train2026, M2-train_daily_DC_PEC_REE train2026, M2-train_cap_DC_PEC_REE train2027, M2-train_daily_DC_PEC_REE train2027, M2-train_cap_DC_PEC_REE train2028, M2-train_daily_DC_PEC_REE train2028, M2-train_cap_DC_PEC_REE train2029, M2-train_daily_DC_PEC_REE train2029, V240-reuse_right_p630 7 gas_steam 2025fleet r2028, POI-eq_DC_ABI_TAY S2026, M2-serve_cap_DC_ABI_TAY S2026, POI-eq_DC_ABI_TAY S2027, M2-serve_cap_DC_ABI_TAY S2027, POI-eq_DC_ABI_TAY S2028, M2-serve_cap_DC_ABI_TAY S2028, POI-eq_DC_ABI_TAY S2029, M2-serve_cap_DC_ABI_TAY S2029, POI-eq_DC_DFW_KAU S2026, M2-serve_cap_DC_DFW_KAU S2026, POI-eq_DC_DFW_KAU S2027, M2-serve_cap_DC_DFW_KAU S2027, POI-eq_DC_DFW_KAU S2028, M2-serve_cap_DC_DFW_KAU S2028, POI-eq_DC_DFW_KAU S2029, M2-serve_cap_DC_DFW_KAU S2029, POI-eq_DC_PEC_REE S2026, M2-serve_cap_DC_PEC_REE S2026, POI-eq_DC_PEC_REE S2027, M2-serve_cap_DC_PEC_REE S2027, POI-eq_DC_PEC_REE S2028, M2-serve_cap_DC_PEC_REE S2028, POI-eq_DC_PEC_REE S2029, M2-serve_cap_DC_PEC_REE S2029, P01-intr_cap_DC_ABI_TAY S2026, P01-intr_le_load_DC_ABI_TAY S2026, P01-intr_cap_DC_ABI_TAY S2027, P01-intr_le_load_DC_ABI_TAY S2027, P01-intr_cap_DC_ABI_TAY S2028, P01-intr_le_load_DC_ABI_TAY S2028, P01-intr_cap_DC_ABI_TAY S2029, P01-intr_le_load_DC_ABI_TAY S2029, P01-intr_cap_DC_DFW_KAU S2026, P01-intr_le_load_DC_DFW_KAU S2026, P01-intr_cap_DC_DFW_KAU S2027, P01-intr_le_load_DC_DFW_KAU S2027, P01-intr_cap_DC_DFW_KAU S2028, P01-intr_le_load_DC_DFW_KAU S2028, P01-intr_cap_DC_DFW_KAU S2029, P01-intr_le_load_DC_DFW_KAU S2029, P01-intr_cap_DC_PEC_REE S2026, P01-intr_le_load_DC_PEC_REE S2026, P01-intr_cap_DC_PEC_REE S2027, P01-intr_le_load_DC_PEC_REE S2027, P01-intr_cap_DC_PEC_REE S2028, P01-intr_le_load_DC_PEC_REE S2028, P01-intr_cap_DC_PEC_REE S2029, P01-intr_le_load_DC_PEC_REE S2029, P01-online_monotone_DC_ABI_TAY S2027, P01-online_monotone_DC_ABI_TAY S2028, P01-online_monotone_DC_ABI_TAY S2029, P01-online_monotone_DC_DFW_KAU S2027, P01-online_monotone_DC_DFW_KAU S2028, P01-online_monotone_DC_DFW_KAU S2029, P01-online_monotone_DC_PEC_REE S2027, P01-online_monotone_DC_PEC_REE S2028, P01-online_monotone_DC_PEC_REE S2029, D24-no_harm_existing_customers were not assigned to the network.
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:opts.reserves:Adding ERM constraint for TX with reserve level 0.15
+INFO:opts.reserves:Added ERM constraint for TX
+INFO:opts.bidirectional_link:No bidirectional link candidates found (no _fwd or _rev at the end of the names)
+INFO:opts.sector:Demand response not enabled
+INFO:wp2:ERM-DC-01 B: added (1+0.15) x POI flow of 12 POIs to GlobalConstraint-TX_ERM
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver logs written to `/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/rearch_p0/S5_GK/solver_S3.log`.
+INFO:linopy.model:Solver options:
+ - threads: 16
+ - method: 2
+ - crossover: 0
+ - BarHomogeneous: 1
+ - BarConvTol: 1e-05
+ - OptimalityTol: 0.0001
+ - FeasibilityTol: 0.001
+ - ScaleFlag: 1
+ - Seed: 123
+ - AggFill: 0
+ - PreDual: 0
+ - GURO_PAR_BARDENSETHRESH: 200
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 3.27s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 1679260 primals, 4670728 duals
+Objective: 2.78e+10
+Solver: gurobi
+Runtime: 265.48s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Kirchhoff-Voltage-Law, M2-train_cap_DC_ABI_TAY train2026, M2-train_daily_DC_ABI_TAY train2026, M2-train_cap_DC_ABI_TAY train2027, M2-train_daily_DC_ABI_TAY train2027, M2-train_cap_DC_ABI_TAY train2028, M2-train_daily_DC_ABI_TAY train2028, M2-train_cap_DC_ABI_TAY train2029, M2-train_daily_DC_ABI_TAY train2029, M2-train_cap_DC_DFW_KAU train2026, M2-train_daily_DC_DFW_KAU train2026, M2-train_cap_DC_DFW_KAU train2027, M2-train_daily_DC_DFW_KAU train2027, M2-train_cap_DC_DFW_KAU train2028, M2-train_daily_DC_DFW_KAU train2028, M2-train_cap_DC_DFW_KAU train2029, M2-train_daily_DC_DFW_KAU train2029, M2-train_cap_DC_PEC_REE train2026, M2-train_daily_DC_PEC_REE train2026, M2-train_cap_DC_PEC_REE train2027, M2-train_daily_DC_PEC_REE train2027, M2-train_cap_DC_PEC_REE train2028, M2-train_daily_DC_PEC_REE train2028, M2-train_cap_DC_PEC_REE train2029, M2-train_daily_DC_PEC_REE train2029, V240-reuse_right_p630 7 gas_steam 2025fleet r2028, POI-pclr_DC_ABI_TAY S2026, POI-eq_DC_ABI_TAY S2026, M2-serve_cap_DC_ABI_TAY S2026, GAS-mdq_DC_ABI_TAY S2026, POI-pclr_DC_ABI_TAY S2027, POI-eq_DC_ABI_TAY S2027, M2-serve_cap_DC_ABI_TAY S2027, GAS-mdq_DC_ABI_TAY S2027, POI-pclr_DC_ABI_TAY S2028, POI-eq_DC_ABI_TAY S2028, M2-serve_cap_DC_ABI_TAY S2028, GAS-mdq_DC_ABI_TAY S2028, POI-pclr_DC_ABI_TAY S2029, POI-eq_DC_ABI_TAY S2029, M2-serve_cap_DC_ABI_TAY S2029, GAS-mdq_DC_ABI_TAY S2029, POI-pclr_DC_DFW_KAU S2026, POI-eq_DC_DFW_KAU S2026, M2-serve_cap_DC_DFW_KAU S2026, GAS-mdq_DC_DFW_KAU S2026, POI-pclr_DC_DFW_KAU S2027, POI-eq_DC_DFW_KAU S2027, M2-serve_cap_DC_DFW_KAU S2027, GAS-mdq_DC_DFW_KAU S2027, POI-pclr_DC_DFW_KAU S2028, POI-eq_DC_DFW_KAU S2028, M2-serve_cap_DC_DFW_KAU S2028, GAS-mdq_DC_DFW_KAU S2028, POI-pclr_DC_DFW_KAU S2029, POI-eq_DC_DFW_KAU S2029, M2-serve_cap_DC_DFW_KAU S2029, GAS-mdq_DC_DFW_KAU S2029, POI-pclr_DC_PEC_REE S2026, POI-eq_DC_PEC_REE S2026, M2-serve_cap_DC_PEC_REE S2026, GAS-mdq_DC_PEC_REE S2026, POI-pclr_DC_PEC_REE S2027, POI-eq_DC_PEC_REE S2027, M2-serve_cap_DC_PEC_REE S2027, GAS-mdq_DC_PEC_REE S2027, POI-pclr_DC_PEC_REE S2028, POI-eq_DC_PEC_REE S2028, M2-serve_cap_DC_PEC_REE S2028, GAS-mdq_DC_PEC_REE S2028, POI-pclr_DC_PEC_REE S2029, POI-eq_DC_PEC_REE S2029, M2-serve_cap_DC_PEC_REE S2029, GAS-mdq_DC_PEC_REE S2029, P01-intr_cap_DC_ABI_TAY S2026, P01-intr_le_load_DC_ABI_TAY S2026, P01-intr_cap_DC_ABI_TAY S2027, P01-intr_le_load_DC_ABI_TAY S2027, P01-intr_cap_DC_ABI_TAY S2028, P01-intr_le_load_DC_ABI_TAY S2028, P01-intr_cap_DC_ABI_TAY S2029, P01-intr_le_load_DC_ABI_TAY S2029, P01-intr_cap_DC_DFW_KAU S2026, P01-intr_le_load_DC_DFW_KAU S2026, P01-intr_cap_DC_DFW_KAU S2027, P01-intr_le_load_DC_DFW_KAU S2027, P01-intr_cap_DC_DFW_KAU S2028, P01-intr_le_load_DC_DFW_KAU S2028, P01-intr_cap_DC_DFW_KAU S2029, P01-intr_le_load_DC_DFW_KAU S2029, P01-intr_cap_DC_PEC_REE S2026, P01-intr_le_load_DC_PEC_REE S2026, P01-intr_cap_DC_PEC_REE S2027, P01-intr_le_load_DC_PEC_REE S2027, P01-intr_cap_DC_PEC_REE S2028, P01-intr_le_load_DC_PEC_REE S2028, P01-intr_cap_DC_PEC_REE S2029, P01-intr_le_load_DC_PEC_REE S2029, P01-online_monotone_DC_ABI_TAY S2027, P01-online_monotone_DC_ABI_TAY S2028, P01-online_monotone_DC_ABI_TAY S2029, P01-online_monotone_DC_DFW_KAU S2027, P01-online_monotone_DC_DFW_KAU S2028, P01-online_monotone_DC_DFW_KAU S2029, P01-online_monotone_DC_PEC_REE S2027, P01-online_monotone_DC_PEC_REE S2028, P01-online_monotone_DC_PEC_REE S2029, D24-no_harm_existing_customers were not assigned to the network.
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:opts.reserves:Adding ERM constraint for TX with reserve level 0.15
+INFO:opts.reserves:Added ERM constraint for TX
+INFO:opts.bidirectional_link:No bidirectional link candidates found (no _fwd or _rev at the end of the names)
+INFO:opts.sector:Demand response not enabled
+INFO:wp2:ERM-DC-01 B: added (1+0.15) x POI flow of 12 POIs to GlobalConstraint-TX_ERM
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver logs written to `/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/rearch_p0/S5_GK/solver_S3_mS1.log`.
+INFO:linopy.model:Solver options:
+ - threads: 16
+ - method: 2
+ - crossover: 0
+ - BarHomogeneous: 1
+ - BarConvTol: 1e-05
+ - OptimalityTol: 0.0001
+ - FeasibilityTol: 0.001
+ - ScaleFlag: 1
+ - Seed: 123
+ - AggFill: 0
+ - PreDual: 0
+ - GURO_PAR_BARDENSETHRESH: 200
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 3.24s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 1679260 primals, 4670728 duals
+Objective: 3.53e+10
+Solver: gurobi
+Runtime: 340.48s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Kirchhoff-Voltage-Law, M2-train_cap_DC_ABI_TAY train2026, M2-train_daily_DC_ABI_TAY train2026, M2-train_cap_DC_ABI_TAY train2027, M2-train_daily_DC_ABI_TAY train2027, M2-train_cap_DC_ABI_TAY train2028, M2-train_daily_DC_ABI_TAY train2028, M2-train_cap_DC_ABI_TAY train2029, M2-train_daily_DC_ABI_TAY train2029, M2-train_cap_DC_DFW_KAU train2026, M2-train_daily_DC_DFW_KAU train2026, M2-train_cap_DC_DFW_KAU train2027, M2-train_daily_DC_DFW_KAU train2027, M2-train_cap_DC_DFW_KAU train2028, M2-train_daily_DC_DFW_KAU train2028, M2-train_cap_DC_DFW_KAU train2029, M2-train_daily_DC_DFW_KAU train2029, M2-train_cap_DC_PEC_REE train2026, M2-train_daily_DC_PEC_REE train2026, M2-train_cap_DC_PEC_REE train2027, M2-train_daily_DC_PEC_REE train2027, M2-train_cap_DC_PEC_REE train2028, M2-train_daily_DC_PEC_REE train2028, M2-train_cap_DC_PEC_REE train2029, M2-train_daily_DC_PEC_REE train2029, V240-reuse_right_p630 7 gas_steam 2025fleet r2028, POI-pclr_DC_ABI_TAY S2026, POI-eq_DC_ABI_TAY S2026, M2-serve_cap_DC_ABI_TAY S2026, GAS-mdq_DC_ABI_TAY S2026, POI-pclr_DC_ABI_TAY S2027, POI-eq_DC_ABI_TAY S2027, M2-serve_cap_DC_ABI_TAY S2027, GAS-mdq_DC_ABI_TAY S2027, POI-pclr_DC_ABI_TAY S2028, POI-eq_DC_ABI_TAY S2028, M2-serve_cap_DC_ABI_TAY S2028, GAS-mdq_DC_ABI_TAY S2028, POI-pclr_DC_ABI_TAY S2029, POI-eq_DC_ABI_TAY S2029, M2-serve_cap_DC_ABI_TAY S2029, GAS-mdq_DC_ABI_TAY S2029, POI-pclr_DC_DFW_KAU S2026, POI-eq_DC_DFW_KAU S2026, M2-serve_cap_DC_DFW_KAU S2026, GAS-mdq_DC_DFW_KAU S2026, POI-pclr_DC_DFW_KAU S2027, POI-eq_DC_DFW_KAU S2027, M2-serve_cap_DC_DFW_KAU S2027, GAS-mdq_DC_DFW_KAU S2027, POI-pclr_DC_DFW_KAU S2028, POI-eq_DC_DFW_KAU S2028, M2-serve_cap_DC_DFW_KAU S2028, GAS-mdq_DC_DFW_KAU S2028, POI-pclr_DC_DFW_KAU S2029, POI-eq_DC_DFW_KAU S2029, M2-serve_cap_DC_DFW_KAU S2029, GAS-mdq_DC_DFW_KAU S2029, POI-pclr_DC_PEC_REE S2026, POI-eq_DC_PEC_REE S2026, M2-serve_cap_DC_PEC_REE S2026, GAS-mdq_DC_PEC_REE S2026, POI-pclr_DC_PEC_REE S2027, POI-eq_DC_PEC_REE S2027, M2-serve_cap_DC_PEC_REE S2027, GAS-mdq_DC_PEC_REE S2027, POI-pclr_DC_PEC_REE S2028, POI-eq_DC_PEC_REE S2028, M2-serve_cap_DC_PEC_REE S2028, GAS-mdq_DC_PEC_REE S2028, POI-pclr_DC_PEC_REE S2029, POI-eq_DC_PEC_REE S2029, M2-serve_cap_DC_PEC_REE S2029, GAS-mdq_DC_PEC_REE S2029, P01-intr_cap_DC_ABI_TAY S2026, P01-intr_le_load_DC_ABI_TAY S2026, P01-intr_cap_DC_ABI_TAY S2027, P01-intr_le_load_DC_ABI_TAY S2027, P01-intr_cap_DC_ABI_TAY S2028, P01-intr_le_load_DC_ABI_TAY S2028, P01-intr_cap_DC_ABI_TAY S2029, P01-intr_le_load_DC_ABI_TAY S2029, P01-intr_cap_DC_DFW_KAU S2026, P01-intr_le_load_DC_DFW_KAU S2026, P01-intr_cap_DC_DFW_KAU S2027, P01-intr_le_load_DC_DFW_KAU S2027, P01-intr_cap_DC_DFW_KAU S2028, P01-intr_le_load_DC_DFW_KAU S2028, P01-intr_cap_DC_DFW_KAU S2029, P01-intr_le_load_DC_DFW_KAU S2029, P01-intr_cap_DC_PEC_REE S2026, P01-intr_le_load_DC_PEC_REE S2026, P01-intr_cap_DC_PEC_REE S2027, P01-intr_le_load_DC_PEC_REE S2027, P01-intr_cap_DC_PEC_REE S2028, P01-intr_le_load_DC_PEC_REE S2028, P01-intr_cap_DC_PEC_REE S2029, P01-intr_le_load_DC_PEC_REE S2029, P01-online_monotone_DC_ABI_TAY S2027, P01-online_monotone_DC_ABI_TAY S2028, P01-online_monotone_DC_ABI_TAY S2029, P01-online_monotone_DC_DFW_KAU S2027, P01-online_monotone_DC_DFW_KAU S2028, P01-online_monotone_DC_DFW_KAU S2029, P01-online_monotone_DC_PEC_REE S2027, P01-online_monotone_DC_PEC_REE S2028, P01-online_monotone_DC_PEC_REE S2029, D24-no_harm_existing_customers were not assigned to the network.
+WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['DC_DFW_KAU'], dtype='object', name='name')
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.29s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7176 primals, 15319 duals
+Objective: -1.78e-09
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.29s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7176 primals, 15320 duals
+Objective: -1.78e-09
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.28s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7176 primals, 15321 duals
+Objective: -1.74e+02
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.3s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7176 primals, 15322 duals
+Objective: -1.74e+02
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.31s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7176 primals, 15323 duals
+Objective: -7.32e+08
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Generator-ext-p-lower, Generator-ext-p-upper, M2-train_cap_DC_DFW_KAU train2026, M2-train_daily_DC_DFW_KAU train2026, M2-serve_cap_DC_DFW_KAU S2026, M2-train_cap_DC_DFW_KAU train2027, M2-train_daily_DC_DFW_KAU train2027, M2-serve_cap_DC_DFW_KAU S2027, M2-train_cap_DC_DFW_KAU train2028, M2-train_daily_DC_DFW_KAU train2028, M2-serve_cap_DC_DFW_KAU S2028, M2-train_cap_DC_DFW_KAU train2029, M2-train_daily_DC_DFW_KAU train2029, M2-serve_cap_DC_DFW_KAU S2029, P01-intr_cap_DC_DFW_KAU S2026, P01-intr_le_load_DC_DFW_KAU S2026, P01-intr_cap_DC_DFW_KAU S2027, P01-intr_le_load_DC_DFW_KAU S2027, P01-intr_cap_DC_DFW_KAU S2028, P01-intr_le_load_DC_DFW_KAU S2028, P01-intr_cap_DC_DFW_KAU S2029, P01-intr_le_load_DC_DFW_KAU S2029, P01-online_monotone_DC_DFW_KAU S2027, P01-online_monotone_DC_DFW_KAU S2028, P01-online_monotone_DC_DFW_KAU S2029, S2SF-lex_DFW_KAU_2026, S2SF-lex_DFW_KAU_2027, S2SF-lex_DFW_KAU_2028, S2SF-lex_DFW_KAU_2029 were not assigned to the network.
+WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['DC_DFW_KAU'], dtype='object', name='name')
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.27s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 8968 primals, 18903 duals
+Objective: -7.31e-08
+Solver: gurobi
+Runtime: 0.04s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.29s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 8968 primals, 18904 duals
+Objective: -7.31e-08
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.3s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 8968 primals, 18905 duals
+Objective: -1.74e+02
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.28s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 8968 primals, 18906 duals
+Objective: -1.74e+02
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.31s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 8968 primals, 18907 duals
+Objective: -7.58e+08
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Generator-ext-p-lower, Generator-ext-p-upper, M2-train_cap_DC_DFW_KAU train2026, M2-train_daily_DC_DFW_KAU train2026, M2-serve_cap_DC_DFW_KAU S2026, M2-train_cap_DC_DFW_KAU train2027, M2-train_daily_DC_DFW_KAU train2027, M2-serve_cap_DC_DFW_KAU S2027, M2-train_cap_DC_DFW_KAU train2028, M2-train_daily_DC_DFW_KAU train2028, M2-serve_cap_DC_DFW_KAU S2028, M2-train_cap_DC_DFW_KAU train2029, M2-train_daily_DC_DFW_KAU train2029, M2-serve_cap_DC_DFW_KAU S2029, P01-intr_cap_DC_DFW_KAU S2026, P01-intr_le_load_DC_DFW_KAU S2026, P01-intr_cap_DC_DFW_KAU S2027, P01-intr_le_load_DC_DFW_KAU S2027, P01-intr_cap_DC_DFW_KAU S2028, P01-intr_le_load_DC_DFW_KAU S2028, P01-intr_cap_DC_DFW_KAU S2029, P01-intr_le_load_DC_DFW_KAU S2029, P01-online_monotone_DC_DFW_KAU S2027, P01-online_monotone_DC_DFW_KAU S2028, P01-online_monotone_DC_DFW_KAU S2029, S2SF-lex_DFW_KAU_2026, S2SF-lex_DFW_KAU_2027, S2SF-lex_DFW_KAU_2028, S2SF-lex_DFW_KAU_2029 were not assigned to the network.
+WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['DC_DFW_KAU'], dtype='object', name='name')
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 0.31s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 11662 primals, 24347 duals
+Objective: -3.12e-09
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 0.33s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 11662 primals, 24348 duals
+Objective: -2.50e+02
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 0.34s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 11662 primals, 24349 duals
+Objective: -5.00e+02
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 0.35s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 11662 primals, 24350 duals
+Objective: -1.00e+03
+Solver: gurobi
+Runtime: 0.02s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 0.34s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 11662 primals, 24351 duals
+Objective: -3.11e+09
+Solver: gurobi
+Runtime: 0.05s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Generator-ext-p-lower, Generator-ext-p-upper, M2-train_cap_DC_DFW_KAU train2026, M2-train_daily_DC_DFW_KAU train2026, M2-serve_cap_DC_DFW_KAU S2026, M2-train_cap_DC_DFW_KAU train2027, M2-train_daily_DC_DFW_KAU train2027, M2-serve_cap_DC_DFW_KAU S2027, M2-train_cap_DC_DFW_KAU train2028, M2-train_daily_DC_DFW_KAU train2028, M2-serve_cap_DC_DFW_KAU S2028, M2-train_cap_DC_DFW_KAU train2029, M2-train_daily_DC_DFW_KAU train2029, M2-serve_cap_DC_DFW_KAU S2029, GAS-mdq_DC_DFW_KAU S2026, GAS-mdq_DC_DFW_KAU S2027, GAS-mdq_DC_DFW_KAU S2028, GAS-mdq_DC_DFW_KAU S2029, P01-intr_cap_DC_DFW_KAU S2026, P01-intr_le_load_DC_DFW_KAU S2026, P01-intr_cap_DC_DFW_KAU S2027, P01-intr_le_load_DC_DFW_KAU S2027, P01-intr_cap_DC_DFW_KAU S2028, P01-intr_le_load_DC_DFW_KAU S2028, P01-intr_cap_DC_DFW_KAU S2029, P01-intr_le_load_DC_DFW_KAU S2029, P01-online_monotone_DC_DFW_KAU S2027, P01-online_monotone_DC_DFW_KAU S2028, P01-online_monotone_DC_DFW_KAU S2029, S2SF-lex_DFW_KAU_2026, S2SF-lex_DFW_KAU_2027, S2SF-lex_DFW_KAU_2028, S2SF-lex_DFW_KAU_2029 were not assigned to the network.
+WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['DC_DFW_KAU'], dtype='object', name='name')
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.31s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 9870 primals, 20763 duals
+Objective: -1.59e-10
+Solver: gurobi
+Runtime: 0.03s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.33s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 9870 primals, 20764 duals
+Objective: -2.50e+02
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.32s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 9870 primals, 20765 duals
+Objective: -5.00e+02
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.33s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 9870 primals, 20766 duals
+Objective: -1.00e+03
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.35s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 9870 primals, 20767 duals
+Objective: -3.05e+09
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Generator-ext-p-lower, Generator-ext-p-upper, M2-train_cap_DC_DFW_KAU train2026, M2-train_daily_DC_DFW_KAU train2026, M2-serve_cap_DC_DFW_KAU S2026, M2-train_cap_DC_DFW_KAU train2027, M2-train_daily_DC_DFW_KAU train2027, M2-serve_cap_DC_DFW_KAU S2027, M2-train_cap_DC_DFW_KAU train2028, M2-train_daily_DC_DFW_KAU train2028, M2-serve_cap_DC_DFW_KAU S2028, M2-train_cap_DC_DFW_KAU train2029, M2-train_daily_DC_DFW_KAU train2029, M2-serve_cap_DC_DFW_KAU S2029, GAS-mdq_DC_DFW_KAU S2026, GAS-mdq_DC_DFW_KAU S2027, GAS-mdq_DC_DFW_KAU S2028, GAS-mdq_DC_DFW_KAU S2029, P01-intr_cap_DC_DFW_KAU S2026, P01-intr_le_load_DC_DFW_KAU S2026, P01-intr_cap_DC_DFW_KAU S2027, P01-intr_le_load_DC_DFW_KAU S2027, P01-intr_cap_DC_DFW_KAU S2028, P01-intr_le_load_DC_DFW_KAU S2028, P01-intr_cap_DC_DFW_KAU S2029, P01-intr_le_load_DC_DFW_KAU S2029, P01-online_monotone_DC_DFW_KAU S2027, P01-online_monotone_DC_DFW_KAU S2028, P01-online_monotone_DC_DFW_KAU S2029, S2SF-lex_DFW_KAU_2026, S2SF-lex_DFW_KAU_2027, S2SF-lex_DFW_KAU_2028, S2SF-lex_DFW_KAU_2029 were not assigned to the network.
+WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['DC_ABI_TAY'], dtype='object', name='name')
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.28s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7176 primals, 15319 duals
+Objective: -6.57e-10
+Solver: gurobi
+Runtime: 0.00s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.29s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7176 primals, 15320 duals
+Objective: -2.50e+02
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.29s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7176 primals, 15321 duals
+Objective: -5.00e+02
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.3s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7176 primals, 15322 duals
+Objective: -7.83e+02
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.32s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7176 primals, 15323 duals
+Objective: -1.46e+09
+Solver: gurobi
+Runtime: 0.02s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Generator-ext-p-lower, Generator-ext-p-upper, M2-train_cap_DC_ABI_TAY train2026, M2-train_daily_DC_ABI_TAY train2026, M2-serve_cap_DC_ABI_TAY S2026, M2-train_cap_DC_ABI_TAY train2027, M2-train_daily_DC_ABI_TAY train2027, M2-serve_cap_DC_ABI_TAY S2027, M2-train_cap_DC_ABI_TAY train2028, M2-train_daily_DC_ABI_TAY train2028, M2-serve_cap_DC_ABI_TAY S2028, M2-train_cap_DC_ABI_TAY train2029, M2-train_daily_DC_ABI_TAY train2029, M2-serve_cap_DC_ABI_TAY S2029, P01-intr_cap_DC_ABI_TAY S2026, P01-intr_le_load_DC_ABI_TAY S2026, P01-intr_cap_DC_ABI_TAY S2027, P01-intr_le_load_DC_ABI_TAY S2027, P01-intr_cap_DC_ABI_TAY S2028, P01-intr_le_load_DC_ABI_TAY S2028, P01-intr_cap_DC_ABI_TAY S2029, P01-intr_le_load_DC_ABI_TAY S2029, P01-online_monotone_DC_ABI_TAY S2027, P01-online_monotone_DC_ABI_TAY S2028, P01-online_monotone_DC_ABI_TAY S2029, S2SF-lex_ABI_TAY_2026, S2SF-lex_ABI_TAY_2027, S2SF-lex_ABI_TAY_2028, S2SF-lex_ABI_TAY_2029 were not assigned to the network.
+WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['DC_ABI_TAY'], dtype='object', name='name')
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.27s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 9864 primals, 20695 duals
+Objective: -2.64e-10
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.29s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 9864 primals, 20696 duals
+Objective: -2.50e+02
+Solver: gurobi
+Runtime: 0.06s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.29s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 9864 primals, 20697 duals
+Objective: -5.00e+02
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.31s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 9864 primals, 20698 duals
+Objective: -8.68e+02
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.32s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 9864 primals, 20699 duals
+Objective: -2.59e+09
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Generator-ext-p-lower, Generator-ext-p-upper, M2-train_cap_DC_ABI_TAY train2026, M2-train_daily_DC_ABI_TAY train2026, M2-serve_cap_DC_ABI_TAY S2026, M2-train_cap_DC_ABI_TAY train2027, M2-train_daily_DC_ABI_TAY train2027, M2-serve_cap_DC_ABI_TAY S2027, M2-train_cap_DC_ABI_TAY train2028, M2-train_daily_DC_ABI_TAY train2028, M2-serve_cap_DC_ABI_TAY S2028, M2-train_cap_DC_ABI_TAY train2029, M2-train_daily_DC_ABI_TAY train2029, M2-serve_cap_DC_ABI_TAY S2029, P01-intr_cap_DC_ABI_TAY S2026, P01-intr_le_load_DC_ABI_TAY S2026, P01-intr_cap_DC_ABI_TAY S2027, P01-intr_le_load_DC_ABI_TAY S2027, P01-intr_cap_DC_ABI_TAY S2028, P01-intr_le_load_DC_ABI_TAY S2028, P01-intr_cap_DC_ABI_TAY S2029, P01-intr_le_load_DC_ABI_TAY S2029, P01-online_monotone_DC_ABI_TAY S2027, P01-online_monotone_DC_ABI_TAY S2028, P01-online_monotone_DC_ABI_TAY S2029, S2SF-lex_ABI_TAY_2026, S2SF-lex_ABI_TAY_2027, S2SF-lex_ABI_TAY_2028, S2SF-lex_ABI_TAY_2029 were not assigned to the network.
+WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['DC_ABI_TAY'], dtype='object', name='name')
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 0.33s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 12109 primals, 25241 duals
+Objective: -2.82e-09
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 0.31s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 12109 primals, 25242 duals
+Objective: -2.50e+02
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 0.32s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 12109 primals, 25243 duals
+Objective: -5.00e+02
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 0.32s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 12109 primals, 25244 duals
+Objective: -1.00e+03
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 0.35s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 12109 primals, 25245 duals
+Objective: -3.79e+09
+Solver: gurobi
+Runtime: 0.03s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Generator-ext-p-lower, Generator-ext-p-upper, M2-train_cap_DC_ABI_TAY train2026, M2-train_daily_DC_ABI_TAY train2026, M2-serve_cap_DC_ABI_TAY S2026, M2-train_cap_DC_ABI_TAY train2027, M2-train_daily_DC_ABI_TAY train2027, M2-serve_cap_DC_ABI_TAY S2027, M2-train_cap_DC_ABI_TAY train2028, M2-train_daily_DC_ABI_TAY train2028, M2-serve_cap_DC_ABI_TAY S2028, M2-train_cap_DC_ABI_TAY train2029, M2-train_daily_DC_ABI_TAY train2029, M2-serve_cap_DC_ABI_TAY S2029, GAS-mdq_DC_ABI_TAY S2026, GAS-mdq_DC_ABI_TAY S2027, GAS-mdq_DC_ABI_TAY S2028, GAS-mdq_DC_ABI_TAY S2029, P01-intr_cap_DC_ABI_TAY S2026, P01-intr_le_load_DC_ABI_TAY S2026, P01-intr_cap_DC_ABI_TAY S2027, P01-intr_le_load_DC_ABI_TAY S2027, P01-intr_cap_DC_ABI_TAY S2028, P01-intr_le_load_DC_ABI_TAY S2028, P01-intr_cap_DC_ABI_TAY S2029, P01-intr_le_load_DC_ABI_TAY S2029, P01-online_monotone_DC_ABI_TAY S2027, P01-online_monotone_DC_ABI_TAY S2028, P01-online_monotone_DC_ABI_TAY S2029, S2SF-lex_ABI_TAY_2026, S2SF-lex_ABI_TAY_2027, S2SF-lex_ABI_TAY_2028, S2SF-lex_ABI_TAY_2029 were not assigned to the network.
+WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['DC_ABI_TAY'], dtype='object', name='name')
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.31s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 9421 primals, 19865 duals
+Objective: -9.48e-10
+Solver: gurobi
+Runtime: 0.02s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.32s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 9421 primals, 19866 duals
+Objective: -2.50e+02
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.32s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 9421 primals, 19867 duals
+Objective: -5.00e+02
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.32s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 9421 primals, 19868 duals
+Objective: -1.00e+03
+Solver: gurobi
+Runtime: 0.02s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.34s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 9421 primals, 19869 duals
+Objective: -2.92e+09
+Solver: gurobi
+Runtime: 0.04s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Generator-ext-p-lower, Generator-ext-p-upper, M2-train_cap_DC_ABI_TAY train2026, M2-train_daily_DC_ABI_TAY train2026, M2-serve_cap_DC_ABI_TAY S2026, M2-train_cap_DC_ABI_TAY train2027, M2-train_daily_DC_ABI_TAY train2027, M2-serve_cap_DC_ABI_TAY S2027, M2-train_cap_DC_ABI_TAY train2028, M2-train_daily_DC_ABI_TAY train2028, M2-serve_cap_DC_ABI_TAY S2028, M2-train_cap_DC_ABI_TAY train2029, M2-train_daily_DC_ABI_TAY train2029, M2-serve_cap_DC_ABI_TAY S2029, GAS-mdq_DC_ABI_TAY S2026, GAS-mdq_DC_ABI_TAY S2027, GAS-mdq_DC_ABI_TAY S2028, GAS-mdq_DC_ABI_TAY S2029, P01-intr_cap_DC_ABI_TAY S2026, P01-intr_le_load_DC_ABI_TAY S2026, P01-intr_cap_DC_ABI_TAY S2027, P01-intr_le_load_DC_ABI_TAY S2027, P01-intr_cap_DC_ABI_TAY S2028, P01-intr_le_load_DC_ABI_TAY S2028, P01-intr_cap_DC_ABI_TAY S2029, P01-intr_le_load_DC_ABI_TAY S2029, P01-online_monotone_DC_ABI_TAY S2027, P01-online_monotone_DC_ABI_TAY S2028, P01-online_monotone_DC_ABI_TAY S2029, S2SF-lex_ABI_TAY_2026, S2SF-lex_ABI_TAY_2027, S2SF-lex_ABI_TAY_2028, S2SF-lex_ABI_TAY_2029 were not assigned to the network.
+WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['DC_PEC_REE'], dtype='object', name='name')
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.26s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7176 primals, 15319 duals
+Objective: -0.00e+00
+Solver: gurobi
+Runtime: 0.03s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.27s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7176 primals, 15320 duals
+Objective: -0.00e+00
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.28s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7176 primals, 15321 duals
+Objective: -0.00e+00
+Solver: gurobi
+Runtime: 0.00s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.31s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7176 primals, 15322 duals
+Objective: -0.00e+00
+Solver: gurobi
+Runtime: 0.02s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.3s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 7176 primals, 15323 duals
+Objective: -0.00e+00
+Solver: gurobi
+Runtime: 0.00s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Generator-ext-p-lower, Generator-ext-p-upper, M2-train_cap_DC_PEC_REE train2026, M2-train_daily_DC_PEC_REE train2026, M2-serve_cap_DC_PEC_REE S2026, M2-train_cap_DC_PEC_REE train2027, M2-train_daily_DC_PEC_REE train2027, M2-serve_cap_DC_PEC_REE S2027, M2-train_cap_DC_PEC_REE train2028, M2-train_daily_DC_PEC_REE train2028, M2-serve_cap_DC_PEC_REE S2028, M2-train_cap_DC_PEC_REE train2029, M2-train_daily_DC_PEC_REE train2029, M2-serve_cap_DC_PEC_REE S2029, P01-intr_cap_DC_PEC_REE S2026, P01-intr_le_load_DC_PEC_REE S2026, P01-intr_cap_DC_PEC_REE S2027, P01-intr_le_load_DC_PEC_REE S2027, P01-intr_cap_DC_PEC_REE S2028, P01-intr_le_load_DC_PEC_REE S2028, P01-intr_cap_DC_PEC_REE S2029, P01-intr_le_load_DC_PEC_REE S2029, P01-online_monotone_DC_PEC_REE S2027, P01-online_monotone_DC_PEC_REE S2028, P01-online_monotone_DC_PEC_REE S2029, S2SF-lex_PEC_REE_2026, S2SF-lex_PEC_REE_2027, S2SF-lex_PEC_REE_2028, S2SF-lex_PEC_REE_2029 were not assigned to the network.
+WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['DC_PEC_REE'], dtype='object', name='name')
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.28s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 8968 primals, 18903 duals
+Objective: -0.00e+00
+Solver: gurobi
+Runtime: 0.00s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.29s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 8968 primals, 18904 duals
+Objective: -0.00e+00
+Solver: gurobi
+Runtime: 0.02s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.28s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 8968 primals, 18905 duals
+Objective: -0.00e+00
+Solver: gurobi
+Runtime: 0.00s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.28s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 8968 primals, 18906 duals
+Objective: -0.00e+00
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.31s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 8968 primals, 18907 duals
+Objective: -0.00e+00
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Generator-ext-p-lower, Generator-ext-p-upper, M2-train_cap_DC_PEC_REE train2026, M2-train_daily_DC_PEC_REE train2026, M2-serve_cap_DC_PEC_REE S2026, M2-train_cap_DC_PEC_REE train2027, M2-train_daily_DC_PEC_REE train2027, M2-serve_cap_DC_PEC_REE S2027, M2-train_cap_DC_PEC_REE train2028, M2-train_daily_DC_PEC_REE train2028, M2-serve_cap_DC_PEC_REE S2028, M2-train_cap_DC_PEC_REE train2029, M2-train_daily_DC_PEC_REE train2029, M2-serve_cap_DC_PEC_REE S2029, P01-intr_cap_DC_PEC_REE S2026, P01-intr_le_load_DC_PEC_REE S2026, P01-intr_cap_DC_PEC_REE S2027, P01-intr_le_load_DC_PEC_REE S2027, P01-intr_cap_DC_PEC_REE S2028, P01-intr_le_load_DC_PEC_REE S2028, P01-intr_cap_DC_PEC_REE S2029, P01-intr_le_load_DC_PEC_REE S2029, P01-online_monotone_DC_PEC_REE S2027, P01-online_monotone_DC_PEC_REE S2028, P01-online_monotone_DC_PEC_REE S2029, S2SF-lex_PEC_REE_2026, S2SF-lex_PEC_REE_2027, S2SF-lex_PEC_REE_2028, S2SF-lex_PEC_REE_2029 were not assigned to the network.
+WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['DC_PEC_REE'], dtype='object', name='name')
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 0.33s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 11662 primals, 24347 duals
+Objective: -2.27e-09
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 0.31s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 11662 primals, 24348 duals
+Objective: -2.50e+02
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 0.34s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 11662 primals, 24349 duals
+Objective: -5.00e+02
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 0.33s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 11662 primals, 24350 duals
+Objective: -1.00e+03
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 0.33s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 11662 primals, 24351 duals
+Objective: -2.92e+09
+Solver: gurobi
+Runtime: 0.02s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Generator-ext-p-lower, Generator-ext-p-upper, M2-train_cap_DC_PEC_REE train2026, M2-train_daily_DC_PEC_REE train2026, M2-serve_cap_DC_PEC_REE S2026, M2-train_cap_DC_PEC_REE train2027, M2-train_daily_DC_PEC_REE train2027, M2-serve_cap_DC_PEC_REE S2027, M2-train_cap_DC_PEC_REE train2028, M2-train_daily_DC_PEC_REE train2028, M2-serve_cap_DC_PEC_REE S2028, M2-train_cap_DC_PEC_REE train2029, M2-train_daily_DC_PEC_REE train2029, M2-serve_cap_DC_PEC_REE S2029, GAS-mdq_DC_PEC_REE S2026, GAS-mdq_DC_PEC_REE S2027, GAS-mdq_DC_PEC_REE S2028, GAS-mdq_DC_PEC_REE S2029, P01-intr_cap_DC_PEC_REE S2026, P01-intr_le_load_DC_PEC_REE S2026, P01-intr_cap_DC_PEC_REE S2027, P01-intr_le_load_DC_PEC_REE S2027, P01-intr_cap_DC_PEC_REE S2028, P01-intr_le_load_DC_PEC_REE S2028, P01-intr_cap_DC_PEC_REE S2029, P01-intr_le_load_DC_PEC_REE S2029, P01-online_monotone_DC_PEC_REE S2027, P01-online_monotone_DC_PEC_REE S2028, P01-online_monotone_DC_PEC_REE S2029, S2SF-lex_PEC_REE_2026, S2SF-lex_PEC_REE_2027, S2SF-lex_PEC_REE_2028, S2SF-lex_PEC_REE_2029 were not assigned to the network.
+WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['DC_PEC_REE'], dtype='object', name='name')
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.31s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 9870 primals, 20763 duals
+Objective: -9.48e-10
+Solver: gurobi
+Runtime: 0.03s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.34s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 9870 primals, 20764 duals
+Objective: -2.50e+02
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.33s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 9870 primals, 20765 duals
+Objective: -5.00e+02
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.34s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 9870 primals, 20766 duals
+Objective: -1.00e+03
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 0
+ - BarConvTol: 1e-07
+ - OutputFlag: 0
+ - Threads: 16
+INFO:linopy.io: Writing time: 0.34s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 9870 primals, 20767 duals
+Objective: -2.92e+09
+Solver: gurobi
+Runtime: 0.01s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Generator-ext-p-lower, Generator-ext-p-upper, M2-train_cap_DC_PEC_REE train2026, M2-train_daily_DC_PEC_REE train2026, M2-serve_cap_DC_PEC_REE S2026, M2-train_cap_DC_PEC_REE train2027, M2-train_daily_DC_PEC_REE train2027, M2-serve_cap_DC_PEC_REE S2027, M2-train_cap_DC_PEC_REE train2028, M2-train_daily_DC_PEC_REE train2028, M2-serve_cap_DC_PEC_REE S2028, M2-train_cap_DC_PEC_REE train2029, M2-train_daily_DC_PEC_REE train2029, M2-serve_cap_DC_PEC_REE S2029, GAS-mdq_DC_PEC_REE S2026, GAS-mdq_DC_PEC_REE S2027, GAS-mdq_DC_PEC_REE S2028, GAS-mdq_DC_PEC_REE S2029, P01-intr_cap_DC_PEC_REE S2026, P01-intr_le_load_DC_PEC_REE S2026, P01-intr_cap_DC_PEC_REE S2027, P01-intr_le_load_DC_PEC_REE S2027, P01-intr_cap_DC_PEC_REE S2028, P01-intr_le_load_DC_PEC_REE S2028, P01-intr_cap_DC_PEC_REE S2029, P01-intr_le_load_DC_PEC_REE S2029, P01-online_monotone_DC_PEC_REE S2027, P01-online_monotone_DC_PEC_REE S2028, P01-online_monotone_DC_PEC_REE S2029, S2SF-lex_PEC_REE_2026, S2SF-lex_PEC_REE_2027, S2SF-lex_PEC_REE_2028, S2SF-lex_PEC_REE_2029 were not assigned to the network.
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:opts.reserves:Adding ERM constraint for TX with reserve level 0.15
+INFO:opts.reserves:Added ERM constraint for TX
+INFO:opts.bidirectional_link:No bidirectional link candidates found (no _fwd or _rev at the end of the names)
+INFO:opts.sector:Demand response not enabled
+INFO:wp2:ERM-DC-01 B: added (1+0.15) x POI flow of 12 POIs to GlobalConstraint-TX_ERM
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver logs written to `/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/rearch_p0/S5_GK/solver_S2.log`.
+INFO:linopy.model:Solver options:
+ - threads: 16
+ - method: 2
+ - crossover: 0
+ - BarHomogeneous: 1
+ - BarConvTol: 1e-05
+ - OptimalityTol: 0.0001
+ - FeasibilityTol: 0.001
+ - ScaleFlag: 1
+ - Seed: 123
+ - AggFill: 0
+ - PreDual: 0
+ - GURO_PAR_BARDENSETHRESH: 200
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 3.32s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 1668491 primals, 4642918 duals
+Objective: 2.72e+10
+Solver: gurobi
+Runtime: 308.65s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Kirchhoff-Voltage-Law, M2-train_cap_DC_ABI_TAY train2026, M2-train_daily_DC_ABI_TAY train2026, M2-train_cap_DC_ABI_TAY train2027, M2-train_daily_DC_ABI_TAY train2027, M2-train_cap_DC_ABI_TAY train2028, M2-train_daily_DC_ABI_TAY train2028, M2-train_cap_DC_ABI_TAY train2029, M2-train_daily_DC_ABI_TAY train2029, M2-train_cap_DC_DFW_KAU train2026, M2-train_daily_DC_DFW_KAU train2026, M2-train_cap_DC_DFW_KAU train2027, M2-train_daily_DC_DFW_KAU train2027, M2-train_cap_DC_DFW_KAU train2028, M2-train_daily_DC_DFW_KAU train2028, M2-train_cap_DC_DFW_KAU train2029, M2-train_daily_DC_DFW_KAU train2029, M2-train_cap_DC_PEC_REE train2026, M2-train_daily_DC_PEC_REE train2026, M2-train_cap_DC_PEC_REE train2027, M2-train_daily_DC_PEC_REE train2027, M2-train_cap_DC_PEC_REE train2028, M2-train_daily_DC_PEC_REE train2028, M2-train_cap_DC_PEC_REE train2029, M2-train_daily_DC_PEC_REE train2029, V240-reuse_right_p630 7 gas_steam 2025fleet r2028, POI-pclr_DC_ABI_TAY S2026, POI-eq_DC_ABI_TAY S2026, M2-serve_cap_DC_ABI_TAY S2026, GAS-mdq_DC_ABI_TAY S2026, POI-pclr_DC_ABI_TAY S2027, POI-eq_DC_ABI_TAY S2027, M2-serve_cap_DC_ABI_TAY S2027, GAS-mdq_DC_ABI_TAY S2027, POI-pclr_DC_ABI_TAY S2028, POI-eq_DC_ABI_TAY S2028, M2-serve_cap_DC_ABI_TAY S2028, GAS-mdq_DC_ABI_TAY S2028, POI-pclr_DC_ABI_TAY S2029, POI-eq_DC_ABI_TAY S2029, M2-serve_cap_DC_ABI_TAY S2029, GAS-mdq_DC_ABI_TAY S2029, POI-eq_DC_DFW_KAU S2026, M2-serve_cap_DC_DFW_KAU S2026, GAS-mdq_DC_DFW_KAU S2026, POI-eq_DC_DFW_KAU S2027, M2-serve_cap_DC_DFW_KAU S2027, GAS-mdq_DC_DFW_KAU S2027, POI-eq_DC_DFW_KAU S2028, M2-serve_cap_DC_DFW_KAU S2028, GAS-mdq_DC_DFW_KAU S2028, POI-eq_DC_DFW_KAU S2029, M2-serve_cap_DC_DFW_KAU S2029, GAS-mdq_DC_DFW_KAU S2029, POI-eq_DC_PEC_REE S2026, M2-serve_cap_DC_PEC_REE S2026, GAS-mdq_DC_PEC_REE S2026, POI-eq_DC_PEC_REE S2027, M2-serve_cap_DC_PEC_REE S2027, GAS-mdq_DC_PEC_REE S2027, POI-eq_DC_PEC_REE S2028, M2-serve_cap_DC_PEC_REE S2028, GAS-mdq_DC_PEC_REE S2028, POI-eq_DC_PEC_REE S2029, M2-serve_cap_DC_PEC_REE S2029, GAS-mdq_DC_PEC_REE S2029, P01-intr_cap_DC_ABI_TAY S2026, P01-intr_le_load_DC_ABI_TAY S2026, P01-intr_cap_DC_ABI_TAY S2027, P01-intr_le_load_DC_ABI_TAY S2027, P01-intr_cap_DC_ABI_TAY S2028, P01-intr_le_load_DC_ABI_TAY S2028, P01-intr_cap_DC_ABI_TAY S2029, P01-intr_le_load_DC_ABI_TAY S2029, P01-intr_cap_DC_DFW_KAU S2026, P01-intr_le_load_DC_DFW_KAU S2026, P01-intr_cap_DC_DFW_KAU S2027, P01-intr_le_load_DC_DFW_KAU S2027, P01-intr_cap_DC_DFW_KAU S2028, P01-intr_le_load_DC_DFW_KAU S2028, P01-intr_cap_DC_DFW_KAU S2029, P01-intr_le_load_DC_DFW_KAU S2029, P01-intr_cap_DC_PEC_REE S2026, P01-intr_le_load_DC_PEC_REE S2026, P01-intr_cap_DC_PEC_REE S2027, P01-intr_le_load_DC_PEC_REE S2027, P01-intr_cap_DC_PEC_REE S2028, P01-intr_le_load_DC_PEC_REE S2028, P01-intr_cap_DC_PEC_REE S2029, P01-intr_le_load_DC_PEC_REE S2029, P01-online_monotone_DC_ABI_TAY S2027, P01-online_monotone_DC_ABI_TAY S2028, P01-online_monotone_DC_ABI_TAY S2029, P01-online_monotone_DC_DFW_KAU S2027, P01-online_monotone_DC_DFW_KAU S2028, P01-online_monotone_DC_DFW_KAU S2029, P01-online_monotone_DC_PEC_REE S2027, P01-online_monotone_DC_PEC_REE S2028, P01-online_monotone_DC_PEC_REE S2029, D24-no_harm_existing_customers, S2-right_firm_DC_ABI_TAY S2026, S2-right_cond_DC_ABI_TAY S2026, S2-right_firm_DC_ABI_TAY S2027, S2-right_cond_DC_ABI_TAY S2027, S2-right_firm_DC_ABI_TAY S2028, S2-right_cond_DC_ABI_TAY S2028, S2-right_firm_DC_ABI_TAY S2029, S2-right_cond_DC_ABI_TAY S2029, S2-right_firm_DC_DFW_KAU S2026, S2-right_firm_DC_DFW_KAU S2027, S2-right_firm_DC_DFW_KAU S2028, S2-right_firm_DC_DFW_KAU S2029, S2-right_firm_DC_PEC_REE S2026, S2-right_firm_DC_PEC_REE S2027, S2-right_firm_DC_PEC_REE S2028, S2-right_firm_DC_PEC_REE S2029 were not assigned to the network.
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:opts.reserves:Adding ERM constraint for TX with reserve level 0.15
+INFO:opts.reserves:Added ERM constraint for TX
+INFO:opts.bidirectional_link:No bidirectional link candidates found (no _fwd or _rev at the end of the names)
+INFO:opts.sector:Demand response not enabled
+INFO:wp2:ERM-DC-01 B: added (1+0.15) x POI flow of 12 POIs to GlobalConstraint-TX_ERM
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver logs written to `/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/rearch_p0/S5_GK/solver_S2_off.log`.
+INFO:linopy.model:Solver options:
+ - threads: 16
+ - method: 2
+ - crossover: 0
+ - BarHomogeneous: 1
+ - BarConvTol: 1e-05
+ - OptimalityTol: 0.0001
+ - FeasibilityTol: 0.001
+ - ScaleFlag: 1
+ - Seed: 123
+ - AggFill: 0
+ - PreDual: 0
+ - GURO_PAR_BARDENSETHRESH: 200
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 3.09s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 1663115 primals, 4626342 duals
+Objective: 3.68e+10
+Solver: gurobi
+Runtime: 255.03s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Kirchhoff-Voltage-Law, M2-train_cap_DC_ABI_TAY train2026, M2-train_daily_DC_ABI_TAY train2026, M2-train_cap_DC_ABI_TAY train2027, M2-train_daily_DC_ABI_TAY train2027, M2-train_cap_DC_ABI_TAY train2028, M2-train_daily_DC_ABI_TAY train2028, M2-train_cap_DC_ABI_TAY train2029, M2-train_daily_DC_ABI_TAY train2029, M2-train_cap_DC_DFW_KAU train2026, M2-train_daily_DC_DFW_KAU train2026, M2-train_cap_DC_DFW_KAU train2027, M2-train_daily_DC_DFW_KAU train2027, M2-train_cap_DC_DFW_KAU train2028, M2-train_daily_DC_DFW_KAU train2028, M2-train_cap_DC_DFW_KAU train2029, M2-train_daily_DC_DFW_KAU train2029, M2-train_cap_DC_PEC_REE train2026, M2-train_daily_DC_PEC_REE train2026, M2-train_cap_DC_PEC_REE train2027, M2-train_daily_DC_PEC_REE train2027, M2-train_cap_DC_PEC_REE train2028, M2-train_daily_DC_PEC_REE train2028, M2-train_cap_DC_PEC_REE train2029, M2-train_daily_DC_PEC_REE train2029, V240-reuse_right_p630 7 gas_steam 2025fleet r2028, POI-eq_DC_ABI_TAY S2026, M2-serve_cap_DC_ABI_TAY S2026, GAS-mdq_DC_ABI_TAY S2026, POI-eq_DC_ABI_TAY S2027, M2-serve_cap_DC_ABI_TAY S2027, GAS-mdq_DC_ABI_TAY S2027, POI-eq_DC_ABI_TAY S2028, M2-serve_cap_DC_ABI_TAY S2028, GAS-mdq_DC_ABI_TAY S2028, POI-eq_DC_ABI_TAY S2029, M2-serve_cap_DC_ABI_TAY S2029, GAS-mdq_DC_ABI_TAY S2029, POI-eq_DC_DFW_KAU S2026, M2-serve_cap_DC_DFW_KAU S2026, GAS-mdq_DC_DFW_KAU S2026, POI-eq_DC_DFW_KAU S2027, M2-serve_cap_DC_DFW_KAU S2027, GAS-mdq_DC_DFW_KAU S2027, POI-eq_DC_DFW_KAU S2028, M2-serve_cap_DC_DFW_KAU S2028, GAS-mdq_DC_DFW_KAU S2028, POI-eq_DC_DFW_KAU S2029, M2-serve_cap_DC_DFW_KAU S2029, GAS-mdq_DC_DFW_KAU S2029, POI-eq_DC_PEC_REE S2026, M2-serve_cap_DC_PEC_REE S2026, GAS-mdq_DC_PEC_REE S2026, POI-eq_DC_PEC_REE S2027, M2-serve_cap_DC_PEC_REE S2027, GAS-mdq_DC_PEC_REE S2027, POI-eq_DC_PEC_REE S2028, M2-serve_cap_DC_PEC_REE S2028, GAS-mdq_DC_PEC_REE S2028, POI-eq_DC_PEC_REE S2029, M2-serve_cap_DC_PEC_REE S2029, GAS-mdq_DC_PEC_REE S2029, P01-intr_cap_DC_ABI_TAY S2026, P01-intr_le_load_DC_ABI_TAY S2026, P01-intr_cap_DC_ABI_TAY S2027, P01-intr_le_load_DC_ABI_TAY S2027, P01-intr_cap_DC_ABI_TAY S2028, P01-intr_le_load_DC_ABI_TAY S2028, P01-intr_cap_DC_ABI_TAY S2029, P01-intr_le_load_DC_ABI_TAY S2029, P01-intr_cap_DC_DFW_KAU S2026, P01-intr_le_load_DC_DFW_KAU S2026, P01-intr_cap_DC_DFW_KAU S2027, P01-intr_le_load_DC_DFW_KAU S2027, P01-intr_cap_DC_DFW_KAU S2028, P01-intr_le_load_DC_DFW_KAU S2028, P01-intr_cap_DC_DFW_KAU S2029, P01-intr_le_load_DC_DFW_KAU S2029, P01-intr_cap_DC_PEC_REE S2026, P01-intr_le_load_DC_PEC_REE S2026, P01-intr_cap_DC_PEC_REE S2027, P01-intr_le_load_DC_PEC_REE S2027, P01-intr_cap_DC_PEC_REE S2028, P01-intr_le_load_DC_PEC_REE S2028, P01-intr_cap_DC_PEC_REE S2029, P01-intr_le_load_DC_PEC_REE S2029, P01-online_monotone_DC_ABI_TAY S2027, P01-online_monotone_DC_ABI_TAY S2028, P01-online_monotone_DC_ABI_TAY S2029, P01-online_monotone_DC_DFW_KAU S2027, P01-online_monotone_DC_DFW_KAU S2028, P01-online_monotone_DC_DFW_KAU S2029, P01-online_monotone_DC_PEC_REE S2027, P01-online_monotone_DC_PEC_REE S2028, P01-online_monotone_DC_PEC_REE S2029, D24-no_harm_existing_customers were not assigned to the network.
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:opts.reserves:Adding ERM constraint for TX with reserve level 0.15
+INFO:opts.reserves:Added ERM constraint for TX
+INFO:opts.bidirectional_link:No bidirectional link candidates found (no _fwd or _rev at the end of the names)
+INFO:opts.sector:Demand response not enabled
+INFO:wp2:ERM-DC-01 B: added (1+0.15) x POI flow of 12 POIs to GlobalConstraint-TX_ERM
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver logs written to `/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/rearch_p0/S5_GK/solver_S3_mS2.log`.
+INFO:linopy.model:Solver options:
+ - threads: 16
+ - method: 2
+ - crossover: 0
+ - BarHomogeneous: 1
+ - BarConvTol: 1e-05
+ - OptimalityTol: 0.0001
+ - FeasibilityTol: 0.001
+ - ScaleFlag: 1
+ - Seed: 123
+ - AggFill: 0
+ - PreDual: 0
+ - GURO_PAR_BARDENSETHRESH: 200
+INFO:linopy.io:Writing objective.
+INFO:linopy.io: Writing time: 3.3s
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 1679260 primals, 4670728 duals
+Objective: 2.78e+10
+Solver: gurobi
+Runtime: 300.76s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Kirchhoff-Voltage-Law, M2-train_cap_DC_ABI_TAY train2026, M2-train_daily_DC_ABI_TAY train2026, M2-train_cap_DC_ABI_TAY train2027, M2-train_daily_DC_ABI_TAY train2027, M2-train_cap_DC_ABI_TAY train2028, M2-train_daily_DC_ABI_TAY train2028, M2-train_cap_DC_ABI_TAY train2029, M2-train_daily_DC_ABI_TAY train2029, M2-train_cap_DC_DFW_KAU train2026, M2-train_daily_DC_DFW_KAU train2026, M2-train_cap_DC_DFW_KAU train2027, M2-train_daily_DC_DFW_KAU train2027, M2-train_cap_DC_DFW_KAU train2028, M2-train_daily_DC_DFW_KAU train2028, M2-train_cap_DC_DFW_KAU train2029, M2-train_daily_DC_DFW_KAU train2029, M2-train_cap_DC_PEC_REE train2026, M2-train_daily_DC_PEC_REE train2026, M2-train_cap_DC_PEC_REE train2027, M2-train_daily_DC_PEC_REE train2027, M2-train_cap_DC_PEC_REE train2028, M2-train_daily_DC_PEC_REE train2028, M2-train_cap_DC_PEC_REE train2029, M2-train_daily_DC_PEC_REE train2029, V240-reuse_right_p630 7 gas_steam 2025fleet r2028, POI-pclr_DC_ABI_TAY S2026, POI-eq_DC_ABI_TAY S2026, M2-serve_cap_DC_ABI_TAY S2026, GAS-mdq_DC_ABI_TAY S2026, POI-pclr_DC_ABI_TAY S2027, POI-eq_DC_ABI_TAY S2027, M2-serve_cap_DC_ABI_TAY S2027, GAS-mdq_DC_ABI_TAY S2027, POI-pclr_DC_ABI_TAY S2028, POI-eq_DC_ABI_TAY S2028, M2-serve_cap_DC_ABI_TAY S2028, GAS-mdq_DC_ABI_TAY S2028, POI-pclr_DC_ABI_TAY S2029, POI-eq_DC_ABI_TAY S2029, M2-serve_cap_DC_ABI_TAY S2029, GAS-mdq_DC_ABI_TAY S2029, POI-pclr_DC_DFW_KAU S2026, POI-eq_DC_DFW_KAU S2026, M2-serve_cap_DC_DFW_KAU S2026, GAS-mdq_DC_DFW_KAU S2026, POI-pclr_DC_DFW_KAU S2027, POI-eq_DC_DFW_KAU S2027, M2-serve_cap_DC_DFW_KAU S2027, GAS-mdq_DC_DFW_KAU S2027, POI-pclr_DC_DFW_KAU S2028, POI-eq_DC_DFW_KAU S2028, M2-serve_cap_DC_DFW_KAU S2028, GAS-mdq_DC_DFW_KAU S2028, POI-pclr_DC_DFW_KAU S2029, POI-eq_DC_DFW_KAU S2029, M2-serve_cap_DC_DFW_KAU S2029, GAS-mdq_DC_DFW_KAU S2029, POI-pclr_DC_PEC_REE S2026, POI-eq_DC_PEC_REE S2026, M2-serve_cap_DC_PEC_REE S2026, GAS-mdq_DC_PEC_REE S2026, POI-pclr_DC_PEC_REE S2027, POI-eq_DC_PEC_REE S2027, M2-serve_cap_DC_PEC_REE S2027, GAS-mdq_DC_PEC_REE S2027, POI-pclr_DC_PEC_REE S2028, POI-eq_DC_PEC_REE S2028, M2-serve_cap_DC_PEC_REE S2028, GAS-mdq_DC_PEC_REE S2028, POI-pclr_DC_PEC_REE S2029, POI-eq_DC_PEC_REE S2029, M2-serve_cap_DC_PEC_REE S2029, GAS-mdq_DC_PEC_REE S2029, P01-intr_cap_DC_ABI_TAY S2026, P01-intr_le_load_DC_ABI_TAY S2026, P01-intr_cap_DC_ABI_TAY S2027, P01-intr_le_load_DC_ABI_TAY S2027, P01-intr_cap_DC_ABI_TAY S2028, P01-intr_le_load_DC_ABI_TAY S2028, P01-intr_cap_DC_ABI_TAY S2029, P01-intr_le_load_DC_ABI_TAY S2029, P01-intr_cap_DC_DFW_KAU S2026, P01-intr_le_load_DC_DFW_KAU S2026, P01-intr_cap_DC_DFW_KAU S2027, P01-intr_le_load_DC_DFW_KAU S2027, P01-intr_cap_DC_DFW_KAU S2028, P01-intr_le_load_DC_DFW_KAU S2028, P01-intr_cap_DC_DFW_KAU S2029, P01-intr_le_load_DC_DFW_KAU S2029, P01-intr_cap_DC_PEC_REE S2026, P01-intr_le_load_DC_PEC_REE S2026, P01-intr_cap_DC_PEC_REE S2027, P01-intr_le_load_DC_PEC_REE S2027, P01-intr_cap_DC_PEC_REE S2028, P01-intr_le_load_DC_PEC_REE S2028, P01-intr_cap_DC_PEC_REE S2029, P01-intr_le_load_DC_PEC_REE S2029, P01-online_monotone_DC_ABI_TAY S2027, P01-online_monotone_DC_ABI_TAY S2028, P01-online_monotone_DC_ABI_TAY S2029, P01-online_monotone_DC_DFW_KAU S2027, P01-online_monotone_DC_DFW_KAU S2028, P01-online_monotone_DC_DFW_KAU S2029, P01-online_monotone_DC_PEC_REE S2027, P01-online_monotone_DC_PEC_REE S2028, P01-online_monotone_DC_PEC_REE S2029, D24-no_harm_existing_customers were not assigned to the network.

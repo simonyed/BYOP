@@ -1,0 +1,496 @@
+{
+  "run_id": "rearch_S5_GK_20261020T231801Z",
+  "case_id": "S5_GK",
+  "case_group": "S5_GK",
+  "gcfg": {
+    "s0_calibrate": false,
+    "s0_cal_file": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/rearch_s0repair/S0CAL_minuplift_2026_2031/S0_CALIBRATION.csv",
+    "interrupt_cap": 0.005,
+    "no_harm": true,
+    "base_assets": "main",
+    "setting": "G-K",
+    "relax": [],
+    "case": "base",
+    "gas_case": "base",
+    "pclr_hours": 200.0,
+    "pclr_max_consec_h": 12.0,
+    "s2_iter": 3,
+    "competing": 1.0,
+    "line_lead": null,
+    "offer_tol": 0.001,
+    "clusters": "64s",
+    "s2_modes": [
+      "GO_F",
+      "GO_C",
+      "GF",
+      "IS"
+    ]
+  },
+  "cfg": {
+    "bg_traj": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/inputs/load/background_load_growth_states_AEO2023_reference.csv",
+    "tv_share_byop": 1.0,
+    "tv_share_public": 1.0,
+    "periods": "annual",
+    "start": 2026,
+    "end": 2029,
+    "decision_year": 2026,
+    "years": 1,
+    "cost_basis": "repaired",
+    "public_subsidy": "without",
+    "tariff": "energy",
+    "reuse": "on",
+    "reuse_case": "base",
+    "frac_cod": true,
+    "flex": false,
+    "poi_lead": 0,
+    "byop_case": "base",
+    "public_case": "base",
+    "byop_techs": [
+      "RICE",
+      "SOFC_NG"
+    ],
+    "sample_weeks": 26,
+    "bg_growth": 0.0,
+    "line_exp": true,
+    "erm15": false,
+    "threads": 16,
+    "social_r": 0.02,
+    "private_wacc": 0.07,
+    "v": 2800000.0,
+    "v_private": null,
+    "dem_scale": 1.0,
+    "smoke": false
+  },
+  "argv": [
+    "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/model/rearch_mech.py",
+    "--case-id",
+    "S5_GK",
+    "--out",
+    "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/rearch_p0/S5_GK",
+    "--sample-weeks",
+    "26",
+    "--setting",
+    "G-K",
+    "--erm-cal",
+    "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/rearch/ERM_CAL_GK/erm02_calibration.json",
+    "--start",
+    "2026",
+    "--end",
+    "2029",
+    "--threads",
+    "16",
+    "--base-assets",
+    "main",
+    "--s0-cal-file",
+    "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/rearch_s0repair/S0CAL_minuplift_2026_2031/S0_CALIBRATION.csv",
+    "--interrupt-cap",
+    "0.005",
+    "--no-harm",
+    "on"
+  ],
+  "checks": {
+    "true_LP": true,
+    "all_optimal": true,
+    "S1_zero_equals_S0": true,
+    "no_load_shed": false,
+    "served_le_requested": true,
+    "dc_energy_balance": false,
+    "S2_off_equals_S1": true,
+    "online_IT_monotone": true,
+    "no_harm_existing_customers": true,
+    "interruption_within_cap": true,
+    "lex_presolve_optimal": true,
+    "poi_flow_le_equipment": true,
+    "no_service_before_grid_or_byop": true,
+    "s2_consistent": true,
+    "private_stage_LP": true
+  },
+  "solves": {
+    "S0": {
+      "tag": "S0",
+      "status": "ok",
+      "termination": "optimal",
+      "objective": 39543718231.97642,
+      "seconds": 275.3,
+      "n_vars": 1312755,
+      "n_cons": 2726389,
+      "integer_vars": 0,
+      "erm_dc_mode": "B",
+      "erm_poi_coeff_snapshot0": null
+    },
+    "S1_EARLIEST": {
+      "tag": "S1_EARLIEST",
+      "status": "ok",
+      "termination": "optimal",
+      "objective": 37200397622.66205,
+      "seconds": 388.4,
+      "n_vars": 1322187,
+      "n_cons": 2768298,
+      "integer_vars": 0,
+      "erm_dc_mode": "B",
+      "erm_poi_coeff_snapshot0": null,
+      "lex": {
+        "tag": "S1_EARLIEST",
+        "status": 2,
+        "optimal": true,
+        "seconds": 83.8,
+        "levels": [
+          {
+            "stage": "A1",
+            "year": 2026,
+            "value": 0.0
+          },
+          {
+            "stage": "A1",
+            "year": 2027,
+            "value": 250.0
+          },
+          {
+            "stage": "A1",
+            "year": 2028,
+            "value": 673.4003814808393
+          },
+          {
+            "stage": "A2",
+            "year": 2028,
+            "value": 1.0
+          },
+          {
+            "stage": "A1",
+            "year": 2029,
+            "value": 1041.938004688721
+          },
+          {
+            "stage": "A2",
+            "year": 2029,
+            "value": 1.0
+          }
+        ],
+        "eligibility": [
+          {
+            "year": 2026,
+            "R": {
+              "ABI_TAY": 0.0,
+              "DFW_KAU": 0.0,
+              "PEC_REE": 0.0
+            },
+            "eligible": []
+          },
+          {
+            "year": 2027,
+            "R": {
+              "ABI_TAY": 250.0,
+              "DFW_KAU": 0.0,
+              "PEC_REE": 0.0
+            },
+            "eligible": [
+              "ABI_TAY"
+            ]
+          },
+          {
+            "year": 2028,
+            "R": {
+              "ABI_TAY": 500.0,
+              "DFW_KAU": 173.4,
+              "PEC_REE": 0.0
+            },
+            "eligible": [
+              "ABI_TAY",
+              "DFW_KAU"
+            ]
+          },
+          {
+            "year": 2029,
+            "R": {
+              "ABI_TAY": 868.282,
+              "DFW_KAU": 173.656,
+              "PEC_REE": 0.0
+            },
+            "eligible": [
+              "ABI_TAY",
+              "DFW_KAU"
+            ]
+          }
+        ]
+      }
+    },
+    "S1_ECON": {
+      "tag": "S1_ECON",
+      "status": "ok",
+      "termination": "optimal",
+      "objective": 36784506124.37029,
+      "seconds": 285.6,
+      "n_vars": 1323531,
+      "n_cons": 2772334,
+      "integer_vars": 0,
+      "erm_dc_mode": "B",
+      "erm_poi_coeff_snapshot0": null
+    },
+    "S1_zero": {
+      "tag": "S1_zero",
+      "status": "ok",
+      "termination": "optimal",
+      "objective": 39543719218.66763,
+      "seconds": 330.1,
+      "n_vars": 1323531,
+      "n_cons": 2772334,
+      "integer_vars": 0,
+      "erm_dc_mode": "B",
+      "erm_poi_coeff_snapshot0": null
+    },
+    "S3": {
+      "tag": "S3",
+      "status": "ok",
+      "termination": "optimal",
+      "objective": 27829356932.74758,
+      "seconds": 311.1,
+      "n_vars": 1335308,
+      "n_cons": 2789308,
+      "integer_vars": 0,
+      "erm_dc_mode": "B",
+      "erm_poi_coeff_snapshot0": null
+    },
+    "S3_mS1": {
+      "tag": "S3_mS1",
+      "status": "ok",
+      "termination": "optimal",
+      "objective": 35298770264.21884,
+      "seconds": 386.0,
+      "n_vars": 1335308,
+      "n_cons": 2789308,
+      "integer_vars": 0,
+      "erm_dc_mode": "B",
+      "erm_poi_coeff_snapshot0": null
+    },
+    "S2": {
+      "tag": "S2",
+      "status": "ok",
+      "termination": "optimal",
+      "objective": 27232373166.495495,
+      "seconds": 354.8,
+      "n_vars": 1329915,
+      "n_cons": 2784794,
+      "integer_vars": 0,
+      "erm_dc_mode": "B",
+      "erm_poi_coeff_snapshot0": null
+    },
+    "S2_off": {
+      "tag": "S2_off",
+      "status": "ok",
+      "termination": "optimal",
+      "objective": 36784505325.30926,
+      "seconds": 301.2,
+      "n_vars": 1327227,
+      "n_cons": 2779866,
+      "integer_vars": 0,
+      "erm_dc_mode": "B",
+      "erm_poi_coeff_snapshot0": null
+    },
+    "S3_mS2": {
+      "tag": "S3_mS2",
+      "status": "ok",
+      "termination": "optimal",
+      "objective": 27829750199.61938,
+      "seconds": 351.6,
+      "n_vars": 1335308,
+      "n_cons": 2789308,
+      "integer_vars": 0,
+      "erm_dc_mode": "B",
+      "erm_poi_coeff_snapshot0": null
+    }
+  },
+  "status": "CASE_CHECK_FAIL",
+  "sites": {
+    "DFW_KAU": {
+      "site": "DFW_KAU",
+      "name": "Kaufman County co-location site (Talty / Post Oak Bend)",
+      "bus": "p630 7",
+      "substation": "40319",
+      "sub_dist_deg": 0.08646531096341367,
+      "parent_rule": "nearest_ERCOT_TAMU_substation",
+      "lat": 32.7,
+      "lon": -96.38,
+      "E0": 200.0,
+      "cod0": 2026.5,
+      "preapproved": false,
+      "U_max": 1300.0,
+      "U_lead": 4.0,
+      "U_cost": 160000.0,
+      "proc": 2028.0,
+      "pclr": 500.0,
+      "pclr_off": 0.0,
+      "gas_level": "L1",
+      "mdq": 250000.0,
+      "lat_lead": 1.0,
+      "lat_cost": 60000.0,
+      "profile": "STUDY_REQUEST_A",
+      "confidence": "C",
+      "proc0": 2028.0
+    },
+    "ABI_TAY": {
+      "site": "ABI_TAY",
+      "name": "Abilene campus area (Lancium Clean Campus)",
+      "bus": "p610 1",
+      "substation": "39951",
+      "sub_dist_deg": 0.007689603370779915,
+      "parent_rule": "nearest_ERCOT_TAMU_substation",
+      "lat": 32.37,
+      "lon": -99.82,
+      "E0": 1000.0,
+      "cod0": 2026.5,
+      "preapproved": true,
+      "U_max": 1000.0,
+      "U_lead": 4.0,
+      "U_cost": 160000.0,
+      "proc": 2028.0,
+      "pclr": 500.0,
+      "pclr_off": 0.0,
+      "gas_level": "L1",
+      "mdq": 250000.0,
+      "lat_lead": 1.0,
+      "lat_cost": 30000.0,
+      "profile": "STUDY_REQUEST_A",
+      "confidence": "B",
+      "proc0": 2028.0
+    },
+    "PEC_REE": {
+      "site": "PEC_REE",
+      "name": "Pecos campus area (Reeves County)",
+      "bus": "p620 0",
+      "substation": "39770",
+      "sub_dist_deg": 0.33528220948925336,
+      "parent_rule": "nearest_ERCOT_TAMU_substation",
+      "lat": 31.42,
+      "lon": -103.49,
+      "E0": 0.0,
+      "cod0": null,
+      "preapproved": false,
+      "U_max": 1300.0,
+      "U_lead": 5.0,
+      "U_cost": 250000.0,
+      "proc": 2028.0,
+      "pclr": 500.0,
+      "pclr_off": 0.0,
+      "gas_level": "L1",
+      "mdq": 250000.0,
+      "lat_lead": 0.5,
+      "lat_cost": 30000.0,
+      "profile": "STUDY_REQUEST_A",
+      "confidence": "B",
+      "proc0": 2028.0
+    }
+  },
+  "erm_cal": {
+    "2026": 0.1499999999999999,
+    "2027": 0.1499999999999999,
+    "2028": 0.11220251615032173,
+    "2029": 0.05283521575940209,
+    "2030": 0.03865724382475122,
+    "2031": 0.013369741383814748
+  },
+  "baseline": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu/baseline_2025_tamu_prepared.nc",
+  "baseline_sha256": "19034285be0aa9b9906ab5b0e03778f3a16e7c1c39e97ac97b368d9097cafadb",
+  "inputs_sha256": {
+    "POI_REGISTER.csv": "d2f37909d559e16526ca47fb0794ecbe0cc1ae4c4ff0913afadb32fbef70a1f3",
+    "POI_REQUESTS.csv": "737d808551f9220ef0dc5ff4ff1fbffef9731659829a619c2737568688a692dd",
+    "GRID_PROJECTS.csv": "bb05fdc16768852436e792186067b88e931f9055fd35674b5394e5ba13c5e5d8",
+    "TECH-01_technologies_DRAFT.csv": "127e5a97b5177eb4242d4df33c516ddf09d480a4d5d1da4523dd75605ab99eea",
+    "state_pue_2022_2050.csv": "28c4da910027720547f151777d83225944cb88d78abc60e540f477f35a577c5c",
+    "yearly_task_parameters_2022_2050.csv": "1206faa69dd9f46808026e5ab2e548b496a58e0dcf9d4fafe9ab0a54f27f88c7"
+  },
+  "code_sha256": {
+    "rearch_mech.py": "ab6754a1e573c0bd24ab9b6491241505f2554295685a97e2140b30d032f52605",
+    "v240_mech.py": "7dc50ce788939ffd5b1b796640866cc74e97c5a0a7d2896b879ffb016afdc0bf",
+    "v250_mech.py": "8809a2dcf5921bc4134c638477e2fe574e657ffbf1805ff1bf75f1db5ad9b794",
+    "wp2_ercot_s0_s1.py": "314830e337c5c4b63ef4992f5fca6cee741240d3e015c6599902f76fec93c6a9",
+    "wp2_ercot_s1_real.py": "1469c8d6c8c8f810330a3030ae18dbc46072ef809e9f7d7591e8fab2e7a2e480"
+  },
+  "interrupt_price": {
+    "ABI_TAY|2026": {
+      "e_unit_MWh_per_MW_IT": 4953.670463978346,
+      "c_interrupt_USD_MWh": 565.2374376456382,
+      "v": 2800000.0
+    },
+    "ABI_TAY|2027": {
+      "e_unit_MWh_per_MW_IT": 4860.591118943702,
+      "c_interrupt_USD_MWh": 576.0616212063715,
+      "v": 2800000.0
+    },
+    "ABI_TAY|2028": {
+      "e_unit_MWh_per_MW_IT": 4771.006803666356,
+      "c_interrupt_USD_MWh": 586.878224078049,
+      "v": 2800000.0
+    },
+    "ABI_TAY|2029": {
+      "e_unit_MWh_per_MW_IT": 4677.815663512764,
+      "c_interrupt_USD_MWh": 598.5699739816948,
+      "v": 2800000.0
+    },
+    "DFW_KAU|2026": {
+      "e_unit_MWh_per_MW_IT": 4953.670463978346,
+      "c_interrupt_USD_MWh": 565.2374376456382,
+      "v": 2800000.0
+    },
+    "DFW_KAU|2027": {
+      "e_unit_MWh_per_MW_IT": 4860.591118943702,
+      "c_interrupt_USD_MWh": 576.0616212063715,
+      "v": 2800000.0
+    },
+    "DFW_KAU|2028": {
+      "e_unit_MWh_per_MW_IT": 4771.006803666356,
+      "c_interrupt_USD_MWh": 586.878224078049,
+      "v": 2800000.0
+    },
+    "DFW_KAU|2029": {
+      "e_unit_MWh_per_MW_IT": 4677.815663512764,
+      "c_interrupt_USD_MWh": 598.5699739816948,
+      "v": 2800000.0
+    },
+    "PEC_REE|2026": {
+      "e_unit_MWh_per_MW_IT": 4953.670463978346,
+      "c_interrupt_USD_MWh": 565.2374376456382,
+      "v": 2800000.0
+    },
+    "PEC_REE|2027": {
+      "e_unit_MWh_per_MW_IT": 4860.591118943702,
+      "c_interrupt_USD_MWh": 576.0616212063715,
+      "v": 2800000.0
+    },
+    "PEC_REE|2028": {
+      "e_unit_MWh_per_MW_IT": 4771.006803666356,
+      "c_interrupt_USD_MWh": 586.878224078049,
+      "v": 2800000.0
+    },
+    "PEC_REE|2029": {
+      "e_unit_MWh_per_MW_IT": 4677.815663512764,
+      "c_interrupt_USD_MWh": 598.5699739816948,
+      "v": 2800000.0
+    }
+  },
+  "s0_calibration": {
+    "file": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/rearch_s0repair/S0CAL_minuplift_2026_2031/S0_CALIBRATION.csv",
+    "sha256": "74044bb384909fe49b159536fd7424b23cad5a302111dbef546cff01bc5d097b",
+    "n": 7,
+    "MW": 571.1370624017625
+  },
+  "base_assets": [
+    {
+      "asset": "DWB_Stage_2",
+      "case": "MAIN",
+      "bus0": "p620 4",
+      "bus1": "p620 0",
+      "ISD": 2026.49,
+      "MW": 1000.0,
+      "build_period": 2026,
+      "status": "COMMON_BASELINE_ASSET",
+      "tpit": "69709;102815"
+    }
+  ],
+  "grid_projects": null,
+  "competing": {
+    "share": 1.0,
+    "rule": "equal to the study request at each POI parent bus (STYLIZED)"
+  },
+  "pypsa": "1.3.0",
+  "timestamp_utc": "2026-10-21T00:11:06.888735+00:00"
+}

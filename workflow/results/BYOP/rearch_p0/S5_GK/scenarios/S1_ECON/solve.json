@@ -1,0 +1,21 @@
+{
+ "case_id": "S5_GK",
+ "case_group": "S5_GK",
+ "run_id": "rearch_S5_GK_20261020T231801Z",
+ "scenario": "S1_ECON",
+ "relax": [],
+ "setting": "G-K",
+ "solve": {
+  "tag": "S1_ECON",
+  "status": "ok",
+  "termination": "optimal",
+  "objective": 36784506124.37029,
+  "seconds": 285.6,
+  "n_vars": 1323531,
+  "n_cons": 2772334,
+  "integer_vars": 0,
+  "erm_dc_mode": "B",
+  "erm_poi_coeff_snapshot0": null
+ },
+ "timestamp_utc": "2026-10-20T23:34:41.953551+00:00"
+}
