@@ -1,0 +1,21 @@
+{
+ "case_id": "R2_GU",
+ "case_group": "R2_GU",
+ "run_id": "rearch_R2_GU_20261021T003139Z",
+ "scenario": "S3_mS2",
+ "relax": [],
+ "setting": "G-U",
+ "solve": {
+  "tag": "S3_mS2",
+  "status": "ok",
+  "termination": "optimal",
+  "objective": 32369065831.54429,
+  "seconds": 1718.3,
+  "n_vars": 3416097,
+  "n_cons": 5993962,
+  "integer_vars": 0,
+  "erm_dc_mode": "B",
+  "erm_poi_coeff_snapshot0": null
+ },
+ "timestamp_utc": "2026-10-21T07:44:51.154207+00:00"
+}

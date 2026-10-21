@@ -1,0 +1,21 @@
+{
+ "case_id": "R2_GU",
+ "case_group": "R2_GU",
+ "run_id": "rearch_R2_GU_20261021T003139Z",
+ "scenario": "S2",
+ "relax": [],
+ "setting": "G-U",
+ "solve": {
+  "tag": "S2",
+  "status": "ok",
+  "termination": "optimal",
+  "objective": 31794000382.780216,
+  "seconds": 1572.7,
+  "n_vars": 3399940,
+  "n_cons": 5981808,
+  "integer_vars": 0,
+  "erm_dc_mode": "B",
+  "erm_poi_coeff_snapshot0": null
+ },
+ "timestamp_utc": "2026-10-21T06:51:46.688361+00:00"
+}

@@ -1,0 +1,165 @@
+{
+ "case_id": "R2_GU",
+ "case_group": "R2_GU",
+ "run_id": "rearch_R2_GU_20261021T003139Z",
+ "scenario": "S1E_xALL",
+ "relax": [
+  "POI",
+  "UP",
+  "RA",
+  "PROC"
+ ],
+ "setting": "G-U",
+ "solve": {
+  "tag": "S1E_xALL",
+  "status": "ok",
+  "termination": "optimal",
+  "objective": 13169886441.763807,
+  "seconds": 1987.0,
+  "n_vars": 4220071,
+  "n_cons": 7791873,
+  "integer_vars": 0,
+  "erm_dc_mode": "B",
+  "erm_poi_coeff_snapshot0": null,
+  "lex": {
+   "tag": "S1E_xALL",
+   "status": 2,
+   "optimal": true,
+   "seconds": 185.6,
+   "levels": [
+    {
+     "stage": "A1",
+     "year": 2026,
+     "value": 0.0
+    },
+    {
+     "stage": "A1",
+     "year": 2027,
+     "value": 750.0
+    },
+    {
+     "stage": "A2",
+     "year": 2027,
+     "value": 1.0
+    },
+    {
+     "stage": "A1",
+     "year": 2028,
+     "value": 1500.0
+    },
+    {
+     "stage": "A2",
+     "year": 2028,
+     "value": 1.0
+    },
+    {
+     "stage": "A1",
+     "year": 2029,
+     "value": 3000.0
+    },
+    {
+     "stage": "A2",
+     "year": 2029,
+     "value": 1.0
+    },
+    {
+     "stage": "A1",
+     "year": 2030,
+     "value": 3000.0
+    },
+    {
+     "stage": "A2",
+     "year": 2030,
+     "value": 1.0
+    },
+    {
+     "stage": "A1",
+     "year": 2031,
+     "value": 3000.0
+    },
+    {
+     "stage": "A2",
+     "year": 2031,
+     "value": 1.0
+    }
+   ],
+   "eligibility": [
+    {
+     "year": 2026,
+     "R": {
+      "ABI_TAY": 0.0,
+      "DFW_KAU": 0.0,
+      "PEC_REE": 0.0
+     },
+     "eligible": []
+    },
+    {
+     "year": 2027,
+     "R": {
+      "ABI_TAY": 250.0,
+      "DFW_KAU": 250.0,
+      "PEC_REE": 250.0
+     },
+     "eligible": [
+      "ABI_TAY",
+      "DFW_KAU",
+      "PEC_REE"
+     ]
+    },
+    {
+     "year": 2028,
+     "R": {
+      "ABI_TAY": 500.0,
+      "DFW_KAU": 500.0,
+      "PEC_REE": 500.0
+     },
+     "eligible": [
+      "ABI_TAY",
+      "DFW_KAU",
+      "PEC_REE"
+     ]
+    },
+    {
+     "year": 2029,
+     "R": {
+      "ABI_TAY": 1000.0,
+      "DFW_KAU": 1000.0,
+      "PEC_REE": 1000.0
+     },
+     "eligible": [
+      "ABI_TAY",
+      "DFW_KAU",
+      "PEC_REE"
+     ]
+    },
+    {
+     "year": 2030,
+     "R": {
+      "ABI_TAY": 1000.0,
+      "DFW_KAU": 1000.0,
+      "PEC_REE": 1000.0
+     },
+     "eligible": [
+      "ABI_TAY",
+      "DFW_KAU",
+      "PEC_REE"
+     ]
+    },
+    {
+     "year": 2031,
+     "R": {
+      "ABI_TAY": 1000.0,
+      "DFW_KAU": 1000.0,
+      "PEC_REE": 1000.0
+     },
+     "eligible": [
+      "ABI_TAY",
+      "DFW_KAU",
+      "PEC_REE"
+     ]
+    }
+   ]
+  }
+ },
+ "timestamp_utc": "2026-10-21T04:43:14.229587+00:00"
+}

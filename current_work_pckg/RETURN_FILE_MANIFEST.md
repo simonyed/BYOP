@@ -148,7 +148,76 @@
 
 ## 9. 未生成的文件
 
-- `current_work_pckg/EXECUTION_REPORT_FOR_PUBLISHER.md`：工作包最终报告，R2 正式重算完成后编写。
 - `results/BYOP/rearch/R1_GU/`：按研究者决定不运行（DEV_GU 不含延迟归因）。
-- `results/BYOP/rearch_p0/`（S5 验收与 R2 正式结果）：运行中或尚未开始。
-- 非计划中断价格计算表、PCLR 与非计划中断的分账记录：由 P0 代码在 S5/R2 中输出（manifest 中的 `interrupt_price`，`poi_ledger` 中的 `interrupt_MWh` / `curtailed_MWh`），尚未生成。
+- 非计划中断价格计算表与分账记录：已在第 10 节 `_collected/` 中生成。
+
+## 10. P0 修正后的正式结果（`rearch_p0`，2026-10-21）
+
+| 文件路径 | 用途 | 生成状态 | GitHub 状态 | 算例 / run | 大小 | SHA-256（前 16 位） |
+|---|---|---|---|---|---|---|
+| `current_work_pckg/EXECUTION_REPORT_FOR_PUBLISHER.md` | 工作包最终执行报告 | 已生成 | 随本次提交同步 | — | 16.5 KB | 6aa4d3343123bf0a |
+| `workflow/results/BYOP/rearch_p0/S5_GK/case_manifest.json` | 验收算例输出 | 已生成 | 已同步 | S5_GK / rearch_S5_GK_20261020T231801Z | 13.2 KB | d9583b414ea65b07 |
+| `workflow/results/BYOP/rearch_p0/S5_GK/scenario_summary.csv` | 验收算例输出 | 已生成 | 已同步 | S5_GK / rearch_S5_GK_20261020T231801Z | 6.2 KB | d1c7004aab36c182 |
+| `workflow/results/BYOP/rearch_p0/S5_GK/service.csv` | 验收算例输出 | 已生成 | 已同步 | S5_GK / rearch_S5_GK_20261020T231801Z | 22.5 KB | d098173637a55cb0 |
+| `workflow/results/BYOP/rearch_p0/S5_GK/ledger.csv` | 验收算例输出 | 已生成 | 已同步 | S5_GK / rearch_S5_GK_20261020T231801Z | 192.7 KB | 9f636f017ac60801 |
+| `workflow/results/BYOP/rearch_p0/S5_GK/poi_ledger.csv` | 验收算例输出 | 已生成 | 已同步 | S5_GK / rearch_S5_GK_20261020T231801Z | 21.6 KB | d1f42e785902f92d |
+| `workflow/results/BYOP/rearch_p0/S5_GK/poi_upgrade_ledger.csv` | 验收算例输出 | 已生成 | 已同步 | S5_GK / rearch_S5_GK_20261020T231801Z | 0.0 KB | 01ba4719c80b6fe9 |
+| `workflow/results/BYOP/rearch_p0/S5_GK/S1_GRID_OFFER.csv` | 验收算例输出 | 已生成 | 已同步 | S5_GK / rearch_S5_GK_20261020T231801Z | 0.6 KB | 355ea132a33c15b8 |
+| `workflow/results/BYOP/rearch_p0/S5_GK/S2_developer_modes.csv` | 验收算例输出 | 已生成 | 已同步 | S5_GK / rearch_S5_GK_20261020T231801Z | 4.0 KB | fac26218fe0aa38f |
+| `workflow/results/BYOP/rearch_p0/S5_GK/S2_consistency.csv` | 验收算例输出 | 已生成 | 已同步 | S5_GK / rearch_S5_GK_20261020T231801Z | 0.9 KB | 5ad7b928f729fc8f |
+| `workflow/results/BYOP/rearch_p0/S5_GK/lex_S1_EARLIEST.json` | 验收算例输出 | 已生成 | 已同步 | S5_GK / rearch_S5_GK_20261020T231801Z | 1.1 KB | edda2f601461dfdf |
+| `workflow/results/BYOP/rearch_p0/S5_GK/S0_shed_by_snapshot_frozen.csv.gz` | 验收算例输出 | 已生成 | 已同步 | S5_GK / rearch_S5_GK_20261020T231801Z | 239.4 KB | 86a58c6bd4a38640 |
+| `workflow/results/BYOP/rearch_p0/S5_GK/shed_by_bus_S0.csv` | 验收算例输出 | 已生成 | 已同步 | S5_GK / rearch_S5_GK_20261020T231801Z | 0.9 KB | b83c7be4b8116bc1 |
+| `workflow/results/BYOP/rearch_p0/S5_GK/events.jsonl` | 验收算例输出 | 已生成 | 已同步 | S5_GK / rearch_S5_GK_20261020T231801Z | 2.5 KB | 5179383d1a25f058 |
+| `workflow/results/BYOP/rearch_p0/R2_GW/case_manifest.json` | 正式结果 | 已生成 | 随本次提交同步 | R2_GW / rearch_R2_GW_20261021T001537Z | 30.7 KB | 8d6bb7dab6772436 |
+| `workflow/results/BYOP/rearch_p0/R2_GW/scenario_summary.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GW / rearch_R2_GW_20261021T001537Z | 8.9 KB | 7f9b6e5b4dec7f58 |
+| `workflow/results/BYOP/rearch_p0/R2_GW/service.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GW / rearch_R2_GW_20261021T001537Z | 60.5 KB | 77b08db9ac351d90 |
+| `workflow/results/BYOP/rearch_p0/R2_GW/ledger.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GW / rearch_R2_GW_20261021T001537Z | 480.6 KB | 40f6ee4a13c5fe73 |
+| `workflow/results/BYOP/rearch_p0/R2_GW/poi_ledger.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GW / rearch_R2_GW_20261021T001537Z | 55.9 KB | f7676d6b3b6053ef |
+| `workflow/results/BYOP/rearch_p0/R2_GW/poi_upgrade_ledger.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GW / rearch_R2_GW_20261021T001537Z | 6.5 KB | 7333f70b55b93b6f |
+| `workflow/results/BYOP/rearch_p0/R2_GW/S1_GRID_OFFER.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GW / rearch_R2_GW_20261021T001537Z | 1.0 KB | 47ebafa6b55814d0 |
+| `workflow/results/BYOP/rearch_p0/R2_GW/S2_developer_modes.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GW / rearch_R2_GW_20261021T001537Z | 5.2 KB | 18f2326c6b26adeb |
+| `workflow/results/BYOP/rearch_p0/R2_GW/S2_consistency.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GW / rearch_R2_GW_20261021T001537Z | 1.5 KB | 834bd8475fbabc5c |
+| `workflow/results/BYOP/rearch_p0/R2_GW/lex_S1_EARLIEST.json` | 正式结果 | 已生成 | 随本次提交同步 | R2_GW / rearch_R2_GW_20261021T001537Z | 1.6 KB | a67a402e9c850eb7 |
+| `workflow/results/BYOP/rearch_p0/R2_GW/S0_shed_by_snapshot_frozen.csv.gz` | 正式结果 | 已生成 | 已同步 | R2_GW / rearch_R2_GW_20261021T001537Z | 264.2 KB | dc1559987a596297 |
+| `workflow/results/BYOP/rearch_p0/R2_GW/shed_by_bus_S0.csv` | 正式结果 | 已生成 | 已同步 | R2_GW / rearch_R2_GW_20261021T001537Z | 1.1 KB | 3cb12c5f894b5dd9 |
+| `workflow/results/BYOP/rearch_p0/R2_GW/events.jsonl` | 正式结果 | 已生成 | 已同步 | R2_GW / rearch_R2_GW_20261021T001537Z | 3.7 KB | 68b9ce78e478a741 |
+| `workflow/results/BYOP/rearch_p0/R2_GK/case_manifest.json` | 正式结果 | 已生成 | 随本次提交同步 | R2_GK / rearch_R2_GK_20261021T003139Z | 30.7 KB | a3428420a2c5c290 |
+| `workflow/results/BYOP/rearch_p0/R2_GK/scenario_summary.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GK / rearch_R2_GK_20261021T003139Z | 10.0 KB | 1e878b661afeb024 |
+| `workflow/results/BYOP/rearch_p0/R2_GK/service.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GK / rearch_R2_GK_20261021T003139Z | 59.4 KB | 83392ab806312cfb |
+| `workflow/results/BYOP/rearch_p0/R2_GK/ledger.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GK / rearch_R2_GK_20261021T003139Z | 577.4 KB | ec4591474d056723 |
+| `workflow/results/BYOP/rearch_p0/R2_GK/poi_ledger.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GK / rearch_R2_GK_20261021T003139Z | 55.5 KB | a08b29bc7f371293 |
+| `workflow/results/BYOP/rearch_p0/R2_GK/poi_upgrade_ledger.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GK / rearch_R2_GK_20261021T003139Z | 6.2 KB | adac078134e0388c |
+| `workflow/results/BYOP/rearch_p0/R2_GK/S1_GRID_OFFER.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GK / rearch_R2_GK_20261021T003139Z | 1.0 KB | 340bbeca458c04e1 |
+| `workflow/results/BYOP/rearch_p0/R2_GK/S2_developer_modes.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GK / rearch_R2_GK_20261021T003139Z | 5.2 KB | 77a2082b5b464c17 |
+| `workflow/results/BYOP/rearch_p0/R2_GK/S2_consistency.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GK / rearch_R2_GK_20261021T003139Z | 1.5 KB | 8164fe3a9e9505d3 |
+| `workflow/results/BYOP/rearch_p0/R2_GK/lex_S1_EARLIEST.json` | 正式结果 | 已生成 | 随本次提交同步 | R2_GK / rearch_R2_GK_20261021T003139Z | 1.6 KB | 94ac650a44b4fe64 |
+| `workflow/results/BYOP/rearch_p0/R2_GK/S0_shed_by_snapshot_frozen.csv.gz` | 正式结果 | 已生成 | 随本次提交同步 | R2_GK / rearch_R2_GK_20261021T003139Z | 283.7 KB | 957bec85135e7b7d |
+| `workflow/results/BYOP/rearch_p0/R2_GK/shed_by_bus_S0.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GK / rearch_R2_GK_20261021T003139Z | 1.3 KB | 1ceb08a2955af5cc |
+| `workflow/results/BYOP/rearch_p0/R2_GK/events.jsonl` | 正式结果 | 已生成 | 随本次提交同步 | R2_GK / rearch_R2_GK_20261021T003139Z | 3.7 KB | d00f507632cbe070 |
+| `workflow/results/BYOP/rearch_p0/R2_GU/case_manifest.json` | 正式结果 | 已生成 | 随本次提交同步 | R2_GU / rearch_R2_GU_20261021T003139Z | 31.4 KB | 8f89d5789edd20fc |
+| `workflow/results/BYOP/rearch_p0/R2_GU/scenario_summary.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GU / rearch_R2_GU_20261021T003139Z | 9.8 KB | b3526341106d4666 |
+| `workflow/results/BYOP/rearch_p0/R2_GU/service.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GU / rearch_R2_GU_20261021T003139Z | 59.6 KB | 2086527f1d3ba5ab |
+| `workflow/results/BYOP/rearch_p0/R2_GU/ledger.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GU / rearch_R2_GU_20261021T003139Z | 1039.2 KB | 06c5679e8fba1777 |
+| `workflow/results/BYOP/rearch_p0/R2_GU/poi_ledger.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GU / rearch_R2_GU_20261021T003139Z | 55.6 KB | e16d6470898b22be |
+| `workflow/results/BYOP/rearch_p0/R2_GU/poi_upgrade_ledger.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GU / rearch_R2_GU_20261021T003139Z | 6.2 KB | 132a4943e46946f9 |
+| `workflow/results/BYOP/rearch_p0/R2_GU/S1_GRID_OFFER.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GU / rearch_R2_GU_20261021T003139Z | 1.0 KB | cb4da7362a49a3a5 |
+| `workflow/results/BYOP/rearch_p0/R2_GU/S2_developer_modes.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GU / rearch_R2_GU_20261021T003139Z | 5.2 KB | 6e04b3c1c2f29a00 |
+| `workflow/results/BYOP/rearch_p0/R2_GU/S2_consistency.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GU / rearch_R2_GU_20261021T003139Z | 1.5 KB | 30abb75bdbf9f921 |
+| `workflow/results/BYOP/rearch_p0/R2_GU/lex_S1_EARLIEST.json` | 正式结果 | 已生成 | 随本次提交同步 | R2_GU / rearch_R2_GU_20261021T003139Z | 1.6 KB | 53abda242affce8b |
+| `workflow/results/BYOP/rearch_p0/R2_GU/S0_shed_by_snapshot_frozen.csv.gz` | 正式结果 | 已生成 | 随本次提交同步 | R2_GU / rearch_R2_GU_20261021T003139Z | 273.2 KB | 92f4b9993bac4840 |
+| `workflow/results/BYOP/rearch_p0/R2_GU/shed_by_bus_S0.csv` | 正式结果 | 已生成 | 随本次提交同步 | R2_GU / rearch_R2_GU_20261021T003139Z | 1.2 KB | e05e5627f1bf8298 |
+| `workflow/results/BYOP/rearch_p0/R2_GU/events.jsonl` | 正式结果 | 已生成 | 随本次提交同步 | R2_GU / rearch_R2_GU_20261021T003139Z | 3.7 KB | 889238d5448f7679 |
+| `workflow/results/BYOP/rearch_p0/_collected/POI_DELIVERABILITY_LEDGER.csv` | 正式汇总表 / 图 | 已生成 | 随本次提交同步 | — | 205.5 KB | f5a81f5b6e191bc7 |
+| `workflow/results/BYOP/rearch_p0/_collected/DELAY_ATTRIBUTION.csv` | 正式汇总表 / 图 | 已生成 | 随本次提交同步 | — | 9.9 KB | bf5bf4a5d28b9d5a |
+| `workflow/results/BYOP/rearch_p0/_collected/ASSET_COMMITMENT_LEDGER.csv` | 正式汇总表 / 图 | 已生成 | 随本次提交同步 | — | 749.0 KB | 6bb96e7263dda8c0 |
+| `workflow/results/BYOP/rearch_p0/_collected/SCENARIO_COMPARISON.csv` | 正式汇总表 / 图 | 已生成 | 随本次提交同步 | — | 21.8 KB | 6343a57ff20c6d59 |
+| `workflow/results/BYOP/rearch_p0/_collected/SCENARIO_DIFFERENCES.csv` | 正式汇总表 / 图 | 已生成 | 随本次提交同步 | — | 2.8 KB | 8b0ed5d46141c843 |
+| `workflow/results/BYOP/rearch_p0/_collected/GATE_CHECKS.csv` | 正式汇总表 / 图 | 已生成 | 随本次提交同步 | — | 5.5 KB | 533547d0effb1ade |
+| `workflow/results/BYOP/rearch_p0/_collected/MAXMIN_LEXIMIN_ACCEPTANCE.csv` | 正式汇总表 / 图 | 已生成 | 随本次提交同步 | — | 6.8 KB | b44127c752e4169f |
+| `workflow/results/BYOP/rearch_p0/_collected/INTERRUPTION_PRICE_TABLE.csv` | 正式汇总表 / 图 | 已生成 | 随本次提交同步 | — | 0.4 KB | bc65570332c22cf7 |
+| `workflow/results/BYOP/rearch_p0/_collected/INTERRUPTION_vs_PCLR_ACCOUNTS.csv` | 正式汇总表 / 图 | 已生成 | 随本次提交同步 | — | 1.0 KB | a9194c32a9b53d8d |
+| `workflow/results/BYOP/rearch_p0/_collected/served_trajectories.png` | 正式汇总表 / 图 | 已生成 | 随本次提交同步 | — | 235.8 KB | 1fb4ae401c40e9d4 |
+| `workflow/results/BYOP/rearch_p0/_collected/delay_attribution.png` | 正式汇总表 / 图 | 已生成 | 随本次提交同步 | — | 68.9 KB | 24d57a8ed70c55a2 |
+
+作废并存档的算例：`rearch_p0/R2_GK_ABORTED_competing600`、`R2_GU_ABORTED_competing600`（RA-D2f 原方案）；`rearch_s0repair/S0CAL_try1_REJECTED_economic_uplift`（第一次 S0 校准）。

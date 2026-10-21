@@ -23,7 +23,11 @@
 | `DECISION_LOG_REARCHITECTURE.md` | 空间、POI、气源、模式等决策及其状态 | 草稿，持续更新 |
 | `GITHUB_SYNC_EXECUTION_REPORT.md` | GitHub 同步规则检查与完善报告 | 完成（2026-10-20） |
 | `INTERIM_PROGRESS_REPORT_2026-10-20.md` | 中期进度：求解状态、S1 各场址服务量、DEV_GU（G-U）完整结果、发现的问题 | IN_PROGRESS（21:30 UTC 增补） |
-| `EXECUTION_REPORT_FOR_PUBLISHER.md` | 工作包要求的执行情况报告 | 尚未编写，主要算例完成后写入本文件夹 |
+| `EXECUTION_REPORT_FOR_PUBLISHER.md` | 工作包最终执行报告（P0 修正后 R2 正式结果） | 完成（2026-10-21） |
+| `BYOP_ERCOT_RUN_DECISION_AND_CORRECTION_PLAN_2026-10-20.md`、`BYOP_ERCOT_P0_RESEARCHER_DECISIONS_2026-10-20.md` | 研究者运行决策与 P0 决策 | 研究者提供 |
+| `P0_MODEL_CORRECTION_PROPOSAL.md` | P0 修正方案 | 已批准并实施 |
+| `POST_RUN_DIAGNOSTIC_REPORT_FOR_PUBLISHER.md` | 第一轮（BASELINE_DIAGNOSTIC）诊断报告 | 完成 |
+| `RETURN_FILE_MANIFEST.md` | 交付文件清单 | 完成 |
 
 参数来源登记表在 `workflow/byop/inputs/poi/SOURCE_EVIDENCE_REGISTER.csv`；运行说明在 `workflow/byop/README_REARCHITECTURE.md`。
 

@@ -1,0 +1,21 @@
+{
+ "case_id": "R2_GW",
+ "case_group": "R2_GW",
+ "run_id": "rearch_R2_GW_20261021T001537Z",
+ "scenario": "S1_ECON",
+ "relax": [],
+ "setting": "G-W",
+ "solve": {
+  "tag": "S1_ECON",
+  "status": "ok",
+  "termination": "optimal",
+  "objective": 29261631631.62447,
+  "seconds": 1014.0,
+  "n_vars": 2840300,
+  "n_cons": 5515126,
+  "integer_vars": 0,
+  "erm_dc_mode": "B",
+  "erm_poi_coeff_snapshot0": null
+ },
+ "timestamp_utc": "2026-10-21T01:13:34.908101+00:00"
+}

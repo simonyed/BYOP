@@ -1,0 +1,21 @@
+{
+ "case_id": "R2_GW",
+ "case_group": "R2_GW",
+ "run_id": "rearch_R2_GW_20261021T001537Z",
+ "scenario": "S3",
+ "relax": [],
+ "setting": "G-W",
+ "solve": {
+  "tag": "S3",
+  "status": "ok",
+  "termination": "optimal",
+  "objective": 19970628969.883335,
+  "seconds": 879.8,
+  "n_vars": 2865977,
+  "n_cons": 5548560,
+  "integer_vars": 0,
+  "erm_dc_mode": "B",
+  "erm_poi_coeff_snapshot0": null
+ },
+ "timestamp_utc": "2026-10-21T04:18:32.664429+00:00"
+}

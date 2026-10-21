@@ -1,0 +1,139 @@
+{
+ "tag": "S1E_xALL",
+ "status": 2,
+ "optimal": true,
+ "seconds": 156.2,
+ "levels": [
+  {
+   "stage": "A1",
+   "year": 2026,
+   "value": 0.0
+  },
+  {
+   "stage": "A1",
+   "year": 2027,
+   "value": 750.0
+  },
+  {
+   "stage": "A2",
+   "year": 2027,
+   "value": 1.0
+  },
+  {
+   "stage": "A1",
+   "year": 2028,
+   "value": 1500.0
+  },
+  {
+   "stage": "A2",
+   "year": 2028,
+   "value": 1.0
+  },
+  {
+   "stage": "A1",
+   "year": 2029,
+   "value": 3000.0
+  },
+  {
+   "stage": "A2",
+   "year": 2029,
+   "value": 1.0
+  },
+  {
+   "stage": "A1",
+   "year": 2030,
+   "value": 3000.0
+  },
+  {
+   "stage": "A2",
+   "year": 2030,
+   "value": 1.0
+  },
+  {
+   "stage": "A1",
+   "year": 2031,
+   "value": 3000.0
+  },
+  {
+   "stage": "A2",
+   "year": 2031,
+   "value": 1.0
+  }
+ ],
+ "eligibility": [
+  {
+   "year": 2026,
+   "R": {
+    "ABI_TAY": 0.0,
+    "DFW_KAU": 0.0,
+    "PEC_REE": 0.0
+   },
+   "eligible": []
+  },
+  {
+   "year": 2027,
+   "R": {
+    "ABI_TAY": 250.0,
+    "DFW_KAU": 250.0,
+    "PEC_REE": 250.0
+   },
+   "eligible": [
+    "ABI_TAY",
+    "DFW_KAU",
+    "PEC_REE"
+   ]
+  },
+  {
+   "year": 2028,
+   "R": {
+    "ABI_TAY": 500.0,
+    "DFW_KAU": 500.0,
+    "PEC_REE": 500.0
+   },
+   "eligible": [
+    "ABI_TAY",
+    "DFW_KAU",
+    "PEC_REE"
+   ]
+  },
+  {
+   "year": 2029,
+   "R": {
+    "ABI_TAY": 1000.0,
+    "DFW_KAU": 1000.0,
+    "PEC_REE": 1000.0
+   },
+   "eligible": [
+    "ABI_TAY",
+    "DFW_KAU",
+    "PEC_REE"
+   ]
+  },
+  {
+   "year": 2030,
+   "R": {
+    "ABI_TAY": 1000.0,
+    "DFW_KAU": 1000.0,
+    "PEC_REE": 1000.0
+   },
+   "eligible": [
+    "ABI_TAY",
+    "DFW_KAU",
+    "PEC_REE"
+   ]
+  },
+  {
+   "year": 2031,
+   "R": {
+    "ABI_TAY": 1000.0,
+    "DFW_KAU": 1000.0,
+    "PEC_REE": 1000.0
+   },
+   "eligible": [
+    "ABI_TAY",
+    "DFW_KAU",
+    "PEC_REE"
+   ]
+  }
+ ]
+}
