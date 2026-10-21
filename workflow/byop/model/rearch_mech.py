@@ -84,6 +84,16 @@ ML_POT = BP.INPUTS / 'grid/ERCOT_WIND_SOLAR_POTENTIAL.csv'
 ML_TECH = BP.INPUTS / 'tech/MAINLINE_V13_TECH_DEFAULTS.csv'
 ML_GASP = BP.INPUTS / 'tech/MAINLINE_V13_GAS_PRICES_2026_2031.csv'
 ML_TECHS = ['RICE', 'SOFC_NG', 'OCGT_aero', 'WIND', 'PV', 'BESS']
+# Stage B2 F1 (2026-10-21): ONE set of Gurobi LP options for every mainline solve path - the PyPSA / linopy main solve
+# (config solving.solver_options), the exported lexicographic pre-solve (lex_presolve) and the S2 joint developer LPs.
+# Before F1 the lexicographic model ran at Gurobi defaults (FeasibilityTol 1e-6) against a no-harm bound built from a
+# main solve at 1e-3, and was declared INFEASIBLE (B2 pilot_s01, 951ddb8b).
+MAINLINE_GUROBI_LP_OPTIONS = dict(Method=2, Crossover=0, BarConvTol=1e-5, FeasibilityTol=1e-3, OptimalityTol=1e-4, BarHomogeneous=1)
+# Stage B2 F2-b (researcher-approved package 2026-10-21): existing-customer load shed in the mainline formal LPs is priced at
+# the Brattle (2024) ERCOT-wide 1-hour VOLL, a planning reliability weight for 3-h snapshots (2024 USD, not re-inflated);
+# the B1 calibration constants S0CAL_SHED / S0CAL_COST and the non-mainline SHED_COST = 1e4 stay unchanged
+ML_VOLL = dict(F2_mainline_VOLL_USD_MWh=35685.0, VOLL_source='Brattle 2024, Value of Lost Load Study for the ERCOT Region, Table 17',
+               VOLL_source_year=2024, VOLL_duration_basis='1h ERCOT-wide outage; planning proxy for 3-h snapshots')
 ML_INPUTS = [ML_POI, ML_E0, ML_RPOOL, ML_COH, ML_RAMP, ML_POT, ML_TECH, ML_GASP]
 GAS_CARRIERS = {'CCGT', 'OCGT', 'gas_steam', 'reuse_pub', 'byop_R'} | {f'byop_{c}' for c in GAS_FIRED}
 RE_CAR = {'WIND': 'onwind', 'PV': 'solar'}
@@ -99,6 +109,7 @@ def configure_mainline(out):
     M.ZONE_STATE = {z: 'TX' for z in zones}
     M.LINE_LEADS = dict(V.LINE_LEADS_TPIT)
     w2.EXCLUDE_ZONES = []
+    M.SHED_COST = ML_VOLL['F2_mainline_VOLL_USD_MWh']      # F2-b: before any load_shed generator exists
     gp = pd.read_csv(ML_GASP)
     M.CFG.update(gas_by_year={int(r.year): float(r.gas_price_2025USD_per_MMBtu_HHV) for r in gp.itertuples()},
                  tech_v13=str(ML_TECH), firm_full_year=True)
@@ -1020,6 +1031,20 @@ def independent_it(s, p, pue):
     return (fixed + ups) / pue
 
 
+def gurobi_apply_options(gm, threads):
+    """F1: set the shared mainline LP options + Threads on an exported gurobipy model and return the values Gurobi
+    actually holds (read back with getParamInfo, so a silently ignored parameter is visible in the audit)"""
+    for k, v_ in MAINLINE_GUROBI_LP_OPTIONS.items():
+        gm.setParam(k, v_)
+    gm.setParam('Threads', int(threads))
+    return {k: gm.getParamInfo(k)[2] for k in list(MAINLINE_GUROBI_LP_OPTIONS) + ['Threads']}
+
+
+def ml_dev_solver_options(threads):
+    """F1: linopy / Gurobi options of the S2 joint developer LPs = the shared mainline options"""
+    return dict(MAINLINE_GUROBI_LP_OPTIONS, OutputFlag=0, Threads=int(threads))
+
+
 def lex_presolve(n, m):
     """P0-2 / D1 strict Speed-First grid-only base (S1_GRID_EARLIEST), stages A1/A2 per year as a Gurobi hierarchical
     multi-objective on the exported model (continuous LP; each level is fixed with a 1e-6 relative tolerance):
@@ -1033,7 +1058,7 @@ def lex_presolve(n, m):
     dc = STATE.get('dc', [])
     years = sorted({d['period'] for d in dc})
     gm = m.to_gurobipy()
-    gm.setParam('Threads', M.CFG['threads'])
+    params = gurobi_apply_options(gm, M.CFG['threads'])
     lab = lambda nm: int(m['Generator-p_nom'].sel(name=nm).labels.values.ravel()[0])
     var = lambda nm: gm.getVarByName(f'x{lab(nm)}')
     objs, info = [], []
@@ -1074,10 +1099,53 @@ def lex_presolve(n, m):
                 if R[d['zone']] > 1e-6:
                     m.add_constraints(m['Generator-p_nom'].sel(name=d['S']) >= val * R[d['zone']] * (1 - 1e-6) - 1e-3,
                                       name=f"P02-A2_{d['zone']}_{y}")
-    lex.update(status=int(gm.Status), optimal=ok, seconds=round(time.time() - t0, 1), levels=res, eligibility=info)
+    objn = []
+    if ok:
+        for i, (kind, y, _, _) in enumerate(objs):
+            gm.setParam('ObjNumber', i)
+            objn.append(dict(index=i, name=f'{kind}_{y}', ObjNVal=float(gm.ObjNVal)))
+    vio = {}
+    for a_ in ('ConstrVio', 'BoundVio', 'ObjVal'):
+        try:
+            vio[a_] = float(getattr(gm, a_))
+        except Exception:
+            vio[a_] = None
+    lex.update(status=int(gm.Status), status_name={2: 'OPTIMAL', 3: 'INFEASIBLE', 4: 'INF_OR_UNBD', 5: 'UNBOUNDED', 9: 'TIME_LIMIT',
+                                                    12: 'NUMERIC', 13: 'SUBOPTIMAL'}.get(int(gm.Status), 'OTHER'),
+               optimal=ok, seconds=round(time.time() - t0, 1), levels=res, eligibility=info, solver_params=params,
+               objective_values=objn, violations=vio, n_rows=int(gm.NumConstrs), n_cols=int(gm.NumVars),
+               n_int=int(gm.NumIntVars), n_objectives=len(objs))
     STATE['lex_log'] = lex
+    if STATE.get('out_dir'):      # written BEFORE a failure is raised, so the diagnostics survive a stopped case
+        Path(STATE['out_dir'], f"lex_{lex.get('tag', 'S1')}.json").write_text(json.dumps(lex, indent=1, default=str))
     if not ok:
-        raise RuntimeError(f'P0-2 lexicographic pre-solve not optimal (Gurobi status {gm.Status})')
+        raise RuntimeError(f"P0-2 lexicographic pre-solve not optimal (Gurobi status {gm.Status} = {lex['status_name']})")
+
+
+def lex_audit(levels, served, eligibility, tol_rel=1e-6, tol_abs=1e-3):
+    """F1 scientific check of the Speed-First hierarchy on the FINAL solution: A1_y total >= T*_y (1 - 1e-6) - 1e-3 and,
+    per eligible site, A2_y S[s,y] >= z*_y R[s,y] (1 - 1e-6) - 1e-3. served = {(site, year): MW IT}. Returns rows."""
+    rows = []
+    elig = {e['year']: e for e in eligibility or []}
+    for lv in levels or []:
+        y, val = lv['year'], lv['value']
+        if lv['stage'] == 'A1':
+            tot = sum(v_ for (s_, y_), v_ in served.items() if y_ == y)
+            lb = val * (1 - tol_rel) - tol_abs
+            rows.append(dict(stage='A1', year=y, site='ALL', level_value=val, bound=lb, final_value=tot, abs_gap=tot - val,
+                             rel_gap=(tot - val) / val if val else 0.0, satisfied=bool(tot >= lb - 1e-9), flag=lv.get('flag', '')))
+        else:
+            R = (elig.get(y) or {}).get('R', {})
+            for s_, r_ in R.items():
+                if r_ <= 1e-6:
+                    continue
+                f_ = served.get((s_, y), float('nan'))
+                lb = val * r_ * (1 - tol_rel) - tol_abs
+                locked = lv.get('flag') == 'LEXIMIN_ZERO_LOCK'
+                rows.append(dict(stage='A2', year=y, site=s_, level_value=val, R_IT_MW=r_, bound=lb, final_value=f_,
+                                 abs_gap=f_ - val * r_, rel_gap=float('nan'), satisfied=True if locked else bool(f_ >= lb - 1e-9),
+                                 flag=lv.get('flag', '')))
+    return rows
 
 
 # ------------------------------------------------------------------------------------------------ S1 -> offer
@@ -1287,7 +1355,7 @@ def developer_joint(config, s1_net, v_priv, mult, reuse_on, iteration):
     Lexicographic speed-first: year by year (earliest first) max sum_s IT_online[s, y], fixed; then min private cost.
     No max-min fairness layer, no mode enumeration: GO_F / GO_C / GF / IS are labelled after the solve."""
     n, m, (sv_reuse, sv_corr) = developer_joint_build(s1_net, v_priv, mult)
-    opts = dict(Method=2, Crossover=0, BarConvTol=1e-7, OutputFlag=0, Threads=M.CFG['threads'])
+    opts = ml_dev_solver_options(M.CFG['threads'])        # F1: same LP options as every other mainline solve
     cost_obj = m.objective.expression
     lex = {}
     for p in sorted({d['period'] for d in STATE['dc']}):
@@ -1601,6 +1669,7 @@ def main():
     # provenance: hash the code AT START (a later edit of the files must not be attributed to this run)
     code_sha_start = {p.name: M.sha(p) for p in [Path(__file__), HERE / 'v240_mech.py', HERE / 'v250_mech.py',
                                                   HERE / 'wp2_ercot_s0_s1.py', HERE / 'wp2_ercot_s1_real.py']}
+    STATE['out_dir'] = str(out)
     configure_mainline(out) if ML['on'] else configure(out)
     M.build = build_rearch
     if ML['on']:
@@ -1657,6 +1726,24 @@ def main():
         if lex:
             (out / f'lex_{tag}.json').write_text(json.dumps(STATE.get('lex_log'), indent=1, default=str))
             res['lex'] = STATE.get('lex_log')
+            if ML['on']:      # F1: Speed-First levels re-checked on the final (cost-stage) solution
+                lg = STATE.get('lex_log') or {}
+                served = {(d['zone'], d['period']): float(n.generators.p_nom_opt[d['S']]) for d in STATE.get('dc', [])}
+                la = pd.DataFrame(lex_audit(lg.get('levels'), served, lg.get('eligibility')))
+                if len(la):
+                    la.insert(0, 'scenario', tag)
+                    for k_, v_ in (lg.get('solver_params') or {}).items():
+                        la[f'param_{k_}'] = v_
+                    la['lex_status'] = lg.get('status_name')
+                    la['ConstrVio'] = (lg.get('violations') or {}).get('ConstrVio')
+                    la.to_csv(out / f'lex_audit_{tag}.csv', index=False)
+                    res['lex_audit_all_satisfied'] = bool(la.satisfied.all())
+        if ML['on']:          # F2-b: realised existing-customer shed prices in this scenario's network
+            ls = n.generators[n.generators.carrier == 'load_shed']
+            mc_ = ls.marginal_cost
+            res['F2_load_shed_mc'] = dict(n=int(len(ls)), min=float(mc_.min()) if len(ls) else None, max=float(mc_.max()) if len(ls) else None,
+                                          n_inherited=int(ls.index.str.endswith(' inherited_ramp_unserved').sum()),
+                                          n_not_at_VOLL=int((mc_ != M.SHED_COST).sum()))
         STATE['firm_strict'] = False; STATE['lex'] = None
         if tag == 'S0' and GCFG.get('s0_calibrate'):
             rows = []
@@ -1869,7 +1956,8 @@ def main():
                baseline=str(BASE_TAMU), baseline_sha256=M.sha(BASE_TAMU),
                inputs_sha256={p.name: M.sha(p) for p in ([POI_REG, POI_REQ, GRID_PROJ, M.TECH, BP.PUE, BP.TASK] + (ML_INPUTS if ML['on'] else []))},
                mainline=dict(gate=ML.get('gate'), stress=STATE.get('stress_sample'), inherited_ramp=STATE.get('inherited_ramp'),
-                             gas=STATE.get('gas_repriced')) if ML['on'] else None,
+                             gas=STATE.get('gas_repriced'), voll=dict(ML_VOLL, SHED_COST_used=M.SHED_COST),
+                             gurobi_lp_options=MAINLINE_GUROBI_LP_OPTIONS) if ML['on'] else None,
                code_sha256=code_sha_start, code_sha256_basis='hashed at process start',
                interrupt_price={f'{k[0]}|{k[1]}': v_ for k, v_ in STATE.get('interrupt_price', {}).items()},
                s0_calibration=STATE.get('s0cal_applied'), base_assets=STATE.get('base_assets'), grid_projects=STATE.get('grid_projects'), competing=STATE.get('competing'), pypsa=pypsa.__version__,

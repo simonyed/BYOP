@@ -1,0 +1,46 @@
+qa,check,result,detail
+QA-SPACE,8 aggregated POIs on the Epoch buses,PASS,"['p600 0', 'p610 2', 'p630 2', 'p630 4', 'p630 5', 'p630 6', 'p630 9', 'p650 0']"
+QA-DC,S0 has no research DC bus,PASS,
+QA-DC,"inherited ramp loads in S0 (5 buses, 460.73 MW IT)",PASS,"['p610 2 inherited_ramp', 'p630 2 inherited_ramp', 'p630 5 inherited_ramp', 'p630 9 inherited_ramp', 'p650 0 inherited_ramp']"
+QA-LP,S0 model continuous,PASS,
+QA-F2,mainline S0: every existing-customer load_shed (native + inherited ramp) at VOLL 35685,PASS,{35685.0: 68}
+QA-F1,MAINLINE_GUROBI_LP_OPTIONS equal the main-solve config options,PASS,"{'Method': 2, 'Crossover': 0, 'BarConvTol': 1e-05, 'FeasibilityTol': 0.001, 'OptimalityTol': 0.0001, 'BarHomogeneous': 1}"
+QA-STRESS-FIRM,stress snapshots in every period,PASS,"{2026: 24, 2027: 24, 2028: 24, 2029: 24, 2030: 24, 2031: 24}"
+QA-STRESS-FIRM,snapshot weights sum to 8760 h per period,PASS,
+QA-COST,existing gas mc follows the yearly WSC price,PASS,"{2026: 46.911036519098815, 2027: 44.26672543597539, 2028: 45.00713253924995, 2029: 47.26361133018194, 2030: 55.19654457955221, 2031: 60.06207697249932}"
+QA-P0-5,S0 calibration: all load_shed units incl. inherited ramp at S0CAL_SHED,PASS,{100000000.0: 68}
+QA-SPACE,one POI equipment row per bus-year (48),PASS,48
+QA-COD,"POI upgrade first build = max(2026 + 3, 2028) = 2029",PASS,"{'DC_p600 0': 2029, 'DC_p610 2': 2029, 'DC_p630 2': 2029, 'DC_p630 4': 2029, 'DC_p630 5': 2029, 'DC_p630 6': 2029, 'DC_p630 9': 2029, 'DC_p650 0': 2029}"
+QA-DELAY-CAUSE,POI upgrades are approval cohorts (q in name),PASS,
+QA-LP,S1 model continuous,PASS,
+QA-DELAY-CAUSE,resource-adequacy (ERM) row present,PASS,['GlobalConstraint-TX_ERM']
+QA-DELAY-CAUSE,upstream KVL network constraints present,PASS,['Kirchhoff-Voltage-Law']
+QA-STRESS-FIRM,research load is present in the stress snapshots (firm import must serve it),PASS,48
+QA-SPACE,every bus has BYOP candidates of all 6 techs,PASS,
+QA-SPACE,no BYOP unit outside its own DC bus,PASS,
+QA-COD,"RICE earliest COD 2028 at L1 gas, 2029 at L2 (lateral lead in parallel)",PASS,"(2028, 2029)"
+QA-COD,RICE approved 2029 cannot dispatch in 2029 / 2030,PASS,['DC_p610 2 BYOP RICE q2029']
+QA-PARAM,"SOFC standard earliest COD 2029 (3 y), no fast slot",PASS,2029
+QA-FIRM,"RICE normal dispatch 1.0, failure-case firm 1/1.25 only at stress",PASS,
+QA-COD,on-site PV produces nothing at night (06 and 09 UTC = local night),PASS,0.0
+QA-COD,on-site wind follows the bus profile (< 1 at the low-wind stress day),PASS,
+QA-BESS,"BESS: 4 h, eta 0.85 round trip, cyclic SOC per period",PASS,
+QA-BESS,BESS SOC variables in the model,PASS,
+QA-SPACE,constraint family ML-onsite_WIND_* present,PASS,
+QA-SPACE,constraint family ML-onsite_PV_* present,PASS,
+QA-SPACE,constraint family ML-potential_onwind_* present,PASS,
+QA-SPACE,constraint family ML-potential_solar_* present,PASS,
+QA-SPACE,constraint family GAS-mdq_* present,PASS,
+QA-SPACE,constraint family M2-serve_cap_* present,PASS,
+QA-SPACE,constraint family POI-eq_* present,PASS,
+QA-FIRM,"serve_cap (firm) credits gas BYOP, never wind / PV",PASS,"['DC_p610 2 BYOP OCGT_aero q2026', 'DC_p610 2 BYOP OCGT_aero q2027', 'DC_p610 2 BYOP OCGT_aero q2028', 'DC_p610 2 BYOP OCGT_aero q2029', 'DC_p610 2 BYOP RICE q2026', 'DC_p610 2 BYOP RICE q2027']"
+QA-LP,S3 model continuous,PASS,
+QA-SPACE,public wind candidate capped by remaining ReEDS2 potential,PASS,44120.6
+QA-BRIDGE,bus-year ledger carries the B10 / B8 fields,PASS,[]
+QA-STRESS-FIRM,PCLR triggers start at the stress snapshots,PASS,
+QA-LP,ONE developer network for all 8 buses,PASS,"['DC_p600 0', 'DC_p610 2', 'DC_p630 2', 'DC_p630 4', 'DC_p630 5', 'DC_p630 6', 'DC_p630 9', 'DC_p650 0']"
+QA-LP,developer model continuous,PASS,
+QA-FIRM,developer grid purchase capped by the S1 joint offer per bus-year,PASS,
+QA-P0-4,"developer firm purchase at stress snapshots <= stress-certified offer (0.5 here), 1.0 elsewhere",PASS,DC_p600 0 grid2026
+QA-SPACE,developer constraints: on-site / potential / gas MDQ / serve_cap,PASS,
+QA-LP,no solver was called,PASS,"['refused', 'refused', 'refused']"

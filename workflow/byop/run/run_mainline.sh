@@ -5,6 +5,7 @@
 #   bash byop/run/run_mainline.sh gate         print the E1 run-gate verdict (no solver)
 #   bash byop/run/run_mainline.sh step0        Stage B B1: ERM-02 B calibration + S0 min-uplift calibration (GATED)
 #   bash byop/run/run_mainline.sh pilot_s01    Stage B B2: S0 + S1_EARLIEST only, no attribution (GATED)
+#   bash byop/run/run_mainline.sh pilot_s01_fix  Stage B B2-R (after F1 + F2-b): S0 + S1_EARLIEST in a NEW case dir (GATED)
 #   bash byop/run/run_mainline.sh pilot_core   Stage B B3: config scenarios S0 S1_EARLIEST S3 S2(->S2_final) S3_mS2, no attribution (GATED)
 #   bash byop/run/run_mainline.sh attribution  Stage B B4 (optional): S0 + S1_EARLIEST + xPOI / xUP / xRA / xPROC / xALL (GATED)
 #   bash byop/run/run_mainline.sh run          full case: config scenarios + attribution (GATED)
@@ -46,8 +47,9 @@ case "${1:-}" in
   step0)       run ${CASE}_ERMCAL --calibrate &&
                run ${CASE}_S0CAL --erm-cal $OUT/${CASE}_ERMCAL/erm02_calibration.json --s0-calibrate --scenarios S0 ;;
   pilot_s01)   run ${CASE}_PILOT_S01 $CAL --scenarios S0 S1_EARLIEST ;;
+  pilot_s01_fix) run ${CASE}_PILOT_S01_F1F2_V1 $CAL --scenarios S0 S1_EARLIEST ;;
   pilot_core)  run ${CASE}_PILOT_CORE $CAL ;;
   attribution) run ${CASE}_ATTRIBUTION $CAL --scenarios S0 S1_EARLIEST --attribution ;;
   run)         run $CASE $CAL --attribution ;;
-  *)           echo "usage: $0 tests|struct|gate|step0|pilot_s01|pilot_core|attribution|run"; exit 1 ;;
+  *)           echo "usage: $0 tests|struct|gate|step0|pilot_s01|pilot_s01_fix|pilot_core|attribution|run"; exit 1 ;;
 esac

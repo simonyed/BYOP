@@ -5,9 +5,9 @@
 #   since, and all code / input SHA-256 equal the pre-run manifest below.
 # Only the researcher sets run_authorization: APPROVED and approved_git_sha (Stage A ends with NOT_APPROVED).
 mainline:
-  run_authorization: APPROVED
-  approved_git_sha: 8636c08d4b9dd11e7624f6fb52f92c91cf439ad0
-  approved_by: researcher (chat 2026-10-21; Stage B, step0 only, then stop for B1 review)
+  run_authorization: NOT_APPROVED
+  approved_git_sha: null
+  approved_by: null   # history: 8636c08d approved 2026-10-21 for step0 (B1) and pilot_s01 (B2); reset after F1/F2-b (B2-R needs a new SHA)
   manifest: current_work_pckg/MAINLINE_V13_PRE_RUN_MANIFEST.json
   stage: STAGE_A_IMPLEMENTATION_ONLY
   # E3 the only formal run (Stage B)

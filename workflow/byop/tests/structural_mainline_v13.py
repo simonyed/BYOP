@@ -86,6 +86,13 @@ def main():
     ir = n0.loads.index[n0.loads.index.str.endswith(' inherited_ramp')]
     check('QA-DC', 'inherited ramp loads in S0 (5 buses, 460.73 MW IT)', len(ir) == 5 and abs(STATE['inherited_ramp']['IT_MW'] - 460.73) < 0.01, list(ir))
     check('QA-LP', 'S0 model continuous', ints(m0) == 0)
+    ls0 = n0.generators[n0.generators.carrier == 'load_shed']
+    check('QA-F2', 'mainline S0: every existing-customer load_shed (native + inherited ramp) at VOLL 35685',
+          len(ls0) > 5 and (ls0.marginal_cost == 35685.0).all() and int(ls0.index.str.endswith(' inherited_ramp_unserved').sum()) == 5,
+          ls0.marginal_cost.value_counts().to_dict())
+    so = {k.lower(): v for k, v in CONFIG['solving']['solver_options'][CONFIG['solving']['solver']['options']].items()}   # Gurobi names are case-insensitive
+    check('QA-F1', 'MAINLINE_GUROBI_LP_OPTIONS equal the main-solve config options', all(so.get(k.lower()) == v for k, v in R.MAINLINE_GUROBI_LP_OPTIONS.items()),
+          {k: so.get(k.lower()) for k in R.MAINLINE_GUROBI_LP_OPTIONS})
     sm = R.stress_mask(n0.snapshots)
     nst = {p: int(sm[per == p].sum()) for p in M.periods()}
     check('QA-STRESS-FIRM', 'stress snapshots in every period', all(v_ >= 8 for v_ in nst.values()), nst)

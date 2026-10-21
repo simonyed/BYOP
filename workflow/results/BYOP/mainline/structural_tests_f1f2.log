@@ -1,0 +1,141 @@
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:pypsa.optimization.window:Building the multi-period model over a MultiIndex `snapshot`. Opt into the flat representation via `pypsa.options.optimization.model_snapshot_index = 'flat'`.
+INFO:opts.reserves:Adding ERM constraint for TX with reserve level 0.15
+INFO:opts.reserves:Added ERM constraint for TX
+INFO:opts.bidirectional_link:Added 324 bidirectional link constraints
+INFO:opts.sector:Demand response not enabled
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:opts.reserves:Adding ERM constraint for TX with reserve level 0.15
+INFO:opts.reserves:Added ERM constraint for TX
+INFO:opts.bidirectional_link:Added 324 bidirectional link constraints
+INFO:opts.sector:Demand response not enabled
+INFO:wp2:ERM-DC-01 B: added (1+0.15) x POI flow of 48 POIs to GlobalConstraint-TX_ERM
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+WARNING:pypsa.optimization.constraints:StorageUnits ['DC_p600 0 BYOP BESS q2026', 'DC_p600 0 BYOP BESS q2027', 'DC_p600 0 BYOP BESS q2028', 'DC_p600 0 BYOP BESS q2029', 'DC_p600 0 BYOP BESS q2030', 'DC_p610 2 BYOP BESS q2026', 'DC_p610 2 BYOP BESS q2027', 'DC_p610 2 BYOP BESS q2028', 'DC_p610 2 BYOP BESS q2029', 'DC_p610 2 BYOP BESS q2030', 'DC_p630 2 BYOP BESS q2026', 'DC_p630 2 BYOP BESS q2027', 'DC_p630 2 BYOP BESS q2028', 'DC_p630 2 BYOP BESS q2029', 'DC_p630 2 BYOP BESS q2030', 'DC_p630 4 BYOP BESS q2026', 'DC_p630 4 BYOP BESS q2027', 'DC_p630 4 BYOP BESS q2028', 'DC_p630 4 BYOP BESS q2029', 'DC_p630 4 BYOP BESS q2030', 'DC_p630 5 BYOP BESS q2026', 'DC_p630 5 BYOP BESS q2027', 'DC_p630 5 BYOP BESS q2028', 'DC_p630 5 BYOP BESS q2029', 'DC_p630 5 BYOP BESS q2030', 'DC_p630 6 BYOP BESS q2026', 'DC_p630 6 BYOP BESS q2027', 'DC_p630 6 BYOP BESS q2028', 'DC_p630 6 BYOP BESS q2029', 'DC_p630 6 BYOP BESS q2030', 'DC_p630 9 BYOP BESS q2026', 'DC_p630 9 BYOP BESS q2027', 'DC_p630 9 BYOP BESS q2028', 'DC_p630 9 BYOP BESS q2029', 'DC_p630 9 BYOP BESS q2030', 'DC_p650 0 BYOP BESS q2026', 'DC_p650 0 BYOP BESS q2027', 'DC_p650 0 BYOP BESS q2028', 'DC_p650 0 BYOP BESS q2029', 'DC_p650 0 BYOP BESS q2030']: Per-period cyclic (cyclic_state_of_charge_per_period=True) overrides global cyclic (cyclic_state_of_charge=True). Storage will cycle within each investment period, not across the entire horizon.
+INFO:opts.reserves:Adding ERM constraint for TX with reserve level 0.15
+INFO:opts.reserves:Added ERM constraint for TX
+INFO:opts.bidirectional_link:Added 324 bidirectional link constraints
+INFO:opts.sector:Demand response not enabled
+INFO:wp2:ERM-DC-01 B: added (1+0.15) x POI flow of 48 POIs to GlobalConstraint-TX_ERM
+WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['DC_p600 0', 'DC_p610 2', 'DC_p630 2', 'DC_p630 4', 'DC_p630 5',
+       'DC_p630 6', 'DC_p630 9', 'DC_p650 0'],
+      dtype='object', name='name')
+WARNING:pypsa.optimization.constraints:StorageUnits ['DC_p600 0 BYOP BESS q2026', 'DC_p600 0 BYOP BESS q2027', 'DC_p600 0 BYOP BESS q2028', 'DC_p600 0 BYOP BESS q2029', 'DC_p600 0 BYOP BESS q2030', 'DC_p610 2 BYOP BESS q2026', 'DC_p610 2 BYOP BESS q2027', 'DC_p610 2 BYOP BESS q2028', 'DC_p610 2 BYOP BESS q2029', 'DC_p610 2 BYOP BESS q2030', 'DC_p630 2 BYOP BESS q2026', 'DC_p630 2 BYOP BESS q2027', 'DC_p630 2 BYOP BESS q2028', 'DC_p630 2 BYOP BESS q2029', 'DC_p630 2 BYOP BESS q2030', 'DC_p630 4 BYOP BESS q2026', 'DC_p630 4 BYOP BESS q2027', 'DC_p630 4 BYOP BESS q2028', 'DC_p630 4 BYOP BESS q2029', 'DC_p630 4 BYOP BESS q2030', 'DC_p630 5 BYOP BESS q2026', 'DC_p630 5 BYOP BESS q2027', 'DC_p630 5 BYOP BESS q2028', 'DC_p630 5 BYOP BESS q2029', 'DC_p630 5 BYOP BESS q2030', 'DC_p630 6 BYOP BESS q2026', 'DC_p630 6 BYOP BESS q2027', 'DC_p630 6 BYOP BESS q2028', 'DC_p630 6 BYOP BESS q2029', 'DC_p630 6 BYOP BESS q2030', 'DC_p630 9 BYOP BESS q2026', 'DC_p630 9 BYOP BESS q2027', 'DC_p630 9 BYOP BESS q2028', 'DC_p630 9 BYOP BESS q2029', 'DC_p630 9 BYOP BESS q2030', 'DC_p650 0 BYOP BESS q2026', 'DC_p650 0 BYOP BESS q2027', 'DC_p650 0 BYOP BESS q2028', 'DC_p650 0 BYOP BESS q2029', 'DC_p650 0 BYOP BESS q2030']: Per-period cyclic (cyclic_state_of_charge_per_period=True) overrides global cyclic (cyclic_state_of_charge=True). Storage will cycle within each investment period, not across the entire horizon.
+[PASS] QA-SPACE 8 aggregated POIs on the Epoch buses 
+[PASS] QA-DC S0 has no research DC bus 
+[PASS] QA-DC inherited ramp loads in S0 (5 buses, 460.73 MW IT) 
+[PASS] QA-LP S0 model continuous 
+[PASS] QA-F2 mainline S0: every existing-customer load_shed (native + inherited ramp) at VOLL 35685 
+[PASS] QA-F1 MAINLINE_GUROBI_LP_OPTIONS equal the main-solve config options 
+[PASS] QA-STRESS-FIRM stress snapshots in every period 
+[PASS] QA-STRESS-FIRM snapshot weights sum to 8760 h per period 
+[PASS] QA-COST existing gas mc follows the yearly WSC price 
+[PASS] QA-P0-5 S0 calibration: all load_shed units incl. inherited ramp at S0CAL_SHED 
+[PASS] QA-SPACE one POI equipment row per bus-year (48) 
+[PASS] QA-COD POI upgrade first build = max(2026 + 3, 2028) = 2029 
+[PASS] QA-DELAY-CAUSE POI upgrades are approval cohorts (q in name) 
+[PASS] QA-LP S1 model continuous 
+[PASS] QA-DELAY-CAUSE resource-adequacy (ERM) row present 
+[PASS] QA-DELAY-CAUSE upstream KVL network constraints present 
+[PASS] QA-STRESS-FIRM research load is present in the stress snapshots (firm import must serve it) 
+[PASS] QA-SPACE every bus has BYOP candidates of all 6 techs 
+[PASS] QA-SPACE no BYOP unit outside its own DC bus 
+[PASS] QA-COD RICE earliest COD 2028 at L1 gas, 2029 at L2 (lateral lead in parallel) 
+[PASS] QA-COD RICE approved 2029 cannot dispatch in 2029 / 2030 
+[PASS] QA-PARAM SOFC standard earliest COD 2029 (3 y), no fast slot 
+[PASS] QA-FIRM RICE normal dispatch 1.0, failure-case firm 1/1.25 only at stress 
+[PASS] QA-COD on-site PV produces nothing at night (06 and 09 UTC = local night) 
+[PASS] QA-COD on-site wind follows the bus profile (< 1 at the low-wind stress day) 
+[PASS] QA-BESS BESS: 4 h, eta 0.85 round trip, cyclic SOC per period 
+[PASS] QA-BESS BESS SOC variables in the model 
+[PASS] QA-SPACE constraint family ML-onsite_WIND_* present 
+[PASS] QA-SPACE constraint family ML-onsite_PV_* present 
+[PASS] QA-SPACE constraint family ML-potential_onwind_* present 
+[PASS] QA-SPACE constraint family ML-potential_solar_* present 
+[PASS] QA-SPACE constraint family GAS-mdq_* present 
+[PASS] QA-SPACE constraint family M2-serve_cap_* present 
+[PASS] QA-SPACE constraint family POI-eq_* present 
+[PASS] QA-FIRM serve_cap (firm) credits gas BYOP, never wind / PV 
+[PASS] QA-LP S3 model continuous 
+[PASS] QA-SPACE public wind candidate capped by remaining ReEDS2 potential 
+[PASS] QA-BRIDGE bus-year ledger carries the B10 / B8 fields 
+[PASS] QA-STRESS-FIRM PCLR triggers start at the stress snapshots 
+[PASS] QA-LP ONE developer network for all 8 buses 
+[PASS] QA-LP developer model continuous 
+[PASS] QA-FIRM developer grid purchase capped by the S1 joint offer per bus-year 
+[PASS] QA-P0-4 developer firm purchase at stress snapshots <= stress-certified offer (0.5 here), 1.0 elsewhere 
+[PASS] QA-SPACE developer constraints: on-site / potential / gas MDQ / serve_cap 
+[PASS] QA-LP no solver was called 
+{
+ "n_checks": 45,
+ "n_pass": 45,
+ "n_fail": 0,
+ "solver_executions": 0,
+ "solver_calls_intercepted": 3,
+ "seconds": 192.8,
+ "stress": {
+  "days": [
+   {
+    "kind": "LOW_WEST_WIND_HIGH_LOAD",
+    "day": "2030-09-15",
+    "mean_load_MW": 63239.71282116667,
+    "mean_west_wind_MW": 943.0112930961957,
+    "max_net_load_MW": 65158.20282384675
+   },
+   {
+    "kind": "MAX_NET_LOAD",
+    "day": "2030-07-31",
+    "mean_load_MW": 68550.57724258333,
+    "mean_west_wind_MW": 2856.622981024098,
+    "max_net_load_MW": 70034.39255869575
+   },
+   {
+    "kind": "WINTER_PEAK",
+    "day": "2030-02-19",
+    "mean_load_MW": 72103.14446870833,
+    "mean_west_wind_MW": 10232.768766689705,
+    "max_net_load_MW": 65298.89412259769
+   }
+  ],
+  "snapshots": 24,
+  "added_outside_sample": 24,
+  "weight_total_h": 8760.0
+ },
+ "gas": {
+  "n": 76,
+  "by_year": {
+   "2026": 3.738,
+   "2027": 3.513,
+   "2028": 3.576,
+   "2029": 3.768,
+   "2030": 4.443,
+   "2031": 4.857
+  },
+  "flat_reference": 3.19
+ },
+ "n_vars": {
+  "S0": 4065226,
+  "S1": 4150210,
+  "S3": 4388654,
+  "S2_dev": 125388
+ },
+ "n_cons": {
+  "S0": 7103909,
+  "S1": 7196445,
+  "S3": 7556335,
+  "S2_dev": 281578
+ }
+}

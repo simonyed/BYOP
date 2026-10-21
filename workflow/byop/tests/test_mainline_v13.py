@@ -425,3 +425,114 @@ def test_b0_run_entry_command_assembly():
     assert len(outs) == 4                                                                   # separate case directories
     for c in s01 + core + attr + full:
         assert '--mainline' in c and '--erm-cal' in c and '--s0-cal-file' in c
+
+
+# ------------------------------------------------------------------------------------------------ Stage B2 F1 / F2-b (2026-10-21)
+class _FakeGM:
+    """records setParam; getParamInfo returns (name, type, current, ...) like gurobipy; optimize is never called"""
+    def __init__(self):
+        self.p = {}
+    def setParam(self, k, v):
+        self.p[k] = v
+    def getParamInfo(self, k):
+        return (k, type(self.p[k]), self.p[k], None, None, None)
+    def optimize(self):
+        raise AssertionError('solver must not be called in tests')
+
+
+def test_f1_lex_options_consistent(R):
+    gm = _FakeGM()
+    got = R.gurobi_apply_options(gm, 20)
+    want = dict(Method=2, Crossover=0, BarConvTol=1e-5, FeasibilityTol=1e-3, OptimalityTol=1e-4, BarHomogeneous=1)
+    assert R.MAINLINE_GUROBI_LP_OPTIONS == want
+    assert got == dict(want, Threads=20) and gm.p == dict(want, Threads=20)
+    src = inspect.getsource(R.lex_presolve)
+    assert src.index('gurobi_apply_options(gm') < src.index('gm.optimize()')       # options set BEFORE the optimize call
+    assert "gm.setParam('Threads', M.CFG['threads'])" not in src                   # no Threads-only path left
+
+
+def test_f1_developer_options_consistent(R):
+    o = R.ml_dev_solver_options(8)
+    assert {k: o[k] for k in R.MAINLINE_GUROBI_LP_OPTIONS} == R.MAINLINE_GUROBI_LP_OPTIONS and o['Threads'] == 8
+    src = inspect.getsource(R.developer_joint)
+    assert 'ml_dev_solver_options(' in src and 'BarConvTol=1e-7' not in src
+
+
+def test_f1_lex_failure_is_logged_before_raise(R):
+    src = inspect.getsource(R.lex_presolve)
+    assert src.index("Path(STATE['out_dir']") < src.index('raise RuntimeError')
+    for f in ('solver_params', 'objective_values', 'ConstrVio', 'status_name', 'n_int'):
+        assert f in src
+
+
+def test_f1_lex_audit_levels(R):
+    levels = [dict(stage='A1', year=2028, value=100.0), dict(stage='A2', year=2028, value=0.5),
+              dict(stage='A1', year=2029, value=50.0), dict(stage='A2', year=2029, value=0.0, flag='LEXIMIN_ZERO_LOCK')]
+    elig = [dict(year=2028, R={'a': 80.0, 'b': 40.0}), dict(year=2029, R={'a': 30.0, 'b': 20.0})]
+    ok = R.lex_audit(levels, {('a', 2028): 60.0, ('b', 2028): 40.0, ('a', 2029): 30.0, ('b', 2029): 20.0}, elig)
+    assert all(r['satisfied'] for r in ok) and len(ok) == 6
+    bad = R.lex_audit(levels, {('a', 2028): 39.0, ('b', 2028): 60.9, ('a', 2029): 30.0, ('b', 2029): 20.0}, elig)
+    f = {(r['stage'], r['year'], r['site']): r['satisfied'] for r in bad}
+    assert f[('A1', 2028, 'ALL')] is False and f[('A2', 2028, 'a')] is False and f[('A2', 2029, 'a')] is True   # zero lock not imposed
+
+
+def test_f2_mainline_voll_only(R):
+    assert R.ML_VOLL['F2_mainline_VOLL_USD_MWh'] == 35685.0 and R.ML_VOLL['VOLL_source_year'] == 2024
+    assert R.M.SHED_COST == 1e4                                     # non-mainline default untouched until configure_mainline
+    src = inspect.getsource(R.configure_mainline)
+    assert "M.SHED_COST = ML_VOLL['F2_mainline_VOLL_USD_MWh']" in src
+    assert src.index('M.SHED_COST =') < src.index('SITES[r.site_id]')      # before any DC / load_shed object is built
+    assert R.S0CAL_SHED == 1e8 and R.S0CAL_COST == 1e7               # B1 calibration constants kept
+
+
+def test_f2_shed_books_once(R):
+    from types import SimpleNamespace
+    M = R.M
+    old = M.SHED_COST
+    try:
+        M.SHED_COST = 35685.0
+        idx = pd.MultiIndex.from_product([M.periods(), pd.date_range('2030-01-01', periods=2, freq='3h')], names=['period', 'timestep'])
+        g = pd.DataFrame(dict(carrier=['load_shed', 'load_shed']), index=['p630 2 load_shed', 'p630 2 inherited_ramp_unserved'])
+        p = pd.DataFrame(0.0, index=idx, columns=g.index)
+        p.loc[(2028, slice(None)), 'p630 2 inherited_ramp_unserved'] = 4.0
+        n = SimpleNamespace(generators=g, generators_t=SimpleNamespace(p=p), snapshots=idx,
+                            snapshot_weightings=pd.DataFrame(dict(generators=3.0), index=idx))
+        nat_pv = 5.0 * 35685.0 * M.df(2027, M.CFG['social_r'])         # v240 native book at the same price
+        summ = dict(load_shed_MWh=5.0, load_shed_PV_USD=nat_pv, social_real_resource_cost_USD=1e6 + nat_pv, social_total_USD=2e6 + nat_pv)
+        R.ml_shed_accounting(n, summ)
+        inh_pv = 24.0 * 35685.0 * M.df(2028, M.CFG['social_r'])
+        assert summ['inherited_ramp_unserved_MWh'] == 24.0 and abs(summ['inherited_ramp_unserved_PV_USD'] - inh_pv) < 1e-6
+        assert abs(summ['load_shed_PV_USD'] - (nat_pv + inh_pv)) < 1e-6
+        assert abs(summ['social_total_USD'] - (2e6 + nat_pv + inh_pv)) < 1e-6
+        assert abs(summ['load_shed_PV_USD'] / M.SHED_COST * 35685.0 - summ['load_shed_PV_USD']) < 1e-6   # VOLL report column = book
+    finally:
+        M.SHED_COST = old
+    main_src = inspect.getsource(R.main)
+    assert not re.search(r"social_\w+\s*\+=\s*summ\['existing_customer_shed_loss_VOLL", main_src)   # report-only column
+
+
+def test_f2_pilot_fix_command():
+    import os, shutil, subprocess
+    bash = shutil.which('bash')
+    if bash is None:
+        pytest.skip('bash not available')
+    r = subprocess.run([bash, str(BY / 'run/run_mainline.sh'), 'pilot_s01_fix'], capture_output=True, text=True, env={**os.environ, 'DRY': '1'})
+    c = [l for l in r.stdout.splitlines() if l.startswith('CMD ')]
+    assert len(c) == 1 and '--scenarios S0 S1_EARLIEST' in c[0] and '--attribution' not in c[0]
+    assert '--out ' in c[0] and c[0].split('--out ')[1].split()[0].endswith('MAINLINE_V13_GREAL_MID_PILOT_S01_F1F2_V1')
+    assert 'MAINLINE_V13_GREAL_MID_ERMCAL/erm02_calibration.json' in c[0] and 'MAINLINE_V13_GREAL_MID_S0CAL/S0_CALIBRATION.csv' in c[0]
+
+
+def test_f2_gate_refuses_after_reset(R):
+    g = R.mainline_gate(WF / 'config/config.byop_ercot_mainline.yaml')
+    assert g['approved'] is False and 'run_authorization=NOT_APPROVED' in g['reasons']
+
+
+def test_f2_b1_inputs_unchanged():
+    b1 = WF / 'results/BYOP/mainline'
+    for rel, h in (('MAINLINE_V13_GREAL_MID_ERMCAL/erm02_calibration.json', '7d0c02f1245ebba31d26cb303cd154600e0a6626853d7d2c2910a1a268807a19'),
+                   ('MAINLINE_V13_GREAL_MID_S0CAL/S0_CALIBRATION.csv', '30bf497ef009f3e120d43f7d6c2995fe0b7d82ffce9d1df2b5629131397454d5')):
+        f = b1 / rel
+        if not f.exists():
+            pytest.skip(f'{rel} not present')
+        assert sha(f) == h, rel
