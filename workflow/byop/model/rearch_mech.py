@@ -65,7 +65,7 @@ MDQ_PROXY = {'L1': 250000.0, 'L2': 100000.0}       # MMBtu/d lateral sizing prox
 GAS_L2 = dict(lead=3.0, cost=100.0)                # L2 unknown: conservative lateral lead (y) / cost (USD/kW)
 UPGRADE_LIFE = 40
 MODES = ['GO_F', 'GO_C', 'GF', 'IS']
-GCFG = dict(competing_voll=None, s0_calibrate=False, s0_cal_file=None, interrupt_cap=0.005, no_harm=True, base_assets='main', setting='G-U', relax=[], case='base', gas_case='base', pclr_hours=200.0, pclr_max_consec_h=12.0,
+GCFG = dict(regional_dc='off', regional_dc_scenario='mid', competing_voll=None, s0_calibrate=False, s0_cal_file=None, interrupt_cap=0.005, no_harm=True, base_assets='main', setting='G-U', relax=[], case='base', gas_case='base', pclr_hours=200.0, pclr_max_consec_h=12.0,
             s2_iter=3, competing=1.0, line_lead=None, offer_tol=1e-3, clusters='64s')
 SITES: dict = {}
 STATE = M.STATE
@@ -321,6 +321,40 @@ def add_competing_load(n):
                               rule='equal to the study request at each POI parent bus (STYLIZED); own curtailment at the new-load lost value')
 
 
+REGIONAL_COHORTS = Path(__file__).resolve().parents[1] / 'inputs/dc/ercot_cohorts_2026_2035_tamu64.csv'
+
+
+def add_regional_dc(n):
+    """Opt-in (--regional-dc, default off): the approved ERCOT DC cohorts (DATA-01/03) placed on TAMU 64s buses by a PNNL
+    spatial basis (projected_moderate50 = MAIN, approved zone totals; existing_atlas = SENSITIVITY) as flat BACKGROUND
+    facility load (cum. IT MW of cohorts with request_year <= period x state PUE) in ALL scenarios. Not a study request:
+    no POI equipment limit, no BYOP choice (aggregate-POI equipment assumption pending a researcher decision); added on
+    top of the 3 representative POI requests (overlap rule pending). Own curtailment generator priced at SHED_COST,
+    carrier load_shed, protected per generator by no-harm, reported separately."""
+    if GCFG['regional_dc'] == 'off':
+        return
+    c = pd.read_csv(REGIONAL_COHORTS)
+    c = c[(c.spatial_basis == GCFG['regional_dc']) & (c.scenario == GCFG['regional_dc_scenario'])]
+    assert len(c), f"no regional cohorts for {GCFG['regional_dc']} / {GCFG['regional_dc_scenario']}"
+    miss = set(c.region_id) - set(n.buses.index)
+    assert not miss, f'regional cohort buses not in network: {sorted(miss)}'
+    pue_t = w2.PUE
+    per = n.snapshots.get_level_values(0)
+    pue = {p: float(pue_t[(pue_t.st == 'TX') & (pue_t.year == min(p, 2035))].pue.iloc[0]) for p in sorted(set(per))}
+    rows = []
+    for b, g in c.groupby('region_id'):
+        prof = np.array([float(g[g.request_year <= p].IT_MW.sum()) * pue[p] for p in per])
+        if prof.max() <= 0:
+            continue
+        n.add('Load', f'{b} regional_dc', bus=b, carrier='AC', p_set=pd.Series(prof, index=n.snapshots))
+        n.add('Generator', f'{b} regional_dc_unserved', bus=b, carrier='load_shed', p_nom=float(prof.max()) + 1.0,
+              marginal_cost=M.SHED_COST, build_year=2025, lifetime=100)
+        rows.append(dict(bus=b, zone=g.parent_zone.iloc[0], IT_MW_final=float(g.IT_MW.sum()), facility_MW_peak=float(prof.max())))
+    STATE['regional_dc'] = dict(basis=GCFG['regional_dc'], scenario=GCFG['regional_dc_scenario'], file=str(REGIONAL_COHORTS),
+                                sha256=M.sha(REGIONAL_COHORTS), buses=rows, IT_MW_total=float(c.IT_MW.sum()),
+                                rule='background facility load, flat, cum. cohorts x PUE; not a study request (STYLIZED)')
+
+
 def relax_upstream(n):
     if 'UP' in set(GCFG['relax']):
         n.lines['s_nom'] = n.lines.s_nom * 10.0
@@ -545,6 +579,7 @@ def build_rearch(config, scen, v, **kw):
     add_grid_projects(n)
     STATE['no_harm_now'] = scen != 'S0' and GCFG['no_harm'] and STATE.get('shed_S0') is not None
     add_competing_load(n)
+    add_regional_dc(n)
     relax_upstream(n)
     ren = n.generators.index[n.generators.carrier.isin(['solar', 'onwind'])]
     miss = ren.difference(n.generators_t.p_max_pu.columns)
@@ -962,6 +997,9 @@ def main():
     ap.add_argument('--relax', nargs='*', default=[], help='S1 attribution relaxations: POI UP RA PROC')
     ap.add_argument('--attribution', action='store_true', help='also run S1_xPOI / S1_xUP / S1_xRA / S1_xPROC / S1_xALL')
     ap.add_argument('--competing', type=float, default=1.0)
+    ap.add_argument('--regional-dc', default='off', choices=['off', 'projected_moderate50', 'existing_atlas'],
+                    help='background ERCOT DC cohorts on TAMU64 buses by PNNL spatial basis (default off)')
+    ap.add_argument('--regional-dc-scenario', default='mid', choices=['low', 'mid', 'high'])
     ap.add_argument('--competing-voll', type=float, default=None, help='curtailment price of the competing queued load (default = SHED_COST)')
     ap.add_argument('--s0-calibrate', action='store_true', help='D3 3.5: targeted S0 uplift calibration (S0 only); writes S0_CALIBRATION.csv')
     ap.add_argument('--s0-cal-file', default=None, help='D3 3.5: apply a S0_CALIBRATION.csv as cost-free common baseline assets')
@@ -988,7 +1026,7 @@ def main():
     global BASE_TAMU
     if a.base:
         BASE_TAMU = Path(a.base)
-    GCFG.update(competing_voll=a.competing_voll, s0_calibrate=a.s0_calibrate, s0_cal_file=a.s0_cal_file, interrupt_cap=a.interrupt_cap, no_harm=a.no_harm == 'on', base_assets=a.base_assets, setting=a.setting, case=a.case, gas_case=a.gas_case, relax=list(a.relax), competing=a.competing,
+    GCFG.update(regional_dc=a.regional_dc, regional_dc_scenario=a.regional_dc_scenario, competing_voll=a.competing_voll, s0_calibrate=a.s0_calibrate, s0_cal_file=a.s0_cal_file, interrupt_cap=a.interrupt_cap, no_harm=a.no_harm == 'on', base_assets=a.base_assets, setting=a.setting, case=a.case, gas_case=a.gas_case, relax=list(a.relax), competing=a.competing,
                 line_lead=a.line_lead, pclr_hours=a.pclr_hours, pclr_max_consec_h=a.pclr_max_consec_h, s2_modes=a.s2_modes,
                 s2_iter=a.s2_iter)
     M.CFG.update(periods='annual', start=a.start, end=a.end, cost_basis='repaired', public_subsidy='without', tariff=a.tariff,
@@ -1093,6 +1131,9 @@ def main():
             summ['competing_queue_unserved_MWh'] = float(e.sum().sum())
             summ['competing_queue_loss_PV_USD'] = float(sum(e.loc[p].sum() * (GCFG['competing_voll'] or M.SHED_COST) * ws[p] for p in e.index))
             summ['social_total_USD'] += summ['competing_queue_loss_PV_USD']
+        rq = n.generators.index[n.generators.index.str.endswith(' regional_dc_unserved')]
+        if len(rq):              # opt-in regional DC background (--regional-dc): reported separately
+            summ['regional_dc_unserved_MWh'] = float(n.generators_t.p[rq].mul(n.snapshot_weightings.generators, axis=0).sum().sum())
         summ['existing_customer_shed_loss_PV_USD'] = summ['load_shed_PV_USD']      # D2.5: optimisation penalty basis 1e4 USD/MWh
         summ['existing_customer_shed_loss_VOLL_PV_USD'] = summ['load_shed_PV_USD'] / M.SHED_COST * 35685.0   # Brattle 2024 ERCOT VOLL
         if tag != 'S0' and STATE.get('shed_S0') is not None:

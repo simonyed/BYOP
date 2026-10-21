@@ -1,0 +1,56 @@
+{
+ "existing_atlas": {
+  "version": "v2026.02.09",
+  "doi": "10.57931/3017294",
+  "license": "ODbL 1.0",
+  "csv_sha256": "53d200d8111c502fd9c74d045965c46b4bf10eb00e26948a6415e467d283c20d",
+  "gpkg_sha256": "1c0d8c206eb2070785e594784fda90f615e6ed7fd9646d67e1a9de237b8cc9f4",
+  "dedup": {
+   "campus": 10,
+   "building_kept": 105,
+   "building_inside_campus": 8,
+   "point_kept": 4,
+   "raw_rows": {
+    "point": 4,
+    "building": 113,
+    "campus": 10
+   },
+   "point_proxy_sqft": 114534.0
+  }
+ },
+ "projected": {
+  "version": "v1.1",
+  "doi": "10.57931/3020186",
+  "license": "CC-BY-4.0",
+  "source": "https://github.com/immm-sfa/datacenter-atlas/tree/main/static/projected (centroids, EPSG:4326)",
+  "files": {
+   "high_growth_0_market_gravity_epsg4326_centroids.geojson": "02d90b8b02c680e0dd535c6837dec94a0c5e59b53ba8b3cd91d5bdddc607ee90",
+   "high_growth_100_market_gravity_epsg4326_centroids.geojson": "e9dd81abfee0a690da4229c42d524521240eff9ab1aec40c815d07e0c6d859f3",
+   "high_growth_25_market_gravity_epsg4326_centroids.geojson": "9cc24986c344409c30dd0204be1914033b2cb1be548191f591678005250f09f9",
+   "high_growth_50_market_gravity_epsg4326_centroids.geojson": "e9b7580be596d91e50a458f7f39156891bc25057e445d0e8a2b46c09d65baa8f",
+   "high_growth_75_market_gravity_epsg4326_centroids.geojson": "fef08426bc7b81e50d652e127d97d868a7ac9ca932bac19176bf7a1b5df99aaa",
+   "higher_growth_0_market_gravity_epsg4326_centroids.geojson": "1d030bc4f990bc43768178d60452ebffa23c0ac5692620859abf0004c7e6f90c",
+   "higher_growth_100_market_gravity_epsg4326_centroids.geojson": "2b9d9d015c350f27f9f31cdeb0dd5ed83dfe1a447f24ae990cd63dbff63e9c26",
+   "higher_growth_25_market_gravity_epsg4326_centroids.geojson": "05e84ebd8e5902b3787d5e4fec4138c6b7c058be827ab4235f46f9df819f16dc",
+   "higher_growth_50_market_gravity_epsg4326_centroids.geojson": "a23a852cf6cc0a1b967758169c8b47b5803f9e569fe0f0e6797d9368af4a73e3",
+   "higher_growth_75_market_gravity_epsg4326_centroids.geojson": "31aa8ee960e0fa4e59de76fdc67f6df179e44cea582cb3fc4eb37599dad2a6f4",
+   "low_growth_0_market_gravity_epsg4326_centroids.geojson": "0982b1275c9d4bf73f72199a4be7b185adcd9f36bdce3bb41817bac45f78ccf0",
+   "low_growth_100_market_gravity_epsg4326_centroids.geojson": "d4dab68657113569ba89b393258482292136e6b332f05d9798a1c327634ec954",
+   "low_growth_25_market_gravity_epsg4326_centroids.geojson": "520170fc0cfd6ff7d5dd449076d89f1cb8b55bbba244da6ea85b3f0e5ca070e9",
+   "low_growth_50_market_gravity_epsg4326_centroids.geojson": "de67d9e57a1d28a970ce203e3058d57b572d2fc74e7225d6cc6f32fcc99c69ba",
+   "low_growth_75_market_gravity_epsg4326_centroids.geojson": "4622ed542719cb630bea5a1a1d993801c66828abdd2f45ce272949603d6bc18f",
+   "moderate_growth_0_market_gravity_epsg4326_centroids.geojson": "056113a1713c8b8b20be132b476856d8fd1da7b1dda8b54436adf7db300d8664",
+   "moderate_growth_100_market_gravity_epsg4326_centroids.geojson": "7bb4eb302a2f0319e566758b6c2f0b49c5cf8bf95646287dbdbb57d9cddd4ea7",
+   "moderate_growth_25_market_gravity_epsg4326_centroids.geojson": "46f9d243989b6498602f5b9f327dee6a73d334da24c41b4fe3eb264c72e1d5d5",
+   "moderate_growth_50_market_gravity_epsg4326_centroids.geojson": "9d6b347d0eb62cfd8dd4069dbd852ad72ce3cc4ee8f58ad66477515ad75bf4d7",
+   "moderate_growth_75_market_gravity_epsg4326_centroids.geojson": "b993e74223d2c3ee1d715791911e0496b730994bb04fcf91a21f634c3c6862df"
+  },
+  "moderate_site_MW": [
+   36
+  ]
+ },
+ "network": {
+  "mapping": "D:\\BYOP_impact\\pypsa-usa\\workflow\\results\\BYOP\\baseline_2025_tamu\\NETWORK_MAPPING_AUDIT.csv",
+  "sha256": "dffd4a67b15646ad75a0a2f63321a9faff3ef3487516463c4697ff96d85af6f1"
+ }
+}

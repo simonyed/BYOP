@@ -171,3 +171,36 @@ def test_ineligible_site_does_not_lock_maxmin(tmp_path):
     for y in YEARS:
         assert e[('S_B', y)] < 1e-3
         assert e[('S_A', y)] > 50.0
+
+
+def test_regional_dc_background_load(tmp_path):
+    """opt-in regional cohorts: cumulative IT x PUE per bus, only the selected basis / scenario, own load_shed generator"""
+    reset(tmp_path, [])
+    pd.DataFrame([dict(scenario='mid', request_year=2026, region_id='A', IT_MW=100.0, parent_zone='z', spatial_basis='projected_moderate50'),
+                  dict(scenario='mid', request_year=2028, region_id='A', IT_MW=50.0, parent_zone='z', spatial_basis='projected_moderate50'),
+                  dict(scenario='mid', request_year=2027, region_id='B', IT_MW=80.0, parent_zone='z', spatial_basis='projected_moderate50'),
+                  dict(scenario='high', request_year=2026, region_id='B', IT_MW=999.0, parent_zone='z', spatial_basis='projected_moderate50'),
+                  dict(scenario='mid', request_year=2026, region_id='B', IT_MW=777.0, parent_zone='z', spatial_basis='existing_atlas')]
+                 ).to_csv(tmp_path / 'reg.csv', index=False)
+    n = snapshots_net()
+    for b in ['A', 'B']:
+        n.add('Bus', b, x=0.0, y=0.0)
+    old = R.REGIONAL_COHORTS
+    try:
+        R.REGIONAL_COHORTS = tmp_path / 'reg.csv'
+        R.GCFG.update(regional_dc='off')
+        R.add_regional_dc(n)
+        assert 'A regional_dc' not in n.loads.index
+        R.GCFG.update(regional_dc='projected_moderate50', regional_dc_scenario='mid')
+        R.add_regional_dc(n)
+    finally:
+        R.REGIONAL_COHORTS = old
+        R.GCFG.update(regional_dc='off')
+    pue = {p: float(w2.PUE[(w2.PUE.st == 'TX') & (w2.PUE.year == p)].pue.iloc[0]) for p in YEARS}
+    ps = n.loads_t.p_set
+    for p in YEARS:
+        assert np.isclose(ps.loc[p, 'A regional_dc'].iloc[0], (100.0 + (50.0 if p >= 2028 else 0.0)) * pue[p])
+        assert np.isclose(ps.loc[p, 'B regional_dc'].iloc[0], (80.0 if p >= 2027 else 0.0) * pue[p])
+    g = n.generators.loc[['A regional_dc_unserved', 'B regional_dc_unserved']]
+    assert (g.carrier == 'load_shed').all() and (g.marginal_cost == M.SHED_COST).all()
+    assert M.STATE['regional_dc']['IT_MW_total'] == 230.0
