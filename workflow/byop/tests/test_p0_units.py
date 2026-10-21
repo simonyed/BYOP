@@ -176,11 +176,11 @@ def test_ineligible_site_does_not_lock_maxmin(tmp_path):
 def test_regional_dc_background_load(tmp_path):
     """opt-in regional cohorts: cumulative IT x PUE per bus, only the selected basis / scenario, own load_shed generator"""
     reset(tmp_path, [])
-    pd.DataFrame([dict(scenario='mid', request_year=2026, region_id='A', IT_MW=100.0, parent_zone='z', spatial_basis='projected_moderate50'),
-                  dict(scenario='mid', request_year=2028, region_id='A', IT_MW=50.0, parent_zone='z', spatial_basis='projected_moderate50'),
-                  dict(scenario='mid', request_year=2027, region_id='B', IT_MW=80.0, parent_zone='z', spatial_basis='projected_moderate50'),
-                  dict(scenario='high', request_year=2026, region_id='B', IT_MW=999.0, parent_zone='z', spatial_basis='projected_moderate50'),
-                  dict(scenario='mid', request_year=2026, region_id='B', IT_MW=777.0, parent_zone='z', spatial_basis='existing_atlas')]
+    pd.DataFrame([dict(scenario='mid', request_year=2026, region_id='A', IT_MW=100.0, parent_zone='z', spatial_basis='existing_stock'),
+                  dict(scenario='mid', request_year=2028, region_id='A', IT_MW=50.0, parent_zone='z', spatial_basis='existing_stock'),
+                  dict(scenario='mid', request_year=2027, region_id='B', IT_MW=80.0, parent_zone='z', spatial_basis='existing_stock'),
+                  dict(scenario='high', request_year=2026, region_id='B', IT_MW=999.0, parent_zone='z', spatial_basis='existing_stock'),
+                  dict(scenario='mid', request_year=2026, region_id='B', IT_MW=777.0, parent_zone='z', spatial_basis='other_basis')]
                  ).to_csv(tmp_path / 'reg.csv', index=False)
     n = snapshots_net()
     for b in ['A', 'B']:
@@ -191,7 +191,7 @@ def test_regional_dc_background_load(tmp_path):
         R.GCFG.update(regional_dc='off')
         R.add_regional_dc(n)
         assert 'A regional_dc' not in n.loads.index
-        R.GCFG.update(regional_dc='projected_moderate50', regional_dc_scenario='mid')
+        R.GCFG.update(regional_dc='existing_stock', regional_dc_scenario='mid')
         R.add_regional_dc(n)
     finally:
         R.REGIONAL_COHORTS = old

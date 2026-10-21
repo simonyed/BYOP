@@ -14,18 +14,26 @@ Copied 2026-10-20 from the work packages (now in D:\BYOP_impact\work_pkgs, local
 | `grid/TPIT_TO_COUNTY_ASSET_MAP.csv` | `BYOP_ERCOT_County_v2.5.0/data/derived/TPIT_TO_COUNTY_ASSET_MAP.csv` | build_tpit_register.py (RUN-2, D250-09/12) | `3fd0a742d241479a…` |
 | `grid/TPIT_2026-07-13_project_register_v250.csv` | `BYOP_ERCOT_County_v2.5.0/data/derived/TPIT_2026-07-13_project_register_v250.csv` | build_tpit_register.py (RUN-2) | `b7697cc9d57ed153…` |
 
-## PNNL data-center geography on the TAMU 64s backbone (added 2026-10-21)
+## ERCOT data-center growth on the TAMU 64s backbone (added 2026-10-21; revised same day, RA-DC-SPATIAL-01)
 
-Producer: `work_pkgs/BYOP_ERCOT_Rearchitecture_Work_Package/pnnl_spatial/build_pnnl_tamu_weights.py` (raw PNNL data local only under `pnnl_spatial/raw/`).
-Sources: IM3 Open Source Data Center Atlas v2026.02.09 (existing facilities, OSM-derived, ODbL 1.0, DOI 10.57931/3017294; CSV sha256 `53d200d8111c…`, GPKG `1c0d8c206eb2…`) and IM3 Projected US Data Center Locations v1.1 (20 growth x market-gravity scenarios, CC-BY-4.0, DOI 10.57931/3020186). Mapping: site point -> county -> nearest ERCOT TAMU substation -> 64s cluster bus (`results/BYOP/baseline_2025_tamu/NETWORK_MAPPING_AUDIT.csv`). Full hashes in `dc/PNNL_TAMU64_PROVENANCE.json`.
+**Allocation rule (researcher decision RA-DC-SPATIAL-01, 2026-10-21).** The approved ERCOT data-center totals per scenario and year (`dc/ercot_cohorts_2026_2035.csv`; 2035 cumulative IT: low 3,347 / mid 5,029 / high 6,747 MW) are split over the **21 TAMU buses that hold existing data centers**, in proportion to each bus's share of the existing data-center footprint. The PNNL projected-site scenarios are **no longer used** for allocation. They remain only as a concentration diagnostic in `PNNL_CONCENTRATION_TAMU64.csv`. The earlier approved zone split (p63/p64/p65) is replaced by this rule.
+
+Producer: `work_pkgs/BYOP_ERCOT_Rearchitecture_Work_Package/pnnl_spatial/build_pnnl_tamu_weights.py` (raw data local only, under `pnnl_spatial/raw/`).
+Existing-stock source: IM3 Open Source Data Center Atlas v2026.02.09 (OSM-derived, ODbL 1.0, DOI 10.57931/3017294; CSV sha256 `53d200d8111c…`, GPKG `1c0d8c206eb2…`). The diagnostic only, IM3 Projected US Data Center Locations v1.1, is CC-BY-4.0, DOI 10.57931/3020186.
+Mapping: facility point -> county -> nearest ERCOT TAMU substation -> 64s cluster bus (`results/BYOP/baseline_2025_tamu/NETWORK_MAPPING_AUDIT.csv`). Full hashes are in `dc/PNNL_TAMU64_PROVENANCE.json`.
 
 | File | Content | SHA-256 |
 |---|---|---|
-| `dc/PNNL_SITES_TAMU64.csv` | every de-duplicated existing facility / projected site with county, ERCOT flag, bus, zone, distance, weight | `312d6686dcdc76b9…` |
-| `dc/PNNL_BUS_WEIGHTS_TAMU64.csv` | bus weights per source x scenario (share of ERCOT, share within reeds_zone) | `9e6776c01ed0c21f…` |
-| `dc/PNNL_CONCENTRATION_TAMU64.csv` | concentration per source x scenario (counties, buses, top-1/top-3 bus share, HHI) | `c74ca0ddcff0e17c…` |
-| `dc/ercot_cohorts_2026_2035_tamu64.csv` | `ercot_cohorts_2026_2035.csv` on TAMU buses: `spatial_basis=projected_moderate50` MAIN (approved zone totals, within-zone split by projected moderate/50 sites, DATA-03B); `existing_atlas` SENSITIVITY (ERCOT total per year split by existing footprint; changes the zone split, needs approval) | `3efb8bf6b88771ad…` |
-| `dc/ERCOT_DC_CAPACITY_ALLOCATION_TAMU64.csv` | **ERCOT data-center capacity allocation, bus x year** (2026-2035; low/mid/high; both bases): new and cumulative IT MW, TX PUE, cumulative facility MW, bus coordinates, counties and PNNL site count per bus. Excludes the 3 representative test POIs | `d276e11ee29cba2e…` |
+| `dc/ERCOT_DC_CAPACITY_ALLOCATION_TAMU64.csv` | **ERCOT data-center capacity allocation, bus x year** (21 buses; 2026-2035; low/mid/high): new and cumulative IT MW, TX PUE, cumulative facility MW, bus coordinates, counties, existing-facility count, bus share. Excludes the 3 representative test POIs | `2c0ff02817dc3f2c…` |
+| `dc/ercot_cohorts_2026_2035_tamu64.csv` | the same allocation in cohort format, read by `rearch_mech.py --regional-dc existing_stock` | `48db4072410767dd…` |
+| `dc/PNNL_BUS_WEIGHTS_TAMU64.csv` | existing-stock bus weights (share of ERCOT, share within reeds_zone) | `423be2cb1293b505…` |
+| `dc/PNNL_SITES_TAMU64.csv` | 119 de-duplicated existing ERCOT facilities with county, bus, zone, distance, footprint | `92576415ed01f361…` |
+| `dc/PNNL_CONCENTRATION_TAMU64.csv` | concentration metrics; column `use` marks the existing atlas as the allocation basis and the projected scenarios as DIAGNOSTIC ONLY | `f157b3119a7cb23e…` |
 | `dc/PNNL_TAMU64_PROVENANCE.json` | versions, DOIs, licences, raw-file hashes, de-duplication counts | `3991da50dbc2ae8c…` |
 
-Rules: the existing atlas has no MW field. Its footprint (sqft) is used only as a relative spatial weight and is never converted to IT MW. Campus/building overlap and county-straddling duplicate rows are removed. The 4 bare points use the median Texas building footprint as a labelled proxy. Model use is opt-in: `rearch_mech.py --regional-dc {off|projected_moderate50|existing_atlas} --regional-dc-scenario {low|mid|high}`, default `off`. The cohorts are added as background facility load (cumulative IT x PUE), with their own load_shed generator protected by no-harm. They are not study requests. Two points still need researcher decisions: the aggregate-POI equipment assumption, and the overlap with the 3 representative POIs (currently added on top).
+Rules:
+- The atlas has no MW field. Footprint (sqft) is only a relative spatial weight and is never converted to IT MW.
+- Campus/building overlap and county-straddling duplicate rows are removed. The 4 bare points use the median Texas building footprint as a labelled proxy.
+- Bus shares are fixed over 2026-2035.
+- Model use is opt-in: `rearch_mech.py --regional-dc {off|existing_stock} --regional-dc-scenario {low|mid|high}`, default `off`. When on, the growth is background facility load (cumulative IT x PUE) with its own load_shed generator protected by no-harm. It is not a study request.
+- The 3 representative test POIs are not part of this allocation.

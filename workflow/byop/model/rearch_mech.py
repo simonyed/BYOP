@@ -325,8 +325,8 @@ REGIONAL_COHORTS = Path(__file__).resolve().parents[1] / 'inputs/dc/ercot_cohort
 
 
 def add_regional_dc(n):
-    """Opt-in (--regional-dc, default off): the approved ERCOT DC cohorts (DATA-01/03) placed on TAMU 64s buses by a PNNL
-    spatial basis (projected_moderate50 = MAIN, approved zone totals; existing_atlas = SENSITIVITY) as flat BACKGROUND
+    """Opt-in (--regional-dc, default off): the approved ERCOT DC totals (DATA-01/03, low/mid/high) split over the 21 TAMU
+    64s buses holding existing data centers by existing-stock footprint share (RA-DC-SPATIAL-01, 2026-10-21) as flat BACKGROUND
     facility load (cum. IT MW of cohorts with request_year <= period x state PUE) in ALL scenarios. Not a study request:
     no POI equipment limit, no BYOP choice (aggregate-POI equipment assumption pending a researcher decision); added on
     top of the 3 representative POI requests (overlap rule pending). Own curtailment generator priced at SHED_COST,
@@ -997,8 +997,8 @@ def main():
     ap.add_argument('--relax', nargs='*', default=[], help='S1 attribution relaxations: POI UP RA PROC')
     ap.add_argument('--attribution', action='store_true', help='also run S1_xPOI / S1_xUP / S1_xRA / S1_xPROC / S1_xALL')
     ap.add_argument('--competing', type=float, default=1.0)
-    ap.add_argument('--regional-dc', default='off', choices=['off', 'projected_moderate50', 'existing_atlas'],
-                    help='background ERCOT DC cohorts on TAMU64 buses by PNNL spatial basis (default off)')
+    ap.add_argument('--regional-dc', default='off', choices=['off', 'existing_stock'],
+                    help='background ERCOT DC growth on TAMU64 buses by existing-stock share (default off)')
     ap.add_argument('--regional-dc-scenario', default='mid', choices=['low', 'mid', 'high'])
     ap.add_argument('--competing-voll', type=float, default=None, help='curtailment price of the competing queued load (default = SHED_COST)')
     ap.add_argument('--s0-calibrate', action='store_true', help='D3 3.5: targeted S0 uplift calibration (S0 only); writes S0_CALIBRATION.csv')

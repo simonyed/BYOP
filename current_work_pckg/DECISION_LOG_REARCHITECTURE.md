@@ -72,3 +72,19 @@
 | RA-D2f（2026-10-21 修订） | **修订后**：竞争排队负荷保留独立的削减变量，以便**单独报告**，但计价与背景负荷切负荷相同（1e4 USD/MWh），并按发电机逐一受“不得损害”约束保护，使 G-K/G-U 仍是物理压力情景。**原方案**（600 USD/MWh、不受保护）在 R2_GK 的 S0 中削减了 2.6 TWh 竞争负荷（约 20%），因为削减比供电便宜，G-K 的压力会因此消失，已作废（`rearch_p0/R2_GK_ABORTED_competing600`）。原方案说明如下：G-K/G-U 的竞争排队大负荷单独建立削减变量（`<site> competing_unserved`，按新增大负荷损失价值 600 USD/MWh 计价），与既有用户切负荷（1e4 USD/MWh）分开：它不受“不得损害既有用户”约束保护，不计入 S0 冻结的切负荷，损失单独报告（`competing_queue_loss_PV_USD`，计入社会总损失，不计入资源成本）。依据：D2 原则——新增大负荷先于既有用户被削减；S5 验收中 G-K 的 S0 有 370 GWh 切负荷，全部发生在 2027 年起竞争负荷出现的 POI 母线上（G-W 的 S0 为 0） | `add_competing_load`；`--competing-voll` | 执行者实施·待研究者确认 |
 | RA-S5 | **Step 5 小规模验收（S5_GK：G-K，2026–2029）通过**：9 个情景全部最优、纯 LP；投运容量不下降；非计划中断不超过上限；不损害既有用户（最大越限 0.001 MW，等于容差）；S1_zero = S0；S2_off = S1_ECON；S2 一致；S1_EARLIEST 年服务 1,965 ≥ S1_ECON 1,715 MW·年（ABI 2028 年：500 vs 250）；中断价格 565/576/587/599 USD/MWh 与研究者核算表一致；ABI 的 BYOP 由 455 MW 降到 275 MW（P0-2 的预期效果）。未通过的两项已查明：`dc_energy_balance` 是检查本身漏计了中断电量（计入后残差为 0，已修正）；`no_load_shed` 来自竞争负荷（见 RA-D2f） | `results/BYOP/rearch_p0/S5_GK/` | 已完成 |
 | RA-S0r | R2_GW 的 S0（修复后，正常切负荷惩罚 1e4 USD/MWh）仍有 39 GWh 背景切负荷（2026–2031 年；修复前为 760 GWh，下降 95%），集中在 2027–2029 年的少数母线（`p630 13/14`、`p620 1/6/7`、`p600 1`、2028 年的 `p630 2`）。最小增容校准时切负荷价格为 1e8，校准后为 0；正常价格下，2030 年以前新建电源受工期限制，模型在罕见尖峰时段选择切负荷而不是提前建储能。这属于惩罚价格水平下的经济选择，有明确解释；按 Brattle VOLL（35,685 USD/MWh）另行报告损失。冻结为 `S0_repaired` 的不得损害基准 | `rearch_p0/R2_GW/shed_by_bus_S0.csv` | 已记录·研究者可决定是否把惩罚提高到 VOLL |
+
+## F. 数据中心空间分配（2026-10-21）
+
+### RA-DC-SPATIAL-01：未来增量按存量比例分配到 21 个 bus（研究者决定）
+
+- **决定**：不再用 PNNL 预测场址（IM3 Projected v1.1）分配 2026–2035 年的增量。
+- **规则**：已批准的 ERCOT 每年总量（`ercot_cohorts_2026_2035.csv`，low/mid/high）全部按存量数据中心比例分到 21 个 TAMU bus 上。
+  - 存量比例 = PNNL 现有数据中心图集 v2026.02.09 去重后，各 bus 的建筑面积占比。
+  - 比例在 2026–2035 年不变。
+- **取代**：原先的 DATA-03B 分区比例（p63/p64/p65）及 projected moderate/50 的区内拆分。
+- **数据**：
+  - `workflow/byop/inputs/dc/ERCOT_DC_CAPACITY_ALLOCATION_TAMU64.csv`（bus × 年）
+  - `ercot_cohorts_2026_2035_tamu64.csv`（模型读取）
+- **模型**：`--regional-dc existing_stock`，默认关闭。
+- **不包含**：之前作为测试的 3 个代表性并网点。
+- **说明**：面积只作相对权重，不换算成 MW。PNNL 预测场址只保留在 `PNNL_CONCENTRATION_TAMU64.csv` 中，作为集中度诊断。
