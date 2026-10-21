@@ -1,0 +1,60 @@
+{
+ "stage": "B2_pilot_s01",
+ "status": "B2_BLOCKED_TECHNICAL + B2_BLOCKED_FOR_SCIENCE",
+ "authorization": "researcher chat 2026-10-21 (B2 package + instruction to continue): B2 pilot_s01 only",
+ "git_head": "af00b32a7699344fd64b4129e02957dc3aeb4486",
+ "approved_git_sha": "8636c08d4b9dd11e7624f6fb52f92c91cf439ad0",
+ "gate_approved": true,
+ "threads": 20,
+ "inputs": {
+  "baseline_nc": "19034285be0aa9b9906ab5b0e03778f3a16e7c1c39e97ac97b368d9097cafadb",
+  "b1_erm_json": "7d0c02f1245ebba31d26cb303cd154600e0a6626853d7d2c2910a1a268807a19",
+  "b1_s0cal_csv": "30bf497ef009f3e120d43f7d6c2995fe0b7d82ffce9d1df2b5629131397454d5"
+ },
+ "command": "THREADS=20 bash byop/run/run_mainline.sh pilot_s01",
+ "started_utc": "2026-10-21T21:14:43Z",
+ "ended_utc": "2026-10-21T21:43:42Z",
+ "exit_code": 1,
+ "solver_calls": [
+  {
+   "scenario": "S0",
+   "status": "ok",
+   "termination": "optimal",
+   "seconds": 1522.7,
+   "n_vars": 4094602,
+   "n_cons": 7162661,
+   "integer_vars": 0,
+   "objective": 50932328557.232185
+  },
+  {
+   "scenario": "S1_EARLIEST lexicographic pre-solve (gurobipy export, 12 objectives)",
+   "status": "INFEASIBLE (Gurobi status 3)",
+   "seconds": 104.7,
+   "n_rows": 7310726,
+   "n_cols": 4179592,
+   "integer_vars": 0,
+   "solver_params": "Threads=20 only (Gurobi defaults: FeasibilityTol 1e-6, concurrent LP)"
+  }
+ ],
+ "main_solve_params": {
+  "Method": 2,
+  "Crossover": 0,
+  "BarConvTol": 1e-05,
+  "FeasibilityTol": 0.001,
+  "OptimalityTol": 0.0001,
+  "BarHomogeneous": 1
+ },
+ "S0_formal": {
+  "load_shed_MWh": 32808.63,
+  "native_MWh": 32732.56,
+  "inherited_ramp_MWh": 76.07,
+  "max_peak_shed_MW_bus": "p630 2: 965.7 MW (2028-2029)"
+ },
+ "log": {
+  "path": "workflow/results/BYOP/mainline/MAINLINE_V13_GREAL_MID_PILOT_S01.log",
+  "sha256": "3231ca740bbbb4532d6e6d44725fb8ece52453c3c9726ca6332d24f53b28bb57",
+  "location": "L2 only (80 MB); excerpt tracked"
+ },
+ "SCIENTIFIC_USE": "BLOCKED",
+ "next": "STOP: researcher decision on minimal fixes F1 (lex tolerance consistency) / F2 (S0 background shed) before any rerun"
+}

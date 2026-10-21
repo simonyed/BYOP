@@ -1,0 +1,20 @@
+item,B1,B2,expected
+B1 ERM JSON sha256,7d0c02f1245ebba31d26cb303cd154600e0a6626853d7d2c2910a1a268807a19,used via --erm-cal,7d0c02f1245ebba31d26cb303cd154600e0a6626853d7d2c2910a1a268807a19
+B1 S0_CALIBRATION.csv sha256,30bf497ef009f3e120d43f7d6c2995fe0b7d82ffce9d1df2b5629131397454d5,,30bf497ef009f3e120d43f7d6c2995fe0b7d82ffce9d1df2b5629131397454d5
+baseline .nc sha256,19034285be0aa9b9906ab5b0e03778f3a16e7c1c39e97ac97b368d9097cafadb,,19034285be0aa9b9906ab5b0e03778f3a16e7c1c39e97ac97b368d9097cafadb
+S0CAL lines loaded (added_MW > 0.5),9,,9
+S0CAL MW loaded (sum of all rows incl. < 0.5 MW rows),1095.6237,,1095.6 (rows > 0.5 MW); tiny rows not loaded
+"S0CAL MW at AIDC-adjacent lines (TL73, TL63, TL3, TL26)",665.8688,same fixed links,665.8688
+ERM margin 2026,0.08196186899865143,,identical
+ERM margin 2027,0.052523234525577944,,identical
+ERM margin 2028,0.025608607107620918,,identical
+ERM margin 2029,-0.005940221273159851,,identical
+ERM margin 2030,-0.019528522016520444,,identical
+ERM margin 2031,-0.04174515609302243,,identical
+S0 load_shed_MWh,5.36197281864464e-10,32808.63365796519,"B1 = calibration run (shed 1e8, uplift 1e7); B2 = economic S0 (shed 1e4, S0CAL fixed): may differ"
+S0 native_background_unserved_MWh,5.162616499766591e-10,32732.56206531584,"B1 = calibration run (shed 1e8, uplift 1e7); B2 = economic S0 (shed 1e4, S0CAL fixed): may differ"
+S0 inherited_ramp_unserved_MWh,1.9935631887804908e-11,76.07159264935258,"B1 = calibration run (shed 1e8, uplift 1e7); B2 = economic S0 (shed 1e4, S0CAL fixed): may differ"
+S0 public_resource_capex_PV_USD,7167704679.803882,6144303832.447523,"B1 = calibration run (shed 1e8, uplift 1e7); B2 = economic S0 (shed 1e4, S0CAL fixed): may differ"
+S0 system_operating_PV_USD,44692236635.82004,44473490935.62409,"B1 = calibration run (shed 1e8, uplift 1e7); B2 = economic S0 (shed 1e4, S0CAL fixed): may differ"
+S0 social_real_resource_cost_USD,51859941315.62392,50932287490.24753,"B1 = calibration run (shed 1e8, uplift 1e7); B2 = economic S0 (shed 1e4, S0CAL fixed): may differ"
+S0 public_new_MW,"{""4hr_battery_storage"": 55.5, ""8hr_battery_storage"": 1514.0, ""AC_exp"": 35724.1, ""onwind"": 25714.1, ""solar"": 5762.0}","{""AC_exp"": 34757.6, ""CCGT"": 707.9, ""onwind"": 25100.9, ""solar"": 6174.1}","B1 = calibration run (shed 1e8, uplift 1e7); B2 = economic S0 (shed 1e4, S0CAL fixed): may differ"

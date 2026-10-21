@@ -1,0 +1,65 @@
+# excerpt of MAINLINE_V13_GREAL_MID_PILOT_S01.log (80M, 1173677 lines, sha256 3231ca740bbbb4532d6e6d44725fb8ece52453c3c9726ca6332d24f53b28bb57); full log on L2 only
+1173311:Set parameter Threads to value 20
+1173312:Set parameter Method to value 2
+1173313:Set parameter Crossover to value 0
+1173315:Set parameter BarConvTol to value 1e-05
+1173316:Set parameter OptimalityTol to value 0.0001
+1173317:Set parameter FeasibilityTol to value 0.001
+1173330:Optimize a model with 7162661 rows, 4094602 columns and 14648087 nonzeros
+1173341:Presolved: 3306084 rows, 2541188 columns, 10347783 nonzeros
+1173529:Barrier solved model in 165 iterations and 1410.26 seconds (904.61 work units)
+1173530:Optimal objective 5.09323286e+10
+1173555:Set parameter Threads to value 20
+1173562:Optimize a model with 7310726 rows, 4179592 columns and 14868137 nonzeros
+1173572:Multi-objectives: starting optimization with 12 objectives ... 
+1173575:Multi-objectives: applying initial presolve ...
+1173580:Presolved: 3456479 rows, 4092365 columns, 10706324 nonzeros
+1173583:Multi-objectives: optimize objective 1 (A1_2026) ...
+1173589:Presolved: 1322118 rows, 1374655 columns, 5068524 nonzeros
+1173643:Infeasible model
+1173646:Multi-objectives: solved in 104.70 seconds (72.19 work units)
+1173647:Model is infeasible
+1173649:Traceback (most recent call last):
+1173676:    raise RuntimeError(f'P0-2 lexicographic pre-solve not optimal (Gurobi status {gm.Status})')
+1173677:RuntimeError: P0-2 lexicographic pre-solve not optimal (Gurobi status 3)
+# --- last 40 lines
+
+
+Solved with primal simplex
+
+Solved in 149019 iterations and 104.54 seconds (72.19 work units)
+Infeasible model
+
+---------------------------------------------------------------------------
+Multi-objectives: solved in 104.70 seconds (72.19 work units)
+Model is infeasible
+
+Traceback (most recent call last):
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/model/rearch_mech.py", line 1891, in <module>
+    main()
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/model/rearch_mech.py", line 1749, in main
+    r1e = go('S1_EARLIEST', lex=True, strict=True) if 'S1_EARLIEST' in a.scenarios else None
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/model/rearch_mech.py", line 1655, in go
+    res = M.solve(config, tag, out, n)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/model/rearch_mech.py", line 1610, in _gated_solve
+    return _solve0(*args_, **kw_)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/model/v240_mech.py", line 721, in solve
+    return w2.solve(n, cfg, tag, out, erm_dc_mode='B')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/model/wp2_ercot_s0_s1.py", line 163, in solve
+    sn.solve_network(n, config=cfg, solving=copy.deepcopy(cfg['solving']), opts=opts,
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/scripts/solve_network.py", line 358, in solve_network
+    run_optimize(n, rolling_horizon, skip_iterations, cf_solving, **kwargs)
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/scripts/solve_network.py", line 241, in run_optimize
+    status, condition = n.optimize(**kwargs)
+                        ^^^^^^^^^^^^^^^^^^^^
+  File "/datasets/prgm/pypsa-usa/.venv/lib/python3.11/site-packages/pypsa/optimization/optimize.py", line 670, in __call__
+    extra_functionality(n, self._window.model_index)
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/model/rearch_mech.py", line 1007, in extra_rearch
+    lex_presolve(n, m)
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/model/rearch_mech.py", line 1080, in lex_presolve
+    raise RuntimeError(f'P0-2 lexicographic pre-solve not optimal (Gurobi status {gm.Status})')
+RuntimeError: P0-2 lexicographic pre-solve not optimal (Gurobi status 3)

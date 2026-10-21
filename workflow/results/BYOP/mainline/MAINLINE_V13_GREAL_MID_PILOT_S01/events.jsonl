@@ -1,0 +1,1 @@
+{"timestamp_utc": "2026-10-21T21:40:31.554360+00:00", "run_id": "rearch_MAINLINE_V13_GREAL_MID_PILOT_S01_20261021T211444Z", "case_id": "MAINLINE_V13_GREAL_MID_PILOT_S01", "event": "optimization_solved", "status": "SOLVER_OPTIMAL", "message": "obj 5.093233e+10; vars 4094602; int 0; 1535s", "scenario": "S0"}

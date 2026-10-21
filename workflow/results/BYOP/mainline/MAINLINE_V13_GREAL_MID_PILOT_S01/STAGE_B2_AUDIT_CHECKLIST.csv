@@ -1,0 +1,19 @@
+level,check,result,evidence
+HARD,S0 optimal,PASS,case_manifest.json solves.S0
+HARD,S1_EARLIEST optimal,FAIL,RuntimeError: P0-2 lexicographic pre-solve not optimal (Gurobi status 3 = INFEASIBLE)
+HARD,integer / binary variables = 0,PASS,scenarios/*/solve.json integer_vars
+HARD,"gate approved, approved SHA 8636c08d",PASS,RUN_GATE.json
+HARD,B1 inputs hashes match,PASS,B1 file hashes in STAGE_B2_B1_BASELINE_RECONCILIATION.csv; baseline .nc hash checked in the pre-run sha256sum (B2 report section 1)
+HARD,9 S0CAL lines loaded,PENDING,--s0-cal-file passed on the command line; load count is written to case_manifest.json only at case end (not reached)
+HARD,48 unique bus-year keys,PASS,STAGE_B2_48_BUS_YEAR_GRID_ONLY.csv
+HARD,delay >= 0 and served <= requested,NOT_APPLICABLE,S1_EARLIEST not solved
+HARD,online IT monotone,PENDING,checks.online_IT_monotone
+HARD,no-harm existing customers (S1 <= S0 + 0.001 MW),PENDING,scenario_summary no_harm_max_violation_MW = NA
+HARD,DC energy balance,PENDING,checks.dc_energy_balance
+HARD,POI flow <= equipment,PENDING,checks.poi_flow_le_equipment
+HARD,no service before grid,PENDING,checks.no_service_before_grid_or_byop
+HARD,lexicographic pre-solve optimal (S1_EARLIEST),FAIL,Gurobi status 3 (INFEASIBLE) in the exported lexicographic model
+SCIENCE,formal S0 background shed ~ 0,FAIL,STAGE_B2_S0_BACKGROUND_RELIABILITY.csv
+SCIENCE,SCIENTIFIC_USE = PARTIAL_PILOT (expected for B2),FAIL,collector not reached (run stopped)
+SCIENCE,line-flow utilisation of the 4 AIDC-adjacent S0CAL lines,PENDING,PENDING_DIAGNOSTIC_EXPORT: flows not saved
+SCIENCE,single-factor attribution of delays,NOT_APPLICABLE,B4 not authorised

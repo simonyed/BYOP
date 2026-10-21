@@ -1,0 +1,21 @@
+{
+ "case_id": "MAINLINE_V13_GREAL_MID_PILOT_S01",
+ "case_group": "MAINLINE_V13_GREAL_MID_PILOT_S01",
+ "run_id": "rearch_MAINLINE_V13_GREAL_MID_PILOT_S01_20261021T211444Z",
+ "scenario": "S0",
+ "relax": [],
+ "setting": "G-REAL",
+ "solve": {
+  "tag": "S0",
+  "status": "ok",
+  "termination": "optimal",
+  "objective": 50932328557.232185,
+  "seconds": 1522.7,
+  "n_vars": 4094602,
+  "n_cons": 7162661,
+  "integer_vars": 0,
+  "erm_dc_mode": "B",
+  "erm_poi_coeff_snapshot0": null
+ },
+ "timestamp_utc": "2026-10-21T21:40:31.425735+00:00"
+}
