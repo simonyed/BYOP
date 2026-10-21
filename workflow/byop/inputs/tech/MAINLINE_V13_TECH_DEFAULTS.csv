@@ -1,0 +1,7 @@
+﻿technology,boundary,capex_2025USD_per_kW_netAC,fom_2025USD_per_kW_year,vom_2025USD_per_MWh_e,heat_rate_BtuHHV_per_kWh_e,reference_lead_years,lifetime_years_or_rule,storage_duration_h,storage_roundtrip_efficiency,evidence_class,research_source_locator,qualification_note,model_status
+RICE_50DF,DC_BTM,2450,43,7,8381,2,25,,,PROXY,BASELINE_V1_SECTION_2,"BTM project proxy; COD depends on permits, equipment, firm gas; HR HHV net",MAIN
+SOFC_NG_STANDARD,DC_BTM,7953,37.77,0.72,6469,3,15,,,SOURCE_FACT_PLAN,BASELINE_V1_SECTION_2_EIA_TRE,EIA planning benchmark not actual Bloom contract; fast slots disabled,MAIN
+OCGT_AERO,DC_BTM,2275,9.99,5.97,9447,2,30,,,PROXY,BASELINE_V1_SECTION_2_EIA,Device package eligibility and site gas and permits,MAIN
+WIND_ONSHORE,DC_BTM_OR_UTILITY,1562,34.57,0,,3,INHERIT_PYPSA_USA,,,SOURCE_FACT_PLAN,BASELINE_V1_SECTION_2_EIA,Constrained by bus-level resource potential and timeseries,MAIN
+PV_TRACKING,DC_BTM_OR_UTILITY,1342,23.6,0,,2,INHERIT_PYPSA_USA,,,SOURCE_FACT_PLAN,BASELINE_V1_SECTION_2_EIA,Constrained by bus-level resource potential and timeseries,MAIN
+BESS_4H,DC_BTM_OR_UTILITY,1500,41.84,0,,1,15,4,0.85,SOURCE_FACT_PLAN,BASELINE_V1_SECTION_2_EIA,4h energy duration and SOC with round-trip efficiency; no firm energy source,MAIN

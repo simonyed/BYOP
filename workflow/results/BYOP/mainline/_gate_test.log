@@ -1,0 +1,11 @@
+{
+ "RUN_GATE": "REFUSED",
+ "approved": false,
+ "reasons": [
+  "run_authorization=NOT_APPROVED",
+  "approved_git_sha missing"
+ ],
+ "head": "be2c6904cb203822c9f5a36e57bf10ebaf6d159e",
+ "approved_git_sha": null,
+ "config": "config/config.byop_ercot_mainline.yaml"
+}

@@ -1,0 +1,7 @@
+﻿year,region,sector,gas_price_2025USD_per_MMBtu_HHV,scenario,source,evidence_class
+2026,West South Central,Electric Power,3.738,AEO2026_Counterfactual_Baseline,BYOP_Parameter_Evidence_Baseline_FINAL_v1.0.md section 3.1,SOURCE_FACT_FORECAST
+2027,West South Central,Electric Power,3.513,AEO2026_Counterfactual_Baseline,BYOP_Parameter_Evidence_Baseline_FINAL_v1.0.md section 3.1,SOURCE_FACT_FORECAST
+2028,West South Central,Electric Power,3.576,AEO2026_Counterfactual_Baseline,BYOP_Parameter_Evidence_Baseline_FINAL_v1.0.md section 3.1,SOURCE_FACT_FORECAST
+2029,West South Central,Electric Power,3.768,AEO2026_Counterfactual_Baseline,BYOP_Parameter_Evidence_Baseline_FINAL_v1.0.md section 3.1,SOURCE_FACT_FORECAST
+2030,West South Central,Electric Power,4.443,AEO2026_Counterfactual_Baseline,BYOP_Parameter_Evidence_Baseline_FINAL_v1.0.md section 3.1,SOURCE_FACT_FORECAST
+2031,West South Central,Electric Power,4.857,AEO2026_Counterfactual_Baseline,BYOP_Parameter_Evidence_Baseline_FINAL_v1.0.md section 3.1,SOURCE_FACT_FORECAST

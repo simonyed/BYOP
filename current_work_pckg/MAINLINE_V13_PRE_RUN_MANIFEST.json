@@ -1,0 +1,78 @@
+{
+ "manifest": "MAINLINE_V13_PRE_RUN_MANIFEST",
+ "created_utc": "2026-10-21T18:03:12+00:00",
+ "RUN_AUTHORIZATION": "NOT_APPROVED",
+ "SOLVER_EXECUTIONS": 0,
+ "stage": "STAGE_A_IMPLEMENTATION_ONLY",
+ "git": {
+  "branch": "mainline-v13-stageA",
+  "parent_commit_when_hashed": "be2c6904cb203822c9f5a36e57bf10ebaf6d159e",
+  "note": "the files below are hashed from the working tree; the Stage A commit that contains them is in MAINLINE_V13_RETURN_MANIFEST.md"
+ },
+ "code_sha256": {
+  "workflow/byop/model/rearch_mech.py": "1d8dabcacb9f26d4d88577d83724d74c30ba62290ff59d241632a2353bb3da77",
+  "workflow/byop/model/v240_mech.py": "1f352288375386c97811f44449592049d4cef881b42ab32e25c77283db183ef5",
+  "workflow/byop/model/v250_mech.py": "60e98be4b883d843c7eca63fd109b982c8d3bb47785cac11a8f030578a0360a1",
+  "workflow/byop/model/wp2_ercot_s0_s1.py": "c4d4d790d24aa7ecb1aa40a7ea3b43de03f37e67301459625ab144400aa6d1d4",
+  "workflow/byop/model/wp2_ercot_s1_real.py": "df5765cfc61016c78088178e42172a4ac828f5cff332d9fc6b254cc8173e08e8",
+  "workflow/byop/model/byop_paths.py": "dde777a5dd2e93b798c8a9dc10d6345186d1a0e76ce920999dd225b7bbd12944",
+  "workflow/byop/post/collect_mainline.py": "eb36a54262869588d1e43ea478e0a396dfce5ef8431dac536b6839e08b4efe64",
+  "workflow/byop/run/run_mainline.sh": "bdc0189ab540722804922b8eeec3ba2131bfbb2644894af33d879f776d5ba222",
+  "workflow/byop/build/build_mainline_inputs.py": "2853b7fc59baf806db8cb21ebbf8cf71cd1dd2fe9fcd634907737bf58055aa9b",
+  "workflow/byop/build/build_reeds2_potential.py": "7d57e13774d979b090d13a2a5cdb82ed63f108c8cc0ae21e38c8ad5facdb45ec",
+  "workflow/byop/tests/test_mainline_v13.py": "54c35654b47c84e10b28963c3a5c2cdf5c9a1ed3c42059eeffd4063018ba2096",
+  "workflow/byop/tests/structural_mainline_v13.py": "ede02f8eac721e06af47bad40af3b83bc613360447ed7124b5be8f1d3a9f3641",
+  "workflow/scripts/solve_network.py": "8f7eea1a1d7d93409c37eb5ccae69eda688d78ed50e1a6e3da933b80049c2b27",
+  "workflow/scripts/prepare_network.py": "4c1173357f139c20c7dc288df2be0196feeff54898fd4c6eb2f165a937d5213c"
+ },
+ "inputs_sha256": {
+  "workflow/byop/inputs/dc/MAINLINE_RESEARCH_COHORTS_TAMU64.csv": "5373983ea59e2f7696ffb14e914fdc8d0e3e8186879f6e17b60c78c41ac2e173",
+  "workflow/byop/inputs/dc/MAINLINE_INHERITED_RAMP_2025.csv": "15c3501df57835381346ef8eff42b3b2201dbd32393ca46161852076e2682a4e",
+  "workflow/byop/inputs/dc/MAINLINE_AIDC_RECONCILIATION.csv": "f6ad3ca91cb75733de6a7ef6f06d45cc3d68934294883f6c128356d5a75302a9",
+  "workflow/byop/inputs/dc/MAINLINE_BUS_SITE_POI_MAP.csv": "aa64f4408d0dbf5b3bcaff2359f7ae5540bdc0197fa1077c49a8a154fb795e5a",
+  "workflow/byop/inputs/dc/ercot_cohorts_2026_2035_tamu64.csv": "ee7fcac92cd707118022acb1c258911b266dfcc2bc1a32b3610043a068c6af49",
+  "workflow/byop/inputs/dc/ERCOT_DC_TOTALS_2026_2035.csv": "b4d877cbe21281d0e7e0366235788e284495fb6f84518046c0e3691386adfd5c",
+  "workflow/byop/inputs/dc/EPOCH_TX_SITES_TAMU64.csv": "fe72c0bd9558252437547016efc6103e40650924e9e7dad73cad53ece69ff357",
+  "workflow/byop/inputs/dc/state_pue_2022_2050.csv": "2a2c2453b3dfdfbea09e955e7b510d1f47fb5ef36d685966a709b1f9ef4cfa74",
+  "workflow/byop/inputs/dc/yearly_task_parameters_2022_2050.csv": "8a0bdeb02bd32efcbc1d1c6b759e56336d9c8db7be857db9920c2a9a89c1c9d4",
+  "workflow/byop/inputs/dc/hourly_inference_trace.csv": "b282e1a142899f5aa068bfbfcc32b519c6e46e678ca78bba09fb987da11fc903",
+  "workflow/byop/inputs/poi/GREAL_POI_ASSUMPTIONS.csv": "afaee9b22894b3fa3730189d4274f6cdf1cd9361d38007e3ef213748c5fa9911",
+  "workflow/byop/inputs/poi/GREAL_POI_E0_SCHEDULE.csv": "039e21449756de7e70d7703443081fec265b35205ae20bd9babf5095826531ee",
+  "workflow/byop/inputs/poi/GREAL_R_ASSET_POOL.csv": "b204344cc9f68cc44326088df80722ef730a3bbed75285b0d716d9ecbd3711bb",
+  "workflow/byop/inputs/poi/GRID_PROJECTS.csv": "bb05fdc16768852436e792186067b88e931f9055fd35674b5394e5ba13c5e5d8",
+  "workflow/byop/inputs/grid/COMMITTED_BASE_ASSETS.csv": "324408cccf42b062bd826135fd126f4e068b69d9017818e77646a818de715056",
+  "workflow/byop/inputs/grid/ERCOT_WIND_SOLAR_POTENTIAL.csv": "aba7a41e4fbd0a51e22f41231c1d054bf3e260415bd282dd470c83e87f763b56",
+  "workflow/byop/inputs/grid/GREAL_GRID_PROJECTS.csv": "120a00fb17e17f130e28257d9bfc1535c6d52a7b9f373537e73dd83f0d2be30d",
+  "workflow/byop/inputs/grid/GREAL_BACKGROUND_LOAD_RECONCILIATION.csv": "e7bb764e2ede7fcc6badd3a70643b1ee97136ee8ce2d0e3d6723249c18b42990",
+  "workflow/byop/inputs/grid/GREAL_NETWORK_EVIDENCE.csv": "115f1b4ce9f6c25597377fe3bebf05cfe41cb48de2a3ff5f9357a97cf8a424b1",
+  "workflow/byop/inputs/tech/MAINLINE_V13_TECH_DEFAULTS.csv": "b2fb58e38fcb61f4ab9d3868d195a9de5c9d3c0c2171bdaff09c3465cf691752",
+  "workflow/byop/inputs/tech/MAINLINE_V13_GAS_PRICES_2026_2031.csv": "d57aafea4808de4789da0c4ff27c4bf3c564ced64927efe050f6d55e839efa9e",
+  "workflow/byop/inputs/tech/TECH-01_technologies_DRAFT.csv": "127e5a97b5177eb4242d4df33c516ddf09d480a4d5d1da4523dd75605ab99eea",
+  "workflow/byop/inputs/load/background_load_growth_states_AEO2023_reference.csv": "6445c10a0f26e97d23b5edc18d28d46d1ad8139ef15cbc5d48635a05e29b46e6",
+  "workflow/results/BYOP/baseline_2025_tamu/baseline_2025_tamu_prepared.nc": "19034285be0aa9b9906ab5b0e03778f3a16e7c1c39e97ac97b368d9097cafadb"
+ },
+ "baseline_network": {
+  "path": "workflow/results/BYOP/baseline_2025_tamu/baseline_2025_tamu_prepared.nc",
+  "location": "L2 only (.nc not in git)",
+  "sha256": "19034285be0aa9b9906ab5b0e03778f3a16e7c1c39e97ac97b368d9097cafadb"
+ },
+ "config": "workflow/config/config.byop_ercot_mainline.yaml (holds run_authorization / approved_git_sha; not hashed so that approval does not change the manifest)",
+ "environment": {
+  "host": "L2 lambda-2",
+  "python_env": "/datasets/prgm/pypsa-usa/.venv (source /datasets/cds/env.sh first)",
+  "pypsa": "1.3.0",
+  "linopy": "0.9.1",
+  "gurobipy": "11.0.3",
+  "solver": "Gurobi barrier, Crossover 0"
+ },
+ "proposed_commands": [
+  "cd /datasets/prgm/BYOP_impact/pypsa-usa/workflow",
+  "bash byop/run/run_mainline.sh gate     # must print approved: true",
+  "bash byop/run/run_mainline.sh step0    # ERM-02 B calibration + S0 min-uplift calibration (G-REAL background)",
+  "bash byop/run/run_mainline.sh run      # S0, S1_EARLIEST (+ xPOI/xUP/xRA/xPROC/xALL), S3, S2 joint developer"
+ ],
+ "approval_procedure": [
+  "researcher sets mainline.run_authorization: APPROVED and mainline.approved_git_sha: <audited commit> in the config",
+  "no change under workflow/byop/{model,inputs,build,run} after that commit; all hashes above must match"
+ ]
+}

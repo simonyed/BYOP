@@ -50,7 +50,7 @@ DC_ZONES = ['p63', 'p64', 'p65']
 GAS = 3.19
 PRIVATE_WACC = 0.07
 SOCIAL_R = 0.02
-BYOP_LIFE = {'RICE': 25, 'SOFC_NG': 15, 'OCGT_aero': 30, 'CCGT': 30}
+BYOP_LIFE = {'RICE': 25, 'SOFC_NG': 15, 'OCGT_aero': 30, 'CCGT': 30, 'WIND': 30, 'PV': 30, 'BESS': 15}   # WIND / PV: PyPSA-USA candidate life (set in rearch configure)
 IDLE = s1r.IDLE
 SHED_COST = 1e4
 SNAP_HOURS = 3.0
@@ -83,8 +83,49 @@ CFG = dict(bg_traj=str(BG_TRAJ_DEFAULT), tv_share_byop=1.0, tv_share_public=1.0,
            public_subsidy='without', tariff='energy', reuse='on', reuse_case='base', frac_cod=True, flex=True,
            poi_lead=0, byop_case='base', public_case='base', byop_techs=['RICE', 'SOFC_NG'], sample_weeks=4,
            bg_growth=0.0, line_exp=True, erm15=False, threads=4, social_r=SOCIAL_R, private_wacc=PRIVATE_WACC,
-           v=2.8e6, v_private=None, dem_scale=1.0, smoke=False)
+           v=2.8e6, v_private=None, dem_scale=1.0, smoke=False,
+           # Mainline v1.3 switches (default off = v2.4.0 / rearch v1.0 behaviour, kept for regression):
+           gas_by_year=None,        # {year: USD/MMBtu HHV, 2025$} (D2.b); None = flat GAS
+           tech_v13=None,           # path of MAINLINE_V13_TECH_DEFAULTS.csv for the DC_BTM techs (D2.a); None = TECH-01
+           firm_full_year=False)    # D1: firm credit only for capacity in operation the whole year (energy keeps fractions)
 STATE = {}
+# Mainline v1.3 D2.a: model carrier <- v1.3 technology id; firm redundancy r (failure-case firm credit 1/r) is not in the
+# v1.3 table and stays the TECH-01 base value (transparent reliability proxy); WIND / PV / BESS carry no firm credit
+V13_ID = {'RICE': 'RICE_50DF', 'SOFC_NG': 'SOFC_NG_STANDARD', 'OCGT_aero': 'OCGT_AERO', 'WIND': 'WIND_ONSHORE',
+          'PV': 'PV_TRACKING', 'BESS': 'BESS_4H'}
+NONFIRM_BYOP = {'WIND', 'PV', 'BESS'}
+SOFC_FAST_ELIGIBLE_MW = 0.0      # D14: no verified pre-procured fast SOFC slot -> the fast SOFC technology is not offered
+
+
+def gas_price(p=None):
+    """USD/MMBtu (HHV, 2025$) in year p: v1.3 AEO2026 WSC series when set, else the flat v2.4.0 GAS"""
+    g = CFG.get('gas_by_year')
+    if not g or p is None:
+        return GAS
+    return float(g.get(int(p), g[max(k for k in g if k <= p)] if any(k <= p for k in g) else g[min(g)]))
+
+
+def approval_cohorts(lead, floor=None, q0=None):
+    """D1 investment cohorts: approval year q = decision_year .. last period, COD(q) = max(q + lead, floor);
+    returns [(q, cod, build_period)] with one entry per distinct COD inside the window (earliest approval kept).
+    A 2-year asset approved in 2029 has COD 2031: it cannot dispatch in 2029 / 2030."""
+    out, seen = [], set()
+    for q in range(int(q0 if q0 is not None else CFG['decision_year']), periods()[-1] + 1):
+        cod = q + float(lead)
+        if floor is not None:
+            cod = max(cod, float(floor))
+        bp = first_period(cod)
+        if bp is None or round(cod, 6) in seen:
+            continue
+        seen.add(round(cod, 6))
+        out.append((q, cod, bp))
+    return out
+
+
+def firm_frac(build_period, cod, p):
+    """D1 firm qualification: 1 only if the asset operates the whole year p (partial years give energy, not firm)"""
+    f = avail_frac(build_period, cod, p)
+    return f if not CFG.get('firm_full_year') else (1.0 if f >= 1.0 - 1e-9 else 0.0)
 
 
 def sha(p):
@@ -190,8 +231,35 @@ def public_costs(car, cc_net, life, mc_net):
     return out
 
 
+def byop_params_v13(carrier, actor):
+    """D2.a: v1.3 default table (2025$, CAPEX USD/kW net AC, FOM USD/kW-yr, VOM USD/MWh, HR Btu_HHV/kWh, lead y);
+    firm redundancy r from TECH-01 base for the gas techs (failure-case firm credit only, never normal dispatch)"""
+    t = pd.read_csv(CFG['tech_v13']).set_index('technology')
+    r = t.loc[V13_ID[carrier]]
+    cap = float(r.capex_2025USD_per_kW_netAC) * 1000
+    fom = float(r.fom_2025USD_per_kW_year) * 1000
+    life = BYOP_LIFE[carrier]
+    rate = CFG['private_wacc'] if (actor == 'private' or CFG['cost_basis'] == 'legacy') else CFG['social_r']
+    hr = float(r.heat_rate_BtuHHV_per_kWh_e) if r.heat_rate_BtuHHV_per_kWh_e == r.heat_rate_BtuHHV_per_kWh_e else 0.0
+    vom = float(r.vom_2025USD_per_MWh_e)
+    if carrier in NONFIRM_BYOP:
+        red = float('inf')
+    else:
+        t1 = tech()
+        red = float(t1[(t1.carrier == carrier) & (t1.boundary == 'DC_BTM')].iloc[0][f"redundancy_factor_{CFG['byop_case']}"])
+    lead = float(r.reference_lead_years)
+    return dict(carrier=carrier, case='v13', overnight_per_MW=cap, fom=fom, life=life, annual=cap * crf(rate, life) + fom, rate=rate,
+                annual_social=cap * crf(CFG['social_r'], life) + fom, annual_private=cap * crf(CFG['private_wacc'], life) + fom,
+                mc=hr / 1000 * GAS + vom, hr=hr, vom=vom, r=red, lead=lead, cod=CFG['decision_year'] + lead,
+                first_period=first_period(CFG['decision_year'] + lead), evidence=str(r.evidence_class),
+                max_hours=float(r.storage_duration_h) if r.storage_duration_h == r.storage_duration_h else None,
+                eta_rt=float(r.storage_roundtrip_efficiency) if r.storage_roundtrip_efficiency == r.storage_roundtrip_efficiency else None)
+
+
 def byop_params(carrier, actor):
     """actor: 'social' (S3 / social ledger) or 'private' (S2 developer / private ledger)"""
+    if CFG.get('tech_v13'):
+        return byop_params_v13(carrier, actor)
     r = tech()
     r = r[(r.carrier == carrier) & (r.boundary == 'DC_BTM')].iloc[0]
     k = CFG['byop_case']
@@ -536,8 +604,11 @@ def extra(n, snapshots):
         coefs = {}
         for b in byop:
             info = STATE.get('byop_cod', {}).get(b)
+            if gb.carrier[b][5:] in NONFIRM_BYOP:   # v1.3: wind / PV carry no firm credit (BESS is a StorageUnit)
+                coefs[b] = 0.0
+                continue
             if info is not None:
-                f_ = avail_frac(info['build'], info['cod'], q); rr = info['r']
+                f_ = firm_frac(info['build'], info['cod'], q); rr = info['r']
             else:   # reuse R or ledger asset
                 f_ = 1.0; rr = REUSE_R if gb.carrier[b] == 'byop_R' else float(STATE.get('ledger_r', {}).get(b, 1.25))
             coefs[b] = f_ / (rr * d['pue'])
@@ -760,12 +831,16 @@ def ledgers(n, tag, v, case_id, run_id, byop_fixed_scen=False):
                 overnight = float(pc.overnight_per_MW) if pc is not None else float('nan')
                 boundary = 'UTILITY'; path = 'public'
             energy = {p: float(gen_e[name].get(p, 0.0)) if comp == 'Generator' and name in gen_e else None for p in P}
-            mc_res = float(r.marginal_cost) + ptc if comp == 'Generator' else 0.0
+            mc_p = {}
+            if comp == 'Generator' and name in n.generators_t.marginal_cost and name in n.generators_t.p:   # v1.3 yearly gas price
+                pe = n.generators_t.p[name].mul(w)
+                mc_p = ((pe * n.generators_t.marginal_cost[name]).groupby(level=0).sum() / pe.groupby(level=0).sum().replace(0.0, np.nan)).to_dict()
             for p in act:
                 e = energy.get(p) or 0.0
+                mc_res = (float(mc_p[p]) if p in mc_p and mc_p[p] == mc_p[p] else float(r.marginal_cost)) + ptc if comp == 'Generator' else 0.0
                 rows.append(dict(run_id=run_id, case_id=case_id, scenario=tag, asset_id=name, component=comp, carrier=car,
                                  asset_boundary=boundary, resource_path=path, zone=r.get('bus', r.get('bus0')),
-                                 commit_year=CFG['decision_year'], build_period=by, year=p, capacity_MW=MW,
+                                 commit_year=STATE.get('approval_year', {}).get(name, CFG['decision_year']), build_period=by, year=p, capacity_MW=MW,
                                  overnight_capex_USD_per_MW=overnight,
                                  social_annuity_USD_per_MW_yr=soc_ann, private_annuity_USD_per_MW_yr=priv_ann,
                                  resource_capex_PV_USD=soc_ann * MW * ws[p], private_capex_PV_USD=priv_ann * MW * wp[p],
@@ -800,6 +875,8 @@ def ledgers(n, tag, v, case_id, run_id, byop_fixed_scen=False):
         poi_e = poi_e + nf_e
         byop_e = sum(float((n.generators_t.p[b][sl] * w[sl]).sum()) for b in g.index
                      if g.carrier[b].startswith('byop_') and g.bus[b] == f"DC_{d['zone']}")
+        byop_e += sum(float((n.storage_units_t.p[b][sl] * w[sl]).sum()) for b in su.index      # v1.3 on-site BESS (net)
+                      if su.carrier[b].startswith('byop_') and su.bus[b] == f"DC_{d['zone']}" and b in n.storage_units_t.p)
         fac_e = float(((n.generators_t.p[d['S']][sl] + n.generators_t.p[d['T']][sl]) * w[sl]).sum())
         svc.append(dict(run_id=run_id, case_id=case_id, scenario=tag, zone=d['zone'], year=p, requested_MW_IT=d['D'],
                         grid_ready_MW_IT=d['G'], served_MW_IT=S, unserved_MW_IT=d['D'] - S, served_MW_IT_year=S * years_p(p),

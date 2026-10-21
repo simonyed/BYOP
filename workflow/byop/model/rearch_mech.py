@@ -70,6 +70,253 @@ GCFG = dict(regional_dc='off', regional_dc_scenario='mid', competing_voll=None, 
 SITES: dict = {}
 STATE = M.STATE
 
+# ------------------------------------------------------------------------------------------------ Mainline v1.3
+# --mainline: 8 Epoch TAMU buses as research AIDC (one aggregated POI per bus, D12), D11 inherited ramp as background,
+# G-REAL (no competing queue, no regional_dc), v1.3 techs and yearly gas, approval-cohort COD (D1), stress snapshots in
+# the firm LP (B7), one joint developer LP (D13), run gate (E1). Default off: v1.0 behaviour unchanged.
+ML = dict(on=False, stress_days=3, stress_line_derate=1.0, gate=None)
+ML_POI = BP.INPUTS / 'poi/GREAL_POI_ASSUMPTIONS.csv'
+ML_E0 = BP.INPUTS / 'poi/GREAL_POI_E0_SCHEDULE.csv'
+ML_RPOOL = BP.INPUTS / 'poi/GREAL_R_ASSET_POOL.csv'
+ML_COH = BP.INPUTS / 'dc/MAINLINE_RESEARCH_COHORTS_TAMU64.csv'
+ML_RAMP = BP.INPUTS / 'dc/MAINLINE_INHERITED_RAMP_2025.csv'
+ML_POT = BP.INPUTS / 'grid/ERCOT_WIND_SOLAR_POTENTIAL.csv'
+ML_TECH = BP.INPUTS / 'tech/MAINLINE_V13_TECH_DEFAULTS.csv'
+ML_GASP = BP.INPUTS / 'tech/MAINLINE_V13_GAS_PRICES_2026_2031.csv'
+ML_TECHS = ['RICE', 'SOFC_NG', 'OCGT_aero', 'WIND', 'PV', 'BESS']
+ML_INPUTS = [ML_POI, ML_E0, ML_RPOOL, ML_COH, ML_RAMP, ML_POT, ML_TECH, ML_GASP]
+GAS_CARRIERS = {'CCGT', 'OCGT', 'gas_steam', 'reuse_pub', 'byop_R'} | {f'byop_{c}' for c in GAS_FIRED}
+RE_CAR = {'WIND': 'onwind', 'PV': 'solar'}
+
+
+def configure_mainline(out):
+    """WP-A: research AIDC = MAINLINE_RESEARCH_COHORTS (mid) on the 8 Epoch buses; the Epoch bus IS the parent bus
+    (no re-siting); POI parameters from GREAL_POI_ASSUMPTIONS (case low/base/high) + E0 equipment rows"""
+    n0 = pypsa.Network(str(BASE_TAMU))
+    zones = sorted(b for b in n0.buses.index if n0.buses.carrier[b] == 'AC')
+    M.BASE = BASE_TAMU
+    M.ZONES = zones
+    M.ZONE_STATE = {z: 'TX' for z in zones}
+    M.LINE_LEADS = dict(V.LINE_LEADS_TPIT)
+    w2.EXCLUDE_ZONES = []
+    gp = pd.read_csv(ML_GASP)
+    M.CFG.update(gas_by_year={int(r.year): float(r.gas_price_2025USD_per_MMBtu_HHV) for r in gp.itertuples()},
+                 tech_v13=str(ML_TECH), firm_full_year=True)
+    g0 = n0.generators[n0.generators.p_nom_extendable]
+    for c, car in RE_CAR.items():          # D2.a: wind / PV life = verified PyPSA-USA candidate setting
+        lt = g0.lifetime[g0.carrier == car]
+        if len(lt):
+            M.BYOP_LIFE[c] = float(lt.iloc[0])
+    reg = pd.read_csv(ML_POI)
+    e0 = pd.read_csv(ML_E0)
+    k = GCFG['case']
+    for r in reg.itertuples():
+        assert r.bus in n0.buses.index, f'Epoch bus {r.bus} not in the TAMU network'
+        lvl = r.gas_evidence_level
+        mdq = float(r.gas_MDQ_MMBtu_d) if lvl == 'L0' else MDQ_PROXY.get(lvl, MDQ_PROXY['L2'])
+        rows = [dict(MW=float(x.MW), cod=float(x.COD), pre=bool(x.preapproved), site=x.site) for x in e0[e0.bus == r.bus].itertuples()]
+        SITES[r.site_id] = dict(
+            site=r.site_id, name=r.site_name, bus=r.bus, substation=None, sub_dist_deg=0.0, parent_rule='EPOCH_TAMU64_BUS (D12)', lat=r.lat, lon=r.lon,
+            E0=sum(x['MW'] for x in rows), cod0=min((x['cod'] for x in rows), default=None), preapproved=all(x['pre'] for x in rows) if rows else False,
+            E0rows=rows, U_max=float(r.poi_upgrade_max_MW), U_lead=float(getattr(r, f'poi_upgrade_lead_y_{k}')),
+            U_cost=float(getattr(r, f'poi_upgrade_cost_USD_kW_{k}')) * 1000, proc=float(getattr(r, f'earliest_grid_COD_{k}')),
+            pclr=float(r.pclr_conditional_MW), pclr_off=float(r.pclr_conditional_COD_offset_y), gas_level=lvl, mdq=mdq,
+            lat_lead=float(getattr(r, f"gas_lateral_lead_y_{GCFG['gas_case']}")), lat_cost=float(getattr(r, f"gas_lateral_cost_USD_kW_{GCFG['gas_case']}")) * 1000,
+            onsite_re=float(r.onsite_renewable_cap_MW), profile='MAINLINE_RESEARCH_COHORT', confidence=r.confidence)
+    coh = pd.read_csv(ML_COH)
+    coh = coh[coh.scenario == 'mid'].copy()
+    assert set(coh.region_id) <= set(SITES), 'research cohort bus without an aggregated POI'
+    c2 = out / 'poi_cohorts.csv'
+    coh[['cohort_id', 'scenario', 'request_year', 'st', 'region_id', 'IT_MW', 'quality']].to_csv(c2, index=False)
+    s1r.COHORTS = c2
+    M.DC_ZONES = list(SITES)
+    pot = pd.read_csv(ML_POT)
+    STATE['re_potential'] = {(r.bus, r.technology): float(r.remaining_new_MW_AC) for r in pot.itertuples()}
+    return n0
+
+
+def ml_gas_delta(n):
+    """D2.b: one WSC gas price per year for every gas unit (existing fleet, public candidates, reuse, BYOP):
+    mc_t = mc(GAS) + HR x (gas_y - GAS), HR = 3412.14 / efficiency (the baseline built mc = HR x GAS + VOM)"""
+    g = n.generators
+    sel = g.index[g.carrier.isin(GAS_CARRIERS) & (g.efficiency > 0.05)]
+    if not len(sel) or not M.CFG.get('gas_by_year'):
+        return
+    per = n.snapshots.get_level_values(0)
+    dp = np.array([M.gas_price(p) - M.GAS for p in per])
+    hr = 3412.14 / g.efficiency[sel].values / 1000.0
+    base = n.get_switchable_as_dense('Generator', 'marginal_cost')[sel].values
+    mc = pd.DataFrame(base + np.outer(dp, hr), index=n.snapshots, columns=sel)
+    keep = n.generators_t.marginal_cost.columns.difference(sel)
+    n.generators_t.marginal_cost = pd.concat([n.generators_t.marginal_cost[keep], mc], axis=1)
+    STATE['gas_repriced'] = dict(n=len(sel), by_year={int(p): M.gas_price(p) for p in M.periods()}, flat_reference=M.GAS)
+
+
+def ml_stress_days(n):
+    """B7: a few real stress days of the 2025 weather / load year (3-h snapshots), placed in every period's sample:
+    (1) lowest West / Panhandle wind day among the 30 % highest-load days, (2) highest ERCOT net-load day
+    (load - wind - solar), (3) highest winter (Dec-Feb) load day. Returns timestep labels."""
+    ts = n.snapshots.get_level_values(-1) if isinstance(n.snapshots, pd.MultiIndex) else n.snapshots
+    ts = pd.DatetimeIndex(ts)
+    g = n.generators
+    pm = n.generators_t.p_max_pu
+    load = n.loads_t.p_set.sum(axis=1).values
+    def cap_profile(car, zones=None):
+        sel = [x for x in g.index[(g.carrier == car) & ~g.p_nom_extendable] if x in pm]
+        if zones:
+            sel = [x for x in sel if str(g.bus[x])[:3] in zones]
+        if not sel:
+            return np.zeros(len(ts))
+        return (pm[sel].values * g.p_nom[sel].values).sum(axis=1)
+    wind_w = cap_profile('onwind', ('p60', 'p61', 'p62'))
+    net = load - cap_profile('onwind') - cap_profile('solar')
+    day = ts.normalize()
+    df = pd.DataFrame(dict(day=day, load=load, wind_w=wind_w, net=net)).groupby('day').agg(load=('load', 'mean'), wind_w=('wind_w', 'mean'), net=('net', 'max'))
+    hi = df[df.load >= df.load.quantile(0.7)]
+    picks = [('LOW_WEST_WIND_HIGH_LOAD', hi.wind_w.idxmin()), ('MAX_NET_LOAD', df.net.idxmax())]
+    win = df[df.index.month.isin([12, 1, 2])]
+    if len(win):
+        picks.append(('WINTER_PEAK', win.load.idxmax()))
+    out, seen = [], set()
+    for kind, d_ in picks[:ML['stress_days']]:
+        if d_ in seen:
+            continue
+        seen.add(d_)
+        out.append(dict(kind=kind, day=str(d_.date()), mean_load_MW=float(df.load[d_]), mean_west_wind_MW=float(df.wind_w[d_]),
+                        max_net_load_MW=float(df.net[d_])))
+    STATE['stress_days'] = out
+    return [t for t in ts if t.normalize() in seen]
+
+
+def ml_base_build(config):
+    """v240 base_build with the B7 stress days added to the week sample (each stress snapshot represents itself, 3 h;
+    the sampled weeks carry the rest of the year so the weights still sum to 8760 h)"""
+    n = w2.base_network(config)
+    stress = set(ml_stress_days(n))
+    full = len(n.snapshots); sw0 = n.snapshot_weightings.copy()
+    k = M.CFG['sample_weeks']
+    base = [i for i in range(full) if (i // 56) % k == 0 and (i // 56) < full // 56] if k else list(range(full))
+    ts = pd.DatetimeIndex(n.snapshots.get_level_values(-1) if isinstance(n.snapshots, pd.MultiIndex) else n.snapshots)
+    sidx = [i for i in range(full) if ts[i] in stress]
+    extra = [i for i in sidx if i not in set(base)]
+    keep = sorted(set(base) | set(extra))
+    n.set_snapshots(n.snapshots[keep])
+    hours = float(sw0.generators.sum())
+    w = pd.Series(0.0, index=n.snapshots)
+    ex = set(extra)
+    for j, i in enumerate(keep):
+        w.iloc[j] = M.SNAP_HOURS if i in ex else (hours - M.SNAP_HOURS * len(ex)) / len(base) / 1.0
+    n.snapshot_weightings = pd.DataFrame({c: w.values for c in sw0.columns}, index=n.snapshots)
+    STATE['stress_ts'] = {ts[i] for i in sidx}
+    STATE['stress_sample'] = dict(days=STATE.get('stress_days'), snapshots=len(sidx), added_outside_sample=len(extra),
+                                  weight_total_h=float(w.sum()))
+    return n
+
+
+def stress_mask(snapshots):
+    """True at the B7 stress snapshots of every period"""
+    st = STATE.get('stress_ts') or set()
+    ts = snapshots.get_level_values(-1) if isinstance(snapshots, pd.MultiIndex) else snapshots
+    return np.array([pd.Timestamp(t) in st for t in ts])
+
+
+def add_inherited_ramp(n):
+    """D11: late-2025 Epoch ramp (energized by end-2025) as background facility load in EVERY scenario (S0 too):
+    flat cum. IT x PUE(period); own shed generator (carrier load_shed: no-harm protected, reported separately)"""
+    r = pd.read_csv(ML_RAMP)
+    per = n.snapshots.get_level_values(0)
+    rows = []
+    for x in r.itertuples():
+        prof = np.array([x.inherited_ramp_IT_MW * float(w2.PUE[(w2.PUE.st == 'TX') & (w2.PUE.year == min(p, 2035))].pue.iloc[0]) for p in per])
+        n.add('Load', f'{x.bus} inherited_ramp', bus=x.bus, carrier='AC', p_set=pd.Series(prof, index=n.snapshots))
+        n.add('Generator', f'{x.bus} inherited_ramp_unserved', bus=x.bus, carrier='load_shed', p_nom=float(prof.max()) + 1.0,
+              marginal_cost=M.SHED_COST, build_year=2025, lifetime=100)
+        rows.append(dict(bus=x.bus, IT_MW=x.inherited_ramp_IT_MW, facility_MW_peak=float(prof.max())))
+    STATE['inherited_ramp'] = dict(file=str(ML_RAMP), sha256=M.sha(ML_RAMP), buses=rows, IT_MW=float(r.inherited_ramp_IT_MW.sum()))
+
+
+def ml_public_potential(n):
+    """WP-C: public onwind / solar new-build per bus capped by the remaining ReEDS2 potential (shared with BYOP in
+    ml_space); the aggregate over all build periods is enforced there"""
+    g = n.generators
+    for car in RE_CAR.values():
+        for name in g.index[(g.carrier == car) & g.p_nom_extendable]:
+            cap = STATE['re_potential'].get((g.bus[name], car))
+            if cap is not None:
+                n.generators.loc[name, 'p_nom_max'] = min(float(g.p_nom_max[name]), cap)
+
+
+def ml_space(n, m):
+    """QA-SPACE: (a) on-site BYOP wind / PV per site <= adjacent-land proxy; (b) public new-build + BYOP of the same
+    technology at a bus (all build periods) <= remaining ReEDS2 potential (no double use, no unlimited site RE)"""
+    if 'Generator-p_nom' not in m.variables:
+        return
+    pn = m['Generator-p_nom']
+    g = n.generators
+    ext = set(g.index[g.p_nom_extendable])
+    for s, d in SITES.items():
+        for c, car in RE_CAR.items():
+            b = [x for x in g.index[(g.carrier == f'byop_{c}') & (g.bus == f'DC_{s}')] if x in ext]
+            if b:
+                m.add_constraints(pn.sel(name=b).sum('name') <= d['onsite_re'], name=f'ML-onsite_{c}_{s}')
+    for (bus, car), cap in STATE.get('re_potential', {}).items():
+        c = {v_: k_ for k_, v_ in RE_CAR.items()}[car]
+        own = [x for s, d in SITES.items() if d['bus'] == bus for x in g.index[(g.carrier == f'byop_{c}') & (g.bus == f'DC_{s}')]]
+        terms = [x for x in g.index[(g.carrier == car) & (g.bus == bus)] if x in ext] + [x for x in own if x in ext]
+        fixed = float(g.p_nom[[x for x in own if x not in ext]].sum())     # S2 public LP: committed BYOP uses the cap first
+        if terms:
+            m.add_constraints(pn.sel(name=terms).sum('name') <= max(0.0, cap - fixed), name=f'ML-potential_{car}_{bus}')
+
+
+def add_byop_cohorts(n, s, site, dmax_fac, byop, byop_fixed, actor):
+    """D1 / D2: BYOP capacity variables by approval year q (COD(q) = q + lead; gas: max(tech lead, lateral lead) in
+    parallel), normal dispatch at the real availability (gas: 1.0 after COD; wind / PV: bus profile), failure-case
+    firm credit (1/r, full years only) at the B7 stress snapshots; BESS = StorageUnit with SOC (4 h, eta_rt 0.85)"""
+    dc = f'DC_{s}'
+    per = n.snapshots.get_level_values(0)
+    smask = stress_mask(n.snapshots)
+    for car in byop:
+        bp = M.byop_params(car, actor)
+        lead = bp['lead']
+        lat_ann = 0.0
+        if car in GAS_FIRED:
+            lead = max(lead, site['lat_lead'])
+            lat_ann = site['lat_cost'] * M.crf(bp['rate'], M.BYOP_LIFE[car])
+        if f'byop_{car}' not in n.carriers.index:
+            n.add('Carrier', f'byop_{car}', co2_emissions=0.0)
+        for q, cod, b0 in M.approval_cohorts(lead):
+            name = f'{dc} BYOP {car} q{q}'
+            av = np.array([M.avail_frac(b0, cod, p) for p in per])
+            fm = np.array([M.firm_frac(b0, cod, p) for p in per])
+            cc = (bp['annual'] + lat_ann) * M.tv_factor(b0, M.BYOP_LIFE[car], 'byop', actor)
+            fixed = byop_fixed.get((s, car, q), 0.0) if byop_fixed is not None else None
+            STATE.setdefault('approval_year', {})[name] = q
+            if car == 'BESS':
+                eta = math.sqrt(bp['eta_rt'])
+                kw = dict(bus=dc, carrier='byop_BESS', capital_cost=cc, max_hours=bp['max_hours'], efficiency_store=eta,
+                          efficiency_dispatch=eta, cyclic_state_of_charge=True, cyclic_state_of_charge_per_period=True,
+                          build_year=b0, lifetime=M.BYOP_LIFE[car], marginal_cost=0.0)
+                kw.update(dict(p_nom=fixed, p_nom_extendable=False) if fixed is not None else dict(p_nom_extendable=True, p_nom_max=dmax_fac * 2.0))
+                n.add('StorageUnit', name, **kw)
+                n.storage_units_t.p_max_pu[name] = av
+                n.storage_units_t.p_min_pu[name] = -av
+            else:
+                if car in RE_CAR:
+                    prof = STATE['re_profile'].get((site['bus'], RE_CAR[car]))
+                    assert prof is not None, f'no {RE_CAR[car]} availability profile at {site["bus"]}'
+                    ppu = av * np.asarray(prof)
+                    pmax = site['onsite_re']
+                else:
+                    ppu = np.where(smask, fm / bp['r'], av)       # failure-case firm credit only at stress snapshots
+                    pmax = dmax_fac * bp['r'] * 2.0
+                kw = dict(bus=dc, carrier=f'byop_{car}', capital_cost=cc, marginal_cost=bp['mc'], build_year=b0,
+                          lifetime=M.BYOP_LIFE[car], efficiency=(3412.14 / bp['hr']) if bp.get('hr') else 1.0)
+                kw.update(dict(p_nom=fixed, p_nom_extendable=False) if fixed is not None else dict(p_nom_extendable=True, p_nom_max=pmax))
+                n.add('Generator', name, **kw)
+                n.generators_t.p_max_pu[name] = ppu
+            STATE.setdefault('byop_cod', {})[name] = dict(cod=cod, build=b0, approval_year=q, r=bp['r'], carrier=car, zone=s,
+                                                          lateral_USD_per_MW_yr=lat_ann, lead_effective=lead, evidence=bp.get('evidence'))
+
 
 # ------------------------------------------------------------------------------------------------ world setup
 def nearest_parent(lat, lon, n0):
@@ -136,11 +383,16 @@ def eq_terms(s, p):
     if 'POI' in relax:
         return float('inf'), []
     fixed = 0.0
-    if d['E0'] > 0 and d['cod0'] is not None:
+    if d.get('E0rows') is not None:        # mainline: dated equipment rows of the aggregated POI (GREAL_POI_E0_SCHEDULE)
+        for x in d['E0rows']:
+            cod = x['cod'] if x['pre'] else max(x['cod'], d['proc'])
+            bp = M.first_period(cod)
+            fixed += x['MW'] * M.firm_frac(bp, cod, p) if bp is not None else 0.0
+    elif d['E0'] > 0 and d['cod0'] is not None:
         cod = d['cod0'] if d['preapproved'] else max(d['cod0'], d['proc'])
         bp = M.first_period(cod)
         fixed = d['E0'] * M.avail_frac(bp, cod, p) if bp is not None else 0.0
-    ups = [(nm, M.avail_frac(q, cod, p)) for nm, q, cod in STATE.get('poi_up', {}).get(s, []) if q <= p]
+    ups = [(nm, M.firm_frac(q, cod, p)) for nm, q, cod in STATE.get('poi_up', {}).get(s, []) if q <= p]
     return fixed, [(nm, c) for nm, c in ups if c > 0]
 
 
@@ -157,7 +409,7 @@ def add_line_expansion_tamu(n):
     cap = 100 % of the existing transfer rating = LINE-01 bound), lead from TPIT (D250-06), cost from the line's
     PyPSA-USA annuity per MW. G-W / G-K: none. KVL holds for the existing lines; increments are controllable
     (approximation, labelled)."""
-    if GCFG['setting'] != 'G-U' or not M.CFG['line_exp']:
+    if GCFG['setting'] not in ('G-U', 'G-REAL') or not M.CFG['line_exp']:
         M.STATE['corridors'] = []
         return []
     lead = GCFG['line_lead'] if GCFG['line_lead'] is not None else M.LINE_LEADS[M.CFG['public_case']]
@@ -269,7 +521,7 @@ def add_s0_calibration(n, scen):
 
 def add_grid_projects(n):
     """G-U: committed PBRP 765-kV import paths (fixed Link pair, partial first-year availability from the ISD)"""
-    if GCFG['setting'] != 'G-U':
+    if GCFG['setting'] not in ('G-U', 'G-REAL'):
         return []
     gp = pd.read_csv(GRID_PROJ)
     b = n.buses[n.buses.index.isin(M.ZONES)]
@@ -384,7 +636,17 @@ def add_dc_poi(n, dem, v, mult, byop=None, byop_fixed=None, price=None, s_fixed=
                   interconnect='dc_facility', nerc_reg='DC')
         cond_on = (mode in ('GO_C', 'GF')) if price is not None else bool(STATE.get('cond_public', {}).get(s, False))
         # POI upgrade candidates (public LPs only; the developer receives an offer instead)
-        if price is None and 'POI' not in set(GCFG['relax']) and site['U_max'] > 0 and s not in STATE['poi_up']:
+        if price is None and 'POI' not in set(GCFG['relax']) and site['U_max'] > 0 and s not in STATE['poi_up'] and ML['on']:
+            # D1: POI upgrade approved in year q is energized at COD(q) = max(q + lead, procedural earliest grid COD)
+            STATE['poi_up'][s] = []
+            for qa, cod_u, q in M.approval_cohorts(site['U_lead'], floor=site['proc']):
+                nm = f'POIup {s} q{qa}'
+                cc = site['U_cost'] * M.crf(M.CFG['social_r'], UPGRADE_LIFE) * M.tv_factor(q, UPGRADE_LIFE, 'public')
+                n.add('Link', nm, bus0=site['bus'], bus1=dc, carrier='POI_upgrade', p_nom_extendable=True, p_nom_max=site['U_max'],
+                      capital_cost=cc, p_max_pu=0.0, p_min_pu=0.0, build_year=q, lifetime=UPGRADE_LIFE, efficiency=1.0)
+                STATE['poi_up'][s].append((nm, q, cod_u))
+                STATE.setdefault('approval_year', {})[nm] = qa
+        elif price is None and 'POI' not in set(GCFG['relax']) and site['U_max'] > 0 and s not in STATE['poi_up']:
             cod_u = max(M.CFG['decision_year'] + site['U_lead'], site['proc'])
             q0 = M.first_period(cod_u)
             STATE['poi_up'][s] = []
@@ -483,7 +745,7 @@ def add_dc_poi(n, dem, v, mult, byop=None, byop_fixed=None, price=None, s_fixed=
                 n.generators_t.p_max_pu[cu] = tpu.values
                 ent['curt'] = cu
             STATE['dc'].append(ent)
-            if mode in ('GO_F', 'GO_C'):
+            if mode in ('GO_F', 'GO_C') or ML['on']:     # mainline: approval cohorts per site, below
                 continue
             for car in (byop or []):
                 bp = M.byop_params(car, actor)
@@ -512,6 +774,10 @@ def add_dc_poi(n, dem, v, mult, byop=None, byop_fixed=None, price=None, s_fixed=
                 n.generators_t.p_max_pu[bname] = ppu_b.values
                 STATE.setdefault('byop_cod', {})[bname] = dict(cod=cod, build=p, r=bp['r'], carrier=car, zone=s,
                                                                lateral_USD_per_MW_yr=lat_ann)
+        if ML['on'] and mode not in ('GO_F', 'GO_C') and byop:   # D1 approval cohorts of BYOP per site (all periods)
+            ents = [e for e in STATE['dc'] if e['zone'] == s]
+            dmax_fac = max(e['pue'] * e['D'] for e in ents) if ents else 0.0
+            add_byop_cohorts(n, s, site, dmax_fac, byop, byop_fixed, actor)
 
 
 def reuse_pool_poi(n):
@@ -520,6 +786,8 @@ def reuse_pool_poi(n):
     buses = {d['bus'] for d in SITES.values()}
     x = g[~g.p_nom_extendable & g.bus.isin(buses) & g.carrier.isin(M.REUSE_CARRIERS)]
     x = x[(x.build_year + x.lifetime) <= M.periods()[-1]]
+    if ML['on']:     # D14: only units in the verified R pool (location, status, capacity right, lead); empty = none
+        x = x[x.index.astype(str).isin(set(pd.read_csv(ML_RPOOL).asset_id.astype(str)))]
     rows = []
     for name, r in x.iterrows():
         cand = [s for s, d in SITES.items() if d['bus'] == r.bus]
@@ -567,12 +835,32 @@ def add_reuse_poi(n, dedicated, rfixed=None):
 _build_v240 = M.build
 
 
+def ml_public_candidates(n, templ_g, templ_s, prof):
+    """v250 bulk public candidates + record the bus wind / PV availability profile (the same PyPSA-USA profile is
+    used for on-site BYOP wind / PV at that bus; WP-C keeps the PyPSA-USA weather year)"""
+    off = V.add_public_candidates_bulk(n, templ_g, templ_s, prof)
+    pm = n.generators_t.p_max_pu
+    g = n.generators
+    prof_ = {}
+    for car in RE_CAR.values():
+        for name in g.index[(g.carrier == car) & g.p_nom_extendable]:
+            if name in pm and (g.bus[name], car) not in prof_:
+                prof_[(g.bus[name], car)] = pm[name].values.copy()
+    STATE['re_profile'] = prof_
+    for o in off:
+        o['approval_year'] = o['period'] - o['lead']           # D1: COD = approval + lead (integer public leads)
+    return off
+
+
 def build_rearch(config, scen, v, **kw):
     M.add_line_expansion = add_line_expansion_tamu
-    M.add_public_candidates = V.add_public_candidates_bulk
+    M.add_public_candidates = ml_public_candidates if ML['on'] else V.add_public_candidates_bulk
     M.add_dc = add_dc_poi
     M.add_reuse = add_reuse_poi
     M.tech = tech_ra_relaxed
+    if ML['on']:
+        M.base_build = ml_base_build
+        STATE['re_profile_pending'] = True
     STATE['poi_up'] = {}
     n, mult = _build_v240(config, scen, v, **kw)
     add_base_assets(n)
@@ -581,6 +869,14 @@ def build_rearch(config, scen, v, **kw):
     STATE['no_harm_now'] = scen != 'S0' and GCFG['no_harm'] and STATE.get('shed_S0') is not None
     add_competing_load(n)
     add_regional_dc(n)
+    if ML['on']:
+        add_inherited_ramp(n)
+        ml_public_potential(n)
+        ml_gas_delta(n)
+        if ML['stress_line_derate'] < 1.0:      # B7 optional interface derate at stress snapshots (PROXY, default off)
+            sm = stress_mask(n.snapshots)
+            n.lines_t.s_max_pu = pd.DataFrame(np.outer(np.where(sm, ML['stress_line_derate'], 1.0), n.lines.s_max_pu.values),
+                                              index=n.snapshots, columns=n.lines.index)
     relax_upstream(n)
     ren = n.generators.index[n.generators.carrier.isin(['solar', 'onwind'])]
     miss = ren.difference(n.generators_t.p_max_pu.columns)
@@ -627,9 +923,12 @@ def extra_rearch(n, snapshots):
         gas = [b for b in gb.index if gb.bus[b] == f"DC_{d['zone']}" and gb.carrier[b].startswith('byop_')
                and (gb.carrier[b][5:] in GAS_FIRED or gb.carrier[b] == 'byop_R')]
         if gas and site['mdq'] > 0:
-            t = M.tech().set_index(['carrier', 'boundary'])
-            hr = xr.DataArray([float(t.loc[(gb.carrier[b][5:], 'DC_BTM')].heat_rate_Btu_kWh) if gb.carrier[b] != 'byop_R'
-                               else 3412.14 / max(float(gb.efficiency[b]), 0.2) for b in gas], coords={'name': gas}, dims='name')
+            if ML['on']:     # v1.3 HHV heat rates (the unit efficiency is set from them in add_byop_cohorts)
+                hr = xr.DataArray([3412.14 / max(float(gb.efficiency[b]), 0.2) for b in gas], coords={'name': gas}, dims='name')
+            else:
+                t = M.tech().set_index(['carrier', 'boundary'])
+                hr = xr.DataArray([float(t.loc[(gb.carrier[b][5:], 'DC_BTM')].heat_rate_Btu_kWh) if gb.carrier[b] != 'byop_R'
+                                   else 3412.14 / max(float(gb.efficiency[b]), 0.2) for b in gas], coords={'name': gas}, dims='name')
             pg = m['Generator-p'].sel(name=gas, snapshot=sns)
             days = xr.DataArray(sns.get_level_values(1).normalize().values, coords={'snapshot': sns}, dims='snapshot', name='day')
             fuel = (pg * hr * (M.SNAP_HOURS / 1000.0)).sum('name').groupby(days).sum()
@@ -667,6 +966,8 @@ def extra_rearch(n, snapshots):
         for b in STATE['s0cal_pairs']:
             if f'{b}_fwd' in ext_:
                 m.add_constraints(lp_.sel(name=f'{b}_fwd') - lp_.sel(name=f'{b}_rev') == 0, name=f'S0CAL-sym_{b}')
+    if ML['on']:
+        ml_space(n, m)
     if STATE.get('lex'):
         lex_presolve(n, m)
 
@@ -775,6 +1076,9 @@ def select_triggers(n1):
         nsel = int(round(GCFG['pclr_hours'] / M.SNAP_HOURS * len(sns) / 2920.0))
         maxrun = max(1, int(GCFG['pclr_max_consec_h'] // M.SNAP_HOURS))
         pr = mp[d['bus']].loc[sns].sort_values(ascending=False)
+        if ML['on']:      # D3: trigger tied to the defined system-stress snapshots first, then the highest S1 LMP
+            sm = pd.Series(stress_mask(sns), index=sns)
+            pr = pd.concat([pr[sm.reindex(pr.index).values], pr[~sm.reindex(pr.index).values]])
         pos = {sn: i for i, sn in enumerate(sns)}
         chosen = set()
         for sn in pr.index:
@@ -905,6 +1209,148 @@ def developer_stage(config, s1_net, v_priv, mult, reuse_on, iteration):
     return K, R, rights, out
 
 
+def label_mode(S, firm_MWh, cond_MWh, byop_MW):
+    """D3 ex-post supply-mode label of one site-year (no mode variable in the LP): IS = served with zero public import;
+    GF = public import + own capacity; GO_C = import incl. conditional, no own capacity; GO_F = firm import only"""
+    if S <= 1e-3:
+        return 'NOT_SERVED'
+    if firm_MWh + cond_MWh <= 1e-3:
+        return 'IS'
+    if byop_MW > 0.5:
+        return 'GF'
+    return 'GO_C' if cond_MWh > 1e-3 else 'GO_F'
+
+
+def developer_joint(config, s1_net, v_priv, mult, reuse_on, iteration):
+    """D13 / WP-A4: ONE developer LP for all 8 Epoch buses (common private objective, every bus keeps its own power
+    balance, POI, gas MDQ, potential and COD; no on-site power moves between buses). Grid offer per bus-year = the
+    jointly deliverable S1_EARLIEST firm import (+ PCLR conditional); price = S1 parent-bus LMP (+ ERM adder).
+    Lexicographic speed-first: year by year (earliest first) max sum_s IT_online[s, y], fixed; then min private cost.
+    No max-min fairness layer, no mode enumeration: GO_F / GO_C / GF / IS are labelled after the solve."""
+    n, m, (sv_reuse, sv_corr) = developer_joint_build(s1_net, v_priv, mult)
+    opts = dict(Method=2, Crossover=0, BarConvTol=1e-7, OutputFlag=0, Threads=M.CFG['threads'])
+    cost_obj = m.objective.expression
+    lex = {}
+    for p in sorted({d['period'] for d in STATE['dc']}):
+        Sv = m['Generator-p_nom'].sel(name=[d['S'] for d in STATE['dc'] if d['period'] == p]).sum('name')
+        m.objective = -1.0 * Sv
+        _require_gate('developer_joint lex')
+        st, tc = m.solve(solver_name='gurobi', **opts)
+        s_star = float(sum(float(m.solution['Generator-p_nom'].sel(name=d['S'])) for d in STATE['dc'] if d['period'] == p)) if st == 'ok' else 0.0
+        lex[p] = dict(S_max_total=s_star, termination=str(tc))
+        m.add_constraints(Sv >= max(0.0, s_star * (1 - 1e-6) - 1e-3), name=f'S2J-lex_{p}')
+    m.objective = cost_obj
+    _require_gate('developer_joint cost')
+    n.optimize.solve_model(solver_name='gurobi', solver_options=opts)
+    STATE['reuse'] = sv_reuse; STATE['corridors'] = sv_corr
+    M.STATE['erm'] = True
+    ay = STATE.get('approval_year', {})
+    K = {}
+    for comp, df_ in (('Generator', n.generators), ('StorageUnit', n.storage_units)):
+        for b in df_.index[df_.carrier.str.startswith('byop_') & (df_.carrier != 'byop_R')]:
+            info = STATE['byop_cod'][b]
+            K[(info['zone'], info['carrier'], ay[b])] = float(df_.p_nom_opt[b])
+    w = n.snapshot_weightings.generators
+    per = n.snapshots.get_level_values(0)
+    rights, out = {}, []
+    for d in STATE['dc']:
+        s, p = d['zone'], d['period']; sl = per == p
+        gn = d['firm'][1]
+        ff = n.generators_t.p[gn][sl] if gn in n.generators_t.p else pd.Series(0.0)
+        cf = n.generators_t.p[d['cond'][1]][sl] if d['cond'] and d['cond'][1] in n.generators_t.p else pd.Series(0.0)
+        S = float(n.generators.p_nom_opt[d['S']])
+        bg = [b for b in n.generators.index if n.generators.bus[b] == f'DC_{s}' and n.generators.carrier[b].startswith('byop_')
+              and int(n.generators.build_year[b]) <= p]
+        bs = [b for b in n.storage_units.index if n.storage_units.bus[b] == f'DC_{s}' and int(n.storage_units.build_year[b]) <= p]
+        bmw = float(n.generators.p_nom_opt[bg].sum()) + float(n.storage_units.p_nom_opt[bs].sum())
+        bmwh = float(sum((n.generators_t.p[b][sl] * w[sl]).sum() for b in bg if b in n.generators_t.p))
+        fe = float((ff * w[sl]).sum()) if len(ff) > 1 else 0.0
+        ce = float((cf * w[sl]).sum()) if len(cf) > 1 else 0.0
+        mode = label_mode(S, fe, ce, bmw)
+        rights[(s, p)] = dict(firm=float(ff.max()) if len(ff) else 0.0, cond=float(cf.max()) if len(cf) else 0.0, S=S, mode=mode)
+        out.append(dict(iteration=iteration, site=s, year=p, mode=mode, chosen=True, requested_IT_MW=d['D'], S=S,
+                        offer_firm_MW=STATE['offer'].get((s, p), {}).get('firm', 0.0), offer_cond_MW=STATE['offer'].get((s, p), {}).get('cond', 0.0),
+                        right_firm_MW=rights[(s, p)]['firm'], right_cond_MW=rights[(s, p)]['cond'], grid_import_MWh=fe + ce,
+                        firm_import_MWh=fe, conditional_import_MWh=ce, BYOP_capacity_MW=bmw, BYOP_gen_MWh=bmwh,
+                        K=json.dumps({f'{c}_q{q}': round(v_, 3) for (s_, c, q), v_ in K.items() if s_ == s and v_ > 1e-3}),
+                        private_objective=float(n.objective), termination=str(m.termination_condition),
+                        integer_vars=int(len(m.binaries) + len(m.integers)), lexicographic=json.dumps(lex)))
+    STATE['modes'] = {}
+    STATE['dev_net'] = n
+    return K, {}, rights, out
+
+
+def developer_joint_build(s1_net, v_priv, mult):
+    """the joint developer network and its linopy model (no solve; also used by the Stage A structural test)"""
+    dem = M.study_new_demand()
+    n = pypsa.Network()
+    n.set_snapshots(s1_net.snapshots)
+    n.investment_periods = M.periods()
+    n.snapshot_weightings = s1_net.snapshot_weightings.copy()
+    n.investment_period_weightings = s1_net.investment_period_weightings.copy()
+    n.investment_period_weightings.loc[:, 'objective'] = [M.w_private(p) for p in M.periods()]
+    sw = s1_net.snapshot_weightings.generators
+    ow = pd.Series([float(s1_net.investment_period_weightings.objective[p]) for p in s1_net.snapshots.get_level_values(0)], index=s1_net.snapshots)
+    erm_p = s1_net.buses_t.get('erm_price')
+    price, lmps = {}, {}
+    for s, d in SITES.items():
+        lmp = s1_net.buses_t.marginal_price[d['bus']].astype(float)
+        adder = pd.Series(0.0, index=s1_net.snapshots)
+        if M.CFG['tariff'] == 'energy_erm' and erm_p is not None and d['bus'] in erm_p:
+            adder = (1 + w2.ERM_MARGIN) * erm_p[d['bus']].astype(float).fillna(0.0).abs() / (sw * ow)
+        price[s], lmps[s] = lmp + adder, lmp
+    STATE['modes'] = {s: 'GF' for s in SITES}
+    STATE['lmp_energy'] = lmps
+    add_dc_poi(n, dem, v_priv, mult, byop=M.CFG['byop_techs'], price=price, actor='private')
+    ml_gas_delta(n)
+    M.STATE['erm'] = False
+    sv_reuse = STATE.get('reuse', []); STATE['reuse'] = []
+    sv_corr = STATE.get('corridors', []); STATE['corridors'] = []
+    m = n.optimize.create_model(multi_investment_periods=True)
+    extra_rearch(n, n.snapshots)
+    return n, m, (sv_reuse, sv_corr)
+
+
+def _require_gate(where):
+    """E1: in the mainline every optimizer call needs RUN_AUTHORIZATION=APPROVED (checked at start, re-checked here)"""
+    if ML['on'] and not (ML.get('gate') or {}).get('approved'):
+        raise SystemExit(f'RUN_GATE: solver call refused ({where}): RUN_AUTHORIZATION not APPROVED')
+
+
+def mainline_gate(cfg_path):
+    """E1 run gate: APPROVED + approved code commit is HEAD or an ancestor with no code / input change since + every
+    code / input SHA-256 equal to MAINLINE_V13_PRE_RUN_MANIFEST.json. Returns dict(approved, reasons, ...)"""
+    import subprocess, yaml
+    cfg = yaml.safe_load(Path(cfg_path).read_text(encoding='utf-8'))['mainline']
+    root = Path(__file__).resolve().parents[3]
+    reasons = []
+    auth = str(cfg.get('run_authorization', 'NOT_APPROVED'))
+    if auth != 'APPROVED':
+        reasons.append(f'run_authorization={auth}')
+    head = subprocess.run(['git', '-C', str(root), 'rev-parse', 'HEAD'], capture_output=True, text=True).stdout.strip()
+    sha = cfg.get('approved_git_sha')
+    if not sha:
+        reasons.append('approved_git_sha missing')
+    else:
+        anc = subprocess.run(['git', '-C', str(root), 'merge-base', '--is-ancestor', str(sha), 'HEAD']).returncode == 0
+        chg = subprocess.run(['git', '-C', str(root), 'diff', '--name-only', str(sha), 'HEAD', '--', 'workflow/byop/model', 'workflow/byop/inputs',
+                              'workflow/byop/build', 'workflow/byop/run'], capture_output=True, text=True).stdout.split()
+        if not anc:
+            reasons.append(f'approved_git_sha {sha} is not HEAD or an ancestor of HEAD {head}')
+        if chg:
+            reasons.append(f'code/input changed since the approved commit: {chg[:5]}')
+    man_p = root / cfg.get('manifest', 'current_work_pckg/MAINLINE_V13_PRE_RUN_MANIFEST.json')
+    if not man_p.exists():
+        reasons.append(f'manifest missing: {man_p}')
+    else:
+        man = json.loads(man_p.read_text(encoding='utf-8'))
+        for rel, h in {**man.get('code_sha256', {}), **man.get('inputs_sha256', {})}.items():
+            f = root / rel
+            if not f.exists() or M.sha(f) != h:
+                reasons.append(f'sha256 mismatch: {rel}')
+    return dict(approved=not reasons, reasons=reasons, head=head, approved_git_sha=sha, config=str(cfg_path))
+
+
 def extra_rights(n, snapshots):
     """public S2 LP: the developer's committed import rights cap the firm / conditional POI flows"""
     extra_rearch(n, snapshots)
@@ -941,8 +1387,27 @@ def poi_ledger(n, tag, case_id):
         it_ = n.generators_t.p[d['intr']][sl] if d.get('intr') and d['intr'] in n.generators_t.p else pd.Series(0.0)
         it_e = float((it_ * w[sl]).sum()) if len(it_) > 1 else 0.0
         cu_e = float((cu * w[sl]).sum()) if len(cu) > 1 else 0.0
-        byop = [b for b in n.generators.index if n.generators.bus[b] == f'DC_{s}' and n.generators.carrier[b].startswith('byop_')]
-        rows.append(dict(case_id=case_id, scenario=tag, site=s, parent_bus=d['bus'], year=p, requested_IT_MW=d['D'], served_IT_MW=S,
+        byop = [b for b in n.generators.index if n.generators.bus[b] == f'DC_{s}' and n.generators.carrier[b].startswith('byop_')
+                and int(n.generators.build_year[b]) <= p]
+        bsu = [b for b in n.storage_units.index if n.storage_units.bus[b] == f'DC_{s}' and n.storage_units.carrier[b].startswith('byop_')
+               and int(n.storage_units.build_year[b]) <= p]
+        bgen = float(sum((n.generators_t.p[b][sl] * w[sl]).sum() for b in byop if b in n.generators_t.p))
+        mu_eq = float('nan')
+        try:
+            mu_eq = float(abs(n.model.dual[f"POI-eq_{d['S']}"]).sum()) if f"POI-eq_{d['S']}" in n.model.constraints else float('nan')
+        except Exception:
+            pass
+        ff_e = float((ff * w[sl]).sum()) if len(ff) > 1 else 0.0
+        cf_e = float((cf * w[sl]).sum()) if len(cf) > 1 else 0.0
+        bmw = (float(n.generators.p_nom_opt[byop].sum()) if byop else 0.0) + (float(n.storage_units.p_nom_opt[bsu].sum()) if bsu else 0.0)
+        ml_extra = dict(IT_energized_MW=S, grid_import_MWh=ff_e + cf_e, BYOP_gen_MWh=bgen, BYOP_capacity_MW=bmw,
+                        certified_import_MW=STATE.get('offer', {}).get((s, p), {}).get('firm', float('nan')),
+                        poi_eq_dual_abs=mu_eq, mode_label=label_mode(S, ff_e, cf_e, bmw),
+                        stress_snapshot_min_firm_MW=float(ff[stress_mask(ff.index)].min()) if len(ff) > 1 and stress_mask(ff.index).any() else float('nan'),
+                        procedure_ready_year=SITES[s]['proc'],
+                        earliest_grid_COD=min([x['cod'] if x['pre'] else max(x['cod'], SITES[s]['proc']) for x in SITES[s].get('E0rows') or []]
+                                              + [c_ for _, _, c_ in STATE.get('poi_up', {}).get(s, [])[:1]], default=float('nan')))
+        rows.append(dict(case_id=case_id, scenario=tag, site=s, parent_bus=d['bus'], year=p, requested_IT_MW=d['D'], served_IT_MW=S, **ml_extra,
                          unserved_IT_MW=d['D'] - S, PUE=d['pue'], equipment_fixed_MW=fixed, equipment_total_MW=eq,
                          poi_upgrade_MW_cum=sum(U.values()), firm_entitlement_used_MW=float(ff.max()) if len(ff) else 0.0,
                          conditional_peak_MW=float(cf.max()) if len(cf) else 0.0,
@@ -992,7 +1457,10 @@ def energy_resid(svc, poil):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--case-id', required=True); ap.add_argument('--out', required=True)
-    ap.add_argument('--setting', default='G-U', choices=['G-W', 'G-K', 'G-U'])
+    ap.add_argument('--setting', default='G-U', choices=['G-W', 'G-K', 'G-U', 'G-REAL'])
+    ap.add_argument('--mainline', action='store_true', help='Mainline v1.3 (8 Epoch buses, G-REAL, joint developer, run gate)')
+    ap.add_argument('--config', default='config/config.byop_ercot_mainline.yaml', help='mainline run config with the run authorization')
+    ap.add_argument('--stress-days', type=int, default=3); ap.add_argument('--stress-line-derate', type=float, default=1.0)
     ap.add_argument('--case', default='base', choices=['low', 'base', 'high'], help='POI / project parameter case')
     ap.add_argument('--gas-case', default='base', choices=['low', 'base', 'high'])
     ap.add_argument('--relax', nargs='*', default=[], help='S1 attribution relaxations: POI UP RA PROC')
@@ -1024,6 +1492,19 @@ def main():
     ap.add_argument('--no-harm', default='on', choices=['on', 'off'], help='D2.4 existing-customer shed <= frozen S0 per bus x snapshot')
     a = ap.parse_args()
     a.case_group = a.case_group or a.case_id
+    if a.mainline:      # E1 run gate BEFORE anything is built or solved
+        ML.update(on=True, stress_days=a.stress_days, stress_line_derate=a.stress_line_derate)
+        ML['gate'] = mainline_gate(a.config)
+        Path(a.out).mkdir(parents=True, exist_ok=True)
+        (Path(a.out) / 'RUN_GATE.json').write_text(json.dumps(ML['gate'], indent=1))
+        if not ML['gate']['approved']:
+            print(json.dumps(dict(RUN_GATE='REFUSED', **ML['gate']), indent=1))
+            raise SystemExit(3)
+        a.setting, a.competing, a.regional_dc = 'G-REAL', 0.0, 'off'
+        if a.byop_techs == ['RICE', 'SOFC_NG']:
+            a.byop_techs = list(ML_TECHS)
+        if a.scenarios == ['S0', 'S1_EARLIEST', 'S1_ECON', 'S1_zero', 'S3', 'S3_mS1', 'S2', 'S2_off', 'S3_mS2']:
+            a.scenarios = ['S0', 'S1_EARLIEST', 'S3', 'S2']
     global BASE_TAMU
     if a.base:
         BASE_TAMU = Path(a.base)
@@ -1040,8 +1521,14 @@ def main():
     # provenance: hash the code AT START (a later edit of the files must not be attributed to this run)
     code_sha_start = {p.name: M.sha(p) for p in [Path(__file__), HERE / 'v240_mech.py', HERE / 'v250_mech.py',
                                                   HERE / 'wp2_ercot_s0_s1.py', HERE / 'wp2_ercot_s1_real.py']}
-    configure(out)
+    configure_mainline(out) if ML['on'] else configure(out)
     M.build = build_rearch
+    if ML['on']:
+        _solve0 = M.solve
+        def _gated_solve(*args_, **kw_):
+            _require_gate('M.solve')
+            return _solve0(*args_, **kw_)
+        M.solve = _gated_solve
     M.extra = extra_rearch
     w2.store_ERM_duals = V.store_erm_duals_tx
     V.GCFG.update(erm_scope='tx')
@@ -1210,7 +1697,7 @@ def main():
     if r1 is not None and ({'S2', 'S3_mS2'} & set(a.scenarios)):
         STATE['cond_public'] = {s: True for s in SITES}
         for it in range(1, GCFG['s2_iter'] + 1):
-            K, R, rights, plog = developer_stage(config, n1_keep, M.CFG['v_private'] or v, r1[1], reuse_on, it)
+            K, R, rights, plog = (developer_joint if ML['on'] else developer_stage)(config, n1_keep, M.CFG['v_private'] or v, r1[1], reuse_on, it)
             priv_log += plog
             STATE['rights'] = rights
             STATE['cond_public'] = {s: any(rt['cond'] > 1e-3 for (s_, _), rt in rights.items() if s_ == s) for s in SITES}
@@ -1288,13 +1775,20 @@ def main():
                status='CASE_SOLVED' if all(x in (True, None) for x in checks.values()) else 'CASE_CHECK_FAIL',
                sites={k: {kk: vv for kk, vv in s.items()} for k, s in SITES.items()}, erm_cal=STATE.get('erm_cal'),
                baseline=str(BASE_TAMU), baseline_sha256=M.sha(BASE_TAMU),
-               inputs_sha256={p.name: M.sha(p) for p in [POI_REG, POI_REQ, GRID_PROJ, M.TECH, BP.PUE, BP.TASK]},
+               inputs_sha256={p.name: M.sha(p) for p in ([POI_REG, POI_REQ, GRID_PROJ, M.TECH, BP.PUE, BP.TASK] + (ML_INPUTS if ML['on'] else []))},
+               mainline=dict(gate=ML.get('gate'), stress=STATE.get('stress_sample'), inherited_ramp=STATE.get('inherited_ramp'),
+                             gas=STATE.get('gas_repriced')) if ML['on'] else None,
                code_sha256=code_sha_start, code_sha256_basis='hashed at process start',
                interrupt_price={f'{k[0]}|{k[1]}': v_ for k, v_ in STATE.get('interrupt_price', {}).items()},
                s0_calibration=STATE.get('s0cal_applied'), base_assets=STATE.get('base_assets'), grid_projects=STATE.get('grid_projects'), competing=STATE.get('competing'), pypsa=pypsa.__version__,
                timestamp_utc=datetime.now(timezone.utc).isoformat())
     (out / 'case_manifest.json').write_text(json.dumps(man, indent=2, default=str))
     print(json.dumps(dict(case=a.case_id, status=man['status'], checks=checks), indent=1, default=str))
+    if ML['on']:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('collect_mainline', HERE.parent / 'post/collect_mainline.py')
+        cm = importlib.util.module_from_spec(spec); spec.loader.exec_module(cm)
+        cm.collect(out)
     if len(summ):
         print(summ[[c for c in ['scenario', 'relax', 'social_total_USD', 'social_real_resource_cost_USD', 'served_MW_IT_year', 'delay_MW_IT_year',
                     'load_shed_MWh', 'interruption_loss_PV_USD', 'public_new_MW', 'byop_MW', 'poi_upgrade_MW', 'curtailed_MWh', 'termination',

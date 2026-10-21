@@ -49,3 +49,18 @@ Each site's precision is in `geocode_precision`. A site maps to the nearest ERCO
 | `dc/EPOCH_TAMU64_PROVENANCE.json` | source, licence, raw-file hashes, geocoders, excluded sites | `d574064282a359a6…` |
 
 Model use is opt-in: `--regional-dc epoch_hybrid --regional-dc-scenario {low|mid|high}`, default `off`. All PNNL data was withdrawn and deleted on 2026-10-21 (RA-DC-SPATIAL-02/04). The legacy v240 / v250 / WP2 models that read the deleted 7-zone and county cohorts now stop with a message.
+
+## Mainline v1.3 inputs (2026-10-21, Stage A; pending researcher audit)
+
+| File | Content | Producer | Evidence |
+|---|---|---|---|
+| `dc/MAINLINE_RESEARCH_COHORTS_TAMU64.csv` | research AIDC cohorts = `ercot_cohorts_2026_2035_tamu64.csv` minus the D11 inherited ramp (2026 only) | `build/build_mainline_inputs.py` | DERIVED |
+| `dc/MAINLINE_INHERITED_RAMP_2025.csv` | late-2025 Epoch ramp per bus (460.73 MW IT): background in every scenario | same | DERIVED |
+| `dc/MAINLINE_AIDC_RECONCILIATION.csv` | approved total = inherited + research per scenario x year (all PASS) | same | DERIVED |
+| `dc/MAINLINE_BUS_SITE_POI_MAP.csv` | bus -> Epoch site -> POI evidence (D12) | same | DERIVED |
+| `poi/GREAL_POI_ASSUMPTIONS.csv` | one aggregated POI per Epoch bus: upgrade, procedure, PCLR, gas level, on-site RE cap | same | PROXY (per field) |
+| `poi/GREAL_POI_E0_SCHEDULE.csv` | dated existing / approved equipment rows (Helios, Abilene, Denton, campuses) | same | VERIFIED_APPROVAL / PROXY |
+| `poi/GREAL_R_ASSET_POOL.csv` | verified reusable units (D14): none, header only | same | - |
+| `grid/GREAL_GRID_PROJECTS.csv`, `GREAL_BACKGROUND_LOAD_RECONCILIATION.csv`, `GREAL_NETWORK_EVIDENCE.csv`, `GREAL_PHYSICAL_MECHANISM_NOTE.md` | G-REAL network evidence (WP-B) | same / hand-written | VERIFIED / DERIVED / PROXY |
+| `grid/ERCOT_WIND_SOLAR_POTENTIAL.csv`, `REEDS2_TO_TAMU64.csv`, `REEDS2_SOURCE_INVENTORY.csv`, `REEDS2_IMPORT_NOTE.md` | ReEDS2 (D:\ReEDS2 eb75a6bc, read only) remaining wind / PV potential per bus | `build/build_reeds2_potential.py` | DERIVED |
+| `tech/MAINLINE_V13_TECH_DEFAULTS.csv`, `tech/MAINLINE_V13_GAS_PRICES_2026_2031.csv` | work package v1.3 attachments, byte-identical | copied | PROXY / SOURCE_FACT |

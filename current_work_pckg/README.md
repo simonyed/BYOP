@@ -15,21 +15,25 @@
 
 ## 当前工作包
 
-**BYOP ERCOT 仿真架构重构 v1.0（2026-10-20）**；本地数据文件夹为 `work_pkgs/BYOP_ERCOT_Rearchitecture_Work_Package/`。
+**BYOP ERCOT Mainline v1.3 — 物理并网瓶颈、Speed-to-Power 与公共投资响应（2026-10-21）**
+
+- 本轮状态：`STAGE_A_IMPLEMENTATION_ONLY`，`RUN_AUTHORIZATION: NOT_APPROVED`
+- 本地数据文件夹：`work_pkgs/BYOP_ERCOT_Mainline_v1.3/`
+- 上一个工作包（重构 v1.0）及其全部汇报已移入 `_completed/BYOP_ERCOT_Rearchitecture_Work_Package_v1.0/`
 
 | 文件 | 内容 | 状态 |
 |---|---|---|
-| `BYOP_ERCOT_Rearchitecture_Work_Package_v1.0_2026-10-20.md` | 工作包原文 | 研究者提供 |
-| `DECISION_LOG_REARCHITECTURE.md` | 空间、POI、气源、模式等决策及其状态 | 草稿，持续更新 |
-| `GITHUB_SYNC_EXECUTION_REPORT.md` | GitHub 同步规则检查与完善报告 | 完成（2026-10-20） |
-| `INTERIM_PROGRESS_REPORT_2026-10-20.md` | 中期进度：求解状态、S1 各场址服务量、DEV_GU（G-U）完整结果、发现的问题 | IN_PROGRESS（21:30 UTC 增补） |
-| `EXECUTION_REPORT_FOR_PUBLISHER.md` | 工作包最终执行报告（P0 修正后 R2 正式结果） | 完成（2026-10-21） |
-| `BYOP_ERCOT_RUN_DECISION_AND_CORRECTION_PLAN_2026-10-20.md`、`BYOP_ERCOT_P0_RESEARCHER_DECISIONS_2026-10-20.md` | 研究者运行决策与 P0 决策 | 研究者提供 |
-| `P0_MODEL_CORRECTION_PROPOSAL.md` | P0 修正方案 | 已批准并实施 |
-| `POST_RUN_DIAGNOSTIC_REPORT_FOR_PUBLISHER.md` | 第一轮（BASELINE_DIAGNOSTIC）诊断报告 | 完成 |
-| `RETURN_FILE_MANIFEST.md` | 交付文件清单 | 完成 |
+| `BYOP_ERCOT_Mainline_Work_Package_v1.3_2026-10-21.md` | 工作包原文 | 研究者提供 |
+| `MAINLINE_V13_TECH_DEFAULTS.csv`、`MAINLINE_V13_GAS_PRICES_2026_2031.csv` | 工作包附表；逐字节复制到 `workflow/byop/inputs/tech/` 作为模型输入 | 研究者提供 |
+| `MAINLINE_V13_STAGE_A_REPORT.md` | Stage A 执行报告：完成项、修改文件、无求解器测试、阻塞项 | 完成 |
+| `MAINLINE_V13_PRE_RUN_AUDIT.md` | 运行前审计，以及是否推荐正式运行 | 完成 |
+| `MAINLINE_V13_PARAMETER_CROSSWALK.md` | 旧参数 → 证据 → v1.3 值 → 代码字段 | 完成 |
+| `MAINLINE_V13_DATA_REGISTER.csv` | 数据来源、版本、单位、转换脚本、哈希 | 完成 |
+| `MAINLINE_V13_DECISION_LOG.md` | D11–D15 均为 CONFIRMED；新问题 ML13-01..09 标为 REVIEW_REQUIRED | 待研究者审计 |
+| `MAINLINE_V13_PRE_RUN_MANIFEST.json` | 代码和输入的 SHA-256、拟运行命令、运行环境；运行门控会核对 | `NOT_APPROVED` |
+| `MAINLINE_V13_RETURN_MANIFEST.md` | GitHub 文件清单、本地大文件、提交 SHA、下一阶段所需文件 | 完成 |
 
-参数来源登记表在 `workflow/byop/inputs/poi/SOURCE_EVIDENCE_REGISTER.csv`；运行说明在 `workflow/byop/README_REARCHITECTURE.md`。
+运行说明见 `workflow/byop/README.md` 的 Mainline v1.3 一节。
 
 ## 新工作包到来时
 

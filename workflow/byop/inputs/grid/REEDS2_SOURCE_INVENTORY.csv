@@ -1,0 +1,7 @@
+file,reeds_commit,sha256,bytes,unit,dollar_year,role
+inputs/supply_curve/supplycurve_wind-ons-reference.csv,eb75a6bc664297492b38a40782df294666269971 Wed Oct 14 15:22:57 2026 -0600,bc5509b2e7cf37e11ccff7174e55515dfea1f3861ea353bcac0b6191875616af,1518372.0,MW_AC,2022,onwind new-build potential (reV reference siting)
+inputs/supply_curve/supplycurve_upv-reference.csv,eb75a6bc664297492b38a40782df294666269971 Wed Oct 14 15:22:57 2026 -0600,9f94e5b0de4a42fef35e4cf6908ff5969fd018b6ec3fad8f388fa090d77163a1,1837319.0,MW_DC (converted to MW_AC / ilr_utility),2023,solar new-build potential (reV reference siting)
+inputs/supply_curve/interconnection_land.h5,eb75a6bc664297492b38a40782df294666269971 Wed Oct 14 15:22:57 2026 -0600,cca210228dc0bef8b09abe97ab019152da7bd3bc104abd0ab42fee92bae89f32,1932387.0,lat/lon/FIPS,,sc_point_gid site map
+inputs/scalars.csv,eb75a6bc664297492b38a40782df294666269971 Wed Oct 14 15:22:57 2026 -0600,653c6a2b9635a954aecc5bc0390a6dc7f794ed5d8b102a0e439fe090d89287bc,12720.0,ilr_utility=1.34,,UPV DC->AC
+inputs/profiles_cf/cf_wind-ons_reference.h5,eb75a6bc664297492b38a40782df294666269971 Wed Oct 14 15:22:57 2026 -0600,NOT_HASHED_LARGE (md5 in remote_files.csv),,hourly cf 2007-2023,,NOT USED: PyPSA-USA bus profiles kept (weather-year consistency with the 2025 baseline load)
+inputs/profiles_cf/cf_upv_reference.h5,eb75a6bc664297492b38a40782df294666269971 Wed Oct 14 15:22:57 2026 -0600,NOT_HASHED_LARGE (md5 in remote_files.csv),,hourly cf 2007-2023,,NOT USED: PyPSA-USA bus profiles kept (weather-year consistency with the 2025 baseline load)

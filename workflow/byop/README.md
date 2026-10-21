@@ -33,3 +33,19 @@ python byop/post/collect_p1.py results/BYOP/p1
 
 Model decisions and results are documented in the local work package
 `work_pkgs/BYOP_ERCOT_County_v2.5.0` (`decisions/DECISION_LOG.md`, `docs/`).
+
+## Mainline v1.3 (2026-10-21, Stage A: code and inputs only, `RUN_AUTHORIZATION: NOT_APPROVED`)
+
+One entry, one config: `byop/run/run_mainline.sh` + `config/config.byop_ercot_mainline.yaml` →
+`rearch_mech.py --mainline` (8 Epoch TAMU buses, one aggregated POI per bus, G-REAL, v1.3 techs and yearly gas, approval-cohort
+COD, B7 stress snapshots, one joint S2 developer LP, run gate). Without `--mainline` every older path is unchanged.
+
+```bash
+bash byop/run/run_mainline.sh tests     # static QA tests (no solver)
+bash byop/run/run_mainline.sh struct    # build S0 / S1 / S3 / S2-developer LP models, inspect, never solve
+bash byop/run/run_mainline.sh gate      # E1 verdict; step0 / run refuse with exit 3 unless APPROVED + hashes match
+```
+
+Inputs: `inputs/dc/MAINLINE_*`, `inputs/poi/GREAL_*`, `inputs/grid/GREAL_*` + `ERCOT_WIND_SOLAR_POTENTIAL.csv` (ReEDS2),
+`inputs/tech/MAINLINE_V13_*`; builders `build/build_mainline_inputs.py`, `build/build_reeds2_potential.py`,
+`build/build_mainline_manifest.py`; result tables `post/collect_mainline.py`. Reports: `current_work_pckg/MAINLINE_V13_*`.
