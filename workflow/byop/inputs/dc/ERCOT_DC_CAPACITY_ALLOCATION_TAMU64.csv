@@ -1,0 +1,751 @@
+spatial_basis,status,scenario,zone,bus,bus_lon,bus_lat,counties,pnnl_sites,bus_share_ercot,bus_share_in_zone,year,new_IT_MW,cum_IT_MW,TX_PUE,cum_facility_MW
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2026,31.4337,31.4337,1.1567,36.3594
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2027,43.2462,74.6799,1.155,86.2553
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2028,54.1021,128.782,1.1534,148.5372
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2029,56.8945,185.6765,1.1517,213.8437
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2030,51.5278,237.2043,1.1501,272.8087
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2031,47.1266,284.3309,1.1484,326.5256
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2032,37.8972,322.2281,1.1468,369.5312
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2033,28.2846,350.5127,1.1451,401.3721
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2034,19.2259,369.7387,1.1435,422.7962
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2035,9.667,379.4057,1.1418,433.2054
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2026,164.5139,164.5139,1.1567,190.2933
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2027,226.3363,390.8502,1.155,451.432
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2028,283.1528,674.003,1.1534,777.3951
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2029,297.7675,971.7706,1.1517,1119.1882
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2030,269.6795,1241.4501,1.1501,1427.7917
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2031,246.6454,1488.0954,1.1484,1708.9288
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2032,198.3416,1686.4371,1.1468,1934.006
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2033,148.0324,1834.4695,1.1451,2100.651
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2034,100.6223,1935.0918,1.1435,2212.7775
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2035,50.5939,1985.6857,1.1418,2267.2559
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2026,2.4764,2.4764,1.1567,2.8644
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2027,3.4069,5.8833,1.155,6.7952
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2028,4.2622,10.1455,1.1534,11.7018
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2029,4.4822,14.6276,1.1517,16.8466
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2030,4.0594,18.687,1.1501,21.4919
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2031,3.7126,22.3996,1.1484,25.7237
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2032,2.9855,25.3852,1.1468,29.1117
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2033,2.2283,27.6134,1.1451,31.6201
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2034,1.5146,29.1281,1.1435,33.3079
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2035,0.7616,29.8896,1.1418,34.128
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2026,0.1823,0.1823,1.1567,0.2109
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2027,0.2509,0.4332,1.155,0.5003
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2028,0.3138,0.747,1.1534,0.8616
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2029,0.33,1.077,1.1517,1.2404
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2030,0.2989,1.3759,1.1501,1.5824
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2031,0.2734,1.6493,1.1484,1.894
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2032,0.2198,1.8691,1.1468,2.1435
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2033,0.1641,2.0332,1.1451,2.3282
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2034,0.1115,2.1447,1.1435,2.4524
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2035,0.0561,2.2008,1.1418,2.5128
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2026,24.8345,24.8345,1.1567,28.7261
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2027,34.167,59.0015,1.155,68.1468
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2028,42.7439,101.7454,1.1534,117.3532
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2029,44.9501,146.6955,1.1517,168.9492
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2030,40.71,187.4055,1.1501,215.535
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2031,37.2328,224.6383,1.1484,257.9746
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2032,29.941,254.5793,1.1468,291.9516
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2033,22.3465,276.9259,1.1451,317.1078
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2034,15.1896,292.1155,1.1435,334.0341
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2035,7.6375,299.753,1.1418,342.258
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2026,42.7091,42.7091,1.1567,49.4016
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2027,58.7587,101.4678,1.155,117.1953
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2028,73.5087,174.9764,1.1534,201.8178
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2029,77.3028,252.2792,1.1517,290.5499
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2030,70.0109,322.2901,1.1501,370.6658
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2031,64.031,386.3211,1.1484,443.6512
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2032,51.491,437.8121,1.1468,502.083
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2033,38.4304,476.2425,1.1451,545.3453
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2034,26.1223,502.3649,1.1435,574.4542
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2035,13.1346,515.4994,1.1418,588.5972
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2026,46.74,46.74,1.1567,54.0641
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2027,64.3043,111.0443,1.155,128.2562
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2028,80.4464,191.4907,1.1534,220.8654
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2029,84.5986,276.0893,1.1517,317.9721
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2030,76.6185,352.7079,1.1501,405.6493
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2031,70.0743,422.7822,1.1484,485.5231
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2032,56.3508,479.1329,1.1468,549.4696
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2033,42.0574,521.1904,1.1451,596.8151
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2034,28.5878,549.7781,1.1435,628.6713
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2035,14.3742,564.1523,1.1418,644.1491
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2026,0.5493,0.5493,1.1567,0.6354
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2027,0.7558,1.3051,1.155,1.5074
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2028,0.9455,2.2506,1.1534,2.5958
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2029,0.9943,3.2448,1.1517,3.7371
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2030,0.9005,4.1453,1.1501,4.7675
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2031,0.8236,4.9689,1.1484,5.7063
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2032,0.6623,5.6312,1.1468,6.4578
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2033,0.4943,6.1255,1.1451,7.0143
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2034,0.336,6.4615,1.1435,7.3887
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2035,0.1689,6.6304,1.1418,7.5706
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2026,61.1846,61.1846,1.1567,70.7723
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2027,84.1771,145.3617,1.155,167.8928
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2028,105.3078,250.6695,1.1534,289.1222
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2029,110.7432,361.4127,1.1517,416.239
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2030,100.2969,461.7097,1.1501,531.0123
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2031,91.7303,553.4399,1.1484,635.5704
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2032,73.7655,627.2055,1.1468,719.2792
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2033,55.055,682.2605,1.1451,781.2565
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2034,37.4226,719.6831,1.1435,822.9576
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2035,18.8164,738.4995,1.1418,843.2187
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2026,8.533,8.533,1.1567,9.8701
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2027,11.7396,20.2726,1.155,23.4148
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2028,14.6865,34.9591,1.1534,40.3219
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2029,15.4446,50.4037,1.1517,58.05
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2030,13.9877,64.3914,1.1501,74.0566
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2031,12.793,77.1844,1.1484,88.6386
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2032,10.2876,87.472,1.1468,100.3129
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2033,7.6781,95.1501,1.1451,108.9564
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2034,5.2191,100.3692,1.1435,114.7722
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2035,2.6242,102.9934,1.1418,117.5979
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2026,6.5832,6.5832,1.1567,7.6148
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2027,9.0571,15.6404,1.155,18.0646
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2028,11.3307,26.9711,1.1534,31.1084
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2029,11.9155,38.8866,1.1517,44.7857
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2030,10.7916,49.6782,1.1501,57.1348
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2031,9.8698,59.548,1.1484,68.3849
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2032,7.9369,67.4849,1.1468,77.3916
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2033,5.9237,73.4086,1.1451,84.0601
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2034,4.0265,77.4351,1.1435,88.547
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2035,2.0246,79.4597,1.1418,90.727
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2026,19.2759,19.2759,1.1567,22.2964
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2027,26.5195,45.7954,1.155,52.8937
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2028,33.1767,78.9721,1.1534,91.0864
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2029,34.889,113.8611,1.1517,131.1338
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2030,31.598,145.4591,1.1501,167.2925
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2031,28.8991,174.3582,1.1484,200.233
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2032,23.2394,197.5977,1.1468,226.605
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2033,17.3448,214.9424,1.1451,246.1306
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2034,11.7898,226.7322,1.1435,259.2683
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2035,5.928,232.6603,1.1418,265.6515
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2026,34.0182,34.0182,1.1567,39.3489
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2027,46.8019,80.8201,1.155,93.3472
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2028,58.5504,139.3705,1.1534,160.75
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2029,61.5725,200.943,1.1517,231.426
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2030,55.7644,256.7074,1.1501,295.2392
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2031,51.0014,307.7088,1.1484,353.3728
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2032,41.0131,348.7219,1.1468,399.9143
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2033,30.6102,379.3321,1.1451,434.3732
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2034,20.8067,400.1388,1.1435,457.5587
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2035,10.4618,410.6006,1.1418,468.8238
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2026,25.1018,25.1018,1.1567,29.0352
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2027,34.5347,59.6365,1.155,68.8802
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2028,43.2039,102.8404,1.1534,118.6161
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2029,45.4338,148.2742,1.1517,170.7674
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2030,41.1481,189.4223,1.1501,217.8545
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2031,37.6335,227.0558,1.1484,260.7508
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2032,30.2633,257.319,1.1468,295.0934
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2033,22.587,279.906,1.1451,320.5204
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2034,15.3531,295.2591,1.1435,337.6288
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2035,7.7197,302.9788,1.1418,345.9412
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2026,0.8701,0.8701,1.1567,1.0065
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2027,1.1971,2.0673,1.155,2.3877
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2028,1.4977,3.5649,1.1534,4.1118
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2029,1.575,5.1399,1.1517,5.9196
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2030,1.4264,6.5663,1.1501,7.5519
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2031,1.3046,7.8708,1.1484,9.0389
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2032,1.0491,8.9199,1.1468,10.2294
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2033,0.783,9.7029,1.1451,11.1108
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2034,0.5322,10.2351,1.1435,11.7038
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2035,0.2676,10.5027,1.1418,11.992
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2026,0.1293,0.1293,1.1567,0.1496
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2027,0.1779,0.3072,1.155,0.3548
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2028,0.2225,0.5297,1.1534,0.611
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2029,0.234,0.7637,1.1517,0.8796
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2030,0.2119,0.9757,1.1501,1.1221
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2031,0.1938,1.1695,1.1484,1.343
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2032,0.1559,1.3254,1.1468,1.5199
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2033,0.1163,1.4417,1.1451,1.6509
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2034,0.0791,1.5208,1.1435,1.739
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2035,0.0398,1.5605,1.1418,1.7818
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2026,61.1654,61.1654,1.1567,70.75
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2027,84.1506,145.316,1.155,167.8399
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2028,105.2747,250.5906,1.1534,289.0312
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2029,110.7083,361.2989,1.1517,416.108
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2030,100.2654,461.5643,1.1501,530.8451
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2031,91.7014,553.2657,1.1484,635.3703
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2032,73.7423,627.008,1.1468,719.0528
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2033,55.0376,682.0457,1.1451,781.0105
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2034,37.4108,719.4565,1.1435,822.6985
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2035,18.8105,738.267,1.1418,842.9533
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2026,8.4757,8.4757,1.1567,9.8038
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2027,11.6607,20.1364,1.155,23.2575
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2028,14.5879,34.7242,1.1534,40.0509
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2029,15.3408,50.065,1.1517,57.6599
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2030,13.8937,63.9588,1.1501,73.559
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2031,12.707,76.6658,1.1484,88.043
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2032,10.2184,86.8842,1.1468,99.6388
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2033,7.6265,94.5108,1.1451,108.2243
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2034,5.184,99.6948,1.1435,114.001
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2035,2.6066,102.3013,1.1418,116.8077
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2026,8.6877,8.6877,1.1567,10.0491
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2027,11.9524,20.6401,1.155,23.8394
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2028,14.9528,35.5929,1.1534,41.0529
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2029,15.7246,51.3175,1.1517,59.1024
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2030,14.2413,65.5589,1.1501,75.3992
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2031,13.0249,78.5838,1.1484,90.2456
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2032,10.4741,89.0579,1.1468,102.1315
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2033,7.8173,96.8752,1.1451,110.9318
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2034,5.3137,102.1889,1.1435,116.853
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2035,2.6718,104.8607,1.1418,119.7299
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2026,0.3578,0.3578,1.1567,0.4139
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2027,0.4923,0.8501,1.155,0.9819
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2028,0.6159,1.466,1.1534,1.6909
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2029,0.6477,2.1137,1.1517,2.4343
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2030,0.5866,2.7002,1.1501,3.1055
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2031,0.5365,3.2367,1.1484,3.717
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2032,0.4314,3.6681,1.1468,4.2066
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2033,0.322,3.9901,1.1451,4.569
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2034,0.2189,4.2089,1.1435,4.8129
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2035,0.11,4.319,1.1418,4.9314
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2026,11.1612,11.1612,1.1567,12.9102
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2027,15.3555,26.5168,1.155,30.6268
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2028,19.2102,45.7269,1.1534,52.7414
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2029,20.2017,65.9286,1.1517,75.9299
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2030,18.2961,84.2246,1.1501,96.8668
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2031,16.7333,100.958,1.1484,115.9402
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2032,13.4562,114.4142,1.1468,131.2102
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2033,10.0431,124.4573,1.1451,142.5161
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2034,6.8266,131.2839,1.1435,150.1232
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),high,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2035,3.4325,134.7164,1.1418,153.8192
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2026,31.8256,31.8256,1.1567,36.8126
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2027,35.6716,67.4971,1.155,77.9592
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2028,34.3883,101.8854,1.1534,117.5147
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2029,29.8656,131.751,1.1517,151.7377
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2030,21.7212,153.4723,1.1501,176.5084
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2031,11.1809,164.6532,1.1484,189.0877
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2032,6.0163,170.6695,1.1468,195.7238
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2033,7.16,177.8295,1.1451,203.6326
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2034,6.4577,184.2872,1.1435,210.7324
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2035,3.9197,188.2069,1.1418,214.8946
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2026,166.5646,166.5646,1.1567,192.6653
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2027,186.6935,353.258,1.155,408.013
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2028,179.9772,533.2352,1.1534,615.0335
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2029,156.3068,689.542,1.1517,794.1455
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2030,113.6818,803.2238,1.1501,923.7877
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2031,58.5174,861.7413,1.1484,989.6237
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2032,31.4873,893.2286,1.1468,1024.3546
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2033,37.4732,930.7018,1.1451,1065.7466
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2034,33.7975,964.4993,1.1435,1102.9049
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2035,20.5143,985.0136,1.1418,1124.6885
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2026,2.5072,2.5072,1.1567,2.9001
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2027,2.8102,5.3174,1.155,6.1416
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2028,2.7091,8.0265,1.1534,9.2578
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2029,2.3528,10.3794,1.1517,11.9539
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2030,1.7112,12.0906,1.1501,13.9054
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2031,0.8808,12.9714,1.1484,14.8964
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2032,0.474,13.4454,1.1468,15.4191
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2033,0.5641,14.0094,1.1451,16.0422
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2034,0.5087,14.5182,1.1435,16.6015
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2035,0.3088,14.827,1.1418,16.9294
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2026,0.1846,0.1846,1.1567,0.2135
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2027,0.2069,0.3915,1.155,0.4522
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2028,0.1995,0.591,1.1534,0.6816
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2029,0.1732,0.7642,1.1517,0.8802
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2030,0.126,0.8902,1.1501,1.0238
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2031,0.0649,0.9551,1.1484,1.0968
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2032,0.0349,0.99,1.1468,1.1353
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2033,0.0415,1.0315,1.1451,1.1812
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2034,0.0375,1.069,1.1435,1.2224
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2035,0.0227,1.0917,1.1418,1.2465
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2026,25.1441,25.1441,1.1567,29.0842
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2027,28.1827,53.3267,1.155,61.5924
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2028,27.1688,80.4955,1.1534,92.8436
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2029,23.5956,104.0911,1.1517,119.8818
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2030,17.1611,121.2522,1.1501,139.4521
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2031,8.8336,130.0858,1.1484,149.3905
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2032,4.7532,134.839,1.1468,154.6334
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2033,5.6568,140.4959,1.1451,160.8818
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2034,5.102,145.5978,1.1435,166.4911
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2035,3.0968,148.6946,1.1418,169.7795
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2026,43.2415,43.2415,1.1567,50.0174
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2027,48.4671,91.7085,1.155,105.9234
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2028,46.7235,138.432,1.1534,159.6675
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2029,40.5784,179.0105,1.1517,206.1663
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2030,29.5127,208.5231,1.1501,239.8225
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2031,15.1916,223.7147,1.1484,256.914
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2032,8.1744,231.8891,1.1468,265.9304
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2033,9.7283,241.6174,1.1451,276.6761
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2034,8.7741,250.3915,1.1435,286.3227
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2035,5.3257,255.7172,1.1418,291.9779
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2026,47.3226,47.3226,1.1567,54.738
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2027,53.0414,100.364,1.155,115.9204
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2028,51.1332,151.4972,1.1534,174.7369
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2029,44.4083,195.9055,1.1517,225.6244
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2030,32.2981,228.2036,1.1501,262.457
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2031,16.6254,244.829,1.1484,281.1616
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2032,8.9459,253.7748,1.1468,291.0289
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2033,10.6465,264.4213,1.1451,302.7888
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2034,9.6022,274.0235,1.1435,313.3459
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2035,5.8283,279.8518,1.1418,319.5348
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2026,0.5562,0.5562,1.1567,0.6433
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2027,0.6234,1.1796,1.155,1.3624
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2028,0.601,1.7805,1.1534,2.0537
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2029,0.5219,2.3025,1.1517,2.6517
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2030,0.3796,2.682,1.1501,3.0846
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2031,0.1954,2.8774,1.1484,3.3045
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2032,0.1051,2.9826,1.1468,3.4204
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2033,0.1251,3.1077,1.1451,3.5586
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2034,0.1129,3.2206,1.1435,3.6827
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2035,0.0685,3.2891,1.1418,3.7554
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2026,61.9473,61.9473,1.1567,71.6544
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2027,69.4335,131.3808,1.155,151.7448
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2028,66.9356,198.3164,1.1534,228.7381
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2029,58.1323,256.4487,1.1517,295.3519
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2030,42.2796,298.7282,1.1501,343.5674
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2031,21.7633,320.4916,1.1484,368.0525
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2032,11.7105,332.2021,1.1468,380.9693
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2033,13.9367,346.1388,1.1451,396.3635
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2034,12.5697,358.7085,1.1435,410.1831
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2035,7.6295,366.338,1.1418,418.2847
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2026,8.6394,8.6394,1.1567,9.9931
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2027,9.6834,18.3228,1.155,21.1628
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2028,9.335,27.6578,1.1534,31.9005
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2029,8.1073,35.7651,1.1517,41.1907
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2030,5.8964,41.6616,1.1501,47.915
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2031,3.0352,44.6967,1.1484,51.3297
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2032,1.6332,46.3299,1.1468,53.1311
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2033,1.9437,48.2736,1.1451,55.2781
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2034,1.753,50.0266,1.1435,57.2054
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2035,1.064,51.0906,1.1418,58.3353
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2026,6.6653,6.6653,1.1567,7.7097
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2027,7.4708,14.1361,1.155,16.3271
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2028,7.202,21.3381,1.1534,24.6113
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2029,6.2548,27.5929,1.1517,31.7787
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2030,4.5491,32.142,1.1501,36.9665
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2031,2.3416,34.4836,1.1484,39.601
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2032,1.26,35.7436,1.1468,40.9908
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2033,1.4995,37.2432,1.1451,42.6472
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2034,1.3524,38.5956,1.1435,44.1341
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2035,0.8209,39.4165,1.1418,45.0058
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2026,19.5162,19.5162,1.1567,22.5743
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2027,21.8746,41.3908,1.155,47.8064
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2028,21.0877,62.4785,1.1534,72.0627
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2029,18.3143,80.7928,1.1517,93.049
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2030,13.32,94.1127,1.1501,108.239
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2031,6.8564,100.9691,1.1484,115.9529
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2032,3.6893,104.6585,1.1468,120.0223
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2033,4.3907,109.0491,1.1451,124.8722
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2034,3.96,113.0091,1.1435,129.226
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2035,2.4036,115.4128,1.1418,131.7783
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2026,34.4423,34.4423,1.1567,39.8394
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2027,38.6045,73.0468,1.155,84.369
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2028,37.2157,110.2625,1.1534,127.1768
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2029,32.3212,142.5837,1.1517,164.2136
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2030,23.5072,166.0908,1.1501,191.0211
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2031,12.1002,178.1911,1.1484,204.6347
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2032,6.511,184.7021,1.1468,211.8163
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2033,7.7487,192.4508,1.1451,220.3754
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2034,6.9887,199.4394,1.1435,228.059
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2035,4.2419,203.6814,1.1418,232.5634
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2026,25.4147,25.4147,1.1567,29.3971
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2027,28.486,53.9006,1.155,62.2552
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2028,27.4612,81.3618,1.1534,93.8427
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2029,23.8495,105.2113,1.1517,121.1719
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2030,17.3457,122.5571,1.1501,140.9529
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2031,8.9287,131.4857,1.1484,150.9982
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2032,4.8044,136.2901,1.1468,156.2975
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2033,5.7177,142.0078,1.1451,162.6132
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2034,5.1569,147.1647,1.1435,168.2828
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2035,3.1301,150.2948,1.1418,171.6066
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2026,0.881,0.881,1.1567,1.019
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2027,0.9875,1.8685,1.155,2.1581
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2028,0.9519,2.8204,1.1534,3.253
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2029,0.8267,3.6471,1.1517,4.2004
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2030,0.6013,4.2484,1.1501,4.8861
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2031,0.3095,4.5579,1.1484,5.2343
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2032,0.1665,4.7245,1.1468,5.418
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2033,0.1982,4.9227,1.1451,5.637
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2034,0.1788,5.1014,1.1435,5.8335
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2035,0.1085,5.2099,1.1418,5.9487
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2026,0.1309,0.1309,1.1567,0.1514
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2027,0.1467,0.2776,1.155,0.3207
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2028,0.1414,0.4191,1.1534,0.4834
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2029,0.1228,0.5419,1.1517,0.6241
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2030,0.0893,0.6313,1.1501,0.726
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2031,0.046,0.6772,1.1484,0.7777
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2032,0.0247,0.702,1.1468,0.805
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2033,0.0295,0.7314,1.1451,0.8376
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2034,0.0266,0.758,1.1435,0.8668
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2035,0.0161,0.7741,1.1418,0.8839
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2026,61.9278,61.9278,1.1567,71.6319
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2027,69.4116,131.3394,1.155,151.697
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2028,66.9145,198.2539,1.1534,228.6661
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2029,58.114,256.3679,1.1517,295.2589
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2030,42.2663,298.6342,1.1501,343.4592
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2031,21.7565,320.3907,1.1484,367.9366
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2032,11.7068,332.0975,1.1468,380.8494
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2033,13.9323,346.0298,1.1451,396.2387
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2034,12.5657,358.5955,1.1435,410.054
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2035,7.6271,366.2226,1.1418,418.153
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2026,8.5813,8.5813,1.1567,9.926
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2027,9.6183,18.1996,1.155,21.0206
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2028,9.2723,27.472,1.1534,31.6862
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2029,8.0528,35.5248,1.1517,40.9139
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2030,5.8568,41.3816,1.1501,47.593
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2031,3.0148,44.3964,1.1484,50.9848
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2032,1.6222,46.0186,1.1468,52.7741
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2033,1.9306,47.9492,1.1451,54.9066
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2034,1.7412,49.6904,1.1435,56.821
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2035,1.0569,50.7473,1.1418,57.9433
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2026,8.796,8.796,1.1567,10.1743
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2027,9.859,18.655,1.155,21.5465
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2028,9.5043,28.1592,1.1534,32.4789
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2029,8.2543,36.4135,1.1517,41.9375
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2030,6.0033,42.4169,1.1501,48.7836
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2031,3.0902,45.5071,1.1484,52.2603
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2032,1.6628,47.1699,1.1468,54.0944
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2033,1.9789,49.1488,1.1451,56.2803
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2034,1.7848,50.9336,1.1435,58.2425
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2035,1.0833,52.0169,1.1418,59.3929
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2026,0.3623,0.3623,1.1567,0.4191
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2027,0.4061,0.7684,1.155,0.8875
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2028,0.3915,1.1598,1.1534,1.3377
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2029,0.34,1.4998,1.1517,1.7273
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2030,0.2473,1.7471,1.1501,2.0093
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2031,0.1273,1.8743,1.1484,2.1525
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2032,0.0685,1.9428,1.1468,2.228
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2033,0.0815,2.0243,1.1451,2.3181
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2034,0.0735,2.0978,1.1435,2.3989
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2035,0.0446,2.1425,1.1418,2.4463
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2026,11.3004,11.3004,1.1567,13.0711
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2027,12.666,23.9664,1.155,27.6811
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2028,12.2103,36.1767,1.1534,41.7262
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2029,10.6044,46.7811,1.1517,53.8778
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2030,7.7126,54.4937,1.1501,62.6732
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2031,3.97,58.4638,1.1484,67.1398
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2032,2.1362,60.6,1.1468,69.4961
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2033,2.5423,63.1423,1.1451,72.3043
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2034,2.293,65.4353,1.1435,74.8252
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),low,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2035,1.3918,66.827,1.1418,76.3031
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2026,31.8256,31.8256,1.1567,36.8126
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2027,39.529,71.3546,1.155,82.4145
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2028,44.3475,115.702,1.1534,133.4507
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2029,43.2439,158.9459,1.1517,183.058
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2030,36.6938,195.6397,1.1501,225.0052
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2031,28.8694,224.5091,1.1484,257.8263
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2032,21.6755,246.1846,1.1468,282.3245
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2033,17.3627,263.5473,1.1451,301.7881
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2034,12.596,276.1434,1.1435,315.77
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p62,p620 0,-102.3537,31.6722,Ward,1,0.0562,1.0,2035,6.6356,282.779,1.1418,322.877
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2026,166.5646,166.5646,1.1567,192.6653
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2027,206.8819,373.4465,1.155,431.3307
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2028,232.1002,605.5467,1.1534,698.4376
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2029,226.3243,831.871,1.1517,958.0659
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2030,192.0435,1023.9145,1.1501,1177.6041
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2031,151.0932,1175.0077,1.1484,1349.3789
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2032,113.4425,1288.4502,1.1468,1477.5947
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2033,90.8707,1379.3209,1.1451,1579.4604
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2034,65.9236,1445.2445,1.1435,1652.6371
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 0,-95.9378,31.9884,Navarro,1,0.2943,0.3997,2035,34.7284,1479.973,1.1418,1689.8331
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2026,2.5072,2.5072,1.1567,2.9001
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2027,3.1141,5.6213,1.155,6.4926
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2028,3.4937,9.115,1.1534,10.5133
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2029,3.4068,12.5218,1.1517,14.4213
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2030,2.8907,15.4125,1.1501,17.7259
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2031,2.2743,17.6869,1.1484,20.3116
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2032,1.7076,19.3945,1.1468,22.2416
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2033,1.3678,20.7623,1.1451,23.7749
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2034,0.9923,21.7546,1.1435,24.8764
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 10,-97.3908,33.4181,Tarrant,1,0.0044,0.006,2035,0.5228,22.2774,1.1418,25.4363
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2026,0.1846,0.1846,1.1567,0.2135
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2027,0.2293,0.4139,1.155,0.478
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2028,0.2572,0.6711,1.1534,0.7741
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2029,0.2508,0.922,1.1517,1.0618
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2030,0.2128,1.1348,1.1501,1.3052
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2031,0.1675,1.3023,1.1484,1.4955
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2032,0.1257,1.428,1.1468,1.6376
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2033,0.1007,1.5287,1.1451,1.7505
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2034,0.0731,1.6018,1.1435,1.8316
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 11,-94.6938,31.3542,Angelina,1,0.0003,0.0004,2035,0.0385,1.6403,1.1418,1.8729
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2026,25.1441,25.1441,1.1567,29.0842
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2027,31.2303,56.3743,1.155,65.1124
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2028,35.0371,91.4115,1.1534,105.434
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2029,34.1652,125.5767,1.1517,144.6267
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2030,28.9903,154.567,1.1501,177.7675
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2031,22.8086,177.3755,1.1484,203.6981
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2032,17.1249,194.5005,1.1468,223.0531
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2033,13.7176,208.218,1.1451,238.4305
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2034,9.9516,218.1697,1.1435,249.477
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 12,-97.6305,32.3257,Hood,1,0.0444,0.0603,2035,5.2425,223.4122,1.1418,255.092
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2026,43.2415,43.2415,1.1567,50.0174
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2027,53.7082,96.9496,1.155,111.9768
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2028,60.255,157.2046,1.1534,181.3198
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2029,58.7556,215.9602,1.1517,248.7213
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2030,49.856,265.8162,1.1501,305.7152
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2031,39.225,305.0411,1.1484,350.3092
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2032,29.4505,334.4917,1.1468,383.5951
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2033,23.5907,358.0824,1.1451,410.0402
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2034,17.1143,375.1967,1.1435,429.0374
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 2,-97.3544,32.1282,Dallas;Ellis,15,0.0764,0.1038,2035,9.0158,384.2125,1.1418,438.6938
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2026,47.3226,47.3226,1.1567,54.738
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2027,58.7771,106.0997,1.155,122.5452
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2028,65.9419,172.0416,1.1534,198.4328
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2029,64.3009,236.3425,1.1517,272.1957
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2030,54.5614,290.9039,1.1501,334.5686
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2031,42.927,333.831,1.1484,383.3715
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2032,32.2301,366.0611,1.1468,419.7988
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2033,25.8172,391.8783,1.1451,448.7398
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2034,18.7295,410.6078,1.1435,469.53
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 3,-96.8394,33.0822,Collin;Dallas,21,0.0836,0.1136,2035,9.8667,420.4745,1.1418,480.0978
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2026,0.5562,0.5562,1.1567,0.6433
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2027,0.6908,1.247,1.155,1.4403
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2028,0.775,2.022,1.1534,2.3322
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2029,0.7557,2.7777,1.1517,3.1991
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2030,0.6413,3.419,1.1501,3.9321
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2031,0.5045,3.9235,1.1484,4.5057
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2032,0.3788,4.3023,1.1468,4.9338
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2033,0.3034,4.6057,1.1451,5.274
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2034,0.2201,4.8258,1.1435,5.5183
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 4,-98.5225,33.1479,Wichita,1,0.001,0.0013,2035,0.116,4.9418,1.1418,5.6425
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2026,61.9473,61.9473,1.1567,71.6544
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2027,76.9418,138.8891,1.155,160.4169
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2028,86.3207,225.2098,1.1534,259.757
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2029,84.1726,309.3825,1.1517,356.3158
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2030,71.4232,380.8057,1.1501,437.9646
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2031,56.1933,436.999,1.1484,501.8496
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2032,42.1906,479.1896,1.1468,549.5346
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2033,33.7959,512.9854,1.1451,587.4196
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2034,24.5177,537.5032,1.1435,614.6349
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 5,-97.334,31.2062,Milam,1,0.1095,0.1487,2035,12.9159,550.4191,1.1418,628.4685
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2026,8.6394,8.6394,1.1567,9.9931
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2027,10.7305,19.3699,1.155,22.3722
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2028,12.0386,31.4085,1.1534,36.2265
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2029,11.739,43.1474,1.1517,49.6929
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2030,9.9609,53.1083,1.1501,61.0799
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2031,7.8369,60.9452,1.1484,69.9895
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2032,5.884,66.8292,1.1468,76.6398
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2033,4.7133,71.5425,1.1451,81.9233
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2034,3.4193,74.9618,1.1435,85.7189
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 6,-97.3673,32.6623,Ellis;Tarrant,4,0.0153,0.0207,2035,1.8013,76.7631,1.1418,87.6481
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2026,6.6653,6.6653,1.1567,7.7097
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2027,8.2786,14.9439,1.155,17.2602
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2028,9.2878,24.2317,1.1534,27.9488
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2029,9.0566,33.2883,1.1517,38.3382
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2030,7.6849,40.9732,1.1501,47.1233
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2031,6.0462,47.0194,1.1484,53.9971
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2032,4.5395,51.5589,1.1468,59.1278
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2033,3.6363,55.1952,1.1451,63.2041
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2034,2.638,57.8332,1.1435,66.1323
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 7,-96.6513,32.7959,Dallas,3,0.0118,0.016,2035,1.3897,59.2229,1.1418,67.6208
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2026,19.5162,19.5162,1.1567,22.5743
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2027,24.2401,43.7563,1.155,50.5385
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2028,27.1949,70.9511,1.1534,81.835
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2029,26.5181,97.4693,1.1517,112.2554
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2030,22.5015,119.9708,1.1501,137.9784
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2031,17.7034,137.6742,1.1484,158.105
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2032,13.2919,150.9661,1.1468,173.1279
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2033,10.6472,161.6133,1.1451,185.0634
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2034,7.7242,169.3375,1.1435,193.6374
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 8,-97.0246,32.7602,Dallas;Tarrant,12,0.0345,0.0468,2035,4.0691,173.4065,1.1418,197.9956
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2026,34.4423,34.4423,1.1567,39.8394
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2027,42.7791,77.2214,1.155,89.1907
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2028,47.9937,125.2151,1.1534,144.4231
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2029,46.7994,172.0145,1.1517,198.1091
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2030,39.7108,211.7253,1.1501,243.5053
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2031,31.2431,242.9684,1.1484,279.0249
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2032,23.4577,266.4261,1.1468,305.5374
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2033,18.7903,285.2164,1.1451,326.6012
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2034,13.6317,298.8481,1.1435,341.7327
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p63,p630 9,-97.4148,32.9808,Denton;Tarrant,6,0.0609,0.0826,2035,7.1812,306.0292,1.1418,349.4242
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2026,25.4147,25.4147,1.1567,29.3971
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2027,31.5663,56.981,1.155,65.8131
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2028,35.4142,92.3952,1.1534,106.5686
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2029,34.5329,126.9281,1.1517,146.1831
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2030,29.3023,156.2304,1.1501,179.6805
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2031,23.054,179.2844,1.1484,205.8902
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2032,17.3092,196.5936,1.1468,225.4535
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2033,13.8652,210.4588,1.1451,240.9964
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2034,10.0587,220.5175,1.1435,252.1618
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 1,-97.8041,30.2527,Travis,12,0.0449,0.9617,2035,5.2989,225.8164,1.1418,257.8372
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2026,0.881,0.881,1.1567,1.019
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2027,1.0942,1.9752,1.155,2.2814
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2028,1.2276,3.2029,1.1534,3.6942
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2029,1.1971,4.3999,1.1517,5.0674
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2030,1.0158,5.4157,1.1501,6.2286
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2031,0.7992,6.2149,1.1484,7.1371
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2032,0.6,6.8149,1.1468,7.8153
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2033,0.4806,7.2955,1.1451,8.3541
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2034,0.3487,7.6442,1.1435,8.7411
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 2,-98.5903,30.2482,Travis,1,0.0016,0.0333,2035,0.1837,7.8279,1.1418,8.9379
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2026,0.1309,0.1309,1.1567,0.1514
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2027,0.1626,0.2935,1.155,0.339
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2028,0.1824,0.4759,1.1534,0.5489
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2029,0.1779,0.6538,1.1517,0.7529
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2030,0.1509,0.8047,1.1501,0.9255
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2031,0.1187,0.9234,1.1484,1.0605
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2032,0.0892,1.0126,1.1468,1.1612
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2033,0.0714,1.084,1.1451,1.2413
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2034,0.0518,1.1358,1.1435,1.2988
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p64,p640 3,-97.6829,30.5504,Travis,1,0.0002,0.005,2035,0.0273,1.1631,1.1418,1.328
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2026,61.9278,61.9278,1.1567,71.6319
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2027,76.9176,138.8454,1.155,160.3664
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2028,86.2936,225.1389,1.1534,259.6752
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2029,84.1461,309.2851,1.1517,356.2036
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2030,71.4007,380.6858,1.1501,437.8267
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2031,56.1756,436.8614,1.1484,501.6916
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2032,42.1773,479.0387,1.1468,549.3616
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2033,33.7852,512.8239,1.1451,587.2347
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2034,24.51,537.334,1.1435,614.4414
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p65,p650 0,-98.5672,29.4984,Bexar;Medina,25,0.1094,0.8783,2035,12.9118,550.2458,1.1418,628.2707
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2026,8.5813,8.5813,1.1567,9.926
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2027,10.6584,19.2397,1.155,22.2219
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2028,11.9577,31.1974,1.1534,35.9831
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2029,11.6601,42.8575,1.1517,49.359
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2030,9.894,52.7515,1.1501,60.6694
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2031,7.7842,60.5357,1.1484,69.5192
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2032,5.8445,66.3802,1.1468,76.1248
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2033,4.6816,71.0618,1.1451,81.3728
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2034,3.3963,74.4581,1.1435,85.1429
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p65,p650 7,-98.469,29.4468,Bexar,4,0.0152,0.1217,2035,1.7892,76.2473,1.1418,87.0592
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2026,8.796,8.796,1.1567,10.1743
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2027,10.9251,19.7211,1.155,22.7778
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2028,12.2568,31.9779,1.1534,36.8833
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2029,11.9518,43.9297,1.1517,50.5938
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2030,10.1415,54.0712,1.1501,62.1873
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2031,7.979,62.0501,1.1484,71.2584
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2032,5.9907,68.0408,1.1468,78.0292
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2033,4.7987,72.8396,1.1451,83.4086
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2034,3.4813,76.3209,1.1435,87.2729
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 0,-95.5264,30.0776,Harris;Montgomery,4,0.0155,0.4299,2035,1.8339,78.1548,1.1418,89.2372
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2026,0.3623,0.3623,1.1567,0.4191
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2027,0.45,0.8123,1.155,0.9382
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2028,0.5048,1.3171,1.1534,1.5191
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2029,0.4923,1.8094,1.1517,2.0839
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2030,0.4177,2.2271,1.1501,2.5614
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2031,0.3286,2.5557,1.1484,2.935
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2032,0.2467,2.8025,1.1468,3.2139
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2033,0.1976,3.0001,1.1451,3.4354
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2034,0.1434,3.1435,1.1435,3.5946
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 3,-95.521,29.6331,Harris,1,0.0006,0.0177,2035,0.0755,3.219,1.1418,3.6755
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2026,11.3004,11.3004,1.1567,13.0711
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2027,14.0356,25.336,1.155,29.2631
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2028,15.7465,41.0826,1.1534,47.3846
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2029,15.3547,56.4373,1.1517,64.9988
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2030,13.029,69.4662,1.1501,79.8931
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2031,10.2507,79.7169,1.1484,91.5469
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2032,7.6964,87.4133,1.1468,100.2456
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2033,6.165,93.5783,1.1451,107.1565
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2034,4.4725,98.0508,1.1435,112.1211
+existing_atlas,SENSITIVITY (changes the approved zone split; pending approval),mid,p67,p670 4,-95.639,29.6231,Harris,3,0.02,0.5524,2035,2.3561,100.4069,1.1418,114.6446
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2026,387.8659,387.8659,1.1567,448.6445
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2027,533.6213,921.4873,1.155,1064.3178
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2028,667.5746,1589.0619,1.1534,1832.824
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2029,702.031,2291.0929,1.1517,2638.6517
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2030,635.8094,2926.9023,1.1501,3366.2304
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2031,581.5029,3508.4053,1.1484,4029.0526
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2032,467.6197,3976.025,1.1468,4559.7055
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2033,349.0084,4325.0334,1.1451,4952.5958
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2034,237.232,4562.2654,1.1435,5216.9505
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2035,119.2825,4681.5479,1.1418,5345.3914
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2026,22.8156,22.8156,1.1567,26.3909
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2027,31.3895,54.2051,1.155,62.6069
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2028,39.2691,93.4742,1.1534,107.8132
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2029,41.2959,134.7702,1.1517,155.2148
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2030,37.4006,172.1707,1.1501,198.0136
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2031,34.2061,206.3768,1.1484,237.0031
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2032,27.507,233.8838,1.1468,268.218
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2033,20.5299,254.4137,1.1451,291.3292
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2034,13.9548,268.3686,1.1435,306.8794
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2035,7.0166,275.3852,1.1418,314.4348
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2026,22.8156,22.8156,1.1567,26.3909
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2027,31.3895,54.2051,1.155,62.6069
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2028,39.2691,93.4742,1.1534,107.8132
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2029,41.2959,134.7702,1.1517,155.2148
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2030,37.4006,172.1707,1.1501,198.0136
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2031,34.2061,206.3768,1.1484,237.0031
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2032,27.507,233.8838,1.1468,268.218
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2033,20.5299,254.4137,1.1451,291.3292
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2034,13.9548,268.3686,1.1435,306.8794
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2035,7.0166,275.3852,1.1418,314.4348
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2026,125.486,125.486,1.1567,145.1497
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2027,172.6422,298.1282,1.155,344.3381
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2028,215.98,514.1083,1.1534,592.9725
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2029,227.1277,741.236,1.1517,853.6814
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2030,205.703,946.939,1.1501,1089.0745
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2031,188.1333,1135.0723,1.1484,1303.517
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2032,151.2887,1286.361,1.1468,1475.1988
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2033,112.9145,1399.2755,1.1451,1602.3104
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2034,76.7515,1476.0271,1.1435,1687.8369
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),high,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2035,38.5914,1514.6185,1.1418,1729.3914
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2026,392.7007,392.7007,1.1567,454.2369
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2027,440.1575,832.8581,1.155,961.9511
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2028,424.3228,1257.181,1.1534,1450.0325
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2029,368.5163,1625.6973,1.1517,1872.3156
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2030,268.0218,1893.7191,1.1501,2177.9663
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2031,137.9635,2031.6826,1.1484,2333.1843
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2032,74.236,2105.9186,1.1468,2415.0675
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2033,88.3485,2194.2672,1.1451,2512.6554
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2034,79.6827,2273.9498,1.1435,2600.2616
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2035,48.3654,2322.3153,1.1418,2651.6196
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2026,23.1,23.1,1.1567,26.7198
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2027,25.8916,48.9917,1.155,56.5854
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2028,24.9602,73.9518,1.1534,85.296
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2029,21.6774,95.6293,1.1517,110.1362
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2030,15.766,111.3952,1.1501,128.1157
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2031,8.1155,119.5107,1.1484,137.2461
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2032,4.3668,123.8776,1.1468,142.0628
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2033,5.197,129.0745,1.1451,147.8033
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2034,4.6872,133.7618,1.1435,152.9566
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2035,2.845,136.6068,1.1418,155.9776
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2026,23.1,23.1,1.1567,26.7198
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2027,25.8916,48.9917,1.155,56.5854
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2028,24.9602,73.9518,1.1534,85.296
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2029,21.6774,95.6293,1.1517,110.1362
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2030,15.766,111.3952,1.1501,128.1157
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2031,8.1155,119.5107,1.1484,137.2461
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2032,4.3668,123.8776,1.1468,142.0628
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2033,5.197,129.0745,1.1451,147.8033
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2034,4.6872,133.7618,1.1435,152.9566
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2035,2.845,136.6068,1.1418,155.9776
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2026,127.0502,127.0502,1.1567,146.959
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2027,142.4039,269.4541,1.155,311.2195
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2028,137.2809,406.735,1.1534,469.1282
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2029,119.2259,525.9609,1.1517,605.7492
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2030,86.7129,612.6738,1.1501,704.6362
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2031,44.6353,657.3091,1.1484,754.8537
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2032,24.0175,681.3266,1.1468,781.3454
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2033,28.5834,709.91,1.1451,812.9179
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2034,25.7797,735.6897,1.1435,841.2611
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),low,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2035,15.6476,751.3373,1.1418,857.8769
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2026,392.7007,392.7007,1.1567,454.2369
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2027,487.7548,880.4555,1.155,1016.9261
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2028,547.2105,1427.666,1.1534,1646.67
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2029,533.5931,1961.2591,1.1517,2258.7821
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2030,452.7709,2414.03,1.1501,2776.3759
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2031,356.2247,2770.2547,1.1484,3181.3605
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2032,267.4574,3037.7121,1.1468,3483.6482
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2033,214.2412,3251.9533,1.1451,3723.8117
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2034,155.4246,3407.3779,1.1435,3896.3366
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p63,p630 3,-96.8394,33.0822,Dallas;Denton,34,0.6939,0.9444,2035,81.8775,3489.2553,1.1418,3984.0317
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2026,23.1,23.1,1.1567,26.7198
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2027,28.6915,51.7915,1.155,59.8192
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2028,32.1889,83.9804,1.1534,96.8629
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2029,31.3878,115.3682,1.1517,132.8695
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2030,26.6336,142.0018,1.1501,163.3162
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2031,20.9544,162.9562,1.1484,187.1389
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2032,15.7328,178.6889,1.1468,204.9205
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2033,12.6024,191.2914,1.1451,219.0477
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2034,9.1426,200.434,1.1435,229.1963
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p63,p630 8,-97.0246,32.7602,Dallas,2,0.0408,0.0556,2035,4.8163,205.2503,1.1418,234.3548
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2026,23.1,23.1,1.1567,26.7198
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2027,28.6915,51.7915,1.155,59.8192
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2028,32.1889,83.9804,1.1534,96.8629
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2029,31.3878,115.3682,1.1517,132.8695
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2030,26.6336,142.0018,1.1501,163.3162
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2031,20.9544,162.9562,1.1484,187.1389
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2032,15.7328,178.6889,1.1468,204.9205
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2033,12.6024,191.2914,1.1451,219.0477
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2034,9.1426,200.434,1.1435,229.1963
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p64,p640 1,-97.8041,30.2527,Travis,2,0.0408,1.0,2035,4.8163,205.2503,1.1418,234.3548
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2026,127.0502,127.0502,1.1567,146.959
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2027,157.803,284.8532,1.155,329.0055
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2028,177.0387,461.8919,1.1534,532.7462
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2029,172.6331,634.525,1.1517,730.7825
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2030,146.4847,781.0097,1.1501,898.2393
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2031,115.2492,896.2589,1.1484,1029.2637
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2032,86.5303,982.7892,1.1468,1127.0627
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2033,69.3133,1052.1025,1.1451,1204.7626
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2034,50.2844,1102.387,1.1435,1260.5795
+projected_moderate50,MAIN (DATA-03B basis; approved zone totals),mid,p65,p650 0,-98.5672,29.4984,Bexar,11,0.2245,1.0,2035,26.4898,1128.8767,1.1418,1288.9514
