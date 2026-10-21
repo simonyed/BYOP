@@ -7,7 +7,7 @@
 |---|---|
 | 仓库 / 分支 | <https://github.com/simonyed/BYOP/tree/mainline-v13-stageA>（**没有合并到 `main`**） |
 | 审计起点 | `24c913b7a03257725c0bdc05afddd230724eeff1` |
-| B0 代码修复提交（待研究者批准的 SHA） | `__COMMIT_B0__` |
+| B0 代码修复提交（待研究者批准的 SHA） | `8636c08d4b9dd11e7624f6fb52f92c91cf439ad0` |
 | PR 创建链接 | <https://github.com/simonyed/BYOP/compare/main...mainline-v13-stageA?expand=1> |
 | L2 | `/datasets/prgm/BYOP_impact/pypsa-usa`：与本地逐字节一致，HEAD 指向同一提交 |
 
