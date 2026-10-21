@@ -3,7 +3,7 @@
 - 日期：2026-10-21
 - 分支：`mainline-v13-stageA`（没有合并到 `main`）
 - 失败基线：`951ddb8bd6bca575a78ecd3562c34e252c528f89`
-- **修复提交（待批准）**：`__FIX_SHA__`
+- **修复提交（待批准）**：`4fb58a450f43bab2b23e354601ea2d6b88b50ae9`
 - `RUN_AUTHORIZATION: NOT_APPROVED`，`SOLVER_EXECUTIONS_SINCE_FIX: 0`
 - B2-R 状态：`NOT_AUTHORIZED`
 
@@ -41,7 +41,7 @@
 REPO: simonyed/BYOP
 BRANCH: mainline-v13-stageA
 FAILED_BASELINE_SHA: 951ddb8bd6bca575a78ecd3562c34e252c528f89
-FIX_COMMIT_SHA: __FIX_SHA__
+FIX_COMMIT_SHA: 4fb58a450f43bab2b23e354601ea2d6b88b50ae9
 APPROVED_SHA: NOT_YET
 F1_TOLERANCE_CONSISTENCY: PASS (configuration tests; S1 feasibility NOT_TESTED until B2-R)
 F2_MAINLINE_VOLL: 35685 USD/MWh (Brattle 2024 1h planning proxy)

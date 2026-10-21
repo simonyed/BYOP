@@ -1,7 +1,7 @@
 # STAGE_B2_F1F2_PRE_RUN_AUDIT：B2-R 运行前审计
 
 - 日期：2026-10-21
-- 待批准提交：`__FIX_SHA__`
+- 待批准提交：`4fb58a450f43bab2b23e354601ea2d6b88b50ae9`
 - 失败基线：`951ddb8b`
 - **`RUN_AUTHORIZATION: NOT_APPROVED`；修复后求解次数：0**
 
@@ -26,7 +26,7 @@
 
 ## 3. 获批后的执行（工作包 §6）
 
-1. 研究者批准 `__FIX_SHA__` 之后，在配置中写入 `run_authorization: APPROVED` 和 `approved_git_sha: __FIX_SHA__`。
+1. 研究者批准 `4fb58a450f43bab2b23e354601ea2d6b88b50ae9` 之后，在配置中写入 `run_authorization: APPROVED` 和 `approved_git_sha: 4fb58a450f43bab2b23e354601ea2d6b88b50ae9`。
 2. 依次执行：`gate`（必须 `approved: true`）→ `DRY=1 … pilot_s01_fix` → `THREADS=20 bash byop/run/run_mainline.sh pilot_s01_fix`。
 3. 结束后，无论成功与否都**停止**，交付工作包 §7 的文件。
 

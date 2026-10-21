@@ -3,7 +3,7 @@
 - 日期：2026-10-21
 - 依据：`BYOP_ERCOT_StageB_B2_F1F2_Repair_and_Rerun_Work_Package_v1.0_2026-10-21.md` Phase F（§5）
 - 失败基线：`951ddb8bd6bca575a78ecd3562c34e252c528f89`
-- 修复提交：`__FIX_SHA__`
+- 修复提交：`4fb58a450f43bab2b23e354601ea2d6b88b50ae9`
 - 本轮只修改代码和测试。**没有运行任何求解器**，没有执行 B2-R。
 
 ## 0. F0 基线检查
@@ -73,5 +73,5 @@
 FIX_STATUS: COMPLETE
 RUN_AUTHORIZATION: NOT_APPROVED
 SOLVER_EXECUTIONS_SINCE_FIX: 0
-NEXT_STEP: RESEARCHER_APPROVAL_OF_NEW_CODE_SHA_REQUIRED (__FIX_SHA__), then B2-R pilot_s01_fix only
+NEXT_STEP: RESEARCHER_APPROVAL_OF_NEW_CODE_SHA_REQUIRED (4fb58a450f43bab2b23e354601ea2d6b88b50ae9), then B2-R pilot_s01_fix only
 ```
