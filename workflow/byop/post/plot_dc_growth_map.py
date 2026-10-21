@@ -124,8 +124,8 @@ def main():
 
     fig.text(0.02, 0.955, f'ERCOT data-center capacity growth after 2025 by TAMU bus — {a.scenario} scenario, cumulative to {a.year}',
              fontsize=14, color=INK, weight='bold')
-    fig.text(0.02, 0.912, f'Totals = approved {a.scenario} trajectory; geography from Epoch AI sites (served in Epoch date order, residual by Epoch '
-             f'increment share; {g.spatial_basis.iloc[0]}, RA-DC-SPATIAL-03).\n'
+    fig.text(0.02, 0.912, f'Totals = approved {a.scenario} trajectory; geography from Epoch AI sites (late-2025 ramp first, then Epoch date order; '
+             f'residual by Epoch queue share; {g.spatial_basis.iloc[0]}, RA-DC-SPATIAL-03/05).\n'
              'Diamonds = geocoded Epoch sites, dashed to their bus '
              '(cluster centroid). Excludes the 3 test POIs.',
              fontsize=8.5, color=MUTED)

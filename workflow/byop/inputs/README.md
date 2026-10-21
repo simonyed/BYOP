@@ -17,8 +17,8 @@ Copied 2026-10-20 from the work packages (now in D:\BYOP_impact\work_pkgs, local
 **Rule (researcher decision, option C with exact totals).**
 - Total new IT MW per scenario and year = the approved Texas trajectory (`dc/ERCOT_DC_TOTALS_2026_2035.csv`, low/mid/high; 2035 cumulative 3,347 / 5,029 / 6,747 MW). This is exactly equal every year.
 - Geography and order come from Epoch AI:
-  - Each ERCOT Epoch site's IT power added after 2025 forms a queue by Epoch year. IT online by 2025-12-31 is stock, already in the 2025 native load.
-  - Each year's new total first serves the queue (oldest Epoch year first, pro rata within a year, never earlier than the Epoch date). The remainder is residual growth, split over the Epoch buses by their share of the total Epoch post-2025 increment.
+  - Stock (RA-DC-SPATIAL-05): only each site's **2025 time-weighted average IT** is inside the 2025 native load that the model holds as background (about 140 MW across the ERCOT Epoch sites). The late-2025 ramp (end-2025 minus the 2025 average, about 461 MW) is not in the background, so it enters the queue first (Epoch year 2025). Each site's IT added after 2025 follows, by Epoch year.
+  - Each year's new total first serves the queue (oldest Epoch year first, pro rata within a year, never earlier than the Epoch date). The remainder is residual growth, split over the Epoch buses by their share of the Epoch queue (carry-over plus post-2025 increments).
   - Every bus is non-decreasing.
 - Result: 8 buses (p630 4 Shackelford, p610 2 Abilene, p600 0 Dickens, p630 9 Denton, p650 0 San Antonio, p630 6 Midlothian, p630 2 Red Oak, p630 5 Temple).
 - Goodnight (Armstrong County) is outside ERCOT and excluded.
@@ -29,17 +29,22 @@ Copied 2026-10-20 from the work packages (now in D:\BYOP_impact\work_pkgs, local
 **Geocoding.** Epoch gives only street addresses, so each was geocoded in turn:
 1. US Census onelineaddress (address level, 4 sites);
 2. OSM Nominatim (road level, 5 sites);
-3. ZIP or county-centroid fallback (3 sites: Microsoft SAT40 by ZIP, Stargate Shackelford and Goodnight by county).
+3. a listing, ZIP or county-centroid fallback:
+   - Stargate Shackelford: Vantage Frontier campus coordinates (SH 351 x FM 604) from a public listing;
+   - Microsoft SAT40: by ZIP;
+   - Goodnight: by county.
+
+All TAMU substations are recorded at 230 kV in this network, so there is no voltage filter; each site takes the nearest substation. `bus_alt` is the nearest other cluster, and `bus_boundary_tie` flags a margin under 2 km. Shackelford is a tie: p630 4 at 10.6 km versus p610 2 at 10.8 km, and the nearest bus is kept.
 
 Each site's precision is in `geocode_precision`. A site maps to the nearest ERCOT TAMU substation and then to its 64s cluster bus.
 
 | File | Content | SHA-256 |
 |---|---|---|
 | `dc/ERCOT_DC_TOTALS_2026_2035.csv` | approved Texas DC IT trajectory (new and cumulative IT MW per scenario and year = national IT x researcher Texas share; DATA-01, DATA-03A; no spatial split). Extracted 2026-10-21 from the former 7-zone cohort file, whose PNNL zone split was deleted (RA-DC-SPATIAL-04) | `ad9264672f9300f2…` |
-| `dc/ERCOT_DC_CAPACITY_ALLOCATION_TAMU64.csv` | **bus x year allocation** (8 buses, 2026-2035, low/mid/high): new IT MW split into Epoch-queue and residual parts, cumulative IT MW, TX PUE, cumulative facility MW, bus coordinates, Epoch sites, counties, increment share | `fa145e17423095ee…` |
-| `dc/ercot_cohorts_2026_2035_tamu64.csv` | the same allocation in cohort format, read by `rearch_mech.py --regional-dc epoch_hybrid` | `47de6d5e675839b0…` |
-| `dc/EPOCH_TX_SITES_TAMU64.csv` | 12 Texas Epoch sites: address, geocode and precision, county, ERCOT flag, bus, year-end IT MW 2025-2035 from the Epoch timeline | `8c6dc5fb690eed91…` |
-| `dc/EPOCH_SITE_SERVICE_TAMU64.csv` | audit trail: per scenario, year and site, how much of the Epoch queue was served, and the delay versus the Epoch date | `d93d5e34f2352b2a…` |
-| `dc/EPOCH_TAMU64_PROVENANCE.json` | source, licence, raw-file hashes, geocoders, excluded sites | `f36c266f311139b5…` |
+| `dc/ERCOT_DC_CAPACITY_ALLOCATION_TAMU64.csv` | **bus x year allocation** (8 buses, 2026-2035, low/mid/high): new IT MW split into Epoch-queue and residual parts, cumulative IT MW, TX PUE, cumulative facility MW, bus coordinates, Epoch sites, counties, increment share | `b5c2b4d18b263f44…` |
+| `dc/ercot_cohorts_2026_2035_tamu64.csv` | the same allocation in cohort format, read by `rearch_mech.py --regional-dc epoch_hybrid` | `ea43c6eb30e38cc5…` |
+| `dc/EPOCH_TX_SITES_TAMU64.csv` | 12 Texas Epoch sites: address, geocode and precision, county, ERCOT flag, bus, year-end IT MW 2025-2035 from the Epoch timeline | `fb93742117973207…` |
+| `dc/EPOCH_SITE_SERVICE_TAMU64.csv` | audit trail: per scenario, year and site, how much of the Epoch queue was served, and the delay versus the Epoch date | `aa47a099bdc96195…` |
+| `dc/EPOCH_TAMU64_PROVENANCE.json` | source, licence, raw-file hashes, geocoders, excluded sites | `d574064282a359a6…` |
 
 Model use is opt-in: `--regional-dc epoch_hybrid --regional-dc-scenario {low|mid|high}`, default `off`. All PNNL data was withdrawn and deleted on 2026-10-21 (RA-DC-SPATIAL-02/04). The legacy v240 / v250 / WP2 models that read the deleted 7-zone and county cohorts now stop with a message.
