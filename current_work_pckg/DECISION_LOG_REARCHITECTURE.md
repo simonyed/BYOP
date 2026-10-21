@@ -88,3 +88,14 @@
 - **模型**：`--regional-dc existing_stock`，默认关闭。
 - **不包含**：之前作为测试的 3 个代表性并网点。
 - **说明**：面积只作相对权重，不换算成 MW。PNNL 预测场址只保留在 `PNNL_CONCENTRATION_TAMU64.csv` 中，作为集中度诊断。
+
+### RA-DC-SPATIAL-02：停用 PNNL 数据，改用 Epoch AI（研究者决定，2026-10-21）
+
+- **停用与删除**：停止使用 PNNL 数据（现有图集和预测场址）。RA-DC-SPATIAL-01 的分配结果随之作废，以下内容已删除：
+  - pypsa-usa 中 `PNNL_*_TAMU64.*`、`ercot_cohorts_2026_2035_tamu64.csv`、`ERCOT_DC_CAPACITY_ALLOCATION_TAMU64.csv`；
+  - `results/BYOP/dc_allocation/` 中的地图；
+  - work_pkgs 中本工作包的 `pnnl_spatial/`，含原始数据和预处理脚本。
+  - 注意：GitHub 历史提交中仍可以看到这些文件，因为同步规则禁止改写远端历史。
+- **新数据**：Epoch AI "AI data centers"，CC-BY-4.0，2026-10-21 获取。原始数据位于 `work_pkgs/BYOP_ERCOT_Rearchitecture_Work_Package/epoch_ai/raw/`，仅保存在本地。
+- **待定**：具体分配方案由研究者选择。
+

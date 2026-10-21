@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Map: Texas / ERCOT base, TAMU 64s buses and lines, and data-center growth after 2025 per bus (RA-DC-SPATIAL-01).
+"""Map: Texas / ERCOT base, TAMU 64s buses and lines, and data-center growth after 2025 per bus (allocation file below).
 
     python byop/post/plot_dc_growth_map.py [--scenario mid] [--year 2035]      (from pypsa-usa/workflow)
 Inputs: results/BYOP/baseline_2025_tamu/{BUS_LEDGER,LINE_LEDGER,COUNTY_TO_BUS_SHARES}.csv,
@@ -111,8 +111,8 @@ def main():
 
     fig.text(0.02, 0.955, f'ERCOT data-center capacity growth after 2025 by TAMU bus — {a.scenario} scenario, cumulative to {a.year}',
              fontsize=14, color=INK, weight='bold')
-    fig.text(0.02, 0.925, 'ERCOT total from ercot_cohorts_2026_2035.csv, split over the buses holding existing data centers by existing-stock '
-             'footprint share (PNNL IM3 atlas v2026.02.09; RA-DC-SPATIAL-01). Excludes the 3 test POIs. Bus = cluster centroid.',
+    fig.text(0.02, 0.925, f'Allocation: {ALLOC.name}, spatial_basis = {g.spatial_basis.iloc[0]}. Excludes the 3 test POIs. '
+             'Bus = cluster centroid.',
              fontsize=8.5, color=MUTED)
     fig.text(0.02, 0.025, f'Network: TAMU synthetic grid, 64s clusters, {len(lines)} lines (final_s_nom), {len(bus)} buses. '
              'Basemap: US Census cartographic counties 2020.', fontsize=7.5, color=MUTED)
