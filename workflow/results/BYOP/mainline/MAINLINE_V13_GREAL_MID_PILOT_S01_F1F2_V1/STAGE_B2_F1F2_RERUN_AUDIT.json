@@ -1,0 +1,254 @@
+{
+ "stage": "B2-R pilot_s01_fix",
+ "status": "B2_COMPLETED_WITH_FLAGS",
+ "authorization": "researcher chat 2026-10-21: fix accepted, B2-R only, stop after",
+ "approved_git_sha": "4fb58a450f43bab2b23e354601ea2d6b88b50ae9",
+ "git_head": "a7b2e9ce26b838e3bb74289b648977adf1861efd",
+ "gate_approved": true,
+ "started": "2026-10-21 18:21:20 EDT",
+ "ended": "2026-10-21 19:38:44 EDT",
+ "exit_code": 0,
+ "threads": 20,
+ "inputs": {
+  "baseline_nc": "19034285be0aa9b9906ab5b0e03778f3a16e7c1c39e97ac97b368d9097cafadb",
+  "b1_erm": "7d0c02f1245ebba31d26cb303cd154600e0a6626853d7d2c2910a1a268807a19",
+  "b1_s0cal": "30bf497ef009f3e120d43f7d6c2995fe0b7d82ffce9d1df2b5629131397454d5",
+  "s0cal_lines": 9,
+  "s0cal_MW": 1095.6237013725104
+ },
+ "voll": {
+  "F2_mainline_VOLL_USD_MWh": 35685.0,
+  "VOLL_source": "Brattle 2024, Value of Lost Load Study for the ERCOT Region, Table 17",
+  "VOLL_source_year": 2024,
+  "VOLL_duration_basis": "1h ERCOT-wide outage; planning proxy for 3-h snapshots",
+  "SHED_COST_used": 35685.0
+ },
+ "gurobi_lp_options": {
+  "Method": 2,
+  "Crossover": 0,
+  "BarConvTol": 1e-05,
+  "FeasibilityTol": 0.001,
+  "OptimalityTol": 0.0001,
+  "BarHomogeneous": 1
+ },
+ "solves": {
+  "S0": {
+   "status": "ok",
+   "termination": "optimal",
+   "seconds": 1552.4,
+   "n_vars": 4094602,
+   "n_cons": 7162661,
+   "integer_vars": 0,
+   "objective": 51526076036.384,
+   "F2_load_shed_mc": {
+    "n": 68,
+    "min": 35685.0,
+    "max": 35685.0,
+    "n_inherited": 5,
+    "n_not_at_VOLL": 0
+   },
+   "lex_audit_all_satisfied": null
+  },
+  "S1_EARLIEST": {
+   "status": "ok",
+   "termination": "optimal",
+   "seconds": 2940.0,
+   "n_vars": 4179586,
+   "n_cons": 7310732,
+   "integer_vars": 0,
+   "objective": 24807016764.483047,
+   "F2_load_shed_mc": {
+    "n": 68,
+    "min": 35685.0,
+    "max": 35685.0,
+    "n_inherited": 5,
+    "n_not_at_VOLL": 0
+   },
+   "lex_audit_all_satisfied": true
+  }
+ },
+ "lex": {
+  "status": "OPTIMAL",
+  "seconds": 1121.9,
+  "solver_params": {
+   "Method": 2,
+   "Crossover": 0,
+   "BarConvTol": 1e-05,
+   "FeasibilityTol": 0.001,
+   "OptimalityTol": 0.0001,
+   "BarHomogeneous": 1,
+   "Threads": 20
+  },
+  "violations": {
+   "ConstrVio": 2.3402653823723085e-06,
+   "BoundVio": 0.0,
+   "ObjVal": 0.0
+  },
+  "n_rows": 7310726,
+  "n_cols": 4179592,
+  "n_int": 0,
+  "levels": [
+   {
+    "stage": "A1",
+    "year": 2026,
+    "value": 0.0
+   },
+   {
+    "stage": "A2",
+    "year": 2026,
+    "value": 0.0
+   },
+   {
+    "stage": "A1",
+    "year": 2027,
+    "value": 740.2103
+   },
+   {
+    "stage": "A2",
+    "year": 2027,
+    "value": 1.0
+   },
+   {
+    "stage": "A1",
+    "year": 2028,
+    "value": 1457.20892271545
+   },
+   {
+    "stage": "A2",
+    "year": 2028,
+    "value": 1.0
+   },
+   {
+    "stage": "A1",
+    "year": 2029,
+    "value": 2365.7907999999998
+   },
+   {
+    "stage": "A2",
+    "year": 2029,
+    "value": 1.0
+   },
+   {
+    "stage": "A1",
+    "year": 2030,
+    "value": 3018.3136000000004
+   },
+   {
+    "stage": "A2",
+    "year": 2030,
+    "value": 1.0
+   },
+   {
+    "stage": "A1",
+    "year": 2031,
+    "value": 3531.6962000000003
+   },
+   {
+    "stage": "A2",
+    "year": 2031,
+    "value": 1.0
+   }
+  ],
+  "objective_values": [
+   {
+    "index": 0,
+    "name": "A1_2026",
+    "ObjNVal": 0.0
+   },
+   {
+    "index": 1,
+    "name": "A2_2026",
+    "ObjNVal": 0.0
+   },
+   {
+    "index": 2,
+    "name": "A1_2027",
+    "ObjNVal": 740.2103
+   },
+   {
+    "index": 3,
+    "name": "A2_2027",
+    "ObjNVal": 1.0
+   },
+   {
+    "index": 4,
+    "name": "A1_2028",
+    "ObjNVal": 1457.2089227154502
+   },
+   {
+    "index": 5,
+    "name": "A2_2028",
+    "ObjNVal": 1.0
+   },
+   {
+    "index": 6,
+    "name": "A1_2029",
+    "ObjNVal": 2365.7907999999998
+   },
+   {
+    "index": 7,
+    "name": "A2_2029",
+    "ObjNVal": 1.0
+   },
+   {
+    "index": 8,
+    "name": "A1_2030",
+    "ObjNVal": 3018.3136000000004
+   },
+   {
+    "index": 9,
+    "name": "A2_2030",
+    "ObjNVal": 1.0
+   },
+   {
+    "index": 10,
+    "name": "A1_2031",
+    "ObjNVal": 3531.6962000000003
+   },
+   {
+    "index": 11,
+    "name": "A2_2031",
+    "ObjNVal": 1.0
+   }
+  ],
+  "audit_rows": 47,
+  "audit_all_satisfied": true
+ },
+ "checks": {
+  "true_LP": true,
+  "all_optimal": true,
+  "S1_zero_equals_S0": null,
+  "no_load_shed": false,
+  "served_le_requested": true,
+  "dc_energy_balance": true,
+  "S2_off_equals_S1": null,
+  "online_IT_monotone": true,
+  "no_harm_existing_customers": true,
+  "interruption_within_cap": true,
+  "lex_presolve_optimal": true,
+  "poi_flow_le_equipment": true,
+  "no_service_before_grid_or_byop": true,
+  "s2_consistent": true,
+  "s2_converged": null,
+  "private_stage_LP": null
+ },
+ "scientific_use": "BLOCKED: no_load_shed",
+ "phase": "PARTIAL_PILOT",
+ "S0_reliability": {
+  "total_MWh": 11874.503285813922,
+  "inherited_MWh": 0.4940691701764889,
+  "max_bus_peak_MW": 76.17311123547708,
+  "screen": "S0_RELIABILITY_REVIEW_REQUIRED (total > 1000 MWh and bus peak > 10 MW)"
+ },
+ "risk_flags": [
+  "S0_RELIABILITY_REVIEW_REQUIRED",
+  "ERM_2026_CALIBRATED_TO_ZERO_HEADROOM (ERM row binding 2026 in S0 and S1; no new firm load can be served in 2026)",
+  "S0CAL_LINE_FLOWS_PENDING_DIAGNOSTIC_EXPORT"
+ ],
+ "log": {
+  "path": "workflow/results/BYOP/mainline/MAINLINE_V13_GREAL_MID_PILOT_S01_F1F2_V1.log",
+  "sha256": "ec5878b67d66ec80333501748d5c0b7f102fa47acd660bf2984d41baddacfb3f",
+  "location": "L2 only (163 MB); excerpt tracked"
+ },
+ "next": "STOP: researcher review before any B3"
+}

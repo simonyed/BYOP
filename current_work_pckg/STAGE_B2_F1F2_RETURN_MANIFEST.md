@@ -55,3 +55,25 @@ S1_LEX_STATUS: NOT_AVAILABLE
 M1_VALIDITY: NOT_YET
 NEXT_STEP: STOP_AND_RETURN_FOR_RESEARCHER_REVIEW
 ```
+
+## B2-R 运行之后的补充（2026-10-21 19:38 EDT）
+
+- 批准 SHA：`4fb58a450f43bab2b23e354601ea2d6b88b50ae9`；运行时 HEAD：`a7b2e9ce`（只改了配置里的授权项）
+- B2-R 状态：**OPTIMAL，`B2_COMPLETED_WITH_FLAGS`**；报告见 `STAGE_B2_F1F2_RERUN_REPORT.md`
+- 本节所在提交：见 GitHub 分支最新提交
+
+| 文件（tracked，位于 `workflow/results/BYOP/mainline/MAINLINE_V13_GREAL_MID_PILOT_S01_F1F2_V1/`） | 内容 |
+|---|---|
+| `STAGE_B2_F1F2_RERUN_AUDIT.json` | 求解状态、整数变量、模型规模、字典序各层的值、实际容差参数、可靠性筛查、风险标志 |
+| `STAGE_B2_48_BUS_YEAR_GRID_ONLY_F1F2.csv` | 48 个键，含 S0 本母线切负荷 |
+| `STAGE_B2_S0_BACKGROUND_RELIABILITY_F1F2.csv` | 原生 / 继承爬坡切负荷，与 B2 失败版本对照 |
+| `STAGE_B2_S0_PUBLIC_EXPANSION_F1F2.csv` | S0 / S1 公共扩张，与 B2 失败版本的 S0 对照 |
+| `STAGE_B2_LEX_TOLERANCE_AUDIT_F1F2.csv` | 47 行 A1 / A2 核验 |
+| `STAGE_B2_B1_INPUT_RECONCILIATION_F1F2.csv` | B1 输入哈希对账（同一内容另存为 `…BASELINE_RECONCILIATION_F1F2.csv`） |
+| `STAGE_B2_POI_NETWORK_DIAGNOSTICS_F1F2.csv`、`STAGE_B2_AUDIT_CHECKLIST_F1F2.csv` | 诊断表与审计清单 |
+| `case_manifest.json`、`MAINLINE_*`、`lex_S1_EARLIEST.json`、`lex_audit_S1_EARLIEST.csv`、`S1_GRID_OFFER.csv`、`PCLR_TRIGGERS.csv`、`scenarios/{S0,S1_EARLIEST}/*`、`shed_by_bus_*.csv`、`solver_*.log`、两张图 | 算例的原始产物 |
+| `../MAINLINE_V13_GREAL_MID_PILOT_S01_F1F2_V1.excerpt.log`、`../pilot_s01_fix_driver.log` | 控制台日志摘录与驱动日志 |
+
+| 只在 L2 上的文件 | SHA-256 |
+|---|---|
+| `workflow/results/BYOP/mainline/MAINLINE_V13_GREAL_MID_PILOT_S01_F1F2_V1.log`（163 MB） | 见 `STAGE_B2_F1F2_RERUN_AUDIT.json` 的 `log.sha256` |

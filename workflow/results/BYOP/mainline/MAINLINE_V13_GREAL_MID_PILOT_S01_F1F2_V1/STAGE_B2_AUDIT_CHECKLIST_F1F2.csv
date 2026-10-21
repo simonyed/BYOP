@@ -1,0 +1,21 @@
+level,check,result,evidence
+HARD,S0 optimal,PASS,case_manifest.json solves.S0
+HARD,S1_EARLIEST optimal,PASS,case_manifest.json solves.S1_EARLIEST
+HARD,integer / binary variables = 0,PASS,checks.true_LP
+HARD,"gate approved, approved SHA 8636c08d",PASS,RUN_GATE.json
+HARD,B1 inputs hashes match,PASS,B1 file hashes in STAGE_B2_B1_BASELINE_RECONCILIATION.csv
+HARD,9 S0CAL lines loaded,PASS,case_manifest.json s0_calibration
+HARD,48 unique bus-year keys,PASS,STAGE_B2_48_BUS_YEAR_GRID_ONLY.csv
+HARD,delay >= 0 and served <= requested,PASS,STAGE_B2_48_BUS_YEAR_GRID_ONLY.csv
+HARD,online IT monotone,PASS,checks.online_IT_monotone
+HARD,no-harm existing customers (S1 <= S0 + 0.001 MW),PASS,scenario_summary no_harm_max_violation_MW = 0.0010000000411446
+HARD,DC energy balance,PASS,checks.dc_energy_balance
+HARD,POI flow <= equipment,PASS,checks.poi_flow_le_equipment
+HARD,no service before grid,PASS,checks.no_service_before_grid_or_byop
+HARD,lexicographic pre-solve optimal (S1_EARLIEST),PASS,lex_S1_EARLIEST.json
+SCIENCE,formal S0 background shed ~ 0,FAIL,STAGE_B2_S0_BACKGROUND_RELIABILITY.csv
+SCIENCE,SCIENTIFIC_USE = PARTIAL_PILOT (expected for B2),FAIL,MAINLINE_GATE_CHECKS.csv
+SCIENCE,line-flow utilisation of the 4 AIDC-adjacent S0CAL lines,PENDING,PENDING_DIAGNOSTIC_EXPORT: flows not saved
+SCIENCE,single-factor attribution of delays,NOT_APPLICABLE,B4 not authorised
+HARD,Speed-First levels hold on the final solution (A1 / A2 bounds),PASS,STAGE_B2_LEX_TOLERANCE_AUDIT; 0 violated rows
+SCIENCE,"S0 reliability screen (total <= 1000 MWh, bus peak <= 10 MW, inherited ramp <= 1 MWh / yr)",S0_RELIABILITY_REVIEW_REQUIRED,total 11874.5 MWh

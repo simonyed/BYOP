@@ -51,6 +51,8 @@ def snapshot_weights(index, stress_days):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('case'); ap.add_argument('--b1-erm', required=True); ap.add_argument('--b1-s0cal', required=True)
+    ap.add_argument('--suffix', default='', help="file-name suffix, e.g. _F1F2 for the B2-R rerun")
+    ap.add_argument('--old-case', default=None, help='earlier case dir (failed B2) for side-by-side S0 columns')
     a = ap.parse_args()
     C = Path(a.case)
     failed_run = not (C / 'case_manifest.json').exists()
@@ -79,8 +81,25 @@ def main():
     out = []
 
     def w(df, nm):
+        nm = nm.replace('.csv', f'{a.suffix}.csv') if a.suffix else nm
         df.to_csv(C / nm, index=False)
         out.append(nm)
+
+    def s0_shed_by_bus_year(case):
+        fz_ = Path(case) / 'S0_shed_by_snapshot_frozen.csv.gz'
+        if not fz_.exists():
+            return pd.DataFrame()
+        f_ = pd.read_csv(fz_, index_col=[0, 1], parse_dates=[1])
+        e_ = f_.mul(snapshot_weights(f_.index, stress), axis=0).groupby(level=0).sum()
+        r_ = []
+        for col in e_.columns:
+            kind = 'inherited_ramp' if col.endswith(' inherited_ramp_unserved') else ('native_background' if col.endswith(' load_shed') else 'other')
+            bus = col.replace(' inherited_ramp_unserved', '').replace(' load_shed', '')
+            for y in e_.index:
+                r_.append(dict(bus=bus, year=int(y), kind=kind, shed_MWh=float(e_.loc[y, col]),
+                               peak_shed_MW=float(f_[col][f_.index.get_level_values(0) == y].max())))
+        return pd.DataFrame(r_)
+    s0loc = s0_shed_by_bus_year(C)
     # ------------------------------------------------------------------ 1. 48 bus-year table
     s1 = poil[poil.scenario == 'S1_EARLIEST'].copy() if len(poil) else pd.DataFrame(columns=['site', 'year'])
     req = pd.read_csv(INP / 'dc/MAINLINE_RESEARCH_COHORTS_TAMU64.csv')
@@ -117,6 +136,9 @@ def main():
                 units='IT MW for requested/served/delay; facility MW (= IT x PUE) for equipment / import / offer',
                 source='poi_ledger.csv (S1_EARLIEST) + S1_GRID_OFFER.csv'))
     t48 = pd.DataFrame(rows)
+    if len(s0loc):     # economic-S0 local shed at the AIDC bus (the frozen no-harm allowance of that bus)
+        g_ = s0loc.groupby(['bus', 'year']).agg(S0_local_shed_MWh=('shed_MWh', 'sum'), S0_local_peak_shed_MW=('peak_shed_MW', 'max'))
+        t48 = t48.join(g_, on=['site', 'year'])
     for c_ in ['served_IT_MW', 'delay_IT_MW', 'poi_eq_dual_abs', 'total_import_peak_MW', 'equipment_total_MW']:
         if c_ not in t48:
             t48[c_] = np.nan
@@ -134,9 +156,18 @@ def main():
             for y in e.index:
                 rel.append(dict(bus=bus, year=int(y), kind=kind, shed_MWh=float(e.loc[y, col]), peak_shed_MW=float(f[col][f.index.get_level_values(0) == y].max())))
     rel = pd.DataFrame(rel)
+    if a.old_case and len(rel):        # failed-B2 S0 (VOLL 1e4) side by side
+        old = s0_shed_by_bus_year(a.old_case)
+        if len(old):
+            ot = old.groupby(['bus', 'year', 'kind']).agg(old_shed_MWh=('shed_MWh', 'sum'), old_peak_shed_MW=('peak_shed_MW', 'max'))
+            rel = rel.merge(ot.reset_index(), on=['bus', 'year', 'kind'], how='outer').fillna({'shed_MWh': 0.0, 'peak_shed_MW': 0.0})
     if len(rel):
-        tot = rel.groupby(['year', 'kind']).agg(shed_MWh=('shed_MWh', 'sum'), peak_shed_MW=('peak_shed_MW', 'max')).reset_index().assign(bus='ALL_ERCOT')
-        rel = pd.concat([tot, rel[rel.shed_MWh > 1e-6]], ignore_index=True)
+        agg_ = dict(shed_MWh=('shed_MWh', 'sum'), peak_shed_MW=('peak_shed_MW', 'max'))
+        if 'old_shed_MWh' in rel:
+            agg_.update(old_shed_MWh=('old_shed_MWh', 'sum'), old_peak_shed_MW=('old_peak_shed_MW', 'max'))
+        tot = rel.groupby(['year', 'kind']).agg(**agg_).reset_index().assign(bus='ALL_ERCOT')
+        keep = (rel.shed_MWh > 1e-6) | (rel.get('old_shed_MWh', pd.Series(0.0, index=rel.index)).fillna(0.0) > 1e-6)
+        rel = pd.concat([tot, rel[keep]], ignore_index=True)
         rel['source'] = 'S0_shed_by_snapshot_frozen.csv.gz x sample weights (stress 3 h; base share of 8760 h)'
     w(rel, 'STAGE_B2_S0_BACKGROUND_RELIABILITY.csv')
     # ------------------------------------------------------------------ 3. public expansion (S0, S1_EARLIEST), B1 S0CAL excluded
@@ -154,7 +185,13 @@ def main():
         top = top.groupby('scenario').head(10).rename(columns={'capacity_MW': 'in_operation_MW'}).assign(carrier='AC_exp_TOP10_CORRIDOR', year=2031)
         exp = pd.concat([exp, top], ignore_index=True)
         exp['note'] = 'endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included'
-    w(pd.DataFrame(exp), 'STAGE_B2_S0_PUBLIC_EXPANSION.csv')
+    exp = pd.DataFrame(exp)
+    if a.old_case and len(exp):
+        ol = pd.concat([pd.read_csv(f) for f in sorted(Path(a.old_case).glob('scenarios/S0/ledger.csv'))], ignore_index=True)
+        ol = ol[ol.resource_path == 'public']
+        oe = ol.groupby(['carrier', 'year']).agg(old_S0_in_operation_MW=('capacity_MW', 'sum'), old_S0_resource_capex_PV_USD=('resource_capex_PV_USD', 'sum')).reset_index()
+        exp = exp.merge(oe.assign(scenario='S0'), on=['scenario', 'carrier', 'year'], how='left')
+    w(exp, 'STAGE_B2_S0_PUBLIC_EXPANSION.csv')
     # ------------------------------------------------------------------ 4. POI / network diagnostics
     corr = duals[duals.constraint == 'corridor_congestion'] if len(duals) else pd.DataFrame()
     ermd = duals[duals.constraint.astype(str).str.startswith('ERM')] if len(duals) else pd.DataFrame()
@@ -239,6 +276,18 @@ def main():
         ('SCIENCE', 'line-flow utilisation of the 4 AIDC-adjacent S0CAL lines', 'PENDING', 'PENDING_DIAGNOSTIC_EXPORT: flows not saved'),
         ('SCIENCE', 'single-factor attribution of delays', 'NOT_APPLICABLE', 'B4 not authorised'),
     ]
+    lexa = rd(C, 'lex_audit_S1_EARLIEST.csv')
+    if len(lexa):
+        w(lexa, 'STAGE_B2_LEX_TOLERANCE_AUDIT.csv')
+        items.append(('HARD', 'Speed-First levels hold on the final solution (A1 / A2 bounds)', 'PASS' if bool(lexa.satisfied.all()) else 'FAIL',
+                      f'STAGE_B2_LEX_TOLERANCE_AUDIT; {int((~lexa.satisfied).sum())} violated rows'))
+    if len(rel):
+        tot_ = float(rel[rel.bus == 'ALL_ERCOT'].shed_MWh.sum())
+        loc_ = rel[rel.bus != 'ALL_ERCOT']
+        inh_y = rel[(rel.bus == 'ALL_ERCOT') & (rel.kind == 'inherited_ramp')].shed_MWh
+        flag = tot_ > 1000.0 or (float(loc_.peak_shed_MW.max()) if len(loc_) else 0.0) > 10.0 or (float(inh_y.max()) if len(inh_y) else 0.0) > 1.0
+        items.append(('SCIENCE', 'S0 reliability screen (total <= 1000 MWh, bus peak <= 10 MW, inherited ramp <= 1 MWh / yr)',
+                      'S0_RELIABILITY_REVIEW_REQUIRED' if flag else 'PASS', f'total {tot_:.1f} MWh'))
     w(pd.DataFrame(items, columns=['level', 'check', 'result', 'evidence']), 'STAGE_B2_AUDIT_CHECKLIST.csv')
     print(json.dumps(dict(written=out), indent=1))
 

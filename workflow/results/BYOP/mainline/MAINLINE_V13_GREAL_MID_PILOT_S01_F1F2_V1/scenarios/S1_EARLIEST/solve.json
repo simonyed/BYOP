@@ -1,0 +1,311 @@
+{
+ "case_id": "MAINLINE_V13_GREAL_MID_PILOT_S01_F1F2_V1",
+ "case_group": "MAINLINE_V13_GREAL_MID_PILOT_S01_F1F2_V1",
+ "run_id": "rearch_MAINLINE_V13_GREAL_MID_PILOT_S01_F1F2_V1_20261021T222122Z",
+ "scenario": "S1_EARLIEST",
+ "relax": [],
+ "setting": "G-REAL",
+ "solve": {
+  "tag": "S1_EARLIEST",
+  "status": "ok",
+  "termination": "optimal",
+  "objective": 24807016764.483047,
+  "seconds": 2940.0,
+  "n_vars": 4179586,
+  "n_cons": 7310732,
+  "integer_vars": 0,
+  "erm_dc_mode": "B",
+  "erm_poi_coeff_snapshot0": null,
+  "lex": {
+   "tag": "S1_EARLIEST",
+   "status": 2,
+   "status_name": "OPTIMAL",
+   "optimal": true,
+   "seconds": 1121.9,
+   "levels": [
+    {
+     "stage": "A1",
+     "year": 2026,
+     "value": 0.0
+    },
+    {
+     "stage": "A2",
+     "year": 2026,
+     "value": 0.0
+    },
+    {
+     "stage": "A1",
+     "year": 2027,
+     "value": 740.2103
+    },
+    {
+     "stage": "A2",
+     "year": 2027,
+     "value": 1.0
+    },
+    {
+     "stage": "A1",
+     "year": 2028,
+     "value": 1457.20892271545
+    },
+    {
+     "stage": "A2",
+     "year": 2028,
+     "value": 1.0
+    },
+    {
+     "stage": "A1",
+     "year": 2029,
+     "value": 2365.7907999999998
+    },
+    {
+     "stage": "A2",
+     "year": 2029,
+     "value": 1.0
+    },
+    {
+     "stage": "A1",
+     "year": 2030,
+     "value": 3018.3136000000004
+    },
+    {
+     "stage": "A2",
+     "year": 2030,
+     "value": 1.0
+    },
+    {
+     "stage": "A1",
+     "year": 2031,
+     "value": 3531.6962000000003
+    },
+    {
+     "stage": "A2",
+     "year": 2031,
+     "value": 1.0
+    }
+   ],
+   "eligibility": [
+    {
+     "year": 2026,
+     "R": {
+      "p600 0": 11.338,
+      "p610 2": 54.285,
+      "p630 2": 0.0,
+      "p630 4": 0.0,
+      "p630 5": 0.0,
+      "p630 6": 8.847,
+      "p630 9": 16.749,
+      "p650 0": 5.154
+     },
+     "eligible": [
+      "p600 0",
+      "p610 2",
+      "p630 6",
+      "p630 9",
+      "p650 0"
+     ]
+    },
+    {
+     "year": 2027,
+     "R": {
+      "p600 0": 87.084,
+      "p610 2": 416.945,
+      "p630 2": 0.0,
+      "p630 4": 0.0,
+      "p630 5": 0.0,
+      "p630 6": 67.952,
+      "p630 9": 128.646,
+      "p650 0": 39.584
+     },
+     "eligible": [
+      "p600 0",
+      "p610 2",
+      "p630 6",
+      "p630 9",
+      "p650 0"
+     ]
+    },
+    {
+     "year": 2028,
+     "R": {
+      "p600 0": 132.0,
+      "p610 2": 828.507,
+      "p630 2": 77.0,
+      "p630 4": 0.0,
+      "p630 5": 26.0,
+      "p630 6": 103.0,
+      "p630 9": 201.155,
+      "p650 0": 89.546
+     },
+     "eligible": [
+      "p600 0",
+      "p610 2",
+      "p630 2",
+      "p630 5",
+      "p630 6",
+      "p630 9",
+      "p650 0"
+     ]
+    },
+    {
+     "year": 2029,
+     "R": {
+      "p600 0": 132.0,
+      "p610 2": 1266.612,
+      "p630 2": 77.0,
+      "p630 4": 396.632,
+      "p630 5": 26.0,
+      "p630 6": 103.0,
+      "p630 9": 213.887,
+      "p650 0": 150.659
+     },
+     "eligible": [
+      "p600 0",
+      "p610 2",
+      "p630 2",
+      "p630 4",
+      "p630 5",
+      "p630 6",
+      "p630 9",
+      "p650 0"
+     ]
+    },
+    {
+     "year": 2030,
+     "R": {
+      "p600 0": 256.214,
+      "p610 2": 1304.0,
+      "p630 2": 77.0,
+      "p630 4": 881.099,
+      "p630 5": 26.0,
+      "p630 6": 103.0,
+      "p630 9": 215.0,
+      "p650 0": 156.0
+     },
+     "eligible": [
+      "p600 0",
+      "p610 2",
+      "p630 2",
+      "p630 4",
+      "p630 5",
+      "p630 6",
+      "p630 9",
+      "p650 0"
+     ]
+    },
+    {
+     "year": 2031,
+     "R": {
+      "p600 0": 365.164,
+      "p610 2": 1304.0,
+      "p630 2": 77.0,
+      "p630 4": 1285.532,
+      "p630 5": 26.0,
+      "p630 6": 103.0,
+      "p630 9": 215.0,
+      "p650 0": 156.0
+     },
+     "eligible": [
+      "p600 0",
+      "p610 2",
+      "p630 2",
+      "p630 4",
+      "p630 5",
+      "p630 6",
+      "p630 9",
+      "p650 0"
+     ]
+    }
+   ],
+   "solver_params": {
+    "Method": 2,
+    "Crossover": 0,
+    "BarConvTol": 1e-05,
+    "FeasibilityTol": 0.001,
+    "OptimalityTol": 0.0001,
+    "BarHomogeneous": 1,
+    "Threads": 20
+   },
+   "objective_values": [
+    {
+     "index": 0,
+     "name": "A1_2026",
+     "ObjNVal": 0.0
+    },
+    {
+     "index": 1,
+     "name": "A2_2026",
+     "ObjNVal": 0.0
+    },
+    {
+     "index": 2,
+     "name": "A1_2027",
+     "ObjNVal": 740.2103
+    },
+    {
+     "index": 3,
+     "name": "A2_2027",
+     "ObjNVal": 1.0
+    },
+    {
+     "index": 4,
+     "name": "A1_2028",
+     "ObjNVal": 1457.2089227154502
+    },
+    {
+     "index": 5,
+     "name": "A2_2028",
+     "ObjNVal": 1.0
+    },
+    {
+     "index": 6,
+     "name": "A1_2029",
+     "ObjNVal": 2365.7907999999998
+    },
+    {
+     "index": 7,
+     "name": "A2_2029",
+     "ObjNVal": 1.0
+    },
+    {
+     "index": 8,
+     "name": "A1_2030",
+     "ObjNVal": 3018.3136000000004
+    },
+    {
+     "index": 9,
+     "name": "A2_2030",
+     "ObjNVal": 1.0
+    },
+    {
+     "index": 10,
+     "name": "A1_2031",
+     "ObjNVal": 3531.6962000000003
+    },
+    {
+     "index": 11,
+     "name": "A2_2031",
+     "ObjNVal": 1.0
+    }
+   ],
+   "violations": {
+    "ConstrVio": 2.3402653823723085e-06,
+    "BoundVio": 0.0,
+    "ObjVal": 0.0
+   },
+   "n_rows": 7310726,
+   "n_cols": 4179592,
+   "n_int": 0,
+   "n_objectives": 12
+  },
+  "lex_audit_all_satisfied": true,
+  "F2_load_shed_mc": {
+   "n": 68,
+   "min": 35685.0,
+   "max": 35685.0,
+   "n_inherited": 5,
+   "n_not_at_VOLL": 0
+  }
+ },
+ "timestamp_utc": "2026-10-21T23:38:37.115135+00:00"
+}

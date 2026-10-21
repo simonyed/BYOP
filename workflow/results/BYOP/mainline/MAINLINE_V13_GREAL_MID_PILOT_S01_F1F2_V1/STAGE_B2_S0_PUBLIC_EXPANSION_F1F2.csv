@@ -1,0 +1,60 @@
+scenario,carrier,year,in_operation_MW,added_this_year_MW,resource_capex_PV_USD,corridor,zone,note,old_S0_in_operation_MW,old_S0_resource_capex_PV_USD
+S0,4hr_battery_storage,2028,345.1018339718196,345.1018339718196,40182562.87710855,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S0,4hr_battery_storage,2029,345.1018339718196,0.0,39394669.48736133,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S0,4hr_battery_storage,2030,345.1018339718196,0.0,38622224.98760915,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S0,4hr_battery_storage,2031,345.1018339718196,0.0,37864926.45844034,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S0,8hr_battery_storage,2027,227.9463243414989,227.9463243414989,46466293.80266509,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S0,8hr_battery_storage,2028,251.57125959771744,23.624935256218563,50276645.44834352,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S0,8hr_battery_storage,2029,251.57125959771744,0.0,49290828.870925024,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S0,8hr_battery_storage,2030,251.57125959771744,0.0,48324342.03031865,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S0,8hr_battery_storage,2031,251.57125959771744,0.0,47376805.9120771,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S0,AC_exp,2030,30804.448351114377,30804.448351114377,357503732.255592,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",30387.436223361117,357847715.43356425
+S0,AC_exp,2031,35180.60048003669,4376.152128922328,402711663.7091879,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",34757.641650477235,396770874.9912967
+S0,CCGT,2031,158.07049857178572,158.07049857178572,11512786.464975176,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",707.8937008341086,51558191.38447881
+S0,onwind,2029,8465.000116938321,8465.000116938321,729321826.9713655,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",6693.956730555308,576733453.6271263
+S0,onwind,2030,19425.793533836313,10960.793416897994,1640857398.370377,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",18858.59060913607,1592946917.1974666
+S0,onwind,2031,25747.090676266856,6321.297142430547,2132161326.4524324,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",25100.926584597015,2078651355.010468
+S0,solar,2028,3921.812168746348,3921.812168746348,266314450.3778043,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",2572.2445104630347,174670752.59248418
+S0,solar,2029,3993.146424111018,71.3342553646695,265841639.23242387,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",3944.4098737388117,262597028.82614118
+S0,solar,2030,3993.146424111018,0.0,260629058.07100376,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",3944.4098737388117,257448067.476609
+S0,solar,2031,6214.790137304083,2221.643713193065,397680132.64277124,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",6174.148087325214,395079475.9078873
+S1_EARLIEST,4hr_battery_storage,2027,59.57556468609791,59.57556468609791,7075525.572595295,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,4hr_battery_storage,2028,530.2420991958749,470.6665345097769,61739708.090824366,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,4hr_battery_storage,2029,530.2420991958749,0.0,60529125.57923958,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,4hr_battery_storage,2030,530.2420991958749,0.0,59342279.979646645,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,4hr_battery_storage,2031,530.2420991958749,0.0,58178705.86239867,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,8hr_battery_storage,2027,378.4647916455664,378.4647916455664,77149110.6661627,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,8hr_battery_storage,2028,1230.9232295581864,852.4584379126202,246000639.68192816,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,8hr_battery_storage,2029,1230.9232295581864,0.0,241177097.72738057,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,8hr_battery_storage,2030,1230.9232295581864,0.0,236448135.0268437,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,8hr_battery_storage,2031,1230.9232295581864,0.0,231811897.08514082,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,AC_exp,2030,30879.02381483548,30879.02381483548,357058852.17360145,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,AC_exp,2031,36194.71824391545,5315.694429079964,408014604.14553237,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,CCGT,2031,226.1706302657588,226.1706302657588,16472739.65999434,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,onwind,2029,9853.049556629383,9853.049556629383,848912463.6278732,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,onwind,2030,21489.84923265884,11636.799676029455,1815203998.8406346,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,onwind,2031,28151.97122145215,6662.121988793313,2331313663.9982204,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,solar,2028,4425.99517808919,4425.99517808919,300551485.5150295,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,solar,2029,5471.808892291392,1045.8137142022024,364282821.36364126,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,solar,2030,5471.808892291392,0.0,357140020.94474626,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,solar,2031,7953.228416007666,2481.419523716274,508921598.56393754,,,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S0,AC_exp_TOP10_CORRIDOR,2031,3020.9380943320066,,,LTL133,p650 5,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S0,AC_exp_TOP10_CORRIDOR,2031,2958.8999953059365,,,LTL83,p630 4,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S0,AC_exp_TOP10_CORRIDOR,2031,1737.756914920405,,,LTL85,p630 5,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S0,AC_exp_TOP10_CORRIDOR,2031,1462.2999996514486,,,LTL93,p640 0,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S0,AC_exp_TOP10_CORRIDOR,2031,1457.6648668495732,,,LTL5,p600 0,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S0,AC_exp_TOP10_CORRIDOR,2031,1376.7964411720138,,,LTL21,p610 0,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S0,AC_exp_TOP10_CORRIDOR,2031,1167.5715641513,,,LTL9,p600 0,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S0,AC_exp_TOP10_CORRIDOR,2031,1104.892915431102,,,LTL107,p640 2,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S0,AC_exp_TOP10_CORRIDOR,2031,1063.205647898756,,,LTL84,p630 5,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S0,AC_exp_TOP10_CORRIDOR,2031,1049.2999980635464,,,LTL103,p640 1,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,AC_exp_TOP10_CORRIDOR,2031,2971.806642937035,,,LTL133,p650 5,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,AC_exp_TOP10_CORRIDOR,2031,2958.8999984196453,,,LTL83,p630 4,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,AC_exp_TOP10_CORRIDOR,2031,1628.7045457869037,,,LTL85,p630 5,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,AC_exp_TOP10_CORRIDOR,2031,1462.2999997725797,,,LTL93,p640 0,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,AC_exp_TOP10_CORRIDOR,2031,1457.6648835167564,,,LTL5,p600 0,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,AC_exp_TOP10_CORRIDOR,2031,1376.7964413932164,,,LTL21,p610 0,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,AC_exp_TOP10_CORRIDOR,2031,1252.377146917654,,,LTL9,p600 0,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,AC_exp_TOP10_CORRIDOR,2031,1167.7877529720058,,,LTL107,p640 2,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,AC_exp_TOP10_CORRIDOR,2031,1101.3212762666656,,,LTL4,p600 0,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
+S1_EARLIEST,AC_exp_TOP10_CORRIDOR,2031,1063.205647970299,,,LTL84,p630 5,"endogenous priced public investment; B1 S0CAL uplift (fixed, cost-free, carrier AC_s0cal) is NOT included",,
