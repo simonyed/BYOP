@@ -9,7 +9,7 @@
 |---|---|
 | 仓库 | <https://github.com/simonyed/BYOP> |
 | 分支 | `mainline-v13-stageA`：<https://github.com/simonyed/BYOP/tree/mainline-v13-stageA> |
-| Stage A 代码 / 输入 / 测试提交 | `__COMMIT_A__` |
+| Stage A 代码 / 输入 / 测试提交 | `edc5ed8c09eed4920693e1e9eef2a6545c30018f` |
 | 报告补充提交（只改本文件和 Stage A 报告，填入上面的 SHA） | 该分支上紧随其后的一个提交 |
 | 基线 | `main` = `be2c6904`（v1.3 起草时的 HEAD）；**没有合并到 `main`** |
 | PR | 尚未创建（本机没有 `gh` CLI）。创建链接：<https://github.com/simonyed/BYOP/compare/main...mainline-v13-stageA?expand=1> |

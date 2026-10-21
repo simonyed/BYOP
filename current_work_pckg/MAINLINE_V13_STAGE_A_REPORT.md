@@ -114,6 +114,6 @@
 STAGE_A_STATUS: READY_FOR_RESEARCHER_AUDIT
 RUN_AUTHORIZATION: NOT_APPROVED
 SOLVER_EXECUTIONS: 0
-GITHUB_HEAD: __COMMIT_A__ (branch mainline-v13-stageA; code, inputs and tests audited in this report)
+GITHUB_HEAD: edc5ed8c09eed4920693e1e9eef2a6545c30018f (branch mainline-v13-stageA; code, inputs and tests audited in this report)
 NEXT_STEP: RESEARCHER_REVIEW_REQUIRED
 ```
