@@ -1,26 +1,26 @@
 {
  "manifest": "MAINLINE_V13_PRE_RUN_MANIFEST",
- "created_utc": "2026-10-21T22:16:31+00:00",
+ "created_utc": "2026-10-22T00:33:43+00:00",
  "RUN_AUTHORIZATION": "NOT_APPROVED",
  "SOLVER_EXECUTIONS": 0,
  "stage": "STAGE_A_IMPLEMENTATION_ONLY",
  "git": {
   "branch": "mainline-v13-stageA",
-  "parent_commit_when_hashed": "951ddb8bd6bca575a78ecd3562c34e252c528f89",
+  "parent_commit_when_hashed": "3b044c1c038bf42946a6b445f157f08e5efa079c",
   "note": "the files below are hashed from the working tree; the Stage A commit that contains them is in MAINLINE_V13_RETURN_MANIFEST.md"
  },
  "code_sha256": {
-  "workflow/byop/model/rearch_mech.py": "ee9e42bfd47dafa6db98abaa13446b184c5087bfdb23e8c920da32547d80dc1b",
+  "workflow/byop/model/rearch_mech.py": "bc37570938eb5c9515427d7095a4049eed51a276b18e53fdf756c73483b901a9",
   "workflow/byop/model/v240_mech.py": "1f352288375386c97811f44449592049d4cef881b42ab32e25c77283db183ef5",
   "workflow/byop/model/v250_mech.py": "60e98be4b883d843c7eca63fd109b982c8d3bb47785cac11a8f030578a0360a1",
   "workflow/byop/model/wp2_ercot_s0_s1.py": "c4d4d790d24aa7ecb1aa40a7ea3b43de03f37e67301459625ab144400aa6d1d4",
   "workflow/byop/model/wp2_ercot_s1_real.py": "df5765cfc61016c78088178e42172a4ac828f5cff332d9fc6b254cc8173e08e8",
   "workflow/byop/model/byop_paths.py": "dde777a5dd2e93b798c8a9dc10d6345186d1a0e76ce920999dd225b7bbd12944",
-  "workflow/byop/post/collect_mainline.py": "b8bb3184cdf7513b933900622df007efc438539b2bce33f425828a7256ed928b",
-  "workflow/byop/run/run_mainline.sh": "99f85153277834f58f31dcd22421bca9009e58d50bcbd50c53efc48e821d937e",
+  "workflow/byop/post/collect_mainline.py": "db319d8601a5d6c6deb96af588f663f3e82333e3c90f2d5799f09efebe9ca92b",
+  "workflow/byop/run/run_mainline.sh": "61779dd9270be52716a6e3eef8eb1ea6bd3523c0d3479f925627a9a4292402bd",
   "workflow/byop/build/build_mainline_inputs.py": "5f51b7dbdeefd171e8c9caf2e21b21cab3ef44f72e9dc28c54f68cf2205806bf",
   "workflow/byop/build/build_reeds2_potential.py": "7d57e13774d979b090d13a2a5cdb82ed63f108c8cc0ae21e38c8ad5facdb45ec",
-  "workflow/byop/tests/test_mainline_v13.py": "1c138d9b4bf3f3f7bf34c61769f9fd31969d47a77ffc8c91340ea1c72732a3d3",
+  "workflow/byop/tests/test_mainline_v13.py": "e51af72e412db2da4c45649e888915553411b9b9b8ac3dcbbe6796bebf5b0620",
   "workflow/byop/tests/structural_mainline_v13.py": "2f993ef64cf59b5d54d8ef1bc77a34f9360e33e4780b13e88b48b90a7175cff8",
   "workflow/scripts/solve_network.py": "8f7eea1a1d7d93409c37eb5ccae69eda688d78ed50e1a6e3da933b80049c2b27",
   "workflow/scripts/prepare_network.py": "4c1173357f139c20c7dc288df2be0196feeff54898fd4c6eb2f165a937d5213c"

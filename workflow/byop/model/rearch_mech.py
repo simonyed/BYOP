@@ -1122,6 +1122,59 @@ def lex_presolve(n, m):
         raise RuntimeError(f"P0-2 lexicographic pre-solve not optimal (Gurobi status {gm.Status} = {lex['status_name']})")
 
 
+def s0cal_flow_summary(links, p0, weights, aidc_buses, tag):
+    """Stage B2.5-E (output only): utilisation of the fixed B1 S0CAL Link pairs per scenario x year x line. The fwd / rev
+    Links are a parallel controllable pair: reported per direction, never added into a net capacity."""
+    rows = []
+    sel = links[links.carrier == 'AC_s0cal']
+    lines = sorted({str(nm)[len('S0CAL_'):].rsplit('_', 1)[0] for nm in sel.index})
+    per = p0.index.get_level_values(0)
+    for ln in lines:
+        f_, r_ = f'S0CAL_{ln}_fwd', f'S0CAL_{ln}_rev'
+        if f_ not in sel.index:
+            continue
+        mw = float(sel.p_nom[f_])
+        for y in sorted(set(per)):
+            m = per == y
+            pf = p0[f_][m] if f_ in p0 else pd.Series(0.0, index=p0.index[m])
+            pr = p0[r_][m] if r_ in p0 else pd.Series(0.0, index=p0.index[m])
+            full = (pf >= 0.999 * mw) | (pr >= 0.999 * mw)
+            ww = weights[m]
+            rows.append(dict(scenario=tag, year=int(y), line=ln, bus0=sel.bus0[f_], bus1=sel.bus1[f_], calibrated_MW=mw,
+                             max_fwd_MW=float(pf.max()), max_rev_MW=float(pr.max()),
+                             max_utilisation=max(float(pf.max()), float(pr.max())) / mw if mw > 0 else float('nan'),
+                             full_load_hours_weighted=float(ww[full.values].sum()), full_load_snapshot_share=float(full.mean()),
+                             aidc_adjacent=bool({sel.bus0[f_], sel.bus1[f_]} & set(aidc_buses)),
+                             basis='parallel fixed Link pair (fwd / rev reported separately); hours = sample weights'))
+    return pd.DataFrame(rows)
+
+
+def ml_export_flows(n, tag, out):
+    """Stage B2.5-E: write diagnostics of a solved mainline scenario (no change to the model): S0CAL Link utilisation,
+    per-snapshot existing-customer shed (non-S0; S0 already writes the frozen file) and 2028 flows of the TAMU lines at
+    p630 2 / 13 / 14 (Red Oak area)"""
+    ck = Path(out) / 'scenarios' / tag
+    ck.mkdir(parents=True, exist_ok=True)
+    w_ = n.snapshot_weightings.generators
+    try:
+        fl = s0cal_flow_summary(n.links, n.links_t.p0, w_, [d['bus'] for d in SITES.values()], tag)
+        fl.to_csv(ck / 's0cal_line_flows.csv', index=False)
+    except Exception as e:      # diagnostics never stop a solved case
+        (ck / 's0cal_line_flows.ERROR.txt').write_text(repr(e))
+    if tag != 'S0':
+        sh = n.generators.index[n.generators.carrier == 'load_shed']
+        if len(sh):
+            n.generators_t.p.reindex(columns=sh).fillna(0.0).to_csv(ck / 'shed_by_snapshot.csv.gz')
+    buses = {'p630 2', 'p630 13', 'p630 14'}
+    ls = n.lines.index[n.lines.bus0.isin(buses) | n.lines.bus1.isin(buses)]
+    if len(ls) and len(n.lines_t.p0.columns):
+        m28 = n.snapshots.get_level_values(0) == 2028
+        lf = n.lines_t.p0.reindex(columns=ls).loc[m28]
+        lf.to_csv(ck / 'line_flows_2028_dfw.csv.gz')
+        pd.DataFrame(dict(line=ls, bus0=n.lines.bus0[ls].values, bus1=n.lines.bus1[ls].values,
+                          rating_MW=(n.lines.s_nom[ls] * n.lines.s_max_pu[ls]).values)).to_csv(ck / 'line_flows_2028_dfw_ratings.csv', index=False)
+
+
 def lex_audit(levels, served, eligibility, tol_rel=1e-6, tol_abs=1e-3):
     """F1 scientific check of the Speed-First hierarchy on the FINAL solution: A1_y total >= T*_y (1 - 1e-6) - 1e-3 and,
     per eligible site, A2_y S[s,y] >= z*_y R[s,y] (1 - 1e-6) - 1e-3. served = {(site, year): MW IT}. Returns rows."""
@@ -1738,6 +1791,8 @@ def main():
                     la['ConstrVio'] = (lg.get('violations') or {}).get('ConstrVio')
                     la.to_csv(out / f'lex_audit_{tag}.csv', index=False)
                     res['lex_audit_all_satisfied'] = bool(la.satisfied.all())
+        if ML['on']:          # Stage B2.5-E: output-only diagnostics of this solved scenario
+            ml_export_flows(n, tag, out)
         if ML['on']:          # F2-b: realised existing-customer shed prices in this scenario's network
             ls = n.generators[n.generators.carrier == 'load_shed']
             mc_ = ls.marginal_cost

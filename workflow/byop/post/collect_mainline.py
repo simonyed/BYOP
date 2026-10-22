@@ -72,6 +72,100 @@ def _isok(v):
     return isinstance(v, (bool, np.bool_)) and bool(v)
 
 
+def cost_book_decomposition(summ):
+    """Stage B2.5-C: split the summary books without changing their definitions. social_real_resource_cost_USD of the
+    model = public capex (incl. POI upgrades) + BYOP capex + system operating (incl. BYOP fuel) + load_shed_PV (existing-
+    customer unserved energy at VOLL), so it is NOT a pure physical spending figure. Rows per scenario with identity
+    residuals; transfers (energy payments to the grid, tax credits) are listed and never added to social cost."""
+    if not len(summ):
+        return pd.DataFrame()
+    g = lambda r, c: float(r[c]) if c in r and r[c] == r[c] else 0.0
+    rows = []
+    for sc, r in summ.iterrows():
+        phys = g(r, 'social_real_resource_cost_USD') - g(r, 'load_shed_PV_USD')
+        parts = g(r, 'public_resource_capex_PV_USD') + g(r, 'byop_resource_capex_PV_USD') + g(r, 'system_operating_PV_USD')
+        rows.append(dict(
+            scenario=sc, physical_resource_spending_proxy_PV_USD=phys, existing_customer_unserved_loss_PV_USD=g(r, 'load_shed_PV_USD'),
+            social_welfare_cost_before_dc_delay_PV_USD=phys + g(r, 'load_shed_PV_USD'),
+            public_resource_capex_PV_USD=g(r, 'public_resource_capex_PV_USD'), poi_upgrade_resource_capex_PV_USD=g(r, 'poi_upgrade_resource_capex_PV_USD'),
+            byop_resource_capex_PV_USD=g(r, 'byop_resource_capex_PV_USD'), system_operating_PV_USD=g(r, 'system_operating_PV_USD'),
+            byop_fuel_PV_USD_included_in_operating=g(r, 'byop_fuel_PV_USD'),
+            social_delay_loss_PV_USD=g(r, 'social_delay_loss_PV_USD'), curtailment_loss_PV_USD=g(r, 'curtailment_loss_PV_USD'),
+            interruption_loss_PV_USD=g(r, 'interruption_loss_PV_USD'), social_total_USD=g(r, 'social_total_USD'),
+            transfer_energy_payment_PV_USD_not_added=g(r, 'transfer_energy_PV_social_USD'), tax_credit_PV_USD_not_added=g(r, 'tax_credit_PV_USD'),
+            identity_physical_residual_USD=phys - parts,
+            identity_total_residual_USD=g(r, 'social_total_USD') - (g(r, 'social_real_resource_cost_USD') + g(r, 'social_delay_loss_PV_USD')
+                                                                  + g(r, 'curtailment_loss_PV_USD') + g(r, 'interruption_loss_PV_USD')
+                                                                  + g(r, 'competing_queue_loss_PV_USD')),
+            label_note='physical_resource_spending_proxy = social_real_resource_cost - load_shed_PV (existing ledger); not a true_resource_cost rename'))
+    out = pd.DataFrame(rows)
+    tol = 1e-6 * out.social_total_USD.abs().clip(lower=1.0) + 1.0
+    out['identity_check'] = np.where((out.identity_physical_residual_USD.abs() <= tol) & (out.identity_total_residual_USD.abs() <= tol), 'PASS', 'FAIL')
+    return out
+
+
+TECH_REQUIRED = ['true_LP', 'all_optimal', 'no_harm_existing_customers', 'served_le_requested', 'online_IT_monotone',
+                 'dc_energy_balance', 'poi_flow_le_equipment', 'no_service_before_grid_or_byop', 'lex_presolve_optimal']
+TECH_REQUIRED_CORE = ['s2_converged', 's2_public_delivers_developer_plan', 'matched_service_valid']
+
+
+def science_layers(chk, phase, flags):
+    """Stage B2.5-D status layers (the legacy SCIENTIFIC_USE is kept unchanged next to them):
+    TECHNICAL_GATE   all required physical / numerical checks of the phase are explicitly True (missing = FAIL)
+    METHOD_FLAGS     method risks that do not invalidate the LP (ERM first-year headroom, S0 reliability, pending exports)
+    EXPLORATORY_USE  PERMITTED_WITH_METHOD_FLAGS / PERMITTED when the technical gate passes, else BLOCKED
+    FINAL_SCIENTIFIC_USE  PENDING_METHOD_VALIDATION while method flags are on; never ALLOWED automatically"""
+    req = list(TECH_REQUIRED) + (list(TECH_REQUIRED_CORE) if phase == 'CORE' else [])
+    miss = [k for k in req if not _isok(chk.get(k))]
+    if phase == 'INCOMPLETE':
+        miss.append('incomplete_scenario_set')
+    tech = 'PASS' if not miss else 'FAIL: ' + ', '.join(miss)
+    on = [k for k, v in flags.items() if v not in (None, False, 'OFF')]
+    expl = 'BLOCKED' if miss else ('PERMITTED_WITH_METHOD_FLAGS' if on else 'PERMITTED')
+    final = 'BLOCKED' if miss else ('PENDING_METHOD_VALIDATION' if on else 'PENDING_RESEARCHER_REVIEW')
+    return dict(TECHNICAL_GATE=tech, METHOD_FLAGS=';'.join(f'{k}={flags[k]}' for k in flags), EXPLORATORY_USE=expl,
+                FINAL_SCIENTIFIC_USE=final, SCIENTIFIC_USE_LEGACY_MAPPING='SCIENTIFIC_USE keeps the B0 rule (any False check -> BLOCKED)')
+
+
+def _weights(index, stress_days):
+    ts = pd.DatetimeIndex(index.get_level_values(-1))
+    per = index.get_level_values(0)
+    st = ts.normalize().isin(pd.DatetimeIndex([d['day'] for d in stress_days]))
+    w = pd.Series(0.0, index=index)
+    for p in sorted(set(per)):
+        m = per == p
+        n_st, n_b = int((m & st).sum()), int((m & ~st).sum())
+        w[m & st] = 3.0
+        w[m & ~st] = (8760.0 - 3.0 * n_st) / max(n_b, 1)
+    return w
+
+
+def method_flags(out, man, duals, poil):
+    """data-driven method flags: ERM binding in the first period with research service below request; S0 reliability
+    screen (total > 1000 MWh, bus peak > 10 MW, inherited ramp > 1 MWh / yr); S0CAL line-flow export present or not"""
+    fl = {}
+    e = duals[duals.constraint.astype(str).str.startswith('ERM')] if len(duals) else pd.DataFrame()
+    y0 = min(poil.year) if len(poil) else None
+    first = e[(e.year == y0) & (e.binding == True)] if len(e) and y0 is not None else pd.DataFrame()
+    s1 = poil[(poil.scenario == 'S1_EARLIEST') & (poil.year == y0)] if len(poil) else pd.DataFrame()
+    short = float((s1.requested_IT_MW - s1.served_IT_MW).clip(lower=0).sum()) if len(s1) else 0.0
+    fl['ERM_FIRST_YEAR_METHOD_FLAG'] = f'ON ({short:.2f} MW_IT {y0} short, ERM binding)' if len(first) and short > 0.5 else 'OFF'
+    fz = out / 'S0_shed_by_snapshot_frozen.csv.gz'
+    stress = ((man.get('mainline') or {}).get('stress') or {}).get('days') or []
+    if fz.exists() and stress:
+        f = pd.read_csv(fz, index_col=[0, 1], parse_dates=[1])
+        en = f.mul(_weights(f.index, stress), axis=0).groupby(level=0).sum()
+        inh = [c for c in en.columns if c.endswith(' inherited_ramp_unserved')]
+        tot, peak = float(en.values.sum()), float(f.max().max())
+        inh_y = float(en[inh].sum(axis=1).max()) if inh else 0.0
+        on = tot > 1000.0 or peak > 10.0 or inh_y > 1.0
+        fl['S0_RELIABILITY_REVIEW_REQUIRED'] = f'ON (total {tot:.1f} MWh, bus peak {peak:.1f} MW, inherited max {inh_y:.2f} MWh/yr)' if on else 'OFF'
+    else:
+        fl['S0_RELIABILITY_REVIEW_REQUIRED'] = 'NOT_EVALUATED (no frozen S0 shed or stress days)'
+    fl['S0CAL_LINE_FLOWS'] = 'EXPORTED' if (out / 'STAGE_B3_S0CAL_LINE_FLOW_UTILISATION.csv').exists() else 'PENDING_DIAGNOSTIC_EXPORT'
+    return fl
+
+
 def collect(out):
     out = Path(out)
     summ_all, poil_all, dev_all, led_all = _r(out, 'scenario_summary.csv'), _r(out, 'poi_ledger.csv'), _r(out, 'S2_developer_modes.csv'), _r(out, 'ledger.csv')
@@ -191,6 +285,19 @@ def collect(out):
         chk['SCIENTIFIC_USE'] = 'BLOCKED: ' + ', '.join(sorted(set(failed)))
     else:
         chk['SCIENTIFIC_USE'] = 'ALLOWED' if phase == 'CORE' else 'PARTIAL_PILOT (S0 / S1 only: no M2 / M4 conclusion)'
+    # Stage B2.5: S0CAL flow export (written per scenario by rearch_mech), cost books, layered status
+    fl_parts = sorted(out.glob('scenarios/*/s0cal_line_flows.csv'))
+    if fl_parts:
+        w(pd.concat([pd.read_csv(f) for f in fl_parts], ignore_index=True), 'STAGE_B3_S0CAL_LINE_FLOW_UTILISATION.csv')
+    cb = cost_book_decomposition(summ)
+    if len(cb):
+        w(cb, 'MAINLINE_COST_BOOK_DECOMPOSITION.csv')
+        chk['cost_book_identities'] = bool((cb.identity_check == 'PASS').all())
+    for sc_, sv_ in (man.get('solves') or {}).items():
+        if isinstance(sv_, dict) and 'lex_audit_all_satisfied' in sv_ and sc_ == 'S1_EARLIEST':
+            chk['lex_audit_all_satisfied'] = sv_['lex_audit_all_satisfied']
+    flags = method_flags(out, man, duals, poil)
+    chk.update(science_layers(chk, phase, flags))
     w(pd.DataFrame([dict(check=k, result=v) for k, v in chk.items()]), 'MAINLINE_GATE_CHECKS.csv')
     try:
         figures(out, poil, dev, led, files)
@@ -198,6 +305,8 @@ def collect(out):
         files.append(f'FIGURES_FAILED: {e}')
     (out / 'MAINLINE_CASE_MANIFEST.json').write_text(json.dumps(dict(manifest=man, phase=phase, s2_selection=sel,
                                                                    scientific_use=chk['SCIENTIFIC_USE'], checks=chk,
+                                                                   technical_gate=chk.get('TECHNICAL_GATE'), exploratory_use=chk.get('EXPLORATORY_USE'),
+                                                                   final_scientific_use=chk.get('FINAL_SCIENTIFIC_USE'), method_flags=chk.get('METHOD_FLAGS'),
                                                                    produced=files), indent=1, default=str))
     return files
 

@@ -3,7 +3,7 @@ Run on L2 from pypsa-usa/workflow:  python -m pytest -q byop/tests/test_mainline
 (the pure input tests also run locally without pypsa; model tests are skipped when pypsa is missing)."""
 from __future__ import annotations
 
-import hashlib, inspect, math, re, sys
+import hashlib, inspect, json, math, re, sys
 from pathlib import Path
 
 import numpy as np
@@ -536,3 +536,83 @@ def test_f2_b1_inputs_unchanged():
         if not f.exists():
             pytest.skip(f'{rel} not present')
         assert sha(f) == h, rel
+
+
+# ------------------------------------------------------------------------------------------------ Stage B2.5 (2026-10-21)
+def test_b25_cost_book_identity_and_voll_split():
+    cm = _cm()
+    s = pd.DataFrame([dict(scenario='S2_final', public_resource_capex_PV_USD=10.0, byop_resource_capex_PV_USD=5.0, system_operating_PV_USD=20.0,
+                           byop_fuel_PV_USD=3.0, load_shed_PV_USD=7.0, social_real_resource_cost_USD=42.0, social_delay_loss_PV_USD=1.0,
+                           curtailment_loss_PV_USD=0.5, interruption_loss_PV_USD=0.5, social_total_USD=44.0, transfer_energy_PV_social_USD=99.0)]).set_index('scenario')
+    cb = cm.cost_book_decomposition(s).iloc[0]
+    assert cb.physical_resource_spending_proxy_PV_USD == 35.0 and cb.existing_customer_unserved_loss_PV_USD == 7.0
+    assert cb.identity_check == 'PASS' and cb.transfer_energy_payment_PV_USD_not_added == 99.0      # transfer listed, not added
+    bad = s.copy(); bad.loc['S2_final', 'social_real_resource_cost_USD'] = 50.0                       # broken identity -> FAIL
+    assert cm.cost_book_decomposition(bad).iloc[0].identity_check == 'FAIL'
+
+
+@pytest.mark.parametrize('chk_mod, phase, tech_pass', [
+    ({}, 'PARTIAL_PILOT', True),                                            # S0 shed + no-harm PASS -> exploratory with flags
+    ({'all_optimal': False}, 'PARTIAL_PILOT', False),                       # any LP not optimal -> BLOCKED
+    ({'no_harm_existing_customers': False}, 'PARTIAL_PILOT', False),        # no-harm FAIL -> BLOCKED
+    ({'dc_energy_balance': None}, 'PARTIAL_PILOT', False),                  # missing field is not a pass
+    ({'s2_converged': True, 's2_public_delivers_developer_plan': True, 'matched_service_valid': False}, 'CORE', False),   # 48 keys broken
+    ({'s2_converged': False, 's2_public_delivers_developer_plan': True, 'matched_service_valid': True}, 'CORE', False),   # S2 not converged
+    ({'s2_converged': True, 's2_public_delivers_developer_plan': True, 'matched_service_valid': True}, 'CORE', True)])
+def test_b25_science_layers(chk_mod, phase, tech_pass):
+    cm = _cm()
+    chk = dict(true_LP=True, all_optimal=True, no_harm_existing_customers=True, served_le_requested=True, online_IT_monotone=True,
+               dc_energy_balance=True, poi_flow_le_equipment=True, no_service_before_grid_or_byop=True, lex_presolve_optimal=True,
+               no_load_shed=False)
+    chk.update(chk_mod)
+    flags = dict(ERM_FIRST_YEAR_METHOD_FLAG='ON (105.22 MW_IT 2026 short, ERM binding)', S0_RELIABILITY_REVIEW_REQUIRED='ON (total 11874.5 MWh)',
+                 S0CAL_LINE_FLOWS='PENDING_DIAGNOSTIC_EXPORT')
+    L = cm.science_layers(chk, phase, flags)
+    if tech_pass:
+        assert L['TECHNICAL_GATE'] == 'PASS' and L['EXPLORATORY_USE'] == 'PERMITTED_WITH_METHOD_FLAGS'
+        assert L['FINAL_SCIENTIFIC_USE'] == 'PENDING_METHOD_VALIDATION'                  # never ALLOWED automatically
+    else:
+        assert L['TECHNICAL_GATE'].startswith('FAIL') and L['EXPLORATORY_USE'] == 'BLOCKED' and L['FINAL_SCIENTIFIC_USE'] == 'BLOCKED'
+    assert 'no_load_shed' not in cm.TECH_REQUIRED and chk['no_load_shed'] is False       # raw FAIL kept, not a technical gate item
+    if phase == 'PARTIAL_PILOT':
+        assert not any(k in L['TECHNICAL_GATE'] for k in cm.TECH_REQUIRED_CORE)          # CORE-only items not required in B2
+
+
+def test_b25_collect_keeps_legacy_and_adds_layers(R, tmp_path):
+    _synthetic_case(tmp_path, R, n_iter=2)
+    m = json.loads((tmp_path / 'case_manifest.json').read_text())
+    m['checks'].update(poi_flow_le_equipment=True, no_service_before_grid_or_byop=True, lex_presolve_optimal=True, no_load_shed=False)
+    (tmp_path / 'case_manifest.json').write_text(json.dumps(m))
+    _cm().collect(tmp_path)
+    g = _gate(tmp_path)
+    assert g['SCIENTIFIC_USE'].startswith('BLOCKED') and 'no_load_shed' in g['SCIENTIFIC_USE']     # legacy column unchanged
+    assert g['TECHNICAL_GATE'] == 'PASS' and g['EXPLORATORY_USE'].startswith('PERMITTED') and g['FINAL_SCIENTIFIC_USE'] != 'ALLOWED'
+    assert (tmp_path / 'MAINLINE_COST_BOOK_DECOMPOSITION.csv').exists()
+
+
+def test_b25_s0cal_flow_summary(R):
+    idx = pd.MultiIndex.from_product([[2028], pd.date_range('2030-01-01', periods=4, freq='3h')], names=['period', 'timestep'])
+    links = pd.DataFrame(dict(carrier=['AC_s0cal'] * 2 + ['AC'], p_nom=[100.0, 100.0, 50.0], bus0=['p630 2', 'p630 5', 'x'], bus1=['p630 5', 'p630 2', 'y']),
+                         index=['S0CAL_TL73_fwd', 'S0CAL_TL73_rev', 'other'])
+    p0 = pd.DataFrame(dict(S0CAL_TL73_fwd=[100.0, 50.0, 0.0, 0.0], S0CAL_TL73_rev=[0.0, 0.0, 80.0, 0.0]), index=idx)
+    t = R.s0cal_flow_summary(links, p0, pd.Series(2.0, index=idx), ['p630 2'], 'S1_EARLIEST')
+    r = t.iloc[0]
+    assert len(t) == 1 and r.line == 'TL73' and r.max_fwd_MW == 100.0 and r.max_rev_MW == 80.0 and r.max_utilisation == 1.0
+    assert r.full_load_hours_weighted == 2.0 and r.aidc_adjacent                       # directions not summed into a net capacity
+    src = inspect.getsource(R.ml_export_flows)
+    assert 'add_constraints' not in src and 'n.model' not in src                       # output-only
+    assert 'ml_export_flows(n, tag, out)' in inspect.getsource(R.main)
+
+
+def test_b25_b3e_entry_and_dir_guard():
+    import os, shutil, subprocess
+    run = (BY / 'run/run_mainline.sh').read_text(encoding='utf-8')
+    assert 'ls -A $OUT/$name' in run and 'return 5' in run                               # partial data -> refuse
+    bash = shutil.which('bash')
+    if bash is None:
+        pytest.skip('bash not available')
+    r = subprocess.run([bash, str(BY / 'run/run_mainline.sh'), 'pilot_core_b3e'], capture_output=True, text=True, env={**os.environ, 'DRY': '1'})
+    c = [l for l in r.stdout.splitlines() if l.startswith('CMD ')]
+    assert len(c) == 1 and '--scenarios S0 S1_EARLIEST S3 S2 S3_mS2' in c[0] and '--attribution' not in c[0]
+    assert c[0].split('--out ')[1].split()[0].endswith('MAINLINE_V13_GREAL_MID_B3_EXPLORATORY_V1')
+    assert 'MAINLINE_V13_GREAL_MID_ERMCAL/erm02_calibration.json' in c[0] and 'MAINLINE_V13_GREAL_MID_S0CAL/S0_CALIBRATION.csv' in c[0]

@@ -1,0 +1,15 @@
+{
+ "written": [
+  "STAGE_B25_COST_BOOK_DECOMPOSITION.csv",
+  "STAGE_B25_ERM_2026_METHOD_AUDIT.csv",
+  "STAGE_B25_RELIABILITY_FLAGS.csv",
+  "STAGE_B25_S0_S1_SHED_EXPOSURE.csv"
+ ],
+ "total_delay": 312.7527772631818,
+ "d2026": 105.22109997867278,
+ "s0_shed": 11874.50328581392,
+ "cost_identity": [
+  "PASS",
+  "PASS"
+ ]
+}

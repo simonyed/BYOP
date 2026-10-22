@@ -1,0 +1,8 @@
+flag,value,threshold,result,note,source
+S0_total_shed_le_1000_MWh,11874.50328581392,1000.0,FAIL,,B2-R case files (see STAGE_B25_METHOD_AUDIT_REPORT.md)
+S0_bus_peak_le_10_MW,76.17311123547708,10.0,FAIL,max at p630 2 2028,B2-R case files (see STAGE_B25_METHOD_AUDIT_REPORT.md)
+S0_inherited_ramp_le_1_MWh_per_year,0.49406903596333696,1.0,PASS,,B2-R case files (see STAGE_B25_METHOD_AUDIT_REPORT.md)
+S0_RELIABILITY_REVIEW_REQUIRED,,,ON,,B2-R case files (see STAGE_B25_METHOD_AUDIT_REPORT.md)
+"no_harm_existing_customers (S1 <= S0 + 0.001 MW, per generator x snapshot)",0.0010000000411446,0.001,PASS,"max violation equals the constraint slack 0.001 MW (edge of the allowed margin), from the model check",B2-R case files (see STAGE_B25_METHOD_AUDIT_REPORT.md)
+ERM_2026_METHOD_FLAG,105.22109997867278,,ON,descriptive 2026 delay; ERM row binding in S0 and S1 2026 only,B2-R case files (see STAGE_B25_METHOD_AUDIT_REPORT.md)
+S0CAL_LINE_FLOWS_PENDING_DIAGNOSTIC_EXPORT,,,ON,B2-R did not save link flows; B2.5-E adds the export for the next solve,B2-R case files (see STAGE_B25_METHOD_AUDIT_REPORT.md)

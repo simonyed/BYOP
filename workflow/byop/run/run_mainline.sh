@@ -6,6 +6,7 @@
 #   bash byop/run/run_mainline.sh step0        Stage B B1: ERM-02 B calibration + S0 min-uplift calibration (GATED)
 #   bash byop/run/run_mainline.sh pilot_s01    Stage B B2: S0 + S1_EARLIEST only, no attribution (GATED)
 #   bash byop/run/run_mainline.sh pilot_s01_fix  Stage B B2-R (after F1 + F2-b): S0 + S1_EARLIEST in a NEW case dir (GATED)
+#   bash byop/run/run_mainline.sh pilot_core_b3e  Stage B3-E exploratory: S0 S1_EARLIEST S3 S2(->S2_final) S3_mS2, new case dir, no attribution (GATED)
 #   bash byop/run/run_mainline.sh pilot_core   Stage B B3: config scenarios S0 S1_EARLIEST S3 S2(->S2_final) S3_mS2, no attribution (GATED)
 #   bash byop/run/run_mainline.sh attribution  Stage B B4 (optional): S0 + S1_EARLIEST + xPOI / xUP / xRA / xPROC / xALL (GATED)
 #   bash byop/run/run_mainline.sh run          full case: config scenarios + attribution (GATED)
@@ -33,6 +34,9 @@ run() {   # name, args...
   if [ -e "$OUT/$name/case_manifest.json" ]; then
     echo "refusing: $OUT/$name already holds a finished case (choose a new stage / case-id)"; return 4
   fi
+  if [ -d "$OUT/$name" ] && [ -n "$(ls -A $OUT/$name 2>/dev/null)" ]; then     # Stage B2.5-F: any partial data -> manual check
+    echo "refusing: $OUT/$name already contains files (partial run?) - check it by hand before re-running"; return 5
+  fi
   mkdir -p $OUT/$name/code && cp $W/byop/model/*.py $OUT/$name/code/
   echo "$(date -u +%FT%TZ) start $name"
   python -W ignore $W/byop/model/rearch_mech.py --case-id $name --out $OUT/$name $COMMON "$@" > $OUT/$name.log 2>&1
@@ -49,7 +53,8 @@ case "${1:-}" in
   pilot_s01)   run ${CASE}_PILOT_S01 $CAL --scenarios S0 S1_EARLIEST ;;
   pilot_s01_fix) run ${CASE}_PILOT_S01_F1F2_V1 $CAL --scenarios S0 S1_EARLIEST ;;
   pilot_core)  run ${CASE}_PILOT_CORE $CAL ;;
+  pilot_core_b3e) run ${CASE}_B3_EXPLORATORY_V1 $CAL --scenarios S0 S1_EARLIEST S3 S2 S3_mS2 ;;
   attribution) run ${CASE}_ATTRIBUTION $CAL --scenarios S0 S1_EARLIEST --attribution ;;
   run)         run $CASE $CAL --attribution ;;
-  *)           echo "usage: $0 tests|struct|gate|step0|pilot_s01|pilot_s01_fix|pilot_core|attribution|run"; exit 1 ;;
+  *)           echo "usage: $0 tests|struct|gate|step0|pilot_s01|pilot_s01_fix|pilot_core|pilot_core_b3e|attribution|run"; exit 1 ;;
 esac
