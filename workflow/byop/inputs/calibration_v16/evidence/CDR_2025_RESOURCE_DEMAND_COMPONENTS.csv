@@ -1,0 +1,159 @@
+﻿season,risk_period,excel_row,label,value,source_file,source_sheet,excel_column
+Summer,peak_load,8,Total Summer Load based on normal weather conditions*,91935.24521117896,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,9,less:  Incremental Rooftop PV Forecast,-1463.2329662280001,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,10,less:  Load Resources providing Responsive Reserves,-985.0,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,11,less:  Load Resources providing Non-Spinning Reserves,-234.6,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,12,less:  Load Resources providing ERCOT Contingency Reserve Service (ECRS),-216.2,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,13,less:  Controllable Load Resources not included in other adjustments,0.0,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,14,less:  Emergency Response Service (10- and 30-min ramp products),-1269.0,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,15,less:  TDSP Standard Offer Load Management Programs,-372.3,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,16,less:  Distribution Voltage Reduction,-678.0,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,17,"Firm Peak Load, MW",86716.91224495096,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,19,"Energy Efficiency Program Savings Forecast, included in the Base Load Forecast",3208.0,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,24,"Installed Summer-rated Capacity, Thermal",66138.00000000001,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,25,"Hydroelectric, Peak Average Capacity Contribution",543.6850000000001,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,26,Switchable Capacity,3680.0,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,27,less: Switchable Capacity Unavailable to ERCOT,-1480.0,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,28,Available Mothballed Capacity (Units with reported return probabilities ≥ 75%),135.5,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,29,Capacity from Private Use Networks,3265.0,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,31,Coastal Wind,1674.2551522645983,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,32,Panhandle Wind,1566.5817316909802,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,33,Other Wind,4592.281852153925,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,34,Far West Solar Utility-Scale,1893.4658018646403,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,35,West Solar Utility-Scale,1571.81658754575,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,36,Other Solar Utility-Scale,4859.801342011695,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,37,Energy Storage,7902.8627233314155,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,38,RMR Capacity to be under Contract,412.0,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,39,Capacity Pending Retirement,0.0,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,40,"Operational Generation Capacity, Total",96755.25019086302,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,42,Non-Synchronous Ties (Based on average net import contribution during the summer 2023 EEA event),817.4000000000001,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,45,Thermal Resources,267.2,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,47,Coastal Wind,74.36748972896413,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,48,Panhandle Wind,0.0,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,49,Other Wind,0.0,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,50,Far West Solar Utility-Scale,52.9456290985589,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,51,West Solar Utility-Scale,314.4211420870051,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,52,Other Solar Utility-Scale,1131.9056461576702,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,53,Energy Storage,3691.9910402254145,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,54,Unconfirmed Planned Retirements,0.0,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,55,"Planned Generation Capacity Total, Net of Unconfirmed Planned Retirements",5532.8309472976125,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,56,Total Capacity,103105.48113816063,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_load,58,Reserve Margin,0.1889893040346796,CDR_December2024_Revised.xlsx,Summer Summary,D
+Summer,peak_net_load,8,Total Summer Load based on normal weather conditions*,86847.48671301786,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,9,less:  Incremental Rooftop PV Forecast,-148.4177143595,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,10,less:  Load Resources providing Responsive Reserves,-965.0,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,11,less:  Load Resources providing Non-Spinning Reserves,-234.6,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,12,less:  Load Resources providing ERCOT Contingency Reserve Service (ECRS),-216.2,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,13,less:  Controllable Load Resources not included in other adjustments,0.0,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,14,less:  Emergency Response Service (10- and 30-min ramp products),-1269.0,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,15,less:  TDSP Standard Offer Load Management Programs,-372.3,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,16,less:  Distribution Voltage Reduction,-678.0,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,17,"Firm Peak Load, MW",82963.96899865835,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,24,"Installed Summer-rated Capacity, Thermal",66138.00000000001,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,25,"Hydroelectric, Peak Average Capacity Contribution",543.6850000000001,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,26,Switchable Capacity,3680.0,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,27,less: Switchable Capacity Unavailable to ERCOT,-1480.0,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,28,Available Mothballed Capacity (Units with reported return probabilities ≥ 75%),135.5,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,29,Capacity from Private Use Networks,3354.1345,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,31,Coastal Wind,889.0906605447435,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,32,Panhandle Wind,831.9121399999964,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,33,Other Wind,2438.669458365748,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,34,Far West Solar Utility-Scale,383.5094400000038,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,35,West Solar Utility-Scale,318.36144000000314,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,36,Other Solar Utility-Scale,984.3218131274227,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,37,Energy Storage,7902.8627233314155,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,38,RMR Capacity to be under Contract,412.0,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,39,Capacity Pending Retirement,0.0,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,40,"Operational Generation Capacity, Total",86532.04717536936,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,42,Non-Synchronous Ties (Based on average net import contribution during the summer 2023 EEA event),817.4000000000001,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,45,Thermal Resources,267.2,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,47,Coastal Wind,39.49185431906598,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,48,Panhandle Wind,0.0,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,49,Other Wind,0.0,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,50,Far West Solar Utility-Scale,10.723800000000105,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,51,West Solar Utility-Scale,63.68400000000063,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,52,Other Solar Utility-Scale,229.26028030888256,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,53,Energy Storage,3691.9910402254145,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,54,Unconfirmed Planned Retirements,0.0,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,55,"Planned Generation Capacity Total, Net of Unconfirmed Planned Retirements",4302.350974853363,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,56,Total Capacity,91651.79815022272,CDR_December2024_Revised.xlsx,Summer Summary,E
+Summer,peak_net_load,58,Reserve Margin,0.10471809939209706,CDR_December2024_Revised.xlsx,Summer Summary,E
+Winter,peak_load,8,Total Winter Load based on normal weather conditions*,82971.0,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,9,less:  Incremental Rooftop PV Forecast,-47.0,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,10,less:  Load Resources providing Responsive Reserves,-1633.0,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,11,less:  Load Resources providing Non-Spinning Reserves,-234.6,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,12,less:  Load Resources providing ERCOT Contingency Reserve Service (ECRS),-167.3,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,13,less:  Controllable Load Resources not included in other adjustments,0.0,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,14,less:  Emergency Response Service (10- and 30-min ramp products),-1553.0,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,15,less:  TDSP Standard Offer Load Management Programs,-41.208,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,16,less:  Distribution Voltage Reduction,-687.0,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,17,"Firm Peak Load, MW",78607.89199999999,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,19,"Energy Efficiency Program Savings Forecast, included in the Base Load Forecast",3208.0,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,24,"Installed Winter-rated Capacity, Thermal",69869.10000000014,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,25,"Hydroelectric, Peak Average Capacity Contribution",515.07,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,26,Switchable Capacity,4016.0,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,27,less: Switchable Capacity Unavailable to ERCOT,-364.0,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,28,Available Mothballed Capacity (Units with reported return probabilities ≥ 75%),0.0,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,29,Capacity from Private Use Networks,4049.0,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,31,Coastal Wind,1623.5087518856458,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,32,Panhandle Wind,1519.0988951142388,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,33,Other Wind,4458.578553351303,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,34,Far West Solar Utility-Scale,135.87872731511226,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,35,West Solar Utility-Scale,112.7965645211,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,36,Other Solar Utility-Scale,348.143321753308,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,37,Energy Storage,4322.940004797341,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,38,RMR Capacity to be under Contract,412.0,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,39,Capacity Pending Retirement,0.0,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,40,"Operational Generation Capacity, Total",91018.11481873818,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,42,Non-Synchronous Ties (Based on average net import contribution during winter 2020/2021 EEA events),719.8,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,45,Thermal Resources,487.5,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,47,Coastal Wind,72.11342325417436,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,48,Panhandle Wind,54.17678772065013,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,49,Other Wind,128.88472939305365,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,50,Far West Solar Utility-Scale,3.799479606,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,51,West Solar Utility-Scale,46.789359434492674,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,52,Other Solar Utility-Scale,133.72629135178585,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,53,Energy Storage,4589.82244942282,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,54,Unconfirmed Planned Retirements,0.0,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,55,"Planned Generation Capacity Total, Net of Unconfirmed Planned Retirements",5516.812520182976,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,56,Total Capacity,97254.72733892116,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_load,58,Reserve Margin,0.2372132729232985,CDR_December2024_Revised.xlsx,Winter Summary,D
+Winter,peak_net_load,8,Total Winter Load based on normal weather conditions*,77095.86370220945,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,9,less:  Incremental Rooftop PV Forecast,-29.3339498136,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,10,less:  Load Resources providing Responsive Reserves,-1540.0,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,11,less:  Load Resources providing Non-Spinning Reserves,-234.6,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,12,less:  Load Resources providing ERCOT Contingency Reserve Service (ECRS),-167.3,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,13,less:  Controllable Load Resources not included in other adjustments,0.0,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,14,less:  Emergency Response Service (10- and 30-min ramp products),-1553.0,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,15,less:  TDSP Standard Offer Load Management Programs,-41.208,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,16,less:  Distribution Voltage Reduction,-687.0,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,17,"Firm Peak Load, MW",72843.42175239584,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,24,"Installed Winter-rated Capacity, Thermal",69869.10000000014,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,25,"Hydroelectric, Peak Average Capacity Contribution",520.7930000000001,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,26,Switchable Capacity,4016.0,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,27,less: Switchable Capacity Unavailable to ERCOT,-364.0,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,28,Available Mothballed Capacity (Units with reported return probabilities ≥ 75%),0.0,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,29,Capacity from Private Use Networks,3851.8137,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,31,Coastal Wind,1623.5087518856458,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,32,Panhandle Wind,1519.0988951142392,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,33,Other Wind,4458.578553351308,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,34,Far West Solar Utility-Scale,135.87872731511212,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,35,West Solar Utility-Scale,112.7965645211,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,36,Other Solar Utility-Scale,348.14332175330816,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,37,Energy Storage,4024.0655494654625,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,38,RMR Capacity to be under Contract,412.0,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,39,Capacity Pending Retirement,0.0,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,40,"Operational Generation Capacity, Total",90527.7770634063,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,42,Non-Synchronous Ties (Based on average net import contribution during winter 2020/2021 EEA events),719.8,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,45,Thermal Resources,487.5,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,47,Coastal Wind,72.11342325417436,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,48,Panhandle Wind,54.17678772065015,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,49,Other Wind,128.88472939305382,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,50,Far West Solar Utility-Scale,3.799479606,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,51,West Solar Utility-Scale,46.789359434492624,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,52,Other Solar Utility-Scale,133.72629135178593,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,53,Energy Storage,4263.580734602141,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,54,Unconfirmed Planned Retirements,0.0,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,55,"Planned Generation Capacity Total, Net of Unconfirmed Planned Retirements",5190.570805362298,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,56,Total Capacity,96438.1478687686,CDR_December2024_Revised.xlsx,Winter Summary,E
+Winter,peak_net_load,58,Reserve Margin,0.3239101836343476,CDR_December2024_Revised.xlsx,Winter Summary,E

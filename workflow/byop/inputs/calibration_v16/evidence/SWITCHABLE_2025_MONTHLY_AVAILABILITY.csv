@@ -1,0 +1,25 @@
+﻿year,month,plant_id,item,mora_positive_seasonal_MW,mora_unavailable_adjustment_MW,mora_net_ercot_MW,model_physical_summer_MW,recommended_aggregate_dispatch_cap_MW,source_file,source_sheet,interpretation
+2025,1,55501,Kiamichi,1400.0,-185.0,1215.0,1224.0,1215.0,MORA_January2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,1,55132,Tenaska Gateway,908.0,-179.0,729.0,826.0,729.0,MORA_January2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,2,55501,Kiamichi,1400.0,-185.0,1215.0,1224.0,1215.0,MORA_February2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,2,55132,Tenaska Gateway,908.0,-179.0,729.0,826.0,729.0,MORA_February2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,3,55501,Kiamichi,1285.0,-159.0,1126.0,1224.0,1126.0,MORA_March2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,3,55132,Tenaska Gateway,908.0,0.0,908.0,826.0,826.0,MORA_March2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,4,55501,Kiamichi,1285.0,-159.0,1126.0,1224.0,1126.0,MORA_April2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,4,55132,Tenaska Gateway,908.0,0.0,908.0,826.0,826.0,MORA_April2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,5,55501,Kiamichi,1285.0,-159.0,1126.0,1224.0,1126.0,MORA_May2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,5,55132,Tenaska Gateway,908.0,0.0,908.0,826.0,826.0,MORA_May2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,6,55501,Kiamichi,1222.0,-613.0,609.0,1224.0,609.0,MORA_June2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,6,55132,Tenaska Gateway,844.0,-135.0,709.0,826.0,709.0,MORA_June2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,7,55501,Kiamichi,1222.0,-613.0,609.0,1224.0,609.0,MORA_July2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,7,55132,Tenaska Gateway,844.0,-135.0,709.0,826.0,709.0,MORA_July2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,8,55501,Kiamichi,1222.0,-613.0,609.0,1224.0,609.0,MORA_August2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,8,55132,Tenaska Gateway,844.0,-288.0,556.0,826.0,556.0,MORA_August2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,9,55501,Kiamichi,1222.0,-613.0,609.0,1224.0,609.0,MORA_September2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,9,55132,Tenaska Gateway,844.0,-288.0,556.0,826.0,556.0,MORA_September2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,10,55501,Kiamichi,1233.0,-149.0,1084.0,1224.0,1084.0,MORA_October2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,10,55132,Tenaska Gateway,908.0,-179.0,729.0,826.0,729.0,MORA_October2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,11,55501,Kiamichi,1233.0,-149.0,1084.0,1224.0,1084.0,MORA_November2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,11,55132,Tenaska Gateway,908.0,-179.0,729.0,826.0,729.0,MORA_November2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,12,55501,Kiamichi,1400.0,-185.0,1215.0,1224.0,1215.0,MORA_December2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages
+2025,12,55132,Tenaska Gateway,908.0,-357.0,551.0,826.0,551.0,MORA_December2025.xlsx,Resource Details,monthly planning availability envelope; not actual hourly outages

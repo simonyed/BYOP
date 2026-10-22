@@ -15,17 +15,13 @@ Project-level documents that span work packages are in `workflow/byop/docs/`.
 
 ## Current work package
 
-**BYOP: C1-X1 network comparison and storage degeneracy validation, work package v1.5 (2026-10-22)**
+**BYOP v1.6: calibration close-out of the common 2025 baseline (2026-10-22)**
 
-- Original text: `BYOP_C1_X1_Storage_Validation_Work_Package_v1.5_2026-10-22.md` (provided by the researcher)
-- Scope: two annual 3 h LP stages only (X1 = calibrated capacity + raw x / r on the 18 uplift lines; then storage-throughput minimisation on X1 with the economic cost and total shed held within tolerance); own config + solve log; formal gates stay NOT_APPROVED; no asset change
-- Archived on 2026-10-22: the v1.4 package (C0 repair / C1 diagnostics) + continuation addendum v1.4.1 and all their reports are in `_completed/BYOP_C0_Repair_C1_Diagnostics_v1.4/`
+- Original package: `BYOP_Calibration_Closeout_v1.6/` (main text, EXECUTOR_PROMPT, DECISION_POLICY.yaml, ASSET_DECISIONS.csv, SOURCE_MANIFEST.json, rebuild_evidence.py; byte-identical)
+- Evidence CSVs (tracked): `workflow/byop/inputs/calibration_v16/evidence/`; official raw files (31 MB, local + L2, SHA checked 16/16): `workflow/data/byop/calibration_closeout_v16/raw/`; full local copy incl. repo_snapshot: `work_pkgs/BYOP_Calibration_Closeout_v1.6/`
+- Scope: X1 network representation (fixed pre-calibration x / r, thermal-limit uplift only), 12 asset decisions, monthly switchable caps (dispatch + ERM credit once), at most 2 annual LPs (LP1 minimum uplift, LP2 reloaded fixed-asset check), zero retries; official PRM bridge and transmission check; formal gates stay NOT_APPROVED
+- Archived on 2026-10-22: v1.5 (C1-X1 / storage validation) and all its reports are in `_completed/BYOP_C1_X1_Storage_Validation_v1.5/`
 
 | File | Content | Status |
 |---|---|---|
-| `BYOP_C1_X1_Storage_Validation_Work_Package_v1.5_2026-10-22.md` | Original work package | Provided by the researcher |
-| `C1_X1_STORAGE_VALIDATION_REPORT.md` | Report: X1 impedance comparison, storage two-stage check, evidence requests, network-representation proposal | Done (stop for researcher review) |
-| `C1_X1_LINE_INPUT_AUDIT.csv`, `C1_X1_STAGE_COMPARISON.csv`, `C1_X1_STORAGE_BY_UNIT.csv`, `C1_X1_SHED_BY_BUS_MONTH.csv`, `C1_X1_LINE_COMPARISON.csv`, `C1_X1_SHED_EVENTS_LABELLED.csv`, `C1_X1_QA.json`, `C1_X1_SOLVE_LOG.csv` | 2 effective LP stages, 0 retries, both exactly optimal | Done |
-| `C0_PRIORITY_ASSET_EVIDENCE_REQUESTS.csv` | 32 asset items for researcher rulings (existing values kept) | Waiting for researcher |
-
-Not done (by design): network representation change, asset revisions, re-calibration, S0-S3 / B3.
+| `BYOP_Calibration_Closeout_v1.6/` | Original work package | Provided by the researcher |

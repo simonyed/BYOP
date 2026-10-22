@@ -1,0 +1,73 @@
+﻿reference_year,resource_type,risk_period,capacity_credit,excel_row,excel_column,source_file
+2025,Wind - Coastal,winter_morning,0.29897770835064,25,B,CDR_December2024_Revised.xlsx
+2025,Wind - Coastal,winter_evening,0.29897770835064,25,C,CDR_December2024_Revised.xlsx
+2025,Wind - Coastal,summer_afternoon,0.3083229259078115,25,D,CDR_December2024_Revised.xlsx
+2025,Wind - Coastal,summer_evening,0.1637307392996102,25,E,CDR_December2024_Revised.xlsx
+2025,Wind - Panhandle,winter_morning,0.32558165697506086,26,B,CDR_December2024_Revised.xlsx
+2025,Wind - Panhandle,winter_evening,0.325581656975061,26,C,CDR_December2024_Revised.xlsx
+2025,Wind - Panhandle,summer_afternoon,0.3357584405013032,26,D,CDR_December2024_Revised.xlsx
+2025,Wind - Panhandle,summer_evening,0.17829999999999926,26,E,CDR_December2024_Revised.xlsx
+2025,Wind - Other,winter_morning,0.1520225635681218,27,B,CDR_December2024_Revised.xlsx
+2025,Wind - Other,winter_evening,0.152022563568122,27,C,CDR_December2024_Revised.xlsx
+2025,Wind - Other,summer_afternoon,0.15677436910566686,27,D,CDR_December2024_Revised.xlsx
+2025,Wind - Other,summer_evening,0.0832529182879374,27,E,CDR_December2024_Revised.xlsx
+2025,Solar - FarWest,winter_morning,0.02593501437530773,28,B,CDR_December2024_Revised.xlsx
+2025,Solar - FarWest,winter_evening,0.0259350143753077,28,C,CDR_December2024_Revised.xlsx
+2025,Solar - FarWest,summer_afternoon,0.3614036115942587,28,D,CDR_December2024_Revised.xlsx
+2025,Solar - FarWest,summer_evening,0.07320000000000072,28,E,CDR_December2024_Revised.xlsx
+2025,Solar - West,winter_morning,0.02593501437530773,29,B,CDR_December2024_Revised.xlsx
+2025,Solar - West,winter_evening,0.0259350143753077,29,C,CDR_December2024_Revised.xlsx
+2025,Solar - West,summer_afternoon,0.3614036115942587,29,D,CDR_December2024_Revised.xlsx
+2025,Solar - West,summer_evening,0.07320000000000072,29,E,CDR_December2024_Revised.xlsx
+2025,Solar - Other,winter_morning,0.01952636217445949,30,B,CDR_December2024_Revised.xlsx
+2025,Solar - Other,winter_evening,0.0195263621744595,30,C,CDR_December2024_Revised.xlsx
+2025,Solar - Other,summer_afternoon,0.2720992442505037,30,D,CDR_December2024_Revised.xlsx
+2025,Solar - Other,summer_evening,0.05511196911196966,30,E,CDR_December2024_Revised.xlsx
+2025,BESS - 1.0 hr,winter_morning,0.26799955916732143,31,B,CDR_December2024_Revised.xlsx
+2025,BESS - 1.0 hr,winter_evening,0.24354410390703646,31,C,CDR_December2024_Revised.xlsx
+2025,BESS - 1.0 hr,summer_afternoon,0.7444441251161301,31,D,CDR_December2024_Revised.xlsx
+2025,BESS - 1.0 hr,summer_evening,0.7444441251161301,31,E,CDR_December2024_Revised.xlsx
+2025,BESS - 2.0 hr,winter_morning,0.6365224939733591,32,B,CDR_December2024_Revised.xlsx
+2025,BESS - 2.0 hr,winter_evening,0.5910965427885507,32,C,CDR_December2024_Revised.xlsx
+2025,BESS - 2.0 hr,summer_afternoon,0.9819545166687702,32,D,CDR_December2024_Revised.xlsx
+2025,BESS - 2.0 hr,summer_evening,0.9819545166687702,32,E,CDR_December2024_Revised.xlsx
+2025,BESS - 3.0 hr,winter_morning,0.906104707968155,33,B,CDR_December2024_Revised.xlsx
+2025,BESS - 3.0 hr,winter_evening,0.9517467388560875,33,C,CDR_December2024_Revised.xlsx
+2025,BESS - 3.0 hr,summer_afternoon,0.9819611122003971,33,D,CDR_December2024_Revised.xlsx
+2025,BESS - 3.0 hr,summer_evening,0.9819611122003971,33,E,CDR_December2024_Revised.xlsx
+2025,BESS - 4.0 hr,winter_morning,0.9828769336530472,34,B,CDR_December2024_Revised.xlsx
+2025,BESS - 4.0 hr,winter_evening,0.9828769336530472,34,C,CDR_December2024_Revised.xlsx
+2025,BESS - 4.0 hr,summer_afternoon,0.9819611122003971,34,D,CDR_December2024_Revised.xlsx
+2025,BESS - 4.0 hr,summer_evening,0.9819611122003971,34,E,CDR_December2024_Revised.xlsx
+2025,BESS - 5.0 hr,winter_morning,0.9828769336530472,35,B,CDR_December2024_Revised.xlsx
+2025,BESS - 5.0 hr,winter_evening,0.9828769336530472,35,C,CDR_December2024_Revised.xlsx
+2025,BESS - 5.0 hr,summer_afternoon,0.9819611122003971,35,D,CDR_December2024_Revised.xlsx
+2025,BESS - 5.0 hr,summer_evening,0.9819611122003971,35,E,CDR_December2024_Revised.xlsx
+2025,BESS - 6.0 hr,winter_morning,0.9828769336530472,36,B,CDR_December2024_Revised.xlsx
+2025,BESS - 6.0 hr,winter_evening,0.9828769336530472,36,C,CDR_December2024_Revised.xlsx
+2025,BESS - 6.0 hr,summer_afternoon,0.9819611122003971,36,D,CDR_December2024_Revised.xlsx
+2025,BESS - 6.0 hr,summer_evening,0.9819611122003971,36,E,CDR_December2024_Revised.xlsx
+2025,BESS - 7.0 hr,winter_morning,0.9828769336530472,37,B,CDR_December2024_Revised.xlsx
+2025,BESS - 7.0 hr,winter_evening,0.9828769336530472,37,C,CDR_December2024_Revised.xlsx
+2025,BESS - 7.0 hr,summer_afternoon,0.9819611122003971,37,D,CDR_December2024_Revised.xlsx
+2025,BESS - 7.0 hr,summer_evening,0.9819611122003971,37,E,CDR_December2024_Revised.xlsx
+2025,BESS - 8.0 hr,winter_morning,0.9828769336530472,38,B,CDR_December2024_Revised.xlsx
+2025,BESS - 8.0 hr,winter_evening,0.9828769336530472,38,C,CDR_December2024_Revised.xlsx
+2025,BESS - 8.0 hr,summer_afternoon,0.9819611122003971,38,D,CDR_December2024_Revised.xlsx
+2025,BESS - 8.0 hr,summer_evening,0.9819611122003971,38,E,CDR_December2024_Revised.xlsx
+2025,BESS - 9.0 hr,winter_morning,0.9828769336530472,39,B,CDR_December2024_Revised.xlsx
+2025,BESS - 9.0 hr,winter_evening,0.9828769336530472,39,C,CDR_December2024_Revised.xlsx
+2025,BESS - 9.0 hr,summer_afternoon,0.9819611122003971,39,D,CDR_December2024_Revised.xlsx
+2025,BESS - 9.0 hr,summer_evening,0.9819611122003971,39,E,CDR_December2024_Revised.xlsx
+2025,BESS - 10.0 hr,winter_morning,0.9828769336530472,40,B,CDR_December2024_Revised.xlsx
+2025,BESS - 10.0 hr,winter_evening,0.9828769336530472,40,C,CDR_December2024_Revised.xlsx
+2025,BESS - 10.0 hr,summer_afternoon,0.9819611122003971,40,D,CDR_December2024_Revised.xlsx
+2025,BESS - 10.0 hr,summer_evening,0.9819611122003971,40,E,CDR_December2024_Revised.xlsx
+2025,BESS - 11.0 hr,winter_morning,0.9828769336530472,41,B,CDR_December2024_Revised.xlsx
+2025,BESS - 11.0 hr,winter_evening,0.9828769336530472,41,C,CDR_December2024_Revised.xlsx
+2025,BESS - 11.0 hr,summer_afternoon,0.9819611122003971,41,D,CDR_December2024_Revised.xlsx
+2025,BESS - 11.0 hr,summer_evening,0.9819611122003971,41,E,CDR_December2024_Revised.xlsx
+2025,BESS - 12.0 hr,winter_morning,0.9828769336530472,42,B,CDR_December2024_Revised.xlsx
+2025,BESS - 12.0 hr,winter_evening,0.9828769336530472,42,C,CDR_December2024_Revised.xlsx
+2025,BESS - 12.0 hr,summer_afternoon,0.9819611122003971,42,D,CDR_December2024_Revised.xlsx
+2025,BESS - 12.0 hr,summer_evening,0.9819611122003971,42,E,CDR_December2024_Revised.xlsx

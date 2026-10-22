@@ -1,0 +1,3 @@
+﻿year,season,risk_period,forecast_normal_load_MW,firm_load_MW,credited_capacity_MW,prm_fraction,source_file,denominator_cell,numerator_cell,prm_cell,scope
+2025,summer,peak_load,91935.24521117896,86716.91224495096,103105.48113816063,0.1889893040346796,CDR_December2024_Revised.xlsx,D17,D56,D58,published Feb 2025 forecast including eligible planned resources; not observed 2025
+2025,summer,peak_net_load,86847.48671301786,82963.96899865835,91651.79815022272,0.10471809939209706,CDR_December2024_Revised.xlsx,E17,E56,E58,published Feb 2025 forecast including eligible planned resources; not observed 2025

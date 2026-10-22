@@ -1,0 +1,24 @@
+﻿plant_id,item,generator_id,sheet,excel_row,plant_name,county,state,technology,status,nameplate_MW,summer_MW,operating_year,operating_month,source_file
+55132,Tenaska Gateway,GTG1,Operable,11435,Tenaska Gateway Generating Station,Rusk,TX,Natural Gas Fired Combined Cycle,OP,183.2,157.0,2001.0,7.0,3_1_Generator_Y2025.xlsx
+55132,Tenaska Gateway,GTG2,Operable,11436,Tenaska Gateway Generating Station,Rusk,TX,Natural Gas Fired Combined Cycle,OP,183.2,150.0,2001.0,7.0,3_1_Generator_Y2025.xlsx
+55132,Tenaska Gateway,GTG3,Operable,11437,Tenaska Gateway Generating Station,Rusk,TX,Natural Gas Fired Combined Cycle,OP,183.2,138.0,2001.0,7.0,3_1_Generator_Y2025.xlsx
+55132,Tenaska Gateway,STG1,Operable,11438,Tenaska Gateway Generating Station,Rusk,TX,Natural Gas Fired Combined Cycle,OP,390.0,381.0,2001.0,7.0,3_1_Generator_Y2025.xlsx
+55501,Kiamichi,CTG1,Operable,12182,Kiamichi Energy Facility,Pittsburg,OK,Natural Gas Fired Combined Cycle,OP,183.9,148.0,2003.0,4.0,3_1_Generator_Y2025.xlsx
+55501,Kiamichi,CTG2,Operable,12183,Kiamichi Energy Facility,Pittsburg,OK,Natural Gas Fired Combined Cycle,OP,183.9,153.0,2003.0,4.0,3_1_Generator_Y2025.xlsx
+55501,Kiamichi,CTG3,Operable,12184,Kiamichi Energy Facility,Pittsburg,OK,Natural Gas Fired Combined Cycle,OP,183.9,150.0,2003.0,4.0,3_1_Generator_Y2025.xlsx
+55501,Kiamichi,CTG4,Operable,12185,Kiamichi Energy Facility,Pittsburg,OK,Natural Gas Fired Combined Cycle,OP,183.9,152.0,2003.0,4.0,3_1_Generator_Y2025.xlsx
+55501,Kiamichi,STG1,Operable,12186,Kiamichi Energy Facility,Pittsburg,OK,Natural Gas Fired Combined Cycle,OP,317.2,310.0,2003.0,4.0,3_1_Generator_Y2025.xlsx
+55501,Kiamichi,STG2,Operable,12187,Kiamichi Energy Facility,Pittsburg,OK,Natural Gas Fired Combined Cycle,OP,317.2,311.0,2003.0,4.0,3_1_Generator_Y2025.xlsx
+56981,Pyron,1,Operable,14236,Pyron Wind Farm LLC Hybrid,Fisher,TX,Onshore Wind Turbine,OP,249.0,249.0,2009.0,2.0,3_1_Generator_Y2025.xlsx
+56981,Pyron,PYRBT,Operable,14237,Pyron Wind Farm LLC Hybrid,Fisher,TX,Batteries,OP,9.9,9.9,2018.0,1.0,3_1_Generator_Y2025.xlsx
+64202,Big Star,BGSTS,Operable,22604,"Big Star Solar, LLC (Hybrid)",Bastrop,TX,Solar Photovoltaic,OP,200.0,200.0,2025.0,3.0,3_1_Generator_Y2025.xlsx
+66919,La Casa,5309,Operable,25687,La Casa Wind,Stephens,TX,Onshore Wind Turbine,OP,150.0,150.0,2025.0,12.0,3_1_Generator_Y2025.xlsx
+67123,Fagus,MISII,Operable,25879,Fagus Solar Park,Childress,TX,Solar Photovoltaic,OP,331.6,331.6,2025.0,12.0,3_1_Generator_Y2025.xlsx
+68200,Sequoia 1,SEQ1,Operable,26758,Sequoia 1,Eastland,TX,Solar Photovoltaic,OP,401.4,401.4,2025.0,12.0,3_1_Generator_Y2025.xlsx
+68458,Buzios / Roaring Springs,5840,Operable,26888,"Roaring Springs, LLC",Motley,TX,Solar Photovoltaic,OP,250.0,250.0,2025.0,10.0,3_1_Generator_Y2025.xlsx
+68998,Long Point,GEN1,Operable,27251,Long Point Solar,Brazoria,TX,Solar Photovoltaic,OP,120.0,120.0,2025.0,12.0,3_1_Generator_Y2025.xlsx
+64202,Big Star,BGSTB,Proposed,424,"Big Star Solar, LLC (Hybrid)",Bastrop,TX,Batteries,TS,80.0,80.0,,,3_1_Generator_Y2025.xlsx
+66342,Gaia,GAIAB,Proposed,620,Gaia Hybrid,Navarro,TX,Batteries,V,76.8,76.8,,,3_1_Generator_Y2025.xlsx
+66342,Gaia,GAIAS,Proposed,621,Gaia Hybrid,Navarro,TX,Solar Photovoltaic,V,152.7,152.7,,,3_1_Generator_Y2025.xlsx
+66913,Myrtle Storage,MYRST,Proposed,769,Myrtle Storage,Brazoria,TX,Batteries,TS,150.0,150.0,,,3_1_Generator_Y2025.xlsx
+66916,Danish Fields Storage,DANST,Proposed,772,Danish Fields Storage,Wharton,TX,Batteries,TS,150.0,150.0,,,3_1_Generator_Y2025.xlsx

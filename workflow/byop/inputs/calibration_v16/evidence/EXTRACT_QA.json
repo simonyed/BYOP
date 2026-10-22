@@ -1,0 +1,11 @@
+{
+  "monthly_plant_rows": 24,
+  "eia_priority_rows": 23,
+  "elcc_rows": 72,
+  "official_prm_formula_checks": "PASS",
+  "august_2025_net_MW": {
+    "Kiamichi": 609,
+    "Gateway": 556
+  },
+  "solver_calls": 0
+}

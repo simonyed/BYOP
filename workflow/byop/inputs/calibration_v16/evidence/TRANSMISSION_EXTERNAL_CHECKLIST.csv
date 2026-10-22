@@ -1,0 +1,11 @@
+rank,official_constraint,voltage_kV,congestion_rent_USD_million,observation_window,required_model_comparison,resolution_status_before_executor_check,source_pdf_page
+1,Koch Tap - Vealmoor,138,211,2024-10_to_2025-09,West-area congestion only; no invented individual-line match,LOCAL_VOLTAGE_NOT_DIRECTLY_RESOLVED,5
+2,Hargrove - Twin Buttes,138,176,2024-10_to_2025-09,West-area congestion only; no invented individual-line match,LOCAL_VOLTAGE_NOT_DIRECTLY_RESOLVED,5
+3,Odessa EHV Switch - Yarbrough Sub,138,151,2024-10_to_2025-09,Outage-driven local constraint; baseline has no matching outage sequence,OUTAGE_AND_LOCAL_RESOLUTION_LIMIT,5
+4,West Texas Export Interface,,127,2024-10_to_2025-09,Map boundary then report signed West export flow and binding hours; Far West import shortage is not the same phenomenon,REGIONAL_INTERFACE_CHECK_REQUIRED,5
+5,Longshore Switch - Consavvy Switch,345,102,2024-10_to_2025-09,Check coarse corridor inclusion and adjacent buses; never identify a clustered TL by name alone,CORRIDOR_MAPPING_REQUIRED,5
+6,Laredo VFT North - Las Cruces,138,64,2024-10_to_2025-09,South-area congestion only; no invented individual-line match,LOCAL_VOLTAGE_NOT_DIRECTLY_RESOLVED,5
+7,Bell County - Salado Switch,138,64,2024-10_to_2025-09,Central-area congestion only; no invented individual-line match,LOCAL_VOLTAGE_NOT_DIRECTLY_RESOLVED,5
+8,Knapp - Scurry Chevron,138,57,2024-10_to_2025-09,West-area congestion only; no invented individual-line match,LOCAL_VOLTAGE_NOT_DIRECTLY_RESOLVED,5
+9,Haine Drive - La Palma,138,54,2024-10_to_2025-09,Outage-driven local constraint; baseline has no matching outage sequence,OUTAGE_AND_LOCAL_RESOLUTION_LIMIT,5
+10,Polecat Creek Switch - Wrage Ranch Pod,138,52,2024-10_to_2025-09,West-area congestion only; no invented individual-line match,LOCAL_VOLTAGE_NOT_DIRECTLY_RESOLVED,5

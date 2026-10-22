@@ -1,0 +1,21 @@
+﻿plant_id,item,season_label,positive_seasonal_MW,unavailable_adjustment_MW,net_ercot_MW,source_file,source_sheet,scope
+55501,Kiamichi,2026,1222.0,-764.0,458.0,CDR_December2025.xlsx,Unit Details,prospective seasonal ERCOT availability; not physical asset deletion
+55501,Kiamichi,2027,1222.0,-764.0,458.0,CDR_December2025.xlsx,Unit Details,prospective seasonal ERCOT availability; not physical asset deletion
+55501,Kiamichi,2028,1222.0,-613.0,609.0,CDR_December2025.xlsx,Unit Details,prospective seasonal ERCOT availability; not physical asset deletion
+55501,Kiamichi,2029,1222.0,-613.0,609.0,CDR_December2025.xlsx,Unit Details,prospective seasonal ERCOT availability; not physical asset deletion
+55501,Kiamichi,2030,1222.0,-613.0,609.0,CDR_December2025.xlsx,Unit Details,prospective seasonal ERCOT availability; not physical asset deletion
+55501,Kiamichi,2026/2027,1400.0,-185.0,1215.0,CDR_December2025.xlsx,Unit Details,prospective seasonal ERCOT availability; not physical asset deletion
+55501,Kiamichi,2027/2028,1400.0,-185.0,1215.0,CDR_December2025.xlsx,Unit Details,prospective seasonal ERCOT availability; not physical asset deletion
+55501,Kiamichi,2028/2029,1400.0,-700.0,700.0,CDR_December2025.xlsx,Unit Details,prospective seasonal ERCOT availability; not physical asset deletion
+55501,Kiamichi,2029/2030,1400.0,-700.0,700.0,CDR_December2025.xlsx,Unit Details,prospective seasonal ERCOT availability; not physical asset deletion
+55501,Kiamichi,2030/2031,1400.0,-700.0,700.0,CDR_December2025.xlsx,Unit Details,prospective seasonal ERCOT availability; not physical asset deletion
+55132,Tenaska Gateway,2026,844.0,-688.0,156.0,CDR_December2025.xlsx,Unit Details,prospective seasonal ERCOT availability; not physical asset deletion
+55132,Tenaska Gateway,2027,844.0,-844.0,0.0,CDR_December2025.xlsx,Unit Details,prospective seasonal ERCOT availability; not physical asset deletion
+55132,Tenaska Gateway,2028,844.0,-844.0,0.0,CDR_December2025.xlsx,Unit Details,prospective seasonal ERCOT availability; not physical asset deletion
+55132,Tenaska Gateway,2029,844.0,-844.0,0.0,CDR_December2025.xlsx,Unit Details,prospective seasonal ERCOT availability; not physical asset deletion
+55132,Tenaska Gateway,2030,844.0,-535.0,309.0,CDR_December2025.xlsx,Unit Details,prospective seasonal ERCOT availability; not physical asset deletion
+55132,Tenaska Gateway,2026/2027,908.0,-746.0,162.0,CDR_December2025.xlsx,Unit Details,prospective seasonal ERCOT availability; not physical asset deletion
+55132,Tenaska Gateway,2027/2028,908.0,-908.0,0.0,CDR_December2025.xlsx,Unit Details,prospective seasonal ERCOT availability; not physical asset deletion
+55132,Tenaska Gateway,2028/2029,908.0,-908.0,0.0,CDR_December2025.xlsx,Unit Details,prospective seasonal ERCOT availability; not physical asset deletion
+55132,Tenaska Gateway,2029/2030,908.0,-908.0,0.0,CDR_December2025.xlsx,Unit Details,prospective seasonal ERCOT availability; not physical asset deletion
+55132,Tenaska Gateway,2030/2031,908.0,-568.0,340.0,CDR_December2025.xlsx,Unit Details,prospective seasonal ERCOT availability; not physical asset deletion
