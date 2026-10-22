@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "solver_calls": 0,
+  "hourly_rows": 8760,
+  "three_hour_rows": 2920,
+  "load_fuel_hour_keys_matched": 8760,
+  "daily_energy_QA_rows": 730,
+  "max_daily_fuel_MWh_abs_difference": 1.0000658221542835e-06,
+  "native_load_TWh": 488.233578542299,
+  "wind_actual_TWh": 114.921474000072,
+  "solar_actual_TWh": 67.814027270681,
+  "spring_transition_hours": 23,
+  "autumn_transition_hours": 25,
+  "mora_percentile_rows": 9647,
+  "mora_outage_quantile_rows": 143,
+  "future_elcc_rows": 720,
+  "supplemental_operational_years": [
+    2023,
+    2024,
+    2025
+  ],
+  "supplemental_operational_rows": 26304,
+  "operational_vs_native_load_MAE_MW": 710.4489023826934,
+  "operational_vs_settled_wind_MAE_MW": 32.042028736718684,
+  "operational_vs_settled_solar_MAE_MW": 42.2769936969214,
+  "negative_actual_solar_hours": 0,
+  "negative_actual_wind_hours": 0,
+  "actual_generation_is_uncurtailed_availability": false,
+  "UTC_conversion_claimed": false
+}

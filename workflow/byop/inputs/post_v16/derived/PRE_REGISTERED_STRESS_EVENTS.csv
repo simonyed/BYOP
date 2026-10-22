@@ -1,0 +1,7 @@
+﻿event_id,role,selection_metric,date,source_HE_label,source_row_0based,native_load_MW,wind_actual_MW,solar_actual_MW,observed_residual_load_MW,window_source_row_start,window_source_row_end,window_hours
+SUMMER_LOAD_PEAK,fit_reference_for_future_parameter_fit_only,native_load_MW,2025-08-18,08/18/2025 18:00,5512,83679.001697,14508.858638,16961.050819,52209.09224,5471,5542,72
+SUMMER_OBSERVED_NET_PEAK,same_calendar_event_as_gross_peak_not_independent,observed_residual_load_MW,2025-08-18,08/18/2025 21:00,5515,78502.097729,9746.923915,56.255616,68698.91819800001,5471,5542,72
+WINTER_LOAD_PEAK,validation_window_not_whole_model_holdout,native_load_MW,2025-02-20,02/20/2025 08:00,1207,80524.699422,9407.734201,1606.7072660000001,69510.25795500001,1176,1247,72
+SUMMER_UPWARD_NET_RAMP,optional_diagnostic,observed_residual_ramp,2025-09-30,09/30/2025 19:00,6545,71268.807525,3240.645291,8013.040826,60015.121408000006,6503,6574,72
+SUMMER_LOW_WIND_HIGH_LOAD,optional_diagnostic,min observed wind among summer top-decile loads,2025-08-19,08/19/2025 13:00,5531,77409.230409,339.420516,24863.124562,52206.685331,5495,5566,72
+SUMMER_NET_PEAK_DISJOINT_DAY,holdout_for_future_parameter_fit_only,max observed residual outside gross-peak +/-2 days,2025-07-30,07/30/2025 21:00,5059,75406.132898,7223.209728,455.963788,67726.959382,5015,5086,72

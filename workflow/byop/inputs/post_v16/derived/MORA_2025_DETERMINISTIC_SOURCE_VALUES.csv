@@ -1,0 +1,327 @@
+﻿month,label,value,source_file,source_sheet,source_excel_row
+1,Load Based on Average Weather [1],69560.0,MORA_January2025.xlsx,Monthly Outlook,51
+1,Large Load Adjustment [2],1985.0,MORA_January2025.xlsx,Monthly Outlook,52
+1,Total Load,71545.0,MORA_January2025.xlsx,Monthly Outlook,53
+1,Dispatchable [3],83234.7598121009,MORA_January2025.xlsx,Monthly Outlook,55
+1,Thermal,77026.09638314504,MORA_January2025.xlsx,Monthly Outlook,56
+1,Energy Storage [4],5804.5094999999965,MORA_January2025.xlsx,Monthly Outlook,57
+1,Hydro,404.15392895586655,MORA_January2025.xlsx,Monthly Outlook,58
+1,Expected Thermal Outages,8543.0,MORA_January2025.xlsx,Monthly Outlook,59
+1,Planned,331.0,MORA_January2025.xlsx,Monthly Outlook,60
+1,Unplanned,8212.0,MORA_January2025.xlsx,Monthly Outlook,61
+1,Total Available Dispatchable,74691.7598121009,MORA_January2025.xlsx,Monthly Outlook,62
+1,Wind,15697.000000000007,MORA_January2025.xlsx,Monthly Outlook,64
+1,Solar,15.000207282526084,MORA_January2025.xlsx,Monthly Outlook,65
+1,Total Available Non-Dispatchable,15712.000207282534,MORA_January2025.xlsx,Monthly Outlook,66
+1,"Non-Synchronous Ties, Net Imports",719.8,MORA_January2025.xlsx,Monthly Outlook,68
+1,Total Available Resources (Normal Conditions),91123.56001938344,MORA_January2025.xlsx,Monthly Outlook,70
+1,Emergency Response Service,1336.0,MORA_January2025.xlsx,Monthly Outlook,74
+1,Distribution Voltage Reduction,551.0,MORA_January2025.xlsx,Monthly Outlook,75
+1,Large Load Curtailment,1886.0,MORA_January2025.xlsx,Monthly Outlook,76
+1,Total Available prior to an Energy Emergency Alert,3773.0,MORA_January2025.xlsx,Monthly Outlook,77
+1,LRs providing Responsive Reserves,1765.6200000000001,MORA_January2025.xlsx,Monthly Outlook,79
+1,LRs providing Non-spin,30.6,MORA_January2025.xlsx,Monthly Outlook,80
+1,LRs providing ECRS,306.0,MORA_January2025.xlsx,Monthly Outlook,81
+1,TDSP Load Management Programs,41.0,MORA_January2025.xlsx,Monthly Outlook,82
+1,Total Available during an Energy Emergency Alert,2143.2200000000003,MORA_January2025.xlsx,Monthly Outlook,83
+1,Total Emergency Resources,5916.22,MORA_January2025.xlsx,Monthly Outlook,84
+1,"Capacity Available for Operating Reserves, Normal Conditions",23351.56001938344,MORA_January2025.xlsx,Monthly Outlook,86
+1,"Capacity Available for Operating Reserves, Emergency Conditions",25494.78001938344,MORA_January2025.xlsx,Monthly Outlook,87
+2,Load Based on Average Weather [1],71576.0,MORA_February2025.xlsx,Monthly Outlook,53
+2,Large Flexible Load Adjustment [2],3428.2795061624647,MORA_February2025.xlsx,Monthly Outlook,54
+2,Total Load,75004.27950616246,MORA_February2025.xlsx,Monthly Outlook,55
+2,Dispatchable [3],83141.41700904898,MORA_February2025.xlsx,Monthly Outlook,57
+2,Thermal,77018.7,MORA_February2025.xlsx,Monthly Outlook,58
+2,Energy Storage [4],5696.864999999996,MORA_February2025.xlsx,Monthly Outlook,59
+2,Hydro,425.85200904899347,MORA_February2025.xlsx,Monthly Outlook,60
+2,Expected Thermal Outages,7862.0,MORA_February2025.xlsx,Monthly Outlook,61
+2,Planned,789.0,MORA_February2025.xlsx,Monthly Outlook,62
+2,Unplanned,7073.0,MORA_February2025.xlsx,Monthly Outlook,63
+2,Total Available Dispatchable,75279.41700904898,MORA_February2025.xlsx,Monthly Outlook,64
+2,Wind,15506.157325487033,MORA_February2025.xlsx,Monthly Outlook,66
+2,Solar,114.91317850953217,MORA_February2025.xlsx,Monthly Outlook,67
+2,Total Available Non-Dispatchable,15621.070503996565,MORA_February2025.xlsx,Monthly Outlook,68
+2,"Non-Synchronous Ties, Net Imports",365.79999999999995,MORA_February2025.xlsx,Monthly Outlook,70
+2,Total Available Resources (Normal Conditions),91266.28751304555,MORA_February2025.xlsx,Monthly Outlook,72
+2,Emergency Response Service,1478.82048,MORA_February2025.xlsx,Monthly Outlook,76
+2,Distribution Voltage Reduction,551.0,MORA_February2025.xlsx,Monthly Outlook,77
+2,Large Load Curtailment,3257.0,MORA_February2025.xlsx,Monthly Outlook,78
+2,Total Available prior to an Energy Emergency Alert,5286.82048,MORA_February2025.xlsx,Monthly Outlook,79
+2,LRs providing Responsive Reserves,1737.06,MORA_February2025.xlsx,Monthly Outlook,81
+2,LRs providing Non-spin,41.0,MORA_February2025.xlsx,Monthly Outlook,82
+2,LRs providing ECRS,250.0,MORA_February2025.xlsx,Monthly Outlook,83
+2,TDSP Load Management Programs,41.0,MORA_February2025.xlsx,Monthly Outlook,84
+2,Total Available during an Energy Emergency Alert,2069.06,MORA_February2025.xlsx,Monthly Outlook,85
+2,Total Emergency Resources,7355.88048,MORA_February2025.xlsx,Monthly Outlook,86
+2,"Capacity Available for Operating Reserves, Normal Conditions",21548.82848688309,MORA_February2025.xlsx,Monthly Outlook,88
+2,"Capacity Available for Operating Reserves, Emergency Conditions",23617.88848688309,MORA_February2025.xlsx,Monthly Outlook,89
+3,Load Based on Average Weather [1],53574.418641641285,MORA_March2025.xlsx,Monthly Outlook,52
+3,Large Flexible Load Adjustment [2],2934.0,MORA_March2025.xlsx,Monthly Outlook,53
+3,Total Load,56508.418641641285,MORA_March2025.xlsx,Monthly Outlook,54
+3,Dispatchable [3],77487.43442899175,MORA_March2025.xlsx,Monthly Outlook,56
+3,Thermal,74177.6,MORA_March2025.xlsx,Monthly Outlook,57
+3,Energy Storage [4],2889.252799999998,MORA_March2025.xlsx,Monthly Outlook,58
+3,Hydro,420.5816289917474,MORA_March2025.xlsx,Monthly Outlook,59
+3,Expected Thermal Outages,20951.0,MORA_March2025.xlsx,Monthly Outlook,60
+3,Planned,6716.0,MORA_March2025.xlsx,Monthly Outlook,61
+3,Unplanned,14235.0,MORA_March2025.xlsx,Monthly Outlook,62
+3,Total Available Dispatchable,56536.43442899175,MORA_March2025.xlsx,Monthly Outlook,63
+3,Wind,18015.77272612588,MORA_March2025.xlsx,Monthly Outlook,65
+3,Solar,904.0062256809338,MORA_March2025.xlsx,Monthly Outlook,66
+3,Total Available Non-Dispatchable,18919.778951806813,MORA_March2025.xlsx,Monthly Outlook,67
+3,"Non-Synchronous Ties, Net Imports",219.6,MORA_March2025.xlsx,Monthly Outlook,69
+3,Total Available Resources (Normal Conditions),75675.81338079857,MORA_March2025.xlsx,Monthly Outlook,71
+3,Emergency Response Service,1474.44264,MORA_March2025.xlsx,Monthly Outlook,75
+3,Distribution Voltage Reduction,544.0,MORA_March2025.xlsx,Monthly Outlook,76
+3,Large Load Curtailment,2779.0,MORA_March2025.xlsx,Monthly Outlook,77
+3,Total Available prior to an Energy Emergency Alert,4797.44264,MORA_March2025.xlsx,Monthly Outlook,78
+3,LRs providing Responsive Reserves,1914.54,MORA_March2025.xlsx,Monthly Outlook,80
+3,LRs providing Non-spin,51.0,MORA_March2025.xlsx,Monthly Outlook,81
+3,LRs providing ECRS,255.0,MORA_March2025.xlsx,Monthly Outlook,82
+3,TDSP Load Management Programs,0.0,MORA_March2025.xlsx,Monthly Outlook,83
+3,Total Available during an Energy Emergency Alert,2220.54,MORA_March2025.xlsx,Monthly Outlook,84
+3,Total Emergency Resources,7017.98264,MORA_March2025.xlsx,Monthly Outlook,85
+3,"Capacity Available for Operating Reserves, Normal Conditions",23964.83737915729,MORA_March2025.xlsx,Monthly Outlook,87
+3,"Capacity Available for Operating Reserves, Emergency Conditions",26185.37737915729,MORA_March2025.xlsx,Monthly Outlook,88
+4,Load Based on Average Weather [1],54376.077611116816,MORA_April2025.xlsx,Monthly Outlook,52
+4,Large Flexible Load Adjustment [2],2271.42,MORA_April2025.xlsx,Monthly Outlook,53
+4,Total Load,56647.497611116814,MORA_April2025.xlsx,Monthly Outlook,54
+4,Dispatchable [3],81401.31077449667,MORA_April2025.xlsx,Monthly Outlook,56
+4,Thermal,74258.0,MORA_April2025.xlsx,Monthly Outlook,57
+4,Energy Storage [4],6744.009582549748,MORA_April2025.xlsx,Monthly Outlook,58
+4,Hydro,399.30119194692895,MORA_April2025.xlsx,Monthly Outlook,59
+4,Expected Thermal Outages,23625.984126984127,MORA_April2025.xlsx,Monthly Outlook,60
+4,Planned,6322.6984126984125,MORA_April2025.xlsx,Monthly Outlook,61
+4,Unplanned,17303.285714285714,MORA_April2025.xlsx,Monthly Outlook,62
+4,Total Available Dispatchable,57775.32664751254,MORA_April2025.xlsx,Monthly Outlook,63
+4,Wind,19960.92480338716,MORA_April2025.xlsx,Monthly Outlook,65
+4,Solar,3509.4365843367214,MORA_April2025.xlsx,Monthly Outlook,66
+4,Total Available Non-Dispatchable,23470.361387723882,MORA_April2025.xlsx,Monthly Outlook,67
+4,"Non-Synchronous Ties, Net Imports",306.8,MORA_April2025.xlsx,Monthly Outlook,69
+4,Total Available Resources (Normal Conditions),81552.48803523643,MORA_April2025.xlsx,Monthly Outlook,71
+4,Emergency Response Service,1474.44264,MORA_April2025.xlsx,Monthly Outlook,75
+4,Distribution Voltage Reduction,551.0,MORA_April2025.xlsx,Monthly Outlook,76
+4,Large Load Curtailment,2157.849,MORA_April2025.xlsx,Monthly Outlook,77
+4,Total Available prior to an Energy Emergency Alert,4183.29164,MORA_April2025.xlsx,Monthly Outlook,78
+4,LRs providing Responsive Reserves,1649.0,MORA_April2025.xlsx,Monthly Outlook,80
+4,LRs providing Non-spin,61.0,MORA_April2025.xlsx,Monthly Outlook,81
+4,LRs providing ECRS,255.0,MORA_April2025.xlsx,Monthly Outlook,82
+4,TDSP Load Management Programs,0.0,MORA_April2025.xlsx,Monthly Outlook,83
+4,Total Available during an Energy Emergency Alert,1965.0,MORA_April2025.xlsx,Monthly Outlook,84
+4,Total Emergency Resources,6148.29164,MORA_April2025.xlsx,Monthly Outlook,85
+4,"Capacity Available for Operating Reserves, Normal Conditions",29088.282064119612,MORA_April2025.xlsx,Monthly Outlook,87
+4,"Capacity Available for Operating Reserves, Emergency Conditions",31053.282064119612,MORA_April2025.xlsx,Monthly Outlook,88
+5,Load Based on Average Weather [1],62332.215116380255,MORA_May2025.xlsx,Monthly Outlook,53
+5,Large Flexible Load Adjustment [2],219.0,MORA_May2025.xlsx,Monthly Outlook,54
+5,Total Load,62551.215116380255,MORA_May2025.xlsx,Monthly Outlook,55
+5,Dispatchable [3],80655.92059243174,MORA_May2025.xlsx,Monthly Outlook,57
+5,Thermal,74894.16426842473,MORA_May2025.xlsx,Monthly Outlook,58
+5,Energy Storage [4],5332.807662100937,MORA_May2025.xlsx,Monthly Outlook,59
+5,Hydro,428.9486619060587,MORA_May2025.xlsx,Monthly Outlook,60
+5,Expected Thermal Outages,16885.0,MORA_May2025.xlsx,Monthly Outlook,61
+5,Planned,3055.0,MORA_May2025.xlsx,Monthly Outlook,62
+5,Unplanned,13830.0,MORA_May2025.xlsx,Monthly Outlook,63
+5,Total Available Dispatchable,63770.920592431736,MORA_May2025.xlsx,Monthly Outlook,64
+5,Wind,18857.000000000015,MORA_May2025.xlsx,Monthly Outlook,66
+5,Solar,25.999999999999993,MORA_May2025.xlsx,Monthly Outlook,67
+5,Total Available Non-Dispatchable,18883.000000000015,MORA_May2025.xlsx,Monthly Outlook,68
+5,"Non-Synchronous Ties, Net Imports",660.8,MORA_May2025.xlsx,Monthly Outlook,70
+5,Total Available Resources (Normal Conditions),83314.72059243175,MORA_May2025.xlsx,Monthly Outlook,72
+5,Emergency Response Service,1459.22832,MORA_May2025.xlsx,Monthly Outlook,76
+5,Distribution Voltage Reduction,551.0,MORA_May2025.xlsx,Monthly Outlook,77
+5,Large Load Curtailment,58.53399999999999,MORA_May2025.xlsx,Monthly Outlook,78
+5,Total Available prior to an Energy Emergency Alert,2068.76232,MORA_May2025.xlsx,Monthly Outlook,79
+5,LRs providing Responsive Reserves,1216.8600000000001,MORA_May2025.xlsx,Monthly Outlook,81
+5,LRs providing Non-spin,61.2,MORA_May2025.xlsx,Monthly Outlook,82
+5,LRs providing ECRS,255.0,MORA_May2025.xlsx,Monthly Outlook,83
+5,TDSP Load Management Programs,0.0,MORA_May2025.xlsx,Monthly Outlook,84
+5,Total Available during an Energy Emergency Alert,1533.0600000000002,MORA_May2025.xlsx,Monthly Outlook,85
+5,Total Emergency Resources,3601.82232,MORA_May2025.xlsx,Monthly Outlook,86
+5,"Capacity Available for Operating Reserves, Normal Conditions",22832.2677960515,MORA_May2025.xlsx,Monthly Outlook,88
+5,"Capacity Available for Operating Reserves, Emergency Conditions",24365.3277960515,MORA_May2025.xlsx,Monthly Outlook,89
+6,Load Based on Average Weather [1],73499.0,MORA_June2025.xlsx,Monthly Outlook,53
+6,Large Flexible Load Adjustment [2],389.0,MORA_June2025.xlsx,Monthly Outlook,54
+6,Total Load,73888.0,MORA_June2025.xlsx,Monthly Outlook,55
+6,Dispatchable [3],79770.36069787329,MORA_June2025.xlsx,Monthly Outlook,57
+6,Thermal,71559.21237772517,MORA_June2025.xlsx,Monthly Outlook,58
+6,Energy Storage [4],7759.626776683888,MORA_June2025.xlsx,Monthly Outlook,59
+6,Hydro,451.5215434642369,MORA_June2025.xlsx,Monthly Outlook,60
+6,Expected Thermal Outages,8018.0,MORA_June2025.xlsx,Monthly Outlook,61
+6,Planned,152.0,MORA_June2025.xlsx,Monthly Outlook,62
+6,Unplanned,7866.0,MORA_June2025.xlsx,Monthly Outlook,63
+6,Total Available Dispatchable,71752.36069787329,MORA_June2025.xlsx,Monthly Outlook,64
+6,Wind,18253.252574266495,MORA_June2025.xlsx,Monthly Outlook,66
+6,Solar,543.2439244666705,MORA_June2025.xlsx,Monthly Outlook,67
+6,Total Available Non-Dispatchable,18796.496498733166,MORA_June2025.xlsx,Monthly Outlook,68
+6,"Non-Synchronous Ties, Net Imports",660.8,MORA_June2025.xlsx,Monthly Outlook,70
+6,Total Available Resources (Normal Conditions),91209.65719660645,MORA_June2025.xlsx,Monthly Outlook,72
+6,Emergency Response Service,1729.57014,MORA_June2025.xlsx,Monthly Outlook,76
+6,Distribution Voltage Reduction,573.0,MORA_June2025.xlsx,Monthly Outlook,77
+6,Large Load Curtailment,227.0,MORA_June2025.xlsx,Monthly Outlook,78
+6,Total Available prior to an Energy Emergency Alert,2529.57014,MORA_June2025.xlsx,Monthly Outlook,79
+6,LRs providing Responsive Reserves,960.0,MORA_June2025.xlsx,Monthly Outlook,81
+6,LRs providing Non-spin,62.0,MORA_June2025.xlsx,Monthly Outlook,82
+6,LRs providing ECRS,257.0,MORA_June2025.xlsx,Monthly Outlook,83
+6,TDSP Load Management Programs,333.0,MORA_June2025.xlsx,Monthly Outlook,84
+6,Total Available during an Energy Emergency Alert,1612.0,MORA_June2025.xlsx,Monthly Outlook,85
+6,Total Emergency Resources,4141.57014,MORA_June2025.xlsx,Monthly Outlook,86
+6,"Capacity Available for Operating Reserves, Normal Conditions",19851.22733660645,MORA_June2025.xlsx,Monthly Outlook,88
+6,"Capacity Available for Operating Reserves, Emergency Conditions",21463.22733660645,MORA_June2025.xlsx,Monthly Outlook,89
+7,Load Based on Average Weather [1],72677.3960950326,MORA_July2025.xlsx,Monthly Outlook,54
+7,Dispatchable [2],80723.11489780634,MORA_July2025.xlsx,Monthly Outlook,56
+7,Thermal,72038.45533732556,MORA_July2025.xlsx,Monthly Outlook,57
+7,Energy Storage [3],8241.111881739831,MORA_July2025.xlsx,Monthly Outlook,58
+7,Hydro,443.54767874095046,MORA_July2025.xlsx,Monthly Outlook,59
+7,Expected Thermal Outages,5843.0,MORA_July2025.xlsx,Monthly Outlook,60
+7,Planned,130.0,MORA_July2025.xlsx,Monthly Outlook,61
+7,Unplanned,5713.0,MORA_July2025.xlsx,Monthly Outlook,62
+7,Total Available Dispatchable,74880.11489780634,MORA_July2025.xlsx,Monthly Outlook,63
+7,Wind,15552.804567832647,MORA_July2025.xlsx,Monthly Outlook,65
+7,Solar,528.0000218919998,MORA_July2025.xlsx,Monthly Outlook,66
+7,Total Available Non-Dispatchable,16080.804589724647,MORA_July2025.xlsx,Monthly Outlook,67
+7,"Non-Synchronous Ties, Net Imports",660.8,MORA_July2025.xlsx,Monthly Outlook,69
+7,Total Available Resources (Normal Conditions),91621.719487531,MORA_July2025.xlsx,Monthly Outlook,71
+7,Emergency Response Service,1695.657,MORA_July2025.xlsx,Monthly Outlook,75
+7,Distribution Voltage Reduction,553.906493981791,MORA_July2025.xlsx,Monthly Outlook,76
+7,Large Load Curtailment,540.589625380079,MORA_July2025.xlsx,Monthly Outlook,77
+7,Total Available prior to an Energy Emergency Alert,2790.1531193618703,MORA_July2025.xlsx,Monthly Outlook,78
+7,LRs providing Responsive Reserves,935.0,MORA_July2025.xlsx,Monthly Outlook,80
+7,LRs providing Non-spin,75.0,MORA_July2025.xlsx,Monthly Outlook,81
+7,LRs providing ECRS,250.0,MORA_July2025.xlsx,Monthly Outlook,82
+7,TDSP Load Management Programs,302.693,MORA_July2025.xlsx,Monthly Outlook,83
+7,Total Available during an Energy Emergency Alert,1562.693,MORA_July2025.xlsx,Monthly Outlook,84
+7,Total Emergency Resources,4352.8461193618705,MORA_July2025.xlsx,Monthly Outlook,85
+7,"Capacity Available for Operating Reserves, Normal Conditions",94411.87260689287,MORA_July2025.xlsx,Monthly Outlook,87
+7,"Capacity Available for Operating Reserves, Emergency Conditions",95974.56560689287,MORA_July2025.xlsx,Monthly Outlook,88
+8,Load Based on Average Weather [1],73003.0,MORA_August2025.xlsx,Monthly Outlook,53
+8,Dispatchable [2],76351.69976435677,MORA_August2025.xlsx,Monthly Outlook,55
+8,Thermal,70817.15533732557,MORA_August2025.xlsx,Monthly Outlook,56
+8,Energy Storage [3],5095.854691544281,MORA_August2025.xlsx,Monthly Outlook,57
+8,Hydro,438.68973548691315,MORA_August2025.xlsx,Monthly Outlook,58
+8,Expected Thermal Outages,5195.0,MORA_August2025.xlsx,Monthly Outlook,59
+8,Planned,131.0,MORA_August2025.xlsx,Monthly Outlook,60
+8,Unplanned,5064.0,MORA_August2025.xlsx,Monthly Outlook,61
+8,Total Available Dispatchable,71156.69976435677,MORA_August2025.xlsx,Monthly Outlook,62
+8,Wind,13796.826632957469,MORA_August2025.xlsx,Monthly Outlook,64
+8,Solar,0.0,MORA_August2025.xlsx,Monthly Outlook,65
+8,Total Available Non-Dispatchable,13796.826632957469,MORA_August2025.xlsx,Monthly Outlook,66
+8,"Non-Synchronous Ties, Net Imports",219.6012,MORA_August2025.xlsx,Monthly Outlook,68
+8,Total Available Resources (Normal Conditions),85173.12759731425,MORA_August2025.xlsx,Monthly Outlook,70
+8,Emergency Response Service,1729.57014,MORA_August2025.xlsx,Monthly Outlook,74
+8,Distribution Voltage Reduction,573.24,MORA_August2025.xlsx,Monthly Outlook,75
+8,Large Load Curtailment,540.589625380079,MORA_August2025.xlsx,Monthly Outlook,76
+8,Total Available prior to an Energy Emergency Alert,2843.399765380079,MORA_August2025.xlsx,Monthly Outlook,77
+8,LRs providing Responsive Reserves,953.7,MORA_August2025.xlsx,Monthly Outlook,79
+8,LRs providing Non-spin,76.5,MORA_August2025.xlsx,Monthly Outlook,80
+8,LRs providing ECRS,255.0,MORA_August2025.xlsx,Monthly Outlook,81
+8,TDSP Load Management Programs,303.0,MORA_August2025.xlsx,Monthly Outlook,82
+8,Total Available during an Energy Emergency Alert,1588.2,MORA_August2025.xlsx,Monthly Outlook,83
+8,Total Emergency Resources,4431.599765380079,MORA_August2025.xlsx,Monthly Outlook,84
+8,"Capacity Available for Operating Reserves, Normal Conditions",15013.527362694327,MORA_August2025.xlsx,Monthly Outlook,86
+8,"Capacity Available for Operating Reserves, Emergency Conditions",16601.727362694328,MORA_August2025.xlsx,Monthly Outlook,87
+9,Load Based on Average Weather [1],66565.98847991807,MORA_September2025.xlsx,Monthly Outlook,53
+9,Dispatchable [2],79045.0061410474,MORA_September2025.xlsx,Monthly Outlook,55
+9,Thermal,70239.50000000001,MORA_September2025.xlsx,Monthly Outlook,56
+9,Energy Storage [3],8375.210619999993,MORA_September2025.xlsx,Monthly Outlook,57
+9,Hydro,430.29552104739537,MORA_September2025.xlsx,Monthly Outlook,58
+9,Expected Thermal Outages,6047.0,MORA_September2025.xlsx,Monthly Outlook,59
+9,Planned,284.0,MORA_September2025.xlsx,Monthly Outlook,60
+9,Unplanned,5763.0,MORA_September2025.xlsx,Monthly Outlook,61
+9,Total Available Dispatchable,72998.0061410474,MORA_September2025.xlsx,Monthly Outlook,62
+9,Wind,13979.000000000013,MORA_September2025.xlsx,Monthly Outlook,64
+9,Solar,0.0,MORA_September2025.xlsx,Monthly Outlook,65
+9,Total Available Non-Dispatchable,13979.000000000013,MORA_September2025.xlsx,Monthly Outlook,66
+9,"Non-Synchronous Ties, Net Imports",219.6012,MORA_September2025.xlsx,Monthly Outlook,68
+9,Total Available Resources (Normal Conditions),87196.60734104742,MORA_September2025.xlsx,Monthly Outlook,70
+9,Emergency Response Service,2044.5808200000001,MORA_September2025.xlsx,Monthly Outlook,74
+9,Distribution Voltage Reduction,573.24,MORA_September2025.xlsx,Monthly Outlook,75
+9,Large Load Curtailment,540.589625380079,MORA_September2025.xlsx,Monthly Outlook,76
+9,Total Available prior to an Energy Emergency Alert,3158.410445380079,MORA_September2025.xlsx,Monthly Outlook,77
+9,LRs providing Responsive Reserves,997.5600000000001,MORA_September2025.xlsx,Monthly Outlook,79
+9,LRs providing Non-spin,76.5,MORA_September2025.xlsx,Monthly Outlook,80
+9,LRs providing ECRS,285.6,MORA_September2025.xlsx,Monthly Outlook,81
+9,TDSP Load Management Programs,302.693,MORA_September2025.xlsx,Monthly Outlook,82
+9,Total Available during an Energy Emergency Alert,1662.3529999999998,MORA_September2025.xlsx,Monthly Outlook,83
+9,Total Emergency Resources,4820.763445380079,MORA_September2025.xlsx,Monthly Outlook,84
+9,"Capacity Available for Operating Reserves, Normal Conditions",23789.029306509427,MORA_September2025.xlsx,Monthly Outlook,86
+9,"Capacity Available for Operating Reserves, Emergency Conditions",25451.382306509426,MORA_September2025.xlsx,Monthly Outlook,87
+10,Load Based on Average Weather [1],60888.0,MORA_October2025.xlsx,Monthly Outlook,53
+10,Dispatchable [2],77578.68952775984,MORA_October2025.xlsx,Monthly Outlook,55
+10,Thermal,70669.73151662435,MORA_October2025.xlsx,Monthly Outlook,56
+10,Energy Storage [3],6517.482399999994,MORA_October2025.xlsx,Monthly Outlook,57
+10,Hydro,391.4756111354898,MORA_October2025.xlsx,Monthly Outlook,58
+10,Expected Thermal Outages,15638.0,MORA_October2025.xlsx,Monthly Outlook,59
+10,Planned,2932.0,MORA_October2025.xlsx,Monthly Outlook,60
+10,Unplanned,12706.0,MORA_October2025.xlsx,Monthly Outlook,61
+10,Total Available Dispatchable,61940.68952775984,MORA_October2025.xlsx,Monthly Outlook,62
+10,Wind,15459.999999999984,MORA_October2025.xlsx,Monthly Outlook,64
+10,Solar,0.0,MORA_October2025.xlsx,Monthly Outlook,65
+10,Total Available Non-Dispatchable,15459.999999999984,MORA_October2025.xlsx,Monthly Outlook,66
+10,"Non-Synchronous Ties, Net Imports",817.4000000000001,MORA_October2025.xlsx,Monthly Outlook,68
+10,Total Available Resources (Normal Conditions),78218.08952775982,MORA_October2025.xlsx,Monthly Outlook,70
+10,Emergency Response Service,2044.5808200000001,MORA_October2025.xlsx,Monthly Outlook,74
+10,Distribution Voltage Reduction,478.0,MORA_October2025.xlsx,Monthly Outlook,75
+10,Large Load Curtailment,3805.48397806626,MORA_October2025.xlsx,Monthly Outlook,76
+10,Total Available prior to an Energy Emergency Alert,6328.06479806626,MORA_October2025.xlsx,Monthly Outlook,77
+10,LRs providing Responsive Reserves,1266.0,MORA_October2025.xlsx,Monthly Outlook,79
+10,LRs providing Non-spin,76.5,MORA_October2025.xlsx,Monthly Outlook,80
+10,LRs providing ECRS,288.0,MORA_October2025.xlsx,Monthly Outlook,81
+10,TDSP Load Management Programs,0.0,MORA_October2025.xlsx,Monthly Outlook,82
+10,Total Available during an Energy Emergency Alert,1630.5,MORA_October2025.xlsx,Monthly Outlook,83
+10,Total Emergency Resources,7958.56479806626,MORA_October2025.xlsx,Monthly Outlook,84
+10,"Capacity Available for Operating Reserves, Normal Conditions",23658.15432582608,MORA_October2025.xlsx,Monthly Outlook,86
+10,"Capacity Available for Operating Reserves, Emergency Conditions",25288.65432582608,MORA_October2025.xlsx,Monthly Outlook,87
+11,Load Based on Average Weather [1],56140.61803698813,MORA_November2025.xlsx,Monthly Outlook,52
+11,Dispatchable [2],77787.01803194729,MORA_November2025.xlsx,Monthly Outlook,54
+11,"Thermal, excluding RMR and other Emergency Generation Agreements",71227.29999999997,MORA_November2025.xlsx,Monthly Outlook,55
+11,Energy Storage [3],6163.552199999995,MORA_November2025.xlsx,Monthly Outlook,56
+11,Hydro,396.1658319473267,MORA_November2025.xlsx,Monthly Outlook,57
+11,Expected Thermal Outages,21183.0,MORA_November2025.xlsx,Monthly Outlook,58
+11,Planned,5306.0,MORA_November2025.xlsx,Monthly Outlook,59
+11,Unplanned,15877.0,MORA_November2025.xlsx,Monthly Outlook,60
+11,Total Available Dispatchable,56604.018031947286,MORA_November2025.xlsx,Monthly Outlook,61
+11,Wind,16487.091552842194,MORA_November2025.xlsx,Monthly Outlook,63
+11,Solar,0.0,MORA_November2025.xlsx,Monthly Outlook,64
+11,Total Available Non-Dispatchable,16487.091552842194,MORA_November2025.xlsx,Monthly Outlook,65
+11,"Non-Synchronous Ties, Net Imports",719.8,MORA_November2025.xlsx,Monthly Outlook,67
+11,Total Available Resources (Normal Conditions),73810.90958478948,MORA_November2025.xlsx,Monthly Outlook,69
+11,Emergency Response Service,1827.636,MORA_November2025.xlsx,Monthly Outlook,73
+11,Distribution Voltage Reduction,550.8,MORA_November2025.xlsx,Monthly Outlook,74
+11,Large Load Curtailment,3790.0,MORA_November2025.xlsx,Monthly Outlook,75
+11,Total Available prior to an Energy Emergency Alert,6168.436,MORA_November2025.xlsx,Monthly Outlook,76
+11,LRs providing Responsive Reserves,1607.52,MORA_November2025.xlsx,Monthly Outlook,78
+11,LRs providing Non-spin,81.6,MORA_November2025.xlsx,Monthly Outlook,79
+11,LRs providing ECRS,285.6,MORA_November2025.xlsx,Monthly Outlook,80
+11,TDSP Load Management Programs,253.98000000000002,MORA_November2025.xlsx,Monthly Outlook,81
+11,RMR and Other Resource Agreement Capacity Units,754.8000000000001,MORA_November2025.xlsx,Monthly Outlook,82
+11,Total Available during an Energy Emergency Alert,2983.5,MORA_November2025.xlsx,Monthly Outlook,83
+11,Total Emergency Resources,9151.936,MORA_November2025.xlsx,Monthly Outlook,84
+11,"Capacity Available for Operating Reserves, Normal Conditions",23838.727547801347,MORA_November2025.xlsx,Monthly Outlook,86
+11,"Capacity Available for Operating Reserves, Emergency Conditions",26822.227547801347,MORA_November2025.xlsx,Monthly Outlook,87
+12,Load Based on Average Weather [1],71664.0,MORA_December2025.xlsx,Monthly Outlook,52
+12,Dispatchable [2],80230.26989594546,MORA_December2025.xlsx,Monthly Outlook,54
+12,"Thermal, excluding RMR and other Emergency Generation Agreements",75097.7,MORA_December2025.xlsx,Monthly Outlook,55
+12,Energy Storage [3],4721.399999999993,MORA_December2025.xlsx,Monthly Outlook,56
+12,Hydro,411.16989594546106,MORA_December2025.xlsx,Monthly Outlook,57
+12,Expected Thermal Outages,12531.984615384616,MORA_December2025.xlsx,Monthly Outlook,58
+12,Planned,1775.0923076923077,MORA_December2025.xlsx,Monthly Outlook,59
+12,Unplanned,10756.892307692307,MORA_December2025.xlsx,Monthly Outlook,60
+12,Total Available Dispatchable,67698.28528056084,MORA_December2025.xlsx,Monthly Outlook,61
+12,Wind,15964.000000000022,MORA_December2025.xlsx,Monthly Outlook,63
+12,Solar,27.999999999999993,MORA_December2025.xlsx,Monthly Outlook,64
+12,Total Available Non-Dispatchable,15992.000000000022,MORA_December2025.xlsx,Monthly Outlook,65
+12,"Non-Synchronous Ties, Net Imports",719.8,MORA_December2025.xlsx,Monthly Outlook,67
+12,Total Available Resources (Normal Conditions),84410.08528056087,MORA_December2025.xlsx,Monthly Outlook,69
+12,Emergency Response Service,2258.92974,MORA_December2025.xlsx,Monthly Outlook,73
+12,Distribution Voltage Reduction,550.8,MORA_December2025.xlsx,Monthly Outlook,74
+12,Large Load Curtailment,3211.94453482746,MORA_December2025.xlsx,Monthly Outlook,75
+12,Total Available prior to an Energy Emergency Alert,6021.674274827459,MORA_December2025.xlsx,Monthly Outlook,76
+12,LRs providing Responsive Reserves,1527.96,MORA_December2025.xlsx,Monthly Outlook,78
+12,LRs providing Non-spin,81.6,MORA_December2025.xlsx,Monthly Outlook,79
+12,LRs providing ECRS,285.6,MORA_December2025.xlsx,Monthly Outlook,80
+12,TDSP Load Management Programs,51.0,MORA_December2025.xlsx,Monthly Outlook,81
+12,RMR and Other Resource Agreement Capacity Units,793.4000000000002,MORA_December2025.xlsx,Monthly Outlook,82
+12,Total Available during an Energy Emergency Alert,2739.56,MORA_December2025.xlsx,Monthly Outlook,83
+12,Total Emergency Resources,8761.234274827459,MORA_December2025.xlsx,Monthly Outlook,84
+12,"Capacity Available for Operating Reserves, Normal Conditions",18767.759555388333,MORA_December2025.xlsx,Monthly Outlook,86
+12,"Capacity Available for Operating Reserves, Emergency Conditions",21507.319555388334,MORA_December2025.xlsx,Monthly Outlook,87

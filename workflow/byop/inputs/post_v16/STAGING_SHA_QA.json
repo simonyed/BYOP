@@ -1,0 +1,447 @@
+{
+ "status": "PASS",
+ "solver_calls": 0,
+ "files": 53,
+ "files_ok": 53,
+ "raw_registry_checked": 20,
+ "raw_registry_ok": 20,
+ "failures": [],
+ "rebuild": {
+  "dir": "scratch copy of raw/ + build_research_data.py (originals untouched)",
+  "compared": 19,
+  "byte_identical": 0,
+  "text_identical_after_eol": 19,
+  "differing": []
+ },
+ "staging": {
+  "raw": "workflow/data/byop/post_v16_execution_v11/raw",
+  "derived": "workflow/byop/inputs/post_v16/derived",
+  "package": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1"
+ },
+ "rows": [
+  {
+   "path": "CALIBRATION_RESEARCH_MEMO_v0.1.md",
+   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/CALIBRATION_RESEARCH_MEMO_v0.1.md",
+   "expected": "cb5df7bd1938faed7338f2330998c301bfd83d9efd7f92d06deb6475e294005b",
+   "actual": "cb5df7bd1938faed7338f2330998c301bfd83d9efd7f92d06deb6475e294005b",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "DATA_GAPS_AND_OWNERSHIP.csv",
+   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/DATA_GAPS_AND_OWNERSHIP.csv",
+   "expected": "f02a01e0e4830c51bd65f3d1b9c4310650ba8c53fa177ca146a2df3aff8c8907",
+   "actual": "f02a01e0e4830c51bd65f3d1b9c4310650ba8c53fa177ca146a2df3aff8c8907",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "DOWNLOAD_LOG.json",
+   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/DOWNLOAD_LOG.json",
+   "expected": "d8d889b03ea7959f564572589e7eb8f64673d3e1a3c6def824be62e694db5c3b",
+   "actual": "d8d889b03ea7959f564572589e7eb8f64673d3e1a3c6def824be62e694db5c3b",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "INDEPENDENT_VALIDATION_ANCHORS.csv",
+   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/INDEPENDENT_VALIDATION_ANCHORS.csv",
+   "expected": "39dedaffe64a4de8215e11aa83c9741e2baf7002d33f99560a08a1ecf7e79fc9",
+   "actual": "39dedaffe64a4de8215e11aa83c9741e2baf7002d33f99560a08a1ecf7e79fc9",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "NETWORK_DOWNLOAD_LOG.json",
+   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/NETWORK_DOWNLOAD_LOG.json",
+   "expected": "95aa6cc5044a43ec943b534f643d4d661c38a12afee9390100241e957c3325c6",
+   "actual": "95aa6cc5044a43ec943b534f643d4d661c38a12afee9390100241e957c3325c6",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "PARAMETER_CANDIDATES.csv",
+   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/PARAMETER_CANDIDATES.csv",
+   "expected": "7683a7a2989741e01f87e345075a6c710919ed98a09ddab89cd0c7fc783ede9b",
+   "actual": "7683a7a2989741e01f87e345075a6c710919ed98a09ddab89cd0c7fc783ede9b",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "README.md",
+   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/RESEARCH_BASIS_README_v0.1.md",
+   "expected": "3937c7366cde528134b9cf8a800deab33b7aec49c02eaaed61df35771eccfeca",
+   "actual": "3937c7366cde528134b9cf8a800deab33b7aec49c02eaaed61df35771eccfeca",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "REPOSITORY_CHECK.json",
+   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/REPOSITORY_CHECK.json",
+   "expected": "c0ff7e81f566cbc81291a0095fb65a9e6176b1635cc2f7cfcbd25b30fe190223",
+   "actual": "c0ff7e81f566cbc81291a0095fb65a9e6176b1635cc2f7cfcbd25b30fe190223",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "SOURCE_REGISTRY.csv",
+   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/SOURCE_REGISTRY.csv",
+   "expected": "cf0bdf6c833730946f3b29b1d531fa11b4387f4d6b189e2aeabd428f129980b1",
+   "actual": "cf0bdf6c833730946f3b29b1d531fa11b4387f4d6b189e2aeabd428f129980b1",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "WIND_SOLAR_DOWNLOAD_LOG.json",
+   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/WIND_SOLAR_DOWNLOAD_LOG.json",
+   "expected": "73449d367eae02b6c068cf8a12770db5b8c33837a8c23584dc09a92948e5d856",
+   "actual": "73449d367eae02b6c068cf8a12770db5b8c33837a8c23584dc09a92948e5d856",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "build_research_data.py",
+   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/build_research_data.py",
+   "expected": "e1128d9aa4dedf0aaa99d2ed51d2640916c11b0292d9e585dba918bfdfcfe3dd",
+   "actual": "e1128d9aa4dedf0aaa99d2ed51d2640916c11b0292d9e585dba918bfdfcfe3dd",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "derived/CDR_FUTURE_ELCC_2026_2031_REFERENCE.csv",
+   "staged": "workflow/byop/inputs/post_v16/derived/CDR_FUTURE_ELCC_2026_2031_REFERENCE.csv",
+   "expected": "5da3404131468be88df958bec2c091f06512ccc146b02e27bd1ce337c1e3e8d4",
+   "actual": "5da3404131468be88df958bec2c091f06512ccc146b02e27bd1ce337c1e3e8d4",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "derived/DATA_QA.json",
+   "staged": "workflow/byop/inputs/post_v16/derived/DATA_QA.json",
+   "expected": "5df05b30504290de6c78b274272c34726188f45a0fe3981319f6aecd4fd7e88d",
+   "actual": "5df05b30504290de6c78b274272c34726188f45a0fe3981319f6aecd4fd7e88d",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "derived/ERCOT_2025_OBSERVED_LOAD_WIND_SOLAR_1H.csv",
+   "staged": "workflow/byop/inputs/post_v16/derived/ERCOT_2025_OBSERVED_LOAD_WIND_SOLAR_1H.csv",
+   "expected": "265c79aee9caa422075c321f0523657f42320e326a5dd6ad4c4c28e7b4988b4e",
+   "actual": "265c79aee9caa422075c321f0523657f42320e326a5dd6ad4c4c28e7b4988b4e",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "derived/ERCOT_2025_OBSERVED_LOAD_WIND_SOLAR_3H.csv",
+   "staged": "workflow/byop/inputs/post_v16/derived/ERCOT_2025_OBSERVED_LOAD_WIND_SOLAR_3H.csv",
+   "expected": "8e7083f2c3d4e341590180a3b45c8165e6f6874197f560bf01a40cbbf1cb4238",
+   "actual": "8e7083f2c3d4e341590180a3b45c8165e6f6874197f560bf01a40cbbf1cb4238",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "derived/ERCOT_OPERATIONAL_WIND_SOLAR_2023_2025.csv.gz",
+   "staged": "workflow/byop/inputs/post_v16/derived/ERCOT_OPERATIONAL_WIND_SOLAR_2023_2025.csv.gz",
+   "expected": "66069818a05969bc8a32616e48be6b8a358914f1f750899d57952826434fb347",
+   "actual": "66069818a05969bc8a32616e48be6b8a358914f1f750899d57952826434fb347",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "derived/FUEL_INTERVAL_DAILY_QA.csv",
+   "staged": "workflow/byop/inputs/post_v16/derived/FUEL_INTERVAL_DAILY_QA.csv",
+   "expected": "ed6dd734339428239e64393c1023b1a713e4084aab6f17986cd2fa8074ce6c77",
+   "actual": "ed6dd734339428239e64393c1023b1a713e4084aab6f17986cd2fa8074ce6c77",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "derived/MORA_2025_DETERMINISTIC_SOURCE_VALUES.csv",
+   "staged": "workflow/byop/inputs/post_v16/derived/MORA_2025_DETERMINISTIC_SOURCE_VALUES.csv",
+   "expected": "bc41a5817f16067d26cf6c799d9a9d4167ac2e372eb0f69ed08cf16d0fee8be4",
+   "actual": "bc41a5817f16067d26cf6c799d9a9d4167ac2e372eb0f69ed08cf16d0fee8be4",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "derived/MORA_2025_HOURLY_PERCENTILE_MARGINALS.csv",
+   "staged": "workflow/byop/inputs/post_v16/derived/MORA_2025_HOURLY_PERCENTILE_MARGINALS.csv",
+   "expected": "e03fa290caef5ae7d2094fc3ca866cb5cb570e757a79cd687159cbcd6c9d8421",
+   "actual": "e03fa290caef5ae7d2094fc3ca866cb5cb570e757a79cd687159cbcd6c9d8421",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "derived/MORA_2025_UNPLANNED_THERMAL_OUTAGE_QUANTILES.csv",
+   "staged": "workflow/byop/inputs/post_v16/derived/MORA_2025_UNPLANNED_THERMAL_OUTAGE_QUANTILES.csv",
+   "expected": "7b85f6c9f6bf680910d3b8004f7f888a0e1aa14eb9851b601e30a37f8e31e8c9",
+   "actual": "7b85f6c9f6bf680910d3b8004f7f888a0e1aa14eb9851b601e30a37f8e31e8c9",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "derived/OPERATIONAL_MONTHLY_INSTALLED_CAPACITY.csv",
+   "staged": "workflow/byop/inputs/post_v16/derived/OPERATIONAL_MONTHLY_INSTALLED_CAPACITY.csv",
+   "expected": "9241566517d17ecc340a17190423b57e0ce74b3d1ea46b3a256907846178d305",
+   "actual": "9241566517d17ecc340a17190423b57e0ce74b3d1ea46b3a256907846178d305",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "derived/OPERATIONAL_MULTIYEAR_SOURCE_SUMMARY.csv",
+   "staged": "workflow/byop/inputs/post_v16/derived/OPERATIONAL_MULTIYEAR_SOURCE_SUMMARY.csv",
+   "expected": "85210a2b1a97fc1675d5d7152b0bf3c229ed755676a10b058aead6106abce34b",
+   "actual": "85210a2b1a97fc1675d5d7152b0bf3c229ed755676a10b058aead6106abce34b",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "derived/PRE_REGISTERED_STRESS_EVENTS.csv",
+   "staged": "workflow/byop/inputs/post_v16/derived/PRE_REGISTERED_STRESS_EVENTS.csv",
+   "expected": "a850deb87e32e227fdef1273700ab5bcf49128b630b70193141c418a5328f8a4",
+   "actual": "a850deb87e32e227fdef1273700ab5bcf49128b630b70193141c418a5328f8a4",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "derived/SOURCE_VINTAGE_COMPARISON_2025.csv",
+   "staged": "workflow/byop/inputs/post_v16/derived/SOURCE_VINTAGE_COMPARISON_2025.csv",
+   "expected": "3535b5238ad1927caa918f8f5918c074498e904851fc617b6869ad0d84a3a14a",
+   "actual": "3535b5238ad1927caa918f8f5918c074498e904851fc617b6869ad0d84a3a14a",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "derived/WINDOW_SUMMER_LOAD_PEAK_1H.csv",
+   "staged": "workflow/byop/inputs/post_v16/derived/WINDOW_SUMMER_LOAD_PEAK_1H.csv",
+   "expected": "c3ae320524955e101bf4600964317458851d3ce3e5b06dab5f92a45c1ed3130b",
+   "actual": "c3ae320524955e101bf4600964317458851d3ce3e5b06dab5f92a45c1ed3130b",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "derived/WINDOW_SUMMER_LOW_WIND_HIGH_LOAD_1H.csv",
+   "staged": "workflow/byop/inputs/post_v16/derived/WINDOW_SUMMER_LOW_WIND_HIGH_LOAD_1H.csv",
+   "expected": "c9852c6f5a5c7248816b21a446a4b2250ca57423cc2e6a7696a5f0b50569047e",
+   "actual": "c9852c6f5a5c7248816b21a446a4b2250ca57423cc2e6a7696a5f0b50569047e",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "derived/WINDOW_SUMMER_NET_PEAK_DISJOINT_DAY_1H.csv",
+   "staged": "workflow/byop/inputs/post_v16/derived/WINDOW_SUMMER_NET_PEAK_DISJOINT_DAY_1H.csv",
+   "expected": "1ceb07e949c1c180571957afb246ba97aac5aa56d9aafd458bc81411b147593b",
+   "actual": "1ceb07e949c1c180571957afb246ba97aac5aa56d9aafd458bc81411b147593b",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "derived/WINDOW_SUMMER_OBSERVED_NET_PEAK_1H.csv",
+   "staged": "workflow/byop/inputs/post_v16/derived/WINDOW_SUMMER_OBSERVED_NET_PEAK_1H.csv",
+   "expected": "c3ae320524955e101bf4600964317458851d3ce3e5b06dab5f92a45c1ed3130b",
+   "actual": "c3ae320524955e101bf4600964317458851d3ce3e5b06dab5f92a45c1ed3130b",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "derived/WINDOW_SUMMER_UPWARD_NET_RAMP_1H.csv",
+   "staged": "workflow/byop/inputs/post_v16/derived/WINDOW_SUMMER_UPWARD_NET_RAMP_1H.csv",
+   "expected": "480586bd31994241ca82fc6c0f1b8d60685faf4cc8fba05632620e14630cf6de",
+   "actual": "480586bd31994241ca82fc6c0f1b8d60685faf4cc8fba05632620e14630cf6de",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "derived/WINDOW_WINTER_LOAD_PEAK_1H.csv",
+   "staged": "workflow/byop/inputs/post_v16/derived/WINDOW_WINTER_LOAD_PEAK_1H.csv",
+   "expected": "35e7742e620a12b2ac8444d19189aa0360e78d7e75b1e990ed2aeedc74359bc0",
+   "actual": "35e7742e620a12b2ac8444d19189aa0360e78d7e75b1e990ed2aeedc74359bc0",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "mora_source_urls.json",
+   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/mora_source_urls.json",
+   "expected": "330889c734be5bea0bb22c67f36b2531e686666e6cb92db3db8ae60b94a2e5a8",
+   "actual": "330889c734be5bea0bb22c67f36b2531e686666e6cb92db3db8ae60b94a2e5a8",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "raw/CDR_December2024_Revised.xlsx",
+   "staged": "workflow/data/byop/post_v16_execution_v11/raw/CDR_December2024_Revised.xlsx",
+   "expected": "847018a349df09186900f17971ab7da0f68833e29e23832840e9507d4154ea77",
+   "actual": "847018a349df09186900f17971ab7da0f68833e29e23832840e9507d4154ea77",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "raw/CDR_December2025.xlsx",
+   "staged": "workflow/data/byop/post_v16_execution_v11/raw/CDR_December2025.xlsx",
+   "expected": "c26afc32ca220a61b0ec9854b074917d933a37bffa8a164f7d2ff7df6135db67",
+   "actual": "c26afc32ca220a61b0ec9854b074917d933a37bffa8a164f7d2ff7df6135db67",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "raw/ERCOT_2023_Hourly_WindSolar_Output.xlsx",
+   "staged": "workflow/data/byop/post_v16_execution_v11/raw/ERCOT_2023_Hourly_WindSolar_Output.xlsx",
+   "expected": "52296bbe9f2b79fa4642941c6974e178ce68a33c4bb61071a19e48311c443c6a",
+   "actual": "52296bbe9f2b79fa4642941c6974e178ce68a33c4bb61071a19e48311c443c6a",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "raw/ERCOT_2024_Hourly_WindSolar_Output.xlsx",
+   "staged": "workflow/data/byop/post_v16_execution_v11/raw/ERCOT_2024_Hourly_WindSolar_Output.xlsx",
+   "expected": "9cdf71475b1d70bd9851aa33d196435f267d126504f0fdb683b713b6edf2a731",
+   "actual": "9cdf71475b1d70bd9851aa33d196435f267d126504f0fdb683b713b6edf2a731",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "raw/ERCOT_2025_Hourly_WindSolar_Output.xlsx",
+   "staged": "workflow/data/byop/post_v16_execution_v11/raw/ERCOT_2025_Hourly_WindSolar_Output.xlsx",
+   "expected": "5e6718adbab776ba97df38cdbbc0521cfbe4bfe4c142a6b30174fbb014327fa2",
+   "actual": "5e6718adbab776ba97df38cdbbc0521cfbe4bfe4c142a6b30174fbb014327fa2",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "raw/ERCOT_FarWest_GTC_Notice_2025.html",
+   "staged": "workflow/data/byop/post_v16_execution_v11/raw/ERCOT_FarWest_GTC_Notice_2025.html",
+   "expected": "eb8184ae18c36c75c9684779c93a21f41b90c39f76bfe62f3603f35936d97532",
+   "actual": "eb8184ae18c36c75c9684779c93a21f41b90c39f76bfe62f3603f35936d97532",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "raw/IntGenbyFuel2025.xlsx",
+   "staged": "workflow/data/byop/post_v16_execution_v11/raw/IntGenbyFuel2025.xlsx",
+   "expected": "bb534618700ff3500eee36b62fa2a9ab07b0923ed536f6d049868101189cfc54",
+   "actual": "bb534618700ff3500eee36b62fa2a9ab07b0923ed536f6d049868101189cfc54",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "raw/MORA_April2025.xlsx",
+   "staged": "workflow/data/byop/post_v16_execution_v11/raw/MORA_April2025.xlsx",
+   "expected": "a6d686843c9e82e3b26d1d77948a2f1b8f53ce11d1dbc04586a04e8a027cb10e",
+   "actual": "a6d686843c9e82e3b26d1d77948a2f1b8f53ce11d1dbc04586a04e8a027cb10e",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "raw/MORA_August2025.xlsx",
+   "staged": "workflow/data/byop/post_v16_execution_v11/raw/MORA_August2025.xlsx",
+   "expected": "8828d0e39933acffcf85c0ce4869a98009dfade35694f6ff7f9c581d7ae354ca",
+   "actual": "8828d0e39933acffcf85c0ce4869a98009dfade35694f6ff7f9c581d7ae354ca",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "raw/MORA_December2025.xlsx",
+   "staged": "workflow/data/byop/post_v16_execution_v11/raw/MORA_December2025.xlsx",
+   "expected": "747e6143310d18277698587d5d36e65e5d078141b41101294ea15f2ebae2fcbf",
+   "actual": "747e6143310d18277698587d5d36e65e5d078141b41101294ea15f2ebae2fcbf",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "raw/MORA_February2025.xlsx",
+   "staged": "workflow/data/byop/post_v16_execution_v11/raw/MORA_February2025.xlsx",
+   "expected": "4775ab159650c637f27db0de9b5f43eec82f1182a1d1242ff448d217ffa71fff",
+   "actual": "4775ab159650c637f27db0de9b5f43eec82f1182a1d1242ff448d217ffa71fff",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "raw/MORA_January2025.xlsx",
+   "staged": "workflow/data/byop/post_v16_execution_v11/raw/MORA_January2025.xlsx",
+   "expected": "102fa1b7f8b90723fe9e1c7355147f41fee2209bd769f16c181c52cd033094e4",
+   "actual": "102fa1b7f8b90723fe9e1c7355147f41fee2209bd769f16c181c52cd033094e4",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "raw/MORA_July2025.xlsx",
+   "staged": "workflow/data/byop/post_v16_execution_v11/raw/MORA_July2025.xlsx",
+   "expected": "1096b3386aa55c55857b4846e775e28b009175b54fa05deffcd7380f687e9d67",
+   "actual": "1096b3386aa55c55857b4846e775e28b009175b54fa05deffcd7380f687e9d67",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "raw/MORA_June2025.xlsx",
+   "staged": "workflow/data/byop/post_v16_execution_v11/raw/MORA_June2025.xlsx",
+   "expected": "0017de75216f284bcdf1d98c58be2275fb25e0514ec215ff5b179bd9a7e47b38",
+   "actual": "0017de75216f284bcdf1d98c58be2275fb25e0514ec215ff5b179bd9a7e47b38",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "raw/MORA_March2025.xlsx",
+   "staged": "workflow/data/byop/post_v16_execution_v11/raw/MORA_March2025.xlsx",
+   "expected": "09e5c728158d48f5bcc7ca59428da8a3983cf4d4f9eab9c12ee475037ec45f5c",
+   "actual": "09e5c728158d48f5bcc7ca59428da8a3983cf4d4f9eab9c12ee475037ec45f5c",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "raw/MORA_May2025.xlsx",
+   "staged": "workflow/data/byop/post_v16_execution_v11/raw/MORA_May2025.xlsx",
+   "expected": "cf78cfe488c09b4ec856868d6a8b7e43558dddc91bfa91aa4650aadebcaecde7",
+   "actual": "cf78cfe488c09b4ec856868d6a8b7e43558dddc91bfa91aa4650aadebcaecde7",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "raw/MORA_November2025.xlsx",
+   "staged": "workflow/data/byop/post_v16_execution_v11/raw/MORA_November2025.xlsx",
+   "expected": "3454fca0408809b2cd53e1444852b723f3230d6ae3173833a6353fe733b915ed",
+   "actual": "3454fca0408809b2cd53e1444852b723f3230d6ae3173833a6353fe733b915ed",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "raw/MORA_October2025.xlsx",
+   "staged": "workflow/data/byop/post_v16_execution_v11/raw/MORA_October2025.xlsx",
+   "expected": "63179a2b73169028586a602326ec9a4a40b3c6c1534bc76d6c2aa00b6bce749e",
+   "actual": "63179a2b73169028586a602326ec9a4a40b3c6c1534bc76d6c2aa00b6bce749e",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "raw/MORA_September2025.xlsx",
+   "staged": "workflow/data/byop/post_v16_execution_v11/raw/MORA_September2025.xlsx",
+   "expected": "38fd590902826a3731c6c3fa1887b541e9090de843ebde25b7d5138c0fcdd844",
+   "actual": "38fd590902826a3731c6c3fa1887b541e9090de843ebde25b7d5138c0fcdd844",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "raw/Native_Load_2025.xlsx",
+   "staged": "workflow/data/byop/post_v16_execution_v11/raw/Native_Load_2025.xlsx",
+   "expected": "23664b0cddb047692f6cac26a4300e987c6309795395d394bf2dc223f37b53aa",
+   "actual": "23664b0cddb047692f6cac26a4300e987c6309795395d394bf2dc223f37b53aa",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "raw/public_wind_solar_report_index.json",
+   "staged": "workflow/data/byop/post_v16_execution_v11/raw/public_wind_solar_report_index.json",
+   "expected": "c72f0e4b098519b6a65415e218f679d4ea9c108ea5611e266d7c82171c3f3255",
+   "actual": "c72f0e4b098519b6a65415e218f679d4ea9c108ea5611e266d7c82171c3f3255",
+   "size_ok": true,
+   "ok": true
+  },
+  {
+   "path": "rebuild_check.log",
+   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/rebuild_check.log",
+   "expected": "bf58dd25104d3b9f49d5e269e8135f24059723a45de1492fa915b1713b3c3be7",
+   "actual": "bf58dd25104d3b9f49d5e269e8135f24059723a45de1492fa915b1713b3c3be7",
+   "size_ok": true,
+   "ok": true
+  }
+ ]
+}

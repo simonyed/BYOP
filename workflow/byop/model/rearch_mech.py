@@ -1581,6 +1581,25 @@ def mainline_gate(cfg_path):
     return dict(approved=not reasons, reasons=reasons, head=head, approved_git_sha=sha, config=str(cfg_path))
 
 
+POST_V16_LEGACY_FLAGS = ('calibrate', 'erm_cal', 's0_calibrate', 's0_cal_file')
+
+
+def post_v16_guard(a):
+    """post-v1.6 package v1.1 (A0): the new main line uses only the SHA-pinned v1.6 baseline, never ERM-02 B or free S0CAL,
+    and stays refused until the A2 reserve-rule implementation and approval exist. Returns only through SystemExit."""
+    reasons = [f'legacy flag --{f.replace("_", "-")} not allowed' for f in POST_V16_LEGACY_FLAGS if getattr(a, f, None)]
+    if not a.base:
+        reasons.append('--base missing (no fallback to the pre-v1.6 baseline)')
+    elif Path(a.base).resolve() != BP.BASE_TAMU_V16.resolve():
+        reasons.append(f'--base {a.base} is not the v1.6 baseline')
+    elif not Path(a.base).exists() or M.sha(a.base) != BP.BASE_TAMU_V16_SHA256:
+        reasons.append('v1.6 baseline missing or SHA differs from the pinned v1.6 SHA')
+    reasons.append('POST_V16_MAINLINE_NOT_READY: the 3,000 MW / 1 h reserve rule (INV-N1) replacing the 15 % ERM is not yet '
+                   'in the multi-period mainline (A2 implementation item; A2 needs a separate approval)')
+    print(json.dumps(dict(POST_V16_GUARD='REFUSED', reasons=reasons), indent=1))
+    raise SystemExit(3)
+
+
 def extra_rights(n, snapshots):
     """public S2 LP: the developer's committed import rights cap the firm / conditional POI flows"""
     extra_rearch(n, snapshots)
@@ -1728,8 +1747,11 @@ def main():
     ap.add_argument('--scenarios', nargs='*', default=['S0', 'S1_EARLIEST', 'S1_ECON', 'S1_zero', 'S3', 'S3_mS1', 'S2', 'S2_off', 'S3_mS2'])
     ap.add_argument('--interrupt-cap', type=float, default=0.005, help='D2.3 unplanned interruption cap (share of planned annual facility MWh)')
     ap.add_argument('--no-harm', default='on', choices=['on', 'off'], help='D2.4 existing-customer shed <= frozen S0 per bus x snapshot')
+    ap.add_argument('--post-v16', action='store_true', help='post-v1.6 main line (execution package v1.1): v1.6 base only, no ERM-02 B / S0CAL')
     a = ap.parse_args()
     a.case_group = a.case_group or a.case_id
+    if a.post_v16:      # post-v1.6 guard BEFORE the legacy gate: wrong base or legacy calibration flags are refused, and the
+        post_v16_guard(a)   # mainline itself is not yet post-v1.6 ready (reserve rule INV-N1 is an A2 item) -> exit 3
     if a.mainline:      # E1 run gate BEFORE anything is built or solved
         ML.update(on=True, stress_days=a.stress_days, stress_line_derate=a.stress_line_derate)
         ml_select_siting(a.config)                       # siting variant inputs fixed before the gate hashes them

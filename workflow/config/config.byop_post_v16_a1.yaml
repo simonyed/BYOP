@@ -1,0 +1,46 @@
+# BYOP post-v1.6 execution package v1.1 (2026-10-22), stage A1: joint AIDC headroom on the frozen v1.6 2025 baseline.
+# A0 = zero solver calls. This file is the A1 request; it is NOT an approval: only the researcher sets run_authorization: APPROVED,
+# approved_git_sha and approved_by. byop/model/post_v16_gate.py refuses every optimizer call otherwise (and on any SHA drift).
+# Isolated from the legacy mainline configs (config.byop_ercot_mainline*.yaml), which are not read here.
+post_v16:
+  run_authorization: NOT_APPROVED
+  approved_git_sha: null
+  approved_by: null
+  authorization_source: current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/CURRENT_EXECUTION_WORK_PACKAGE_v1.1.md
+  authorization_source_sha256: c3c1a0a55d2fab68076314c4ea7a25a0966907ed5cae3d13510523657e55dfad
+  manifest: current_work_pckg/POST_V16_A1_PRE_RUN_MANIFEST.json
+  stage: A1
+  stages: [LP_R_H_RESOURCE, LP_N_H_NETWORK]       # order fixed: LP-R first, LP-N only after an optimal LP-R
+  max_lp_calls: 2
+  max_retries: 0
+  baseline:
+    path: workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc   # L2 only, no fallback
+    sha256: a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16
+    expect: {buses: 63, lines: 162, active_2025_MW: 155446.9, uplift_lines: 18, uplift_MVA: 5151.8}
+  windows:                                        # pre-registered, independent of BYOP results (derived/PRE_REGISTERED_STRESS_EVENTS.csv)
+    - {id: W_SUMMER_PEAK_20250818, events: [SUMMER_LOAD_PEAK, SUMMER_OBSERVED_NET_PEAK], role: same 72 h window counted once}
+    - {id: W_WINTER_PEAK_20250220, events: [WINTER_LOAD_PEAK], role: winter peak = annual observed residual peak}
+    - {id: W_SUMMER_DISJOINT_20250730, events: [SUMMER_NET_PEAK_DISJOINT_DAY], role: limited hold-out (not unseen by the v1.6 annual calibration)}
+  diagnostic_windows_not_solved: [SUMMER_UPWARD_NET_RAMP, SUMMER_LOW_WIND_HIGH_LOAD]
+  time:
+    resolution_h: 1
+    load: Native Load 2025 1 h source rows, weather zone -> bus by the v1.6 builder rule
+    renewables: v1.6 network p_max_pu of the 3 h step containing the source row (held 3 h; model weather year, NOT observed output)
+    storage_soc: cyclic within each 72 h window (no free initial energy)
+  reserve:
+    requirement_MW: 3000
+    tau_h: 1
+    response_window_min: 10
+    parameters: byop/inputs/post_v16/POST_V16_RESERVE_PARAMETERS.csv     # column 'base' (executor assumptions pending approval)
+    claim: "load deliverable on the fixed network while the system aggregate reserve condition holds; NOT deliverable reserve, NOT N-1"
+  headroom:
+    weights: "16 dynamic_pnnl_v1 buses: cumulative mid IT 2026-2031 x PUE TX 2031 (= research_facility_MW_2031_mid of GREAL_POI_ASSUMPTIONS_GEO_DYNAMIC_V1.csv)"
+    lambda_unit: MW facility (IT MW reported separately by bus)
+    lambda_upper_MW: 200000
+    blocks: [B0_LAMBDA_ZERO, B_LAMBDA]          # B0 certifies existing load + reserve feasible at lambda = 0 inside the same LP
+    existing_load_shed: "penalised 1e4 x lambda weight per MWh; acceptance requires 0 in both blocks (else BASELINE_PRESSURE_INFEASIBLE)"
+    inherited_ramp: existing protected load (460.73 MW IT x PUE TX 2025), never part of lambda
+    copperplate: every line limit lifted to 1e6 MVA, KVL kept, network connected (LP-R only)
+  solver: gurobi
+  solver_options: {Method: 2, Crossover: 1, BarConvTol: 1.0e-8, NumericFocus: 2, BarHomogeneous: 1}
+  acceptance: {termination: optimal, h_network_le_h_resource_tol_MW: 1.0e-3, existing_shed_MWh_max: 0.0}

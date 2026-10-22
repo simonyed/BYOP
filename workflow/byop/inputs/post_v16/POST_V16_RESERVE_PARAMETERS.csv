@@ -1,0 +1,21 @@
+parameter,carrier,low,base,high,unit,used_in_A1,status,source,note
+reserve_requirement,ALL,3000,3000,4000,MW,base,CANDIDATE_FROM_PACKAGE (PARAMETER_CANDIDATES future_upward_reserve_base),ERCOT 2024 ELCC Study (Revised) Appendix B p. 35: typical online upward reserve 3000-4000 MW,"fixed exogenous 2025-2031; 4000 = later bounded sensitivity, NOT run in A1; not a PRM / LOLE"
+reserve_duration_tau,ALL,1,1,1,h,base,CANDIDATE_FROM_PACKAGE (reserve_energy_duration_base),PARAMETER_CANDIDATES.csv; ERCOT NPRR 1282 (RTC+B): ECRS duration requirement reduced to one hour,storage reserve must be backed by tau x r / eff_dispatch of its dispatch SOC
+response_window,ALL,10,10,30,min,base,EXECUTOR_ASSUMPTION_PENDING_APPROVAL,"ERCOT ECRS: response within 10 minutes of a dispatch instruction (Protocols / NPRR 1282 PRS report 2025-05-15); Non-Spin: 30 minutes","thermal reserve <= ramp(%/min) x window x online capacity"
+ramp_rate,CCGT,2,4,8,%/min,base,EXECUTOR_ASSUMPTION_PENDING_APPROVAL,"VGB PowerTech (ADB Asia Clean Energy Forum 2018, Weise / Vithayasrichareon decks): CCGT usual 4, state of the art 8 %/min; low = coal-like 2","rho10 = min(1 - pmin, 10 x ramp) = 0.4 at base"
+min_stable_load,CCGT,0.5,0.5,0.3,fraction of online capacity,base,EXECUTOR_ASSUMPTION_PENDING_APPROVAL,"VGB PowerTech: CCGT usual 50 %, state of the art 40 %, potential 30 % (NOx / CO limits); Wartsila: emissions-compliant GT floor 40-50 %","LP relaxation p >= pmin x c of the online capacity c (no binaries)"
+ramp_rate,OCGT,8,10,50,%/min,base,EXECUTOR_ASSUMPTION_PENDING_APPROVAL,"Wartsila engine-vs-aero comparison: aeroderivative GT ~50 %/min from spinning; frame CT lower (no public fleet figure found) -> base 10 %/min","fleet mix of frame / aero CT unknown; rho10 capped at 1 - pmin = 0.6"
+min_stable_load,OCGT,0.5,0.4,0.4,fraction of online capacity,base,EXECUTOR_ASSUMPTION_PENDING_APPROVAL,"Wartsila: minimum emissions-compliant stable load 40-50 % for most gas turbines; aeroderivative 40 %",
+ramp_rate,gas_steam,1,2,4,%/min,base,EXECUTOR_ASSUMPTION_PENDING_APPROVAL,"no direct gas-steam figure found; VGB hard-coal steam usual 2 %/min used as the steam-cycle proxy",older oil / gas steam (ReEDS o-g-s)
+min_stable_load,gas_steam,0.4,0.4,0.25,fraction of online capacity,base,EXECUTOR_ASSUMPTION_PENDING_APPROVAL,VGB hard coal usual 40 % / state of the art 25 % (steam-cycle proxy),
+ramp_rate,coal,1,2,4,%/min,base,EXECUTOR_ASSUMPTION_PENDING_APPROVAL,"VGB PowerTech: hard coal usual 2, state of the art 4, potential 8 %/min",
+min_stable_load,coal,0.4,0.4,0.25,fraction of online capacity,base,EXECUTOR_ASSUMPTION_PENDING_APPROVAL,"VGB PowerTech: hard coal usual 40 %, state of the art 25 %",
+ramp_rate,biomass,1,2,4,%/min,base,EXECUTOR_ASSUMPTION_PENDING_APPROVAL,steam-cycle proxy (VGB hard coal),123 MW only
+min_stable_load,biomass,0.4,0.4,0.25,fraction of online capacity,base,EXECUTOR_ASSUMPTION_PENDING_APPROVAL,steam-cycle proxy (VGB hard coal),
+eligible,hydro,1,1,1,flag,base,EXECUTOR_ASSUMPTION_PENDING_APPROVAL,"fast hydro headroom within availability; no min load",535 MW; rho10 = 1
+eligible,nuclear,0,0,0,flag,base,EXECUTOR_DECISION,ERCOT nuclear units run baseload and do not provide upward AS in practice,not eligible
+eligible,onwind,0,0,0,flag,base,EXECUTOR_DECISION,"conservative: wind / solar headroom is not counted (forecast / curtailment, no AS qualification modelled)",not eligible
+eligible,solar,0,0,0,flag,base,EXECUTOR_DECISION,same as wind,not eligible
+eligible,battery,1,1,1,flag,base,EXECUTOR_DECISION,"power headroom p_nom - p_dispatch + p_store and energy tau x r / eff_dispatch <= dispatch SOC",same SOC variable as the dispatch
+eligible,load_shed,0,0,0,flag,base,PACKAGE_RULE,"package 3.2: model load_shed, undelivered compute and contract interruption are never reserve",not eligible
+eligible,new_AIDC_load,0,0,0,flag,base,PACKAGE_RULE,same,not eligible

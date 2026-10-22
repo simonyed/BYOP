@@ -45,6 +45,10 @@ run() {   # name, args...
   echo "$(date -u +%FT%TZ) end $name exit $rc"
   return $rc
 }
+case "${1:-}" in   # post-v1.6 (package v1.1): this legacy entry never runs a post-v1.6 config (use byop/run/run_post_v16.sh)
+  step0|pilot_s01|pilot_s01_fix|pilot_core|pilot_core_b3e|attribution|run)
+    case "$CFG" in *post_v16*|*baseline_v16*) echo "refusing: $CFG is a post-v1.6 config; legacy $1 (ERM-02 B / S0CAL / no --base) is for historical reproduction only - use byop/run/run_post_v16.sh"; exit 6 ;; esac ;;
+esac
 case "${1:-}" in
   tests)       python -m pytest -q byop/tests/test_mainline_v13.py 2>&1 | tee $OUT/static_tests.log ;;
   tests_geo)   python -m pytest -q byop/tests/test_dynamic_siting.py 2>&1 | tee $OUT/static_tests_geo_dynamic_v1.log ;;

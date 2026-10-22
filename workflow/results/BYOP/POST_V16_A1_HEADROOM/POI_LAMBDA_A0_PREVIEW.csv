@@ -1,0 +1,19 @@
+year,book,lambda_POI_facility_MW,binding_bus,zero_buses,validity
+2026,E0_firm_preapproved_MW,0.0,p630 10,11,only if the POI rights are independent fixed caps and the network is unchanged
+2026,E0_firm_all_rows_MW,0.0,p630 10,11,only if the POI rights are independent fixed caps and the network is unchanged
+2026,firm_with_upgrade_MW,0.0,p630 10,11,only if the POI rights are independent fixed caps and the network is unchanged
+2027,E0_firm_preapproved_MW,0.0,p630 10,11,only if the POI rights are independent fixed caps and the network is unchanged
+2027,E0_firm_all_rows_MW,0.0,p630 10,11,only if the POI rights are independent fixed caps and the network is unchanged
+2027,firm_with_upgrade_MW,0.0,p630 10,11,only if the POI rights are independent fixed caps and the network is unchanged
+2028,E0_firm_preapproved_MW,0.0,p630 10,11,only if the POI rights are independent fixed caps and the network is unchanged
+2028,E0_firm_all_rows_MW,0.0,p630 10,9,only if the POI rights are independent fixed caps and the network is unchanged
+2028,firm_with_upgrade_MW,0.0,p630 10,9,only if the POI rights are independent fixed caps and the network is unchanged
+2029,E0_firm_preapproved_MW,0.0,p630 10,11,only if the POI rights are independent fixed caps and the network is unchanged
+2029,E0_firm_all_rows_MW,0.0,p630 10,9,only if the POI rights are independent fixed caps and the network is unchanged
+2029,firm_with_upgrade_MW,11446.638682754996,p630 4,0,only if the POI rights are independent fixed caps and the network is unchanged
+2030,E0_firm_preapproved_MW,0.0,p630 10,11,only if the POI rights are independent fixed caps and the network is unchanged
+2030,E0_firm_all_rows_MW,0.0,p630 10,9,only if the POI rights are independent fixed caps and the network is unchanged
+2030,firm_with_upgrade_MW,11446.638682754996,p630 4,0,only if the POI rights are independent fixed caps and the network is unchanged
+2031,E0_firm_preapproved_MW,0.0,p630 10,11,only if the POI rights are independent fixed caps and the network is unchanged
+2031,E0_firm_all_rows_MW,0.0,p630 10,9,only if the POI rights are independent fixed caps and the network is unchanged
+2031,firm_with_upgrade_MW,11446.638682754996,p630 4,0,only if the POI rights are independent fixed caps and the network is unchanged

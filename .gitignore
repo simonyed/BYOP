@@ -367,5 +367,6 @@ workflow/logs/byop/**/*.pid
 !current_work_pckg/
 !current_work_pckg/**
 current_work_pckg/**/*.zip
+!current_work_pckg/A0_RETURN_PACKAGE.zip
 current_work_pckg/**/__pycache__/
 current_work_pckg/**/*.pyc

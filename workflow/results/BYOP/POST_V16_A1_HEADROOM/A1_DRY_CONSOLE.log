@@ -1,0 +1,161 @@
+2026-10-22T20:52:17Z start python -W ignore /datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/run/post_v16_a1.py --base /datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc --threads 16 --dry
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.optimization.window:Building the multi-period model over a MultiIndex `snapshot`. Opt into the flat representation via `pypsa.options.optimization.model_snapshot_index = 'flat'`.
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+{
+ "solver_calls": 0,
+ "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+ "base_sha256": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16",
+ "gate": {
+  "R": {
+   "approved": false,
+   "reasons": [
+    "run_authorization=NOT_APPROVED",
+    "approved_by missing",
+    "approved_git_sha missing",
+    "worktree not clean for code / config / inputs: ['workflow/byop/model/byop_paths.py', 'workflow/byop/model/rearch_mech.py', 'workflow/byop/run/run_mainline.sh', 'workflow/byop/build/build_post_v16_manifest.py', 'workflow/byop/build/post_v16_stage_qa.py']"
+   ],
+   "head": "0b417903c7704c00de609581646fed29723397cf",
+   "approved_git_sha": null,
+   "stage": "LP_R_H_RESOURCE",
+   "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+   "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a1.yaml"
+  },
+  "N": {
+   "approved": false,
+   "reasons": [
+    "run_authorization=NOT_APPROVED",
+    "approved_by missing",
+    "approved_git_sha missing",
+    "worktree not clean for code / config / inputs: ['workflow/byop/model/byop_paths.py', 'workflow/byop/model/rearch_mech.py', 'workflow/byop/run/run_mainline.sh', 'workflow/byop/build/build_post_v16_manifest.py', 'workflow/byop/build/post_v16_stage_qa.py']",
+    "LP_N_H_NETWORK needs an optimal LP_R_H_RESOURCE first"
+   ],
+   "head": "0b417903c7704c00de609581646fed29723397cf",
+   "approved_git_sha": null,
+   "stage": "LP_N_H_NETWORK",
+   "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+   "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a1.yaml"
+  }
+ },
+ "R": {
+  "n_vars": 373249,
+  "n_cons": 940764,
+  "components": 1,
+  "buses": 63,
+  "lines": 162,
+  "generators": 280,
+  "storage_units": 43,
+  "snapshots": 432,
+  "lambda_coefficients": 16,
+  "integer_vars": 0,
+  "headroom": {
+   "eligible_thermal": 125,
+   "eligible_thermal_MW": 68010.7,
+   "storage": 43,
+   "storage_MW": 13068.4
+  },
+  "build_seconds": 10.2,
+  "reserve": {
+   "CCGT": {
+    "pmin": 0.5,
+    "rho": 0.4,
+    "ramp_pct_min": 4.0,
+    "window_min": 10.0
+   },
+   "OCGT": {
+    "pmin": 0.4,
+    "rho": 0.6,
+    "ramp_pct_min": 10.0,
+    "window_min": 10.0
+   },
+   "gas_steam": {
+    "pmin": 0.4,
+    "rho": 0.2,
+    "ramp_pct_min": 2.0,
+    "window_min": 10.0
+   },
+   "coal": {
+    "pmin": 0.4,
+    "rho": 0.2,
+    "ramp_pct_min": 2.0,
+    "window_min": 10.0
+   },
+   "biomass": {
+    "pmin": 0.4,
+    "rho": 0.2,
+    "ramp_pct_min": 2.0,
+    "window_min": 10.0
+   },
+   "hydro": {
+    "pmin": 0.0,
+    "rho": 1.0,
+    "ramp_pct_min": null,
+    "window_min": 10.0
+   }
+  },
+  "line_limits": "copperplate 1e6 MVA, KVL kept"
+ },
+ "N": {
+  "n_vars": 373249,
+  "n_cons": 940764,
+  "components": 1,
+  "buses": 63,
+  "lines": 162,
+  "generators": 280,
+  "storage_units": 43,
+  "snapshots": 432,
+  "lambda_coefficients": 16,
+  "integer_vars": 0,
+  "headroom": {
+   "eligible_thermal": 125,
+   "eligible_thermal_MW": 68010.7,
+   "storage": 43,
+   "storage_MW": 13068.4
+  },
+  "build_seconds": 10.7,
+  "reserve": {
+   "CCGT": {
+    "pmin": 0.5,
+    "rho": 0.4,
+    "ramp_pct_min": 4.0,
+    "window_min": 10.0
+   },
+   "OCGT": {
+    "pmin": 0.4,
+    "rho": 0.6,
+    "ramp_pct_min": 10.0,
+    "window_min": 10.0
+   },
+   "gas_steam": {
+    "pmin": 0.4,
+    "rho": 0.2,
+    "ramp_pct_min": 2.0,
+    "window_min": 10.0
+   },
+   "coal": {
+    "pmin": 0.4,
+    "rho": 0.2,
+    "ramp_pct_min": 2.0,
+    "window_min": 10.0
+   },
+   "biomass": {
+    "pmin": 0.4,
+    "rho": 0.2,
+    "ramp_pct_min": 2.0,
+    "window_min": 10.0
+   },
+   "hydro": {
+    "pmin": 0.0,
+    "rho": 1.0,
+    "ramp_pct_min": null,
+    "window_min": 10.0
+   }
+  },
+  "line_limits": "v1.6 s_nom x s_max_pu"
+ }
+}
+2026-10-22T20:52:46Z end rc=0

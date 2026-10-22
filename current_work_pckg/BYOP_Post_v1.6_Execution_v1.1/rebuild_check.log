@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "solver_calls": 0,
+  "hourly_rows": 8760,
+  "three_hour_rows": 2920,
+  "load_fuel_hour_keys_matched": 8760,
+  "daily_energy_QA_rows": 730,
+  "max_daily_fuel_MWh_abs_difference": 1.0000658221542835e-06,
+  "native_load_TWh": 488.233578542299,
+  "wind_actual_TWh": 114.921474000072,
+  "solar_actual_TWh": 67.814027270681,
+  "spring_transition_hours": 23,
+  "autumn_transition_hours": 25,
+  "mora_percentile_rows": 9647,
+  "mora_outage_quantile_rows": 143,
+  "future_elcc_rows": 720,
+  "supplemental_operational_years": [
+    2023,
+    2024,
+    2025
+  ],
+  "supplemental_operational_rows": 26304,
+  "operational_vs_native_load_MAE_MW": 710.4489023826934,
+  "operational_vs_settled_wind_MAE_MW": 32.042028736718684,
+  "operational_vs_settled_solar_MAE_MW": 42.2769936969214,
+  "negative_actual_solar_hours": 0,
+  "negative_actual_wind_hours": 0,
+  "actual_generation_is_uncurtailed_availability": false,
+  "UTC_conversion_claimed": false
+}
+                    event_id       date  source_HE_label  native_load_MW  observed_residual_load_MW
+            SUMMER_LOAD_PEAK 2025-08-18 08/18/2025 18:00    83679.001697               52209.092240
+    SUMMER_OBSERVED_NET_PEAK 2025-08-18 08/18/2025 21:00    78502.097729               68698.918198
+            WINTER_LOAD_PEAK 2025-02-20 02/20/2025 08:00    80524.699422               69510.257955
+      SUMMER_UPWARD_NET_RAMP 2025-09-30 09/30/2025 19:00    71268.807525               60015.121408
+   SUMMER_LOW_WIND_HIGH_LOAD 2025-08-19 08/19/2025 13:00    77409.230409               52206.685331
+SUMMER_NET_PEAK_DISJOINT_DAY 2025-07-30 07/30/2025 21:00    75406.132898               67726.959382

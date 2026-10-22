@@ -1,0 +1,370 @@
+{
+ "solver_calls": 0,
+ "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+ "base_sha256": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16",
+ "gate": {
+  "R": {
+   "approved": false,
+   "reasons": [
+    "run_authorization=NOT_APPROVED",
+    "approved_by missing",
+    "approved_git_sha missing",
+    "worktree not clean for code / config / inputs: ['workflow/byop/model/byop_paths.py', 'workflow/byop/model/rearch_mech.py', 'workflow/byop/run/run_mainline.sh', 'workflow/byop/build/build_post_v16_manifest.py', 'workflow/byop/build/post_v16_stage_qa.py']"
+   ],
+   "head": "0b417903c7704c00de609581646fed29723397cf",
+   "approved_git_sha": null,
+   "stage": "LP_R_H_RESOURCE",
+   "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+   "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a1.yaml"
+  },
+  "N": {
+   "approved": false,
+   "reasons": [
+    "run_authorization=NOT_APPROVED",
+    "approved_by missing",
+    "approved_git_sha missing",
+    "worktree not clean for code / config / inputs: ['workflow/byop/model/byop_paths.py', 'workflow/byop/model/rearch_mech.py', 'workflow/byop/run/run_mainline.sh', 'workflow/byop/build/build_post_v16_manifest.py', 'workflow/byop/build/post_v16_stage_qa.py']",
+    "LP_N_H_NETWORK needs an optimal LP_R_H_RESOURCE first"
+   ],
+   "head": "0b417903c7704c00de609581646fed29723397cf",
+   "approved_git_sha": null,
+   "stage": "LP_N_H_NETWORK",
+   "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+   "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a1.yaml"
+  }
+ },
+ "R": {
+  "variables": [
+   "Generator-p",
+   "Line-s",
+   "StorageUnit-p_dispatch",
+   "StorageUnit-p_store",
+   "StorageUnit-state_of_charge",
+   "PV16-lambda",
+   "PV16-online_cap",
+   "PV16-res_thermal",
+   "PV16-res_su"
+  ],
+  "constraints": [
+   "Bus-nodal_balance",
+   "Generator-fix-p-lower",
+   "Generator-fix-p-upper",
+   "Generator-p-ramp_limit_down",
+   "Generator-p-ramp_limit_up",
+   "Kirchhoff-Voltage-Law",
+   "Line-fix-s-lower",
+   "Line-fix-s-upper",
+   "PV16-newload",
+   "PV16-online_max_p",
+   "PV16-online_min",
+   "PV16-res_ramp",
+   "PV16-res_su_energy",
+   "PV16-res_su_power",
+   "PV16-res_thermal_head",
+   "PV16-reserve_req",
+   "StorageUnit-energy_balance",
+   "StorageUnit-fix-p_dispatch-lower",
+   "StorageUnit-fix-p_dispatch-upper",
+   "StorageUnit-fix-p_store-lower",
+   "StorageUnit-fix-p_store-upper",
+   "StorageUnit-fix-state_of_charge-lower",
+   "StorageUnit-fix-state_of_charge-upper"
+  ],
+  "n_vars": 373249,
+  "n_cons": 940764,
+  "components": 1,
+  "buses": 63,
+  "lines": 162,
+  "generators": 280,
+  "storage_units": 43,
+  "snapshots": 432,
+  "lambda_coefficients": 16,
+  "integer_vars": 0,
+  "headroom": {
+   "eligible_thermal": 125,
+   "eligible_thermal_MW": 68010.7,
+   "storage": 43,
+   "storage_MW": 13068.4
+  },
+  "build_seconds": 10.2,
+  "reserve": {
+   "CCGT": {
+    "pmin": 0.5,
+    "rho": 0.4,
+    "ramp_pct_min": 4.0,
+    "window_min": 10.0
+   },
+   "OCGT": {
+    "pmin": 0.4,
+    "rho": 0.6,
+    "ramp_pct_min": 10.0,
+    "window_min": 10.0
+   },
+   "gas_steam": {
+    "pmin": 0.4,
+    "rho": 0.2,
+    "ramp_pct_min": 2.0,
+    "window_min": 10.0
+   },
+   "coal": {
+    "pmin": 0.4,
+    "rho": 0.2,
+    "ramp_pct_min": 2.0,
+    "window_min": 10.0
+   },
+   "biomass": {
+    "pmin": 0.4,
+    "rho": 0.2,
+    "ramp_pct_min": 2.0,
+    "window_min": 10.0
+   },
+   "hydro": {
+    "pmin": 0.0,
+    "rho": 1.0,
+    "ramp_pct_min": null,
+    "window_min": 10.0
+   }
+  },
+  "line_limits": "copperplate 1e6 MVA, KVL kept"
+ },
+ "N": {
+  "variables": [
+   "Generator-p",
+   "Line-s",
+   "StorageUnit-p_dispatch",
+   "StorageUnit-p_store",
+   "StorageUnit-state_of_charge",
+   "PV16-lambda",
+   "PV16-online_cap",
+   "PV16-res_thermal",
+   "PV16-res_su"
+  ],
+  "constraints": [
+   "Bus-nodal_balance",
+   "Generator-fix-p-lower",
+   "Generator-fix-p-upper",
+   "Generator-p-ramp_limit_down",
+   "Generator-p-ramp_limit_up",
+   "Kirchhoff-Voltage-Law",
+   "Line-fix-s-lower",
+   "Line-fix-s-upper",
+   "PV16-newload",
+   "PV16-online_max_p",
+   "PV16-online_min",
+   "PV16-res_ramp",
+   "PV16-res_su_energy",
+   "PV16-res_su_power",
+   "PV16-res_thermal_head",
+   "PV16-reserve_req",
+   "StorageUnit-energy_balance",
+   "StorageUnit-fix-p_dispatch-lower",
+   "StorageUnit-fix-p_dispatch-upper",
+   "StorageUnit-fix-p_store-lower",
+   "StorageUnit-fix-p_store-upper",
+   "StorageUnit-fix-state_of_charge-lower",
+   "StorageUnit-fix-state_of_charge-upper"
+  ],
+  "n_vars": 373249,
+  "n_cons": 940764,
+  "components": 1,
+  "buses": 63,
+  "lines": 162,
+  "generators": 280,
+  "storage_units": 43,
+  "snapshots": 432,
+  "lambda_coefficients": 16,
+  "integer_vars": 0,
+  "headroom": {
+   "eligible_thermal": 125,
+   "eligible_thermal_MW": 68010.7,
+   "storage": 43,
+   "storage_MW": 13068.4
+  },
+  "build_seconds": 10.7,
+  "reserve": {
+   "CCGT": {
+    "pmin": 0.5,
+    "rho": 0.4,
+    "ramp_pct_min": 4.0,
+    "window_min": 10.0
+   },
+   "OCGT": {
+    "pmin": 0.4,
+    "rho": 0.6,
+    "ramp_pct_min": 10.0,
+    "window_min": 10.0
+   },
+   "gas_steam": {
+    "pmin": 0.4,
+    "rho": 0.2,
+    "ramp_pct_min": 2.0,
+    "window_min": 10.0
+   },
+   "coal": {
+    "pmin": 0.4,
+    "rho": 0.2,
+    "ramp_pct_min": 2.0,
+    "window_min": 10.0
+   },
+   "biomass": {
+    "pmin": 0.4,
+    "rho": 0.2,
+    "ramp_pct_min": 2.0,
+    "window_min": 10.0
+   },
+   "hydro": {
+    "pmin": 0.0,
+    "rho": 1.0,
+    "ramp_pct_min": null,
+    "window_min": 10.0
+   }
+  },
+  "line_limits": "v1.6 s_nom x s_max_pu"
+ },
+ "poi_lambda_preview": [
+  {
+   "year": 2026,
+   "book": "E0_firm_preapproved_MW",
+   "lambda_POI_facility_MW": 0.0,
+   "binding_bus": "p630 10",
+   "zero_buses": 11,
+   "validity": "only if the POI rights are independent fixed caps and the network is unchanged"
+  },
+  {
+   "year": 2026,
+   "book": "E0_firm_all_rows_MW",
+   "lambda_POI_facility_MW": 0.0,
+   "binding_bus": "p630 10",
+   "zero_buses": 11,
+   "validity": "only if the POI rights are independent fixed caps and the network is unchanged"
+  },
+  {
+   "year": 2026,
+   "book": "firm_with_upgrade_MW",
+   "lambda_POI_facility_MW": 0.0,
+   "binding_bus": "p630 10",
+   "zero_buses": 11,
+   "validity": "only if the POI rights are independent fixed caps and the network is unchanged"
+  },
+  {
+   "year": 2027,
+   "book": "E0_firm_preapproved_MW",
+   "lambda_POI_facility_MW": 0.0,
+   "binding_bus": "p630 10",
+   "zero_buses": 11,
+   "validity": "only if the POI rights are independent fixed caps and the network is unchanged"
+  },
+  {
+   "year": 2027,
+   "book": "E0_firm_all_rows_MW",
+   "lambda_POI_facility_MW": 0.0,
+   "binding_bus": "p630 10",
+   "zero_buses": 11,
+   "validity": "only if the POI rights are independent fixed caps and the network is unchanged"
+  },
+  {
+   "year": 2027,
+   "book": "firm_with_upgrade_MW",
+   "lambda_POI_facility_MW": 0.0,
+   "binding_bus": "p630 10",
+   "zero_buses": 11,
+   "validity": "only if the POI rights are independent fixed caps and the network is unchanged"
+  },
+  {
+   "year": 2028,
+   "book": "E0_firm_preapproved_MW",
+   "lambda_POI_facility_MW": 0.0,
+   "binding_bus": "p630 10",
+   "zero_buses": 11,
+   "validity": "only if the POI rights are independent fixed caps and the network is unchanged"
+  },
+  {
+   "year": 2028,
+   "book": "E0_firm_all_rows_MW",
+   "lambda_POI_facility_MW": 0.0,
+   "binding_bus": "p630 10",
+   "zero_buses": 9,
+   "validity": "only if the POI rights are independent fixed caps and the network is unchanged"
+  },
+  {
+   "year": 2028,
+   "book": "firm_with_upgrade_MW",
+   "lambda_POI_facility_MW": 0.0,
+   "binding_bus": "p630 10",
+   "zero_buses": 9,
+   "validity": "only if the POI rights are independent fixed caps and the network is unchanged"
+  },
+  {
+   "year": 2029,
+   "book": "E0_firm_preapproved_MW",
+   "lambda_POI_facility_MW": 0.0,
+   "binding_bus": "p630 10",
+   "zero_buses": 11,
+   "validity": "only if the POI rights are independent fixed caps and the network is unchanged"
+  },
+  {
+   "year": 2029,
+   "book": "E0_firm_all_rows_MW",
+   "lambda_POI_facility_MW": 0.0,
+   "binding_bus": "p630 10",
+   "zero_buses": 9,
+   "validity": "only if the POI rights are independent fixed caps and the network is unchanged"
+  },
+  {
+   "year": 2029,
+   "book": "firm_with_upgrade_MW",
+   "lambda_POI_facility_MW": 11446.638682754996,
+   "binding_bus": "p630 4",
+   "zero_buses": 0,
+   "validity": "only if the POI rights are independent fixed caps and the network is unchanged"
+  },
+  {
+   "year": 2030,
+   "book": "E0_firm_preapproved_MW",
+   "lambda_POI_facility_MW": 0.0,
+   "binding_bus": "p630 10",
+   "zero_buses": 11,
+   "validity": "only if the POI rights are independent fixed caps and the network is unchanged"
+  },
+  {
+   "year": 2030,
+   "book": "E0_firm_all_rows_MW",
+   "lambda_POI_facility_MW": 0.0,
+   "binding_bus": "p630 10",
+   "zero_buses": 9,
+   "validity": "only if the POI rights are independent fixed caps and the network is unchanged"
+  },
+  {
+   "year": 2030,
+   "book": "firm_with_upgrade_MW",
+   "lambda_POI_facility_MW": 11446.638682754996,
+   "binding_bus": "p630 4",
+   "zero_buses": 0,
+   "validity": "only if the POI rights are independent fixed caps and the network is unchanged"
+  },
+  {
+   "year": 2031,
+   "book": "E0_firm_preapproved_MW",
+   "lambda_POI_facility_MW": 0.0,
+   "binding_bus": "p630 10",
+   "zero_buses": 11,
+   "validity": "only if the POI rights are independent fixed caps and the network is unchanged"
+  },
+  {
+   "year": 2031,
+   "book": "E0_firm_all_rows_MW",
+   "lambda_POI_facility_MW": 0.0,
+   "binding_bus": "p630 10",
+   "zero_buses": 9,
+   "validity": "only if the POI rights are independent fixed caps and the network is unchanged"
+  },
+  {
+   "year": 2031,
+   "book": "firm_with_upgrade_MW",
+   "lambda_POI_facility_MW": 11446.638682754996,
+   "binding_bus": "p630 4",
+   "zero_buses": 0,
+   "validity": "only if the POI rights are independent fixed caps and the network is unchanged"
+  }
+ ]
+}

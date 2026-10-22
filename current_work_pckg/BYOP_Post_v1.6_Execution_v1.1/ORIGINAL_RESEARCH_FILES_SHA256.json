@@ -1,0 +1,324 @@
+{
+  "source_archive": "BYOP_Post_v1.6_Calibration_Research_Basis_2026-10-22.zip",
+  "files": [
+    {
+      "path": "CALIBRATION_RESEARCH_MEMO_v0.1.md",
+      "archived_path": "CALIBRATION_RESEARCH_MEMO_v0.1.md",
+      "size_bytes": 18400,
+      "sha256": "cb5df7bd1938faed7338f2330998c301bfd83d9efd7f92d06deb6475e294005b"
+    },
+    {
+      "path": "DATA_GAPS_AND_OWNERSHIP.csv",
+      "archived_path": "DATA_GAPS_AND_OWNERSHIP.csv",
+      "size_bytes": 2461,
+      "sha256": "f02a01e0e4830c51bd65f3d1b9c4310650ba8c53fa177ca146a2df3aff8c8907"
+    },
+    {
+      "path": "DOWNLOAD_LOG.json",
+      "archived_path": "DOWNLOAD_LOG.json",
+      "size_bytes": 1495,
+      "sha256": "d8d889b03ea7959f564572589e7eb8f64673d3e1a3c6def824be62e694db5c3b"
+    },
+    {
+      "path": "INDEPENDENT_VALIDATION_ANCHORS.csv",
+      "archived_path": "INDEPENDENT_VALIDATION_ANCHORS.csv",
+      "size_bytes": 1574,
+      "sha256": "39dedaffe64a4de8215e11aa83c9741e2baf7002d33f99560a08a1ecf7e79fc9"
+    },
+    {
+      "path": "NETWORK_DOWNLOAD_LOG.json",
+      "archived_path": "NETWORK_DOWNLOAD_LOG.json",
+      "size_bytes": 799,
+      "sha256": "95aa6cc5044a43ec943b534f643d4d661c38a12afee9390100241e957c3325c6"
+    },
+    {
+      "path": "PARAMETER_CANDIDATES.csv",
+      "archived_path": "PARAMETER_CANDIDATES.csv",
+      "size_bytes": 1830,
+      "sha256": "7683a7a2989741e01f87e345075a6c710919ed98a09ddab89cd0c7fc783ede9b"
+    },
+    {
+      "path": "README.md",
+      "archived_path": "RESEARCH_BASIS_README_v0.1.md",
+      "size_bytes": 1902,
+      "sha256": "3937c7366cde528134b9cf8a800deab33b7aec49c02eaaed61df35771eccfeca"
+    },
+    {
+      "path": "REPOSITORY_CHECK.json",
+      "archived_path": "REPOSITORY_CHECK.json",
+      "size_bytes": 290,
+      "sha256": "c0ff7e81f566cbc81291a0095fb65a9e6176b1635cc2f7cfcbd25b30fe190223"
+    },
+    {
+      "path": "SOURCE_REGISTRY.csv",
+      "archived_path": "SOURCE_REGISTRY.csv",
+      "size_bytes": 8538,
+      "sha256": "cf0bdf6c833730946f3b29b1d531fa11b4387f4d6b189e2aeabd428f129980b1"
+    },
+    {
+      "path": "WIND_SOLAR_DOWNLOAD_LOG.json",
+      "archived_path": "WIND_SOLAR_DOWNLOAD_LOG.json",
+      "size_bytes": 616,
+      "sha256": "73449d367eae02b6c068cf8a12770db5b8c33837a8c23584dc09a92948e5d856"
+    },
+    {
+      "path": "build_research_data.py",
+      "archived_path": "build_research_data.py",
+      "size_bytes": 18050,
+      "sha256": "e1128d9aa4dedf0aaa99d2ed51d2640916c11b0292d9e585dba918bfdfcfe3dd"
+    },
+    {
+      "path": "derived/CDR_FUTURE_ELCC_2026_2031_REFERENCE.csv",
+      "archived_path": "derived/CDR_FUTURE_ELCC_2026_2031_REFERENCE.csv",
+      "size_bytes": 143974,
+      "sha256": "5da3404131468be88df958bec2c091f06512ccc146b02e27bd1ce337c1e3e8d4"
+    },
+    {
+      "path": "derived/DATA_QA.json",
+      "archived_path": "derived/DATA_QA.json",
+      "size_bytes": 959,
+      "sha256": "5df05b30504290de6c78b274272c34726188f45a0fe3981319f6aecd4fd7e88d"
+    },
+    {
+      "path": "derived/ERCOT_2025_OBSERVED_LOAD_WIND_SOLAR_1H.csv",
+      "archived_path": "derived/ERCOT_2025_OBSERVED_LOAD_WIND_SOLAR_1H.csv",
+      "size_bytes": 2410860,
+      "sha256": "265c79aee9caa422075c321f0523657f42320e326a5dd6ad4c4c28e7b4988b4e"
+    },
+    {
+      "path": "derived/ERCOT_2025_OBSERVED_LOAD_WIND_SOLAR_3H.csv",
+      "archived_path": "derived/ERCOT_2025_OBSERVED_LOAD_WIND_SOLAR_3H.csv",
+      "size_bytes": 250046,
+      "sha256": "8e7083f2c3d4e341590180a3b45c8165e6f6874197f560bf01a40cbbf1cb4238"
+    },
+    {
+      "path": "derived/ERCOT_OPERATIONAL_WIND_SOLAR_2023_2025.csv.gz",
+      "archived_path": "derived/ERCOT_OPERATIONAL_WIND_SOLAR_2023_2025.csv.gz",
+      "size_bytes": 1696616,
+      "sha256": "66069818a05969bc8a32616e48be6b8a358914f1f750899d57952826434fb347"
+    },
+    {
+      "path": "derived/FUEL_INTERVAL_DAILY_QA.csv",
+      "archived_path": "derived/FUEL_INTERVAL_DAILY_QA.csv",
+      "size_bytes": 46929,
+      "sha256": "ed6dd734339428239e64393c1023b1a713e4084aab6f17986cd2fa8074ce6c77"
+    },
+    {
+      "path": "derived/MORA_2025_DETERMINISTIC_SOURCE_VALUES.csv",
+      "archived_path": "derived/MORA_2025_DETERMINISTIC_SOURCE_VALUES.csv",
+      "size_bytes": 27287,
+      "sha256": "bc41a5817f16067d26cf6c799d9a9d4167ac2e372eb0f69ed08cf16d0fee8be4"
+    },
+    {
+      "path": "derived/MORA_2025_HOURLY_PERCENTILE_MARGINALS.csv",
+      "archived_path": "derived/MORA_2025_HOURLY_PERCENTILE_MARGINALS.csv",
+      "size_bytes": 2319272,
+      "sha256": "e03fa290caef5ae7d2094fc3ca866cb5cb570e757a79cd687159cbcd6c9d8421"
+    },
+    {
+      "path": "derived/MORA_2025_UNPLANNED_THERMAL_OUTAGE_QUANTILES.csv",
+      "archived_path": "derived/MORA_2025_UNPLANNED_THERMAL_OUTAGE_QUANTILES.csv",
+      "size_bytes": 30693,
+      "sha256": "7b85f6c9f6bf680910d3b8004f7f888a0e1aa14eb9851b601e30a37f8e31e8c9"
+    },
+    {
+      "path": "derived/OPERATIONAL_MONTHLY_INSTALLED_CAPACITY.csv",
+      "archived_path": "derived/OPERATIONAL_MONTHLY_INSTALLED_CAPACITY.csv",
+      "size_bytes": 4319,
+      "sha256": "9241566517d17ecc340a17190423b57e0ce74b3d1ea46b3a256907846178d305"
+    },
+    {
+      "path": "derived/OPERATIONAL_MULTIYEAR_SOURCE_SUMMARY.csv",
+      "archived_path": "derived/OPERATIONAL_MULTIYEAR_SOURCE_SUMMARY.csv",
+      "size_bytes": 433,
+      "sha256": "85210a2b1a97fc1675d5d7152b0bf3c229ed755676a10b058aead6106abce34b"
+    },
+    {
+      "path": "derived/PRE_REGISTERED_STRESS_EVENTS.csv",
+      "archived_path": "derived/PRE_REGISTERED_STRESS_EVENTS.csv",
+      "size_bytes": 1330,
+      "sha256": "a850deb87e32e227fdef1273700ab5bcf49128b630b70193141c418a5328f8a4"
+    },
+    {
+      "path": "derived/SOURCE_VINTAGE_COMPARISON_2025.csv",
+      "archived_path": "derived/SOURCE_VINTAGE_COMPARISON_2025.csv",
+      "size_bytes": 1189378,
+      "sha256": "3535b5238ad1927caa918f8f5918c074498e904851fc617b6869ad0d84a3a14a"
+    },
+    {
+      "path": "derived/WINDOW_SUMMER_LOAD_PEAK_1H.csv",
+      "archived_path": "derived/WINDOW_SUMMER_LOAD_PEAK_1H.csv",
+      "size_bytes": 20155,
+      "sha256": "c3ae320524955e101bf4600964317458851d3ce3e5b06dab5f92a45c1ed3130b"
+    },
+    {
+      "path": "derived/WINDOW_SUMMER_LOW_WIND_HIGH_LOAD_1H.csv",
+      "archived_path": "derived/WINDOW_SUMMER_LOW_WIND_HIGH_LOAD_1H.csv",
+      "size_bytes": 21420,
+      "sha256": "c9852c6f5a5c7248816b21a446a4b2250ca57423cc2e6a7696a5f0b50569047e"
+    },
+    {
+      "path": "derived/WINDOW_SUMMER_NET_PEAK_DISJOINT_DAY_1H.csv",
+      "archived_path": "derived/WINDOW_SUMMER_NET_PEAK_DISJOINT_DAY_1H.csv",
+      "size_bytes": 21538,
+      "sha256": "1ceb07e949c1c180571957afb246ba97aac5aa56d9aafd458bc81411b147593b"
+    },
+    {
+      "path": "derived/WINDOW_SUMMER_OBSERVED_NET_PEAK_1H.csv",
+      "archived_path": "derived/WINDOW_SUMMER_OBSERVED_NET_PEAK_1H.csv",
+      "size_bytes": 20155,
+      "sha256": "c3ae320524955e101bf4600964317458851d3ce3e5b06dab5f92a45c1ed3130b"
+    },
+    {
+      "path": "derived/WINDOW_SUMMER_UPWARD_NET_RAMP_1H.csv",
+      "archived_path": "derived/WINDOW_SUMMER_UPWARD_NET_RAMP_1H.csv",
+      "size_bytes": 21421,
+      "sha256": "480586bd31994241ca82fc6c0f1b8d60685faf4cc8fba05632620e14630cf6de"
+    },
+    {
+      "path": "derived/WINDOW_WINTER_LOAD_PEAK_1H.csv",
+      "archived_path": "derived/WINDOW_WINTER_LOAD_PEAK_1H.csv",
+      "size_bytes": 20185,
+      "sha256": "35e7742e620a12b2ac8444d19189aa0360e78d7e75b1e990ed2aeedc74359bc0"
+    },
+    {
+      "path": "mora_source_urls.json",
+      "archived_path": "mora_source_urls.json",
+      "size_bytes": 966,
+      "sha256": "330889c734be5bea0bb22c67f36b2531e686666e6cb92db3db8ae60b94a2e5a8"
+    },
+    {
+      "path": "raw/CDR_December2024_Revised.xlsx",
+      "archived_path": "raw/CDR_December2024_Revised.xlsx",
+      "size_bytes": 864521,
+      "sha256": "847018a349df09186900f17971ab7da0f68833e29e23832840e9507d4154ea77"
+    },
+    {
+      "path": "raw/CDR_December2025.xlsx",
+      "archived_path": "raw/CDR_December2025.xlsx",
+      "size_bytes": 13667254,
+      "sha256": "c26afc32ca220a61b0ec9854b074917d933a37bffa8a164f7d2ff7df6135db67"
+    },
+    {
+      "path": "raw/ERCOT_2023_Hourly_WindSolar_Output.xlsx",
+      "archived_path": "raw/ERCOT_2023_Hourly_WindSolar_Output.xlsx",
+      "size_bytes": 3192046,
+      "sha256": "52296bbe9f2b79fa4642941c6974e178ce68a33c4bb61071a19e48311c443c6a"
+    },
+    {
+      "path": "raw/ERCOT_2024_Hourly_WindSolar_Output.xlsx",
+      "archived_path": "raw/ERCOT_2024_Hourly_WindSolar_Output.xlsx",
+      "size_bytes": 3211502,
+      "sha256": "9cdf71475b1d70bd9851aa33d196435f267d126504f0fdb683b713b6edf2a731"
+    },
+    {
+      "path": "raw/ERCOT_2025_Hourly_WindSolar_Output.xlsx",
+      "archived_path": "raw/ERCOT_2025_Hourly_WindSolar_Output.xlsx",
+      "size_bytes": 3204693,
+      "sha256": "5e6718adbab776ba97df38cdbbc0521cfbe4bfe4c142a6b30174fbb014327fa2"
+    },
+    {
+      "path": "raw/ERCOT_FarWest_GTC_Notice_2025.html",
+      "archived_path": "raw/ERCOT_FarWest_GTC_Notice_2025.html",
+      "size_bytes": 5031,
+      "sha256": "eb8184ae18c36c75c9684779c93a21f41b90c39f76bfe62f3603f35936d97532"
+    },
+    {
+      "path": "raw/IntGenbyFuel2025.xlsx",
+      "archived_path": "raw/IntGenbyFuel2025.xlsx",
+      "size_bytes": 3048958,
+      "sha256": "bb534618700ff3500eee36b62fa2a9ab07b0923ed536f6d049868101189cfc54"
+    },
+    {
+      "path": "raw/MORA_April2025.xlsx",
+      "archived_path": "raw/MORA_April2025.xlsx",
+      "size_bytes": 313831,
+      "sha256": "a6d686843c9e82e3b26d1d77948a2f1b8f53ce11d1dbc04586a04e8a027cb10e"
+    },
+    {
+      "path": "raw/MORA_August2025.xlsx",
+      "archived_path": "raw/MORA_August2025.xlsx",
+      "size_bytes": 312239,
+      "sha256": "8828d0e39933acffcf85c0ce4869a98009dfade35694f6ff7f9c581d7ae354ca"
+    },
+    {
+      "path": "raw/MORA_December2025.xlsx",
+      "archived_path": "raw/MORA_December2025.xlsx",
+      "size_bytes": 412512,
+      "sha256": "747e6143310d18277698587d5d36e65e5d078141b41101294ea15f2ebae2fcbf"
+    },
+    {
+      "path": "raw/MORA_February2025.xlsx",
+      "archived_path": "raw/MORA_February2025.xlsx",
+      "size_bytes": 331879,
+      "sha256": "4775ab159650c637f27db0de9b5f43eec82f1182a1d1242ff448d217ffa71fff"
+    },
+    {
+      "path": "raw/MORA_January2025.xlsx",
+      "archived_path": "raw/MORA_January2025.xlsx",
+      "size_bytes": 335732,
+      "sha256": "102fa1b7f8b90723fe9e1c7355147f41fee2209bd769f16c181c52cd033094e4"
+    },
+    {
+      "path": "raw/MORA_July2025.xlsx",
+      "archived_path": "raw/MORA_July2025.xlsx",
+      "size_bytes": 317211,
+      "sha256": "1096b3386aa55c55857b4846e775e28b009175b54fa05deffcd7380f687e9d67"
+    },
+    {
+      "path": "raw/MORA_June2025.xlsx",
+      "archived_path": "raw/MORA_June2025.xlsx",
+      "size_bytes": 315062,
+      "sha256": "0017de75216f284bcdf1d98c58be2275fb25e0514ec215ff5b179bd9a7e47b38"
+    },
+    {
+      "path": "raw/MORA_March2025.xlsx",
+      "archived_path": "raw/MORA_March2025.xlsx",
+      "size_bytes": 389694,
+      "sha256": "09e5c728158d48f5bcc7ca59428da8a3983cf4d4f9eab9c12ee475037ec45f5c"
+    },
+    {
+      "path": "raw/MORA_May2025.xlsx",
+      "archived_path": "raw/MORA_May2025.xlsx",
+      "size_bytes": 299157,
+      "sha256": "cf78cfe488c09b4ec856868d6a8b7e43558dddc91bfa91aa4650aadebcaecde7"
+    },
+    {
+      "path": "raw/MORA_November2025.xlsx",
+      "archived_path": "raw/MORA_November2025.xlsx",
+      "size_bytes": 349489,
+      "sha256": "3454fca0408809b2cd53e1444852b723f3230d6ae3173833a6353fe733b915ed"
+    },
+    {
+      "path": "raw/MORA_October2025.xlsx",
+      "archived_path": "raw/MORA_October2025.xlsx",
+      "size_bytes": 344999,
+      "sha256": "63179a2b73169028586a602326ec9a4a40b3c6c1534bc76d6c2aa00b6bce749e"
+    },
+    {
+      "path": "raw/MORA_September2025.xlsx",
+      "archived_path": "raw/MORA_September2025.xlsx",
+      "size_bytes": 311568,
+      "sha256": "38fd590902826a3731c6c3fa1887b541e9090de843ebde25b7d5138c0fcdd844"
+    },
+    {
+      "path": "raw/Native_Load_2025.xlsx",
+      "archived_path": "raw/Native_Load_2025.xlsx",
+      "size_bytes": 1098164,
+      "sha256": "23664b0cddb047692f6cac26a4300e987c6309795395d394bf2dc223f37b53aa"
+    },
+    {
+      "path": "raw/public_wind_solar_report_index.json",
+      "archived_path": "raw/public_wind_solar_report_index.json",
+      "size_bytes": 1533,
+      "sha256": "c72f0e4b098519b6a65415e218f679d4ea9c108ea5611e266d7c82171c3f3255"
+    },
+    {
+      "path": "rebuild_check.log",
+      "archived_path": "rebuild_check.log",
+      "size_bytes": 1660,
+      "sha256": "bf58dd25104d3b9f49d5e269e8135f24059723a45de1492fa915b1713b3c3be7"
+    }
+  ],
+  "note": "Original research-basis files copied byte-for-byte; execution documents added separately"
+}

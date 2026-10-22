@@ -1,0 +1,60 @@
+{
+ "current_work_pckg/_completed/BYOP_ERCOT_AIDC_Geospatial_Distribution_v1.0/AIDC_GEO_DYNAMIC_V1_PRE_RUN_MANIFEST.json": {
+  "entries": 62,
+  "match": 55,
+  "changed": [
+   {
+    "file": "workflow/byop/model/rearch_mech.py",
+    "pinned": "9a5d5566dbb03773c77c7917ac7d0673afb96ef9437bb958be01834105271ac9",
+    "now": "0056ac7d3071f990f33552f84ef2785b679a86eec2375796d93374c08993356a",
+    "status": "CHANGED"
+   },
+   {
+    "file": "workflow/byop/model/byop_paths.py",
+    "pinned": "dde777a5dd2e93b798c8a9dc10d6345186d1a0e76ce920999dd225b7bbd12944",
+    "now": "678440fa4a1256808ca4ec688f154841a4b7b32091275317d32209cab399ebb0",
+    "status": "CHANGED"
+   },
+   {
+    "file": "workflow/byop/run/run_mainline.sh",
+    "pinned": "a2c2c7f917ac6d1dc9a6011de36d917a2220eecc9a26798bb48df68704a32e08",
+    "now": "96053a300324b147e903f3a7b3cac4fa326e25b4f0bb80c9370713cb5e4a06c0",
+    "status": "CHANGED"
+   },
+   {
+    "file": "workflow/byop/build/build_mainline_inputs.py",
+    "pinned": "5f51b7dbdeefd171e8c9caf2e21b21cab3ef44f72e9dc28c54f68cf2205806bf",
+    "now": "0074189995dc6191e01f893f0929d83dc9905bf547c31f95dbe8b292cf376a3a",
+    "status": "CHANGED"
+   },
+   {
+    "file": "workflow/byop/build/build_reeds2_potential.py",
+    "pinned": "7d57e13774d979b090d13a2a5cdb82ed63f108c8cc0ae21e38c8ad5facdb45ec",
+    "now": "f6a9ce4a7db70697f9bd644aedcab8e043eea6fd803987bb2e6dfba841677575",
+    "status": "CHANGED"
+   },
+   {
+    "file": "workflow/byop/tests/test_dynamic_siting.py",
+    "pinned": "bffd74efbdbc8b232897a539782dd6ea4eba307bb70aec58474c84ac3e777400",
+    "now": "beb32a05f66ec68c57c7f621f1aa27bb113879575ccb6fd5d738af07a82c4225",
+    "status": "CHANGED"
+   },
+   {
+    "file": "workflow/byop/inputs/grid/GREAL_NETWORK_EVIDENCE.csv",
+    "pinned": "115f1b4ce9f6c25597377fe3bebf05cfe41cb48de2a3ff5f9357a97cf8a424b1",
+    "now": "0bfc5984787cdc79cf58a64b3e935243c62d3bfad39852233c6f5532bfddd9cd",
+    "status": "CHANGED"
+   }
+  ],
+  "missing_here": [],
+  "baseline": {
+   "path": "workflow/results/BYOP/baseline_2025_tamu/baseline_2025_tamu_prepared.nc",
+   "location": "L2 only (.nc not in git)",
+   "sha256": "19034285be0aa9b9906ab5b0e03778f3a16e7c1c39e97ac97b368d9097cafadb"
+  },
+  "gate_state": "NOT_APPROVED (unchanged); drift only makes the old gate stricter"
+ },
+ "current_work_pckg/_completed/BYOP_Calibration_Closeout_v1.6/S0_S1_BASELINE_V16_PREPARED_MANIFEST.json": {
+  "status": "MISSING"
+ }
+}
