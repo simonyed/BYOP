@@ -1,7 +1,8 @@
 # AIDC_GEO_DYNAMIC_V1_IMPLEMENTATION_REPORT: multi-bus siting of 2026–2035 data-center load (implementation, no solver)
 
 - Date: 2026-10-22 (New York time)
-- Branch: `mainline-v13-stageA`; main was not changed. The SHAs are listed in `AIDC_GEO_DYNAMIC_V1_RETURN_MANIFEST.md`.
+- Branch: `mainline-v13-stageA`; main was not changed.
+- **Implementation commit `887df597b3a0321032f5856afafb76058389bde8`**. Full SHAs are listed in `AIDC_GEO_DYNAMIC_V1_RETURN_MANIFEST.md`.
 - Parent commit:
   - `d0a9bf85`: this package was archived and the work package added on top of `b3cb9c32`, which the work package cites.
   - That commit only moved `current_work_pckg` into `_completed/BYOP_ERCOT_Mainline_v1.3/` and pointed the two code paths to the archive. It did not change the model or any input.
