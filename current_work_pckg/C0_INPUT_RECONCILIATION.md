@@ -209,3 +209,27 @@ Logs: `workflow/results/BYOP/C0_ANCHOR_2025/_l2_run/`.
 - 2025 hourly metered load of the six AIDC sites.
 - The cause of the 24.4 GW gap between the annual report and the CDR core.
 - The 28 MW peak difference.
+
+## 8. Return
+
+```text
+C0_REPO: simonyed/BYOP   BRANCH: mainline-v13-stageA (main unchanged)
+C0_CHECKOUT_SHA_AT_START: 7a7eb2683a1d91840060616ecb31b76623223ed7 (= package repo_sha)
+C0_ARCHIVE_SHA: 093e3247845f8bcac83b6148ea7bf736629ac315
+C0_CODE_SHA: be31ab62 (full SHA = parent of the commit holding this section)
+C0_SOLVER_EXECUTIONS: 0   RUN_GATES: legacy + dynamic approved=false
+C0_MODIFIED_FILES: byop/model/byop_paths.py; byop/build/{c0_anchor_evidence.py (new), c0_anchor_audit.py (new), build_mainline_inputs.py, build_reeds2_potential.py};
+                   byop/tests/test_c0_anchor.py (new); byop/inputs/anchor2025/* (new); byop/README.md; results/BYOP/C0_ANCHOR_2025/*; current_work_pckg/C0_*
+C0_SOURCE_SHA: 10/10 official files match SOURCE_MANIFEST; rebuild = researcher derived (9 tables, 17 metrics)
+C0_LOAD: 488.233578542299 TWh; 1h peak 83,679.001697 MW (08/18 HE18); 3h 83,403.652115 MW; AR 83,707 (+27.998 MW, unexplained)
+C0_MATCH_COVERAGE: CDR 2025 core 1,187 units / 160,494.6 MW -> confirmed 903 units / 81.0% MW; + capacity candidates 88.7% MW;
+                   model active 1,697 units / 155,050.6 MW -> confirmed 81.8% MW (89.9% with candidates)
+C0_UNEXPLAINED: AR - CDR core = 24,409 MW (Thermal 15,285; Solar 5,100; Storage 3,281; Wind 732; Hydro 11) - not allocated;
+                CDR unmatched 16,349 MW in 68 groups (name crosswalk needed)
+C0_PIPELINE: 2,971.7 MW CDR-operating-by-2025 held in the model 2026 pipeline (solar 1,993.4; storage 712.9; wind 265.4) - suggestion only
+C0_SWITCHABLE: Kiamichi 1,224 MW in the model fleet = ERCOT switchable resource with SWGR-UNA rows - flagged, not changed
+C0_AIDC: 6 sites classified, 0 VERIFIED; 460.73 MW IT ramp = LOAD_PROXY_FROM_HISTORICAL_CAPACITY_ESTIMATE; values unchanged
+C0_UPLIFT: 2025 calibration 18 lines / 4,993.9 MVA (inside s_nom) | S0CAL 9 lines / 1,095.6 MW (fixed Links from 2026) | baseline .nc s_nom = ledger (1.8e-12)
+C0_TESTS: test_c0_anchor 13/13; test_mainline_v13 50/50; test_dynamic_siting 32/32 (L2); L2 rebuild byte-identical
+NEXT_STEP: STOP_FOR_RESEARCHER_REVIEW (C1 fixed-asset diagnostics not started; needs explicit --no-calibration or a gated entry and approval)
+```
