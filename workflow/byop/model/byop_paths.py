@@ -55,6 +55,12 @@ C0_RESULTS = RESULTS / 'C0_ANCHOR_2025'                 # C0 v1.3 snapshot (kept
 C0_REPAIR_RESULTS = RESULTS / 'C0_REPAIR_V14'           # C0 repair (prompt v1.4)
 C1_RESULTS = RESULTS / 'C1_FIXED_ASSET_DIAG'            # C1 fixed-asset dispatch diagnostics (prompt v1.4)
 
+# calibration close-out v1.6 (2026-10-22): asset decisions + evidence (tracked), official raw files (data/byop), new baseline
+CALIB_V16_INPUTS = INPUTS / 'calibration_v16'
+CALIB_V16_EVIDENCE = CALIB_V16_INPUTS / 'evidence'
+CALIB_V16_RAW = DATA / 'calibration_closeout_v16/raw'
+BASE_TAMU_V16_DIR = RESULTS / 'baseline_2025_tamu_v16'
+
 # optional raw sources outside the repository: set by environment variable, never a personal drive letter in code
 _env = lambda k: Path(os.environ[k]) if os.environ.get(k) else None
 EPOCH_TIMELINE_RAW = _env('BYOP_EPOCH_TIMELINE_RAW')     # Epoch AI data_center_timelines.csv (refreshes the tracked extract)

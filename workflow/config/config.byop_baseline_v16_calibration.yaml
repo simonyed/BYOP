@@ -1,0 +1,30 @@
+# BYOP calibration close-out v1.6 (2026-10-22): the two annual LPs of the common 2025 baseline.
+# Separate from the formal mainline gate (config.byop_ercot_mainline*.yaml stay NOT_APPROVED and are not read here).
+# byop/run/baseline_v16_calibration.py refuses anything outside this list: LP1 then LP2, once each, zero retries.
+v16:
+  authorization: AUTHORIZED_BY_RESEARCHER_WORK_PACKAGE_V1_6
+  authorization_source: current_work_pckg/BYOP_Calibration_Closeout_v1.6/BYOP_Calibration_Closeout_v1.6.md
+  authorization_source_sha256: fd4d9de89fe30e021d915fcd2bd0fce36c8c599148eeafc94a04b1b4406e8144
+  decision_policy: current_work_pckg/BYOP_Calibration_Closeout_v1.6/DECISION_POLICY.yaml
+  network_representation: fixed_precalibration_xr_thermal_limit_proxy      # X1; no capacity-impedance outer iteration
+  out_dir: results/BYOP/baseline_2025_tamu_v16
+  clusters: 64s
+  interface_rule: reeds_sum
+  stages:
+    LP1_MIN_THERMAL_UPLIFT:
+      what: build_2025_baseline_tamu.py (v1.6 assets + monthly switchable caps), minimum line uplift LP with the unchanged objective
+      objective: "unchanged: UPLIFT_COST 2e6 USD/MW (s_nom_min = s_nom, x / r fixed), SHED_COST 1e6 USD/MWh, 2025 fleet only, no ERM"
+    LP2_RELOADED_FIXED_ASSET:
+      what: re-read baseline_2025_tamu_prepared.nc from disk; every capacity fixed; C1 fixed-asset rules (2025 fleet, cyclic storage, shed at VOLL)
+      requires: LP1_MIN_THERMAL_UPLIFT optimal
+  max_lp_calls: 2
+  max_retries: 0
+  solver: gurobi
+  solver_options: {Method: 2, Crossover: 1, BarConvTol: 1.0e-8, NumericFocus: 2, BarHomogeneous: 1}   # v1.5 exact-optimal configuration
+  voll_USD_MWh: 35685.0                     # LP2 diagnostic shed price (mainline F2-b VOLL, as C1)
+  acceptance:                               # research-proxy tolerances fixed by the package BEFORE the solves; not ERCOT standards
+    eens_over_annual_energy_max: 1.0e-5     # annual energy = ERCOT native load 2025 = 488,233,578.5 MWh -> 4,882.3 MWh
+    max_gap_over_official_peak_max: 1.0e-3  # official hourly peak 83,679.0 MW -> 83.68 MW
+    official_hourly_peak_MW: 83679.001697
+    annual_energy_MWh: 488233578.542299
+  formal_scenario_gate: KEEP_EXISTING_NOT_APPROVED

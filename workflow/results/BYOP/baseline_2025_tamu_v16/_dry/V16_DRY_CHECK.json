@@ -1,0 +1,58 @@
+{
+ "gate_reasons": [],
+ "raw": {
+  "raw_nc": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/_dry/baseline_2025_tamu_raw_uncalibrated.nc",
+  "raw_sha256": "d1dac9554da3154e00329dad05cd1d36ac13c6083fdc9cb648ca30345ea9c700"
+ },
+ "identity_raw": {
+  "lines_same_index": true,
+  "x_max_abs_diff": 0.0,
+  "r_max_abs_diff": 0.0,
+  "xr_identical_to_raw_uncalibrated": true,
+  "switchable_caps": {
+   "p630 1 CCGT Kiamichi 2025fleet r2100": {
+    "dispatch_bound_max_abs_diff_MW": 0.0,
+    "erm_rhs_credit_max_abs_diff_MW": 0.0,
+    "p_nom": 1224.0,
+    "time_varying": true
+   },
+   "p630 1 CCGT Tenaska Gateway 2025fleet r2100": {
+    "dispatch_bound_max_abs_diff_MW": 0.0,
+    "erm_rhs_credit_max_abs_diff_MW": 0.0,
+    "p_nom": 826.0,
+    "time_varying": true
+   }
+  },
+  "switchable_caps_present": true
+ },
+ "prepare": {
+  "removed_global_constraints": [
+   "lv_limit"
+  ],
+  "generators": 264,
+  "storage_units": 43,
+  "lines": 162,
+  "storage_MW": 13068.4,
+  "fleet_MW_by_carrier": {
+   "CCGT": 35914.3,
+   "OCGT": 8815.7,
+   "biomass": 123.0,
+   "coal": 10774.0,
+   "gas_steam": 11848.3,
+   "hydro": 535.4,
+   "nuclear": 4980.0,
+   "onwind": 40277.8,
+   "solar": 29110.0
+  }
+ },
+ "linopy_variables": [
+  "Generator-p",
+  "Line-s",
+  "StorageUnit-p_dispatch",
+  "StorageUnit-p_store",
+  "StorageUnit-state_of_charge"
+ ],
+ "n_vars": 1620600,
+ "n_cons": 4537442,
+ "solver_calls": 0
+}

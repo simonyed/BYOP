@@ -1,0 +1,60 @@
+{
+ "network": "results/BYOP/baseline_2025_tamu_v16/_dry/baseline_2025_tamu_raw_uncalibrated.nc",
+ "network_sha256": "d1dac9554da3154e00329dad05cd1d36ac13c6083fdc9cb648ca30345ea9c700",
+ "risk_steps": {
+  "peak_load": {
+   "step": 1837,
+   "snapshot": "(2030, Timestamp('2030-08-18 15:00:00'))",
+   "source_month_2025": 8,
+   "value_MW": 83403.65211433334,
+   "load_MW": 83403.65211433334
+  },
+  "peak_net_load": {
+   "step": 1692,
+   "snapshot": "(2030, Timestamp('2030-07-31 12:00:00'))",
+   "source_month_2025": 7,
+   "value_MW": 72298.74728391199,
+   "load_MW": 80860.20849066666
+  }
+ },
+ "native_load_1h_peak_MW": 83679.001697,
+ "native_load_1h_peak_label": "08/18/2025 18:00",
+ "native_load_3h_peak_MW": 83403.65211433334,
+ "native_load_TWh": 488.233578542299,
+ "peak_load": {
+  "official_prm": 0.1889893040346796,
+  "model_prm_official_load": 0.14896083497502874,
+  "model_prm_native_load": 0.19460399363366113,
+  "official_credited_MW": 103105.48113816063,
+  "model_credited_MW": 99634.33589941515,
+  "official_firm_load_MW": 86716.91224495096,
+  "model_load_MW": 83403.65211433334,
+  "not_modelled_MW": 4629.9,
+  "unexplained_MW": 4000.0999999999913,
+  "elcc_scope_MW": -1300.209190096225,
+  "explained_scope_MW": -1541.1360486492524,
+  "load_basis_MW": -3313.260130617622,
+  "closes": true
+ },
+ "peak_net_load": {
+  "official_prm": 0.10471809939209689,
+  "model_prm_official_load": 0.07373121432140554,
+  "model_prm_native_load": 0.10166675105883648,
+  "official_credited_MW": 91651.7981502227,
+  "model_credited_MW": 89081.00317785288,
+  "official_firm_load_MW": 82963.96899865835,
+  "model_load_MW": 80860.20849066666,
+  "not_modelled_MW": 4719.0345,
+  "unexplained_MW": 4000.0999999999913,
+  "elcc_scope_MW": -449.4859305981355,
+  "explained_scope_MW": -1402.3745417716927,
+  "load_basis_MW": -2103.7605079916975,
+  "closes": true
+ },
+ "inputs_sha256": {
+  "CDR_2025_RESOURCE_DEMAND_COMPONENTS.csv": "730bf852a39c5e5b8efa057caf576d101d402c53487358b1bd88a4f61a113595",
+  "CDR_2025_PRM_REFERENCE.csv": "7f59bbc2925a12206c78638b4977361c1792f20b56c1bb6fbe512e2f6bcdf1b5",
+  "CDR_2025_ELCC_REFERENCE.csv": "3d07945cfb6ae5a7f0ebcf1af3958a46d28bca88a8ca3120d878bcefc27449f5"
+ },
+ "script_sha256": "c456a8f9fb8987bb8ecf3bcce5c2943a5b6c6e0544540eda5c87222b773bc2b4"
+}
