@@ -1,0 +1,112 @@
+{
+ "stage": "C0 repair v1.4 (stage A)",
+ "solver_executions": 0,
+ "v13_snapshot_untouched_sha256": {
+  "C0_CAPACITY_BRIDGE.csv": "e9787e3198ffa7ebec2ba6937e17a18eab833e54c1fce48efff00896b2955816",
+  "C0_GENERATOR_MATCH.csv": "4ff58dd60e9d61d4ebefcfff2a0d29c71bf176faa525065f15326ac1dde82890",
+  "C0_HISTORICAL_AIDC_EVIDENCE.csv": "767b1c178e33b46b6fc94421bdb90e355bec6b47f39e5c761380ef477ee29c05",
+  "C0_LOAD_ACCOUNTING.csv": "0a7fb33c4b61708cfbe40bb7868920d55c54d399692420aa0a756c0dd7a1dba4",
+  "C0_PIPELINE_RECLASS_SUGGESTIONS.csv": "8747aacc71f5319c89d16835ce3548706ae3c0ed12258cfb5ad5a887ab558d4c",
+  "C0_QA.json": "5320877fa02fd1386239aa3e32c630e9477db10fba5f75f2c01c85a786617c96",
+  "C0_UPLIFT_LEDGER.csv": "a4d598610e83da401fdbde7ad6f94303200e8c88a29e208a41df63387bf9fb3b"
+ },
+ "phase_rows": 1248,
+ "real_cases": {
+  "CALLISTO": {
+   "phases": [
+    {
+     "phase_class": "FUTURE",
+     "phase_year": 2026.0,
+     "cdr_MW": 203.2,
+     "model_set": "",
+     "model_summer_MW": 0.0,
+     "reclass_action": "NONE_FUTURE_NOT_PAIRED"
+    },
+    {
+     "phase_class": "HIST",
+     "phase_year": 2024.0,
+     "cdr_MW": 203.0,
+     "model_set": "active2025",
+     "model_summer_MW": 200.0,
+     "reclass_action": "NONE_HISTORICAL_PHASE_COVERED"
+    }
+   ]
+  },
+  "TIDWELL": {
+   "phases": [
+    {
+     "phase_class": "FUTURE",
+     "phase_year": 2026.0,
+     "cdr_MW": 203.62,
+     "model_set": "committed",
+     "model_summer_MW": 200.0,
+     "reclass_action": "NONE_FUTURE_CONSISTENT"
+    },
+    {
+     "phase_class": "HIST",
+     "phase_year": 2025.0,
+     "cdr_MW": 204.0,
+     "model_set": "active2025",
+     "model_summer_MW": 200.0,
+     "reclass_action": "NONE_HISTORICAL_PHASE_COVERED"
+    }
+   ]
+  },
+  "PADUA": {
+   "phases": [
+    {
+     "phase_class": "FUTURE",
+     "phase_year": 2026.0,
+     "cdr_MW": 352.28999999999996,
+     "model_set": "committed;not_in_model",
+     "model_summer_MW": 350.0,
+     "reclass_action": "NONE_FUTURE_CONSISTENT"
+    },
+    {
+     "phase_class": "HIST",
+     "phase_year": 2025.0,
+     "cdr_MW": 51.1,
+     "model_set": "active2025",
+     "model_summer_MW": 50.0,
+     "reclass_action": "NONE_HISTORICAL_PHASE_COVERED"
+    }
+   ]
+  }
+ },
+ "no_reclass_for_real_cases": true,
+ "old_total_MW": 2971.68,
+ "old_set_by_action": {
+  "NONE_HISTORICAL_PHASE_COVERED": 458.1,
+  "STATUS_QUALIFIED_REVIEW": 2513.58
+ },
+ "v14_review_reclass_candidates_MW": 567.47,
+ "switchable": {
+  "stations": 5,
+  "physical_MW": 4066.12,
+  "adjustment_MW": -2596.12,
+  "unpaired_adjustments": 0,
+  "kiamichi": {
+   "physical_MW": 1400.0,
+   "unavailable_adjustment_MW": -885.0,
+   "snapshot_net_MW": 515.0,
+   "model_active2025_summer_MW": 1224.0
+  }
+ },
+ "id_confirmed_units": 0,
+ "capacity_bridge_identity_ok": true,
+ "noncore_breakdown_MW": {
+  "DGR_SODG_DISTRIBUTION": 49.0,
+  "PHASE_UNPAIRED_WITH_CDR_HISTORICAL (year / MW differ: capacity basis or phase split)": 13245.1,
+  "SAME_NAME_FUTURE_RECORD_ONLY (repower / expansion?): old model unit identity unresolved": 2304.5
+ },
+ "outputs": {
+  "C0_CAPACITY_BRIDGE_V14.csv": "bc0f2c35942354c355b56ffd3b0d89c362c334e63396eabd5e253d324d715142",
+  "C0_MATCH_CONFIDENCE.csv": "02ec41e88adb1db90f806e50b74faacfb3cfe861c13858e02b9f486d135181ca",
+  "C0_MODEL_ACTIVE_NONCORE_BREAKDOWN.csv": "ddb55fd1475f57f85987bde353c4c81cd237e3d9840390fdeadad2fb1c604605",
+  "C0_PHASE_RECONCILIATION.csv": "5f0f213b3d141409f94cd2b12ef1bd603735c5c34bebc4623d830ff023176e71",
+  "C0_RECLASS_REVISED.csv": "7cd9eb2ede370f045a7dc0f964f696fe8bacf541b9bb874ba04e90f3dcc7bc21",
+  "C0_REPAIR_BEFORE_AFTER.csv": "fa558dd282b6068a853bfb8fc1dd328fe50de7dbf407155c9621458ff40b3159",
+  "C0_SWITCHABLE_LEDGER.csv": "cbe4d41148967ce3b782e59ab35d5c7679c293dd942e50dae7c4f88de5dccd62",
+  "C0_SWITCHABLE_UNIT_ROWS.csv": "36388c7ffb7368498c9aa94e8a2240f0f6a2983ebb19ed273cdf0bf62302e297"
+ }
+}

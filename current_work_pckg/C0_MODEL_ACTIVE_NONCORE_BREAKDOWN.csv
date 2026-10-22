@@ -1,0 +1,12 @@
+noncore_reason,family,phases,model_summer_MW,note
+DGR_SODG_DISTRIBUTION,biomass,1,4.200000,"flags for review, not deletions"
+DGR_SODG_DISTRIBUTION,solar,1,5.000000,"flags for review, not deletions"
+DGR_SODG_DISTRIBUTION,storage,3,39.800000,"flags for review, not deletions"
+PHASE_UNPAIRED_WITH_CDR_HISTORICAL (year / MW differ: capacity basis or phase split),gas,37,7787.300000,"flags for review, not deletions"
+PHASE_UNPAIRED_WITH_CDR_HISTORICAL (year / MW differ: capacity basis or phase split),hydro,2,64.000000,"flags for review, not deletions"
+PHASE_UNPAIRED_WITH_CDR_HISTORICAL (year / MW differ: capacity basis or phase split),solar,10,1667.200000,"flags for review, not deletions"
+PHASE_UNPAIRED_WITH_CDR_HISTORICAL (year / MW differ: capacity basis or phase split),storage,3,319.800000,"flags for review, not deletions"
+PHASE_UNPAIRED_WITH_CDR_HISTORICAL (year / MW differ: capacity basis or phase split),wind,13,3406.800000,"flags for review, not deletions"
+SAME_NAME_FUTURE_RECORD_ONLY (repower / expansion?): old model unit identity unresolved,gas,3,1713.000000,"flags for review, not deletions"
+SAME_NAME_FUTURE_RECORD_ONLY (repower / expansion?): old model unit identity unresolved,storage,2,60.000000,"flags for review, not deletions"
+SAME_NAME_FUTURE_RECORD_ONLY (repower / expansion?): old model unit identity unresolved,wind,2,531.500000,"flags for review, not deletions"

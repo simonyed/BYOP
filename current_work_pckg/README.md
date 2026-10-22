@@ -25,3 +25,8 @@ Project-level documents that span work packages are in `workflow/byop/docs/`.
 | File | Content | Status |
 |---|---|---|
 | `BYOP_C0_Repair_C1_Diagnostics_Execution_Prompt_v1.4_2026-10-22.md` | Original work package | Provided by the researcher |
+| `C0_REPAIR_REPORT.md` + `C0_PHASE_RECONCILIATION.csv`, `C0_RECLASS_REVISED.csv`, `C0_SWITCHABLE_LEDGER.csv`, `C0_MATCH_CONFIDENCE.csv`, `C0_MODEL_ACTIVE_NONCORE_BREAKDOWN.csv`, `C0_REPAIR_BEFORE_AFTER.csv`, `C0_REPAIR_QA.json` | Stage A: C0 phase / switchable / confidence repair (v1.3 snapshot kept) | Done (10/10 tests) |
+| `BYOP_C1_Continuation_Addendum_v1.4.1_2026-10-22.md` | Researcher continuation addendum (0 new solves) | Provided by the researcher |
+| `C1_FIXED_ASSET_DIAGNOSTICS.md` + `C1_CASE_MANIFEST.csv`, `C1_METRICS.csv`, `C1_SHEDDING_EVENTS.csv`, `C1_BINDING_LINES.csv`, `C1_GENERATION_BY_FUEL.csv`, `C1_QA.json`, `C1_SOLVE_LOG.csv`, `C1_MAIN_RESULTS.png`, `C1_CALIBRATION_VS_C1_SETUP.csv`, `C1_UPLIFT_LINE_CHECK.csv`, `C1_SHED_EVENTS_LABELLED.csv` | Stage B: C1 fixed-asset diagnostics (4 cases, 8 calls incl. 4 retries; continuation: collector / acceptance fix, read-only explanation) | Done; causes of the 72.9 GWh and of the storage overlap NOT isolated (proposals only) |
+
+Not done (by design): asset revisions, re-calibration, C1-X1 / storage two-stage check, max-net-load window (MISSING_INPUT), S0-S3 / B3.
