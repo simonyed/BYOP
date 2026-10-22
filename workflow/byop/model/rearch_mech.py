@@ -165,6 +165,10 @@ def configure_mainline(out):
             pclr=float(r.pclr_conditional_MW), pclr_off=float(r.pclr_conditional_COD_offset_y), gas_level=lvl, mdq=mdq,
             lat_lead=float(getattr(r, f"gas_lateral_lead_y_{GCFG['gas_case']}")), lat_cost=float(getattr(r, f"gas_lateral_cost_USD_kW_{GCFG['gas_case']}")) * 1000,
             onsite_re=float(r.onsite_renewable_cap_MW), profile='MAINLINE_RESEARCH_COHORT', confidence=r.confidence)
+    if M.CFG.get('tech_version') == 'TECH_COMP_2':
+        fips = v2_site_fips()
+        for k_, d_ in SITES.items():
+            d_['county_fips'] = fips.get(d_['bus'], '')
     coh = pd.read_csv(ML_COH)
     coh = coh[coh.scenario == 'mid'].copy()
     assert set(coh.region_id) <= set(SITES), 'research cohort bus without an aggregated POI'
@@ -347,16 +351,19 @@ def add_byop_cohorts(n, s, site, dmax_fac, byop, byop_fixed, actor):
             # BYOP option of it (no profile is borrowed or invented); flagged for review. Legacy buses keep the hard check.
             STATE.setdefault('byop_re_profile_missing', []).append(dict(site=s, bus=site['bus'], technology=car))
             continue
-        bp = M.byop_params(car, actor)
-        lead = bp['lead']
-        lat_ann = 0.0
-        if car in GAS_FIRED:
-            lead = max(lead, site['lat_lead'])
-            lat_ann = site['lat_cost'] * M.crf(bp['rate'], M.BYOP_LIFE[car])
         if f'byop_{car}' not in n.carriers.index:
-            n.add('Carrier', f'byop_{car}', co2_emissions=0.0)
-        for q, cod, b0 in M.approval_cohorts(lead):
-            name = f'{dc} BYOP {car} q{q}'
+            n.add('Carrier', f'byop_{car}', co2_emissions=0.0)     # 0 = PyPSA placeholder; TECH_COMP_2 emissions in byop_emissions
+        if M.CFG.get('tech_version') == 'TECH_COMP_2':
+            cohorts = v2_cohorts(site, car, actor)
+        else:
+            bp = M.byop_params(car, actor)
+            lead = bp['lead']
+            lat_ann = 0.0
+            if car in GAS_FIRED:
+                lead = max(lead, site['lat_lead'])
+                lat_ann = site['lat_cost'] * M.crf(bp['rate'], M.BYOP_LIFE[car])
+            cohorts = [(q, cod, b0, f'{dc} BYOP {car} q{q}', bp, lat_ann, lead, None) for q, cod, b0 in M.approval_cohorts(lead)]
+        for q, cod, b0, name, bp, lat_ann, lead, audit in cohorts:
             av = np.array([M.avail_frac(b0, cod, p) for p in per])
             fm = np.array([M.firm_frac(b0, cod, p) for p in per])
             cc = (bp['annual'] + lat_ann) * M.tv_factor(b0, M.BYOP_LIFE[car], 'byop', actor)
@@ -386,7 +393,53 @@ def add_byop_cohorts(n, s, site, dmax_fac, byop, byop_fixed, actor):
                 n.add('Generator', name, **kw)
                 n.generators_t.p_max_pu[name] = ppu
             STATE.setdefault('byop_cod', {})[name] = dict(cod=cod, build=b0, approval_year=q, r=bp['r'], carrier=car, zone=s,
-                                                          lateral_USD_per_MW_yr=lat_ann, lead_effective=lead, evidence=bp.get('evidence'))
+                                                          lateral_USD_per_MW_yr=lat_ann, lead_effective=lead, evidence=bp.get('evidence'),
+                                                          tech_version=M.CFG.get('tech_version'), permit_audit=audit)
+            if audit is not None and car in ('RICE', 'OCGT_aero', 'SOFC_NG'):
+                STATE.setdefault('v2_pool_candidates', {})[name] = (car, int(math.floor(audit['equipment_ready'] + 1e-9)))
+
+
+def v2_cohorts(site, car, actor):
+    """A0.2 TECH_COMP_2: one cohort per approval year q (and per pre-enumerated permit path for RICE / OCGT_aero) with
+    COD_real from byop_delivery_and_permit.cod (equipment, civil, construction release, final permit, gas lateral of the site
+    POI evidence, electrical); site FIPS from RESEARCH_SITE_COUNTY_FIPS_V2.csv (missing -> UNKNOWN_CONSERVATIVE); the
+    CONTROLLED path carries its NOx-control CAPEX / FOM and the SAME permit lead (no automatic speed-up)"""
+    import byop_delivery_and_permit as DP
+    dc = f"DC_{site['site']}"
+    paths = ('DEFAULT_ENV', 'CONTROLLED_ENV') if car in ('RICE', 'OCGT_aero') else ('DEFAULT_ENV',)
+    out, seen = [], set()
+    for path in paths:
+        bp = M.byop_params(car, actor, path=path)
+        lat_ann = site['lat_cost'] * M.crf(bp['rate'], M.BYOP_LIFE[car]) if car in GAS_FIRED else 0.0
+        for q in range(int(M.CFG['decision_year']), M.periods()[-1] + 1):
+            a = DP.cod(car, q, county_fips=site.get('county_fips') or None, permit_path=path,
+                       gas_lead_years=site['lat_lead'] if car in GAS_FIRED else None)
+            cod = a['COD_real']
+            b0 = M.first_period(cod)
+            key = (path, round(cod, 6))
+            if b0 is None or key in seen:
+                continue
+            seen.add(key)
+            tag = '' if path == 'DEFAULT_ENV' else ' CTRL'
+            out.append((q, cod, b0, f'{dc} BYOP {car}{tag} q{q}', bp, lat_ann, cod - q, a))
+    return out
+
+
+def v2_site_fips():
+    """A0.2: research-site county FIPS (real Epoch sites only; PNNL candidate buses -> '' = UNKNOWN_CONSERVATIVE)"""
+    f = BP.INPUTS / 'tech_calibrated_v2/RESEARCH_SITE_COUNTY_FIPS_V2.csv'
+    t = pd.read_csv(f, dtype={'county_fips': str}, keep_default_na=False)
+    return dict(zip(t.bus, t.county_fips))
+
+
+def ml_tech_version(cfg_path):
+    """mainline.tech_version of the run config ('legacy-v13' when absent: the frozen v1.3 table stays the default)"""
+    import yaml
+    c = yaml.safe_load(Path(cfg_path).read_text(encoding='utf-8')).get('mainline', {})
+    v = str(c.get('tech_version', 'legacy-v13'))
+    if v not in ('legacy-v13', 'TECH_COMP_2'):
+        raise SystemExit(f'unknown tech_version {v}')
+    return v
 
 
 # ------------------------------------------------------------------------------------------------ world setup
@@ -1051,6 +1104,9 @@ def extra_rearch(n, snapshots):
                 m.add_constraints(lp_.sel(name=f'{b}_fwd') - lp_.sel(name=f'{b}_rev') == 0, name=f'S0CAL-sym_{b}')
     if ML['on']:
         ml_space(n, m)
+    if M.CFG.get('tech_version') == 'TECH_COMP_2' and STATE.get('v2_pool_candidates') and 'Generator-p_nom' in m.variables:
+        import byop_supply_pools as SP          # A0.2 P3c: common delivery pool per technology and delivery year (all sites / paths)
+        STATE['v2_pool_rows'] = SP.add_pool_constraints(n, m, STATE['v2_pool_candidates'])
     if STATE.get('lex'):
         lex_presolve(n, m)
 
@@ -1776,6 +1832,8 @@ def main():
                  reuse=a.reuse, reuse_case='base', frac_cod=True, flex=False, poi_lead=0, byop_case=a.byop_case,
                  public_case='base', byop_techs=a.byop_techs, sample_weeks=a.sample_weeks or None, bg_growth=0.0,
                  line_exp=True, erm15=False, threads=a.threads, v=a.v, v_private=None, smoke=False, dem_scale=1.0)
+    if ML['on']:
+        M.CFG['tech_version'] = ml_tech_version(a.config)      # A0.2: legacy-v13 unless the config selects TECH_COMP_2
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
     logging.basicConfig(level=logging.INFO, handlers=[logging.FileHandler(out / 'rearch_solver.log', 'a', 'utf-8'), logging.StreamHandler()])
     run_id = f'rearch_{a.case_id}_' + datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')

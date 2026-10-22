@@ -1,0 +1,37 @@
+tech,attribute,value,evidence,affects_COD,use
+RICE,CO2_t_per_MWh,0.4447,"EIA-derived baseline with 2026 market package proxy; low/high are assumptions; NOx controlled example is engineering proxy, not TCEQ-certified project rate",False,operating ledger only
+RICE,NOx_kg_per_MWh_default,0.7,"EIA-derived baseline with 2026 market package proxy; low/high are assumptions; NOx controlled example is engineering proxy, not TCEQ-certified project rate",via permit class / route only (no continuous NOx -> lead function),PTE screen + ledger
+RICE,NOx_kg_per_MWh_controlled,0.0675,"EIA-derived baseline with 2026 market package proxy; low/high are assumptions; NOx controlled example is engineering proxy, not TCEQ-certified project rate",False,CONTROLLED_ENV ledger; same permit lead
+RICE,water,,NOT_QUANTIFIED,False,"explanation only (no price, no lead change)"
+RICE,noise,,NOT_QUANTIFIED,False,explanation only
+RICE,permit_lead_proxy_by_class,"{""ATTAINMENT_OR_UNCLASSIFIED"": 0.75, ""OZONE_NONATTAINMENT_2015"": 1.25, ""OZONE_NONATTAINMENT_2008_ONLY"": 1.25, ""UNKNOWN_CONSERVATIVE"": 1.25}",RELATIVE_RISK_RESEARCH_PROXY_NOT_LEGAL_DETERMINATION,True,final permit + construction release milestones
+OCGT_aero,CO2_t_per_MWh,0.50126,EIA current old $2275 with assumed +12% turnkey tight-market premium; FOM rounded proxy; DLN NOx = 0.099 lb/MMBtu x 9.447 MMBtu/MWh x 0.453592; controlled SCR proxy,False,operating ledger only
+OCGT_aero,NOx_kg_per_MWh_default,0.424,EIA current old $2275 with assumed +12% turnkey tight-market premium; FOM rounded proxy; DLN NOx = 0.099 lb/MMBtu x 9.447 MMBtu/MWh x 0.453592; controlled SCR proxy,via permit class / route only (no continuous NOx -> lead function),PTE screen + ledger
+OCGT_aero,NOx_kg_per_MWh_controlled,0.085,EIA current old $2275 with assumed +12% turnkey tight-market premium; FOM rounded proxy; DLN NOx = 0.099 lb/MMBtu x 9.447 MMBtu/MWh x 0.453592; controlled SCR proxy,False,CONTROLLED_ENV ledger; same permit lead
+OCGT_aero,water,,NOT_QUANTIFIED,False,"explanation only (no price, no lead change)"
+OCGT_aero,noise,,NOT_QUANTIFIED,False,explanation only
+OCGT_aero,permit_lead_proxy_by_class,"{""ATTAINMENT_OR_UNCLASSIFIED"": 1.0, ""OZONE_NONATTAINMENT_2015"": 1.75, ""OZONE_NONATTAINMENT_2008_ONLY"": 1.75, ""UNKNOWN_CONSERVATIVE"": 1.75}",RELATIVE_RISK_RESEARCH_PROXY_NOT_LEGAL_DETERMINATION,True,final permit + construction release milestones
+SOFC_NG,CO2_t_per_MWh,0.34325,"2026 commercial comparable capital $3-4k/kW, selected $3900 inclusive installation/site BOP proxy; FOM $125 assumed inclusive service/stack reserve, not manufacturer quotation; time 55d deployment only for equipment-ready case",False,operating ledger only
+SOFC_NG,NOx_kg_per_MWh_default,0.001,"2026 commercial comparable capital $3-4k/kW, selected $3900 inclusive installation/site BOP proxy; FOM $125 assumed inclusive service/stack reserve, not manufacturer quotation; time 55d deployment only for equipment-ready case",via permit class / route only (no continuous NOx -> lead function),PTE screen + ledger
+SOFC_NG,NOx_kg_per_MWh_controlled,0.001,"2026 commercial comparable capital $3-4k/kW, selected $3900 inclusive installation/site BOP proxy; FOM $125 assumed inclusive service/stack reserve, not manufacturer quotation; time 55d deployment only for equipment-ready case",False,CONTROLLED_ENV ledger; same permit lead
+SOFC_NG,water,,SOFC low conventional water use: qualitative (Bloom datasheet) - no like-for-like cross-technology data,False,"explanation only (no price, no lead change)"
+SOFC_NG,noise,,SOFC low noise: qualitative - no like-for-like facility data,False,explanation only
+SOFC_NG,permit_lead_proxy_by_class,"{""ATTAINMENT_OR_UNCLASSIFIED"": 0.4, ""OZONE_NONATTAINMENT_2015"": 0.6, ""OZONE_NONATTAINMENT_2008_ONLY"": 0.6, ""UNKNOWN_CONSERVATIVE"": 0.6}",RELATIVE_RISK_RESEARCH_PROXY_NOT_LEGAL_DETERMINATION,True,final permit + construction release milestones
+WIND,CO2_t_per_MWh,0,retain v1.3 overnight capex/cost; construction components total 2.5y baseline; renewable firm only portfolio chronologic certification,False,operating ledger only
+WIND,NOx_kg_per_MWh_default,0,retain v1.3 overnight capex/cost; construction components total 2.5y baseline; renewable firm only portfolio chronologic certification,via permit class / route only (no continuous NOx -> lead function),PTE screen + ledger
+WIND,NOx_kg_per_MWh_controlled,0,retain v1.3 overnight capex/cost; construction components total 2.5y baseline; renewable firm only portfolio chronologic certification,False,CONTROLLED_ENV ledger; same permit lead
+WIND,water,,NOT_QUANTIFIED,False,"explanation only (no price, no lead change)"
+WIND,noise,,NOT_QUANTIFIED,False,explanation only
+WIND,permit_lead_proxy_by_class,"{""ATTAINMENT_OR_UNCLASSIFIED"": 0.75, ""OZONE_NONATTAINMENT_2015"": 0.75, ""OZONE_NONATTAINMENT_2008_ONLY"": 0.75, ""UNKNOWN_CONSERVATIVE"": 0.75}",RELATIVE_RISK_RESEARCH_PROXY_NOT_LEGAL_DETERMINATION,True,final permit + construction release milestones
+PV,CO2_t_per_MWh,0,retain v1.3 capex; 1.25y onsite approximate (not utility grid interconnection); Firm only portfolio certification,False,operating ledger only
+PV,NOx_kg_per_MWh_default,0,retain v1.3 capex; 1.25y onsite approximate (not utility grid interconnection); Firm only portfolio certification,via permit class / route only (no continuous NOx -> lead function),PTE screen + ledger
+PV,NOx_kg_per_MWh_controlled,0,retain v1.3 capex; 1.25y onsite approximate (not utility grid interconnection); Firm only portfolio certification,False,CONTROLLED_ENV ledger; same permit lead
+PV,water,,NOT_QUANTIFIED,False,"explanation only (no price, no lead change)"
+PV,noise,,NOT_QUANTIFIED,False,explanation only
+PV,permit_lead_proxy_by_class,"{""ATTAINMENT_OR_UNCLASSIFIED"": 0.4, ""OZONE_NONATTAINMENT_2015"": 0.4, ""OZONE_NONATTAINMENT_2008_ONLY"": 0.4, ""UNKNOWN_CONSERVATIVE"": 0.4}",RELATIVE_RISK_RESEARCH_PROXY_NOT_LEGAL_DETERMINATION,True,final permit + construction release milestones
+BESS,CO2_t_per_MWh,0,"retain existing storage capex, 4h, eta 0.85; completion ~0.75y research proxy; no standalone isolated multi-day Firm credit",False,operating ledger only
+BESS,NOx_kg_per_MWh_default,0,"retain existing storage capex, 4h, eta 0.85; completion ~0.75y research proxy; no standalone isolated multi-day Firm credit",via permit class / route only (no continuous NOx -> lead function),PTE screen + ledger
+BESS,NOx_kg_per_MWh_controlled,0,"retain existing storage capex, 4h, eta 0.85; completion ~0.75y research proxy; no standalone isolated multi-day Firm credit",False,CONTROLLED_ENV ledger; same permit lead
+BESS,water,,NOT_QUANTIFIED,False,"explanation only (no price, no lead change)"
+BESS,noise,,NOT_QUANTIFIED,False,explanation only
+BESS,permit_lead_proxy_by_class,"{""ATTAINMENT_OR_UNCLASSIFIED"": 0.35, ""OZONE_NONATTAINMENT_2015"": 0.35, ""OZONE_NONATTAINMENT_2008_ONLY"": 0.35, ""UNKNOWN_CONSERVATIVE"": 0.35}",RELATIVE_RISK_RESEARCH_PROXY_NOT_LEGAL_DETERMINATION,True,final permit + construction release milestones

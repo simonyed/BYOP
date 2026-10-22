@@ -1,0 +1,19 @@
+module,status,note
+"A1 LP-R / LP-N build (1 h stress, 3 GW reserve, max lambda, zero shed)",READY_STATIC,gate NOT_APPROVED; never solved
+A1 gate (FIX-02 / FIX-03 / FIX-04),READY_STATIC,fault-injection tests only
+"TECH_COMP_2 parameter adapter (6 tech, cost, HHV fuel, annuities)",READY_STATIC,byop_params dispatch on CFG tech_version
+"Permit -> COD pure function (19 FIPS, route screen, critical path)",READY_STATIC,research proxy leads; no legal determination
+Site FIPS for the 16 buses,READY_STATIC,"8 known Epoch site FIPS, 8 UNKNOWN_CONSERVATIVE (PNNL candidate buses)"
+"add_byop_cohorts TECH_COMP_2 branch (site COD, DEFAULT / CONTROLLED paths)",READY_STATIC,static harness only; mainline itself refused (exit 3)
+Supply pool rows V2-supply_pool_<tech>_<year>,READY_STATIC,added in extra_rearch for TECH_COMP_2; 2032+ refused
+NOx PTE / operating CO2 / NOx ledger,READY_STATIC,post-processing; no emission price / cap
+RE + BESS Firm certification (24 / 48 / 72 h),READY_STATIC,model builder only; not linked to serve_cap (A2 item); REEDS_MULTIWX_PENDING_LOCAL_H5
+Gas MDQ with TECH_COMP_2 heat rates,READY_STATIC,existing GAS-mdq rows use efficiency = 3412.14 / HR (same HR as v1.3)
+N / R / C rights ledger,READY_STATIC,audit function; R pool empty = no reuse candidate
+Post-v1.6 operating reserve in the multi-period mainline (replace 15 % ERM / shadow SOC),NOT_IMPLEMENTED,A2 item; rearch_mech --post-v16 exits 3 (POST_V16_MAINLINE_NOT_READY)
+"Priced, lagged public expansion without S0CAL / ERM-02",NOT_IMPLEMENTED,A2 item (S0CAL / ERM-02 refused on the new line)
+RE / BESS Firm certificate in the serve_cap / FLEX rows,NOT_IMPLEMENTED,A2 / A3 item
+S2 / S3 same physical candidate set,READY_STATIC,"same builder, actor changes cost only (test_s2_s3_same_physical_set)"
+"S3_mS2 dynamic (site, year) keys",READY_STATIC,keys built from STATE dc (16 buses x periods); no hard-coded 48 / 8 (test)
+A2 S0 / S1 run,BLOCKED,NOT_APPROVED + mainline not ready
+A3 S2 / S3 / S3_mS2 run,BLOCKED,NOT_APPROVED + A2 first

@@ -9,9 +9,9 @@
     "run_authorization=NOT_APPROVED",
     "approved_by missing",
     "approved_git_sha missing",
-    "worktree not clean for code / config / inputs: ['workflow/byop/build/build_post_v16_manifest.py', 'workflow/byop/inputs/post_v16/STAGING_SHA_QA.json', 'workflow/byop/model/byop_paths.py', 'workflow/byop/model/post_v16_gate.py', 'workflow/byop/model/post_v16_headroom.py']"
+    "worktree not clean for code / config / inputs: ['workflow/byop/model/rearch_mech.py', 'workflow/byop/model/v240_mech.py', 'workflow/config/config.byop_ercot_mainline_geo_dynamic_v1_baseline_v16.yaml', 'workflow/byop/build/build_tech_v2_site_permit.py', 'workflow/byop/inputs/tech_calibrated_v2/RESEARCH_SITE_COUNTY_FIPS_V2.csv']"
    ],
-   "head": "946406d15f016bf6eb7dd37ae11d4ce99ead673d",
+   "head": "ed72b20865eb152178068f7e51e8b8cc98024cd4",
    "approved_git_sha": null,
    "stage": "LP_R_H_RESOURCE",
    "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
@@ -23,10 +23,10 @@
     "run_authorization=NOT_APPROVED",
     "approved_by missing",
     "approved_git_sha missing",
-    "worktree not clean for code / config / inputs: ['workflow/byop/build/build_post_v16_manifest.py', 'workflow/byop/inputs/post_v16/STAGING_SHA_QA.json', 'workflow/byop/model/byop_paths.py', 'workflow/byop/model/post_v16_gate.py', 'workflow/byop/model/post_v16_headroom.py']",
+    "worktree not clean for code / config / inputs: ['workflow/byop/model/rearch_mech.py', 'workflow/byop/model/v240_mech.py', 'workflow/config/config.byop_ercot_mainline_geo_dynamic_v1_baseline_v16.yaml', 'workflow/byop/build/build_tech_v2_site_permit.py', 'workflow/byop/inputs/tech_calibrated_v2/RESEARCH_SITE_COUNTY_FIPS_V2.csv']",
     "LP_N_H_NETWORK needs a PASSED LP_R_H_RESOURCE first: LP_R_H_RESOURCE has no ledger row"
    ],
-   "head": "946406d15f016bf6eb7dd37ae11d4ce99ead673d",
+   "head": "ed72b20865eb152178068f7e51e8b8cc98024cd4",
    "approved_git_sha": null,
    "stage": "LP_N_H_NETWORK",
    "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
@@ -87,7 +87,7 @@
    "storage": 43,
    "storage_MW": 13068.4
   },
-  "build_seconds": 10.3,
+  "build_seconds": 10.7,
   "reserve": {
    "CCGT": {
     "pmin": 0.5,
@@ -182,7 +182,7 @@
    "storage": 43,
    "storage_MW": 13068.4
   },
-  "build_seconds": 11.1,
+  "build_seconds": 13.0,
   "reserve": {
    "CCGT": {
     "pmin": 0.5,

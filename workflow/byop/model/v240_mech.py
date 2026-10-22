@@ -87,7 +87,8 @@ CFG = dict(bg_traj=str(BG_TRAJ_DEFAULT), tv_share_byop=1.0, tv_share_public=1.0,
            # Mainline v1.3 switches (default off = v2.4.0 / rearch v1.0 behaviour, kept for regression):
            gas_by_year=None,        # {year: USD/MMBtu HHV, 2025$} (D2.b); None = flat GAS
            tech_v13=None,           # path of MAINLINE_V13_TECH_DEFAULTS.csv for the DC_BTM techs (D2.a); None = TECH-01
-           firm_full_year=False)    # D1: firm credit only for capacity in operation the whole year (energy keeps fractions)
+           firm_full_year=False,    # D1: firm credit only for capacity in operation the whole year (energy keeps fractions)
+           tech_version='legacy-v13')   # A0.2: 'TECH_COMP_2' only when a post-v1.6 config selects it explicitly (byop_tech_parameters_v2)
 STATE = {}
 # Mainline v1.3 D2.a: model carrier <- v1.3 technology id; firm redundancy r (failure-case firm credit 1/r) is not in the
 # v1.3 table and stays the TECH-01 base value (transparent reliability proxy); WIND / PV / BESS carry no firm credit
@@ -256,8 +257,11 @@ def byop_params_v13(carrier, actor):
                 eta_rt=float(r.storage_roundtrip_efficiency) if r.storage_roundtrip_efficiency == r.storage_roundtrip_efficiency else None)
 
 
-def byop_params(carrier, actor):
+def byop_params(carrier, actor, path='DEFAULT_ENV'):
     """actor: 'social' (S3 / social ledger) or 'private' (S2 developer / private ledger)"""
+    if CFG.get('tech_version') == 'TECH_COMP_2':       # A0.2 P2: explicit, versioned; legacy v1.3 / TECH-01 untouched below
+        import byop_tech_parameters_v2 as T2
+        return T2.byop_params_v2(carrier, actor, dict(CFG, gas_ref=GAS), path=path)
     if CFG.get('tech_v13'):
         return byop_params_v13(carrier, actor)
     r = tech()

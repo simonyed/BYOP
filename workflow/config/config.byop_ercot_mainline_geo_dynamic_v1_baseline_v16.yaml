@@ -11,6 +11,7 @@ mainline:
   approved_by: null   # never approved; any solve of this geography needs a new researcher SHA approval
   manifest: current_work_pckg/S0_S1_BASELINE_V16_PREPARED_MANIFEST.json
   stage: BASELINE_V16_S0_S1_PREPARED_NO_SOLVER   # documentation label only (no behaviour)
+  tech_version: TECH_COMP_2       # A0.2: BYOP technology v2.0 (byop/inputs/tech_calibrated_v2); legacy configs stay legacy-v13
   siting_variant: dynamic_pnnl_v1  # byop/build/build_dynamic_siting_inputs.py + inputs/dc/MAINLINE_SITING_SCENARIO_DYNAMIC_V1.yaml
   # E3 the only formal run (Stage B)
   case_id: MAINLINE_V13_GEO_DYNAMIC_V1_BASEV16_MID
