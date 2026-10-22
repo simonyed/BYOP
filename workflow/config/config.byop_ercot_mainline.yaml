@@ -8,7 +8,7 @@ mainline:
   run_authorization: NOT_APPROVED
   approved_git_sha: null
   approved_by: null   # history: 01e761da -> single pilot_core_b3e (B3-E, done 2026-10-22 00:27 EDT); 8636c08d -> step0 (B1), pilot_s01 (B2); 4fb58a45 -> pilot_s01_fix (B2-R); reset for B2.5 (B3-E needs a new SHA)
-  manifest: current_work_pckg/MAINLINE_V13_PRE_RUN_MANIFEST.json
+  manifest: current_work_pckg/_completed/BYOP_ERCOT_Mainline_v1.3/MAINLINE_V13_PRE_RUN_MANIFEST.json
   stage: STAGE_B25_METHOD_AUDIT   # documentation label only (no behaviour)
   # E3 the only formal run (Stage B)
   case_id: MAINLINE_V13_GREAL_MID

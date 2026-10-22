@@ -53,7 +53,7 @@ def main():
                             'no change under workflow/byop/{model,inputs,build,run} after that commit; all hashes above must match'])
     if a.baseline_sha256:
         man['inputs_sha256'][man['baseline_network']['path']] = a.baseline_sha256
-    out = ROOT / 'current_work_pckg/MAINLINE_V13_PRE_RUN_MANIFEST.json'
+    out = ROOT / 'current_work_pckg/_completed/BYOP_ERCOT_Mainline_v1.3/MAINLINE_V13_PRE_RUN_MANIFEST.json'
     out.write_text(json.dumps(man, indent=1), encoding='utf-8')
     print(out, len(man['code_sha256']), len(man['inputs_sha256']))
 

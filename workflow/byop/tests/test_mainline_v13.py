@@ -13,7 +13,7 @@ import pytest
 WF = Path(__file__).resolve().parents[2]
 BY = WF / 'byop'
 INP = BY / 'inputs'
-WP = WF.parent / 'current_work_pckg'
+WP = WF.parent / 'current_work_pckg/_completed/BYOP_ERCOT_Mainline_v1.3'
 sys.path.insert(0, str(BY / 'model'))
 EPOCH_BUSES = {'p600 0', 'p610 2', 'p630 2', 'p630 4', 'p630 5', 'p630 6', 'p630 9', 'p650 0'}
 NEW_SRC = [BY / 'model/rearch_mech.py', BY / 'model/v240_mech.py', BY / 'post/collect_mainline.py',
