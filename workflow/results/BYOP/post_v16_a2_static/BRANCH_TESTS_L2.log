@@ -1,0 +1,49 @@
+..........................................F..F.......................... [ 35%]
+........................................................................ [ 70%]
+............................................................             [100%]
+=================================== FAILURES ===================================
+___________________________ test_staging_sha_qa_pass ___________________________
+
+    def test_staging_sha_qa_pass():
+        q = json.loads((BP.POST_V16_INPUTS / 'STAGING_SHA_QA.json').read_text())
+        assert q['status'] == 'PASS' and q['files_ok'] == q['files'] == 53 and q['raw_registry_ok'] == 20 and q['solver_calls'] == 0
+        for r in q['rows']:
+            if r['path'].startswith('derived/'):
+>               assert sha(ROOT / r['staged']) == r['expected']
+E               AssertionError: assert '5cf7251ee724...3a310dd86217e' == '66069818a059...52826434fb347'
+E                 
+E                 - 66069818a05969bc8a32616e48be6b8a358914f1f750899d57952826434fb347
+E                 + 5cf7251ee724b002272471497de61bd2d84ad5a12cf0bf7336c3a310dd86217e
+
+byop/tests/test_post_v16_a0.py:54: AssertionError
+___________________________ test_manifest_is_current ___________________________
+
+    def test_manifest_is_current():
+        import build_post_v16_manifest as BM
+        m = json.loads((ROOT / 'current_work_pckg/POST_V16_A1_PRE_RUN_MANIFEST.json').read_text())
+        now = BM.build()
+        for k in ('code_sha256', 'inputs_sha256', 'config_sha256_normalised', 'baseline', 'stages'):
+>           assert m[k] == now[k], k
+E           AssertionError: code_sha256
+E           assert {'workflow/by...2187f04', ...} == {'workflow/by...4161e40', ...}
+E             
+E             Omitting 2 identical items, use -vv to show
+E             Differing items:
+E             {'workflow/byop/model/post_v16_headroom.py': 'f45940f7cf347c2d456194b8a9bb2cb19d5df9dfa0555e1809224ed6b4749e2d'} != {'workflow/byop/model/post_v16_headroom.py': '02c8ec6d44c4aebd056d742516bbebda85ea48d9733f48d57c064381436b0296'}
+E             {'workflow/byop/run/post_v16_a1.py': '1d6dcccc77100435df0032a5c212db08bc667831bc83bb2699a090c8c2187f04'} != {'workflow/byop/run/post_v16_a1.py': '7b4ad1f08a8bf62d8538e70e6dadf276be6fe457e2c6eb5d84aa141794161e40'}
+E             {'workflow/byop/model/post_v16_gate.py': 'cd2ce9f08b0e934d8409a0698614bd25a13...
+E             
+E             ...Full output truncated (2 lines hidden), use '-vv' to show
+
+byop/tests/test_post_v16_a0.py:76: AssertionError
+=============================== warnings summary ===============================
+workflow/byop/tests/test_a2_a3_static.py: 2 warnings
+workflow/byop/tests/test_a0_2_tech_v2.py: 1 warning
+workflow/byop/tests/test_post_v16_a0.py: 8 warnings
+workflow/byop/tests/test_baseline_v16.py: 1 warning
+  /datasets/prgm/uv-python/cpython-3.11.17-linux-x86_64-gnu/lib/python3.11/contextlib.py:81: FutureWarning:
+  
+  The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+2 failed, 202 passed, 12 warnings in 88.42s (0:01:28)

@@ -33,3 +33,14 @@ Project-level documents that span work packages are in `workflow/byop/docs/`.
 | `A2_TECH_READINESS_MATRIX.csv` | READY_STATIC / NOT_IMPLEMENTED / BLOCKED per module | Done |
 | `A0_2_TEST_SUMMARY.json`, `A1_GATE_VERDICT.json`, `POST_V16_A1_PRE_RUN_MANIFEST.json` | L2 tests 196 passed; gate NOT_APPROVED; manifest (locked) | Done |
 | `A0_2_RETURN_PACKAGE.zip` | Small files for local / L2 / GitHub reconciliation | Done |
+
+### BYOP-POST-V16-NEXT-01 (2026-10-22): A0.2 acceptance, A1 pre-approval, A2 / A3 static (0 solver calls)
+
+| File | Status |
+|---|---|
+| `NEXT_STAGE_EXECUTION_REPORT.md` | Fixed header; A1 NOT_RUN (not approved) |
+| `A1_PREAPPROVAL_CHECK.md`, `A1_PREAPPROVAL_GATE.json`, `a1_preapproval_check.py` | P0 PASS; approvable commit 802c9d94 |
+| `A1_EXECUTION_REPORT.md` | NOT_RUN |
+| `A2_STATIC_INTEGRATION_REPORT.md`, `A2_READINESS_MATRIX.csv` | PASS_STATIC on branch `work/a2-postv16-static` @ ba73e600 (not merged) |
+| `PERMIT_GAS_EVIDENCE_PRIORITY.csv`, `PERMIT_TO_COD_CAUSAL_AUDIT_VNEXT.csv`, `PARTIAL_YEAR_DELIVERY_CONSISTENCY_QA.csv`, `ENVIRONMENT_MECHANISM_LIMITATIONS.md` | A3 PASS_STATIC |
+| `NEXT_STAGE_RETURN_PACKAGE.zip` | Return package |

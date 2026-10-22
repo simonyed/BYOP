@@ -1,0 +1,188 @@
+{
+ "stage": "A2_STATIC_STRUCTURAL",
+ "solver_executions": 0,
+ "solver_calls_intercepted": 3,
+ "siting": "dynamic_pnnl_v1",
+ "research_buses": [
+  "p600 0",
+  "p610 2",
+  "p630 10",
+  "p630 2",
+  "p630 3",
+  "p630 4",
+  "p630 5",
+  "p630 6",
+  "p630 8",
+  "p630 9",
+  "p640 1",
+  "p650 0",
+  "p650 7",
+  "p670 0",
+  "p670 1",
+  "p670 4"
+ ],
+ "n_checks": 40,
+ "n_pass": 40,
+ "n_fail": 0,
+ "n_vars": {
+  "S0": 2660074,
+  "S1_EARLIEST": 2712538,
+  "S3": 2978054
+ },
+ "n_cons": {
+  "S0": 6530917,
+  "S1_EARLIEST": 6663765,
+  "S3": 7245550
+ },
+ "reserve": {
+  "eligible_thermal": 239,
+  "eligible_thermal_ext": 112,
+  "storage": 693
+ },
+ "re_firm_rows": [
+  {
+   "site": "p600 0",
+   "period": 2026,
+   "re_units": 0,
+   "bess_units": 1,
+   "stress_snapshots": 24
+  },
+  {
+   "site": "p600 0",
+   "period": 2027,
+   "re_units": 1,
+   "bess_units": 2,
+   "stress_snapshots": 24
+  },
+  {
+   "site": "p600 0",
+   "period": 2028,
+   "re_units": 3,
+   "bess_units": 3,
+   "stress_snapshots": 24
+  },
+  {
+   "site": "p600 0",
+   "period": 2029,
+   "re_units": 5,
+   "bess_units": 4,
+   "stress_snapshots": 24
+  },
+  {
+   "site": "p600 0",
+   "period": 2030,
+   "re_units": 7,
+   "bess_units": 5,
+   "stress_snapshots": 24
+  },
+  {
+   "site": "p600 0",
+   "period": 2031,
+   "re_units": 9,
+   "bess_units": 6,
+   "stress_snapshots": 24
+  },
+  {
+   "site": "p610 2",
+   "period": 2026,
+   "re_units": 0,
+   "bess_units": 1,
+   "stress_snapshots": 24
+  },
+  {
+   "site": "p610 2",
+   "period": 2027,
+   "re_units": 1,
+   "bess_units": 2,
+   "stress_snapshots": 24
+  },
+  {
+   "site": "p610 2",
+   "period": 2028,
+   "re_units": 3,
+   "bess_units": 3,
+   "stress_snapshots": 24
+  },
+  {
+   "site": "p610 2",
+   "period": 2029,
+   "re_units": 5,
+   "bess_units": 4,
+   "stress_snapshots": 24
+  },
+  {
+   "site": "p610 2",
+   "period": 2030,
+   "re_units": 7,
+   "bess_units": 5,
+   "stress_snapshots": 24
+  },
+  {
+   "site": "p610 2",
+   "period": 2031,
+   "re_units": 9,
+   "bess_units": 6,
+   "stress_snapshots": 24
+  },
+  {
+   "site": "p630 10",
+   "period": 2026,
+   "re_units": 0,
+   "bess_units": 1,
+   "stress_snapshots": 24
+  },
+  {
+   "site": "p630 10",
+   "period": 2027,
+   "re_units": 1,
+   "bess_units": 2,
+   "stress_snapshots": 24
+  },
+  {
+   "site": "p630 10",
+   "period": 2028,
+   "re_units": 3,
+   "bess_units": 3,
+   "stress_snapshots": 24
+  },
+  {
+   "site": "p630 10",
+   "period": 2029,
+   "re_units": 5,
+   "bess_units": 4,
+   "stress_snapshots": 24
+  },
+  {
+   "site": "p630 10",
+   "period": 2030,
+   "re_units": 7,
+   "bess_units": 5,
+   "stress_snapshots": 24
+  },
+  {
+   "site": "p630 10",
+   "period": 2031,
+   "re_units": 9,
+   "bess_units": 6,
+   "stress_snapshots": 24
+  },
+  {
+   "site": "p630 2",
+   "period": 2026,
+   "re_units": 0,
+   "bess_units": 1,
+   "stress_snapshots": 24
+  },
+  {
+   "site": "p630 2",
+   "period": 2027,
+   "re_units": 1,
+   "bess_units": 2,
+   "stress_snapshots": 24
+  }
+ ],
+ "re_firm_count": 96,
+ "seconds": 336.9,
+ "base_sha256": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16",
+ "tech_version": "TECH_COMP_2"
+}
