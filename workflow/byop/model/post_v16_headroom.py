@@ -13,7 +13,8 @@ Model (one LP per network mode; mode R = H_resource, mode N = H_network):
                 p <= c <= p_nom x avail, p >= pmin x c, r <= c - p, r <= rho x c   (rho = min(1 - pmin, ramp x window))
               storage: r <= p_nom - p_dispatch + p_store and tau x r / eff_dispatch <= state_of_charge (the dispatch SOC)
               wind / solar / nuclear / load shed / new AIDC load: no reserve
-  objective   minimise eps x dispatch cost + SHED_W x existing-load shed - lambda (lexicographic by weights; see constants)
+  objective   A0.1 FIX-01: maximise lambda ONLY (no cost term, no soft shed): existing-load shed is a hard zero in every block
+              and both LPs; the dispatch of a solution is a non-unique 'optimal witness', never a congestion attribution
   networks    N: v1.6 lines, DC power flow (KVL) with the v1.6 limits; R: the same lines, KVL kept, every limit 1e6 MVA
               (connected network -> no binding transfer limit, no isolated bus)
 The 15 % snapshot ERM, its shadow storage SOC, ERM-02 B and S0CAL are NOT part of this model (inventory INV-01..05).
@@ -29,9 +30,7 @@ import yaml
 
 import byop_paths as BP
 
-EPS_COST = 1.0e-5          # dispatch cost weight: 216 h x 200 USD/MWh x eps = 0.43 per MW of lambda < 1 (lambda weight)
-SHED_W = 1.0e3             # existing-load shed per MWh >> lambda per MW (one shed MWh can at most free ~1 MW of lambda)
-LAMBDA_W = 1.0
+LAMBDA_W = 1.0             # objective = -lambda (A0.1 FIX-01: pure maximum, no dispatch-cost or soft-shed weights)
 COPPER_MVA = 1.0e6
 THERMAL = ['CCGT', 'OCGT', 'gas_steam', 'coal', 'biomass']
 WZ = ['COAST', 'EAST', 'FWEST', 'NORTH', 'NCENT', 'SOUTH', 'SCENT', 'WEST']
@@ -189,17 +188,16 @@ def retime(n, mi, meta):
 
 
 def apply_costs_and_storage(n):
-    """eps-scaled dispatch costs (static and time-varying); storage cyclic inside every block"""
-    n.generators['marginal_cost'] = n.generators.marginal_cost * EPS_COST
-    if 'marginal_cost' in n.generators_t and not n.generators_t.marginal_cost.empty:
-        n.generators_t.marginal_cost = n.generators_t.marginal_cost * EPS_COST
-    n.storage_units['marginal_cost'] = 0.0
+    """storage cyclic inside every block. Marginal costs are left as in the v1.6 network: PyPSA needs cost terms to create the
+    model, and add_headroom then REPLACES the whole objective by -lambda (A0.1 FIX-01, asserted in structural_checks), so no
+    cost value can influence the optimum"""
     n.storage_units['cyclic_state_of_charge'] = True
     n.storage_units['cyclic_state_of_charge_per_period'] = True
 
 
 def add_loads(n, meta, Lt, ramp, w, lam_up):
-    """existing load + inherited ramp (both blocks), shed per load bus (SHED_W), new AIDC load generators (0 in B0)"""
+    """existing load + inherited ramp (both blocks), shed per load bus fixed to ZERO (p_max_pu 0 + hard row), new AIDC load
+    generators (0 in B0)"""
     mi = n.snapshots
     for b in Lt.columns:
         n.add('Load', f'{b} existing 2025', bus=b, p_set=Lt[b], carrier='AC')
@@ -209,7 +207,8 @@ def add_loads(n, meta, Lt, ramp, w, lam_up):
         if car not in n.carriers.index:
             n.add('Carrier', car)
     lb = sorted(set(n.loads.bus))
-    n.add('Generator', [f'{b} PV16 existing shed' for b in lb], bus=lb, carrier='load_shed', p_nom=1e5, marginal_cost=SHED_W)
+    n.add('Generator', [f'{b} PV16 existing shed' for b in lb], bus=lb, carrier='load_shed', p_nom=1e5, marginal_cost=0.0,
+          p_max_pu=pd.DataFrame(0.0, index=mi, columns=[f'{b} PV16 existing shed' for b in lb]))   # kept, bounded at 0
     is_bl = (meta.block == 'BL').values
     for b, r in w.iterrows():
         n.add('Generator', f'{b} PV16 new AIDC load', bus=b, carrier='aidc_new', p_nom=lam_up * r.w + 1.0, marginal_cost=0.0,
@@ -290,7 +289,10 @@ def add_headroom(n, cfg, info):
         m.add_constraints(rs * (tau / effd) - m['StorageUnit-state_of_charge'].sel(name=S) <= 0, name='PV16-res_su_energy')
         total = total + rs.sum('name')
     m.add_constraints(total >= float(cfg['reserve']['requirement_MW']), name='PV16-reserve_req')
-    m.objective = m.objective.expression - LAMBDA_W * lam
+    shed = [x for x in g.index if g.carrier[x] == 'load_shed']
+    if shed:                                   # FIX-01: explicit hard zero (in addition to the 0 upper bound), B0 and BL
+        m.add_constraints(m['Generator-p'].sel(name=shed) == 0, name='PV16-existing_shed_zero')
+    m.objective = -LAMBDA_W * lam              # FIX-01: the only objective term
     return dict(eligible_thermal=len(E), eligible_thermal_MW=float(g.p_nom[E].sum()), storage=len(S), storage_MW=float(su.p_nom[S].sum()))
 
 
@@ -322,6 +324,18 @@ def structural_checks(n, info):
     assert soc_in_res <= soc_lab and soc_in_res, 'storage reserve energy row does not use the dispatch SOC'
     if info['mode'] == 'R':
         assert (n.lines.s_nom == COPPER_MVA).all()
+    # FIX-01: objective = -lambda only; existing shed bounded at zero and fixed by a hard row
+    ov = np.asarray(m.objective.expression.vars.values if hasattr(m.objective, 'expression') else m.objective.vars.values).ravel()
+    oc = np.asarray(m.objective.expression.coeffs.values if hasattr(m.objective, 'expression') else m.objective.coeffs.values).ravel()
+    keep = ov != -1
+    assert set(ov[keep]) == {lam_label} and np.allclose(oc[keep], -1.0), 'objective is not exactly -lambda'
+    shed = [x for x in n.generators.index if n.generators.carrier[x] == 'load_shed']
+    assert 'PV16-existing_shed_zero' in m.constraints, 'existing shed not hard-zero'
+    z = m.constraints['PV16-existing_shed_zero']
+    sign = np.unique(np.asarray(z.sign.values).astype(str))
+    assert set(z.lhs.coords['name'].values) == set(shed) and z.lhs.sizes['snapshot'] == len(n.snapshots), 'zero-shed row incomplete'
+    assert np.allclose(z.rhs.values, 0.0) and set(sign) == {'='}, 'zero-shed row is not == 0'
+    assert np.allclose(n.get_switchable_as_dense('Generator', 'p_max_pu', inds=shed).values, 0.0)
     return dict(variables=names, constraints=sorted(m.constraints), n_vars=int(m.nvars), n_cons=int(m.ncons),
                 components=comps, buses=len(n.buses), lines=len(n.lines), generators=len(n.generators), storage_units=len(n.storage_units),
                 snapshots=len(n.snapshots), lambda_coefficients=len(lam_coef), integer_vars=int(len(m.binaries) + len(m.integers)))

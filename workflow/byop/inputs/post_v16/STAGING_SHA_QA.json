@@ -16,12 +16,12 @@
  "staging": {
   "raw": "workflow/data/byop/post_v16_execution_v11/raw",
   "derived": "workflow/byop/inputs/post_v16/derived",
-  "package": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1"
+  "package": "current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1"
  },
  "rows": [
   {
    "path": "CALIBRATION_RESEARCH_MEMO_v0.1.md",
-   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/CALIBRATION_RESEARCH_MEMO_v0.1.md",
+   "staged": "current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1/CALIBRATION_RESEARCH_MEMO_v0.1.md",
    "expected": "cb5df7bd1938faed7338f2330998c301bfd83d9efd7f92d06deb6475e294005b",
    "actual": "cb5df7bd1938faed7338f2330998c301bfd83d9efd7f92d06deb6475e294005b",
    "size_ok": true,
@@ -29,7 +29,7 @@
   },
   {
    "path": "DATA_GAPS_AND_OWNERSHIP.csv",
-   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/DATA_GAPS_AND_OWNERSHIP.csv",
+   "staged": "current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1/DATA_GAPS_AND_OWNERSHIP.csv",
    "expected": "f02a01e0e4830c51bd65f3d1b9c4310650ba8c53fa177ca146a2df3aff8c8907",
    "actual": "f02a01e0e4830c51bd65f3d1b9c4310650ba8c53fa177ca146a2df3aff8c8907",
    "size_ok": true,
@@ -37,7 +37,7 @@
   },
   {
    "path": "DOWNLOAD_LOG.json",
-   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/DOWNLOAD_LOG.json",
+   "staged": "current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1/DOWNLOAD_LOG.json",
    "expected": "d8d889b03ea7959f564572589e7eb8f64673d3e1a3c6def824be62e694db5c3b",
    "actual": "d8d889b03ea7959f564572589e7eb8f64673d3e1a3c6def824be62e694db5c3b",
    "size_ok": true,
@@ -45,7 +45,7 @@
   },
   {
    "path": "INDEPENDENT_VALIDATION_ANCHORS.csv",
-   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/INDEPENDENT_VALIDATION_ANCHORS.csv",
+   "staged": "current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1/INDEPENDENT_VALIDATION_ANCHORS.csv",
    "expected": "39dedaffe64a4de8215e11aa83c9741e2baf7002d33f99560a08a1ecf7e79fc9",
    "actual": "39dedaffe64a4de8215e11aa83c9741e2baf7002d33f99560a08a1ecf7e79fc9",
    "size_ok": true,
@@ -53,7 +53,7 @@
   },
   {
    "path": "NETWORK_DOWNLOAD_LOG.json",
-   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/NETWORK_DOWNLOAD_LOG.json",
+   "staged": "current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1/NETWORK_DOWNLOAD_LOG.json",
    "expected": "95aa6cc5044a43ec943b534f643d4d661c38a12afee9390100241e957c3325c6",
    "actual": "95aa6cc5044a43ec943b534f643d4d661c38a12afee9390100241e957c3325c6",
    "size_ok": true,
@@ -61,7 +61,7 @@
   },
   {
    "path": "PARAMETER_CANDIDATES.csv",
-   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/PARAMETER_CANDIDATES.csv",
+   "staged": "current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1/PARAMETER_CANDIDATES.csv",
    "expected": "7683a7a2989741e01f87e345075a6c710919ed98a09ddab89cd0c7fc783ede9b",
    "actual": "7683a7a2989741e01f87e345075a6c710919ed98a09ddab89cd0c7fc783ede9b",
    "size_ok": true,
@@ -69,7 +69,7 @@
   },
   {
    "path": "README.md",
-   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/RESEARCH_BASIS_README_v0.1.md",
+   "staged": "current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1/RESEARCH_BASIS_README_v0.1.md",
    "expected": "3937c7366cde528134b9cf8a800deab33b7aec49c02eaaed61df35771eccfeca",
    "actual": "3937c7366cde528134b9cf8a800deab33b7aec49c02eaaed61df35771eccfeca",
    "size_ok": true,
@@ -77,7 +77,7 @@
   },
   {
    "path": "REPOSITORY_CHECK.json",
-   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/REPOSITORY_CHECK.json",
+   "staged": "current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1/REPOSITORY_CHECK.json",
    "expected": "c0ff7e81f566cbc81291a0095fb65a9e6176b1635cc2f7cfcbd25b30fe190223",
    "actual": "c0ff7e81f566cbc81291a0095fb65a9e6176b1635cc2f7cfcbd25b30fe190223",
    "size_ok": true,
@@ -85,7 +85,7 @@
   },
   {
    "path": "SOURCE_REGISTRY.csv",
-   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/SOURCE_REGISTRY.csv",
+   "staged": "current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1/SOURCE_REGISTRY.csv",
    "expected": "cf0bdf6c833730946f3b29b1d531fa11b4387f4d6b189e2aeabd428f129980b1",
    "actual": "cf0bdf6c833730946f3b29b1d531fa11b4387f4d6b189e2aeabd428f129980b1",
    "size_ok": true,
@@ -93,7 +93,7 @@
   },
   {
    "path": "WIND_SOLAR_DOWNLOAD_LOG.json",
-   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/WIND_SOLAR_DOWNLOAD_LOG.json",
+   "staged": "current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1/WIND_SOLAR_DOWNLOAD_LOG.json",
    "expected": "73449d367eae02b6c068cf8a12770db5b8c33837a8c23584dc09a92948e5d856",
    "actual": "73449d367eae02b6c068cf8a12770db5b8c33837a8c23584dc09a92948e5d856",
    "size_ok": true,
@@ -101,7 +101,7 @@
   },
   {
    "path": "build_research_data.py",
-   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/build_research_data.py",
+   "staged": "current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1/build_research_data.py",
    "expected": "e1128d9aa4dedf0aaa99d2ed51d2640916c11b0292d9e585dba918bfdfcfe3dd",
    "actual": "e1128d9aa4dedf0aaa99d2ed51d2640916c11b0292d9e585dba918bfdfcfe3dd",
    "size_ok": true,
@@ -261,7 +261,7 @@
   },
   {
    "path": "mora_source_urls.json",
-   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/mora_source_urls.json",
+   "staged": "current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1/mora_source_urls.json",
    "expected": "330889c734be5bea0bb22c67f36b2531e686666e6cb92db3db8ae60b94a2e5a8",
    "actual": "330889c734be5bea0bb22c67f36b2531e686666e6cb92db3db8ae60b94a2e5a8",
    "size_ok": true,
@@ -437,7 +437,7 @@
   },
   {
    "path": "rebuild_check.log",
-   "staged": "current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/rebuild_check.log",
+   "staged": "current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1/rebuild_check.log",
    "expected": "bf58dd25104d3b9f49d5e269e8135f24059723a45de1492fa915b1713b3c3be7",
    "actual": "bf58dd25104d3b9f49d5e269e8135f24059723a45de1492fa915b1713b3c3be7",
    "size_ok": true,

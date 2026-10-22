@@ -1,0 +1,41 @@
+{
+  "records": [
+    {
+      "tech": "RICE",
+      "private_annual_fixed_USD_kWyr": 231.78,
+      "co2_t_per_MWh": 0.4447,
+      "gas_2028_marginal_cost_USD_per_MWh": 36.97
+    },
+    {
+      "tech": "OCGT_aero",
+      "private_annual_fixed_USD_kWyr": 225.5,
+      "co2_t_per_MWh": 0.50126,
+      "gas_2028_marginal_cost_USD_per_MWh": 39.752
+    },
+    {
+      "tech": "SOFC_NG",
+      "private_annual_fixed_USD_kWyr": 553.2,
+      "co2_t_per_MWh": 0.34325,
+      "gas_2028_marginal_cost_USD_per_MWh": 23.853
+    },
+    {
+      "tech": "WIND",
+      "private_annual_fixed_USD_kWyr": 160.45,
+      "co2_t_per_MWh": 0,
+      "gas_2028_marginal_cost_USD_per_MWh": 0
+    },
+    {
+      "tech": "PV",
+      "private_annual_fixed_USD_kWyr": 131.75,
+      "co2_t_per_MWh": 0,
+      "gas_2028_marginal_cost_USD_per_MWh": 0
+    },
+    {
+      "tech": "BESS",
+      "private_annual_fixed_USD_kWyr": 206.53,
+      "co2_t_per_MWh": 0,
+      "gas_2028_marginal_cost_USD_per_MWh": 0
+    }
+  ],
+  "source_gas2028": "BYOP existing MAINLINE_V13_GAS_PRICES_2026_2031.csv 3.576 USD/MMBtu"
+}

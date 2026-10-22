@@ -213,12 +213,13 @@ def test_lambda_block_weights_and_objective():
     assert sorted(set(np.round(co, 12))) == [0.25, 0.75] and c.lhs.sizes['snapshot'] == 3  # BL only
     pmin = n.get_switchable_as_dense('Generator', 'p_min_pu', inds=['a PV16 new AIDC load'])
     assert (pmin.values[:3] == 0).all() and (pmin.values[3:] == -1).all()                  # B0: new load fixed to 0
-    obj = m.objective.expression
-    assert np.isclose(obj.coeffs.values[obj.vars.values == lam].sum(), -1.0)
+    obj = m.objective.expression if hasattr(m.objective, 'expression') else m.objective
+    ov, oc = obj.vars.values.ravel(), obj.coeffs.values.ravel()
+    assert set(ov[ov != -1]) == {lam} and np.allclose(oc[ov != -1], -1.0)                  # A0.1 FIX-01: objective = -lambda only
     shed = [x for x in n.generators.index if n.generators.carrier[x] == 'load_shed']
-    assert np.allclose(n.generators.marginal_cost[shed], H.SHED_W)
-    assert np.isclose(n.generators.marginal_cost['a CCGT'], 30.0 * H.EPS_COST)
-    assert H.SHED_W >= 1e3 * H.LAMBDA_W and 216 * 200 * H.EPS_COST < H.LAMBDA_W              # weight dominance
+    z = m.constraints['PV16-existing_shed_zero']                                            # hard zero, B0 and BL
+    assert np.allclose(z.rhs.values, 0.0) and set(np.unique(np.asarray(z.sign.values).astype(str))) == {'='}
+    assert z.lhs.sizes['snapshot'] == 6 and set(z.lhs.coords['name'].values) == set(shed)
 
 
 def test_copperplate_keeps_lines_and_connectivity():
@@ -346,17 +347,55 @@ def test_base_sha_pin_and_wrong_base_refused(tmp_path):
     assert any('BLOCKED_ON_L2_BASELINE' in r for r in G.check(cfg2, 'LP_R_H_RESOURCE', base2, tmp_path / 'l.csv', root=root2, git_fn=FakeGit())['reasons'])
 
 
+def ledger_row(stage, state='DONE', status='ok', term='optimal', ok='True', k=1):
+    return dict(attempt_id=f'{stage}#{k}', stage=stage, attempt=k, state=state, status=status, termination=term, **{'pass': ok})
+
+
+def result_json(d, stage, PASS=True, checks=None):
+    checks = checks if checks is not None else dict(status_ok=True, termination_optimal=True, existing_shed_zero_B0=True, existing_shed_zero_BL=True)
+    (d / f'{stage}_RESULT.json').write_text(json.dumps(dict(stage=stage, acceptance=dict(PASS=PASS, checks=checks))))
+
+
 def test_gate_stage_order_retry_budget(tmp_path):
     root, cfg, base = gate_env(tmp_path)
     log = tmp_path / 'log.csv'
-    assert any('needs an optimal LP_R' in r for r in G.check(cfg, 'LP_N_H_NETWORK', base, log, root=root, git_fn=FakeGit())['reasons'])
-    assert any('not authorised' in r for r in G.check(cfg, 'S0', base, log, root=root, git_fn=FakeGit())['reasons'])
-    pd.DataFrame([dict(stage='LP_R_H_RESOURCE', status='warning', termination='suboptimal')]).to_csv(log, index=False)
-    assert any('zero retries' in r for r in G.check(cfg, 'LP_R_H_RESOURCE', base, log, root=root, git_fn=FakeGit())['reasons'])
-    assert any('needs an optimal' in r for r in G.check(cfg, 'LP_N_H_NETWORK', base, log, root=root, git_fn=FakeGit())['reasons'])
-    pd.DataFrame([dict(stage='LP_R_H_RESOURCE', status='ok', termination='optimal'),
-                  dict(stage='LP_N_H_NETWORK', status='ok', termination='optimal')]).to_csv(log, index=False)
-    assert any('budget' in r for r in G.check(cfg, 'LP_N_H_NETWORK', base, log, root=root, git_fn=FakeGit())['reasons'])
+    chk = lambda st: G.check(cfg, st, base, log, root=root, git_fn=FakeGit())['reasons']
+    assert any('needs a PASSED LP_R' in r for r in chk('LP_N_H_NETWORK'))
+    assert any('not authorised' in r for r in chk('S0'))
+    pd.DataFrame([ledger_row('LP_R_H_RESOURCE', 'STARTED', '', '', '')]).to_csv(log, index=False)          # crashed mid-solve
+    assert any('zero retries' in r and 'STARTED' in r for r in chk('LP_R_H_RESOURCE'))
+    assert any('needs a PASSED' in r for r in chk('LP_N_H_NETWORK'))
+    pd.DataFrame([ledger_row('LP_R_H_RESOURCE'), ledger_row('LP_N_H_NETWORK')]).to_csv(log, index=False)
+    assert any('budget' in r for r in chk('LP_N_H_NETWORK'))
+
+
+def test_gate_lp_n_needs_lp_r_result_pass_not_only_log(tmp_path):
+    """FIX-02 counter-examples: optimal + positive shed, optimal + missing result, optimal + no PASS, non-optimal"""
+    root, cfg, base = gate_env(tmp_path)
+    log = tmp_path / 'log.csv'
+    chk = lambda: G.check(cfg, 'LP_N_H_NETWORK', base, log, root=root, git_fn=FakeGit())['reasons']
+    pd.DataFrame([ledger_row('LP_R_H_RESOURCE')]).to_csv(log, index=False)
+    assert any('RESULT.json missing' in r for r in chk())                                         # optimal + missing result
+    result_json(tmp_path, 'LP_R_H_RESOURCE', PASS=False, checks=dict(status_ok=True, existing_shed_zero_BL=False))
+    assert any('acceptance is not PASS' in r for r in chk())                                      # optimal + positive shed
+    result_json(tmp_path, 'LP_R_H_RESOURCE', PASS=True, checks=dict(status_ok=True, existing_shed_zero_BL=False))
+    assert any('acceptance is not PASS' in r for r in chk())                                      # PASS flag inconsistent with checks
+    pd.DataFrame([ledger_row('LP_R_H_RESOURCE', ok='False')]).to_csv(log, index=False); result_json(tmp_path, 'LP_R_H_RESOURCE')
+    assert any('not DONE / ok / optimal / pass' in r for r in chk())                              # optimal + no PASS
+    pd.DataFrame([ledger_row('LP_R_H_RESOURCE', status='warning', term='suboptimal')]).to_csv(log, index=False)
+    assert any('not DONE / ok / optimal / pass' in r for r in chk())                              # non-optimal
+    pd.DataFrame([ledger_row('LP_R_H_RESOURCE')]).to_csv(log, index=False); result_json(tmp_path, 'LP_R_H_RESOURCE')
+    assert chk() == []                                                                            # only a real PASS opens LP-N
+
+
+def test_gate_refuses_corrupted_ledger(tmp_path):
+    root, cfg, base = gate_env(tmp_path)
+    log = tmp_path / 'log.csv'
+    log.write_text('stage,status\nLP_R_H_RESOURCE,ok\n')
+    assert any('malformed' in r for r in G.check(cfg, 'LP_R_H_RESOURCE', base, log, root=root, git_fn=FakeGit())['reasons'])
+    log.write_bytes(b'\x00\xff\xfe"unterminated')
+    r = G.check(cfg, 'LP_R_H_RESOURCE', base, log, root=root, git_fn=FakeGit())['reasons']
+    assert any('ledger' in x for x in r)
 
 
 def test_gate_config_approval_fields_do_not_change_pinned_sha(tmp_path):
@@ -431,17 +470,6 @@ def test_real_v16_models_build_without_solver():
         caps = [x for x in n.generators.index if 'Kiamichi' in x or 'Tenaska Gateway' in x]
         assert len(caps) == 2 and (n.generators_t.p_max_pu[caps].min() < 1).any()                  # switchable caps held
         assert abs(n.generators.p_nom[~n.generators.carrier.isin(['load_shed', 'aidc_new'])].sum() + n.storage_units.p_nom.sum() - 155446.9) < 0.1
-
-
-def test_joint_table_acceptance(tmp_path):
-    import post_v16_a1 as A
-    for k, lam in (('R', 900.0), ('N', 600.0)):
-        (tmp_path / f'{A.STAGE[k]}_RESULT.json').write_text(json.dumps(dict(stage=A.STAGE[k], status='ok', termination='optimal', lambda_facility_MW=lam)))
-    assert A.combine(tmp_path, 1e-3)
-    t = pd.read_csv(tmp_path / 'JOINT_HEADROOM_RESOURCE_NETWORK.csv')
-    assert list(t.lambda_facility_MW) == [900.0, 600.0] and t.H_network_le_H_resource_plus_tol.all() and 'NOT real ERCOT' in t.label[0]
-    (tmp_path / f'{A.STAGE["N"]}_RESULT.json').write_text(json.dumps(dict(stage=A.STAGE['N'], status='ok', termination='optimal', lambda_facility_MW=950.0)))
-    assert not A.combine(tmp_path, 1e-3)                                                   # H_network > H_resource -> flagged
 
 
 def test_balance_residual_on_hand_built_flows():

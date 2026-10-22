@@ -1,0 +1,28 @@
+{
+  "bundle_version": "A0.2_v1.1",
+  "source_zip_sha256": "527ff8ab95dbaaaab5c0d6c160d405b05eae7a941d7b73d1850f92e5601b241d",
+  "file_count_excluding_manifest": 20,
+  "files": {
+    "ENVIRONMENT_SPEED_TO_POWER_IMPLEMENTATION.md": "9d18a2692287676936832af2a00f6b1867760d41f186280047ad058cbfbb11dc",
+    "EXECUTION_WORK_PACKAGE.md": "67450fa08d37cdc0698c0154125aaabae1b01f1d151cb25ef03b114bd795f969",
+    "EXECUTOR_START_HERE.md": "7cdd47b65d056a1a2398dd408742f56c193b5a8910a7582ff586429dcc8b96b9",
+    "README_FIRST.md": "3ce221ee3399469a690615cbf95501907be4d4635b1927ccd4065297e8ef3219",
+    "SOURCE_PACKAGE_RECONCILIATION.md": "27e00433ed339f4a227074ef824fb9d8fc837b102fbe892e901cdd748c7c9b2e",
+    "source_instructions/BYOP_A0_1_A1_Gate_Repair_Decision_2026-10-22.md": "295a9ec8b42e7723ac6983cd55eecbcdc956128f6a263b01fa651a84c1abc332",
+    "source_instructions/论文顶层设计.md": "2e4214e40558c6adf3f464100c8c97ff04a0092b4120e6ecad6c4fe8a95f7233",
+    "source_tech_v2/BYOP_Tech_Calibrated_v2_2026-10-22/BYOP_COUNTY_OZONE_RULES_2026.csv": "8bfc4de5dd864e0107b8e1482c3d4193e31c43dad18aab81343910fd667def24",
+    "source_tech_v2/BYOP_Tech_Calibrated_v2_2026-10-22/BYOP_SUPPLY_POOL_PROXY_V2.csv": "181af58f60dec3a87e2a812ab235debd79b5ca58db23fdbb2f949a5e3c0ce988",
+    "source_tech_v2/BYOP_Tech_Calibrated_v2_2026-10-22/BYOP_TECH_PARAMETERS_V2.csv": "3956cdd25f25087dd74f0f6c959cf21bafb6eec1fd61ad295c0b91bbb9dcf26c",
+    "source_tech_v2/BYOP_Tech_Calibrated_v2_2026-10-22/BYOP_TECH_PARAMETER_BASELINE_V2.json": "10bd868ba50929379be23b63d72626d8d528a1b358ce6b5a63a516e5771327c7",
+    "source_tech_v2/BYOP_Tech_Calibrated_v2_2026-10-22/EXECUTION_WORK_PACKAGE.md": "c9e5842da7272328510b38c6760afc8bac2ad696fc64ce242843755b270cd052",
+    "source_tech_v2/BYOP_Tech_Calibrated_v2_2026-10-22/PARAMETER_UNIT_CHECKS.json": "8eb2d6f1aeb406285c5954e91116b89e7503913266e99f017159b3ea19f6e68a",
+    "source_tech_v2/BYOP_Tech_Calibrated_v2_2026-10-22/README.md": "0266a61b6baead3ba7b6c0ecd404c20228fa58ee4c77b27ee5b81f562a6277cf",
+    "source_tech_v2/BYOP_Tech_Calibrated_v2_2026-10-22/SOURCE_REGISTER.json": "415571a3ff431578d14cd0d64f7199ee8656b3faf8eb4508b029c53ad74c815e",
+    "source_tech_v2/BYOP_Tech_Calibrated_v2_2026-10-22/VALIDATE_STATIC_PARAMETERS.py": "26c0f9525d864154acbf3ba65c0f2e3f9e0cd66e21788099d84e9e2ac1869eaa",
+    "source_tech_v2/ORIGINAL_SOURCE_ZIP.zip": "527ff8ab95dbaaaab5c0d6c160d405b05eae7a941d7b73d1850f92e5601b241d",
+    "static_examples/STATIC_PERMIT_COD_EXAMPLES.csv": "c243763b23d1f892415aa154ee9e69a849071b1cbe360d13ff029991923cb9fb",
+    "tools/dry_environment_mechanism_examples.py": "c89af7a32bfd9e108e2a810bc15868cfd62d094b0f9cb4007e3ea426e45f74c5",
+    "tools/validate_original_sources.py": "36fa1c93a66efb70f0ee0254be385ac9dc38fd1c9c956943e7630a1bdcd68627"
+  },
+  "auth": "ZERO_SOLVER_CALLS_ONLY"
+}

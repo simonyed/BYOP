@@ -8,9 +8,10 @@
    "reasons": [
     "run_authorization=NOT_APPROVED",
     "approved_by missing",
-    "approved_git_sha missing"
+    "approved_git_sha missing",
+    "worktree not clean for code / config / inputs: ['workflow/byop/build/build_post_v16_manifest.py', 'workflow/byop/inputs/post_v16/STAGING_SHA_QA.json', 'workflow/byop/model/byop_paths.py', 'workflow/byop/model/post_v16_gate.py', 'workflow/byop/model/post_v16_headroom.py']"
    ],
-   "head": "80e1835f6626ebb61e3f454ca63e852b7bad80a0",
+   "head": "946406d15f016bf6eb7dd37ae11d4ce99ead673d",
    "approved_git_sha": null,
    "stage": "LP_R_H_RESOURCE",
    "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
@@ -22,9 +23,10 @@
     "run_authorization=NOT_APPROVED",
     "approved_by missing",
     "approved_git_sha missing",
-    "LP_N_H_NETWORK needs an optimal LP_R_H_RESOURCE first"
+    "worktree not clean for code / config / inputs: ['workflow/byop/build/build_post_v16_manifest.py', 'workflow/byop/inputs/post_v16/STAGING_SHA_QA.json', 'workflow/byop/model/byop_paths.py', 'workflow/byop/model/post_v16_gate.py', 'workflow/byop/model/post_v16_headroom.py']",
+    "LP_N_H_NETWORK needs a PASSED LP_R_H_RESOURCE first: LP_R_H_RESOURCE has no ledger row"
    ],
-   "head": "80e1835f6626ebb61e3f454ca63e852b7bad80a0",
+   "head": "946406d15f016bf6eb7dd37ae11d4ce99ead673d",
    "approved_git_sha": null,
    "stage": "LP_N_H_NETWORK",
    "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
@@ -52,6 +54,7 @@
    "Kirchhoff-Voltage-Law",
    "Line-fix-s-lower",
    "Line-fix-s-upper",
+   "PV16-existing_shed_zero",
    "PV16-newload",
    "PV16-online_max_p",
    "PV16-online_min",
@@ -69,7 +72,7 @@
    "StorageUnit-fix-state_of_charge-upper"
   ],
   "n_vars": 373249,
-  "n_cons": 940764,
+  "n_cons": 967980,
   "components": 1,
   "buses": 63,
   "lines": 162,
@@ -84,7 +87,7 @@
    "storage": 43,
    "storage_MW": 13068.4
   },
-  "build_seconds": 10.1,
+  "build_seconds": 10.3,
   "reserve": {
    "CCGT": {
     "pmin": 0.5,
@@ -146,6 +149,7 @@
    "Kirchhoff-Voltage-Law",
    "Line-fix-s-lower",
    "Line-fix-s-upper",
+   "PV16-existing_shed_zero",
    "PV16-newload",
    "PV16-online_max_p",
    "PV16-online_min",
@@ -163,7 +167,7 @@
    "StorageUnit-fix-state_of_charge-upper"
   ],
   "n_vars": 373249,
-  "n_cons": 940764,
+  "n_cons": 967980,
   "components": 1,
   "buses": 63,
   "lines": 162,
@@ -178,7 +182,7 @@
    "storage": 43,
    "storage_MW": 13068.4
   },
-  "build_seconds": 10.6,
+  "build_seconds": 11.1,
   "reserve": {
    "CCGT": {
     "pmin": 0.5,

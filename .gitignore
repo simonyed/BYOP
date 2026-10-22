@@ -368,5 +368,8 @@ workflow/logs/byop/**/*.pid
 !current_work_pckg/**
 current_work_pckg/**/*.zip
 !current_work_pckg/A0_RETURN_PACKAGE.zip
+!current_work_pckg/A0_2_RETURN_PACKAGE.zip
+!current_work_pckg/_completed/*/A0_RETURN_PACKAGE.zip
+!current_work_pckg/BYOP_A0_2_PreSolve_Integration_v1.1/source_tech_v2/ORIGINAL_SOURCE_ZIP.zip
 current_work_pckg/**/__pycache__/
 current_work_pckg/**/*.pyc

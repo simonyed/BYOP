@@ -6,7 +6,7 @@ post_v16:
   run_authorization: NOT_APPROVED
   approved_git_sha: null
   approved_by: null
-  authorization_source: current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/CURRENT_EXECUTION_WORK_PACKAGE_v1.1.md
+  authorization_source: current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1/CURRENT_EXECUTION_WORK_PACKAGE_v1.1.md
   authorization_source_sha256: c3c1a0a55d2fab68076314c4ea7a25a0966907ed5cae3d13510523657e55dfad
   manifest: current_work_pckg/POST_V16_A1_PRE_RUN_MANIFEST.json
   stage: A1
@@ -33,14 +33,16 @@ post_v16:
     response_window_min: 10
     parameters: byop/inputs/post_v16/POST_V16_RESERVE_PARAMETERS.csv     # column 'base' (executor assumptions pending approval)
     claim: "load deliverable on the fixed network while the system aggregate reserve condition holds; NOT deliverable reserve, NOT N-1"
+    researcher_decision: "A0.1 decision 2026-10-22 (current_work_pckg/BYOP_A0_2_PreSolve_Integration_v1.1/source_instructions/BYOP_A0_1_A1_Gate_Repair_Decision_2026-10-22.md): the base proxy values (R 3000 MW, tau 1 h, 10 min, CCGT 0.50 / 4 %/min, OCGT 0.40 / 10 %/min, coal / gas_steam / biomass 0.40 / 2 %/min) are PERMITTED as the A1 physical proxy; evidence class stays PENDING; this is NOT an A1 solve authorisation"
   headroom:
     weights: "16 dynamic_pnnl_v1 buses: cumulative mid IT 2026-2031 x PUE TX 2031 (= research_facility_MW_2031_mid of GREAL_POI_ASSUMPTIONS_GEO_DYNAMIC_V1.csv)"
     lambda_unit: MW facility (IT MW reported separately by bus)
     lambda_upper_MW: 200000
     blocks: [B0_LAMBDA_ZERO, B_LAMBDA]          # B0 certifies existing load + reserve feasible at lambda = 0 inside the same LP
-    existing_load_shed: "penalised 1e4 x lambda weight per MWh; acceptance requires 0 in both blocks (else BASELINE_PRESSURE_INFEASIBLE)"
-    inherited_ramp: existing protected load (460.73 MW IT x PUE TX 2025), never part of lambda
+    existing_load_shed: "A0.1 FIX-01: hard zero (bounded at 0 + PV16-existing_shed_zero) in B0 and BL, LP-R and LP-N; infeasibility -> BASELINE_OR_STRESS_INFEASIBLE (resource side in LP-R, network side in LP-N)"
+    inherited_ramp: "existing protected load (460.73 MW IT x PUE TX 2025), never part of lambda; Native Load 2025 may already contain part of this in-year energization (no overlap estimate; Native Load is not reduced) - A1 is not a historical replay"
     copperplate: every line limit lifted to 1e6 MVA, KVL kept, network connected (LP-R only)
   solver: gurobi
   solver_options: {Method: 2, Crossover: 1, BarConvTol: 1.0e-8, NumericFocus: 2, BarHomogeneous: 1}
-  acceptance: {termination: optimal, h_network_le_h_resource_tol_MW: 1.0e-3, existing_shed_MWh_max: 0.0}
+  objective: "A0.1 FIX-01: maximise lambda only (no cost term); the dispatch is a non-unique optimal witness (no congestion / price attribution)"
+  acceptance: {termination: optimal, h_network_le_h_resource_tol_MW: 1.0e-3, existing_shed_MWh_max: 0.0, balance_residual_MW_max: 1.0e-3, lambda_must_stay_below_upper: true}

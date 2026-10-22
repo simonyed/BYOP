@@ -8,8 +8,9 @@ anything and refuses unless ALL of the following hold (each failure is one reaso
   4  the pre-run manifest exists and every code / input SHA-256 and the normalised config SHA-256 match it
   5  the network file actually passed (--base) is the configured v1.6 path, exists, and its SHA-256 equals the pinned
      v1.6 SHA in the config AND in the manifest (no fallback to the pre-v1.6 baseline_2025_tamu)
-  6  the stage is in the authorised list, the order is respected (LP-N only after an optimal LP-R), the stage has no
-     earlier logged attempt (zero retries) and the LP budget is not used up
+  6  the stage is in the authorised list, the order is respected (LP-N only after LP-R PASSED: DONE / ok / optimal / pass in the
+     ledger AND an LP-R RESULT.json with acceptance PASS), the stage has no earlier ledger row in ANY state (STARTED counts:
+     zero retries), the ledger is readable, and the LP budget is not used up (A0.1 FIX-02 / FIX-03)
 check() never touches a solver; deny() raises SystemExit(3) with the reasons.
 """
 from __future__ import annotations
@@ -42,10 +43,46 @@ def git(*args):
     return subprocess.run(['git', '-C', str(ROOT), *args], capture_output=True, text=True)
 
 
+LEDGER_REQUIRED = ('attempt_id', 'stage', 'attempt', 'state', 'status', 'termination', 'pass')
+
+
 def solve_log_rows(log_path):
+    """the A1 call ledger (A0.1 FIX-03); returns (DataFrame, problem) - an unreadable / malformed ledger is a refusal, never 'empty'"""
     import pandas as pd
     p = Path(log_path)
-    return pd.read_csv(p) if p.exists() else pd.DataFrame(columns=['stage', 'status', 'termination'])
+    if not p.exists():
+        return pd.DataFrame(columns=list(LEDGER_REQUIRED)), None
+    try:
+        lg = pd.read_csv(p, dtype=str, keep_default_na=False)
+    except Exception as e:
+        return None, f'call ledger unreadable ({e.__class__.__name__}) - counted as consumed, refused'
+    miss = [k for k in LEDGER_REQUIRED if k not in lg.columns]
+    if miss:
+        return None, f'call ledger malformed (missing {miss}) - refused'
+    return lg, None
+
+
+def prior_stage_pass(log_dir, prev, lg):
+    """A0.1 FIX-02: the previous stage must have a DONE ledger row with ok / optimal / pass AND a RESULT.json whose acceptance
+    PASS is true with every check true (log status alone is not enough); returns the list of failures"""
+    bad = []
+    rows = lg[lg.stage == prev]
+    if not len(rows):
+        return [f'{prev} has no ledger row']
+    r = rows.iloc[-1]
+    if not (r.state == 'DONE' and r.status == 'ok' and r.termination == 'optimal' and str(r['pass']) == 'True'):
+        bad.append(f'{prev} ledger row is not DONE / ok / optimal / pass ({r.state}, {r.status}, {r.termination}, pass={r["pass"]})')
+    f = Path(log_dir) / f'{prev}_RESULT.json'
+    if not f.exists():
+        return bad + [f'{prev}_RESULT.json missing']
+    try:
+        res = json.loads(f.read_text(encoding='utf-8'))
+    except Exception:
+        return bad + [f'{prev}_RESULT.json unreadable']
+    acc = res.get('acceptance') or {}
+    if acc.get('PASS') is not True or not acc.get('checks') or not all(v is True for v in acc['checks'].values()):
+        bad.append(f'{prev}_RESULT.json acceptance is not PASS: {acc.get("checks")}')
+    return bad
 
 
 def check(cfg_path, stage, base_path, log_path, root=ROOT, git_fn=git):
@@ -111,16 +148,20 @@ def check(cfg_path, stage, base_path, log_path, root=ROOT, git_fn=git):
     stages = list(c['stages'])
     if stage not in stages:
         reasons.append(f'stage {stage} not authorised ({stages})')
-    lg = solve_log_rows(log_path)
-    if len(lg) and (lg.stage == stage).any():
-        reasons.append(f'{stage} already has a logged call (zero retries)')
-    if len(lg) >= int(c['max_lp_calls']):
-        reasons.append('LP budget used')
-    if stage in stages and stages.index(stage) > 0:
-        prev = stages[stages.index(stage) - 1]
-        ok = lg[(lg.stage == prev) & (lg.status == 'ok') & (lg.termination == 'optimal')] if len(lg) else lg
-        if not len(ok):
-            reasons.append(f'{stage} needs an optimal {prev} first')
+    lg, prob = solve_log_rows(log_path)
+    if prob:
+        reasons.append(prob)
+    else:
+        if (lg.stage == stage).any():                 # STARTED / ERROR / DONE all consume the stage (zero retries)
+            st_ = sorted(set(lg[lg.stage == stage].state))
+            reasons.append(f'{stage} already has a logged call {st_} (zero retries)')
+        if len(lg) >= int(c['max_lp_calls']):
+            reasons.append('LP budget used')
+        if stage in stages and stages.index(stage) > 0:
+            prev = stages[stages.index(stage) - 1]
+            fails = prior_stage_pass(Path(log_path).parent, prev, lg)
+            if fails:
+                reasons.append(f'{stage} needs a PASSED {prev} first: ' + '; '.join(fails))
     return dict(approved=not reasons, reasons=reasons, head=head, approved_git_sha=asha or None, stage=stage,
                 base=str(base_path), config=str(cfg_path))
 

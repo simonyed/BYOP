@@ -42,13 +42,49 @@ def build(mode, base):
     return n, info, cfg
 
 
-def log_call(stage, status, term, sec, note=''):
-    lg = pd.read_csv(LOG) if LOG.exists() else pd.DataFrame(columns=['timestamp_utc', 'stage', 'attempt', 'status', 'termination', 'seconds', 'note'])
-    lg = pd.concat([lg, pd.DataFrame([dict(timestamp_utc=datetime.now(timezone.utc).isoformat(timespec='seconds'), stage=stage,
-                                           attempt=int((lg.stage == stage).sum()) + 1, status=status, termination=term,
-                                           seconds=round(sec, 1), note=note)])], ignore_index=True)
-    OUT.mkdir(parents=True, exist_ok=True)
-    lg.to_csv(LOG, index=False, lineterminator='\n')
+LOG_COLS = ['attempt_id', 'stage', 'attempt', 'state', 'started_utc', 'finished_utc', 'status', 'termination', 'failure_class',
+            'pass', 'seconds', 'manifest_sha256', 'base_sha256', 'note']
+
+
+def _atomic_write(df, path):
+    """write + fsync + atomic rename (a crash never leaves a half-written ledger)"""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix('.tmp')
+    with open(tmp, 'w', encoding='utf-8', newline='') as f:
+        df.to_csv(f, index=False, lineterminator='\n')
+        f.flush(); os.fsync(f.fileno())
+    os.replace(tmp, path)
+
+
+def read_ledger(path=None):
+    p = Path(path or LOG)
+    if not p.exists():
+        return pd.DataFrame(columns=LOG_COLS)
+    return pd.read_csv(p, dtype=str, keep_default_na=False)
+
+
+def start_attempt(stage, manifest_sha, base_sha, path=None):
+    """A0.1 FIX-03: persisted STARTED row BEFORE the solver is called; it consumes the budget even if the process dies"""
+    p = Path(path or LOG)
+    lg = read_ledger(p)
+    k = int((lg.stage == stage).sum()) + 1
+    row = {'attempt_id': f'{stage}#{k}', 'stage': stage, 'attempt': k, 'state': 'STARTED',
+           'started_utc': datetime.now(timezone.utc).isoformat(timespec='seconds'), 'finished_utc': '', 'status': '', 'termination': '',
+           'failure_class': '', 'pass': '', 'seconds': '', 'manifest_sha256': manifest_sha, 'base_sha256': base_sha, 'note': ''}
+    _atomic_write(pd.concat([lg, pd.DataFrame([row])], ignore_index=True)[LOG_COLS], p)
+    return row['attempt_id']
+
+
+def finish_attempt(attempt_id, path=None, **kw):
+    """fill the SAME row (state DONE / ERROR); never deletes or adds a row"""
+    p = Path(path or LOG)
+    lg = read_ledger(p)
+    i = lg.index[lg.attempt_id == attempt_id]
+    assert len(i) == 1, f'attempt {attempt_id} not in the ledger'
+    kw.setdefault('finished_utc', datetime.now(timezone.utc).isoformat(timespec='seconds'))
+    for k, v in kw.items():
+        lg.loc[i[0], k] = str(v)
+    _atomic_write(lg[LOG_COLS], p)
 
 
 # ------------------------------------------------------------------------------------------------ outputs (pure pandas)
@@ -118,21 +154,47 @@ def balance_residual(n):
     return float(inj.abs().max().max())
 
 
+def acceptance(summ, lam_upper, tol_resid=1e-3):
+    """A0.1 FIX-02: per-LP acceptance; every check must be True for PASS (missing / NaN values fail)"""
+    def num(k):
+        v = summ.get(k)
+        return float(v) if isinstance(v, (int, float)) and np.isfinite(v) else None
+    lam = num('lambda_facility_MW')
+    chk = dict(status_ok=summ.get('status') == 'ok', termination_optimal=summ.get('termination') == 'optimal',
+               outputs_present=bool(summ.get('outputs_written')), lambda_finite_nonneg=lam is not None and lam >= 0,
+               lambda_below_artificial_upper=lam is not None and lam < lam_upper * (1 - 1e-6),
+               existing_shed_zero_B0=num('existing_shed_MWh_B0') is not None and abs(num('existing_shed_MWh_B0')) <= 1e-6,
+               existing_shed_zero_BL=num('existing_shed_MWh_BL') is not None and abs(num('existing_shed_MWh_BL')) <= 1e-6,
+               reserve_met=num('reserve_min_slack_MW') is not None and num('reserve_min_slack_MW') >= -1e-3,
+               balance_residual_ok=num('balance_residual_max_abs_MW') is not None and num('balance_residual_max_abs_MW') <= tol_resid)
+    return dict(checks=chk, PASS=all(chk.values()), lambda_upper_MW=lam_upper, balance_tolerance_MW=tol_resid)
+
+
 def combine(out, tol):
-    """JOINT_HEADROOM_RESOURCE_NETWORK.csv after both LPs; acceptance 0 <= H_network <= H_resource + tol"""
-    r = {k: json.loads((out / f'{STAGE[k]}_RESULT.json').read_text()) for k in STAGE}
-    rows = [dict(stage=r[k]['stage'], status=r[k]['status'], termination=r[k]['termination'],
+    """A0.1 FIX-02: after LP-N. A1 PASS only if BOTH results PASS and 0 <= H_network <= H_resource + tol, else A1_BLOCKED
+    (JOINT_HEADROOM_RESOURCE_NETWORK.csv and A1_RESULT.json are written either way); returns the A1 status"""
+    r = {}
+    for k in STAGE:
+        f = out / f'{STAGE[k]}_RESULT.json'
+        r[k] = json.loads(f.read_text()) if f.exists() else {}
+    rows = [dict(stage=STAGE[k], status=r[k].get('status'), termination=r[k].get('termination'), PASS=bool(r[k].get('acceptance', {}).get('PASS')),
                  lambda_facility_MW=r[k].get('lambda_facility_MW'), lambda_IT_MW=r[k].get('lambda_IT_MW'),
                  existing_shed_MWh_B0=r[k].get('existing_shed_MWh_B0'), existing_shed_MWh_BL=r[k].get('existing_shed_MWh_BL'),
                  reserve_min_slack_MW=r[k].get('reserve_min_slack_MW'), balance_residual_max_abs_MW=r[k].get('balance_residual_max_abs_MW'))
             for k in ('R', 'N')]
     hr, hn = rows[0]['lambda_facility_MW'], rows[1]['lambda_facility_MW']
-    ok = hr is not None and hn is not None and 0 <= hn <= hr + tol
+    fin = lambda x: isinstance(x, (int, float)) and np.isfinite(x)
+    order_ok = fin(hr) and fin(hn) and 0 <= hn <= hr + tol
+    status = 'A1_PASS' if (rows[0]['PASS'] and rows[1]['PASS'] and order_ok) else 'A1_BLOCKED'
+    reasons = ([] if rows[0]['PASS'] else ['LP-R not PASS']) + ([] if rows[1]['PASS'] else ['LP-N not PASS']) + \
+              ([] if order_ok else [f'H_network {hn} not in [0, H_resource {hr} + {tol}]'])
     for x in rows:
-        x['H_network_le_H_resource_plus_tol'] = ok
+        x['H_network_le_H_resource_plus_tol'] = order_ok
+        x['A1_status'] = status
         x['label'] = 'joint connection capability of the given AIDC distribution under the stated stress / reserve conditions on the synthetic network (NOT real ERCOT headroom)'
     pd.DataFrame(rows).to_csv(out / 'JOINT_HEADROOM_RESOURCE_NETWORK.csv', index=False, lineterminator='\n')
-    return ok
+    (out / 'A1_RESULT.json').write_text(json.dumps(dict(A1_status=status, reasons=reasons, H_resource=hr, H_network=hn, tol_MW=tol), indent=1, default=str))
+    return status
 
 
 # ------------------------------------------------------------------------------------------------ actions
@@ -169,33 +231,60 @@ def dry(base):
                       for k, v in rep.items() if k != 'poi_lambda_preview'}, indent=1, default=str))
 
 
-def lp(mode, base, threads):
+def classify(mode, status, term):
+    """FIX-04 failure class of a non-optimal return (infeasible -> baseline / stress pressure, never attributed to AIDC)"""
+    if 'infeasible' in str(term).lower():
+        return 'baseline_pressure_infeasible' + ('_resource_side' if mode == 'R' else '_network_side')
+    return 'solver_failed'
+
+
+def lp(mode, base, threads, solve_fn=None):
     g = G.check(CFG, STAGE[mode], base, LOG)            # BEFORE anything is read or built
     G.deny(g)
+    tag = STAGE[mode]
     n, info, cfg = build(mode, base)
     info.update(reserve_MW=cfg['reserve']['requirement_MW'], tau_h=cfg['reserve']['tau_h'])
     opts = dict(cfg['solver_options'], Threads=int(threads))
+    man = WF.parent / G.load(CFG)['manifest']
+    aid = start_attempt(tag, sha(man), sha(base))          # FIX-03: persisted before the solver starts
+    summ = dict(stage=tag, attempt_id=aid, solver_options=opts, gate=g, outputs_written=False,
+                structure={k: v for k, v in info['structure'].items() if k not in ('variables', 'constraints')}, headroom=info['headroom'])
+    res = OUT / f'{tag}_RESULT.json'
     t = time.time()
     try:
-        st, term = n.optimize.solve_model(solver_name=cfg['solver'], solver_options=opts)
-    except Exception as e:                                # logged, never retried
-        log_call(STAGE[mode], 'error', repr(e)[:160], time.time() - t)
-        raise
-    sec = time.time() - t
-    log_call(STAGE[mode], str(st), str(term), sec)
-    tag = STAGE[mode]
-    summ = dict(stage=tag, status=str(st), termination=str(term), seconds=round(sec, 1), solver_options=opts, gate=g,
-                structure={k: v for k, v in info['structure'].items() if k not in ('variables', 'constraints')}, headroom=info['headroom'])
-    if str(term) == 'optimal':
-        summ.update(write_outputs(solution_view(n, info), OUT, tag))
-        summ['balance_residual_max_abs_MW'] = balance_residual(n)
-    (OUT / f'{tag}_RESULT.json').write_text(json.dumps(summ, indent=1, default=str))
-    print(json.dumps(summ, indent=1, default=str))
-    if not (str(st) == 'ok' and str(term) == 'optimal'):
-        raise SystemExit(f'{tag}: {st} {term} -> BLOCKED (no retry)')
+        st, term = (solve_fn or n.optimize.solve_model)(solver_name=cfg['solver'], solver_options=opts)
+    except BaseException as e:                            # logged as a consumed call, never retried
+        summ.update(status='error', termination=repr(e)[:200], failure_class='solver_failed', acceptance=dict(PASS=False))
+        res.write_text(json.dumps(summ, indent=1, default=str))
+        finish_attempt(aid, state='ERROR', status='error', termination=repr(e)[:120], failure_class='solver_failed', seconds=round(time.time() - t, 1),
+                       **{'pass': False})
+        raise SystemExit(f'{tag}: solver_failed -> BLOCKED (no retry)')
+    st, term = str(st), str(term)
+    summ.update(status=st, termination=term, seconds=round(time.time() - t, 1))
+    fc = ''
+    if not (st == 'ok' and term == 'optimal'):
+        fc = classify(mode, st, term)
+    else:
+        try:
+            summ.update(write_outputs(solution_view(n, info), OUT, tag))
+            summ['balance_residual_max_abs_MW'] = balance_residual(n)
+            summ['outputs_written'] = True
+        except Exception as e:
+            fc = 'output_failed'; summ['output_error'] = repr(e)[:300]
+    summ['acceptance'] = acceptance(summ, float(cfg['headroom']['lambda_upper_MW']))
+    if not fc and not summ['acceptance']['PASS']:
+        fc = 'acceptance_failed'
+    summ['failure_class'] = fc
+    res.write_text(json.dumps(summ, indent=1, default=str))
+    finish_attempt(aid, state='DONE', status=st, termination=term, failure_class=fc, seconds=summ['seconds'], **{'pass': summ['acceptance']['PASS']})
+    print(json.dumps({k: v for k, v in summ.items() if k != 'gate'}, indent=1, default=str))
+    if fc:
+        raise SystemExit(f'{tag}: {fc} -> BLOCKED (no retry)')
     if mode == 'N':
-        ok = combine(OUT, float(cfg['acceptance']['h_network_le_h_resource_tol_MW']))
-        print('H_network <= H_resource + tol:', ok)
+        a1 = combine(OUT, float(cfg['acceptance']['h_network_le_h_resource_tol_MW']))
+        print('A1 status:', a1)
+        if a1 != 'A1_PASS':
+            raise SystemExit(4)
 
 
 def main():

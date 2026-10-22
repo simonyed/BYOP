@@ -64,7 +64,7 @@ BASE_TAMU_V16 = BASE_TAMU_V16_DIR / 'baseline_2025_tamu_prepared.nc'
 BASE_TAMU_V16_SHA256 = 'a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16'   # v1.6 report 0b417903
 
 # post-v1.6 execution package v1.1 (2026-10-22): staged research data (raw local + L2 only; derived tracked) and A0/A1 outputs
-POST_V16_PACKAGE = WORKFLOW.parent / 'current_work_pckg/BYOP_Post_v1.6_Execution_v1.1'
+POST_V16_PACKAGE = WORKFLOW.parent / 'current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1'
 POST_V16_RAW = DATA / 'post_v16_execution_v11/raw'
 POST_V16_INPUTS = INPUTS / 'post_v16'
 POST_V16_DERIVED = POST_V16_INPUTS / 'derived'

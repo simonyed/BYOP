@@ -1,0 +1,366 @@
+{
+  "version": "TECH_COMP_2_2026-10-22",
+  "basis_commit": "d0a9bf85523b9630a0a6e811ec024653cd26c5ec",
+  "status": "RESEARCHER_PROPOSED_BASELINE_NOT_OFFICIAL_PERMIT_OR_OEM_QUOTE",
+  "currency": "2025 USD real; same installed net AC capex and FOM scope, no tax-credit netting",
+  "global": {
+    "private_WACC": 0.07,
+    "social_discount_rate": 0.02,
+    "co2_ng_kg_per_MMBtu_HHV": 53.06,
+    "yearly_cod_convention": "full-year Firm credit remains strict; partial-year COD only energy unless separate approved intrayear service design",
+    "source_refs": [
+      "S01_BLOOM_2026_SPEC",
+      "S08_GE_VERNOVA_Q2_2026"
+    ]
+  },
+  "technologies": [
+    {
+      "tech": "RICE",
+      "capex_2025USD_per_kW": 2200,
+      "capex_low": 1995,
+      "capex_high": 2750,
+      "fom_USD_per_kWyr": 43,
+      "vom_USD_per_MWh": 7.0,
+      "heat_rate_HHV_Btu_per_kWh": 8381,
+      "equipment_order_to_arrival_years": 1.0,
+      "site_install_commission_years": 0.5,
+      "civil_ready_from_order_years": 0.5,
+      "lifetime_years": 25,
+      "firm_redundancy_factor": 1.25,
+      "module_reference_MW": 10,
+      "min_stable_fraction_unit_only": 0.1,
+      "NOx_kg_per_MWh_uncontrolled_proxy": 0.7,
+      "NOx_kg_per_MWh_controlled_proxy": 0.0675,
+      "NOx_control_extra_CAPEX_USD_per_kW": 150,
+      "NOx_control_extra_FOM_USD_per_kWyr": 5,
+      "CO2_t_per_MWh": 0.4447,
+      "evidence": "EIA-derived baseline with 2026 market package proxy; low/high are assumptions; NOx controlled example is engineering proxy, not TCEQ-certified project rate",
+      "sources": [
+        "S06_WARTSILA_ENGINES_V_AERO",
+        "S07_WARTSILA_MODULAR_SIZE",
+        "S16_EPA_AP42_TURBINE"
+      ]
+    },
+    {
+      "tech": "OCGT_aero",
+      "capex_2025USD_per_kW": 2550,
+      "capex_low": 2275,
+      "capex_high": 3200,
+      "fom_USD_per_kWyr": 20,
+      "vom_USD_per_MWh": 5.97,
+      "heat_rate_HHV_Btu_per_kWh": 9447,
+      "equipment_order_to_arrival_years": 1.5,
+      "site_install_commission_years": 0.5,
+      "civil_ready_from_order_years": 0.75,
+      "lifetime_years": 30,
+      "firm_redundancy_factor": 1.25,
+      "module_reference_MW": 50,
+      "min_stable_fraction_unit_only": 0.4,
+      "NOx_kg_per_MWh_uncontrolled_proxy": 0.424,
+      "NOx_kg_per_MWh_controlled_proxy": 0.085,
+      "NOx_control_extra_CAPEX_USD_per_kW": 200,
+      "NOx_control_extra_FOM_USD_per_kWyr": 4,
+      "CO2_t_per_MWh": 0.50126,
+      "evidence": "EIA current old $2275 with assumed +12% turnkey tight-market premium; FOM rounded proxy; DLN NOx = 0.099 lb/MMBtu x 9.447 MMBtu/MWh x 0.453592; controlled SCR proxy",
+      "sources": [
+        "S08_GE_VERNOVA_Q2_2026",
+        "S06_WARTSILA_ENGINES_V_AERO",
+        "S16_EPA_AP42_TURBINE"
+      ]
+    },
+    {
+      "tech": "SOFC_NG",
+      "capex_2025USD_per_kW": 3900,
+      "capex_low": 3200,
+      "capex_high": 5000,
+      "fom_USD_per_kWyr": 125,
+      "vom_USD_per_MWh": 0.72,
+      "heat_rate_HHV_Btu_per_kWh": 6469,
+      "equipment_order_to_arrival_years": 0.75,
+      "site_install_commission_years": 0.25,
+      "civil_ready_from_order_years": 0.5,
+      "lifetime_years": 15,
+      "firm_redundancy_factor": 1.1,
+      "module_reference_MW": 0.325,
+      "min_stable_fraction_unit_only": 0.5,
+      "NOx_kg_per_MWh_uncontrolled_proxy": 0.001,
+      "NOx_kg_per_MWh_controlled_proxy": 0.001,
+      "NOx_control_extra_CAPEX_USD_per_kW": 0,
+      "NOx_control_extra_FOM_USD_per_kWyr": 0,
+      "CO2_t_per_MWh": 0.34325,
+      "evidence": "2026 commercial comparable capital $3-4k/kW, selected $3900 inclusive installation/site BOP proxy; FOM $125 assumed inclusive service/stack reserve, not manufacturer quotation; time 55d deployment only for equipment-ready case",
+      "sources": [
+        "S01_BLOOM_2026_SPEC",
+        "S02_BLOOM_ORACLE_55_DAYS",
+        "S03_BLOOM_SEC_2GW",
+        "S04_AEP_2026_ORDER",
+        "S05_RABOBANK_COMPARABLE_CAPEX"
+      ]
+    },
+    {
+      "tech": "WIND",
+      "capex_2025USD_per_kW": 1562,
+      "capex_low": 1408,
+      "capex_high": 1712,
+      "fom_USD_per_kWyr": 34.57,
+      "vom_USD_per_MWh": 0,
+      "heat_rate_HHV_Btu_per_kWh": 0,
+      "equipment_order_to_arrival_years": 1.75,
+      "site_install_commission_years": 0.75,
+      "civil_ready_from_order_years": 1.25,
+      "lifetime_years": 30,
+      "firm_redundancy_factor": null,
+      "module_reference_MW": null,
+      "min_stable_fraction_unit_only": 0,
+      "NOx_kg_per_MWh_uncontrolled_proxy": 0,
+      "NOx_kg_per_MWh_controlled_proxy": 0,
+      "NOx_control_extra_CAPEX_USD_per_kW": 0,
+      "NOx_control_extra_FOM_USD_per_kWyr": 0,
+      "CO2_t_per_MWh": 0,
+      "evidence": "retain v1.3 overnight capex/cost; construction components total 2.5y baseline; renewable firm only portfolio chronologic certification",
+      "sources": [
+        "S15_REEDS_INPUTS",
+        "S14_ERCOT_2025_ELCC"
+      ]
+    },
+    {
+      "tech": "PV",
+      "capex_2025USD_per_kW": 1342,
+      "capex_low": 1193,
+      "capex_high": 1484,
+      "fom_USD_per_kWyr": 23.6,
+      "vom_USD_per_MWh": 0,
+      "heat_rate_HHV_Btu_per_kWh": 0,
+      "equipment_order_to_arrival_years": 0.75,
+      "site_install_commission_years": 0.5,
+      "civil_ready_from_order_years": 0.5,
+      "lifetime_years": 30,
+      "firm_redundancy_factor": null,
+      "module_reference_MW": null,
+      "min_stable_fraction_unit_only": 0,
+      "NOx_kg_per_MWh_uncontrolled_proxy": 0,
+      "NOx_kg_per_MWh_controlled_proxy": 0,
+      "NOx_control_extra_CAPEX_USD_per_kW": 0,
+      "NOx_control_extra_FOM_USD_per_kWyr": 0,
+      "CO2_t_per_MWh": 0,
+      "evidence": "retain v1.3 capex; 1.25y onsite approximate (not utility grid interconnection); Firm only portfolio certification",
+      "sources": [
+        "S15_REEDS_INPUTS",
+        "S14_ERCOT_2025_ELCC"
+      ]
+    },
+    {
+      "tech": "BESS",
+      "capex_2025USD_per_kW": 1500,
+      "capex_low": 1451,
+      "capex_high": 1775,
+      "fom_USD_per_kWyr": 41.84,
+      "vom_USD_per_MWh": 0,
+      "heat_rate_HHV_Btu_per_kWh": 0,
+      "equipment_order_to_arrival_years": 0.5,
+      "site_install_commission_years": 0.25,
+      "civil_ready_from_order_years": 0.5,
+      "lifetime_years": 15,
+      "firm_redundancy_factor": null,
+      "module_reference_MW": null,
+      "min_stable_fraction_unit_only": 0,
+      "NOx_kg_per_MWh_uncontrolled_proxy": 0,
+      "NOx_kg_per_MWh_controlled_proxy": 0,
+      "NOx_control_extra_CAPEX_USD_per_kW": 0,
+      "NOx_control_extra_FOM_USD_per_kWyr": 0,
+      "CO2_t_per_MWh": 0,
+      "storage_duration_hours": 4,
+      "storage_round_trip_efficiency": 0.85,
+      "evidence": "retain existing storage capex, 4h, eta 0.85; completion ~0.75y research proxy; no standalone isolated multi-day Firm credit",
+      "sources": [
+        "S14_ERCOT_2025_ELCC"
+      ]
+    }
+  ],
+  "permit": {
+    "values_years_from_order": {
+      "ATTAINMENT_OR_UNCLASSIFIED": {
+        "SOFC_NG": 0.4,
+        "RICE": 0.75,
+        "OCGT_aero": 1.0,
+        "WIND": 0.75,
+        "PV": 0.4,
+        "BESS": 0.35
+      },
+      "OZONE_NONATTAINMENT_2015": {
+        "SOFC_NG": 0.6,
+        "RICE": 1.25,
+        "OCGT_aero": 1.75,
+        "WIND": 0.75,
+        "PV": 0.4,
+        "BESS": 0.35
+      },
+      "OZONE_NONATTAINMENT_2008_ONLY": {
+        "SOFC_NG": 0.6,
+        "RICE": 1.25,
+        "OCGT_aero": 1.75,
+        "WIND": 0.75,
+        "PV": 0.4,
+        "BESS": 0.35
+      },
+      "UNKNOWN_CONSERVATIVE": {
+        "SOFC_NG": 0.6,
+        "RICE": 1.25,
+        "OCGT_aero": 1.75,
+        "WIND": 0.75,
+        "PV": 0.4,
+        "BESS": 0.35
+      }
+    },
+    "source_status": "RELATIVE_RISK_RESEARCH_PROXY_NOT_LEGAL_DETERMINATION",
+    "ozone_counties_fips": {
+      "dfw_2015_ozone": [
+        "48085",
+        "48113",
+        "48121",
+        "48139",
+        "48251",
+        "48257",
+        "48367",
+        "48439",
+        "48497"
+      ],
+      "dfw_2008_ozone": [
+        "48085",
+        "48113",
+        "48121",
+        "48139",
+        "48251",
+        "48257",
+        "48367",
+        "48397",
+        "48439",
+        "48497"
+      ],
+      "hgb_2015_ozone": [
+        "48039",
+        "48071",
+        "48157",
+        "48167",
+        "48201",
+        "48339"
+      ],
+      "hgb_2008_ozone": [
+        "48039",
+        "48071",
+        "48157",
+        "48167",
+        "48201",
+        "48291",
+        "48339",
+        "48473"
+      ],
+      "san_2015_ozone": [
+        "48029"
+      ]
+    },
+    "RICE_special_2025_permit": "only qualifying spark-ignited pipeline-quality natural-gas engines; RICE_50DF must not automatically qualify if dual-fuel or non-SI",
+    "site_PTE_screening": "calculate K x 8760 x emission-rate for permit screen only; do NOT infer statutory major source classification solely from NOx tpy",
+    "NOx_tech_kg_per_MWh_basis": "BLOOM 2026 datasheet, EPA AP-42 lean-premix turbine, RICE regulated-SCR case engineering illustration",
+    "sources": [
+      "S09_TCEQ_NG_EGU_SP",
+      "S10_TCEQ_TURBINES",
+      "S11_TCEQ_DFW_OZONE",
+      "S12_TCEQ_HOUSTON_OZONE",
+      "S13_TCEQ_BEXAR_OZONE"
+    ]
+  },
+  "schedule": {
+    "decision_year": 2026,
+    "phase_rule": "COD=max(max(q+equipment_lead, q+civil_lead, permit_preconstruction_release)+install_commission, q+gas_lateral_lead, electrical_ready); use permit-before-construction when applicable and do not assume all leads are additive; for code use explicit milestone constraints",
+    "existing_2025_preordered_rights": "none_verified_for_NEW_research_sites",
+    "confirmed_fast_reserved_2026_MW": {
+      "RICE": 0,
+      "OCGT_aero": 0,
+      "SOFC_NG": 0
+    },
+    "fast_SOFC_project_specific_delivery_years": 0.15,
+    "fast_SOFC_path_status": "DISABLED without independently evidenced allocation to a specific research site; Oracle 55 days cannot be freely allocated to ERCOT"
+  },
+  "supply": {
+    "year": [
+      2026,
+      2027,
+      2028,
+      2029,
+      2030,
+      2031
+    ],
+    "reference_ERCOT_market_access_MW_by_tech": {
+      "RICE": [
+        250,
+        300,
+        375,
+        450,
+        525,
+        600
+      ],
+      "OCGT_aero": [
+        200,
+        225,
+        250,
+        300,
+        350,
+        400
+      ],
+      "SOFC_NG": [
+        75,
+        150,
+        225,
+        300,
+        375,
+        450
+      ]
+    },
+    "status": "RESEARCH_PROXY_NOT_VERIFIED_SPARE_OEM_CAPACITY",
+    "low_multiplier": 0.5,
+    "high_multiplier": 2.0,
+    "historical_prebooked_new_research_MW": {
+      "SOFC_NG": 0,
+      "RICE": 0,
+      "OCGT_aero": 0
+    },
+    "global_pool_rule": "Across all sites, paths, owners, iterations; count MW once on delivery date and never reuse in different S2 public/developer solves; do not impose two pools for a single OEM quota",
+    "on_site_logistics": "not shared with public plant generators unless physical same commercial supplier and equipment type",
+    "source_refs": [
+      "S03_BLOOM_SEC_2GW",
+      "S08_GE_VERNOVA_Q2_2026"
+    ]
+  },
+  "renewable_firm": {
+    "default_rule": "STRESS_WINDOW_24H_48H_72H_PORTFOLIO",
+    "windows_h": [
+      24,
+      48,
+      72
+    ],
+    "initial_soc_fraction_max": 0.5,
+    "terminal_soc_fraction_min": 0.5,
+    "no_free_grid_charge_for_islanded": true,
+    "wind_and_pv_realised_profiles": "Use unchanged PyPSA-USA weather-aligned base; use ReEDS2 resource H5 for auxiliary multi-year stress verification if local files exist; otherwise perform 24/48/72 pilot on existing aligned profiles and report limitation, NEVER silently change weather year",
+    "elcc_reference_NOT_project_Firm": {
+      "solar_other_evening": 0.0551,
+      "solar_west_evening": 0.0732,
+      "wind_other_evening": 0.0833,
+      "wind_panhandle_evening": 0.1783,
+      "BESS_4h_evening": 0.5485
+    },
+    "sources": [
+      "S14_ERCOT_2025_ELCC",
+      "S15_REEDS_INPUTS"
+    ]
+  },
+  "scope_control": {
+    "geography": "post Epoch+PNNL multi-bus frozen",
+    "history": "do not change 2025 stock/inherited ramp",
+    "no_authorized_global_solver": true,
+    "no_forced_mix": true,
+    "s2_s3_identical_physical_set": true,
+    "no_early_double_credit": true
+  }
+}

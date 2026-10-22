@@ -1,0 +1,82 @@
+[
+  {
+    "id": "S01_BLOOM_2026_SPEC",
+    "url": "https://www.bloomenergy.com/wp-content/uploads/bloom-energy-server-datasheet-feb-2026.pdf"
+  },
+  {
+    "id": "S02_BLOOM_ORACLE_55_DAYS",
+    "url": "https://www.bloomenergy.com/news/bloom-energy-and-oracle-expand-strategic-partnership-to-deploy-up-to-2.8-gw-to-accelerate-ai-infrastructure-build-out/"
+  },
+  {
+    "id": "S03_BLOOM_SEC_2GW",
+    "url": "https://www.sec.gov/Archives/edgar/data/1664703/000162828026024237/be-20260408.htm"
+  },
+  {
+    "id": "S04_AEP_2026_ORDER",
+    "url": "https://www.reuters.com/business/energy/american-electric-power-signs-265-billion-deal-fuel-cells-2026-01-08/"
+  },
+  {
+    "id": "S05_RABOBANK_COMPARABLE_CAPEX",
+    "url": "https://www.rabobank.com/knowledge/d011524694-the-sprint-data-centers-are-building-a-parallel-energy-system-in-the-us"
+  },
+  {
+    "id": "S06_WARTSILA_ENGINES_V_AERO",
+    "url": "https://www.wartsila.com/energy/learn-more/technology-comparison-engines-vs-aeros/executive-summary"
+  },
+  {
+    "id": "S07_WARTSILA_MODULAR_SIZE",
+    "url": "https://www.wartsila.com/energy/learn-more/technology-comparison-engines-vs-aeros/the-advantages-of-modularity"
+  },
+  {
+    "id": "S08_GE_VERNOVA_Q2_2026",
+    "url": "https://www.gevernova.com/news/articles/ge-vernova-releases-second-quarter-2026-financial-results"
+  },
+  {
+    "id": "S09_TCEQ_NG_EGU_SP",
+    "url": "https://www.tceq.texas.gov/permitting/air/newsourcereview/combustion/ng-egu-sp"
+  },
+  {
+    "id": "S10_TCEQ_TURBINES",
+    "url": "https://www.tceq.texas.gov/permitting/air/guidance/newsourcereview/turbines/nsrauth_turb.html"
+  },
+  {
+    "id": "S11_TCEQ_DFW_OZONE",
+    "url": "https://www.tceq.texas.gov/airquality/sip/dfw/dfw-status/"
+  },
+  {
+    "id": "S12_TCEQ_HOUSTON_OZONE",
+    "url": "https://www.tceq.texas.gov/airquality/sip/hgb/hgb-status"
+  },
+  {
+    "id": "S13_TCEQ_BEXAR_OZONE",
+    "url": "https://www.tceq.texas.gov/airquality/sip/san/san-status"
+  },
+  {
+    "id": "S14_ERCOT_2025_ELCC",
+    "url": "https://www.ercot.com/files/docs/2025/02/12/2024_ERCOT_ELCC_Study_Final_Report_Revised.pdf"
+  },
+  {
+    "id": "S15_REEDS_INPUTS",
+    "url": "https://reeds-model.github.io/ReEDS/inputs.html"
+  },
+  {
+    "id": "S16_EPA_AP42_TURBINE",
+    "url": "https://www.epa.gov/air-emissions-factors-and-quantification/ap-42-fifth-edition-volume-i-chapter-3-stationary-0"
+  },
+  {
+    "id": "S17_EPA_DATA_CENTERS_AIR",
+    "url": "https://www.epa.gov/stationary-sources-air-pollution/clean-air-act-resources-data-centers"
+  },
+  {
+    "id": "S18_EPA_NG_CO2",
+    "url": "https://www.epa.gov/climateleadership/ghg-emission-factors-hub"
+  },
+  {
+    "id": "S19_OLD_REPO",
+    "url": "https://github.com/simonyed/BYOP/tree/d0a9bf85523b9630a0a6e811ec024653cd26c5ec"
+  },
+  {
+    "id": "S20_WARTSILA_PULSE",
+    "url": "https://www.wartsila.com/energy/learn-more/technology-comparison-engines-vs-aeros/pulse-load-efficiency"
+  }
+]

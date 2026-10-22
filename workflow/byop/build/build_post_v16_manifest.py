@@ -28,7 +28,7 @@ INPUTS = ['workflow/byop/inputs/post_v16/derived/ERCOT_2025_OBSERVED_LOAD_WIND_S
           'workflow/byop/inputs/dc/state_pue_2022_2050.csv',
           'workflow/byop/inputs/dc/MAINLINE_INHERITED_RAMP_2025.csv',
           'workflow/results/BYOP/baseline_2025_tamu_v16/COUNTY_TO_BUS_SHARES.csv',
-          'current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/CURRENT_EXECUTION_WORK_PACKAGE_v1.1.md']
+          'current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1/CURRENT_EXECUTION_WORK_PACKAGE_v1.1.md']
 sha = lambda p: hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
 
