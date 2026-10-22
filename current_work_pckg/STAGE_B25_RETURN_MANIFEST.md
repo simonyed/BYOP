@@ -2,7 +2,7 @@
 
 - 日期：2026-10-21（纽约时间）
 - 分支：`mainline-v13-stageA`（没有合并到 `main`）
-- **B2.5 代码提交（待批准）：`__B25_SHA__`**
+- **B2.5 代码提交（待批准）：`01e761dabab25cce514c10abb1824936410e3f87`**
 - `RUN_AUTHORIZATION: NOT_APPROVED`，`SOLVER_EXECUTIONS_B25: 0`，B3 状态：`NOT_AUTHORIZED`
 
 ## GitHub 上的文件（tracked）
@@ -31,6 +31,6 @@ B2-R 的所有已发布文件**都没有改写**。
 
 ## B3-E 获批后的执行顺序
 
-1. 研究者批准 `__B25_SHA__`，在配置中写入 `APPROVED` 和该 SHA。
+1. 研究者批准 `01e761dabab25cce514c10abb1824936410e3f87`，在配置中写入 `APPROVED` 和该 SHA。
 2. 依次执行：`gate`（必须 `approved: true`）→ `DRY=1 … pilot_core_b3e` → `THREADS=20 bash byop/run/run_mainline.sh pilot_core_b3e`。
 3. 完成后**停止**，交付工作包 §4.2 的文件。
