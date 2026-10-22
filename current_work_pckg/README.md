@@ -15,18 +15,12 @@ Project-level documents that span work packages are in `workflow/byop/docs/`.
 
 ## Current work package
 
-**BYOP ERCOT: C0 audit repair and C1 fixed-asset diagnostics, execution prompt v1.4 (2026-10-22)**
+**BYOP: C1-X1 network comparison and storage degeneracy validation, work package v1.5 (2026-10-22)**
 
-- Original text: `BYOP_C0_Repair_C1_Diagnostics_Execution_Prompt_v1.4_2026-10-22.md` (provided by the researcher in this folder)
-- Stage A: C0 repair (phase / switchable / match confidence), solver executions 0. Stage B: limited C1 fixed-asset dispatch LPs (at most 6) under a separate C1 config; formal run gates stay NOT_APPROVED. Stage C: report, commit, stop.
-- Archived on 2026-10-22: the C0 v1.3 package (official anchor evidence package attachments + all C0 v1.3 reports, kept as the v1.3 snapshot) is in `_completed/ERCOT_2025_Official_Anchor_v1.3_C0/`; the official raw files stay in `workflow/data/byop/ercot_official_anchor_2025/`
-- `.gitignore`: the LaTeX rule `*.[1-9]` had hidden folders whose names end in a version number (the v1.3 package attachments were never on GitHub); `current_work_pckg/**` is now always tracked
+- Original text: `BYOP_C1_X1_Storage_Validation_Work_Package_v1.5_2026-10-22.md` (provided by the researcher)
+- Scope: two annual 3 h LP stages only (X1 = calibrated capacity + raw x / r on the 18 uplift lines; then storage-throughput minimisation on X1 with the economic cost and total shed held within tolerance); own config + solve log; formal gates stay NOT_APPROVED; no asset change
+- Archived on 2026-10-22: the v1.4 package (C0 repair / C1 diagnostics) + continuation addendum v1.4.1 and all their reports are in `_completed/BYOP_C0_Repair_C1_Diagnostics_v1.4/`
 
 | File | Content | Status |
 |---|---|---|
-| `BYOP_C0_Repair_C1_Diagnostics_Execution_Prompt_v1.4_2026-10-22.md` | Original work package | Provided by the researcher |
-| `C0_REPAIR_REPORT.md` + `C0_PHASE_RECONCILIATION.csv`, `C0_RECLASS_REVISED.csv`, `C0_SWITCHABLE_LEDGER.csv`, `C0_MATCH_CONFIDENCE.csv`, `C0_MODEL_ACTIVE_NONCORE_BREAKDOWN.csv`, `C0_REPAIR_BEFORE_AFTER.csv`, `C0_REPAIR_QA.json` | Stage A: C0 phase / switchable / confidence repair (v1.3 snapshot kept) | Done (10/10 tests) |
-| `BYOP_C1_Continuation_Addendum_v1.4.1_2026-10-22.md` | Researcher continuation addendum (0 new solves) | Provided by the researcher |
-| `C1_FIXED_ASSET_DIAGNOSTICS.md` + `C1_CASE_MANIFEST.csv`, `C1_METRICS.csv`, `C1_SHEDDING_EVENTS.csv`, `C1_BINDING_LINES.csv`, `C1_GENERATION_BY_FUEL.csv`, `C1_QA.json`, `C1_SOLVE_LOG.csv`, `C1_MAIN_RESULTS.png`, `C1_CALIBRATION_VS_C1_SETUP.csv`, `C1_UPLIFT_LINE_CHECK.csv`, `C1_SHED_EVENTS_LABELLED.csv` | Stage B: C1 fixed-asset diagnostics (4 cases, 8 calls incl. 4 retries; continuation: collector / acceptance fix, read-only explanation) | Done; causes of the 72.9 GWh and of the storage overlap NOT isolated (proposals only) |
-
-Not done (by design): asset revisions, re-calibration, C1-X1 / storage two-stage check, max-net-load window (MISSING_INPUT), S0-S3 / B3.
+| `BYOP_C1_X1_Storage_Validation_Work_Package_v1.5_2026-10-22.md` | Original work package | Provided by the researcher |
