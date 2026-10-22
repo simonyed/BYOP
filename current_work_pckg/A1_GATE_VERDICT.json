@@ -1,0 +1,13 @@
+{
+ "approved": false,
+ "reasons": [
+  "run_authorization=NOT_APPROVED",
+  "approved_by missing",
+  "approved_git_sha missing"
+ ],
+ "head": "7d4bdfd0f3b9be8a75b9e008b5bfe9ba284716d0",
+ "approved_git_sha": null,
+ "stage": "LP_R_H_RESOURCE",
+ "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+ "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a1.yaml"
+}

@@ -4,7 +4,7 @@
 - Commits:
   - Start: `946406d15f016bf6eb7dd37ae11d4ce99ead673d` (A0 report). Local, GitHub and L2 were identical; no drift.
   - P1 (A0.1 repair) code: `ed72b20865eb152178068f7e51e8b8cc98024cd4`.
-  - P2–P5 code: **`@@CODE_SHA@@`**.
+  - P2–P5 code: **`7d4bdfd0f3b9be8a75b9e008b5bfe9ba284716d0`**.
   - Report: the commit that contains this file.
 - **REAL_SOLVER_EXECUTIONS = 0.** No real or mock optimizer call happened. All A1 / A2 / A3 gates remain `NOT_APPROVED`.
 - **Frozen v1.6 baseline:** `a623fb6d…747d16`, verified on L2 and unchanged. No 2025 unit, line, x/r, s_nom, load, POI right, weather window or technology capacity was changed.
@@ -111,13 +111,13 @@ county class (original 19-FIPS table; no site FIPS -> UNKNOWN_CONSERVATIVE)
   - READY_STATIC: the A1 build and gate, the TECH_COMP_2 adapter, permit → COD, site FIPS, the cohort-builder branch, pool rows, ledgers, Firm builder, S2 / S3 same set, dynamic keys.
   - **NOT_IMPLEMENTED:** the post-v1.6 reserve rule in the multi-period mainline, priced public expansion without S0CAL / ERM-02, and the RE / BESS certificate in `serve_cap`.
   - **BLOCKED:** A2 and A3 runs. `rearch_mech --post-v16` still exits 3 (`POST_V16_MAINLINE_NOT_READY`); this was not removed.
-- **Tests on L2 (pypsa 1.3.0):** @@L2_TESTS@@
-- **Legacy mainline structural dry build** (`structural_mainline_v13.py`, legacy configs, no solver): @@LEGACY_STRUCT@@
+- **Tests on L2 (pypsa 1.3.0):** 196 passed, 10 warnings in 93.22s (0:01:33) (A0.2 25 + A0.1 9 + A0 30 + v1.6 / C0 / C0-repair / C1 / v1.5 / dynamic / mainline regressions; 0 failed, 0 skipped); python 3.11.17, pypsa 1.3.0, linopy 0.9.1; 10 library warnings; local machine without pypsa runs the pure-input subset
+- **Legacy mainline structural dry build** (`structural_mainline_v13.py`, legacy configs, no solver): 46/46 checks PASS, 0 FAIL, solver_executions 0 (3 solve calls intercepted before any solver), legacy epoch8 configuration with legacy-v13 technology table
 
 ## 7. Fixed return
 
 ```text
-BRANCH / START_SHA / FINAL_CODE_SHA / FINAL_REPORT_SHA: mainline-v13-stageA / 946406d15f016bf6eb7dd37ae11d4ce99ead673d / @@CODE_SHA@@ (P1 ed72b20865eb152178068f7e51e8b8cc98024cd4) / the commit containing this report
+BRANCH / START_SHA / FINAL_CODE_SHA / FINAL_REPORT_SHA: mainline-v13-stageA / 946406d15f016bf6eb7dd37ae11d4ce99ead673d / 7d4bdfd0f3b9be8a75b9e008b5bfe9ba284716d0 (P1 ed72b20865eb152178068f7e51e8b8cc98024cd4) / the commit containing this report
 PRE_RUN_STATUS: READY_FOR_RESEARCHER_APPROVAL
 SOURCE_V2_PACKAGE_PRESENT: TRUE ; NUMERIC_CROSSWALK_RESULT: PASS - 4 source files byte-identical (SHA pinned, checked on load), JSON = CSV for 15 numeric fields x 6 techs, cost / fuel reference values reproduced (231.78 / 225.50 / 553.2; 2028 fuel 36.97 / 39.752 / 23.853), 147-row crosswalk source -> loader -> state -> build / constraint -> ledger -> test
 V16_BASELINE_SHA_VERIFIED: a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16 on L2 (unchanged)
@@ -132,7 +132,7 @@ PERMIT_TO_COD_CAUSAL_QA: PASS - ENV-03 COD 2027.0 delay 0; ENV-05 COD 2029.0 del
 RE_BESS_FIRM_STATIC_ONLY: model builder only (24/48/72 h, one SOC, islanded / grid-flex), never solved, not linked to serve_cap (A2), weak resource -> F bound 0; REEDS_MULTIWX_PENDING_LOCAL_H5
 S2_S3_SAME_PHYSICAL_FEASIBLE_SET_STATIC_QA: PASS - same candidates / bounds / availability / pool candidates through the real add_byop_cohorts; only capital_cost basis differs
 A1_GATE_LOCKED / A2_GATE_LOCKED / A3_GATE_LOCKED: LOCKED (NOT_APPROVED) / LOCKED (NOT_APPROVED + rearch_mech --post-v16 exit 3) / LOCKED (NOT_APPROVED)
-PYTEST_TOTAL_PASS_FAIL_SKIP_AND_L2_ENV: @@L2_TESTS@@
+PYTEST_TOTAL_PASS_FAIL_SKIP_AND_L2_ENV: 196 passed, 10 warnings in 93.22s (0:01:33) (A0.2 25 + A0.1 9 + A0 30 + v1.6 / C0 / C0-repair / C1 / v1.5 / dynamic / mainline regressions; 0 failed, 0 skipped); python 3.11.17, pypsa 1.3.0, linopy 0.9.1; 10 library warnings; local machine without pypsa runs the pure-input subset
 REAL_SOLVER_EXECUTIONS: 0
 LEGACY_ERM02_S0CAL_IN_POST_V16: DISABLED
 DELIVERABLE_FILES_AND_SHA256: A0_2_RETURN_PACKAGE.zip / FILE_LIST_SHA256.txt (inside the zip)

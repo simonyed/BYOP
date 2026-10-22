@@ -1,0 +1,5 @@
+case,mode,windows,n_vars,n_cons,soc_variables,shadow_soc,grid_import_vars,F_upper_bound_no_solve_MW_at_K100_100_50,status
+typical_profile,ISLANDED,24/48/72 h,727,1014,RF-E_w24;RF-E_w48;RF-E_w72,False,False,64.295389,"DRY_NOT_SOLVED (built, never solved)"
+typical_profile,GRID_FLEX,24/48/72 h,871,1014,RF-E_w24;RF-E_w48;RF-E_w72,False,True,64.295389,"DRY_NOT_SOLVED (built, never solved)"
+weak_wind_no_sun,ISLANDED,24/48/72 h,727,1014,RF-E_w24;RF-E_w48;RF-E_w72,False,False,0.0,"DRY_NOT_SOLVED (built, never solved)"
+weak_wind_no_sun,GRID_FLEX,24/48/72 h,871,1014,RF-E_w24;RF-E_w48;RF-E_w72,False,True,0.0,"DRY_NOT_SOLVED (built, never solved)"

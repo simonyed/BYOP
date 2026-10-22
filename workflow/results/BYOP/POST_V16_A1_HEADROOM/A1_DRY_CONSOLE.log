@@ -1,4 +1,4 @@
-2026-10-22T22:16:16Z start python -W ignore /datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/run/post_v16_a1.py --base /datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc --threads 16 --dry
+2026-10-22T22:23:18Z start python -W ignore /datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/run/post_v16_a1.py --base /datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc --threads 16 --dry
 INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
 INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
 INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
@@ -16,10 +16,9 @@ INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, ge
    "reasons": [
     "run_authorization=NOT_APPROVED",
     "approved_by missing",
-    "approved_git_sha missing",
-    "worktree not clean for code / config / inputs: ['workflow/byop/model/rearch_mech.py', 'workflow/byop/model/v240_mech.py', 'workflow/config/config.byop_ercot_mainline_geo_dynamic_v1_baseline_v16.yaml', 'workflow/byop/build/build_tech_v2_site_permit.py', 'workflow/byop/inputs/tech_calibrated_v2/RESEARCH_SITE_COUNTY_FIPS_V2.csv']"
+    "approved_git_sha missing"
    ],
-   "head": "ed72b20865eb152178068f7e51e8b8cc98024cd4",
+   "head": "7d4bdfd0f3b9be8a75b9e008b5bfe9ba284716d0",
    "approved_git_sha": null,
    "stage": "LP_R_H_RESOURCE",
    "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
@@ -31,10 +30,9 @@ INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, ge
     "run_authorization=NOT_APPROVED",
     "approved_by missing",
     "approved_git_sha missing",
-    "worktree not clean for code / config / inputs: ['workflow/byop/model/rearch_mech.py', 'workflow/byop/model/v240_mech.py', 'workflow/config/config.byop_ercot_mainline_geo_dynamic_v1_baseline_v16.yaml', 'workflow/byop/build/build_tech_v2_site_permit.py', 'workflow/byop/inputs/tech_calibrated_v2/RESEARCH_SITE_COUNTY_FIPS_V2.csv']",
     "LP_N_H_NETWORK needs a PASSED LP_R_H_RESOURCE first: LP_R_H_RESOURCE has no ledger row"
    ],
-   "head": "ed72b20865eb152178068f7e51e8b8cc98024cd4",
+   "head": "7d4bdfd0f3b9be8a75b9e008b5bfe9ba284716d0",
    "approved_git_sha": null,
    "stage": "LP_N_H_NETWORK",
    "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
@@ -58,7 +56,7 @@ INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, ge
    "storage": 43,
    "storage_MW": 13068.4
   },
-  "build_seconds": 10.7,
+  "build_seconds": 16.0,
   "reserve": {
    "CCGT": {
     "pmin": 0.5,
@@ -116,7 +114,7 @@ INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, ge
    "storage": 43,
    "storage_MW": 13068.4
   },
-  "build_seconds": 13.0,
+  "build_seconds": 16.8,
   "reserve": {
    "CCGT": {
     "pmin": 0.5,
@@ -158,4 +156,4 @@ INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, ge
   "line_limits": "v1.6 s_nom x s_max_pu"
  }
 }
-2026-10-22T22:16:48Z end rc=0
+2026-10-22T22:24:01Z end rc=0

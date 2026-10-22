@@ -10,4 +10,4 @@ workflow/byop/tests/test_baseline_v16.py: 1 warning
   The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-196 passed, 10 warnings in 79.08s (0:01:19)
+196 passed, 10 warnings in 93.22s (0:01:33)

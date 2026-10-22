@@ -1,0 +1,46 @@
+{
+ "code_commit": "7d4bdfd0f3b9be8a75b9e008b5bfe9ba284716d0",
+ "p1_commit": "ed72b20865eb152178068f7e51e8b8cc98024cd4",
+ "l2_env": {
+  "python": "3.11.17",
+  "pypsa": "1.3.0",
+  "linopy": "0.9.1"
+ },
+ "l2_pytest": "196 passed, 10 warnings in 93.22s (0:01:33)",
+ "files": [
+  "test_a0_2_tech_v2.py (25)",
+  "test_a0_1_repair.py (9)",
+  "test_post_v16_a0.py (30)",
+  "test_baseline_v16.py",
+  "test_c0_anchor.py",
+  "test_c0_repair_v14.py",
+  "test_c1_fixed_asset.py",
+  "test_c1_x1_storage_v15.py",
+  "test_dynamic_siting.py",
+  "test_mainline_v13.py"
+ ],
+ "warnings": "10: pandas str-dtype FutureWarning (pypsa io), linopy include_objective_constant FutureWarning, numpy ABI RuntimeWarning",
+ "local_pytest": "no pypsa / linopy locally: pure-input tests only (see report)",
+ "monkeypatch_guard": "autouse fixtures replace linopy.Model.solve in every A0 / A0.1 / A0.2 test; fault injection via fake solve_fn only",
+ "a1_dry": {
+  "R": {
+   "n_vars": 373249,
+   "n_cons": 967980,
+   "integer_vars": 0
+  },
+  "N": {
+   "n_vars": 373249,
+   "n_cons": 967980,
+   "integer_vars": 0
+  }
+ },
+ "legacy_structural": {
+  "n_checks": 46,
+  "n_pass": 46,
+  "n_fail": 0,
+  "solver_executions": 0,
+  "solver_calls_intercepted": 3,
+  "siting": "epoch8_legacy"
+ },
+ "real_solver_executions": 0
+}
