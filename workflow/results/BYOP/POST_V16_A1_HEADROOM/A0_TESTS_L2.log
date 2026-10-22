@@ -1,0 +1,29 @@
+........................................................................ [ 44%]
+........................................................................ [ 89%]
+.................                                                        [100%]
+=============================== warnings summary ===============================
+workflow/byop/tests/test_post_v16_a0.py::test_staging_sha_qa_pass
+  <frozen importlib._bootstrap>:241: RuntimeWarning:
+  
+  numpy.ndarray size changed, may indicate binary incompatibility. Expected 16 from C header, got 96 from PyObject
+
+workflow/byop/tests/test_post_v16_a0.py::test_headroom_model_has_no_build_variables_no_old_erm_no_shadow_soc
+  /datasets/prgm/pypsa-usa/.venv/lib/python3.11/site-packages/pypsa/network/io.py:2082: FutureWarning:
+  
+  pandas infers the `str` dtype for string data since its version 3.0. PyPSA still converts it back to numpy object dtype on import, but will keep it from PyPSA 2.0 on. Set `pypsa.options.api.legacy_string_dtype` explicitly to suppress this warning.
+
+workflow/byop/tests/test_post_v16_a0.py::test_headroom_model_has_no_build_variables_no_old_erm_no_shadow_soc
+workflow/byop/tests/test_post_v16_a0.py::test_reserve_requirement_eligible_set_and_thermal_rows
+workflow/byop/tests/test_post_v16_a0.py::test_storage_reserve_uses_dispatch_soc
+workflow/byop/tests/test_post_v16_a0.py::test_lambda_block_weights_and_objective
+workflow/byop/tests/test_post_v16_a0.py::test_copperplate_keeps_lines_and_connectivity
+workflow/byop/tests/test_post_v16_a0.py::test_copperplate_keeps_lines_and_connectivity
+workflow/byop/tests/test_post_v16_a0.py::test_real_v16_models_build_without_solver
+workflow/byop/tests/test_post_v16_a0.py::test_real_v16_models_build_without_solver
+workflow/byop/tests/test_baseline_v16.py::test_erm_credit_of_capped_plant_is_p_nom_times_p_max_pu
+  /datasets/prgm/uv-python/cpython-3.11.17-linux-x86_64-gnu/lib/python3.11/contextlib.py:81: FutureWarning:
+  
+  The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+161 passed, 11 warnings in 63.75s (0:01:03)

@@ -271,12 +271,16 @@ def test_poi_ledger_firm_conditional_separate():
 
 # ------------------------------------------------------------------------------------------------ gate (negative + positive)
 class FakeGit:
-    def __init__(self, head='a' * 40, dirty=''):
-        self.head, self.dirty = head, dirty
+    def __init__(self, head='a' * 40, dirty='', ancestor=True, since=''):
+        self.head, self.dirty, self.ancestor, self.since = head, dirty, ancestor, since
 
     def __call__(self, *args):
         if args[0] == 'rev-parse':
             return SimpleNamespace(stdout=self.head + '\n')
+        if args[0] == 'merge-base':
+            return SimpleNamespace(returncode=0 if self.ancestor else 1, stdout='')
+        if args[0] == 'diff' and args[1] == '--name-only':     # diff --name-only <approved> HEAD -- paths
+            return SimpleNamespace(stdout=self.since)
         if args[0] == 'diff':
             return SimpleNamespace(stdout=self.dirty)
         if args[0] == 'ls-files':
@@ -321,7 +325,10 @@ def test_gate_passes_only_when_everything_matches(tmp_path):
 
 def test_gate_refuses_wrong_head_dirty_tree_and_changed_code(tmp_path):
     root, cfg, base = gate_env(tmp_path)
-    assert any('!= HEAD' in r for r in G.check(cfg, 'LP_R_H_RESOURCE', base, tmp_path / 'l.csv', root=root, git_fn=FakeGit(head='b' * 40))['reasons'])
+    chk = lambda gf: G.check(cfg, 'LP_R_H_RESOURCE', base, tmp_path / 'l.csv', root=root, git_fn=gf)['reasons']
+    assert any('not HEAD' in r for r in chk(FakeGit(head='b' * 40, ancestor=False)))
+    assert chk(FakeGit(head='b' * 40, since='workflow/config/config.byop_post_v16_a1.yaml')) == []     # approval commit of the config only
+    assert any('changed since the approved commit' in r for r in chk(FakeGit(head='b' * 40, since='workflow/byop/model/post_v16_headroom.py')))
     assert any('not clean' in r for r in G.check(cfg, 'LP_R_H_RESOURCE', base, tmp_path / 'l.csv', root=root, git_fn=FakeGit(dirty='workflow/byop/model/x.py'))['reasons'])
     (root / 'code.py').write_text('x = 2')
     assert any('sha256 mismatch: code.py' in r for r in G.check(cfg, 'LP_R_H_RESOURCE', base, tmp_path / 'l.csv', root=root, git_fn=FakeGit())['reasons'])

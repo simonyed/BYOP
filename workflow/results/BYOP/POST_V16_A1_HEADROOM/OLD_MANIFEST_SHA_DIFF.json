@@ -55,6 +55,20 @@
   "gate_state": "NOT_APPROVED (unchanged); drift only makes the old gate stricter"
  },
  "current_work_pckg/_completed/BYOP_Calibration_Closeout_v1.6/S0_S1_BASELINE_V16_PREPARED_MANIFEST.json": {
-  "status": "MISSING"
+  "entries": 9,
+  "match": 9,
+  "changed": [],
+  "missing_here": [],
+  "baseline": {
+   "path": "workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+   "location": "L2 only (.nc not in git)",
+   "sha256": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16",
+   "raw_uncalibrated_sha256": "eb659f9b1ba06b5e37a162b7173c36d07a6a19a92ae016d3cf3568905077a97f",
+   "network_representation": "fixed_precalibration_xr_thermal_limit_proxy (X1)",
+   "builder_code_commit": "85cd6ae5",
+   "reliability_definition": "unchanged: 15 % per-snapshot ERM (ERM-02 B period margins re-derived in step0 on this baseline); official PRM is an external anchor only",
+   "asset_limits": "v1.6 ASSET_DECISIONS.csv + monthly switchable caps (p_max_pu; dispatch and ERM credit once); 2026-2031 switchable caps NOT applied (CDR 2026-2031 seasonal table is a future-scenario input, not yet authorised)"
+  },
+  "gate_state": "NOT_APPROVED (unchanged); drift only makes the old gate stricter"
  }
 }

@@ -1,7 +1,8 @@
 """Post-v1.6 run gate (execution package v1.1, A0 2026-10-22). Every post-v1.6 optimizer entry calls check() BEFORE building
 anything and refuses unless ALL of the following hold (each failure is one reason string):
   1  run_authorization == APPROVED and approved_by set (only the researcher edits these fields)
-  2  approved_git_sha == HEAD (full or >= 8-char prefix) and the worktree is clean for code / config / inputs
+  2  approved_git_sha == HEAD (>= 8-char prefix), or an ancestor of HEAD with nothing changed since under code / config /
+     inputs except the A1 config itself (the approval commit); the worktree is clean for code / config / inputs
      (content diff against HEAD ignoring CR at EOL, and no untracked file; byte identity comes from the manifest SHAs)
   3  the work-package text equals its pinned SHA-256 (config authorization_source_sha256)
   4  the pre-run manifest exists and every code / input SHA-256 and the normalised config SHA-256 match it
@@ -58,8 +59,18 @@ def check(cfg_path, stage, base_path, log_path, root=ROOT, git_fn=git):
     asha = str(c.get('approved_git_sha') or '')
     if not asha:
         reasons.append('approved_git_sha missing')
-    elif len(asha) < 8 or not head.startswith(asha):
-        reasons.append(f'approved_git_sha {asha} != HEAD {head}')
+    elif len(asha) < 8:
+        reasons.append(f'approved_git_sha {asha} too short')
+    elif not head.startswith(asha):
+        # the approval itself is a later commit of the A1 config only: the approved commit must be an ancestor of HEAD and
+        # nothing under code / config / inputs may differ since, except the A1 config (whose normalised SHA is checked below)
+        anc = git_fn('merge-base', '--is-ancestor', asha, 'HEAD').returncode == 0
+        since = set(git_fn('diff', '--name-only', asha, 'HEAD', '--', *CLEAN_PATHS).stdout.split())
+        cfg_rel = Path(cfg_path).resolve().relative_to(Path(root).resolve()).as_posix() if Path(cfg_path).resolve().is_relative_to(Path(root).resolve()) else None
+        if not anc:
+            reasons.append(f'approved_git_sha {asha} is not HEAD {head} or an ancestor of it')
+        elif since - {cfg_rel}:
+            reasons.append(f'code / config / inputs changed since the approved commit: {sorted(since - {cfg_rel})[:5]}')
     # content changes against HEAD (CR-at-EOL ignored: the L2 checkout shows CRLF-only differences as modified) + untracked files
     changed = git_fn('diff', '--ignore-cr-at-eol', '--name-only', 'HEAD', '--', *CLEAN_PATHS).stdout.split()
     untracked = git_fn('ls-files', '--others', '--exclude-standard', '--', *CLEAN_PATHS).stdout.split()
