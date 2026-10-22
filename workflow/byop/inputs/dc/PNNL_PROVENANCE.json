@@ -1,0 +1,40 @@
+{
+ "atlas": {
+  "dataset": "IM3 Open Source Data Center Atlas v2026.02.09 (PNNL)",
+  "licence": "ODbL 1.0 (OpenStreetMap-derived)",
+  "files": {
+   "DISCLAIMER.pdf": "45b0f05ec6878c8262f25db92aa7576eca94290fcfb3e173d1b2f012311c8a49",
+   "im3_open_source_data_center_atlas_v2026.02.09.csv": "53d200d8111c502fd9c74d045965c46b4bf10eb00e26948a6415e467d283c20d",
+   "im3_open_source_data_center_atlas_v2026.02.09.gpkg": "1c0d8c206eb2070785e594784fda90f615e6ed7fd9646d67e1a9de237b8cc9f4",
+   "README.pdf": "340da8a87b9a3611cd701f44bebc4dd5bc73935c25fdefac4abc1afcca4dc7f9"
+  }
+ },
+ "projected": {
+  "dataset": "IM3 Projected US Data Center Locations v1.1 (PNNL, CERF-DC)",
+  "licence": "CC-BY-4.0",
+  "citation": "Mongird, K., Burleyson, C., Akdemir, K. Z., Vernon, C., & Rice, J. (2026). IM3 Projected US Data Center Locations (v1.1) [Data set]. MSD-LIVE Data Repository. https://doi.org/10.57931/3020186",
+  "horizon": "new facilities through 2035; higher growth = 15 %/yr data-center electricity growth from 2023 (EPRI 2024)",
+  "files": {
+   "higher_growth_0_market_gravity.geojson": "f1d053cceb848156efe8c240fd1a6c44fb99c3f0dea782a1b42e956ec09a5205",
+   "higher_growth_100_market_gravity.geojson": "694eca7cbe9a83de2a15fe1ad1d8f8e4aba4f1a8b67eaa6d3ae168dbc8718048",
+   "higher_growth_25_market_gravity.geojson": "771a47f65e1a590bef6d5ef8a05459ecb207e3142710ba13a0c62d75169f15d7",
+   "higher_growth_50_market_gravity.geojson": "2f1e7308eb9a0f1ac0ed32ff92a52a53ff796b45df0d2fe445784fde2b82b786",
+   "higher_growth_75_market_gravity.geojson": "27d47da548c182f2ac8f310cb548fb38c90ae827c6908cbbc085c633e8e37d35"
+  }
+ },
+ "network": {
+  "file": "results/BYOP/baseline_2025_tamu/NETWORK_MAPPING_AUDIT.csv",
+  "sha256": "dffd4a67b15646ad75a0a2f63321a9faff3ef3487516463c4697ff96d85af6f1"
+ },
+ "rule": "county polygon -> ERCOT; nearest ERCOT TAMU substation -> 64s cluster bus (same as Epoch mapping)",
+ "counts": {
+  "atlas_TX": 127,
+  "atlas_ERCOT": 127,
+  "projected_TX_rows": 1350,
+  "projected_ERCOT_rows": 1258,
+  "candidate_buses": 37,
+  "epoch_buses": 8,
+  "atlas_buses": 21,
+  "projected_buses": 26
+ }
+}
