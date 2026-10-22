@@ -4,7 +4,7 @@ commands and the environment; RUN_AUTHORIZATION stays NOT_APPROVED. The run gate
 a run when any listed file differs. Run from pypsa-usa/workflow (local or L2):
     python byop/build/build_mainline_manifest.py [--baseline-sha256 <sha of the L2 baseline .nc>] [--variant dynamic_pnnl_v1]
 AIDC geospatial v1 (2026-10-22): --variant dynamic_pnnl_v1 writes the separate pending manifest of the dynamic geography
-(current_work_pckg/AIDC_GEO_DYNAMIC_V1_PRE_RUN_MANIFEST.json) with its cohorts / POI / siting builder / config added; the
+(current_work_pckg/_completed/BYOP_ERCOT_AIDC_Geospatial_Distribution_v1.0/AIDC_GEO_DYNAMIC_V1_PRE_RUN_MANIFEST.json) with its cohorts / POI / siting builder / config added; the
 legacy eight-bus manifest stays where it is (epoch8_legacy, default).
 """
 from __future__ import annotations
@@ -31,7 +31,7 @@ INPUTS = ['dc/EPOCH_TX_TIMELINE_EVIDENCE.csv', 'dc/MAINLINE_RESEARCH_COHORTS_TAM
 VARIANTS = {
     'epoch8_legacy': dict(name='MAINLINE_V13_PRE_RUN_MANIFEST', out='current_work_pckg/_completed/BYOP_ERCOT_Mainline_v1.3/MAINLINE_V13_PRE_RUN_MANIFEST.json',
                           config='workflow/config/config.byop_ercot_mainline.yaml', stage='STAGE_A_IMPLEMENTATION_ONLY', extra_code=[], extra_inputs=[]),
-    'dynamic_pnnl_v1': dict(name='AIDC_GEO_DYNAMIC_V1_PRE_RUN_MANIFEST', out='current_work_pckg/AIDC_GEO_DYNAMIC_V1_PRE_RUN_MANIFEST.json',
+    'dynamic_pnnl_v1': dict(name='AIDC_GEO_DYNAMIC_V1_PRE_RUN_MANIFEST', out='current_work_pckg/_completed/BYOP_ERCOT_AIDC_Geospatial_Distribution_v1.0/AIDC_GEO_DYNAMIC_V1_PRE_RUN_MANIFEST.json',
                             config='workflow/config/config.byop_ercot_mainline_geo_dynamic_v1.yaml', stage='AIDC_GEO_DYNAMIC_V1_IMPLEMENTED_NO_SOLVER',
                             extra_code=['workflow/byop/build/build_dynamic_siting_inputs.py', 'workflow/byop/build/build_pnnl_tamu_candidates.py',
                                         'workflow/byop/tests/test_dynamic_siting.py', 'workflow/byop/post/stage_b3_tables.py'],

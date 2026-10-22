@@ -372,7 +372,7 @@ def test_geo12_no_new_formal_results():
 
 
 def test_geo13_manifest_lists_variant_and_hashes():
-    p = ROOT / 'current_work_pckg/AIDC_GEO_DYNAMIC_V1_PRE_RUN_MANIFEST.json'
+    p = ROOT / 'current_work_pckg/_completed/BYOP_ERCOT_AIDC_Geospatial_Distribution_v1.0/AIDC_GEO_DYNAMIC_V1_PRE_RUN_MANIFEST.json'
     if not p.exists():
         pytest.skip('pending manifest not built yet')
     m = json.loads(p.read_text())

@@ -59,7 +59,7 @@ called before the run gate): `epoch8_legacy` (default, frozen B3-E inputs, `conf
 ```bash
 python byop/build/build_pnnl_tamu_candidates.py [--raw <PNNL raw dir>]   # PNNL -> TAMU64 buses; without --raw: verify tracked outputs
 python byop/build/build_dynamic_siting_inputs.py --config byop/inputs/dc/MAINLINE_SITING_SCENARIO_DYNAMIC_V1.yaml --variant dynamic_pnnl_v1
-python byop/build/build_mainline_manifest.py --variant dynamic_pnnl_v1  # pending manifest current_work_pckg/AIDC_GEO_DYNAMIC_V1_PRE_RUN_MANIFEST.json
+python byop/build/build_mainline_manifest.py --variant dynamic_pnnl_v1  # pending manifest current_work_pckg/_completed/BYOP_ERCOT_AIDC_Geospatial_Distribution_v1.0/AIDC_GEO_DYNAMIC_V1_PRE_RUN_MANIFEST.json
 bash byop/run/run_mainline.sh tests_geo                                 # test_dynamic_siting.py (no solver)
 python -W ignore byop/tests/structural_mainline_v13.py --config config/config.byop_ercot_mainline_geo_dynamic_v1.yaml --out results/BYOP/mainline/_structural_geo_dynamic_v1
 CFG=config/config.byop_ercot_mainline_geo_dynamic_v1.yaml bash byop/run/run_mainline.sh gate    # refuses (NOT_APPROVED)
@@ -69,4 +69,4 @@ python byop/post/geo_dynamic_v1_tables.py                              # legacy 
 The builder writes only `*_GEO_DYNAMIC_V1*` files (legacy inputs are SHA-checked unchanged). Method parameters (yearly
 alpha / beta / gamma, g0 / g50 mix, 36 MW eligibility threshold, reviewed `locked_verified` Epoch increments, new-bus POI
 proxies) live in the versioned YAML only. Matched-service (M4) keys = research buses x model years from the case's own
-input record (`collect_mainline.expected_service_keys`), not a fixed 48. Reports: `current_work_pckg/AIDC_GEO_DYNAMIC_V1_*`.
+input record (`collect_mainline.expected_service_keys`), not a fixed 48. Reports: `current_work_pckg/_completed/BYOP_ERCOT_AIDC_Geospatial_Distribution_v1.0/`.
