@@ -1,0 +1,133 @@
+{
+ "git": {
+  "head": "802c9d9414514641fd2b088b45ec7ea945be18a4",
+  "expected": "802c9d9414514641fd2b088b45ec7ea945be18a4",
+  "head_ok": true,
+  "dirty_code_config_inputs": [],
+  "untracked_code_config_inputs": []
+ },
+ "authorization": {
+  "run_authorization": "NOT_APPROVED",
+  "approved_git_sha": null,
+  "approved_by": null
+ },
+ "manifest": {
+  "path": "current_work_pckg/POST_V16_A1_PRE_RUN_MANIFEST.json",
+  "sha256": "d0f0b7f90568d2ec4b5b275a03cf242dfebf826769ac80eb6d96f9b425f4f5d1",
+  "code_files": 5,
+  "input_files": 10,
+  "mismatches": [],
+  "config_normalised_ok": true,
+  "baseline_pin_ok": true
+ },
+ "baseline": {
+  "path": "workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+  "sha256": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16",
+  "ok": true
+ },
+ "tech_v2_sources": {
+  "ok": true,
+  "files": {
+   "BYOP_TECH_PARAMETER_BASELINE_V2.json": "10bd868ba50929379be23b63d72626d8d528a1b358ce6b5a63a516e5771327c7",
+   "BYOP_TECH_PARAMETERS_V2.csv": "3956cdd25f25087dd74f0f6c959cf21bafb6eec1fd61ad295c0b91bbb9dcf26c",
+   "BYOP_SUPPLY_POOL_PROXY_V2.csv": "181af58f60dec3a87e2a812ab235debd79b5ca58db23fdbb2f949a5e3c0ce988",
+   "BYOP_COUNTY_OZONE_RULES_2026.csv": "8bfc4de5dd864e0107b8e1482c3d4193e31c43dad18aab81343910fd667def24"
+  }
+ },
+ "a0_2_return_package": {
+  "sha256": "072f7437bdda2b959f988a201a5ae8ca952245e636e5a3ec06d6c58967677b85",
+  "entries": 36,
+  "testzip": true,
+  "has_file_list": true
+ },
+ "a0_2_reports_readable": {
+  "A0_2_INTEGRATION_REPORT.md": true,
+  "A0_1_REPAIR_REPORT.md": true,
+  "A2_TECH_READINESS_MATRIX.csv": true,
+  "POST_V16_A1_PRE_RUN_MANIFEST.json": true
+ },
+ "ledger": {
+  "path": "workflow/results/BYOP/POST_V16_A1_HEADROOM/HEADROOM_SOLVE_LOG.csv",
+  "exists": false,
+  "rows": 0,
+  "problem": null,
+  "consumed_calls": 0
+ },
+ "gate": {
+  "R": {
+   "approved": false,
+   "reasons": [
+    "run_authorization=NOT_APPROVED",
+    "approved_by missing",
+    "approved_git_sha missing"
+   ],
+   "head": "802c9d9414514641fd2b088b45ec7ea945be18a4",
+   "approved_git_sha": null,
+   "stage": "LP_R_H_RESOURCE",
+   "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+   "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a1.yaml"
+  },
+  "N": {
+   "approved": false,
+   "reasons": [
+    "run_authorization=NOT_APPROVED",
+    "approved_by missing",
+    "approved_git_sha missing",
+    "LP_N_H_NETWORK needs a PASSED LP_R_H_RESOURCE first: LP_R_H_RESOURCE has no ledger row"
+   ],
+   "head": "802c9d9414514641fd2b088b45ec7ea945be18a4",
+   "approved_git_sha": null,
+   "stage": "LP_N_H_NETWORK",
+   "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+   "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a1.yaml"
+  }
+ },
+ "dry": {
+  "R": {
+   "n_vars": 373249,
+   "n_cons": 967980,
+   "integer_vars": 0,
+   "buses": 63,
+   "lines": 162,
+   "snapshots": 432,
+   "components": 1,
+   "objective_only_lambda": true,
+   "zero_shed_rows": 27216,
+   "weights_n": 16,
+   "weights_sum": 1.0,
+   "line_limit_total_MVA": 162000000.0,
+   "lambda_upper_MW": 200000.0,
+   "reserve_MW": 3000,
+   "windows": [
+    "W_SUMMER_PEAK_20250818",
+    "W_WINTER_PEAK_20250220",
+    "W_SUMMER_DISJOINT_20250730"
+   ]
+  },
+  "N": {
+   "n_vars": 373249,
+   "n_cons": 967980,
+   "integer_vars": 0,
+   "buses": 63,
+   "lines": 162,
+   "snapshots": 432,
+   "components": 1,
+   "objective_only_lambda": true,
+   "zero_shed_rows": 27216,
+   "weights_n": 16,
+   "weights_sum": 1.0,
+   "line_limit_total_MVA": 198015.4325200225,
+   "lambda_upper_MW": 200000.0,
+   "reserve_MW": 3000,
+   "windows": [
+    "W_SUMMER_PEAK_20250818",
+    "W_WINTER_PEAK_20250220",
+    "W_SUMMER_DISJOINT_20250730"
+   ]
+  },
+  "line_limit_relation_R_ge_N": true,
+  "identical_structure": true
+ },
+ "solver_calls": 0,
+ "P0_status": "PASS_READY_FOR_A1_APPROVAL_REQUEST"
+}
