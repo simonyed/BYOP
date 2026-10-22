@@ -1,0 +1,76 @@
+{
+ "stage": "LP1_MIN_THERMAL_UPLIFT",
+ "status": "ok",
+ "termination": "optimal",
+ "seconds": 1565.6264822483063,
+ "objective_USD": 17867480779.532787,
+ "solver_options": {
+  "Method": 2,
+  "Crossover": 1,
+  "BarConvTol": 1e-08,
+  "NumericFocus": 2,
+  "BarHomogeneous": 1,
+  "Threads": 20
+ },
+ "n_vars": 1620763,
+ "n_cons": 4537604,
+ "linopy_variables": [
+  "Line-s_nom",
+  "Generator-p",
+  "Line-s",
+  "StorageUnit-p_dispatch",
+  "StorageUnit-p_store",
+  "StorageUnit-state_of_charge",
+  "objective_constant"
+ ],
+ "shed": {
+  "eens_MWh": 102.20432200937113,
+  "eens_over_annual_energy": 2.0933488908017922e-07,
+  "max_gap_MW": 27.095983432588582,
+  "max_gap_over_official_peak": 0.0003238086363733473,
+  "shed_steps": 2,
+  "shed_hours": 6.0,
+  "shed_buses": [
+   "p620 1",
+   "p620 7"
+  ],
+  "max_gap_step": "(2030, Timestamp('2030-07-14 09:00:00'))",
+  "max_gap_bus_split": {
+   "p620 1": 27.095983432588582
+  },
+  "events": 2,
+  "thresholds": {
+   "eens_over_annual_energy_max": 1e-05,
+   "max_gap_over_official_peak_max": 0.001
+  },
+  "eens_pass": true,
+  "max_gap_pass": true,
+  "description": "research-proxy tolerance, not an ERCOT standard; below-threshold shed is NOT zero shed"
+ },
+ "calibration": {
+  "termination": "optimal",
+  "status": "ok",
+  "residual_shed_MWh": 102.20432200937113,
+  "n_lines": 18,
+  "total_uplift_MVA": 5151.8,
+  "solver_options": {
+   "Method": 2,
+   "Crossover": 1,
+   "BarConvTol": 1e-08,
+   "NumericFocus": 2,
+   "BarHomogeneous": 1,
+   "Threads": 20
+  },
+  "seconds": 1565.6264822483063,
+  "objective_USD": 17867480779.532787,
+  "uplift_cost_USD_per_MW": 2000000.0,
+  "shed_cost_USD_per_MWh": 1000000.0
+ },
+ "baseline": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+ "baseline_sha256": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16",
+ "raw_uncalibrated_sha256": "eb659f9b1ba06b5e37a162b7173c36d07a6a19a92ae016d3cf3568905077a97f",
+ "builder_sha256": "b1ad65cfe985cdd460c6b608d44791cb7be366af2b44e752b57cf2d21283cf75",
+ "assets_module_sha256": "8251de638714d97084460384347a7d7f33d8c18c19fa7fef190e83296fa3e04f",
+ "config_sha256": "59e6dd74f0fc8cf2d818ccaae106f1a4c5a6014e37d5fa7fdef4b9dac4900114",
+ "runner_sha256": "ae177dd8b9e73aaac2273543cb36170d7bc8f4da6553e1650cd9fc9e7e3c2438"
+}

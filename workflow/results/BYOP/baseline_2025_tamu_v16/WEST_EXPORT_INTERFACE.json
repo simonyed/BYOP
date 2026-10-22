@@ -1,0 +1,37 @@
+{
+ "crossing_lines": [
+  "TL10",
+  "TL19",
+  "TL22",
+  "TL23",
+  "TL24",
+  "TL25",
+  "TL27",
+  "TL28",
+  "TL29",
+  "TL30",
+  "TL31",
+  "TL32",
+  "TL33",
+  "TL34",
+  "TL9"
+ ],
+ "crossing_limit_MW": 20274.406,
+ "export_mean_MW": 3165.327133561644,
+ "export_max_MW": 9970.66,
+ "export_min_MW": -6066.26,
+ "export_positive_share_of_hours": 0.8113013698630137,
+ "hours_any_crossing_line_binding_export": 0.0,
+ "hours_any_crossing_line_binding_import": 15.0,
+ "hours_export_ge_95pct_of_crossing_limit": 0.0,
+ "west_shed_MWh": 111.70440420238528,
+ "west_shed_hours": 12.0,
+ "definition": "positive = flow out of p60/p61/p62 into p63-p67 (signed per line, summed); model 3 h steps x 3 h",
+ "status_counts": {
+  "NETWORK_NOT_RESOLVED": 7,
+  "OUTAGE_SEQUENCE_NOT_MODELLED": 2,
+  "DIRECTION_INCONSISTENT": 1
+ },
+ "network_sha256": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16",
+ "script_sha256": "aa1912e6450aa79a69ffbf1aa5b9a9f2688199d47eb0c7b4290edea3c6afabc7"
+}

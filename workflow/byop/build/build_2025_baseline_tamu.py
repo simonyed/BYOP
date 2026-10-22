@@ -162,7 +162,7 @@ def write_v16_inputs(out, db_source, db, override_audit, sw_qa, active, committe
     dec_items = au.drop_duplicates('reeds_unique_id').set_index('reeds_unique_id')
     for i, r in dec_items.iterrows():
         b, x = before.set_index('Unique ID').loc[i], after.set_index('Unique ID').loc[i]
-        rows.append(dict(level='unit', key=f'{r.item} | ReEDS {i}', carrier=b.carrier, cluster_bus=x.cluster_bus, set_before=b.model_set,
+        rows.append(dict(level='unit', key=f"{r['item']} | ReEDS {i}", carrier=b.carrier, cluster_bus=x.cluster_bus, set_before=b.model_set,
                          set_after=x.model_set, active2025_MW_before=float(b.summer_power_capacity_MW) if b.model_set == 'active2025' else 0.0,
                          active2025_MW_after=float(x.summer_power_capacity_MW) if x.model_set == 'active2025' else 0.0,
                          committed_MW_before=float(b.summer_power_capacity_MW) if b.model_set == 'committed' else 0.0,

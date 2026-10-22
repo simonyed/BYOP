@@ -1,0 +1,151 @@
+row_type,risk_period,elcc_period,excel_row,label,category,resource_status,official_MW,source,firm_load_MW,prm,note,model_physical_MW,model_credited_MW,official_implied_installed_MW,delta_credited_MW,basis,step,credited_MW,resolution,delta_MW
+OFFICIAL,peak_load,summer_afternoon,8.0,Total Summer Load based on normal weather conditions*,load_component,,91935.24521117896,CDR_December2024_Revised.xlsx / Summer Summary / D8,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,9.0,less:  Incremental Rooftop PV Forecast,load_component,,-1463.232966228,CDR_December2024_Revised.xlsx / Summer Summary / D9,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,10.0,less:  Load Resources providing Responsive Reserves,load_component,,-985.0,CDR_December2024_Revised.xlsx / Summer Summary / D10,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,11.0,less:  Load Resources providing Non-Spinning Reserves,load_component,,-234.6,CDR_December2024_Revised.xlsx / Summer Summary / D11,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,12.0,less:  Load Resources providing ERCOT Contingency Reserve Service (ECRS),load_component,,-216.2,CDR_December2024_Revised.xlsx / Summer Summary / D12,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,13.0,less:  Controllable Load Resources not included in other adjustments,load_component,,0.0,CDR_December2024_Revised.xlsx / Summer Summary / D13,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,14.0,less:  Emergency Response Service (10- and 30-min ramp products),load_component,,-1269.0,CDR_December2024_Revised.xlsx / Summer Summary / D14,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,15.0,less:  TDSP Standard Offer Load Management Programs,load_component,,-372.3,CDR_December2024_Revised.xlsx / Summer Summary / D15,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,16.0,less:  Distribution Voltage Reduction,load_component,,-678.0,CDR_December2024_Revised.xlsx / Summer Summary / D16,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,17.0,"Firm Peak Load, MW",firm_load,,86716.91224495096,CDR_December2024_Revised.xlsx / Summer Summary / D17,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,19.0,"Energy Efficiency Program Savings Forecast, included in the Base Load Forecast",memo_EE,,3208.0,CDR_December2024_Revised.xlsx / Summer Summary / D19,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,24.0,"Installed Summer-rated Capacity, Thermal",thermal,operational,66138.00000000001,CDR_December2024_Revised.xlsx / Summer Summary / D24,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,25.0,"Hydroelectric, Peak Average Capacity Contribution",hydro,operational,543.6850000000001,CDR_December2024_Revised.xlsx / Summer Summary / D25,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,26.0,Switchable Capacity,switchable,operational,3680.0,CDR_December2024_Revised.xlsx / Summer Summary / D26,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,27.0,less: Switchable Capacity Unavailable to ERCOT,switchable,operational,-1480.0,CDR_December2024_Revised.xlsx / Summer Summary / D27,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,28.0,Available Mothballed Capacity (Units with reported return probabilities ≥ 75%),mothballed,operational,135.5,CDR_December2024_Revised.xlsx / Summer Summary / D28,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,29.0,Capacity from Private Use Networks,private_use_networks,operational,3265.0,CDR_December2024_Revised.xlsx / Summer Summary / D29,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,31.0,Coastal Wind,wind_coastal,operational,1674.2551522645983,CDR_December2024_Revised.xlsx / Summer Summary / D31,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,32.0,Panhandle Wind,wind_panhandle,operational,1566.5817316909802,CDR_December2024_Revised.xlsx / Summer Summary / D32,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,33.0,Other Wind,wind_other,operational,4592.281852153925,CDR_December2024_Revised.xlsx / Summer Summary / D33,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,34.0,Far West Solar Utility-Scale,solar_farwest,operational,1893.4658018646403,CDR_December2024_Revised.xlsx / Summer Summary / D34,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,35.0,West Solar Utility-Scale,solar_west,operational,1571.81658754575,CDR_December2024_Revised.xlsx / Summer Summary / D35,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,36.0,Other Solar Utility-Scale,solar_other,operational,4859.801342011695,CDR_December2024_Revised.xlsx / Summer Summary / D36,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,37.0,Energy Storage,storage,operational,7902.862723331415,CDR_December2024_Revised.xlsx / Summer Summary / D37,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,38.0,RMR Capacity to be under Contract,rmr,operational,412.0,CDR_December2024_Revised.xlsx / Summer Summary / D38,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,39.0,Capacity Pending Retirement,pending_retirement,operational,0.0,CDR_December2024_Revised.xlsx / Summer Summary / D39,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,40.0,"Operational Generation Capacity, Total",operational_total,,96755.25019086302,CDR_December2024_Revised.xlsx / Summer Summary / D40,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,42.0,Non-Synchronous Ties (Based on average net import contribution during the summer 2023 EEA event),dc_ties,operational,817.4000000000001,CDR_December2024_Revised.xlsx / Summer Summary / D42,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,45.0,Thermal Resources,thermal,planned,267.2,CDR_December2024_Revised.xlsx / Summer Summary / D45,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,47.0,Coastal Wind,wind_coastal,planned,74.36748972896413,CDR_December2024_Revised.xlsx / Summer Summary / D47,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,48.0,Panhandle Wind,wind_panhandle,planned,0.0,CDR_December2024_Revised.xlsx / Summer Summary / D48,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,49.0,Other Wind,wind_other,planned,0.0,CDR_December2024_Revised.xlsx / Summer Summary / D49,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,50.0,Far West Solar Utility-Scale,solar_farwest,planned,52.9456290985589,CDR_December2024_Revised.xlsx / Summer Summary / D50,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,51.0,West Solar Utility-Scale,solar_west,planned,314.4211420870051,CDR_December2024_Revised.xlsx / Summer Summary / D51,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,52.0,Other Solar Utility-Scale,solar_other,planned,1131.9056461576702,CDR_December2024_Revised.xlsx / Summer Summary / D52,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,53.0,Energy Storage,storage,planned,3691.9910402254154,CDR_December2024_Revised.xlsx / Summer Summary / D53,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,54.0,Unconfirmed Planned Retirements,pending_retirement,planned,0.0,CDR_December2024_Revised.xlsx / Summer Summary / D54,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,55.0,"Planned Generation Capacity Total, Net of Unconfirmed Planned Retirements",planned_total,,5532.8309472976125,CDR_December2024_Revised.xlsx / Summer Summary / D55,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,56.0,Total Capacity,total_capacity,,103105.48113816064,CDR_December2024_Revised.xlsx / Summer Summary / D56,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,58.0,Reserve Margin,reserve_margin,,0.1889893040346796,CDR_December2024_Revised.xlsx / Summer Summary / D58,,,,,,,,,,,,
+OFFICIAL,peak_load,summer_afternoon,,,PRM_RECOMPUTED,,103105.48113816063,,86716.91224495096,0.1889893040346796,"{""firm_load_from_components"": 86716.91224495096, ""firm_load_cell"": 86716.91224495096, ""credited_from_components"": 103105.48113816063, ""credited_cell"": 103105.48113816064, ""prm_recomputed"": 0.1889893040346796, ""prm_cell"": 0.1889893040346796, ""prm_reference"": 0.1889893040346796, ""reproduced"": true}",,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,8.0,Total Summer Load based on normal weather conditions*,load_component,,86847.48671301786,CDR_December2024_Revised.xlsx / Summer Summary / E8,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,9.0,less:  Incremental Rooftop PV Forecast,load_component,,-148.4177143595,CDR_December2024_Revised.xlsx / Summer Summary / E9,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,10.0,less:  Load Resources providing Responsive Reserves,load_component,,-965.0,CDR_December2024_Revised.xlsx / Summer Summary / E10,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,11.0,less:  Load Resources providing Non-Spinning Reserves,load_component,,-234.6,CDR_December2024_Revised.xlsx / Summer Summary / E11,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,12.0,less:  Load Resources providing ERCOT Contingency Reserve Service (ECRS),load_component,,-216.2,CDR_December2024_Revised.xlsx / Summer Summary / E12,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,13.0,less:  Controllable Load Resources not included in other adjustments,load_component,,0.0,CDR_December2024_Revised.xlsx / Summer Summary / E13,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,14.0,less:  Emergency Response Service (10- and 30-min ramp products),load_component,,-1269.0,CDR_December2024_Revised.xlsx / Summer Summary / E14,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,15.0,less:  TDSP Standard Offer Load Management Programs,load_component,,-372.3,CDR_December2024_Revised.xlsx / Summer Summary / E15,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,16.0,less:  Distribution Voltage Reduction,load_component,,-678.0,CDR_December2024_Revised.xlsx / Summer Summary / E16,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,17.0,"Firm Peak Load, MW",firm_load,,82963.96899865835,CDR_December2024_Revised.xlsx / Summer Summary / E17,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,24.0,"Installed Summer-rated Capacity, Thermal",thermal,operational,66138.00000000001,CDR_December2024_Revised.xlsx / Summer Summary / E24,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,25.0,"Hydroelectric, Peak Average Capacity Contribution",hydro,operational,543.6850000000001,CDR_December2024_Revised.xlsx / Summer Summary / E25,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,26.0,Switchable Capacity,switchable,operational,3680.0,CDR_December2024_Revised.xlsx / Summer Summary / E26,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,27.0,less: Switchable Capacity Unavailable to ERCOT,switchable,operational,-1480.0,CDR_December2024_Revised.xlsx / Summer Summary / E27,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,28.0,Available Mothballed Capacity (Units with reported return probabilities ≥ 75%),mothballed,operational,135.5,CDR_December2024_Revised.xlsx / Summer Summary / E28,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,29.0,Capacity from Private Use Networks,private_use_networks,operational,3354.1345,CDR_December2024_Revised.xlsx / Summer Summary / E29,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,31.0,Coastal Wind,wind_coastal,operational,889.0906605447435,CDR_December2024_Revised.xlsx / Summer Summary / E31,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,32.0,Panhandle Wind,wind_panhandle,operational,831.9121399999964,CDR_December2024_Revised.xlsx / Summer Summary / E32,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,33.0,Other Wind,wind_other,operational,2438.669458365748,CDR_December2024_Revised.xlsx / Summer Summary / E33,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,34.0,Far West Solar Utility-Scale,solar_farwest,operational,383.5094400000038,CDR_December2024_Revised.xlsx / Summer Summary / E34,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,35.0,West Solar Utility-Scale,solar_west,operational,318.36144000000314,CDR_December2024_Revised.xlsx / Summer Summary / E35,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,36.0,Other Solar Utility-Scale,solar_other,operational,984.3218131274228,CDR_December2024_Revised.xlsx / Summer Summary / E36,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,37.0,Energy Storage,storage,operational,7902.862723331415,CDR_December2024_Revised.xlsx / Summer Summary / E37,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,38.0,RMR Capacity to be under Contract,rmr,operational,412.0,CDR_December2024_Revised.xlsx / Summer Summary / E38,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,39.0,Capacity Pending Retirement,pending_retirement,operational,0.0,CDR_December2024_Revised.xlsx / Summer Summary / E39,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,40.0,"Operational Generation Capacity, Total",operational_total,,86532.04717536936,CDR_December2024_Revised.xlsx / Summer Summary / E40,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,42.0,Non-Synchronous Ties (Based on average net import contribution during the summer 2023 EEA event),dc_ties,operational,817.4000000000001,CDR_December2024_Revised.xlsx / Summer Summary / E42,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,45.0,Thermal Resources,thermal,planned,267.2,CDR_December2024_Revised.xlsx / Summer Summary / E45,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,47.0,Coastal Wind,wind_coastal,planned,39.49185431906598,CDR_December2024_Revised.xlsx / Summer Summary / E47,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,48.0,Panhandle Wind,wind_panhandle,planned,0.0,CDR_December2024_Revised.xlsx / Summer Summary / E48,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,49.0,Other Wind,wind_other,planned,0.0,CDR_December2024_Revised.xlsx / Summer Summary / E49,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,50.0,Far West Solar Utility-Scale,solar_farwest,planned,10.723800000000104,CDR_December2024_Revised.xlsx / Summer Summary / E50,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,51.0,West Solar Utility-Scale,solar_west,planned,63.68400000000063,CDR_December2024_Revised.xlsx / Summer Summary / E51,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,52.0,Other Solar Utility-Scale,solar_other,planned,229.26028030888256,CDR_December2024_Revised.xlsx / Summer Summary / E52,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,53.0,Energy Storage,storage,planned,3691.9910402254154,CDR_December2024_Revised.xlsx / Summer Summary / E53,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,54.0,Unconfirmed Planned Retirements,pending_retirement,planned,0.0,CDR_December2024_Revised.xlsx / Summer Summary / E54,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,55.0,"Planned Generation Capacity Total, Net of Unconfirmed Planned Retirements",planned_total,,4302.350974853363,CDR_December2024_Revised.xlsx / Summer Summary / E55,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,56.0,Total Capacity,total_capacity,,91651.79815022272,CDR_December2024_Revised.xlsx / Summer Summary / E56,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,58.0,Reserve Margin,reserve_margin,,0.104718099392097,CDR_December2024_Revised.xlsx / Summer Summary / E58,,,,,,,,,,,,
+OFFICIAL,peak_net_load,summer_evening,,,PRM_RECOMPUTED,,91651.7981502227,,82963.96899865835,0.10471809939209689,"{""firm_load_from_components"": 82963.96899865835, ""firm_load_cell"": 82963.96899865835, ""credited_from_components"": 91651.7981502227, ""credited_cell"": 91651.79815022272, ""prm_recomputed"": 0.10471809939209689, ""prm_cell"": 0.104718099392097, ""prm_reference"": 0.104718099392097, ""reproduced"": true}",,,,,,,,,
+MODEL,peak_load,summer_afternoon,,,dc_ties,,817.4000000000001,,,,,0.0,0.0,,-817.4000000000001,"NOT MODELLED: no such resource in the model fleet (left at 0, no virtual capacity)",,,,
+MODEL,peak_load,summer_afternoon,,,hydro,,543.6850000000001,,,,,535.4,37.5489513507476,,-506.1360486492525,network hydro p_nom x p_max_pu at the peak_load step,,,,
+MODEL,peak_load,summer_afternoon,,,mothballed,,135.5,,,,,0.0,0.0,,-135.5,"NOT MODELLED: no such resource in the model fleet (left at 0, no virtual capacity)",,,,
+MODEL,peak_load,summer_afternoon,,,pending_retirement,,0.0,,,,,0.0,0.0,,0.0,"NOT MODELLED: no such resource in the model fleet (left at 0, no virtual capacity)",,,,
+MODEL,peak_load,summer_afternoon,,,private_use_networks,,3265.0,,,,,0.0,0.0,,-3265.0,"NOT MODELLED: no such resource in the model fleet (left at 0, no virtual capacity)",,,,
+MODEL,peak_load,summer_afternoon,,,rmr,,412.0,,,,,0.0,0.0,,-412.0,"NOT MODELLED: no such resource in the model fleet (left at 0, no virtual capacity)",,,,
+MODEL,peak_load,summer_afternoon,,,solar_farwest,,1946.411430963199,,,,,6388.200000000001,2308.718551586444,5385.7,362.3071206232448,CDR ELCC Solar - FarWest (summer_afternoon) = 0.3614,,,,
+MODEL,peak_load,summer_afternoon,,,solar_other,,5991.706988169365,,,,,18744.600000000002,5100.391493777992,22020.299999999996,-891.3154943913732,CDR ELCC Solar - Other (summer_afternoon) = 0.2721,,,,
+MODEL,peak_load,summer_afternoon,,,solar_west,,1886.2377296327552,,,,,3977.2000000000003,1437.374444032686,5219.200000000001,-448.8632856000693,CDR ELCC Solar - West (summer_afternoon) = 0.3614,,,,
+MODEL,peak_load,summer_afternoon,,,storage,,11594.85376355683,,,,,13068.399999999998,11423.729031190447,,-171.1247323663829,"CDR BESS ELCC (summer_afternoon) by unit duration, interpolated; mean duration 1.60 h",,,,
+MODEL,peak_load,summer_afternoon,,,switchable,,2200.0,,,,,2050.0,1165.0,,-1035.0,"v1.6 monthly cap of source month 8 (Kiamichi + Tenaska Gateway), counted once",,,,
+MODEL,peak_load,summer_afternoon,,,thermal,,66405.20000000001,,,,,70405.3,70405.3,,4000.0999999999913,"summer MW x 1.0 (CDR installed summer-rated basis), switchable plants excluded",,,,
+MODEL,peak_load,summer_afternoon,,,wind_coastal,,1748.6226419935624,,,,,5422.799999999999,1671.9735626128802,5671.400000000001,-76.64907938068222,CDR ELCC Wind - Coastal (summer_afternoon) = 0.3083,,,,
+MODEL,peak_load,summer_afternoon,,,wind_other,,4592.281852153925,,,,,31391.4,4921.366930343629,29292.300000000007,329.0850781897043,CDR ELCC Wind - Other (summer_afternoon) = 0.1568,,,,
+MODEL,peak_load,summer_afternoon,,,wind_panhandle,,1566.5817316909802,,,,,3463.6,1162.9329345203137,4665.799999999999,-403.6487971706665,CDR ELCC Wind - Panhandle (summer_afternoon) = 0.3358,,,,
+MODEL,peak_load,summer_afternoon,,,MODEL_CREDITED_TOTAL,,,,86716.91224495096,0.14896083497502874,model credited capacity on the OFFICIAL firm load (same denominator),,99634.33589941515,,,,,,,
+MODEL,peak_load,summer_afternoon,,,MODEL_PRM_ON_NATIVE_LOAD,,,,83403.65211433334,0.19460399363366113,"model credited capacity on the model 2025 native load at the peak_load step ((2030, Timestamp('2030-08-18 15:00:00'))); native load is ACTUAL weather / ACTUAL demand and is not confirmed to equal the CDR firm-load concept (load resources, ERS, rooftop PV) - a scope comparison, not an adequacy shortfall",,99634.33589941515,,,,,,,
+BRIDGE,peak_load,,,,official,,,,86716.91224495096,0.1889893040346796,,,,,,,0.0,103105.48113816063,OFFICIAL_REPRODUCED,
+BRIDGE,peak_load,,,,dc_ties,,,,86716.91224495096,0.17956323040222522,,,,,,,1.0,102288.08113816063,NOT_MODELLED,-817.4000000000001
+BRIDGE,peak_load,,,,hydro,,,,86716.91224495096,0.17372658290698742,,,,,,,2.0,101781.94508951138,EXPLAINED_SCOPE (CDR peak-average contribution vs model profile at the risk step),-506.1360486492525
+BRIDGE,peak_load,,,,mothballed,,,,86716.91224495096,0.17216402727058225,,,,,,,3.0,101646.44508951138,NOT_MODELLED,-135.5
+BRIDGE,peak_load,,,,private_use_networks,,,,86716.91224495096,0.13451277890997076,,,,,,,4.0,98381.44508951138,NOT_MODELLED,-3265.0
+BRIDGE,peak_load,,,,rmr,,,,86716.91224495096,0.1297616872332259,,,,,,,5.0,97969.44508951138,NOT_MODELLED,-412.0
+BRIDGE,peak_load,,,,solar_farwest,,,,86716.91224495096,0.13393973176045523,,,,,,,6.0,98331.75221013463,ELCC_AND_FLEET_SCOPE (CDR operational + planned at CDR ELCC vs model year-end 2025 installed at the same ELCC; difference = installed-MW scope),362.3071206232448
+BRIDGE,peak_load,,,,solar_other,,,,86716.91224495096,0.12366128121007523,,,,,,,7.0,97440.43671574326,ELCC_AND_FLEET_SCOPE (CDR operational + planned at CDR ELCC vs model year-end 2025 installed at the same ELCC; difference = installed-MW scope),-891.3154943913732
+BRIDGE,peak_load,,,,solar_west,,,,86716.91224495096,0.11848509038432087,,,,,,,8.0,96991.5734301432,ELCC_AND_FLEET_SCOPE (CDR operational + planned at CDR ELCC vs model year-end 2025 installed at the same ELCC; difference = installed-MW scope),-448.8632856000693
+BRIDGE,peak_load,,,,storage,,,,86716.91224495096,0.11651171831725504,,,,,,,9.0,96820.44869777681,ELCC_AND_FLEET_SCOPE (CDR operational + planned credited; model year-end 2025 units at their own-duration ELCC),-171.1247323663829
+BRIDGE,peak_load,,,,switchable,,,,86716.91224495096,0.10457633024582078,,,,,,,10.0,95785.44869777681,EXPLAINED_SCOPE (model: two switchable plants at the monthly MORA cap; CDR: all switchable units net of unavailable),-1035.0
+BRIDGE,peak_load,,,,thermal,,,,86716.91224495096,0.1507045870811291,,,,,,,11.0,99785.5486977768,CAPACITY_BASIS_DIFFERENCE_UNRESOLVED (ReEDS summer MW of the year-end fleet vs CDR summer-rated incl. planned; PUN units may sit inside model thermal at gross MW),4000.0999999999913
+BRIDGE,peak_load,,,,wind_coastal,,,,86716.91224495096,0.1498206870736637,,,,,,,12.0,99708.89961839611,ELCC_AND_FLEET_SCOPE (CDR operational + planned at CDR ELCC vs model year-end 2025 installed at the same ELCC; difference = installed-MW scope),-76.64907938068222
+BRIDGE,peak_load,,,,wind_other,,,,86716.91224495096,0.15361562245212979,,,,,,,13.0,100037.98469658582,ELCC_AND_FLEET_SCOPE (CDR operational + planned at CDR ELCC vs model year-end 2025 installed at the same ELCC; difference = installed-MW scope),329.0850781897043
+BRIDGE,peak_load,,,,wind_panhandle,,,,86716.91224495096,0.14896083497502874,,,,,,,14.0,99634.33589941515,ELCC_AND_FLEET_SCOPE (CDR operational + planned at CDR ELCC vs model year-end 2025 installed at the same ELCC; difference = installed-MW scope),-403.6487971706665
+BRIDGE,peak_load,,,,load_basis: official firm load -> model native load at the risk step,,,,83403.65211433334,0.19460399363366113,,,,,,,15.0,99634.33589941515,LOAD_CONCEPT_NOT_CONFIRMED_EQUAL (forecast normal-weather firm load vs actual 2025 native load),-3313.260130617622
+MODEL,peak_net_load,summer_evening,,,dc_ties,,817.4000000000001,,,,,0.0,0.0,,-817.4000000000001,"NOT MODELLED: no such resource in the model fleet (left at 0, no virtual capacity)",,,,
+MODEL,peak_net_load,summer_evening,,,hydro,,543.6850000000001,,,,,535.4,23.310458228307205,,-520.3745417716929,network hydro p_nom x p_max_pu at the peak_net_load step,,,,
+MODEL,peak_net_load,summer_evening,,,mothballed,,135.5,,,,,0.0,0.0,,-135.5,"NOT MODELLED: no such resource in the model fleet (left at 0, no virtual capacity)",,,,
+MODEL,peak_net_load,summer_evening,,,pending_retirement,,0.0,,,,,0.0,0.0,,0.0,"NOT MODELLED: no such resource in the model fleet (left at 0, no virtual capacity)",,,,
+MODEL,peak_net_load,summer_evening,,,private_use_networks,,3354.1345,,,,,0.0,0.0,,-3354.1345,"NOT MODELLED: no such resource in the model fleet (left at 0, no virtual capacity)",,,,
+MODEL,peak_net_load,summer_evening,,,rmr,,412.0,,,,,0.0,0.0,,-412.0,"NOT MODELLED: no such resource in the model fleet (left at 0, no virtual capacity)",,,,
+MODEL,peak_net_load,summer_evening,,,solar_farwest,,394.2332400000039,,,,,6388.200000000001,467.6162400000045,5385.700000000002,73.3830000000006,CDR ELCC Solar - FarWest (summer_evening) = 0.0732,,,,
+MODEL,peak_net_load,summer_evening,,,solar_other,,1213.5820934363055,,,,,18744.600000000002,1033.0518162162255,22020.300000000025,-180.53027722008005,CDR ELCC Solar - Other (summer_evening) = 0.0551,,,,
+MODEL,peak_net_load,summer_evening,,,solar_west,,382.0454400000038,,,,,3977.2000000000003,291.13104000000277,5219.200000000003,-90.91440000000102,CDR ELCC Solar - West (summer_evening) = 0.0732,,,,
+MODEL,peak_net_load,summer_evening,,,storage,,11594.85376355683,,,,,13068.399999999998,11423.729031190447,,-171.1247323663829,"CDR BESS ELCC (summer_evening) by unit duration, interpolated; mean duration 1.60 h",,,,
+MODEL,peak_net_load,summer_evening,,,switchable,,2200.0,,,,,2050.0,1318.0,,-882.0,"v1.6 monthly cap of source month 7 (Kiamichi + Tenaska Gateway), counted once",,,,
+MODEL,peak_net_load,summer_evening,,,thermal,,66405.20000000001,,,,,70405.3,70405.3,,4000.0999999999913,"summer MW x 1.0 (CDR installed summer-rated basis), switchable plants excluded",,,,
+MODEL,peak_net_load,summer_evening,,,wind_coastal,,928.5825148638095,,,,,5422.799999999999,887.8790530739261,5671.400000000001,-40.70346178988336,CDR ELCC Wind - Coastal (summer_evening) = 0.1637,,,,
+MODEL,peak_net_load,summer_evening,,,wind_other,,2438.669458365748,,,,,31391.4,2613.4256591439585,29292.299999999992,174.7562007782103,CDR ELCC Wind - Other (summer_evening) = 0.0833,,,,
+MODEL,peak_net_load,summer_evening,,,wind_panhandle,,831.9121399999964,,,,,3463.6,617.5598799999973,4665.8,-214.3522599999991,CDR ELCC Wind - Panhandle (summer_evening) = 0.1783,,,,
+MODEL,peak_net_load,summer_evening,,,MODEL_CREDITED_TOTAL,,,,82963.96899865835,0.07373121432140554,model credited capacity on the OFFICIAL firm load (same denominator),,89081.00317785288,,,,,,,
+MODEL,peak_net_load,summer_evening,,,MODEL_PRM_ON_NATIVE_LOAD,,,,80860.20849066666,0.10166675105883648,"model credited capacity on the model 2025 native load at the peak_net_load step ((2030, Timestamp('2030-07-31 12:00:00'))); native load is ACTUAL weather / ACTUAL demand and is not confirmed to equal the CDR firm-load concept (load resources, ERS, rooftop PV) - a scope comparison, not an adequacy shortfall",,89081.00317785288,,,,,,,
+BRIDGE,peak_net_load,,,,official,,,,82963.96899865835,0.10471809939209689,,,,,,,0.0,91651.7981502227,OFFICIAL_REPRODUCED,
+BRIDGE,peak_net_load,,,,dc_ties,,,,82963.96899865835,0.09486562958061508,,,,,,,1.0,90834.39815022271,NOT_MODELLED,-817.4000000000001
+BRIDGE,peak_net_load,,,,hydro,,,,82963.96899865835,0.08859333393164347,,,,,,,2.0,90314.02360845101,EXPLAINED_SCOPE (CDR peak-average contribution vs model profile at the risk step),-520.3745417716929
+BRIDGE,peak_net_load,,,,mothballed,,,,82963.96899865835,0.08696009480825738,,,,,,,3.0,90178.52360845101,NOT_MODELLED,-135.5
+BRIDGE,peak_net_load,,,,private_use_networks,,,,82963.96899865835,0.046531285284279064,,,,,,,4.0,86824.38910845101,NOT_MODELLED,-3354.1345
+BRIDGE,peak_net_load,,,,rmr,,,,82963.96899865835,0.041565274075164145,,,,,,,5.0,86412.38910845101,NOT_MODELLED,-412.0
+BRIDGE,peak_net_load,,,,solar_farwest,,,,82963.96899865835,0.04244979058137407,,,,,,,6.0,86485.77210845101,ELCC_AND_FLEET_SCOPE (CDR operational + planned at CDR ELCC vs model year-end 2025 installed at the same ELCC; difference = installed-MW scope),73.3830000000006
+BRIDGE,peak_net_load,,,,solar_other,,,,82963.96899865835,0.040273782376860606,,,,,,,7.0,86305.24183123093,ELCC_AND_FLEET_SCOPE (CDR operational + planned at CDR ELCC vs model year-end 2025 installed at the same ELCC; difference = installed-MW scope),-180.53027722008005
+BRIDGE,peak_net_load,,,,solar_west,,,,82963.96899865835,0.03917795245096272,,,,,,,8.0,86214.32743123094,ELCC_AND_FLEET_SCOPE (CDR operational + planned at CDR ELCC vs model year-end 2025 installed at the same ELCC; difference = installed-MW scope),-90.91440000000102
+BRIDGE,peak_net_load,,,,storage,,,,82963.96899865835,0.03711531327841841,,,,,,,9.0,86043.20269886455,ELCC_AND_FLEET_SCOPE (CDR operational + planned credited; model year-end 2025 units at their own-duration ELCC),-171.1247323663829
+BRIDGE,peak_net_load,,,,switchable,,,,82963.96899865835,0.026484192194827734,,,,,,,10.0,85161.20269886455,EXPLAINED_SCOPE (model: two switchable plants at the monthly MORA cap; CDR: all switchable units net of unavailable),-882.0
+BRIDGE,peak_net_load,,,,thermal,,,,82963.96899865835,0.07469909859672226,,,,,,,11.0,89161.30269886454,CAPACITY_BASIS_DIFFERENCE_UNRESOLVED (ReEDS summer MW of the year-end fleet vs CDR summer-rated incl. planned; PUN units may sit inside model thermal at gross MW),4000.0999999999913
+BRIDGE,peak_net_load,,,,wind_coastal,,,,82963.96899865835,0.07420848246201746,,,,,,,12.0,89120.59923707465,ELCC_AND_FLEET_SCOPE (CDR operational + planned at CDR ELCC vs model year-end 2025 installed at the same ELCC; difference = installed-MW scope),-40.70346178988336
+BRIDGE,peak_net_load,,,,wind_other,,,,82963.96899865835,0.07631489326766536,,,,,,,13.0,89295.35543785286,ELCC_AND_FLEET_SCOPE (CDR operational + planned at CDR ELCC vs model year-end 2025 installed at the same ELCC; difference = installed-MW scope),174.7562007782103
+BRIDGE,peak_net_load,,,,wind_panhandle,,,,82963.96899865835,0.07373121432140538,,,,,,,14.0,89081.00317785286,ELCC_AND_FLEET_SCOPE (CDR operational + planned at CDR ELCC vs model year-end 2025 installed at the same ELCC; difference = installed-MW scope),-214.3522599999991
+BRIDGE,peak_net_load,,,,load_basis: official firm load -> model native load at the risk step,,,,80860.20849066666,0.1016667510588363,,,,,,,15.0,89081.00317785286,LOAD_CONCEPT_NOT_CONFIRMED_EQUAL (forecast normal-weather firm load vs actual 2025 native load),-2103.7605079916975
+ERM,,,,,ERM_15pct_per_snapshot,,,,,0.15,"scripts/opts/reserves.py + wp2_ercot_s0_s1.ERM_MARGIN: per 3 h snapshot, sum over the TX region of storage / line reserve terms + non-extendable p_nom x p_max_pu(t) >= demand(t) x 1.15; energy-backed deliverability row of S0-S3, NOT the CDR PRM (no ELCC, no firm-load adjustments, per snapshot rather than at one forecast peak)",,,,,,,,,
+ERM,,,,,ERM-02_B_period_margin,,,,,,"v240_mech / rearch_mech --calibrate: per-period margin m_p <= 0.15 maximised on the existing + committed fleet; future-period values are proxy margins, negative values are not an ERCOT-accepted planning standard; not renamed as PRM and not tuned to 18.90 % / 10.47 %",,,,,,,,,
+ERM,,,,,official_PRM_use_in_v1.6,,,,,,"external validation anchor only (this table); the official PRM is NOT written into any snapshot ERM row, ERM is not lowered / raised to match it; snapshot ERM is NOT calibrated to an official standard (not implemented)",,,,,,,,,
