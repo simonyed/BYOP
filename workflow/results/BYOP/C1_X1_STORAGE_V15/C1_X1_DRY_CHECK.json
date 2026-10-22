@@ -1,0 +1,76 @@
+{
+ "gate_reasons": [],
+ "network": {
+  "network": "results/BYOP/baseline_2025_tamu/baseline_2025_tamu_prepared.nc",
+  "network_sha256": "19034285be0aa9b9906ab5b0e03778f3a16e7c1c39e97ac97b368d9097cafadb",
+  "removed_global_constraints": [
+   "lv_limit"
+  ],
+  "generators": 262,
+  "storage_units": 43,
+  "lines": 162,
+  "links": 0,
+  "fleet_MW_by_carrier": {
+   "CCGT": 35914.3,
+   "OCGT": 8815.7,
+   "biomass": 123.0,
+   "coal": 10774.0,
+   "gas_steam": 11848.3,
+   "hydro": 535.4,
+   "nuclear": 4980.0,
+   "onwind": 40028.8,
+   "solar": 29262.7
+  },
+  "storage_MW": 12768.4,
+  "raw_network_sha256": "7103e6e0966e7494d2db5237e13cd276765612b954d61e3519b1e3ebee1e88ce",
+  "uplift_ledger_sha256": "44fbcf7941743cc4822fae42fa107e64db80626427ba911a40d1f2f416975b34",
+  "lines_restored": 18
+ },
+ "lines_restored": [
+  "TL12",
+  "TL13",
+  "TL15",
+  "TL26",
+  "TL3",
+  "TL35",
+  "TL36",
+  "TL37",
+  "TL38",
+  "TL39",
+  "TL40",
+  "TL41",
+  "TL42",
+  "TL43",
+  "TL63",
+  "TL68",
+  "TL69",
+  "TL73"
+ ],
+ "capacity_identical": true,
+ "linopy_variables": [
+  "Generator-p",
+  "Line-s",
+  "StorageUnit-p_dispatch",
+  "StorageUnit-p_store",
+  "StorageUnit-state_of_charge"
+ ],
+ "stage2_constraints": [
+  "X1S2-economic_cost_bound",
+  "X1S2-shed_upper",
+  "X1S2-shed_lower"
+ ],
+ "stage2_objective_terms": 251120,
+ "shed_generators": 63,
+ "solver_calls": 0,
+ "env": {
+  "python": "3.11.17",
+  "pypsa": "1.3.0",
+  "linopy": "0.9.1",
+  "gurobipy": "11.0.3",
+  "config_sha256": "6deedee57821aa30dbced10381d88cd6e56eb01d81651fe8e1c98710c6c8f892",
+  "script_sha256": "5a2b0669912d35fcc8a3e052e3a770a44d22b671a101ae04cc8b8071e76a1cbe",
+  "base_runner_sha256": "6e524ac509388a08e33fe7285d3cf2070ce12ab6fc07e444230a2c8a751c7d2e",
+  "authorization_source_sha256": "1bcedfbe287f4282b9681b9e5c2eacf8fd8f670c678b85a4b7aafeedb77662c4",
+  "host": "lambda-2"
+ }
+}

@@ -1,0 +1,22 @@
+# C1-X1 network comparison + storage degeneracy validation (work package v1.5, 2026-10-22).
+# Own authorisation; the formal mainline gates (config.byop_ercot_mainline*.yaml) and the v1.4 C1 config are untouched.
+# Exactly two effective LP stages, run in ONE process (stage 2 re-uses the stage-1 model in memory):
+#   stage 1  C1_X1_RAW_IMPEDANCE            calibrated s_nom + raw x / r on the 18 uplift lines (by line ID), economic objective
+#   stage 2  C1_X1_MIN_STORAGE_THROUGHPUT   same model, F(x) <= F* + eps_F, |E(x) - E*| <= eps_E, min sum w (p_store + p_dispatch)
+# Failed attempts are logged as retries of the same stage (no new physical case); a stage-2 retry rebuilds stage 2 from the
+# saved F*, E* and the same inputs without re-solving stage 1.
+c1x1:
+  authorization: AUTHORIZED_BY_RESEARCHER_WP_V1_5
+  authorization_source: current_work_pckg/BYOP_C1_X1_Storage_Validation_Work_Package_v1.5_2026-10-22.md
+  authorization_source_sha256: 1bcedfbe287f4282b9681b9e5c2eacf8fd8f670c678b85a4b7aafeedb77662c4
+  base_config: config/config.byop_c1_fixed_asset_diag.yaml     # same fleet / storage / VOLL / global-constraint rules as v1.4 C1
+  base_case: C1_NETWORK_CALIBRATED
+  raw_network: results/BYOP/baseline_2025_tamu/baseline_2025_tamu_raw_uncalibrated.nc
+  uplift_ledger: results/BYOP/baseline_2025_tamu/TAMU_2025_CALIBRATION_LP.csv
+  effective_stages: [C1_X1_RAW_IMPEDANCE, C1_X1_MIN_STORAGE_THROUGHPUT]
+  solver: gurobi
+  # the setting that gave exact optimal terminations for the v1.4 annual retries (verified)
+  solver_options: {Method: 2, Crossover: 1, BarConvTol: 1.0e-8, NumericFocus: 2, BarHomogeneous: 1}
+  epsilon_F: {abs_USD: 1.0, rel: 1.0e-8}          # eps_F = max(1 USD, 1e-8 |F*|)
+  epsilon_E: {abs_MWh: 0.001, rel: 1.0e-8}        # eps_E = max(0.001 MWh, 1e-8 |E*|)
+  overlap_threshold_MW: 1.0e-3
