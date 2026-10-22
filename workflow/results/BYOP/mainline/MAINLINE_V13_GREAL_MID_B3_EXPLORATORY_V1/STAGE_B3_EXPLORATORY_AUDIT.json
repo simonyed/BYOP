@@ -1,0 +1,114 @@
+{
+ "stage": "B3-E pilot_core_b3e",
+ "case": "MAINLINE_V13_GREAL_MID_B3_EXPLORATORY_V1",
+ "approved_git_sha": "01e761dabab25cce514c10abb1824936410e3f87",
+ "execution_git_head": "8073d0e472217f04596d6c73a3f881a2930a0983",
+ "status": "CASE_CHECK_FAIL",
+ "solves": {
+  "S0": {
+   "termination": "optimal",
+   "seconds": 1590.8,
+   "n_vars": 4094602,
+   "n_cons": 7162661,
+   "integer_vars": 0,
+   "objective": 51526076021.914764,
+   "lex_audit_all_satisfied": null
+  },
+  "S1_EARLIEST": {
+   "termination": "optimal",
+   "seconds": 3035.7,
+   "n_vars": 4179586,
+   "n_cons": 7310732,
+   "integer_vars": 0,
+   "objective": 24807014531.83152,
+   "lex_audit_all_satisfied": true
+  },
+  "S3": {
+   "termination": "optimal",
+   "seconds": 2148.4,
+   "n_vars": 4424558,
+   "n_cons": 7683631,
+   "integer_vars": 0,
+   "objective": 23604538474.93742,
+   "lex_audit_all_satisfied": null
+  },
+  "S2": {
+   "termination": "optimal",
+   "seconds": 1939.3,
+   "n_vars": 4417858,
+   "n_cons": 7689799,
+   "integer_vars": 0,
+   "objective": 23735208560.67977,
+   "lex_audit_all_satisfied": null
+  },
+  "S3_mS2": {
+   "termination": "optimal",
+   "seconds": 2046.2,
+   "n_vars": 4424558,
+   "n_cons": 7683631,
+   "integer_vars": 0,
+   "objective": 23865635566.900894,
+   "lex_audit_all_satisfied": null
+  }
+ },
+ "s2_selection": {
+  "selected_iteration": 1,
+  "selected_tag": "S2",
+  "formal_label": "S2_final",
+  "converged": true
+ },
+ "s2_iterations": [
+  1
+ ],
+ "lex": {
+  "status": "OPTIMAL",
+  "seconds": 1225.3,
+  "violations": {
+   "ConstrVio": 2.3402644728776067e-06,
+   "BoundVio": 0.0,
+   "ObjVal": 0.0
+  }
+ },
+ "inputs": {
+  "baseline_nc": "19034285be0aa9b9906ab5b0e03778f3a16e7c1c39e97ac97b368d9097cafadb",
+  "s0_calibration": {
+   "file": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/mainline/MAINLINE_V13_GREAL_MID_S0CAL/S0_CALIBRATION.csv",
+   "sha256": "30bf497ef009f3e120d43f7d6c2995fe0b7d82ffce9d1df2b5629131397454d5",
+   "n": 9,
+   "MW": 1095.6237013725104
+  },
+  "erm": {
+   "F2_mainline_VOLL_USD_MWh": 35685.0,
+   "VOLL_source": "Brattle 2024, Value of Lost Load Study for the ERCOT Region, Table 17",
+   "VOLL_source_year": 2024,
+   "VOLL_duration_basis": "1h ERCOT-wide outage; planning proxy for 3-h snapshots",
+   "SHED_COST_used": 35685.0
+  }
+ },
+ "gates": {
+  "TECHNICAL_GATE": "PASS",
+  "EXPLORATORY_USE": "PERMITTED_WITH_METHOD_FLAGS",
+  "FINAL_SCIENTIFIC_USE": "PENDING_METHOD_VALIDATION",
+  "METHOD_FLAGS": "ERM_FIRST_YEAR_METHOD_FLAG=ON (105.22 MW_IT 2026 short, ERM binding);S0_RELIABILITY_REVIEW_REQUIRED=ON (total 11874.5 MWh, bus peak 75.1 MW, inherited max 0.48 MWh/yr);S0CAL_LINE_FLOWS=EXPORTED",
+  "SCIENTIFIC_USE": "BLOCKED: no_load_shed",
+  "phase": "CORE",
+  "matched_service_valid": "True",
+  "matched_service_max_abs_gap_IT_MW": "0.0",
+  "s2_converged": "True",
+  "cost_book_identities": "True"
+ },
+ "delay_MW_IT_year": {
+  "S1_EARLIEST": 312.7527772834265,
+  "S2_final": 173.17269999843353,
+  "S3": 76.79880000037831,
+  "S3_mS2": 173.17269999843353
+ },
+ "written": [
+  "STAGE_B3_M1_SPEED_DELIVERY_BY_SITE_YEAR.csv",
+  "STAGE_B3_M2_PUBLIC_EXPANSION_BY_CARRIER_YEAR.csv",
+  "STAGE_B3_M2_ASSET_COMMITMENT_AND_COD.csv",
+  "STAGE_B3_M4_COST_COMPONENTS.csv",
+  "STAGE_B3_CHECKS_AND_METHOD_FLAGS.csv"
+ ],
+ "B4_EXECUTIONS": 0
+}

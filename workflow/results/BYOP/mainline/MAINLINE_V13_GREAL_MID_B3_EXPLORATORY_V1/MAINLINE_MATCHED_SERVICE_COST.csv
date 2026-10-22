@@ -1,0 +1,2 @@
+compare,matched_service_48_keys_present,matched_service_keys_unique,matched_service_no_missing,matched_service_max_abs_gap_IT_MW,matched_service_valid,S2_final_social_real_USD,S3_mS2_social_real_USD,gap_USD,gap_status,rule,S2_selected_iteration
+S2_final vs S3_mS2 (same service trajectory),True,True,True,0.0,True,53144141638.43561,53141981328.16171,2160310.2738952637,VALID,private payments to the grid are transfers: not added to the social real resource cost,1

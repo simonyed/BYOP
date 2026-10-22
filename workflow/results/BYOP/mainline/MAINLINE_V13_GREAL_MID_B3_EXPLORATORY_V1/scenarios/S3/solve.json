@@ -1,0 +1,28 @@
+{
+ "case_id": "MAINLINE_V13_GREAL_MID_B3_EXPLORATORY_V1",
+ "case_group": "MAINLINE_V13_GREAL_MID_B3_EXPLORATORY_V1",
+ "run_id": "rearch_MAINLINE_V13_GREAL_MID_B3_EXPLORATORY_V1_20261022T011306Z",
+ "scenario": "S3",
+ "relax": [],
+ "setting": "G-REAL",
+ "solve": {
+  "tag": "S3",
+  "status": "ok",
+  "termination": "optimal",
+  "objective": 23604538474.93742,
+  "seconds": 2148.4,
+  "n_vars": 4424558,
+  "n_cons": 7683631,
+  "integer_vars": 0,
+  "erm_dc_mode": "B",
+  "erm_poi_coeff_snapshot0": null,
+  "F2_load_shed_mc": {
+   "n": 68,
+   "min": 35685.0,
+   "max": 35685.0,
+   "n_inherited": 5,
+   "n_not_at_VOLL": 0
+  }
+ },
+ "timestamp_utc": "2026-10-22T03:12:25.195212+00:00"
+}

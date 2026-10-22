@@ -1,0 +1,33 @@
+check,result,S2_selected_iteration
+true_LP,True,1
+all_optimal,True,1
+S1_zero_equals_S0,,1
+no_load_shed,False,1
+served_le_requested,True,1
+dc_energy_balance,True,1
+S2_off_equals_S1,,1
+online_IT_monotone,True,1
+no_harm_existing_customers,True,1
+interruption_within_cap,True,1
+lex_presolve_optimal,True,1
+poi_flow_le_equipment,True,1
+no_service_before_grid_or_byop,True,1
+s2_consistent,True,1
+s2_converged,True,1
+private_stage_LP,True,1
+matched_service_48_keys_present,True,1
+matched_service_keys_unique,True,1
+matched_service_no_missing,True,1
+matched_service_max_abs_gap_IT_MW,0.0,1
+matched_service_valid,True,1
+selected_S2_iteration,1,1
+s2_public_delivers_developer_plan,True,1
+phase,CORE,1
+SCIENTIFIC_USE,BLOCKED: no_load_shed,1
+cost_book_identities,True,1
+lex_audit_all_satisfied,True,1
+TECHNICAL_GATE,PASS,1
+METHOD_FLAGS,"ERM_FIRST_YEAR_METHOD_FLAG=ON (105.22 MW_IT 2026 short, ERM binding);S0_RELIABILITY_REVIEW_REQUIRED=ON (total 11874.5 MWh, bus peak 75.1 MW, inherited max 0.48 MWh/yr);S0CAL_LINE_FLOWS=EXPORTED",1
+EXPLORATORY_USE,PERMITTED_WITH_METHOD_FLAGS,1
+FINAL_SCIENTIFIC_USE,PENDING_METHOD_VALIDATION,1
+SCIENTIFIC_USE_LEGACY_MAPPING,SCIENTIFIC_USE keeps the B0 rule (any False check -> BLOCKED),1
