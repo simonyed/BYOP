@@ -26,17 +26,28 @@
    "termination": "optimal"
   }
  ],
- "all_optimal": true,
+ "acceptance": {
+  "solver_termination_pass": true,
+  "data_integrity_pass": true,
+  "problems": []
+ },
+ "physical_interpretation_limits": [
+  "static year-end fleet, not a 2025 historical replay (no in-year commissioning / outage dates)",
+  "peak window = hourly load + renewables held at their 3 h value (not a full 1 h stress test); max-net-load window MISSING_INPUT",
+  "cause of CALIBRATED annual shed vs the 102.2 MWh calibration residual not isolated (see report)",
+  "large simultaneous storage charge / discharge in the LP solution: degeneracy / energy-sink mechanism not isolated",
+  "dispatch diagnostic only: no firm-right, POI, N-1 or probabilistic adequacy statement"
+ ],
  "diagnostic_solves": 4,
  "retries": 4,
  "solve_budget": 6,
  "no_build_variables": true,
  "balance_residual_max_abs_MW": 3.064997144974768e-10,
  "storage_simultaneous_charge_discharge_MWh": {
-  "C1_NETWORK_BASE|annual": 9043194.117292197,
-  "C1_NETWORK_BASE|window": 49213.58273533072,
-  "C1_NETWORK_CALIBRATED|annual": 4783884.834995348,
-  "C1_NETWORK_CALIBRATED|window": 19354.73032754564
+  "C1_NETWORK_BASE|ANNUAL_3H": 9043194.117292197,
+  "C1_NETWORK_BASE|PEAK_WINDOW_1H": 49213.58273533072,
+  "C1_NETWORK_CALIBRATED|ANNUAL_3H": 4783884.834995348,
+  "C1_NETWORK_CALIBRATED|PEAK_WINDOW_1H": 19354.73032754564
  },
  "network_difference": {
   "lines_changed": 18,
@@ -71,34 +82,36 @@
   "C1_CASE_MANIFEST.csv": "823bd78e541f192f171c0188960a56899712b5c59be269985b69041c0dc10d2d",
   "C1_GENERATION_BY_FUEL.csv": "393598dcf1cf038501515dab01712b6e0ac56ca1e5e79417f80d45f6862d06a2",
   "C1_LINE_COMPARISON.csv": "6fb1bcf1093ae9ab74753765418bbf5057293bb154661eba429c497f39465e9f",
-  "C1_METRICS.csv": "5f6e240d2f345da63eb51dd28bc8662e94ddc06bf33debe3370e569e73f1e81b",
+  "C1_METRICS.csv": "019df45ad8343c8c57d26921d1769af4c1a5b6472ef644ab62187c0e872dda1a",
   "C1_SHEDDING_EVENTS.csv": "794905610ddf707843c72d1e738da43b669d0896ad0bd03e3ec6f12254b79df2",
   "C1_SOLVE_LOG.csv": "7ac084cb6aa2cac292b4b6dd05e509801954ab1a8d94bb6e9c1d788536356b51",
   "C1_SUPERSEDED_ATTEMPTS.csv": "2b64ad5c9f2ec5de120edabc58d03e90efa6f476755097722210a88b2acaadd4"
  },
+ "solver_termination_pass": true,
+ "data_integrity_pass": true,
  "shed_by_case": {
-  "C1_NETWORK_BASE|annual": {
+  "C1_NETWORK_BASE|ANNUAL_3H": {
    "shed_MWh": 10264060.894799042,
    "shed_max_MW": 2719.5949165424404,
    "shed_hours": 8760.0,
    "shed_buses": 10,
    "longest_shed_event_h": 8760.0
   },
-  "C1_NETWORK_BASE|window": {
+  "C1_NETWORK_BASE|PEAK_WINDOW_1H": {
    "shed_MWh": 58617.98694462947,
    "shed_max_MW": 1922.9196760597215,
    "shed_hours": 48.0,
    "shed_buses": 9,
    "longest_shed_event_h": 48.0
   },
-  "C1_NETWORK_CALIBRATED|annual": {
+  "C1_NETWORK_CALIBRATED|ANNUAL_3H": {
    "shed_MWh": 72905.11367607235,
    "shed_max_MW": 797.7553075545783,
    "shed_hours": 1047.0,
    "shed_buses": 13,
    "longest_shed_event_h": 60.0
   },
-  "C1_NETWORK_CALIBRATED|window": {
+  "C1_NETWORK_CALIBRATED|PEAK_WINDOW_1H": {
    "shed_MWh": 17.321391274184606,
    "shed_max_MW": 4.785745002027468,
    "shed_hours": 6.0,

@@ -1,0 +1,145 @@
+{
+ "no_solver_call": true,
+ "calibration_residual_MWh": 102.20466561114219,
+ "c1_calibrated_annual_shed_MWh": 72905.11367607235,
+ "c1_base_annual_shed_MWh": 10264060.894799042,
+ "uplift_lines_binding_CAL": 12,
+ "uplift_lines_binding_BASE": 15,
+ "shed_buses_CAL": [
+  "p600 1",
+  "p610 1",
+  "p610 4",
+  "p620 1",
+  "p620 2",
+  "p620 5",
+  "p620 6",
+  "p620 7",
+  "p630 13",
+  "p630 14",
+  "p630 2",
+  "p640 7",
+  "p670 8"
+ ],
+ "shed_bus_incident_lines": 39,
+ "shed_bus_incident_uplift_lines": 15,
+ "shed_bus_incident_lines_binding_CAL": 19,
+ "cal_shed_by_month_MWh": {
+  "1": 2567.3,
+  "2": 2947.2,
+  "3": 698.1,
+  "4": 511.1,
+  "5": 750.8,
+  "7": 13044.8,
+  "8": 13258.7,
+  "9": 27709.9,
+  "10": 873.0,
+  "11": 5173.8,
+  "12": 5370.6
+ },
+ "largest_events_CAL": [
+  {
+   "bus": "p620 2",
+   "start": "2030-09-14 06:00:00",
+   "source_HE_start": "09/14/2025 08:00",
+   "duration_h": 57.0,
+   "energy_MWh": 5414.935707,
+   "peak_MW": 206.713596
+  },
+  {
+   "bus": "p620 6",
+   "start": "2030-09-14 03:00:00",
+   "source_HE_start": "09/14/2025 05:00",
+   "duration_h": 60.0,
+   "energy_MWh": 2336.542013,
+   "peak_MW": 60.591711
+  },
+  {
+   "bus": "p630 2",
+   "start": "2030-02-19 09:00:00",
+   "source_HE_start": "02/19/2025 10:00",
+   "duration_h": 6.0,
+   "energy_MWh": 2064.872032,
+   "peak_MW": 461.278316
+  },
+  {
+   "bus": "p630 2",
+   "start": "2030-07-31 12:00:00",
+   "source_HE_start": "07/31/2025 14:00",
+   "duration_h": 6.0,
+   "energy_MWh": 2004.866252,
+   "peak_MW": 637.515388
+  },
+  {
+   "bus": "p620 2",
+   "start": "2030-08-28 06:00:00",
+   "source_HE_start": "08/28/2025 08:00",
+   "duration_h": 9.0,
+   "energy_MWh": 1342.144952,
+   "peak_MW": 194.382485
+  }
+ ],
+ "storage": {
+  "units": 43,
+  "carriers": {
+   "battery": 43
+  },
+  "roundtrip_loss_share_range": [
+   0.15359999999999996,
+   0.15359999999999996
+  ],
+  "standing_loss_max": 0.0,
+  "cyclic_in_source": 43,
+  "marginal_cost_input_by_carrier": {
+   "CCGT": {
+    "min": 23.33,
+    "max": 50.635,
+    "mean": 28.557
+   },
+   "OCGT": {
+    "min": 29.693,
+    "max": 61.811,
+    "mean": 44.154
+   },
+   "biomass": {
+    "min": 62.091,
+    "max": 62.091,
+    "mean": 62.091
+   },
+   "coal": {
+    "min": 23.056,
+    "max": 23.056,
+    "mean": 23.056
+   },
+   "gas_steam": {
+    "min": 35.315,
+    "max": 80.09,
+    "mean": 41.593
+   },
+   "hydro": {
+    "min": 0.0,
+    "max": 0.0,
+    "mean": 0.0
+   },
+   "nuclear": {
+    "min": 12.064,
+    "max": 12.064,
+    "mean": 12.064
+   },
+   "onwind": {
+    "min": 0.0,
+    "max": 0.0,
+    "mean": 0.0
+   },
+   "solar": {
+    "min": 0.0,
+    "max": 0.0,
+    "mean": 0.0
+   }
+  },
+  "missing_outputs": [
+   "per-unit p_store / p_dispatch time series",
+   "bus marginal prices / duals",
+   "per-unit curtailment"
+  ]
+ }
+}

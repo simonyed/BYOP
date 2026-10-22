@@ -43,7 +43,10 @@ def test_runner_has_no_expansion_or_relaxation():
 def test_solves_within_budget_and_all_optimal():
     q = QA()
     assert q['diagnostic_solves'] <= q['solve_budget'] == 6
-    assert q['all_optimal'] is True and q['no_build_variables'] is True
+    assert q['solver_termination_pass'] is True and q['data_integrity_pass'] is True, q['acceptance']['problems']
+    assert q['no_build_variables'] is True and 'physical_interpretation_limits' in q   # termination / integrity / physics kept apart
+    man = pd.read_csv(OUT / 'C1_CASE_MANIFEST.csv')
+    assert (man.termination == 'optimal').all() and (man.status == 'ok').all()
     log = pd.read_csv(OUT / 'C1_SOLVE_LOG.csv')
     ok = log[(log.counted_as == 'diagnostic') & (log.status == 'ok')]
     assert not ok.duplicated(['case', 'kind']).any()                                 # no silent re-run of a solved case
@@ -85,3 +88,43 @@ def test_missing_inputs_declared_and_history_unchanged():
     assert any('1 h wind / solar' in m for m in q['missing_inputs'])
     assert q['historical_or_future_inputs_changed_since_d2cf7d1c'] == []
     assert all(q['formal_gates_NOT_APPROVED'].values())
+
+
+# ------------------------------------------------------------------------------------------------ acceptance counterexamples
+@pytest.fixture(scope='module')
+def C():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('c1_collect_t', BY / 'post/c1_collect.py')
+    m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
+    return m
+
+
+def _frames(drop=None, termination='optimal', empty_fuel=False, fake_event=False):
+    keys = [('C1_NETWORK_BASE', 'ANNUAL_3H'), ('C1_NETWORK_BASE', 'PEAK_WINDOW_1H'), ('C1_NETWORK_CALIBRATED', 'ANNUAL_3H'), ('C1_NETWORK_CALIBRATED', 'PEAK_WINDOW_1H')]
+    keys = [k for k in keys if k != drop]
+    man = pd.DataFrame([dict(case=c, kind=k, status='ok', termination=termination) for c, k in keys])
+    met = pd.DataFrame([dict(case=c, kind=k, shed_MWh=0.0, binding_lines=1) for c, k in keys])
+    ev = pd.DataFrame([dict(case=keys[0][0], kind=keys[0][1], energy_MWh=50.0)]) if fake_event else pd.DataFrame(columns=['case', 'kind', 'energy_MWh'])
+    bl = pd.DataFrame([dict(case=c, kind=k, line='L1', binding_hours=3.0) for c, k in keys])
+    fuel = pd.DataFrame(columns=['case', 'kind', 'model_GWh']) if empty_fuel else pd.DataFrame([dict(case=c, kind=k, model_GWh=1.0) for c, k in keys])
+    cmp_ = pd.DataFrame([dict(kind=k, line='L1', **{f'{m}_{c}': 1.0 for c in ('C1_NETWORK_BASE', 'C1_NETWORK_CALIBRATED') for m in ('binding_hours', 's_nom_MVA', 'max_loading')})
+                         for k in ('ANNUAL_3H', 'PEAK_WINDOW_1H')])
+    return man, met, ev, bl, None, cmp_, fuel
+
+
+def test_validate_accepts_complete_optimal(C):
+    r = C.validate(*_frames())
+    assert r['solver_termination_pass'] and r['data_integrity_pass'], r['problems']
+
+
+@pytest.mark.parametrize('kw, field', [(dict(termination='suboptimal'), 'solver_termination_pass'),
+                                       (dict(drop=('C1_NETWORK_CALIBRATED', 'PEAK_WINDOW_1H')), 'data_integrity_pass'),
+                                       (dict(empty_fuel=True), 'data_integrity_pass'),
+                                       (dict(fake_event=True), 'data_integrity_pass')])
+def test_validate_rejects_counterexamples(C, kw, field):
+    assert C.validate(*_frames(**kw))[field] is False
+    assert not C.is_optimal('ok', 'suboptimal') and C.is_optimal('ok', 'optimal') and not C.is_optimal('warning', 'optimal')
+
+
+def test_validate_rejects_missing_case_for_termination(C):
+    assert C.validate(*_frames(drop=('C1_NETWORK_BASE', 'ANNUAL_3H')))['solver_termination_pass'] is False

@@ -21,7 +21,58 @@ import byop_paths as BP  # noqa: E402
 OUT = BP.C1_RESULTS
 OFFICIAL_MAP = {'CCGT': 'Gas-CC', 'OCGT': 'Gas', 'gas_steam': 'Gas', 'coal': 'Coal', 'nuclear': 'Nuclear', 'onwind': 'Wind', 'solar': 'Solar',
                 'hydro': 'Hydro', 'biomass': 'Biomass', 'load_shed': '(diagnostic shed)'}
+KL = {'annual': 'ANNUAL_3H', 'window': 'PEAK_WINDOW_1H'}             # runner labels -> the one result vocabulary
+EXPECTED_KEYS = {(c, k) for c in ('C1_NETWORK_BASE', 'C1_NETWORK_CALIBRATED') for k in ('ANNUAL_3H', 'PEAK_WINDOW_1H')}
 sha = lambda p: hashlib.sha256(Path(p).read_bytes()).hexdigest()
+
+
+def is_optimal(status, termination):
+    """exact: 'suboptimal' must not pass (a substring test on 'optimal' would accept it)"""
+    return str(status) == 'ok' and str(termination) == 'optimal'
+
+
+def validate(man, met, ev, bl, gen, cmp_, fuel, tol_MWh=0.5):
+    """layered acceptance (pure function, unit-tested with counterexamples):
+    solver_termination  every final case ok + exactly optimal
+    data_integrity      manifest / metrics keys == the 4 expected keys (no missing, duplicate or extra); fuel and line
+                        comparison tables non-empty for every key; events / binding tables consistent with the metrics
+                        (a case may have no event only if its metric says zero)"""
+    out, prob = {}, []
+    keys = lambda df: [tuple(x) for x in df[['case', 'kind']].values] if len(df) else []
+    for nm, df in (('manifest', man), ('metrics', met)):
+        k = keys(df)
+        if set(k) != EXPECTED_KEYS or len(k) != len(set(k)):
+            prob.append(f'{nm} keys {sorted(k)} != expected 4 keys')
+    out['solver_termination_pass'] = bool(len(man) == 4 and all(is_optimal(s_, t_) for s_, t_ in zip(man.status, man.termination)) and not
+                                          [p for p in prob if p.startswith('manifest')])
+    for nm, df in (('fuel', fuel), ('line_comparison', cmp_)):
+        if not len(df):
+            prob.append(f'{nm} empty')
+    if len(fuel) and set(keys(fuel)) != EXPECTED_KEYS:
+        prob.append(f'fuel keys {sorted(set(keys(fuel)))}')
+    if len(fuel) and fuel.model_GWh.isna().any():
+        prob.append('fuel model_GWh missing')
+    if len(cmp_):
+        for c_ in ('C1_NETWORK_BASE', 'C1_NETWORK_CALIBRATED'):
+            for col in (f'binding_hours_{c_}', f's_nom_MVA_{c_}', f'max_loading_{c_}'):
+                if col not in cmp_ or cmp_[col].isna().any():
+                    prob.append(f'line comparison {col} missing / NaN')
+        if set(cmp_.kind) != {'ANNUAL_3H', 'PEAK_WINDOW_1H'}:
+            prob.append(f'line comparison kinds {sorted(set(cmp_.kind))}')
+    if len(met):
+        for r in met.itertuples():
+            e = ev[(ev.case == r.case) & (ev.kind == r.kind)] if len(ev) else ev
+            esum = float(e.energy_MWh.sum()) if len(e) else 0.0
+            if abs(esum - r.shed_MWh) > max(tol_MWh, 1e-6 * r.shed_MWh):
+                prob.append(f'events {r.case} {r.kind}: {esum} vs metric {r.shed_MWh}')
+            b = bl[(bl.case == r.case) & (bl.kind == r.kind)] if len(bl) else bl
+            if not len(b):
+                prob.append(f'lines table missing {r.case} {r.kind}')
+            elif int((b.binding_hours > 0).sum()) != int(r.binding_lines):
+                prob.append(f'binding lines {r.case} {r.kind}: {int((b.binding_hours > 0).sum())} vs metric {r.binding_lines}')
+    out['data_integrity_pass'] = not prob
+    out['problems'] = prob
+    return out
 
 
 def collect(c):
@@ -31,8 +82,11 @@ def collect(c):
     log = pd.read_csv(OUT / 'C1_SOLVE_LOG.csv')
     for d in dirs:
         m = json.loads((d / 'metrics.json').read_text())
-        lg = log[(log.case == m['case']) & (log.kind == ('annual' if 'ANNUAL' in d.name else 'window'))]
-        MAN.append(dict(case=m['case'], kind=d.name.split('__')[1], network=m['network']['network'], network_sha256=m['network']['network_sha256'],
+        raw_kind = m['kind']
+        m['kind'] = KL.get(raw_kind, raw_kind)
+        assert m['kind'] == d.name.split('__')[1], (d.name, m['kind'])
+        lg = log[(log.case == m['case']) & (log.kind == raw_kind)]
+        MAN.append(dict(case=m['case'], kind=m['kind'], network=m['network']['network'], network_sha256=m['network']['network_sha256'],
                         config_sha256=m['config_sha256'], script_sha256=m['script_sha256'], status=m['status'], termination=m['termination'],
                         seconds=m['seconds'], threads=m['threads'], n_vars=m['n_vars'], n_cons=m['n_cons'],
                         diagnostic_solves=int((lg.counted_as == 'diagnostic').sum()), retries=int((lg.counted_as == 'retry').sum()),
@@ -45,7 +99,10 @@ def collect(c):
         for nm, L in (('shedding_events.csv', EV), ('lines.csv', BL), ('generation_by_carrier.csv', GEN)):
             f = d / nm
             if f.exists() and f.stat().st_size > 2:
-                L.append(pd.read_csv(f))
+                x = pd.read_csv(f)
+                if len(x):
+                    x['kind'] = x['kind'].replace(KL)
+                    L.append(x)
     att = []
     for d in earlier:                                       # superseded attempts: kept, listed, never used in the comparison
         m = json.loads((d / 'metrics.json').read_text())
@@ -54,11 +111,6 @@ def collect(c):
                         solver_options=json.dumps(m.get('solver_options', {})), note='superseded attempt (not optimal or upstream boundary changed)'))
     man, met = pd.DataFrame(MAN), pd.DataFrame(M)
     pd.DataFrame(att).to_csv(OUT / 'C1_SUPERSEDED_ATTEMPTS.csv', index=False, lineterminator=chr(10), float_format='%.6f')
-    KL = {'annual': 'ANNUAL_3H', 'window': 'PEAK_WINDOW_1H'}         # runner labels -> case-folder labels (one vocabulary)
-    for L in (EV, BL, GEN):
-        for df in L:
-            df['kind'] = df['kind'].replace(KL)
-    M = [dict(m, kind=KL.get(m['kind'], m['kind'])) for m in M]
     ev = pd.concat(EV, ignore_index=True) if EV else pd.DataFrame(columns=['case', 'kind', 'bus', 'start', 'end', 'duration_h', 'energy_MWh', 'peak_MW'])
     bl = pd.concat(BL, ignore_index=True)
     gen = pd.concat(GEN, ignore_index=True)
@@ -82,7 +134,13 @@ def collect(c):
     ch = subprocess.run(['git', '-C', str(WF.parent), 'diff', '--name-only', 'd2cf7d1c', 'HEAD', '--', 'workflow/byop/inputs/dc', 'workflow/byop/inputs/poi',
                          'workflow/byop/inputs/grid', 'workflow/byop/inputs/tech', 'workflow/results/BYOP/baseline_2025_tamu'], capture_output=True, text=True).stdout.split()
     qa = dict(stage='C1 fixed-asset diagnostics (prompt v1.4)', cases=man[['case', 'kind', 'status', 'termination']].to_dict('records'),
-              all_optimal=bool((man.status == 'ok').all() and man.termination.str.contains('optimal').all()),
+              acceptance=validate(man, met, ev, bl, gen, cmp_, g),
+              physical_interpretation_limits=[
+                  'static year-end fleet, not a 2025 historical replay (no in-year commissioning / outage dates)',
+                  'peak window = hourly load + renewables held at their 3 h value (not a full 1 h stress test); max-net-load window MISSING_INPUT',
+                  'cause of CALIBRATED annual shed vs the 102.2 MWh calibration residual not isolated (see report)',
+                  'large simultaneous storage charge / discharge in the LP solution: degeneracy / energy-sink mechanism not isolated',
+                  'dispatch diagnostic only: no firm-right, POI, N-1 or probabilistic adequacy statement'],
               diagnostic_solves=int((log.counted_as == 'diagnostic').sum()), retries=int((log.counted_as == 'retry').sum()),
               solve_budget=int(c['max_diagnostic_solves']), no_build_variables=bool((man.build_variables == 'none').all()),
               balance_residual_max_abs_MW=float(met.balance_residual_max_abs_MW.max()),
@@ -94,6 +152,8 @@ def collect(c):
                               'hydro inflow profile (hydro p_max_pu = 1 static)'],
               formal_gates_NOT_APPROVED=gates, historical_or_future_inputs_changed_since_d2cf7d1c=ch,
               outputs={p.name: sha(p) for p in sorted(OUT.glob('C1_*.csv'))})
+    qa['solver_termination_pass'] = qa['acceptance']['solver_termination_pass']
+    qa['data_integrity_pass'] = qa['acceptance']['data_integrity_pass']
     qa['shed_by_case'] = {f'{r.case}|{r.kind}': dict(shed_MWh=r.shed_MWh, shed_max_MW=r.shed_max_MW, shed_hours=r.shed_hours, shed_buses=r.shed_buses,
                                                         longest_shed_event_h=r.longest_shed_event_h) for r in met.itertuples()}
     (OUT / 'C1_QA.json').write_text(json.dumps(qa, indent=1, default=str))
