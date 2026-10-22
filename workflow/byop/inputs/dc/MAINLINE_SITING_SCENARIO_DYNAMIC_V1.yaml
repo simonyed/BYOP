@@ -1,0 +1,83 @@
+# AIDC geospatial distribution v1 (work package 2026-10-22, §3): versioned parameters of the dynamic research-AIDC siting.
+# Read only by byop/build/build_dynamic_siting_inputs.py; every derived CSV is rebuilt from this file (no hand-edited rows).
+# Researcher-confirmed method choices (§3) - change them here, never in the code.
+variant: dynamic_pnnl_v1
+as_of: '2026-10-21'                      # Epoch timeline cut-off used by the verified / forecast ledger (same as build_mainline_inputs AS_OF)
+scenarios: [low, mid, high]
+years: [2026, 2027, 2028, 2029, 2030, 2031, 2032, 2033, 2034, 2035]
+model_years: [2026, 2027, 2028, 2029, 2030, 2031]   # mainline LP horizon (expected matched-service keys = buses x model_years)
+
+# §3.3 yearly mixing weights (alpha Epoch, beta PNNL Atlas, gamma PNNL projected); each source is normalised first
+mix_weights:
+  - {from: 2026, to: 2026, epoch: 1.00, atlas: 0.00, projected: 0.00}
+  - {from: 2027, to: 2028, epoch: 0.70, atlas: 0.15, projected: 0.15}
+  - {from: 2029, to: 2031, epoch: 0.45, atlas: 0.20, projected: 0.35}
+  - {from: 2032, to: 2035, epoch: 0.30, atlas: 0.20, projected: 0.50}
+
+# §3.3 P_b = 0.25 * P(g0) + 0.75 * P(g50), each normalised inside ERCOT first (researcher scenario parameter, not a probability)
+projected:
+  growth_scenario: higher
+  gravity_mix: {0: 0.25, 50: 0.75}
+  comparison_variants: [g0_only, g50_only, g5_equal]   # input-side comparison only (no formal scenario)
+
+# §3.3 / §3.5 Atlas share = independent-site count share (not sqft)
+atlas:
+  count_basis: noncrypto_clusters        # site_cluster after explicit + suspect same-campus merge; raw / explicit-only exported for comparison
+  exclude_crypto_flag: CRYPTO_CHECKED_EXCLUDED
+
+# §3.4 candidate eligibility: q_b = (E_decade + A + P) / 3 on mid 2026-2035; keep non-Epoch buses with q_b x total >= threshold
+eligibility:
+  reference_scenario: mid
+  threshold_IT_MW: 36.0                  # comparable to the typical PNNL facility size; a selection threshold, not a POI or unit size
+  keep_all_epoch_buses: true
+
+# §3.2 verified / forecast ledger: an Epoch 2026+ increment is LOCKED_VERIFIED only with a reviewed, traceable observation
+# (timeline row dated <= as_of, no estimate wording, status text reporting the capacity as operational with a cited source or
+# satellite observation). Each decision below was reviewed by hand against EPOCH_TX_TIMELINE_EVIDENCE.csv (2026-10-22).
+# Everything not listed is FORECAST_REALLOCATABLE. 2026 research growth keeps the original Epoch layout regardless (§3.2).
+locked_verified:
+  - site: CoreWeave Denton TX
+    epoch_year: 2026
+    IT_MW: 195.0                         # 67 -> 262 MW IT
+    evidence: 'Epoch 2026-07-03 (observed): Buildings 1-7 operational, satellite + Core Scientific Q2 2026 earnings call'
+  - site: Coreweave Helios
+    epoch_year: 2026
+    IT_MW: 132.0                         # 0 -> 132 MW IT
+    evidence: 'Epoch 2026-08-30 (observed): Building 1 operational at full capacity (Phase I, Galaxy Q3 2025 results)'
+  - site: Microsoft SAT14
+    epoch_year: 2026
+    IT_MW: 28.0                          # 19 -> 47 MW IT
+    evidence: 'Epoch 2026-03-31 (observed): Building 2 fully operational, construction visibly complete, TDLR phase filings'
+  - site: Vantage TX1
+    epoch_year: 2026
+    IT_MW: 32.0                          # 0 -> 32 MW IT
+    evidence: 'Epoch 2026-02-15 (observed): Building 1 operational, cooling / generator construction finished (satellite)'
+forecast_review_notes:                   # reviewed and NOT locked (kept as forecast; researcher may move them to locked_verified)
+  - {site: OpenAI Stargate Abilene, epoch_year: 2026, IT_MW: 632.0, note: '211 -> 843 MW IT; 2026-07-28 observed row (421 MW): Buildings 5-8 structurally complete, not yet confirmed operational; 843 MW on 2026-11-01 is an estimate'}
+  - {site: Google Midlothian, epoch_year: 2026, IT_MW: 103.0, note: '69 MW observed 2026-04-19 as "probably mostly operational"; 103 MW is an estimate'}
+  - {site: Google Red Oak, epoch_year: 2026, IT_MW: 77.0, note: 'Building 2 operation 2026-12-01 is an estimate'}
+  - {site: Meta Temple, epoch_year: 2026, IT_MW: 26.0, note: 'Building 3 operation 2026-09-30 is an estimate from a TDLR completion date'}
+  - {site: Crusoe Abilene Expansion, epoch_year: 2027, IT_MW: 672.0, note: 'TDLR build-out completion dates only; not observed'}
+  - {site: OpenAI Stargate Shackelford, epoch_year: 2027, IT_MW: 420.0, note: 'under construction (shells complete 2026-09-04); operation dates are estimates (TDLR + 6 months)'}
+  - {site: OpenAI Stargate Shackelford, epoch_year: 2028, IT_MW: 980.0, note: 'estimates (TDLR + 6 months)'}
+  - {site: Coreweave Helios, epoch_year: 2028, IT_MW: 264.0, note: 'Phase II investor guidance only'}
+  - {site: Coreweave Helios, epoch_year: 2029, IT_MW: 132.0, note: 'Phase III investor guidance only'}
+  - {site: CoreWeave Denton TX, epoch_year: 2027, IT_MW: 20.0, note: 'Building 8 fit-out TDLR completion date only'}
+  - {site: Vantage TX1, epoch_year: 2027, IT_MW: 96.0, note: 'Building 2 TDLR construction completion estimate'}
+
+# §5.2 new-bus POI / gas / RE proxies (v1.3 uniform rules, every field flagged PROXY_PNNL_NEW_SITE)
+new_bus_poi:
+  E0_total_MW: 0.0
+  poi_upgrade_max_MW: 2000.0
+  poi_upgrade_lead_y: {low: 2.0, base: 3.0, high: 5.0}
+  poi_upgrade_cost_USD_kW: {low: 80.0, base: 160.0, high: 300.0}
+  earliest_grid_COD: {low: 2027.5, base: 2028.0, high: 2029.0}
+  pclr_share_of_2031_facility_MW: 0.3
+  gas_evidence_level: L2
+  gas_lateral_lead_y: {low: 3.0, base: 3.0, high: 3.0}
+  gas_lateral_cost_USD_kW: {low: 100.0, base: 100.0, high: 100.0}
+  onsite_renewable_share_of_2031_facility_MW: 1.0
+  confidence: D
+
+# precision / reconciliation (§4.1)
+reconciliation_tol_MW: 1.0e-4

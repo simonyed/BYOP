@@ -16,15 +16,16 @@
 # DRY=1 prints the assembled commands and runs nothing (no-solver command-assembly test).
 set -u
 W=/datasets/prgm/BYOP_impact/pypsa-usa/workflow
-CFG=config/config.byop_ercot_mainline.yaml
+CFG=${CFG:-config/config.byop_ercot_mainline.yaml}   # AIDC geospatial v1: CFG=config/config.byop_ercot_mainline_geo_dynamic_v1.yaml
 OUT=$W/results/BYOP/mainline
 if [ -z "${DRY:-}" ]; then
   source /datasets/cds/env.sh; source /datasets/prgm/pypsa-usa/.venv/bin/activate
   cd $W; mkdir -p $OUT
 fi
-CASE=MAINLINE_V13_GREAL_MID
+CASE=$(awk '/^  case_id:/{print $2; exit}' "$CFG")    # case-id from the config (legacy: MAINLINE_V13_GREAL_MID)
+CALCASE=${CALCASE:-MAINLINE_V13_GREAL_MID}            # B1 common-baseline calibration (S0 has no research AIDC; shared by siting variants)
 COMMON="--mainline --config $CFG --start 2026 --end 2031 --sample-weeks 26 --threads ${THREADS:-6}"
-CAL="--erm-cal $OUT/${CASE}_ERMCAL/erm02_calibration.json --s0-cal-file $OUT/${CASE}_S0CAL/S0_CALIBRATION.csv"
+CAL="--erm-cal $OUT/${CALCASE}_ERMCAL/erm02_calibration.json --s0-cal-file $OUT/${CALCASE}_S0CAL/S0_CALIBRATION.csv"
 run() {   # name, args...
   local name=$1; shift
   if [ -n "${DRY:-}" ]; then
@@ -46,15 +47,16 @@ run() {   # name, args...
 }
 case "${1:-}" in
   tests)       python -m pytest -q byop/tests/test_mainline_v13.py 2>&1 | tee $OUT/static_tests.log ;;
+  tests_geo)   python -m pytest -q byop/tests/test_dynamic_siting.py 2>&1 | tee $OUT/static_tests_geo_dynamic_v1.log ;;
   struct)      python -W ignore byop/tests/structural_mainline_v13.py --out $OUT/_structural 2>&1 | tee $OUT/structural_tests.log ;;
-  gate)        python -c "import sys; sys.path.insert(0,'byop/model'); import rearch_mech as R, json; print(json.dumps(R.mainline_gate('$CFG'), indent=1))" ;;
-  step0)       run ${CASE}_ERMCAL --calibrate &&
-               run ${CASE}_S0CAL --erm-cal $OUT/${CASE}_ERMCAL/erm02_calibration.json --s0-calibrate --scenarios S0 ;;
+  gate)        python -c "import sys; sys.path.insert(0,'byop/model'); import rearch_mech as R, json; s = R.ml_select_siting('$CFG'); print(json.dumps(dict(siting=s, **R.mainline_gate('$CFG')), indent=1))" ;;
+  step0)       run ${CALCASE}_ERMCAL --calibrate &&
+               run ${CALCASE}_S0CAL --erm-cal $OUT/${CALCASE}_ERMCAL/erm02_calibration.json --s0-calibrate --scenarios S0 ;;
   pilot_s01)   run ${CASE}_PILOT_S01 $CAL --scenarios S0 S1_EARLIEST ;;
   pilot_s01_fix) run ${CASE}_PILOT_S01_F1F2_V1 $CAL --scenarios S0 S1_EARLIEST ;;
   pilot_core)  run ${CASE}_PILOT_CORE $CAL ;;
   pilot_core_b3e) run ${CASE}_B3_EXPLORATORY_V1 $CAL --scenarios S0 S1_EARLIEST S3 S2 S3_mS2 ;;
   attribution) run ${CASE}_ATTRIBUTION $CAL --scenarios S0 S1_EARLIEST --attribution ;;
   run)         run $CASE $CAL --attribution ;;
-  *)           echo "usage: $0 tests|struct|gate|step0|pilot_s01|pilot_s01_fix|pilot_core|pilot_core_b3e|attribution|run"; exit 1 ;;
+  *)           echo "usage: $0 tests|tests_geo|struct|gate|step0|pilot_s01|pilot_s01_fix|pilot_core|pilot_core_b3e|attribution|run"; exit 1 ;;
 esac

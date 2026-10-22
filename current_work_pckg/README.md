@@ -30,3 +30,10 @@ Project-level documents that span work packages are in `workflow/byop/docs/`.
 | File | Content | Status |
 |---|---|---|
 | `BYOP_ERCOT_AIDC_Geospatial_Distribution_Implementation_Work_Package_v1.0_2026-10-22.md` | Original work package | Provided by the researcher |
+| `AIDC_GEO_DYNAMIC_V1_IMPLEMENTATION_REPORT.md` | Implementation report: what was done, ledger, results, POI risks, tests, C0–C5 dependencies | Done |
+| `AIDC_GEO_DYNAMIC_V1_DATA_PROVENANCE_AND_FILTERS.md` | PNNL sources and licenses, mapping rules, deduplication, crypto-mining exclusion, basis comparisons | Done |
+| `AIDC_GEO_DYNAMIC_V1_LEGACY_VS_DYNAMIC_AUDIT.md` | Legacy 8-bus vs dynamic 16-bus, by bus and year (input side) | Done |
+| `AIDC_GEO_DYNAMIC_V1_POI_GAS_RISK_REGISTER.csv` | POI / gas / RE risks per research bus (§5.3) | Done |
+| `AIDC_GEO_DYNAMIC_V1_QA_RESULTS.csv` | GEO-01 to GEO-14 | All PASS |
+| `AIDC_GEO_DYNAMIC_V1_PRE_RUN_MANIFEST.json` | Pending manifest of the dynamic geography | `NOT_APPROVED`, `SOLVER_EXECUTIONS=0` |
+| `AIDC_GEO_DYNAMIC_V1_RETURN_MANIFEST.md` | GitHub SHA, file list, return in the fixed format | Done |

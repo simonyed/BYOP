@@ -2,7 +2,7 @@
 """Stage B3-E mechanism tables from the solved pilot_core_b3e case (pure post-processing, no solver):
     python byop/post/stage_b3_tables.py results/BYOP/mainline/MAINLINE_V13_GREAL_MID_B3_EXPLORATORY_V1
 
-STAGE_B3_M1_SPEED_DELIVERY_BY_SITE_YEAR.csv     8 x 6 keys x {S1_EARLIEST, S2_final, S3, S3_mS2}: request / service / delay,
+STAGE_B3_M1_SPEED_DELIVERY_BY_SITE_YEAR.csv     research buses x model years x {S1_EARLIEST, S2_final, S3, S3_mS2}: request / service / delay,
                                                 S2_final - S1 acceleration, S2 mode label, BYOP MW, 2026 ERM method flag
 STAGE_B3_M2_PUBLIC_EXPANSION_BY_CARRIER_YEAR.csv public new capacity in operation / added per scenario x carrier x zone x year
                                                 and the deltas S1-S0, S2_final-S1, S3_mS2-S2_final (B1 S0CAL excluded)
@@ -26,7 +26,20 @@ CM = importlib.util.module_from_spec(spec); spec.loader.exec_module(CM)
 FORMAL = ['S0', 'S1_EARLIEST', 'S3', 'S2_final', 'S3_mS2']
 NAMES = {'p600 0': 'Helios', 'p610 2': 'Abilene', 'p630 2': 'Red Oak', 'p630 4': 'Shackelford', 'p630 5': 'Temple',
          'p630 6': 'Midlothian', 'p630 9': 'Denton', 'p650 0': 'TX1/SAT14'}
+BUS_MAP = HERE.parent / 'inputs/dc/MAINLINE_NEW_RESEARCH_BUS_POI_MAP_GEO_DYNAMIC_V1.csv'
 sha = lambda p: hashlib.sha256(Path(p).read_bytes()).hexdigest() if Path(p).exists() else 'MISSING'
+
+
+def bus_names(man):
+    """display names: legacy Epoch names, then the AIDC geospatial bus map (PNNL candidate buses are labelled as candidate
+    research buses, never as a built campus), then the case SITES name; never NaN"""
+    nm = dict(NAMES)
+    if BUS_MAP.exists():
+        for r in pd.read_csv(BUS_MAP).itertuples():
+            nm.setdefault(r.bus, r.display_name)
+    for b, s in ((man or {}).get('sites') or {}).items():
+        nm.setdefault(b, s.get('name') or b)
+    return nm
 
 
 def rd(C, nm):
@@ -55,7 +68,8 @@ def main():
         x.insert(0, 'scenario', sc)
         m1.append(x)
     m1 = pd.concat(m1, ignore_index=True)
-    m1['name'] = m1.site.map(NAMES)
+    nmap = bus_names(man)
+    m1['name'] = m1.site.map(lambda b: nmap.get(b, b))
     m1['delay_IT_MW'] = m1.requested_IT_MW - m1.served_IT_MW
     s1 = m1[m1.scenario == 'S1_EARLIEST'].set_index(['site', 'year']).served_IT_MW
     m1['served_minus_S1_IT_MW'] = m1.served_IT_MW - m1.set_index(['site', 'year']).index.map(s1).values

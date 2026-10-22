@@ -1,0 +1,44 @@
+# BYOP ERCOT Mainline v1.3 + AIDC geospatial distribution v1 (work package 2026-10-22): dynamic Epoch + PNNL research-bus siting.
+# Same model, network, techs, ERM, VOLL, S0CAL as config.byop_ercot_mainline.yaml; only the research cohorts and the aggregated POI table differ.
+# Read by byop/model/rearch_mech.py --mainline --config config/config.byop_ercot_mainline.yaml and byop/run/run_mainline.sh.
+# The gate refuses EVERY optimizer call (S0-S3, calibrations, smoke / single-site LPs) unless
+#   run_authorization == APPROVED, approved_git_sha is HEAD or an ancestor with no model / input / build / run change
+#   since, and all code / input SHA-256 equal the pre-run manifest below.
+# Only the researcher sets run_authorization: APPROVED and approved_git_sha (Stage A ends with NOT_APPROVED).
+mainline:
+  run_authorization: NOT_APPROVED
+  approved_git_sha: null
+  approved_by: null   # never approved; any solve of this geography needs a new researcher SHA approval
+  manifest: current_work_pckg/AIDC_GEO_DYNAMIC_V1_PRE_RUN_MANIFEST.json
+  stage: AIDC_GEO_DYNAMIC_V1_IMPLEMENTED_NO_SOLVER   # documentation label only (no behaviour)
+  siting_variant: dynamic_pnnl_v1  # byop/build/build_dynamic_siting_inputs.py + inputs/dc/MAINLINE_SITING_SCENARIO_DYNAMIC_V1.yaml
+  # E3 the only formal run (Stage B)
+  case_id: MAINLINE_V13_GEO_DYNAMIC_V1_MID
+  setting: G-REAL
+  demand_scenario: mid
+  start: 2026
+  end: 2031
+  sample_weeks: 26                # weeks 0 and 26 of the 2025 weather / load year, 3 h snapshots
+  stress_days: 3                  # B7: low West wind + high load, max net load, winter peak (added to every period)
+  stress_line_derate: 1.0         # B7 optional interface derate at stress snapshots (PROXY lever, 1.0 = off)
+  poi_case: base                  # GREAL_POI_ASSUMPTIONS low / base / high columns
+  gas_case: base
+  byop_techs: [RICE, SOFC_NG, OCGT_aero, WIND, PV, BESS]   # D2 / D15; SOFC fast slots = 0 (D14), R pool empty (D14)
+  scenarios: [S0, S1_EARLIEST, S3, S2, S3_mS2]             # S3_mS2 = S3 at the S2 service trajectory (M4 matched service, mandatory)
+  attribution: true               # B8 single-factor relaxations on S1_EARLIEST: xPOI xUP xRA xPROC xALL
+  tariff: energy
+  threads: 6
+  step0:                          # Stage B step 0 (solver, gated): re-derive the common baselines with the G-REAL background
+    erm_calibration: true         #   ERM-02 B on the existing + committed fleet incl. the inherited ramp
+    s0_min_uplift_calibration: true
+inputs:
+  research_cohorts: byop/inputs/dc/MAINLINE_RESEARCH_COHORTS_TAMU64_GEO_DYNAMIC_V1.csv
+  inherited_ramp: byop/inputs/dc/MAINLINE_INHERITED_RAMP_2025.csv
+  reconciliation: byop/inputs/dc/MAINLINE_AIDC_RECONCILIATION_GEO_DYNAMIC_V1.csv
+  poi: byop/inputs/poi/GREAL_POI_ASSUMPTIONS_GEO_DYNAMIC_V1.csv
+  poi_equipment: byop/inputs/poi/GREAL_POI_E0_SCHEDULE.csv
+  reuse_pool: byop/inputs/poi/GREAL_R_ASSET_POOL.csv
+  renewable_potential: byop/inputs/grid/ERCOT_WIND_SOLAR_POTENTIAL.csv
+  tech: byop/inputs/tech/MAINLINE_V13_TECH_DEFAULTS.csv
+  gas: byop/inputs/tech/MAINLINE_V13_GAS_PRICES_2026_2031.csv
+  baseline: results/BYOP/baseline_2025_tamu/baseline_2025_tamu_prepared.nc

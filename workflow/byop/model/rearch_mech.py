@@ -71,7 +71,8 @@ SITES: dict = {}
 STATE = M.STATE
 
 # ------------------------------------------------------------------------------------------------ Mainline v1.3
-# --mainline: 8 Epoch TAMU buses as research AIDC (one aggregated POI per bus, D12), D11 inherited ramp as background,
+# --mainline: research AIDC buses (legacy: the 8 Epoch TAMU buses; AIDC geospatial v1: configurable via
+# mainline.siting_variant) with one aggregated POI per bus (D12), D11 inherited ramp as background,
 # G-REAL (no competing queue, no regional_dc), v1.3 techs and yearly gas, approval-cohort COD (D1), stress snapshots in
 # the firm LP (B7), one joint developer LP (D13), run gate (E1). Default off: v1.0 behaviour unchanged.
 ML = dict(on=False, stress_days=3, stress_line_derate=1.0, gate=None)
@@ -95,12 +96,42 @@ MAINLINE_GUROBI_LP_OPTIONS = dict(Method=2, Crossover=0, BarConvTol=1e-5, Feasib
 ML_VOLL = dict(F2_mainline_VOLL_USD_MWh=35685.0, VOLL_source='Brattle 2024, Value of Lost Load Study for the ERCOT Region, Table 17',
                VOLL_source_year=2024, VOLL_duration_basis='1h ERCOT-wide outage; planning proxy for 3-h snapshots')
 ML_INPUTS = [ML_POI, ML_E0, ML_RPOOL, ML_COH, ML_RAMP, ML_POT, ML_TECH, ML_GASP]
+# AIDC geospatial v1 (2026-10-22): research-bus siting variants. epoch8_legacy = the frozen B3 inputs (default when the
+# config names no variant); dynamic_pnnl_v1 = Epoch + PNNL dynamic weights (byop/build/build_dynamic_siting_inputs.py).
+# Only the research cohorts and the aggregated POI table change; E0, D11 ramp, network, techs, ERM, VOLL are shared.
+SITING_VARIANTS = {
+    'epoch8_legacy': dict(research_cohorts='byop/inputs/dc/MAINLINE_RESEARCH_COHORTS_TAMU64.csv', poi='byop/inputs/poi/GREAL_POI_ASSUMPTIONS.csv'),
+    'dynamic_pnnl_v1': dict(research_cohorts='byop/inputs/dc/MAINLINE_RESEARCH_COHORTS_TAMU64_GEO_DYNAMIC_V1.csv',
+                            poi='byop/inputs/poi/GREAL_POI_ASSUMPTIONS_GEO_DYNAMIC_V1.csv'),
+}
+
+
+def ml_select_siting(cfg_path):
+    """set the research cohort / POI inputs of the configured siting variant BEFORE the run gate hashes the inputs;
+    a config path that disagrees with the registered variant files is refused (no silent mix of geographies)"""
+    global ML_COH, ML_POI, ML_INPUTS
+    import yaml
+    c = yaml.safe_load(Path(cfg_path).read_text(encoding='utf-8'))
+    var = str((c.get('mainline') or {}).get('siting_variant') or 'epoch8_legacy')
+    if var not in SITING_VARIANTS:
+        raise SystemExit(f'unknown mainline.siting_variant {var}; known: {sorted(SITING_VARIANTS)}')
+    reg = SITING_VARIANTS[var]
+    inp = c.get('inputs') or {}
+    for k in ('research_cohorts', 'poi'):
+        if k in inp and str(inp[k]) != reg[k]:
+            raise SystemExit(f'config inputs.{k}={inp[k]} disagrees with siting_variant {var} ({reg[k]})')
+    wf = Path(__file__).resolve().parents[2]
+    ML_COH, ML_POI = wf / reg['research_cohorts'], wf / reg['poi']
+    ML_INPUTS = [ML_POI, ML_E0, ML_RPOOL, ML_COH, ML_RAMP, ML_POT, ML_TECH, ML_GASP]
+    ML['siting'] = dict(variant=var, research_cohorts=reg['research_cohorts'], poi=reg['poi'],
+                        research_cohorts_sha256=M.sha(ML_COH), poi_sha256=M.sha(ML_POI))
+    return ML['siting']
 GAS_CARRIERS = {'CCGT', 'OCGT', 'gas_steam', 'reuse_pub', 'byop_R'} | {f'byop_{c}' for c in GAS_FIRED}
 RE_CAR = {'WIND': 'onwind', 'PV': 'solar'}
 
 
 def configure_mainline(out):
-    """WP-A: research AIDC = MAINLINE_RESEARCH_COHORTS (mid) on the 8 Epoch buses; the Epoch bus IS the parent bus
+    """WP-A: research AIDC = research cohorts (mid) of the selected siting variant (legacy: the 8 Epoch buses); the bus IS the parent bus
     (no re-siting); POI parameters from GREAL_POI_ASSUMPTIONS (case low/base/high) + E0 equipment rows"""
     n0 = pypsa.Network(str(BASE_TAMU))
     zones = sorted(b for b in n0.buses.index if n0.buses.carrier[b] == 'AC')
@@ -137,6 +168,7 @@ def configure_mainline(out):
     coh = pd.read_csv(ML_COH)
     coh = coh[coh.scenario == 'mid'].copy()
     assert set(coh.region_id) <= set(SITES), 'research cohort bus without an aggregated POI'
+    assert set(SITES) <= set(coh.region_id), 'aggregated POI without research cohort rows (every research bus needs explicit rows)'
     c2 = out / 'poi_cohorts.csv'
     coh[['cohort_id', 'scenario', 'request_year', 'st', 'region_id', 'IT_MW', 'quality']].to_csv(c2, index=False)
     s1r.COHORTS = c2
@@ -310,6 +342,11 @@ def add_byop_cohorts(n, s, site, dmax_fac, byop, byop_fixed, actor):
     per = n.snapshots.get_level_values(0)
     smask = stress_mask(n.snapshots)
     for car in byop:
+        if car in RE_CAR and STATE['re_profile'].get((site['bus'], RE_CAR[car])) is None and ML.get('siting', {}).get('variant', 'epoch8_legacy') != 'epoch8_legacy':
+            # AIDC geospatial v1: a PNNL candidate bus without a PyPSA-USA candidate profile of this carrier gets no on-site
+            # BYOP option of it (no profile is borrowed or invented); flagged for review. Legacy buses keep the hard check.
+            STATE.setdefault('byop_re_profile_missing', []).append(dict(site=s, bus=site['bus'], technology=car))
+            continue
         bp = M.byop_params(car, actor)
         lead = bp['lead']
         lat_ann = 0.0
@@ -1402,7 +1439,7 @@ def label_mode(S, firm_MWh, cond_MWh, byop_MW):
 
 
 def developer_joint(config, s1_net, v_priv, mult, reuse_on, iteration):
-    """D13 / WP-A4: ONE developer LP for all 8 Epoch buses (common private objective, every bus keeps its own power
+    """D13 / WP-A4: ONE developer LP for all research buses (common private objective, every bus keeps its own power
     balance, POI, gas MDQ, potential and COD; no on-site power moves between buses). Grid offer per bus-year = the
     jointly deliverable S1_EARLIEST firm import (+ PCLR conditional); price = S1 parent-bus LMP (+ ERM adder).
     Lexicographic speed-first: year by year (earliest first) max sum_s IT_online[s, y], fixed; then min private cost.
@@ -1659,7 +1696,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--case-id', required=True); ap.add_argument('--out', required=True)
     ap.add_argument('--setting', default='G-U', choices=['G-W', 'G-K', 'G-U', 'G-REAL'])
-    ap.add_argument('--mainline', action='store_true', help='Mainline v1.3 (8 Epoch buses, G-REAL, joint developer, run gate)')
+    ap.add_argument('--mainline', action='store_true', help='Mainline v1.3 (configurable research buses, G-REAL, joint developer, run gate)')
     ap.add_argument('--config', default='config/config.byop_ercot_mainline.yaml', help='mainline run config with the run authorization')
     ap.add_argument('--stress-days', type=int, default=3); ap.add_argument('--stress-line-derate', type=float, default=1.0)
     ap.add_argument('--case', default='base', choices=['low', 'base', 'high'], help='POI / project parameter case')
@@ -1695,6 +1732,7 @@ def main():
     a.case_group = a.case_group or a.case_id
     if a.mainline:      # E1 run gate BEFORE anything is built or solved
         ML.update(on=True, stress_days=a.stress_days, stress_line_derate=a.stress_line_derate)
+        ml_select_siting(a.config)                       # siting variant inputs fixed before the gate hashes them
         ML['gate'] = mainline_gate(a.config)
         Path(a.out).mkdir(parents=True, exist_ok=True)
         (Path(a.out) / 'RUN_GATE.json').write_text(json.dumps(ML['gate'], indent=1))
@@ -2010,7 +2048,9 @@ def main():
                sites={k: {kk: vv for kk, vv in s.items()} for k, s in SITES.items()}, erm_cal=STATE.get('erm_cal'),
                baseline=str(BASE_TAMU), baseline_sha256=M.sha(BASE_TAMU),
                inputs_sha256={p.name: M.sha(p) for p in ([POI_REG, POI_REQ, GRID_PROJ, M.TECH, BP.PUE, BP.TASK] + (ML_INPUTS if ML['on'] else []))},
-               mainline=dict(gate=ML.get('gate'), stress=STATE.get('stress_sample'), inherited_ramp=STATE.get('inherited_ramp'),
+               mainline=dict(gate=ML.get('gate'), siting=ML.get('siting'), research_buses=sorted(SITES), model_years=list(M.periods()),
+                             byop_re_profile_missing=sorted({(d_['bus'], d_['technology']) for d_ in STATE.get('byop_re_profile_missing', [])}),
+                             stress=STATE.get('stress_sample'), inherited_ramp=STATE.get('inherited_ramp'),
                              gas=STATE.get('gas_repriced'), voll=dict(ML_VOLL, SHED_COST_used=M.SHED_COST),
                              gurobi_lp_options=MAINLINE_GUROBI_LP_OPTIONS) if ML['on'] else None,
                code_sha256=code_sha_start, code_sha256_basis='hashed at process start',

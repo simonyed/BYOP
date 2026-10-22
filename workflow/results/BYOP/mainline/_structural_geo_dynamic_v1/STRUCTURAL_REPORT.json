@@ -1,0 +1,92 @@
+{
+ "siting": {
+  "variant": "dynamic_pnnl_v1",
+  "research_cohorts": "byop/inputs/dc/MAINLINE_RESEARCH_COHORTS_TAMU64_GEO_DYNAMIC_V1.csv",
+  "poi": "byop/inputs/poi/GREAL_POI_ASSUMPTIONS_GEO_DYNAMIC_V1.csv",
+  "research_cohorts_sha256": "0338df13e931081ab5f5d36a46b9eb8c23fee8c87ec7e97472b325952c3cac41",
+  "poi_sha256": "81f3abcf61726114ffc03f1e7b38df300dccf01c71e0007c81bbf75acbea114a"
+ },
+ "research_buses": [
+  "p600 0",
+  "p610 2",
+  "p630 10",
+  "p630 2",
+  "p630 3",
+  "p630 4",
+  "p630 5",
+  "p630 6",
+  "p630 8",
+  "p630 9",
+  "p640 1",
+  "p650 0",
+  "p650 7",
+  "p670 0",
+  "p670 1",
+  "p670 4"
+ ],
+ "expected_bus_year_keys": 96,
+ "byop_re_profile_missing": [
+  [
+   "p650 7",
+   "WIND"
+  ]
+ ],
+ "n_checks": 45,
+ "n_pass": 45,
+ "n_fail": 0,
+ "solver_executions": 0,
+ "solver_calls_intercepted": 3,
+ "seconds": 276.1,
+ "stress": {
+  "days": [
+   {
+    "kind": "LOW_WEST_WIND_HIGH_LOAD",
+    "day": "2030-09-15",
+    "mean_load_MW": 63239.71282116667,
+    "mean_west_wind_MW": 943.0112930961957,
+    "max_net_load_MW": 65158.20282384675
+   },
+   {
+    "kind": "MAX_NET_LOAD",
+    "day": "2030-07-31",
+    "mean_load_MW": 68550.57724258333,
+    "mean_west_wind_MW": 2856.622981024098,
+    "max_net_load_MW": 70034.39255869575
+   },
+   {
+    "kind": "WINTER_PEAK",
+    "day": "2030-02-19",
+    "mean_load_MW": 72103.14446870833,
+    "mean_west_wind_MW": 10232.768766689705,
+    "max_net_load_MW": 65298.89412259769
+   }
+  ],
+  "snapshots": 24,
+  "added_outside_sample": 24,
+  "weight_total_h": 8760.0
+ },
+ "gas": {
+  "n": 148,
+  "by_year": {
+   "2026": 3.738,
+   "2027": 3.513,
+   "2028": 3.576,
+   "2029": 3.768,
+   "2030": 4.443,
+   "2031": 4.857
+  },
+  "flat_reference": 3.19
+ },
+ "n_vars": {
+  "S0": 4065226,
+  "S1": 4235194,
+  "S3": 4709083,
+  "S2_dev": 247777
+ },
+ "n_cons": {
+  "S0": 7103909,
+  "S1": 7288981,
+  "S3": 8002728,
+  "S2_dev": 557122
+ }
+}

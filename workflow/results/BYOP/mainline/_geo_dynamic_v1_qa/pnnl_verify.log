@@ -1,0 +1,5 @@
+{
+ "mode": "verify_tracked_outputs",
+ "ok": true,
+ "bad": {}
+}

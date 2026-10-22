@@ -1,0 +1,59 @@
+{
+ "variant": "dynamic_pnnl_v1",
+ "config": "byop/inputs/dc/MAINLINE_SITING_SCENARIO_DYNAMIC_V1.yaml",
+ "config_sha256": "981483d85d4a829c76f7359f7e5a56bcc89b7d1bf23067271c3254d4704aad67",
+ "builder": "byop/build/build_dynamic_siting_inputs.py",
+ "builder_sha256": "5bb4a96d0f659ac32f26be9548a9d75c5a0a5d0f5e6d49133a644605861f5ba8",
+ "legacy_inputs_sha256_unchanged": {
+  "byop/inputs/dc/MAINLINE_RESEARCH_COHORTS_TAMU64.csv": "5373983ea59e2f7696ffb14e914fdc8d0e3e8186879f6e17b60c78c41ac2e173",
+  "byop/inputs/dc/MAINLINE_INHERITED_RAMP_2025.csv": "15c3501df57835381346ef8eff42b3b2201dbd32393ca46161852076e2682a4e",
+  "byop/inputs/dc/MAINLINE_AIDC_RECONCILIATION.csv": "f6ad3ca91cb75733de6a7ef6f06d45cc3d68934294883f6c128356d5a75302a9",
+  "byop/inputs/dc/MAINLINE_BUS_SITE_POI_MAP.csv": "2cb90fdbcb483a88be0212e95b01aed6e352c41393860797ed3642a46271b410",
+  "byop/inputs/dc/EPOCH_TX_SITES_TAMU64.csv": "fe72c0bd9558252437547016efc6103e40650924e9e7dad73cad53ece69ff357",
+  "byop/inputs/dc/EPOCH_TX_TIMELINE_EVIDENCE.csv": "9d4b846fccd1b2540a1967284c544a92dcbf7a142890256c9e15c0fe809b33a9",
+  "byop/inputs/dc/EPOCH_SITE_SERVICE_TAMU64.csv": "6f7ea3e757efb1e2f16310bab213dc8bd1b50d98f7fab7139b8e2b5ba315a172",
+  "byop/inputs/dc/ERCOT_DC_TOTALS_2026_2035.csv": "b4d877cbe21281d0e7e0366235788e284495fb6f84518046c0e3691386adfd5c",
+  "byop/inputs/poi/GREAL_POI_ASSUMPTIONS.csv": "9b7fa75c49ac1d6defd523e708f0670cc3543bceea956503029744a93bb4ed34",
+  "byop/inputs/poi/GREAL_POI_E0_SCHEDULE.csv": "bce7c787b5d71d84a6a5228f99f903f71f936be7b2abc9ffcfed35251347d449",
+  "byop/inputs/poi/GREAL_R_ASSET_POOL.csv": "62d4979eaee408b7beda9c15bdad9a0fbd7518c814a9beeac82cc1214a270340"
+ },
+ "pnnl_inputs_sha256": {
+  "byop/inputs/dc/PNNL_ATLAS_TX_SITES_TAMU64.csv": "c862bdcdbf2e7bf9ea0ff31b4552473048e9effa034deda6cfcdbbf619547865",
+  "byop/inputs/dc/PNNL_PROJECTED_HIGHER_TX_TAMU64.csv": "297663b4b6c8068b3cfaa1d36c8345f9b98bd7a2642d4e8a3f6b7c9bd8e5aef0",
+  "byop/inputs/dc/PNNL_CANDIDATE_BUS_SUMMARY.csv": "77d876184e42ee47dc46016f2a3709ecce36c81013598fddb8d3c7eba0a615c3",
+  "byop/inputs/dc/PNNL_PROVENANCE.json": "d4a39f83e89f01cafd9dc1524932f88a3cff740c7d7e01495bb67c675e90c51b"
+ },
+ "outputs_sha256": {
+  "byop/inputs/dc/MAINLINE_RESEARCH_COHORTS_TAMU64_GEO_DYNAMIC_V1.csv": "0338df13e931081ab5f5d36a46b9eb8c23fee8c87ec7e97472b325952c3cac41",
+  "byop/inputs/dc/MAINLINE_AIDC_RECONCILIATION_GEO_DYNAMIC_V1.csv": "0b7224143055204f1968a81ae1fc28837dade4433b15a21f73815d4c17177fab",
+  "byop/inputs/dc/MAINLINE_SITING_WEIGHTS_GEO_DYNAMIC_V1.csv": "e26bc54db3e30c9823cdcf79c1820c31cfd197b4cd97df740db040f2e6f35948",
+  "byop/inputs/poi/GREAL_POI_ASSUMPTIONS_GEO_DYNAMIC_V1.csv": "81f3abcf61726114ffc03f1e7b38df300dccf01c71e0007c81bbf75acbea114a",
+  "byop/inputs/dc/MAINLINE_SITE_CLASSIFICATION_GEO_DYNAMIC_V1.csv": "515fe5e451366d41ad9258d68460194df9857bd387196f8493e79a5b66890dbb",
+  "byop/inputs/dc/MAINLINE_CANDIDATE_BUS_ELIGIBILITY_GEO_DYNAMIC_V1.csv": "11736f707c191ba5a82837568dbc9224f8ee2b0c932dcdb76eed3ad080d99804",
+  "byop/inputs/dc/MAINLINE_NEW_BUS_POI_RISK_GEO_DYNAMIC_V1.csv": "207b37a0889d6b54df5ba288878c8ac23ca79d2908c74706e2c3dd1e74ee3c0b",
+  "byop/inputs/dc/MAINLINE_NEW_RESEARCH_BUS_POI_MAP_GEO_DYNAMIC_V1.csv": "42728c40379aeca8ab133762d1609cc625b7e7772cfec07753fc1995fdab3591",
+  "byop/inputs/poi/MAINLINE_POI_DERIVED_DELTA_GEO_DYNAMIC_V1.csv": "cdccd9a5a904c3b6746d7e0dcafbe8beea9a6f0816fd5c70b78e231684304513",
+  "byop/inputs/dc/MAINLINE_SITING_P_VARIANTS_GEO_DYNAMIC_V1.csv": "b876e7e495c27efbaed7f1143f2b1ca4b3e204f1d506ba9caa87d5ed01231974",
+  "byop/inputs/dc/ROUNDING_RECONCILIATION_GEO_DYNAMIC_V1.csv": "b0308cd5875d7020ee78b15e5202669841305beca3c0b7c16806589aa76e30b2"
+ },
+ "n_buses": 16,
+ "buses": [
+  "p600 0",
+  "p610 2",
+  "p630 10",
+  "p630 2",
+  "p630 3",
+  "p630 4",
+  "p630 5",
+  "p630 6",
+  "p630 8",
+  "p630 9",
+  "p640 1",
+  "p650 0",
+  "p650 7",
+  "p670 0",
+  "p670 1",
+  "p670 4"
+ ],
+ "solver_executions": 0
+}

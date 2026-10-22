@@ -4,6 +4,9 @@ S2 joint developer network, creates their linopy models with every extra constra
 constraints and time series. NO SOLVER IS CALLED: linopy.Model.solve and gurobipy.Model.optimize are replaced by a
 function that raises before anything is handed to a solver (the S1 lexicographic pre-solve is not built).
 Run on L2 from pypsa-usa/workflow:  python -W ignore byop/tests/structural_mainline_v13.py --out results/BYOP/mainline/_structural
+AIDC geospatial v1: --config selects the siting variant (default legacy eight Epoch buses); every count check uses the actual
+research-bus number N_B x model years (legacy 8 x 6 = 48), e.g.
+    python -W ignore byop/tests/structural_mainline_v13.py --config config/config.byop_ercot_mainline_geo_dynamic_v1.yaml --out results/BYOP/mainline/_structural_geo_dynamic_v1
 """
 from __future__ import annotations
 
@@ -62,7 +65,9 @@ def ints(m):
 def main():
     global CONFIG, OUT
     ap = argparse.ArgumentParser(); ap.add_argument('--out', required=True)
+    ap.add_argument('--config', default='config/config.byop_ercot_mainline.yaml', help='mainline config (selects the siting variant)')
     a = ap.parse_args()
+    siting = R.ml_select_siting(a.config)
     OUT = Path(a.out); OUT.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
     R.ML.update(on=True, stress_days=3, stress_line_derate=1.0, gate=dict(approved=False, reasons=['STAGE_A_STRUCTURAL_TEST']))
@@ -78,7 +83,14 @@ def main():
     CONFIG = pypsa.Network(str(R.BASE_TAMU)).meta
     STATE['erm_cal'] = None
     sites = sorted(R.SITES)
-    check('QA-SPACE', '8 aggregated POIs on the Epoch buses', len(sites) == 8 and all(s in M.ZONES for s in sites), sites)
+    NB, NY = len(sites), len(M.periods())
+    NK = NB * NY
+    coh = pd.read_csv(R.ML_COH)
+    coh = coh[coh.scenario == 'mid']
+    check('QA-SPACE', f"{NB} aggregated POIs on TAMU64 AC buses ({siting['variant']})", NB > 0 and all(s in M.ZONES for s in sites)
+          and set(sites) == set(coh.region_id), sites)
+    if siting['variant'] == 'epoch8_legacy':
+        check('QA-SPACE', 'legacy regression: the 8 Epoch buses', sites == ['p600 0', 'p610 2', 'p630 2', 'p630 4', 'p630 5', 'p630 6', 'p630 9', 'p650 0'], sites)
     # ------------------------------------------------------------------ S0
     n0, _, m0 = build_model('S0', 'S0')
     per = n0.snapshots.get_level_values(0)
@@ -118,7 +130,7 @@ def main():
     n1, mult, m1 = build_model('S1_EARLIEST', 'S')
     STATE['firm_strict'] = False
     eqc = [c for c in m1.constraints if c.startswith('POI-eq_')]
-    check('QA-SPACE', 'one POI equipment row per bus-year (48)', len(eqc) == 48, len(eqc))
+    check('QA-SPACE', f'one POI equipment row per bus-year ({NK} = {NB} x {NY})', len(eqc) == NK, len(eqc))
     up = n1.links[n1.links.carrier == 'POI_upgrade']
     first = up.groupby(up.bus1).build_year.min()
     check('QA-COD', 'POI upgrade first build = max(2026 + 3, 2028) = 2029', (first == 2029).all(), first.to_dict())
@@ -139,9 +151,10 @@ def main():
     gb = n3.generators
     by = gb[gb.carrier.str.startswith('byop_')]
     su = n3.storage_units[n3.storage_units.carrier == 'byop_BESS']
-    check('QA-SPACE', 'every bus has BYOP candidates of all 6 techs', all(
+    nore = {(d_['site'], d_['technology']) for d_ in STATE.get('byop_re_profile_missing', [])}     # dynamic variant only, flagged
+    check('QA-SPACE', 'every bus has BYOP candidates of all 6 techs (except flagged missing wind / PV profiles)', all(
         {c for c in by[by.bus == f'DC_{s}'].carrier} | ({'byop_BESS'} if (su.bus == f'DC_{s}').any() else set())
-        == {f'byop_{c}' for c in R.ML_TECHS} for s in R.SITES))
+        == {f'byop_{c}' for c in R.ML_TECHS if (s, c) not in nore} for s in R.SITES), sorted(nore))
     check('QA-SPACE', 'no BYOP unit outside its own DC bus', set(by.bus) | set(su.bus) <= {f'DC_{s}' for s in R.SITES})
     l1 = [s for s, d_ in R.SITES.items() if d_['gas_level'] == 'L1'][0]
     l2 = [s for s, d_ in R.SITES.items() if d_['gas_level'] == 'L2'][0]
@@ -185,7 +198,7 @@ def main():
     need = ['IT_energized_MW', 'grid_import_MWh', 'BYOP_gen_MWh', 'BYOP_capacity_MW', 'certified_import_MW', 'equipment_total_MW',
             'poi_eq_dual_abs', 'procedure_ready_year', 'earliest_grid_COD', 'mode_label', 'pclr_trigger_hours_weighted',
             'pclr_curtailed_hours_weighted', 'pclr_max_consecutive_sampled_h']
-    check('QA-BRIDGE', 'bus-year ledger carries the B10 / B8 fields', all(c in pl for c in need) and len(pl) == 48, [c for c in need if c not in pl])
+    check('QA-BRIDGE', 'bus-year ledger carries the B10 / B8 fields', all(c in pl for c in need) and len(pl) == NK, [c for c in need if c not in pl])
     pl.to_csv(OUT / 'structural_poi_ledger_S3_unsolved.csv', index=False)
     # ------------------------------------------------------------------ S2 joint developer (built, not solved)
     n1.buses_t.marginal_price = pd.DataFrame(30.0, index=n1.snapshots, columns=list(M.ZONES))
@@ -196,10 +209,10 @@ def main():
     check('QA-STRESS-FIRM', 'PCLR triggers start at the stress snapshots', bool(R.stress_mask(pd.MultiIndex.from_tuples(trig[:1])).all()) if trig else False)
     nd, md, _ = R.developer_joint_build(n1, 2.8e6, mult)
     dcb = [b for b in nd.buses.index if str(b).startswith('DC_')]
-    check('QA-LP', 'ONE developer network for all 8 buses', len(dcb) == 8, dcb)
+    check('QA-LP', f'ONE developer network for all {NB} research buses', len(dcb) == NB, dcb)
     check('QA-LP', 'developer model continuous', ints(md) == 0)
     gpur = nd.generators[nd.generators.carrier == 'grid_purchase']
-    check('QA-FIRM', 'developer grid purchase capped by the S1 joint offer per bus-year', len(gpur) == 48 and (gpur.p_nom_extendable == False).all())
+    check('QA-FIRM', 'developer grid purchase capped by the S1 joint offer per bus-year', len(gpur) == NK and (gpur.p_nom_extendable == False).all())
     gx = gpur.index[gpur.p_nom > 1.0][0]
     ppx = nd.generators_t.p_max_pu[gx]; smd = R.stress_mask(nd.snapshots); pdx = nd.snapshots.get_level_values(0) == int(gpur.build_year[gx])
     check('QA-P0-4', 'developer firm purchase at stress snapshots <= stress-certified offer (0.5 here), 1.0 elsewhere',
@@ -209,7 +222,10 @@ def main():
     check('QA-LP', 'no solver was called', SOLVER_CALLS.count('refused') == 3 and not any(c != 'refused' for c in SOLVER_CALLS), SOLVER_CALLS)
     res = pd.DataFrame(CHK)
     res.to_csv(OUT / 'STRUCTURAL_CHECKS.csv', index=False)
-    rep = dict(n_checks=len(res), n_pass=int((res.result == 'PASS').sum()), n_fail=int((res.result == 'FAIL').sum()), solver_executions=0,
+    miss = sorted({(d_['bus'], d_['technology']) for d_ in STATE.get('byop_re_profile_missing', [])})
+    check('QA-RE', 'BYOP wind / PV only where the bus has a PyPSA-USA candidate profile (missing -> option absent, flagged)',
+          siting['variant'] != 'epoch8_legacy' or not miss, miss)
+    rep = dict(siting=siting, research_buses=sites, expected_bus_year_keys=NK, byop_re_profile_missing=miss, n_checks=len(res), n_pass=int((res.result == "PASS").sum()), n_fail=int((res.result == "FAIL").sum()), solver_executions=0,
                solver_calls_intercepted=len(SOLVER_CALLS), seconds=round(time.time() - t0, 1), stress=STATE.get('stress_sample'),
                gas=STATE.get('gas_repriced'), n_vars=dict(S0=int(m0.nvars), S1=int(m1.nvars), S3=int(m3.nvars), S2_dev=int(md.nvars)),
                n_cons=dict(S0=int(m0.ncons), S1=int(m1.ncons), S3=int(m3.ncons), S2_dev=int(md.ncons)))

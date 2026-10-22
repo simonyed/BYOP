@@ -48,4 +48,25 @@ bash byop/run/run_mainline.sh gate      # E1 verdict; step0 / run refuse with ex
 
 Inputs: `inputs/dc/MAINLINE_*`, `inputs/poi/GREAL_*`, `inputs/grid/GREAL_*` + `ERCOT_WIND_SOLAR_POTENTIAL.csv` (ReEDS2),
 `inputs/tech/MAINLINE_V13_*`; builders `build/build_mainline_inputs.py`, `build/build_reeds2_potential.py`,
-`build/build_mainline_manifest.py`; result tables `post/collect_mainline.py`. Reports: `current_work_pckg/MAINLINE_V13_*`.
+`build/build_mainline_manifest.py`; result tables `post/collect_mainline.py`. Reports: `current_work_pckg/_completed/BYOP_ERCOT_Mainline_v1.3/`.
+
+### AIDC geospatial distribution v1 (2026-10-22): switchable research-bus siting
+
+`mainline.siting_variant` in the config selects the research cohorts + aggregated POI table (`rearch_mech.ml_select_siting`,
+called before the run gate): `epoch8_legacy` (default, frozen B3-E inputs, `config/config.byop_ercot_mainline.yaml`) or
+`dynamic_pnnl_v1` (Epoch + PNNL Atlas + PNNL CERF-DC higher-growth yearly weights, `config/config.byop_ercot_mainline_geo_dynamic_v1.yaml`).
+
+```bash
+python byop/build/build_pnnl_tamu_candidates.py [--raw <PNNL raw dir>]   # PNNL -> TAMU64 buses; without --raw: verify tracked outputs
+python byop/build/build_dynamic_siting_inputs.py --config byop/inputs/dc/MAINLINE_SITING_SCENARIO_DYNAMIC_V1.yaml --variant dynamic_pnnl_v1
+python byop/build/build_mainline_manifest.py --variant dynamic_pnnl_v1  # pending manifest current_work_pckg/AIDC_GEO_DYNAMIC_V1_PRE_RUN_MANIFEST.json
+bash byop/run/run_mainline.sh tests_geo                                 # test_dynamic_siting.py (no solver)
+python -W ignore byop/tests/structural_mainline_v13.py --config config/config.byop_ercot_mainline_geo_dynamic_v1.yaml --out results/BYOP/mainline/_structural_geo_dynamic_v1
+CFG=config/config.byop_ercot_mainline_geo_dynamic_v1.yaml bash byop/run/run_mainline.sh gate    # refuses (NOT_APPROVED)
+python byop/post/geo_dynamic_v1_tables.py                              # legacy vs dynamic input-side audit tables
+```
+
+The builder writes only `*_GEO_DYNAMIC_V1*` files (legacy inputs are SHA-checked unchanged). Method parameters (yearly
+alpha / beta / gamma, g0 / g50 mix, 36 MW eligibility threshold, reviewed `locked_verified` Epoch increments, new-bus POI
+proxies) live in the versioned YAML only. Matched-service (M4) keys = research buses x model years from the case's own
+input record (`collect_mainline.expected_service_keys`), not a fixed 48. Reports: `current_work_pckg/AIDC_GEO_DYNAMIC_V1_*`.

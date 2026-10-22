@@ -1,0 +1,7 @@
+variant,scenario,buses_with_growth,research_total_IT_MW,top3_share,top3_buses
+epoch8_legacy,high,8,6286.207100,0.829120,p630 4; p610 2; p600 0
+epoch8_legacy,low,8,2886.136100,0.800079,p610 2; p630 4; p600 0
+epoch8_legacy,mid,8,4567.903100,0.840339,p630 4; p610 2; p600 0
+dynamic_pnnl_v1,high,16,6286.206749,0.470357,p610 2; p630 4; p650 0
+dynamic_pnnl_v1,low,16,2886.136114,0.504994,p610 2; p650 0; p630 4
+dynamic_pnnl_v1,mid,16,4567.902690,0.483352,p610 2; p630 4; p650 0

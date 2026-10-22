@@ -1,0 +1,33 @@
+bus,field,OLD,NEW,DELTA,formula
+p600 0,research_IT_MW_2026_2031_mid,365.163900000,236.923809049,-128.240090951,sum mid research IT 2026-2031 (dynamic cohorts)
+p600 0,research_facility_MW_2031_mid,419.354222760,272.083302312,-147.270920448,"research_IT_MW_2026_2031_mid x PUE(TX, 2031)"
+p600 0,pclr_conditional_MW,125.800000000,81.600000000,-44.200000000,0.3 x research_facility_MW_2031_mid (PROXY)
+p600 0,onsite_renewable_cap_MW,419.400000000,272.100000000,-147.300000000,1.0 x research_facility_MW_2031_mid (PROXY; ReEDS bus cap shared)
+p610 2,research_IT_MW_2026_2031_mid,1304.000000000,812.791101315,-491.208898685,sum mid research IT 2026-2031 (dynamic cohorts)
+p610 2,research_facility_MW_2031_mid,1497.513600000,933.409300750,-564.104299250,"research_IT_MW_2026_2031_mid x PUE(TX, 2031)"
+p610 2,pclr_conditional_MW,449.300000000,280.000000000,-169.300000000,0.3 x research_facility_MW_2031_mid (PROXY)
+p610 2,onsite_renewable_cap_MW,1497.500000000,933.400000000,-564.100000000,1.0 x research_facility_MW_2031_mid (PROXY; ReEDS bus cap shared)
+p630 2,research_IT_MW_2026_2031_mid,77.000000000,143.604827430,66.604827430,sum mid research IT 2026-2031 (dynamic cohorts)
+p630 2,research_facility_MW_2031_mid,88.426800000,164.915783821,76.488983821,"research_IT_MW_2026_2031_mid x PUE(TX, 2031)"
+p630 2,pclr_conditional_MW,26.500000000,49.500000000,23.000000000,0.3 x research_facility_MW_2031_mid (PROXY)
+p630 2,onsite_renewable_cap_MW,88.400000000,164.900000000,76.500000000,1.0 x research_facility_MW_2031_mid (PROXY; ReEDS bus cap shared)
+p630 4,research_IT_MW_2026_2031_mid,1285.532100000,617.071261656,-668.460838344,sum mid research IT 2026-2031 (dynamic cohorts)
+p630 4,research_facility_MW_2031_mid,1476.305063640,708.644636885,-767.660426755,"research_IT_MW_2026_2031_mid x PUE(TX, 2031)"
+p630 4,pclr_conditional_MW,442.900000000,212.600000000,-230.300000000,0.3 x research_facility_MW_2031_mid (PROXY)
+p630 4,onsite_renewable_cap_MW,1476.300000000,708.600000000,-767.700000000,1.0 x research_facility_MW_2031_mid (PROXY; ReEDS bus cap shared)
+p630 5,research_IT_MW_2026_2031_mid,26.000100000,24.475934570,-1.524165430,sum mid research IT 2026-2031 (dynamic cohorts)
+p630 5,research_facility_MW_2031_mid,29.858514840,28.108163260,-1.750351580,"research_IT_MW_2026_2031_mid x PUE(TX, 2031)"
+p630 5,pclr_conditional_MW,9.000000000,8.400000000,-0.600000000,0.3 x research_facility_MW_2031_mid (PROXY)
+p630 5,onsite_renewable_cap_MW,29.900000000,28.100000000,-1.800000000,1.0 x research_facility_MW_2031_mid (PROXY; ReEDS bus cap shared)
+p630 6,research_IT_MW_2026_2031_mid,103.000000000,87.285674380,-15.714325620,sum mid research IT 2026-2031 (dynamic cohorts)
+p630 6,research_facility_MW_2031_mid,118.285200000,100.238868458,-18.046331542,"research_IT_MW_2026_2031_mid x PUE(TX, 2031)"
+p630 6,pclr_conditional_MW,35.500000000,30.100000000,-5.400000000,0.3 x research_facility_MW_2031_mid (PROXY)
+p630 6,onsite_renewable_cap_MW,118.300000000,100.200000000,-18.100000000,1.0 x research_facility_MW_2031_mid (PROXY; ReEDS bus cap shared)
+p630 9,research_IT_MW_2026_2031_mid,215.000000000,230.601921132,15.601921132,sum mid research IT 2026-2031 (dynamic cohorts)
+p630 9,research_facility_MW_2031_mid,246.906000000,264.823246228,17.917246228,"research_IT_MW_2026_2031_mid x PUE(TX, 2031)"
+p630 9,pclr_conditional_MW,74.100000000,79.400000000,5.300000000,0.3 x research_facility_MW_2031_mid (PROXY)
+p630 9,onsite_renewable_cap_MW,246.900000000,264.800000000,17.900000000,1.0 x research_facility_MW_2031_mid (PROXY; ReEDS bus cap shared)
+p650 0,research_IT_MW_2026_2031_mid,156.000100000,417.395899290,261.395799290,sum mid research IT 2026-2031 (dynamic cohorts)
+p650 0,research_facility_MW_2031_mid,179.150514840,479.337450745,300.186935905,"research_IT_MW_2026_2031_mid x PUE(TX, 2031)"
+p650 0,pclr_conditional_MW,53.700000000,143.800000000,90.100000000,0.3 x research_facility_MW_2031_mid (PROXY)
+p650 0,onsite_renewable_cap_MW,179.200000000,479.300000000,300.100000000,1.0 x research_facility_MW_2031_mid (PROXY; ReEDS bus cap shared)

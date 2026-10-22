@@ -10,7 +10,8 @@ MAINLINE_BUS_DELIVERY_AND_DELAY.csv  bus x year x scenario: request, delivered I
 MAINLINE_S2_MODES_TECH.csv           S2 joint developer: ex-post mode label, firm / conditional rights, technology x COD
 MAINLINE_PUBLIC_INVESTMENT_DELTA.csv public new MW by carrier x year, S1/S2/S3 minus S0
 MAINLINE_ASSET_COMMITMENT_LEDGER.csv every built asset: approval year, build period, COD, MW, social / private annuity
-MAINLINE_MATCHED_SERVICE_COST.csv    S2_final vs S3_mS2 (same service, strict 48-key check) social real resource cost
+MAINLINE_MATCHED_SERVICE_COST.csv    S2_final vs S3_mS2 (same service, strict expected-key check) social real resource cost
+                                     expected keys = research buses x model years of the case's own input record (legacy: 8 x 6 = 48)
 Stage B B0: every formal table uses S2_final = the selected (last) S2 iteration; raw S2 / S2_itN rows go to
 MAINLINE_DIAGNOSTIC_* only and are never summed; a missing required check is not a pass (SCIENTIFIC_USE BLOCKED);
 a run with only S0 / S1_EARLIEST is PARTIAL_PILOT.
@@ -31,7 +32,9 @@ RAW_S2 = r'^S2(_it\d+)?$'                  # raw S2 iterations: diagnostic only 
 FORMAL = ['S0', 'S1_EARLIEST', 'S3', 'S2_final', 'S3_mS2']
 CORE = set(FORMAL)
 PILOT_S01 = {'S0', 'S1_EARLIEST'}
-N_KEYS = 48                                # 8 Epoch buses x 2026-2031
+LEGACY_BUSES = ['p600 0', 'p610 2', 'p630 2', 'p630 4', 'p630 5', 'p630 6', 'p630 9', 'p650 0']   # epoch8_legacy research buses
+LEGACY_YEARS = list(range(2026, 2032))
+N_KEYS = len(LEGACY_BUSES) * len(LEGACY_YEARS)      # 48: legacy eight-bus compatibility only, never the generic pass rule
 
 
 def _r(out, nm):
@@ -46,23 +49,50 @@ def _formal(df):
     return df[~df.scenario.astype(str).str.match(RAW_S2)]
 
 
-def matched_service_check(poil, n_keys=N_KEYS, tol=0.5):
-    """M4 validity of S2_final vs S3_mS2: identical bus x year key sets, each key unique, n_keys keys on both sides,
-    no missing / non-numeric value, max |gap| <= tol MW IT. Valid only when every item holds."""
-    out = dict(matched_service_48_keys_present=False, matched_service_keys_unique=False, matched_service_no_missing=False,
+def expected_service_keys(man):
+    """AIDC geospatial v1: the EXPECTED M4 key set = research buses x model years taken from the case's model-input record
+    (case_manifest mainline.research_buses / model_years, else the SITES table and cfg start..end), never from the S2 or
+    S3_mS2 output (a bus missing on both sides must not pass). A manifest without either record = the legacy 8 x 2026-2031."""
+    ml = (man or {}).get('mainline') or {}
+    buses = ml.get('research_buses') or sorted((man or {}).get('sites') or {})
+    basis = 'mainline.research_buses' if ml.get('research_buses') else ('case_manifest.sites' if buses else 'legacy eight Epoch buses')
+    buses = buses or LEGACY_BUSES
+    yrs = ml.get('model_years')
+    if not yrs:
+        cfg = (man or {}).get('cfg') or {}
+        yrs = list(range(int(cfg['start']), int(cfg['end']) + 1)) if 'start' in cfg and 'end' in cfg else LEGACY_YEARS
+    return {(str(b_), int(y_)) for b_ in buses for y_ in yrs}, basis
+
+
+def matched_service_check(poil, expected=None, tol=0.5):
+    """M4 validity of S2_final vs S3_mS2: each side's key set equals the EXPECTED set exactly (no missing, no extra key),
+    each key unique, no missing / non-numeric value, max |gap| <= tol MW IT. Valid only when every item holds.
+    expected = set of (bus, year) from expected_service_keys(case_manifest); None = legacy 8 x 2026-2031."""
+    expected = set(expected) if expected is not None else {(b_, y_) for b_ in LEGACY_BUSES for y_ in LEGACY_YEARS}
+    out = dict(matched_service_expected_keys_present=False, matched_service_expected_key_count=len(expected),
+               matched_service_observed_key_count=0, matched_service_S3_mS2_observed_key_count=0,
+               matched_service_48_keys_present=False if len(expected) == N_KEYS else None,
+               matched_service_keys_unique=False, matched_service_no_missing=False,
                matched_service_max_abs_gap_IT_MW=float('nan'), matched_service_valid=False)
     if not len(poil):
         return out
     a = poil[poil.scenario == 'S2_final'][['site', 'year', 'served_IT_MW']]
     b = poil[poil.scenario == 'S3_mS2'][['site', 'year', 'served_IT_MW']]
-    ka, kb = list(zip(a.site, a.year)), list(zip(b.site, b.year))
+    ka = [(str(s_), int(y_)) for s_, y_ in zip(a.site, a.year)]
+    kb = [(str(s_), int(y_)) for s_, y_ in zip(b.site, b.year)]
+    out['matched_service_observed_key_count'] = len(set(ka))
+    out['matched_service_S3_mS2_observed_key_count'] = len(set(kb))
     out['matched_service_keys_unique'] = len(ka) == len(set(ka)) and len(kb) == len(set(kb))
-    out['matched_service_48_keys_present'] = len(set(ka)) == n_keys and set(ka) == set(kb)
+    out['matched_service_expected_keys_present'] = set(ka) == expected and set(kb) == expected
+    if len(expected) == N_KEYS:          # legacy eight-bus field kept for comparability (None for other geographies)
+        out['matched_service_48_keys_present'] = out['matched_service_expected_keys_present']
     va = pd.to_numeric(a.served_IT_MW, errors='coerce')
     vb = pd.to_numeric(b.served_IT_MW, errors='coerce')
     out['matched_service_no_missing'] = bool(len(a) and len(b) and va.notna().all() and vb.notna().all())
-    if out['matched_service_keys_unique'] and out['matched_service_48_keys_present'] and out['matched_service_no_missing']:
-        g = (a.assign(v=va.values).set_index(['site', 'year']).v - b.assign(v=vb.values).set_index(['site', 'year']).v).abs()
+    if out['matched_service_keys_unique'] and out['matched_service_expected_keys_present'] and out['matched_service_no_missing']:
+        ia = pd.MultiIndex.from_tuples(ka, names=['site', 'year'])
+        ib = pd.MultiIndex.from_tuples(kb, names=['site', 'year'])
+        g = (pd.Series(va.values, index=ia) - pd.Series(vb.values, index=ib)).abs()
         out['matched_service_max_abs_gap_IT_MW'] = float(g.max())
         out['matched_service_valid'] = bool(g.max() <= tol)
     return out
@@ -252,8 +282,11 @@ def collect(out):
                                   'public candidate: COD = build period; approval_year = build period - lead (static plan, not an annual commitment)')
         a['COD'] = a.COD.fillna(a.build_period)
         w(a, 'MAINLINE_ASSET_COMMITMENT_LEDGER.csv')
-    # ---- M4 matched service: S2_final vs S3_mS2, strict 48-key check
-    mchk = matched_service_check(poil) if phase == 'CORE' else {}
+    # ---- M4 matched service: S2_final vs S3_mS2, strict expected-key check (research buses x model years)
+    exp_keys, exp_basis = expected_service_keys(man)
+    mchk = matched_service_check(poil, exp_keys) if phase == 'CORE' else {}
+    if mchk:
+        mchk['matched_service_expected_key_basis'] = exp_basis
     if {'S2_final', 'S3_mS2'} <= present:
         s = summ.set_index('scenario')
         valid = mchk.get('matched_service_valid') is True

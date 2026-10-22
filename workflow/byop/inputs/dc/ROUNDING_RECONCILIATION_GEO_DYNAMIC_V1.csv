@@ -1,0 +1,4 @@
+scenario,year,gap_before_MW,corrected_bus,gap_after_MW
+low,2026,-0.000136502,p610 2,0.000000000
+mid,2026,-0.000136502,p610 2,0.000000000
+high,2026,-0.000045293,p610 2,0.000000000

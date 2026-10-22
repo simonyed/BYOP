@@ -1,64 +1,64 @@
-bus,zone,epoch_sites,epoch_IT_MW_final,atlas_n_sites,atlas_sqft,proj_higher_g0_IT_MW,proj_higher_g25_IT_MW,proj_higher_g50_IT_MW,proj_higher_g75_IT_MW,proj_higher_g100_IT_MW,proj_higher_mean_IT_MW,src_epoch,src_atlas,src_projected,candidate
-p600 0,p60,Coreweave Helios,528.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,True,False,False,True
-p600 1,p60,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p600 2,p60,,0.0,0.0,0.0,576.0,0.0,0.0,0.0,0.0,115.2,False,False,True,True
-p600 3,p60,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p600 4,p60,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p610 0,p61,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p610 1,p61,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p610 2,p61,OpenAI Stargate Abilene; Crusoe Abilene Expansion,1515.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,True,False,False,True
-p610 3,p61,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p610 4,p61,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p620 0,p62,,0.0,1.0,2238928.0,180.0,0.0,0.0,0.0,0.0,36.0,False,True,True,True
-p620 1,p62,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p620 2,p62,,0.0,0.0,0.0,108.0,0.0,0.0,0.0,0.0,21.6,False,False,True,True
-p620 3,p62,,0.0,0.0,0.0,324.0,0.0,0.0,0.0,0.0,64.8,False,False,True,True
-p620 4,p62,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p620 5,p62,,0.0,0.0,0.0,36.0,0.0,0.0,0.0,0.0,7.2,False,False,True,True
-p620 6,p62,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p620 7,p62,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p630 0,p63,,0.0,1.0,11717820.0,216.0,0.0,0.0,0.0,0.0,43.2,False,True,True,True
-p630 1,p63,,0.0,0.0,0.0,432.0,0.0,0.0,0.0,0.0,86.4,False,False,True,True
-p630 10,p63,,0.0,1.0,176383.0,0.0,2052.0,2052.0,2052.0,2052.0,1641.6,False,True,True,True
-p630 11,p63,,0.0,1.0,12987.0,0.0,0.0,0.0,0.0,0.0,0.0,False,True,False,True
-p630 12,p63,,0.0,1.0,1768886.0,0.0,0.0,0.0,0.0,0.0,0.0,False,True,False,True
-p630 13,p63,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p630 14,p63,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p630 15,p63,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p630 2,p63,Google Red Oak,154.0,15.0,2927503.0,0.0,0.0,0.0,0.0,0.0,0.0,True,True,False,True
-p630 3,p63,,0.0,22.0,3437546.0,0.0,3348.0,3384.0,3384.0,3348.0,2692.8,False,True,True,True
-p630 4,p63,OpenAI Stargate Shackelford,1400.0,1.0,39127.0,0.0,0.0,0.0,0.0,0.0,0.0,True,True,False,True
-p630 5,p63,Meta Temple,178.0,1.0,4357993.0,144.0,0.0,0.0,0.0,0.0,28.8,True,True,True,True
-p630 6,p63,Google Midlothian,103.0,4.0,607779.0,0.0,0.0,0.0,0.0,0.0,0.0,True,True,False,True
-p630 7,p63,,0.0,3.0,239835.0,0.0,0.0,0.0,0.0,0.0,0.0,False,True,False,True
-p630 8,p63,,0.0,12.0,1372962.0,0.0,1080.0,1080.0,1080.0,1080.0,864.0,False,True,True,True
-p630 9,p63,CoreWeave Denton TX,282.0,6.0,2423014.0,0.0,0.0,0.0,0.0,0.0,0.0,True,True,False,True
-p640 0,p64,,0.0,0.0,0.0,468.0,0.0,0.0,0.0,0.0,93.6,False,False,True,True
-p640 1,p64,,0.0,14.0,2055199.0,0.0,648.0,648.0,648.0,648.0,518.4,False,True,True,True
-p640 2,p64,,0.0,1.0,61978.0,0.0,0.0,0.0,0.0,0.0,0.0,False,True,False,True
-p640 3,p64,,0.0,1.0,9209.0,0.0,0.0,0.0,0.0,0.0,0.0,False,True,False,True
-p640 4,p64,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p640 5,p64,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p640 6,p64,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p640 7,p64,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p650 0,p65,Vantage TX1; Microsoft SAT40; Microsoft SAT14,250.0,27.0,4530322.0,0.0,2556.0,2520.0,2520.0,2556.0,2030.4,True,True,True,True
-p650 1,p65,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p650 2,p65,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p650 3,p65,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p650 4,p65,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p650 5,p65,,0.0,0.0,0.0,108.0,0.0,0.0,0.0,0.0,21.6,False,False,True,True
-p650 6,p65,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p650 7,p65,,0.0,7.0,909984.0,0.0,36.0,36.0,36.0,36.0,28.8,False,True,True,True
-p650 8,p65,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p650 9,p65,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p670 0,p67,,0.0,4.0,504264.0,288.0,0.0,0.0,0.0,0.0,57.6,False,True,True,True
-p670 1,p67,,0.0,0.0,0.0,1620.0,0.0,0.0,0.0,0.0,324.0,False,False,True,True
-p670 10,p67,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False
-p670 2,p67,,0.0,0.0,0.0,540.0,0.0,0.0,0.0,0.0,108.0,False,False,True,True
-p670 3,p67,,0.0,1.0,25487.0,72.0,0.0,0.0,0.0,0.0,14.4,False,True,True,True
-p670 4,p67,,0.0,3.0,794981.0,504.0,0.0,0.0,0.0,0.0,100.8,False,True,True,True
-p670 5,p67,,0.0,0.0,0.0,36.0,0.0,0.0,0.0,0.0,7.2,False,False,True,True
-p670 6,p67,,0.0,0.0,0.0,360.0,0.0,0.0,0.0,0.0,72.0,False,False,True,True
-p670 7,p67,,0.0,0.0,0.0,72.0,0.0,0.0,0.0,0.0,14.4,False,False,True,True
-p670 8,p67,,0.0,0.0,0.0,144.0,0.0,0.0,0.0,0.0,28.8,False,False,True,True
-p670 9,p67,,0.0,0.0,0.0,180.0,0.0,0.0,0.0,0.0,36.0,False,False,True,True
+bus,zone,epoch_sites,epoch_IT_MW_final,atlas_n_sites,atlas_n_crypto_excluded,atlas_n_noncrypto_raw,atlas_n_noncrypto_explicit_dedup,atlas_n_noncrypto_clusters,atlas_sqft,proj_higher_g0_IT_MW,proj_higher_g25_IT_MW,proj_higher_g50_IT_MW,proj_higher_g75_IT_MW,proj_higher_g100_IT_MW,proj_higher_mean_IT_MW,src_epoch,src_atlas,src_atlas_noncrypto,src_projected,candidate
+p600 0,p60,Coreweave Helios,528.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,True,False,False,False,True
+p600 1,p60,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p600 2,p60,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,576.0,0.0,0.0,0.0,0.0,115.2,False,False,False,True,True
+p600 3,p60,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p600 4,p60,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p610 0,p61,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p610 1,p61,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p610 2,p61,OpenAI Stargate Abilene; Crusoe Abilene Expansion,1515.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,True,False,False,False,True
+p610 3,p61,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p610 4,p61,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p620 0,p62,,0.0,1.0,1.0,0.0,0.0,0.0,2238928.0,180.0,0.0,0.0,0.0,0.0,36.0,False,True,False,True,True
+p620 1,p62,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p620 2,p62,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,108.0,0.0,0.0,0.0,0.0,21.6,False,False,False,True,True
+p620 3,p62,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,324.0,0.0,0.0,0.0,0.0,64.8,False,False,False,True,True
+p620 4,p62,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p620 5,p62,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,36.0,0.0,0.0,0.0,0.0,7.2,False,False,False,True,True
+p620 6,p62,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p620 7,p62,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p630 0,p63,,0.0,1.0,1.0,0.0,0.0,0.0,11717820.0,216.0,0.0,0.0,0.0,0.0,43.2,False,True,False,True,True
+p630 1,p63,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,432.0,0.0,0.0,0.0,0.0,86.4,False,False,False,True,True
+p630 10,p63,,0.0,1.0,0.0,1.0,1.0,1.0,176383.0,0.0,2052.0,2052.0,2052.0,2052.0,1641.6,False,True,True,True,True
+p630 11,p63,,0.0,1.0,0.0,1.0,1.0,1.0,12987.0,0.0,0.0,0.0,0.0,0.0,0.0,False,True,True,False,True
+p630 12,p63,,0.0,1.0,1.0,0.0,0.0,0.0,1768886.0,0.0,0.0,0.0,0.0,0.0,0.0,False,True,False,False,True
+p630 13,p63,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p630 14,p63,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p630 15,p63,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p630 2,p63,Google Red Oak,154.0,15.0,0.0,15.0,14.0,14.0,2927503.0,0.0,0.0,0.0,0.0,0.0,0.0,True,True,True,False,True
+p630 3,p63,,0.0,22.0,0.0,22.0,21.0,16.0,3437546.0,0.0,3348.0,3384.0,3384.0,3348.0,2692.8,False,True,True,True,True
+p630 4,p63,OpenAI Stargate Shackelford,1400.0,1.0,0.0,1.0,1.0,1.0,39127.0,0.0,0.0,0.0,0.0,0.0,0.0,True,True,True,False,True
+p630 5,p63,Meta Temple,178.0,1.0,1.0,0.0,0.0,0.0,4357993.0,144.0,0.0,0.0,0.0,0.0,28.8,True,True,False,True,True
+p630 6,p63,Google Midlothian,103.0,4.0,0.0,4.0,4.0,2.0,607779.0,0.0,0.0,0.0,0.0,0.0,0.0,True,True,True,False,True
+p630 7,p63,,0.0,3.0,0.0,3.0,2.0,2.0,239835.0,0.0,0.0,0.0,0.0,0.0,0.0,False,True,True,False,True
+p630 8,p63,,0.0,12.0,0.0,12.0,12.0,11.0,1372962.0,0.0,1080.0,1080.0,1080.0,1080.0,864.0,False,True,True,True,True
+p630 9,p63,CoreWeave Denton TX,282.0,6.0,0.0,6.0,6.0,4.0,2423014.0,0.0,0.0,0.0,0.0,0.0,0.0,True,True,True,False,True
+p640 0,p64,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,468.0,0.0,0.0,0.0,0.0,93.6,False,False,False,True,True
+p640 1,p64,,0.0,14.0,0.0,14.0,12.0,12.0,2055199.0,0.0,648.0,648.0,648.0,648.0,518.4,False,True,True,True,True
+p640 2,p64,,0.0,1.0,0.0,1.0,1.0,1.0,61978.0,0.0,0.0,0.0,0.0,0.0,0.0,False,True,True,False,True
+p640 3,p64,,0.0,1.0,0.0,1.0,1.0,1.0,9209.0,0.0,0.0,0.0,0.0,0.0,0.0,False,True,True,False,True
+p640 4,p64,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p640 5,p64,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p640 6,p64,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p640 7,p64,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p650 0,p65,Vantage TX1; Microsoft SAT40; Microsoft SAT14,250.0,27.0,0.0,27.0,25.0,18.0,4530322.0,0.0,2556.0,2520.0,2520.0,2556.0,2030.4,True,True,True,True,True
+p650 1,p65,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p650 2,p65,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p650 3,p65,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p650 4,p65,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p650 5,p65,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,108.0,0.0,0.0,0.0,0.0,21.6,False,False,False,True,True
+p650 6,p65,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p650 7,p65,,0.0,7.0,0.0,7.0,4.0,4.0,909984.0,0.0,36.0,36.0,36.0,36.0,28.8,False,True,True,True,True
+p650 8,p65,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p650 9,p65,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p670 0,p67,,0.0,4.0,0.0,4.0,4.0,3.0,504264.0,288.0,0.0,0.0,0.0,0.0,57.6,False,True,True,True,True
+p670 1,p67,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1620.0,0.0,0.0,0.0,0.0,324.0,False,False,False,True,True
+p670 10,p67,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,False,False,False
+p670 2,p67,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,540.0,0.0,0.0,0.0,0.0,108.0,False,False,False,True,True
+p670 3,p67,,0.0,1.0,0.0,1.0,1.0,1.0,25487.0,72.0,0.0,0.0,0.0,0.0,14.4,False,True,True,True,True
+p670 4,p67,,0.0,3.0,0.0,3.0,3.0,3.0,794981.0,504.0,0.0,0.0,0.0,0.0,100.8,False,True,True,True,True
+p670 5,p67,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,36.0,0.0,0.0,0.0,0.0,7.2,False,False,False,True,True
+p670 6,p67,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,360.0,0.0,0.0,0.0,0.0,72.0,False,False,False,True,True
+p670 7,p67,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,72.0,0.0,0.0,0.0,0.0,14.4,False,False,False,True,True
+p670 8,p67,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,144.0,0.0,0.0,0.0,0.0,28.8,False,False,False,True,True
+p670 9,p67,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,180.0,0.0,0.0,0.0,0.0,36.0,False,False,False,True,True
