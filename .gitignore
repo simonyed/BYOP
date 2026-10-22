@@ -361,3 +361,11 @@ workflow/logs/byop/**/*.pid
 
 # local Python environments (the uv .venv carries its own '*' ignore; made explicit here)
 .venv/
+
+# current work package and all its reports are ALWAYS tracked (2026-10-22: the LaTeX rule *.[1-9] above hid the folder
+# current_work_pckg/ERCOT_2025_Official_Anchor_v1.3 - folder / file names ending in a version number must not be ignored)
+!current_work_pckg/
+!current_work_pckg/**
+current_work_pckg/**/*.zip
+current_work_pckg/**/__pycache__/
+current_work_pckg/**/*.pyc

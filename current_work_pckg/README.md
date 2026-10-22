@@ -15,21 +15,13 @@ Project-level documents that span work packages are in `workflow/byop/docs/`.
 
 ## Current work package
 
-**ERCOT 2025 official anchor calibration: collected evidence, definition rulings and code implementation supplement v1.3 (2026-10-22) — C0 offline reconciliation**
+**BYOP ERCOT: C0 audit repair and C1 fixed-asset diagnostics, execution prompt v1.4 (2026-10-22)**
 
-- Original text and attachments (byte-identical): `ERCOT_2025_Official_Anchor_v1.3/` (README_AND_EXECUTION_PROMPT_v1.3.md, SOURCE_MANIFEST.json, CHECKSUMS.sha256, annual_capacity_page.png, researcher scripts rebuild_evidence.py / prepare_package.py)
-- Official raw files (27 MB): `workflow/data/byop/ercot_official_anchor_2025/` (local + L2, not on GitHub; SHA in SOURCE_MANIFEST.json). Full local copy including `repo_snapshot/`: `work_pkgs/ERCOT_2025_Official_Anchor_v1.3/`
-- Nature: C0 offline reconciliation + code wiring; solver executions = 0; run gates stay NOT_APPROVED
-- Archived on 2026-10-22: the previous package (AIDC multi-bus siting v1.0) and all its reports are in `_completed/BYOP_ERCOT_AIDC_Geospatial_Distribution_v1.0/`; the dynamic-geography config and tests now point to the archived pending manifest
+- Original text: `BYOP_C0_Repair_C1_Diagnostics_Execution_Prompt_v1.4_2026-10-22.md` (provided by the researcher in this folder)
+- Stage A: C0 repair (phase / switchable / match confidence), solver executions 0. Stage B: limited C1 fixed-asset dispatch LPs (at most 6) under a separate C1 config; formal run gates stay NOT_APPROVED. Stage C: report, commit, stop.
+- Archived on 2026-10-22: the C0 v1.3 package (official anchor evidence package attachments + all C0 v1.3 reports, kept as the v1.3 snapshot) is in `_completed/ERCOT_2025_Official_Anchor_v1.3_C0/`; the official raw files stay in `workflow/data/byop/ercot_official_anchor_2025/`
+- `.gitignore`: the LaTeX rule `*.[1-9]` had hidden folders whose names end in a version number (the v1.3 package attachments were never on GitHub); `current_work_pckg/**` is now always tracked
 
 | File | Content | Status |
 |---|---|---|
-| `ERCOT_2025_Official_Anchor_v1.3/README_AND_EXECUTION_PROMPT_v1.3.md` | Original work package | Provided by the researcher |
-| `C0_INPUT_RECONCILIATION.md` | C0 report: tasks A-D, coverage, bridge, unexplained residuals, items returned to the researcher, tests | Done |
-| `C0_GENERATOR_MATCH.csv` | CDR Dec-2025 units <-> ReEDS model groups (match / candidate / ambiguous / unmatched / model-only) | Audit only |
-| `C0_CAPACITY_BRIDGE.csv` | AR / Dec trend / CDR core / model, exact decomposition, unexplained residual | Done |
-| `C0_PIPELINE_RECLASS_SUGGESTIONS.csv` | 2025-operating units held in the 2026 pipeline (and reverse) - suggestions, not applied | Researcher decision |
-| `C0_LOAD_ACCOUNTING.csv` | time axis and demand components (17 checks) | All PASS |
-| `C0_HISTORICAL_AIDC_EVIDENCE.csv` | evidence class of the 2025 AIDC stock and the 460.73 MW IT ramp (values unchanged) | Done |
-| `C0_UPLIFT_LEDGER.csv` | synthetic / 2025 calibration (MVA) / S0CAL (MW) line layers | Done |
-| `C0_QA.json` | all checks, coverage, solver_executions = 0 (L2 run incl. read-only .nc check) | Done |
+| `BYOP_C0_Repair_C1_Diagnostics_Execution_Prompt_v1.4_2026-10-22.md` | Original work package | Provided by the researcher |

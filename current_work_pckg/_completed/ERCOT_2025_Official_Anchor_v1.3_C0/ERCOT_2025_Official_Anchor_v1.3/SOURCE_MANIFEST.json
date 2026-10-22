@@ -1,0 +1,85 @@
+{
+  "repo_sha": "7a7eb2683a1d91840060616ecb31b76623223ed7",
+  "sources": [
+    {
+      "file": "raw/Native_Load_2025.zip",
+      "url": "https://www.ercot.com/files/docs/2025/02/11/Native_Load_2025.zip",
+      "sha256": "20f6699f4d1f577561e9581ce370a39b0b7af339c2c263c99c7b7fd605580854",
+      "bytes": 1085085,
+      "notes": "2025 actual hourly load; published/revised 2026-02-04",
+      "retrieved_on": "2026-10-22"
+    },
+    {
+      "file": "raw/Native_Load_2025.xlsx",
+      "url": "https://www.ercot.com/files/docs/2025/02/11/Native_Load_2025.zip",
+      "sha256": "23664b0cddb047692f6cac26a4300e987c6309795395d394bf2dc223f37b53aa",
+      "bytes": 1098164,
+      "notes": "Unmodified XLSX extracted from ZIP; identical SHA to repository input",
+      "retrieved_on": "2026-10-22"
+    },
+    {
+      "file": "raw/ERCOT_2025_Annual_Report.pdf",
+      "url": "https://www.ercot.com/files/docs/2026/03/19/2025-ERCOT-Annual-Report-Final-Single-Pages-March-19-2026.pdf",
+      "sha256": "397a4c38a3dadbed04d02041f1fdaa970bb50b122366594ac01652f13be19cfb",
+      "bytes": 5269402,
+      "notes": "2025 retrospective; broad installed ratings, printed page 6",
+      "retrieved_on": "2026-10-22"
+    },
+    {
+      "file": "raw/Capacity_December2025.xlsx",
+      "url": "https://www.ercot.com/files/docs/2026/01/08/Capacity-Changes-by-Fuel-Type-Charts_December_2025.xlsx",
+      "sha256": "acb4e59c8cf97c0b48c078c744d2e93cb1773a121e936485661d131e2736a6b6",
+      "bytes": 111888,
+      "notes": "December 2025 snapshot, published January 2026",
+      "retrieved_on": "2026-10-22"
+    },
+    {
+      "file": "raw/Capacity_November2025.xlsx",
+      "url": "https://www.ercot.com/files/docs/2025/12/04/Capacity-Changes-by-Fuel-Type-Charts_November_2025.xlsx",
+      "sha256": "a0f1f651ce9eef0c631db154c738f759212ddb68321ce83d09da110a61b93c2c",
+      "bytes": 112033,
+      "notes": "November snapshot; not year-end",
+      "retrieved_on": "2026-10-22"
+    },
+    {
+      "file": "raw/CDR_December2025.xlsx",
+      "url": "https://www.ercot.com/files/docs/2025/12/19/CapacityDemandandReservesReport_December2025.xlsx",
+      "sha256": "c26afc32ca220a61b0ec9854b074917d933a37bffa8a164f7d2ff7df6135db67",
+      "bytes": 13667254,
+      "notes": "December CDR; includes planned units and future seasonal capabilities",
+      "retrieved_on": "2026-10-22"
+    },
+    {
+      "file": "raw/IntGenbyFuel2025.xlsx",
+      "url": "https://www.ercot.com/files/docs/2025/02/07/IntGenbyFuel2025.xlsx",
+      "sha256": "bb534618700ff3500eee36b62fa2a9ab07b0923ed536f6d049868101189cfc54",
+      "bytes": 3048958,
+      "notes": "2025 settlement fuel mix; archive page update 2026-03-09",
+      "retrieved_on": "2026-10-22"
+    },
+    {
+      "file": "raw/MORA_August2025.xlsx",
+      "url": "https://www.ercot.com/files/docs/2025/06/05/MORA_August2025.xlsx",
+      "sha256": "8828d0e39933acffcf85c0ce4869a98009dfade35694f6ff7f9c581d7ae354ca",
+      "bytes": 312239,
+      "notes": "Ex-ante August forecast, not actual annual reliability",
+      "retrieved_on": "2026-10-22"
+    },
+    {
+      "file": "raw/ERCOT_Monthly_December2025.pdf",
+      "url": "https://www.ercot.com/files/docs/2026/01/20/ERCOT-Monthly-December-2025-FINAL.pdf",
+      "sha256": "08edb4d875f9506711171295a3e1fca10bb4ea2f68b2e9979a8f9a989a939913",
+      "bytes": 922962,
+      "notes": "December issue with November lookback; supporting only",
+      "retrieved_on": "2026-10-22"
+    },
+    {
+      "file": "raw/ERCOT_Constraints_Needs_2025.pdf",
+      "url": "https://www.ercot.com/files/docs/2025/12/23/2025-Report-on-Existing-and-Potential-Electric-System-Constraints-and-Needs.pdf",
+      "sha256": "e13bd274d39a423153d808910e3f99ad90cd28072eb25af274cfd90b3abea758",
+      "bytes": 1657010,
+      "notes": "2025 report; historical constraints Oct 2024 to Sep 2025",
+      "retrieved_on": "2026-10-22"
+    }
+  ]
+}
