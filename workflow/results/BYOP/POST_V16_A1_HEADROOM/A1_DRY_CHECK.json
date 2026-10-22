@@ -8,10 +8,9 @@
    "reasons": [
     "run_authorization=NOT_APPROVED",
     "approved_by missing",
-    "approved_git_sha missing",
-    "worktree not clean for code / config / inputs: ['workflow/byop/model/byop_paths.py', 'workflow/byop/model/rearch_mech.py', 'workflow/byop/run/run_mainline.sh', 'workflow/byop/build/build_post_v16_manifest.py', 'workflow/byop/build/post_v16_stage_qa.py']"
+    "approved_git_sha missing"
    ],
-   "head": "0b417903c7704c00de609581646fed29723397cf",
+   "head": "80e1835f6626ebb61e3f454ca63e852b7bad80a0",
    "approved_git_sha": null,
    "stage": "LP_R_H_RESOURCE",
    "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
@@ -23,10 +22,9 @@
     "run_authorization=NOT_APPROVED",
     "approved_by missing",
     "approved_git_sha missing",
-    "worktree not clean for code / config / inputs: ['workflow/byop/model/byop_paths.py', 'workflow/byop/model/rearch_mech.py', 'workflow/byop/run/run_mainline.sh', 'workflow/byop/build/build_post_v16_manifest.py', 'workflow/byop/build/post_v16_stage_qa.py']",
     "LP_N_H_NETWORK needs an optimal LP_R_H_RESOURCE first"
    ],
-   "head": "0b417903c7704c00de609581646fed29723397cf",
+   "head": "80e1835f6626ebb61e3f454ca63e852b7bad80a0",
    "approved_git_sha": null,
    "stage": "LP_N_H_NETWORK",
    "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
@@ -86,7 +84,7 @@
    "storage": 43,
    "storage_MW": 13068.4
   },
-  "build_seconds": 10.2,
+  "build_seconds": 10.1,
   "reserve": {
    "CCGT": {
     "pmin": 0.5,
@@ -180,7 +178,7 @@
    "storage": 43,
    "storage_MW": 13068.4
   },
-  "build_seconds": 10.7,
+  "build_seconds": 10.6,
   "reserve": {
    "CCGT": {
     "pmin": 0.5,

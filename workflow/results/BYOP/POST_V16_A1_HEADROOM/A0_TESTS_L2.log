@@ -26,4 +26,4 @@ workflow/byop/tests/test_baseline_v16.py::test_erm_credit_of_capped_plant_is_p_n
   The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-161 passed, 11 warnings in 63.75s (0:01:03)
+161 passed, 11 warnings in 63.47s (0:01:03)
