@@ -1,0 +1,20 @@
+{
+ "F_star_USD": 7476225965.00988,
+ "E_star_MWh": 112.5784916619491,
+ "F_recomputed_USD": 7476225965.011171,
+ "F_components_USD": {
+  "CCGT": 4548908557.339298,
+  "OCGT": 140346071.31484184,
+  "biomass": 64413.1386624037,
+  "coal": 2078172810.2640634,
+  "gas_steam": 178434043.12245825,
+  "hydro": 0.0,
+  "load_shed": 4017363.4749566535,
+  "nuclear": 526282706.3568909,
+  "onwind": 0.0,
+  "solar": 0.0,
+  "storage_dispatch_cost": 0.0
+ },
+ "status": "ok",
+ "termination": "optimal"
+}

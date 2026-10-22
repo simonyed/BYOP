@@ -1,0 +1,95 @@
+{
+ "stage": "C1-X1 / storage validation (WP v1.5)",
+ "solver_termination": {
+  "stage1": true,
+  "stage2": true
+ },
+ "effective_stages": 2,
+ "retries": 0,
+ "solver_calls": 2,
+ "x1_input_identity": true,
+ "no_build_variables": true,
+ "stage2_bounds": {
+  "F_bound_ok": true,
+  "E_bound_ok": true,
+  "F_star": 7476225965.00988,
+  "F_recomputed_stage1": 7476225965.011171,
+  "F_stage2": 7476226039.773468,
+  "epsilon_F": 74.7622596500988,
+  "E_star": 112.5784916619491,
+  "E_stage2": 112.5784929409394,
+  "epsilon_E": 0.001
+ },
+ "balance_residual_max_abs_MW": 4.488356353249401e-10,
+ "storage_state_equation_max_abs_residual_MWh": 1.4651391211373266e-11,
+ "output_completeness": {
+  "stage1": {
+   "storage_p_store.csv.gz": true,
+   "storage_p_dispatch.csv.gz": true,
+   "storage_soc.csv.gz": true,
+   "storage_static.csv": true,
+   "generators_p.csv.gz": true,
+   "generators_available.csv.gz": true,
+   "generators_static.csv": true,
+   "lines_p0.csv.gz": true,
+   "lines_p1.csv.gz": true,
+   "lines_static.csv": true,
+   "lines_saturated.csv.gz": true,
+   "shed_by_bus.csv.gz": true,
+   "storage_by_unit.csv": true,
+   "shedding_events.csv": true,
+   "lines.csv": true,
+   "generation_by_carrier.csv": true,
+   "metrics.json": true
+  },
+  "stage2": {
+   "storage_p_store.csv.gz": true,
+   "storage_p_dispatch.csv.gz": true,
+   "storage_soc.csv.gz": true,
+   "storage_static.csv": true,
+   "generators_p.csv.gz": true,
+   "generators_available.csv.gz": true,
+   "generators_static.csv": true,
+   "lines_p0.csv.gz": true,
+   "lines_p1.csv.gz": true,
+   "lines_static.csv": true,
+   "lines_saturated.csv.gz": true,
+   "shed_by_bus.csv.gz": true,
+   "storage_by_unit.csv": true,
+   "shedding_events.csv": true,
+   "lines.csv": true,
+   "generation_by_carrier.csv": true,
+   "metrics.json": true
+  }
+ },
+ "output_complete": true,
+ "prices": {
+  "stage1_economic": true,
+  "stage2_duals_separate": true
+ },
+ "inputs_or_old_results_changed_since_cf5df4f0": [],
+ "formal_gates": {
+  "config.byop_ercot_mainline_geo_dynamic_v1.yaml": "NOT_APPROVED",
+  "config.byop_ercot_mainline.yaml": "NOT_APPROVED"
+ },
+ "big_files_sha256": {
+  "stage1_X1/storage_p_store.csv.gz": "d4f54c66b48f693414ac250a2e043e778b3fbc34e35338a79270d4d347bfbeb4",
+  "stage1_X1/storage_p_dispatch.csv.gz": "128fa35c72a7ef7d39cdd2eebe26fb45021a3ff3ef0490389158f2a5c8e09104",
+  "stage1_X1/storage_soc.csv.gz": "d38d1bd79a54818e9ffa51f51dbdb1b238d859fb4254035ca57a8089c68f9188",
+  "stage1_X1/generators_p.csv.gz": "0c5cfa30e740861b7bc6e20c71efa7c10b9496aa8f567c0838b6e834ef0f155b",
+  "stage1_X1/generators_available.csv.gz": "9b8eae8be03b1980750a9353766f55fd2ab8a9c0761666e66b9dadae464c3be1",
+  "stage1_X1/lines_p0.csv.gz": "409f0dade816a933fa005aac51a329311863f824414287040f03c6f383e6c8b4",
+  "stage1_X1/lines_p1.csv.gz": "8033fe70c8a746f668ceca450480ce120a9449affda024f9b2bb91ebd7d90252",
+  "stage1_X1/lines_saturated.csv.gz": "9dec6b4a7614a64bc3954859c48b83451c0a848b713481e24ff477917b5627e9",
+  "stage1_X1/shed_by_bus.csv.gz": "8ea576d224e8ae32ec44a02bad31c460f28ab823578ae8a18864317813e587b2",
+  "stage2_min_throughput/storage_p_store.csv.gz": "1893feeea2492cdcf4519884a5a025bdb24915551bc7fd077feb427d5e0b2a9a",
+  "stage2_min_throughput/storage_p_dispatch.csv.gz": "85e697385a6c9c8d0d29f6ec716a782677709a5b357df8ba70cb2a2a5ddf7b46",
+  "stage2_min_throughput/storage_soc.csv.gz": "e679451bf658f1978a614f3b4c351c678b9b2517175373c008ba0eaaa23b1b6e",
+  "stage2_min_throughput/generators_p.csv.gz": "1481fedebda2f51eb1b31aa186062fbfed4fa934ab076884c12979440f5d28ee",
+  "stage2_min_throughput/generators_available.csv.gz": "9ead32b838f8a5f69db826d4bab8801237106c892ff930f0377a3e6dc358da0f",
+  "stage2_min_throughput/lines_p0.csv.gz": "88614ee9741719be16bbb7f5983172462f68d036bab819090bd04c3a47a80500",
+  "stage2_min_throughput/lines_p1.csv.gz": "3d2a89c306b304dcb926b96ee1a05b330a1c34d379b2803c745d8228ad46140a",
+  "stage2_min_throughput/lines_saturated.csv.gz": "aa97f3d14c34da5ae3d157c730f19adb5be4e0f473dba6b4b658009f62199a68",
+  "stage2_min_throughput/shed_by_bus.csv.gz": "72825e4a49e920a0dae3ee64e44c8f987535b5d3efa99307546420b5066622aa"
+ }
+}
