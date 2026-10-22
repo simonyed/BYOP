@@ -22,6 +22,7 @@ c1:
   voll_USD_MWh: 35685.0                     # mainline F2-b VOLL (Brattle 2024), identical in every case; diagnostic shed per load bus
   solver: gurobi
   solver_options: {Method: 2, Crossover: 0, BarConvTol: 1.0e-8, NumericFocus: 1}
+  retry_solver_options: {Method: 2, Crossover: 1, BarConvTol: 1.0e-8, NumericFocus: 2, BarHomogeneous: 1}   # only after a non-optimal attempt (logged as retry)
   windows:
     peak_load:
       anchor: native 1 h ERCOT peak (Native_Load_2025 row of the maximum)

@@ -55,19 +55,21 @@ def solve_log():
     return pd.read_csv(LOG) if LOG.exists() else pd.DataFrame(columns=['timestamp_utc', 'case', 'kind', 'attempt', 'counted_as', 'reason', 'status', 'termination', 'seconds'])
 
 
-def gate(c, reasons, case, kind):
+def gate(c, reasons, case, kind, upstream=''):
     if reasons:
         raise SystemExit(f'C1 gate REFUSED: {reasons}')
     if case not in CASES or kind not in KINDS:
         raise SystemExit(f'C1 gate REFUSED: {case} / {kind} not in the authorised list')
     lg = solve_log()
-    done = lg[(lg.counted_as == 'diagnostic') & (lg.status == 'ok')]
-    if ((done.case == case) & (done.kind == kind)).any():
-        raise SystemExit(f'C1 gate REFUSED: {case} {kind} already solved (no silent re-run)')
+    done = lg[(lg.status == 'ok') & (lg.termination == 'optimal')]          # only an optimal LP counts as solved
+    if ((done.case == case) & (done.kind == kind)).any() and not upstream:
+        raise SystemExit(f'C1 gate REFUSED: {case} {kind} already solved (no silent re-run; a changed upstream SOC boundary needs --upstream)')
+    prev = lg[(lg.case == case) & (lg.kind == kind)]
+    if len(prev):
+        return 'retry', f'previous attempt {prev.iloc[-1].status}: {prev.iloc[-1].termination}' + (f'; {upstream}' if upstream else '')
     if int((lg.counted_as == 'diagnostic').sum()) >= int(c['max_diagnostic_solves']):
         raise SystemExit('C1 gate REFUSED: diagnostic solve budget used')
-    prev = lg[(lg.case == case) & (lg.kind == kind)]
-    return ('retry', f'previous attempt {prev.iloc[-1].status}: {prev.iloc[-1].termination}') if len(prev) else ('diagnostic', '')
+    return 'diagnostic', ''
 
 
 def log_solve(case, kind, counted, reason, status, term, sec):
@@ -222,15 +224,23 @@ def metrics(n, case, kind, eval_from=0):
 
 
 # ------------------------------------------------------------------------------------------------ actions
-def solve(n, c, threads):
+def solve(n, c, threads, opts):
     t = time.time()
-    st, term = n.optimize(solver_name=c['solver'], solver_options=dict(c['solver_options'], Threads=int(threads)))
+    st, term = n.optimize(solver_name=c['solver'], solver_options=dict(opts, Threads=int(threads)))
     return st, str(term), time.time() - t
 
 
-def run(c, reasons, case, kind, threads):
-    counted, why = gate(c, reasons, case, kind)
+def run(c, reasons, case, kind, threads, retry=False, upstream=''):
+    counted, why = gate(c, reasons, case, kind, upstream)
+    if retry != (counted == 'retry'):
+        raise SystemExit(f'C1: --retry {"given without" if retry else "missing for"} a previous attempt of {case} {kind}')
+    opts = c['retry_solver_options'] if retry else c['solver_options']
     d = OUT / f'{case}__{KINDS[kind]}'
+    if (d / 'metrics.json').exists():                       # keep every earlier attempt's outputs
+        k = 1
+        while (OUT / f'{d.name}__attempt{k}').exists():
+            k += 1
+        d.rename(OUT / f'{d.name}__attempt{k}')
     d.mkdir(parents=True, exist_ok=True)
     n, info = prepare(c, case)
     extra, eval_from = {}, 0
@@ -245,16 +255,14 @@ def run(c, reasons, case, kind, threads):
     n.optimize.create_model()
     var_names = assert_no_build_variables(n)
     try:
-        st, term, sec = solve(n, c, threads)
+        st, term, sec = solve(n, c, threads, opts)
     except Exception as e:                                   # logged, never silently retried
         log_solve(case, kind, counted, why, 'error', repr(e)[:200], 0.0)
         raise
-    ok = st == 'ok'
+    ok = st == 'ok' and term == 'optimal'
     log_solve(case, kind, counted, why, st, term, sec)
-    if not ok:
-        raise SystemExit(f'{case} {kind}: {st} {term}')
     m, ev, bl, gen = metrics(n, case, kind, eval_from)
-    m.update(status=st, termination=term, seconds=round(sec, 1), counted_as=counted, linopy_variables=var_names,
+    m.update(status=st, termination=term, seconds=round(sec, 1), counted_as=counted, solver_options=opts, linopy_variables=var_names,
              n_vars=int(n.model.nvars), n_cons=int(n.model.ncons), threads=int(threads), config_sha256=sha(CFG_PATH),
              script_sha256=sha(__file__), network=info, window=extra, label=c['label'])
     (d / 'metrics.json').write_text(json.dumps(m, indent=1, default=str))
@@ -263,6 +271,8 @@ def run(c, reasons, case, kind, threads):
     gen.to_csv(d / 'generation_by_carrier.csv', index=False, lineterminator='\n')
     n.storage_units_t.state_of_charge.to_csv(d / 'storage_soc.csv.gz')
     print(json.dumps({k: v for k, v in m.items() if k not in ('linopy_variables', 'network', 'window')}, indent=1, default=str))
+    if not ok:
+        raise SystemExit(f'{case} {kind}: {st} {term} (outputs kept, NOT counted as solved)')
 
 
 def dry(c, reasons, threads):
@@ -311,13 +321,15 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--dry', action='store_true'); ap.add_argument('--run', choices=list(KINDS)); ap.add_argument('--case', choices=CASES)
     ap.add_argument('--collect', action='store_true')
+    ap.add_argument('--retry', action='store_true', help='re-solve a case whose previous attempt was not optimal (retry_solver_options)')
+    ap.add_argument('--upstream', default='', help='reason text when a window is retried because its SOC boundary changed')
     ap.add_argument('--threads', type=int, default=int(os.environ.get('THREADS', 8)))
     a = ap.parse_args()
     c, reasons = load_cfg()
     if a.dry:
         dry(c, reasons, a.threads)
     elif a.run:
-        run(c, reasons, a.case, a.run, a.threads)
+        run(c, reasons, a.case, a.run, a.threads, a.retry, a.upstream)
     elif a.collect:
         import importlib.util
         spec = importlib.util.spec_from_file_location('c1_collect', WF / 'byop/post/c1_collect.py')

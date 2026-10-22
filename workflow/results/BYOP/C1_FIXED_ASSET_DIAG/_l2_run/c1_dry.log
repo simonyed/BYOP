@@ -1,0 +1,44 @@
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.optimization.window:Building the multi-period model over a MultiIndex `snapshot`. Opt into the flat representation via `pypsa.options.optimization.model_snapshot_index = 'flat'`.
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+{
+ "gate_reasons": [],
+ "network_difference": {
+  "lines_changed": 18,
+  "uplift_MVA": 4993.911832823386,
+  "equals_ledger": true,
+  "all_else_identical": {
+   "generators": true,
+   "storage_units": true,
+   "loads": true,
+   "buses": true,
+   "loads_t": true,
+   "p_max_pu": true,
+   "line_s_max_pu_length": true,
+   "line_x_r_scaled_only_on_uplift_lines_by_s_ratio": true
+  }
+ },
+ "window": {
+  "peak_row": 5512,
+  "peak_label": "08/18/2025 18:00",
+  "start_h": 5475,
+  "end_h": 5547,
+  "buffer_h": 24,
+  "load_3h_mean_vs_network_max_abs_MW": 1.8189894035458565e-12,
+  "renewables": "RE_HELD_AT_3H_VALUE (not a measured 1 h curve)",
+  "linopy_variables": [
+   "Generator-p",
+   "Line-s",
+   "StorageUnit-p_dispatch",
+   "StorageUnit-p_store",
+   "StorageUnit-state_of_charge"
+  ],
+  "n_vars": 39816
+ },
+ "max_net_load_window": "MISSING_INPUT",
+ "solver_calls": 0
+}
+{'C1_NETWORK_BASE': {'removed_global_constraints': ['lv_limit'], 'storage_MW': 12768.4, 'n_vars': 1614760, 'n_cons': 4514086}, 'C1_NETWORK_CALIBRATED': {'removed_global_constraints': ['lv_limit'], 'storage_MW': 12768.4, 'n_vars': 1614760, 'n_cons': 4514086}}
+exit 0

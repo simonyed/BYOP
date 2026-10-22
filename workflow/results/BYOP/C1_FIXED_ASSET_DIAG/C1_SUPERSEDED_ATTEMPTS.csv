@@ -1,0 +1,5 @@
+attempt_dir,case,kind,status,termination,seconds,shed_MWh,shed_max_MW,balance_residual_max_abs_MW,solver_options,note
+C1_NETWORK_BASE__ANNUAL_3H__attempt1,C1_NETWORK_BASE,ANNUAL_3H,ok,suboptimal,275.300000,10264064.571398,2739.345162,0.000065,{},superseded attempt (not optimal or upstream boundary changed)
+C1_NETWORK_BASE__PEAK_WINDOW_1H__attempt1,C1_NETWORK_BASE,PEAK_WINDOW_1H,ok,optimal,7.700000,58626.790328,1913.996161,0.000000,{},superseded attempt (not optimal or upstream boundary changed)
+C1_NETWORK_CALIBRATED__ANNUAL_3H__attempt1,C1_NETWORK_CALIBRATED,ANNUAL_3H,ok,suboptimal,321.800000,72905.117241,776.025948,0.000002,{},superseded attempt (not optimal or upstream boundary changed)
+C1_NETWORK_CALIBRATED__PEAK_WINDOW_1H__attempt1,C1_NETWORK_CALIBRATED,PEAK_WINDOW_1H,ok,optimal,11.000000,17.340944,4.529210,0.000000,{},superseded attempt (not optimal or upstream boundary changed)

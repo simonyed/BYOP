@@ -1,0 +1,112 @@
+{
+ "real_cases": {
+  "CALLISTO": {
+   "phases": [
+    {
+     "phase_class": "FUTURE",
+     "phase_year": 2026.0,
+     "cdr_MW": 203.2,
+     "model_set": "",
+     "model_summer_MW": 0.0,
+     "reclass_action": "NONE_FUTURE_NOT_PAIRED"
+    },
+    {
+     "phase_class": "HIST",
+     "phase_year": 2024.0,
+     "cdr_MW": 203.0,
+     "model_set": "active2025",
+     "model_summer_MW": 200.0,
+     "reclass_action": "NONE_HISTORICAL_PHASE_COVERED"
+    }
+   ]
+  },
+  "TIDWELL": {
+   "phases": [
+    {
+     "phase_class": "FUTURE",
+     "phase_year": 2026.0,
+     "cdr_MW": 203.62,
+     "model_set": "committed",
+     "model_summer_MW": 200.0,
+     "reclass_action": "NONE_FUTURE_CONSISTENT"
+    },
+    {
+     "phase_class": "HIST",
+     "phase_year": 2025.0,
+     "cdr_MW": 204.0,
+     "model_set": "active2025",
+     "model_summer_MW": 200.0,
+     "reclass_action": "NONE_HISTORICAL_PHASE_COVERED"
+    }
+   ]
+  },
+  "PADUA": {
+   "phases": [
+    {
+     "phase_class": "FUTURE",
+     "phase_year": 2026.0,
+     "cdr_MW": 352.28999999999996,
+     "model_set": "committed;not_in_model",
+     "model_summer_MW": 350.0,
+     "reclass_action": "NONE_FUTURE_CONSISTENT"
+    },
+    {
+     "phase_class": "HIST",
+     "phase_year": 2025.0,
+     "cdr_MW": 51.1,
+     "model_set": "active2025",
+     "model_summer_MW": 50.0,
+     "reclass_action": "NONE_HISTORICAL_PHASE_COVERED"
+    }
+   ]
+  }
+ },
+ "no_reclass_for_real_cases": true,
+ "old_total_MW": 2971.68,
+ "old_set_by_action": {
+  "NONE_HISTORICAL_PHASE_COVERED": 458.1,
+  "STATUS_QUALIFIED_REVIEW": 2513.58
+ },
+ "v14_review_reclass_candidates_MW": 567.47,
+ "switchable": {
+  "stations": 5,
+  "physical_MW": 4066.12,
+  "adjustment_MW": -2596.12,
+  "unpaired_adjustments": 0,
+  "kiamichi": {
+   "physical_MW": 1400.0,
+   "unavailable_adjustment_MW": -885.0,
+   "snapshot_net_MW": 515.0,
+   "model_active2025_summer_MW": 1224.0
+  }
+ },
+ "noncore_breakdown_MW": {
+  "DGR_SODG_DISTRIBUTION": 49.0,
+  "PHASE_UNPAIRED_WITH_CDR_HISTORICAL (year / MW differ: capacity basis or phase split)": 13245.1,
+  "SAME_NAME_FUTURE_RECORD_ONLY (repower / expansion?): old model unit identity unresolved": 2304.5
+ }
+}
+     side                                        identity_tier  units        MW  share_MW
+0     CDR                                            AMBIGUOUS     20   1759.61    0.0110
+1     CDR                                   CAPACITY_CANDIDATE     41   2915.70    0.0182
+2     CDR                      CAPACITY_CANDIDATE+PHASE_PAIRED     81   9421.96    0.0587
+3     CDR         NAME_EXACT_SAME_COUNTY+HIST_AGGREGATE_PAIRED     90  10585.05    0.0660
+4     CDR                  NAME_EXACT_SAME_COUNTY+PHASE_PAIRED    495  83247.71    0.5187
+5     CDR                NAME_EXACT_SAME_COUNTY+PHASE_UNPAIRED     94   9779.37    0.0609
+6     CDR         NAME_FUZZY_SAME_COUNTY+HIST_AGGREGATE_PAIRED     13   1213.96    0.0076
+7     CDR                  NAME_FUZZY_SAME_COUNTY+PHASE_PAIRED    145  19000.91    0.1184
+8     CDR                NAME_FUZZY_SAME_COUNTY+PHASE_UNPAIRED     18   1363.60    0.0085
+9     CDR              NAME_OTHER_COUNTY+HIST_AGGREGATE_PAIRED      7    500.30    0.0031
+10    CDR                       NAME_OTHER_COUNTY+PHASE_PAIRED     35   3665.78    0.0228
+11    CDR                     NAME_OTHER_COUNTY+PHASE_UNPAIRED      6    691.24    0.0043
+12    CDR                                            UNMATCHED    142  16349.36    0.1019
+13    CDR  ID_CONFIRMED (ERCOT UNIT CODE <-> EIA ID crosswalk)      0      0.00    0.0000
+28  MODEL                      CAPACITY_CANDIDATE+PHASE_PAIRED     86   8759.60    0.0565
+29  MODEL         NAME_EXACT_SAME_COUNTY+HIST_AGGREGATE_PAIRED     65  10187.50    0.0657
+30  MODEL                  NAME_EXACT_SAME_COUNTY+PHASE_PAIRED    468  79218.60    0.5109
+31  MODEL         NAME_FUZZY_SAME_COUNTY+HIST_AGGREGATE_PAIRED     33   1255.90    0.0081
+32  MODEL                  NAME_FUZZY_SAME_COUNTY+PHASE_PAIRED    134  19318.90    0.1246
+33  MODEL              NAME_OTHER_COUNTY+HIST_AGGREGATE_PAIRED      2    499.50    0.0032
+34  MODEL                       NAME_OTHER_COUNTY+PHASE_PAIRED     29   4606.10    0.0297
+35  MODEL                                UNPAIRED_OR_UNMATCHED    880  31204.50    0.2013
+exit 0

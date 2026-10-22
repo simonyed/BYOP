@@ -75,7 +75,8 @@
    "buses": true,
    "loads_t": true,
    "p_max_pu": true,
-   "line_other_attributes": false
+   "line_s_max_pu_length": true,
+   "line_x_r_scaled_only_on_uplift_lines_by_s_ratio": true
   }
  },
  "window": {

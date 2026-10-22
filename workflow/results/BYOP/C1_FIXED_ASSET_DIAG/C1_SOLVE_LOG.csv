@@ -1,0 +1,9 @@
+timestamp_utc,case,kind,attempt,counted_as,reason,status,termination,seconds
+2026-10-22T16:01:44+00:00,C1_NETWORK_BASE,annual,1,diagnostic,,ok,suboptimal,275.3
+2026-10-22T16:02:31+00:00,C1_NETWORK_CALIBRATED,annual,1,diagnostic,,ok,suboptimal,321.8
+2026-10-22T16:02:52+00:00,C1_NETWORK_BASE,window,1,diagnostic,,ok,optimal,7.7
+2026-10-22T16:02:55+00:00,C1_NETWORK_CALIBRATED,window,1,diagnostic,,ok,optimal,11.0
+2026-10-22T16:08:38+00:00,C1_NETWORK_CALIBRATED,annual,2,retry,previous attempt ok: suboptimal,ok,optimal,259.3
+2026-10-22T16:11:48+00:00,C1_NETWORK_BASE,annual,2,retry,previous attempt ok: suboptimal,ok,optimal,449.4
+2026-10-22T16:12:07+00:00,C1_NETWORK_BASE,window,2,retry,previous attempt ok: optimal; SOC boundary re-taken from the optimal CALIBRATED annual retry,ok,optimal,4.4
+2026-10-22T16:12:22+00:00,C1_NETWORK_CALIBRATED,window,2,retry,previous attempt ok: optimal; SOC boundary re-taken from the optimal CALIBRATED annual retry,ok,optimal,4.3
