@@ -1,0 +1,100 @@
+{
+ "gate_reasons": [],
+ "C1_NETWORK_BASE": {
+  "network": "results/BYOP/baseline_2025_tamu/baseline_2025_tamu_raw_uncalibrated.nc",
+  "network_sha256": "7103e6e0966e7494d2db5237e13cd276765612b954d61e3519b1e3ebee1e88ce",
+  "removed_global_constraints": [
+   "lv_limit"
+  ],
+  "generators": 262,
+  "storage_units": 43,
+  "lines": 162,
+  "links": 0,
+  "fleet_MW_by_carrier": {
+   "CCGT": 35914.3,
+   "OCGT": 8815.7,
+   "biomass": 123.0,
+   "coal": 10774.0,
+   "gas_steam": 11848.3,
+   "hydro": 535.4,
+   "nuclear": 4980.0,
+   "onwind": 40028.8,
+   "solar": 29262.7
+  },
+  "storage_MW": 12768.4,
+  "linopy_variables": [
+   "Generator-p",
+   "Line-s",
+   "StorageUnit-p_dispatch",
+   "StorageUnit-p_store",
+   "StorageUnit-state_of_charge"
+  ],
+  "n_vars": 1614760,
+  "n_cons": 4514086
+ },
+ "C1_NETWORK_CALIBRATED": {
+  "network": "results/BYOP/baseline_2025_tamu/baseline_2025_tamu_prepared.nc",
+  "network_sha256": "19034285be0aa9b9906ab5b0e03778f3a16e7c1c39e97ac97b368d9097cafadb",
+  "removed_global_constraints": [
+   "lv_limit"
+  ],
+  "generators": 262,
+  "storage_units": 43,
+  "lines": 162,
+  "links": 0,
+  "fleet_MW_by_carrier": {
+   "CCGT": 35914.3,
+   "OCGT": 8815.7,
+   "biomass": 123.0,
+   "coal": 10774.0,
+   "gas_steam": 11848.3,
+   "hydro": 535.4,
+   "nuclear": 4980.0,
+   "onwind": 40028.8,
+   "solar": 29262.7
+  },
+  "storage_MW": 12768.4,
+  "linopy_variables": [
+   "Generator-p",
+   "Line-s",
+   "StorageUnit-p_dispatch",
+   "StorageUnit-p_store",
+   "StorageUnit-state_of_charge"
+  ],
+  "n_vars": 1614760,
+  "n_cons": 4514086
+ },
+ "network_difference": {
+  "lines_changed": 18,
+  "uplift_MVA": 4993.911832823386,
+  "equals_ledger": true,
+  "all_else_identical": {
+   "generators": true,
+   "storage_units": true,
+   "loads": true,
+   "buses": true,
+   "loads_t": true,
+   "p_max_pu": true,
+   "line_other_attributes": false
+  }
+ },
+ "window": {
+  "peak_row": 5512,
+  "peak_label": "08/18/2025 18:00",
+  "start_h": 5475,
+  "end_h": 5547,
+  "buffer_h": 24,
+  "load_3h_mean_vs_network_max_abs_MW": 1.8189894035458565e-12,
+  "renewables": "RE_HELD_AT_3H_VALUE (not a measured 1 h curve)",
+  "linopy_variables": [
+   "Generator-p",
+   "Line-s",
+   "StorageUnit-p_dispatch",
+   "StorageUnit-p_store",
+   "StorageUnit-state_of_charge"
+  ],
+  "n_vars": 39816
+ },
+ "max_net_load_window": "MISSING_INPUT",
+ "solver_calls": 0
+}

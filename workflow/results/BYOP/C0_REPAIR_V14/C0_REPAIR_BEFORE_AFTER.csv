@@ -1,0 +1,12 @@
+metric,v13,v14,note
+old_v13_cdr_operating_model_committed_MW,2971.680000,2971.680000,v1.4 name: total flagged by the old park-level rule (to be reviewed)
+old_set_phase_MW__NONE_HISTORICAL_PHASE_COVERED,,458.100000,"HIST phases of the old suggestion groups, by v1.4 action"
+old_set_phase_MW__STATUS_QUALIFIED_REVIEW,,2513.580000,"HIST phases of the old suggestion groups, by v1.4 action"
+v14_REVIEW_RECLASS_CANDIDATE_MW_all_groups,,567.470000,commercial OPER/RMR phase paired with a model phase outside the 2025 fleet
+v14_REVIEW_RECLASS_CANDIDATE_phases,,3.000000,
+cdr_core_name_matched_MW_share,0.810295,0.659925,v1.3 = name-group match; v1.4 = name match AND phase pairing (still not ID-confirmed)
+kiamichi_physical_MW,,1400.000000,SWGR-AVA rows
+kiamichi_unavailable_adjustment_MW,,-885.000000,SWGR-UNA rows
+kiamichi_snapshot_net_MW,,515.000000,audit net only
+kiamichi_model_active2025_summer_MW,,1224.000000,model value unchanged
+model_active_without_cdr_historical_phase_MW,,15598.600000,broken down by reason in C0_MODEL_ACTIVE_NONCORE_BREAKDOWN.csv (v1.3: ~6.37 GW model-matched-noncore at group level)

@@ -1,0 +1,34 @@
+# C1 fixed-asset dispatch diagnostics (BYOP C0 repair / C1 prompt v1.4, 2026-10-22, stage B).
+# Separate from the formal mainline gate (config.byop_ercot_mainline*.yaml stay NOT_APPROVED and are not read here).
+# The researcher prompt v1.4 authorises ONLY the dispatch LPs listed below (two annual 3 h + at most two 72 h windows x two
+# networks, max 6 diagnostic solves); byop/run/c1_fixed_asset_diagnostics.py refuses anything else.
+c1:
+  authorization: AUTHORIZED_BY_RESEARCHER_PROMPT_V1_4
+  authorization_source: current_work_pckg/BYOP_C0_Repair_C1_Diagnostics_Execution_Prompt_v1.4_2026-10-22.md
+  authorization_source_sha256: 9b3ce2ba28d0f8df5775af9cb8b81325fb13da533078019cd9434c2c7ad03c6b
+  max_diagnostic_solves: 6
+  label: "existing-model 2025 fleet fixed-asset diagnostic (static year-end fleet; NOT a historical replay)"
+  cases:
+    C1_NETWORK_BASE:
+      network: results/BYOP/baseline_2025_tamu/baseline_2025_tamu_raw_uncalibrated.nc
+      lines: interface rule (reeds_sum) s_nom, WITHOUT the 2025 calibration uplift
+    C1_NETWORK_CALIBRATED:
+      network: results/BYOP/baseline_2025_tamu/baseline_2025_tamu_prepared.nc
+      lines: interface rule s_nom + the 18-line, 4,993.9 MVA 2025 calibration uplift (loaded once, inside s_nom)
+  uplift_ledger: results/BYOP/baseline_2025_tamu/TAMU_2025_CALIBRATION_LP.csv
+  fleet_rule: remove every extendable component and every unit with build_year > 2025 (committed pipeline); all *_nom_extendable = False
+  remove_global_constraints: true          # lv_limit (line volume expansion) - no line is extendable
+  storage_rule: annual cyclic SOC for every storage unit in both cases (no free initial energy); efficiencies as in the network
+  voll_USD_MWh: 35685.0                     # mainline F2-b VOLL (Brattle 2024), identical in every case; diagnostic shed per load bus
+  solver: gurobi
+  solver_options: {Method: 2, Crossover: 0, BarConvTol: 1.0e-8, NumericFocus: 1}
+  windows:
+    peak_load:
+      anchor: native 1 h ERCOT peak (Native_Load_2025 row of the maximum)
+      length_h: 72
+      buffer_h: 24                          # first 24 h buffer, last 48 h evaluated
+      load: hourly bus load rebuilt with the baseline builder rule (3 h means reproduce the network load to 1.8e-12 MW)
+      renewables: "RE_HELD_AT_3H_VALUE (no time-aligned 1 h wind / solar for the model profiles - each 3 h value is held for its 3 hours; NOT a measured 1 h curve)"
+      soc_boundary: start / end SOC per unit = annual C1_NETWORK_CALIBRATED SOC at the 3 h steps bounding the window, applied identically to both networks
+    max_net_load:
+      status: MISSING_INPUT            # requires time-aligned 1 h wind / solar; the PyPSA-USA hourly profiles do not reproduce the model 3 h profiles (max |diff| 0.47 p.u. at every shift)
