@@ -1104,6 +1104,11 @@ def extra_rearch(n, snapshots):
                 m.add_constraints(lp_.sel(name=f'{b}_fwd') - lp_.sel(name=f'{b}_rev') == 0, name=f'S0CAL-sym_{b}')
     if ML['on']:
         ml_space(n, m)
+    import post_v16_mainline as PM
+    if PM.POST_V16['on']:                       # NEXT-01 A2-static: 3 GW operating reserve + RE/BESS firm certificate (build only)
+        STATE['pv16m_reserve'] = PM.add_operating_reserve(n, snapshots)
+        if PM.POST_V16['re_firm'] and STATE.get('dc'):
+            STATE['pv16m_re_firm'] = PM.add_re_bess_firm_certificate(n, snapshots, STATE['dc'], stress_mask)
     if M.CFG.get('tech_version') == 'TECH_COMP_2' and STATE.get('v2_pool_candidates') and 'Generator-p_nom' in m.variables:
         import byop_supply_pools as SP          # A0.2 P3c: common delivery pool per technology and delivery year (all sites / paths)
         STATE['v2_pool_rows'] = SP.add_pool_constraints(n, m, STATE['v2_pool_candidates'])

@@ -25,6 +25,13 @@ SOURCE_SHA256 = {
     'BYOP_SUPPLY_POOL_PROXY_V2.csv': '181af58f60dec3a87e2a812ab235debd79b5ca58db23fdbb2f949a5e3c0ce988',
     'BYOP_COUNTY_OZONE_RULES_2026.csv': '8bfc4de5dd864e0107b8e1482c3d4193e31c43dad18aab81343910fd667def24',
 }
+SOURCE_SHA256_LF = {
+    'BYOP_TECH_PARAMETER_BASELINE_V2.json': '10bd868ba50929379be23b63d72626d8d528a1b358ce6b5a63a516e5771327c7',
+    'BYOP_TECH_PARAMETERS_V2.csv': 'b2603984a08af4f05c903df7cc6071b0e8a6d37de3be025ccfdd1e8c9664122b',
+    'BYOP_SUPPLY_POOL_PROXY_V2.csv': '3e9154f079e6c78a20fe502d569d6d8b738c9da8f5553944a7adca797b4ee59f',
+    'BYOP_COUNTY_OZONE_RULES_2026.csv': 'b4f84e94db5c9db932f3b20a144da65a785499b1cf9998ce097758c7e96eb26b',
+}   # same content with CRLF -> LF (git stores the files LF: a
+# fresh clone / worktree holds these bytes; the original ZIP bytes have CRLF). Either form is an exact content match.
 GAS_PRICES = BP.INPUTS / 'tech/MAINLINE_V13_GAS_PRICES_2026_2031.csv'
 TECHS = ['RICE', 'OCGT_aero', 'SOFC_NG', 'WIND', 'PV', 'BESS']
 GAS_TECHS = ['RICE', 'OCGT_aero', 'SOFC_NG']
@@ -37,7 +44,12 @@ sha = lambda p: hashlib.sha256(Path(p).read_bytes()).hexdigest()
 
 
 def verify_sources(src=SRC):
-    bad = {f: sha(src / f) for f, h in SOURCE_SHA256.items() if not (src / f).exists() or sha(src / f) != h}
+    def ok(f):
+        if not (src / f).exists():
+            return False
+        b = (src / f).read_bytes()
+        return hashlib.sha256(b).hexdigest() == SOURCE_SHA256[f] or hashlib.sha256(b.replace(bytes([13, 10]), bytes([10]))).hexdigest() == SOURCE_SHA256_LF[f]
+    bad = {f: sha(src / f) for f in SOURCE_SHA256 if not ok(f)}
     if bad:
         raise ValueError(f'TECH_COMP_2 source SHA mismatch (files must be the original bytes): {sorted(bad)}')
     return True

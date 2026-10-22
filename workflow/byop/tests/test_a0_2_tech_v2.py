@@ -38,7 +38,9 @@ def no_solver(monkeypatch):
 # ------------------------------------------------------------------------------------------------ T-VERSION
 def test_sources_byte_identical_to_package_and_pinned():
     for f, h in T2.SOURCE_SHA256.items():
-        assert sha(T2.SRC / f) == h == sha(PKG / f)
+        lf = lambda p: hashlib.sha256(Path(p).read_bytes().replace(bytes([13, 10]), bytes([10]))).hexdigest()
+        assert lf(T2.SRC / f) == T2.SOURCE_SHA256_LF[f] == lf(PKG / f)       # same content in any checkout (CRLF or LF)
+        assert sha(PKG / f) in (h, T2.SOURCE_SHA256_LF[f]) and sha(T2.SRC / f) in (h, T2.SOURCE_SHA256_LF[f])
     assert sha(PKG.parent / 'ORIGINAL_SOURCE_ZIP.zip') == '527ff8ab95dbaaaab5c0d6c160d405b05eae7a941d7b73d1850f92e5601b241d'
 
 

@@ -112,7 +112,8 @@ def add_public_candidate(n, zone, cod):
 _UPSTREAM_EXTRA = sn.extra_functionality
 ERM_MARGIN = 0.15
 DC_ERM = {'mode': 'B', 'pois': []}  # pois: list of (poi_link_name, zone_bus); set per solve
-ERM_REGIONS = {'TX': ERM_MARGIN}     # region name -> margin (national M6: one row per NERC region)
+ERM_REGIONS = {'TX': ERM_MARGIN}
+POST_V16_NO_ERM = {'on': False}    # NEXT-01 A2-static: set only by the post-v1.6 build path (legacy default unchanged)     # region name -> margin (national M6: one row per NERC region)
 ZONE_REGION = {}                     # zone bus -> ERM region name (default: the single region)
 
 
@@ -153,9 +154,14 @@ def solve(n, config, tag, outdir, erm_dc_mode='B'):
     # one region 'TX' = the 8 zone buses (reeds_state TX): same constraints as upstream 'all' incl. inter-zone
     # reserve sharing over links; DC facility buses (reeds_state 'DC') are outside the ERM rows, and under
     # ERM-DC-01 B their grid-served load is charged to the POI zone row by extra_functionality_erm_dc
-    cfg['electricity']['erm'] = dict(ERM_REGIONS)
-    if 'ERM' not in cfg['wildcards']['opts'].split('-'):
-        cfg['wildcards'] = dict(cfg['wildcards'], opts=cfg['wildcards']['opts'] + '-ERM')
+    if POST_V16_NO_ERM['on']:   # NEXT-01 A2: post-v1.6 line - no legacy 15 % ERM row / shadow SOC / ERM-DC (operating reserve instead)
+        DC_ERM['mode'] = 'OFF'; DC_ERM['pois'] = []
+        cfg.setdefault('electricity', {}).pop('erm', None)
+        cfg['wildcards'] = dict(cfg['wildcards'], opts='-'.join(o for o in cfg['wildcards']['opts'].split('-') if o and o != 'ERM'))
+    else:
+        cfg['electricity']['erm'] = dict(ERM_REGIONS)
+        if 'ERM' not in cfg['wildcards']['opts'].split('-'):
+            cfg['wildcards'] = dict(cfg['wildcards'], opts=cfg['wildcards']['opts'] + '-ERM')
     sn.snakemake = SimpleNamespace(params=SimpleNamespace(foresight=cfg['foresight'], solving=cfg['solving']),
                                    config=cfg, input=SimpleNamespace(), wildcards=SimpleNamespace(**cfg['wildcards']))
     opts = [o for o in cfg['wildcards']['opts'].split('-') if o]
