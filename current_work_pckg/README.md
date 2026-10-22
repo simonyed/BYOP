@@ -24,3 +24,8 @@ Project-level documents that span work packages are in `workflow/byop/docs/`.
 | File | Content | Status |
 |---|---|---|
 | `BYOP_C1_X1_Storage_Validation_Work_Package_v1.5_2026-10-22.md` | Original work package | Provided by the researcher |
+| `C1_X1_STORAGE_VALIDATION_REPORT.md` | Report: X1 impedance comparison, storage two-stage check, evidence requests, network-representation proposal | Done (stop for researcher review) |
+| `C1_X1_LINE_INPUT_AUDIT.csv`, `C1_X1_STAGE_COMPARISON.csv`, `C1_X1_STORAGE_BY_UNIT.csv`, `C1_X1_SHED_BY_BUS_MONTH.csv`, `C1_X1_LINE_COMPARISON.csv`, `C1_X1_SHED_EVENTS_LABELLED.csv`, `C1_X1_QA.json`, `C1_X1_SOLVE_LOG.csv` | 2 effective LP stages, 0 retries, both exactly optimal | Done |
+| `C0_PRIORITY_ASSET_EVIDENCE_REQUESTS.csv` | 32 asset items for researcher rulings (existing values kept) | Waiting for researcher |
+
+Not done (by design): network representation change, asset revisions, re-calibration, S0-S3 / B3.

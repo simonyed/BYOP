@@ -1,0 +1,3 @@
+timestamp_utc,stage,attempt,counted_as,reason,status,termination,seconds
+2026-10-22T17:34:12+00:00,C1_X1_RAW_IMPEDANCE,1,effective,,ok,optimal,236.6
+2026-10-22T18:41:33+00:00,C1_X1_MIN_STORAGE_THROUGHPUT,1,effective,,ok,optimal,4035.6
