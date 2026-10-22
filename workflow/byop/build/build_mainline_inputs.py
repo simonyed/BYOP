@@ -70,7 +70,10 @@ E0 = [
 CAMPUS = ['Google Red Oak', 'Meta Temple', 'Google Midlothian', 'Vantage TX1', 'Microsoft SAT14', 'Microsoft SAT40', 'CoreWeave Denton TX']
 AS_OF = pd.Timestamp('2026-10-21')
 ESTIMATE = r'[Ee]stimat|projected|scheduled|[Bb]ased on the stated'     # imagery / earnings-call wording ('based on satellite imagery') = observed
-TIMELINE_RAW = Path('D:/BYOP_impact/work_pkgs/BYOP_ERCOT_Rearchitecture_Work_Package/epoch_ai/raw/epoch_frontier_data_centers_2026-10-21/data_center_timelines.csv')
+import sys  # noqa: E402
+sys.path.insert(0, str(HERE.parent / 'model'))
+import byop_paths as BP  # noqa: E402
+TIMELINE_RAW = BP.EPOCH_TIMELINE_RAW     # env BYOP_EPOCH_TIMELINE_RAW (C0: no personal drive path in code); unset = keep tracked extract
 GAS = {   # bus: (level, lateral lead low/base/high y, lateral cost low/base/high USD/kW, note)
     'p610 2': ('L1', (0.5, 1.0, 2.0), (15, 30, 60), 'on-site aeroderivative turbines permitted at the Abilene campus (gas supply infrastructure exists; firm MDQ not public)'),
     'p630 4': ('L1', (0.5, 1.0, 2.0), (30, 60, 120), 'Vantage-VoltaGrid gas microgrid plan reported for Frontier (firm MDQ not public)'),
@@ -129,7 +132,7 @@ def main():
             mw = 260.0 * pue(2026) - stock_fac(s)
         e0.append(dict(bus=bus, site=s, MW=round(mw, 1), COD=cod, preapproved=pre, evidence_class=ev, basis=basis, source=src))
     tl_f = INP / 'dc/EPOCH_TX_TIMELINE_EVIDENCE.csv'
-    if TIMELINE_RAW.exists():      # refresh the small tracked extract from the local raw Epoch file
+    if TIMELINE_RAW is not None and TIMELINE_RAW.exists():      # refresh the small tracked extract from the local raw Epoch file
         t = pd.read_csv(TIMELINE_RAW)
         t = t[t['Data center'].isin(set(sites.site))].copy()
         t['date'] = pd.to_datetime(t.Date)

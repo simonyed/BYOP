@@ -1,0 +1,7 @@
+category,official_annual_report_installed_MW,model_summer_based_MW,apparent_gap_MW,interpretation
+Thermal,89507,72455.3000000000,17051.7000000000,"Different ratings, coverage and statuses; not an instruction to add capacity"
+Wind,40719,40028.8000000000,690.2000000000,"Different ratings, coverage and statuses; not an instruction to add capacity"
+Solar,37443,29262.7000000000,8180.3000000000,"Different ratings, coverage and statuses; not an instruction to add capacity"
+Storage,16656,12768.4000000000,3887.6000000000,"Different ratings, coverage and statuses; not an instruction to add capacity"
+Hydro,579,535.4000000000,43.6000000000,"Different ratings, coverage and statuses; not an instruction to add capacity"
+Total,184904,155050.6000000000,29853.4000000000,Cross-definition diagnostic only

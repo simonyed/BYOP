@@ -1,0 +1,21 @@
+{
+  "source_xlsx_sha256": "23664b0cddb047692f6cac26a4300e987c6309795395d394bf2dc223f37b53aa",
+  "source_hash_matches_repository": true,
+  "rows": 8760,
+  "energy_TWh": 488.233578542299,
+  "peak_1h_MW": 83679.001697,
+  "peak_1h_source_label": "08/18/2025 18:00",
+  "peak_3h_MW": 83403.65211466666,
+  "zone_sum_max_abs_error_MW": 3.0000010156072676e-06,
+  "official_annual_report_peak_MW": 83707,
+  "annual_report_minus_native_peak_MW": 27.998303000000305,
+  "source_DST_labels": [
+    "11/02/2025 02:00 DST"
+  ],
+  "time_axis_policy": "Preserve original HE strings; row-order alignment reproduces repository; synthetic timestamps are not UTC.",
+  "nuclear_CDR_installed_MW": 5268.0,
+  "nuclear_CDR_summer2026_MW": 4973.2,
+  "model_nuclear_summer_based_MW": 4980.0,
+  "fuelmix_total_GWh": 488072.550688,
+  "fuelmix_total_minus_native_GWh": -161.02785429905634
+}

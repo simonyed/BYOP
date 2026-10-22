@@ -1,0 +1,7 @@
+date,selection,peak_MW,energy_MWh,use
+08/18/2025,summer_peak,83679.0016970000,1684446.7937730001,candidate for later validation; not solved
+08/28/2025,summer_peak,82907.2736690000,1643219.6343660001,candidate for later validation; not solved
+08/14/2025,summer_peak,82757.9100240000,1674604.1628510000,candidate for later validation; not solved
+02/20/2025,winter_peak,80524.6994220000,1709579.4756410001,candidate for later validation; not solved
+01/22/2025,winter_peak,77478.2684540000,1551387.0190240000,candidate for later validation; not solved
+02/19/2025,winter_peak,76886.7045380000,1730475.4672490000,candidate for later validation; not solved

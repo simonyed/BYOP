@@ -11,6 +11,7 @@
 
 All scripts are run with the working directory pypsa-usa/workflow (PyPSA-USA modules are imported from ./scripts).
 """
+import os
 from pathlib import Path
 
 MODEL = Path(__file__).resolve().parent
@@ -41,3 +42,18 @@ BASE_COUNTY = RESULTS / 'baseline_2025_county/baseline_2025_county_prepared.nc'
 # raw data for the builders
 REEDS = DATA / 'reeds_inputs'
 NATIVE_LOAD = DATA / 'ercot_native_load/Native_Load_2025.xlsx'
+REEDS_GENDB = REEDS / 'capacity_exogenous/ReEDS_generator_database_final_EIA-NEMS.csv'
+
+# C0 ERCOT 2025 official anchor (work package v1.3, 2026-10-22): official raw files (data/byop, local + L2, not git),
+# extracted small tables (inputs, tracked) and the C0 audit outputs
+ANCHOR2025 = DATA / 'ercot_official_anchor_2025'
+ANCHOR2025_RAW = ANCHOR2025 / 'raw'
+ANCHOR2025_MANIFEST = ANCHOR2025 / 'SOURCE_MANIFEST.json'
+ANCHOR2025_DERIVED = INPUTS / 'anchor2025'
+BASE_TAMU_DIR = RESULTS / 'baseline_2025_tamu'
+C0_RESULTS = RESULTS / 'C0_ANCHOR_2025'
+
+# optional raw sources outside the repository: set by environment variable, never a personal drive letter in code
+_env = lambda k: Path(os.environ[k]) if os.environ.get(k) else None
+EPOCH_TIMELINE_RAW = _env('BYOP_EPOCH_TIMELINE_RAW')     # Epoch AI data_center_timelines.csv (refreshes the tracked extract)
+REEDS2_ROOT = _env('BYOP_REEDS2_ROOT')                   # local ReEDS2 checkout (build_reeds2_potential.py)

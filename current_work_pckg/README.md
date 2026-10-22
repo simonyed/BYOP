@@ -15,25 +15,21 @@ Project-level documents that span work packages are in `workflow/byop/docs/`.
 
 ## Current work package
 
-**BYOP ERCOT: multi-bus spatial distribution of new data-center load, 2026–2035, implementation package v1.0 (2026-10-22)**
+**ERCOT 2025 official anchor calibration: collected evidence, definition rulings and code implementation supplement v1.3 (2026-10-22) — C0 offline reconciliation**
 
-- Original text: `BYOP_ERCOT_AIDC_Geospatial_Distribution_Implementation_Work_Package_v1.0_2026-10-22.md`
-  - SHA-256 `dd529f75…1f4b04`, byte-identical to the original placed by the researcher
-- Nature: code implementation plus solver-free validation; `RUN_AUTHORIZATION: NOT_APPROVED`; no solver may be run
-- Local data folder: `work_pkgs/BYOP_ERCOT_DC_Siting_PNNL/`
-  - Raw PNNL data, with `raw/SHA256SUMS.txt`
-- Archived on 2026-10-22: the previous package, Mainline v1.3, with Stage A, Stage B (B0–B3) and the PNNL siting design note. All of it is in `_completed/BYOP_ERCOT_Mainline_v1.3/`.
-  - Files that the code reads were repointed to the archive path:
-    - the gate manifest `MAINLINE_V13_PRE_RUN_MANIFEST.json`;
-    - the tech and gas-price attachments that the tests check.
+- Original text and attachments (byte-identical): `ERCOT_2025_Official_Anchor_v1.3/` (README_AND_EXECUTION_PROMPT_v1.3.md, SOURCE_MANIFEST.json, CHECKSUMS.sha256, annual_capacity_page.png, researcher scripts rebuild_evidence.py / prepare_package.py)
+- Official raw files (27 MB): `workflow/data/byop/ercot_official_anchor_2025/` (local + L2, not on GitHub; SHA in SOURCE_MANIFEST.json). Full local copy including `repo_snapshot/`: `work_pkgs/ERCOT_2025_Official_Anchor_v1.3/`
+- Nature: C0 offline reconciliation + code wiring; solver executions = 0; run gates stay NOT_APPROVED
+- Archived on 2026-10-22: the previous package (AIDC multi-bus siting v1.0) and all its reports are in `_completed/BYOP_ERCOT_AIDC_Geospatial_Distribution_v1.0/`; the dynamic-geography config and tests now point to the archived pending manifest
 
 | File | Content | Status |
 |---|---|---|
-| `BYOP_ERCOT_AIDC_Geospatial_Distribution_Implementation_Work_Package_v1.0_2026-10-22.md` | Original work package | Provided by the researcher |
-| `AIDC_GEO_DYNAMIC_V1_IMPLEMENTATION_REPORT.md` | Implementation report: what was done, ledger, results, POI risks, tests, C0–C5 dependencies | Done |
-| `AIDC_GEO_DYNAMIC_V1_DATA_PROVENANCE_AND_FILTERS.md` | PNNL sources and licenses, mapping rules, deduplication, crypto-mining exclusion, basis comparisons | Done |
-| `AIDC_GEO_DYNAMIC_V1_LEGACY_VS_DYNAMIC_AUDIT.md` | Legacy 8-bus vs dynamic 16-bus, by bus and year (input side) | Done |
-| `AIDC_GEO_DYNAMIC_V1_POI_GAS_RISK_REGISTER.csv` | POI / gas / RE risks per research bus (§5.3) | Done |
-| `AIDC_GEO_DYNAMIC_V1_QA_RESULTS.csv` | GEO-01 to GEO-14 | All PASS |
-| `AIDC_GEO_DYNAMIC_V1_PRE_RUN_MANIFEST.json` | Pending manifest of the dynamic geography | `NOT_APPROVED`, `SOLVER_EXECUTIONS=0` |
-| `AIDC_GEO_DYNAMIC_V1_RETURN_MANIFEST.md` | GitHub SHA, file list, return in the fixed format | Done |
+| `ERCOT_2025_Official_Anchor_v1.3/README_AND_EXECUTION_PROMPT_v1.3.md` | Original work package | Provided by the researcher |
+| `C0_INPUT_RECONCILIATION.md` | C0 report: tasks A-D, coverage, bridge, unexplained residuals, items returned to the researcher, tests | Done |
+| `C0_GENERATOR_MATCH.csv` | CDR Dec-2025 units <-> ReEDS model groups (match / candidate / ambiguous / unmatched / model-only) | Audit only |
+| `C0_CAPACITY_BRIDGE.csv` | AR / Dec trend / CDR core / model, exact decomposition, unexplained residual | Done |
+| `C0_PIPELINE_RECLASS_SUGGESTIONS.csv` | 2025-operating units held in the 2026 pipeline (and reverse) - suggestions, not applied | Researcher decision |
+| `C0_LOAD_ACCOUNTING.csv` | time axis and demand components (17 checks) | All PASS |
+| `C0_HISTORICAL_AIDC_EVIDENCE.csv` | evidence class of the 2025 AIDC stock and the 460.73 MW IT ramp (values unchanged) | Done |
+| `C0_UPLIFT_LEDGER.csv` | synthetic / 2025 calibration (MVA) / S0CAL (MW) line layers | Done |
+| `C0_QA.json` | all checks, coverage, solver_executions = 0 (L2 run incl. read-only .nc check) | Done |

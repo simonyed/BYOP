@@ -1,0 +1,105 @@
+/datasets/prgm/pypsa-usa/.venv/lib/python3.11/site-packages/pypsa/network/io.py:2082: FutureWarning:
+
+pandas infers the `str` dtype for string data since its version 3.0. PyPSA still converts it back to numpy object dtype on import, but will keep it from PyPSA 2.0 on. Set `pypsa.options.api.legacy_string_dtype` explicitly to suppress this warning.
+
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+{
+ "solver_executions": 0,
+ "source_sha_ok": true,
+ "load_checks_all_pass": true,
+ "model_fleet_equals_audit": true,
+ "no_model_group_matched_twice": true,
+ "plan_units_in_2025_core": 0,
+ "capacity_bridge_identity_ok": true,
+ "coverage": {
+  "cdr_core_units": 1187,
+  "cdr_core_MW": 160494.55,
+  "cdr_core_matched_units": 903,
+  "cdr_core_matched_MW": 130047.92000000001,
+  "cdr_core_match_share_units": 0.7607413647851727,
+  "cdr_core_match_share_MW": 0.8102949290178391,
+  "cdr_core_ambiguous_MW": 1759.6100000000001,
+  "cdr_core_candidate_MW": 12337.66,
+  "cdr_core_matched_or_candidate_share_MW": 0.8871676951024193,
+  "cdr_core_unmatched_MW": 16349.359999999997,
+  "model_active_units": 1697,
+  "model_active_MW": 155050.59999999998,
+  "model_active_matched_units": 862,
+  "model_active_matched_MW": 126777.8,
+  "model_active_match_share_MW": 0.8176543657360889,
+  "model_active_matched_or_candidate_share_MW": 0.8993496316686297,
+  "by_status": {
+   "AMBIGUOUS": {
+    "units": 21,
+    "MW": 1766.21
+   },
+   "CANDIDATE_COUNTY_FUEL_CAPACITY": {
+    "units": 160,
+    "MW": 17803.55
+   },
+   "MATCH_EXACT": {
+    "units": 809,
+    "MW": 114053.15
+   },
+   "MATCH_FUZZY": {
+    "units": 225,
+    "MW": 25452.61
+   },
+   "MATCH_FUZZY_OTHER_COUNTY": {
+    "units": 63,
+    "MW": 6032.77
+   },
+   "NOT_MATCHED_BY_RULE": {
+    "units": 4,
+    "MW": 1220.0
+   },
+   "UNMATCHED": {
+    "units": 490,
+    "MW": 67543.94
+   }
+  },
+  "county_name_basis": "Census cb_2020 county shapefile"
+ },
+ "pipeline_reclass_suggestions": {
+  "rows": 106,
+  "cdr_operating_model_committed_MW": 2971.68,
+  "by_family": {
+   "CDR_OPERATING_2025__MODEL_COMMITTED_PIPELINE|solar": 1993.4,
+   "CDR_OPERATING_2025__MODEL_COMMITTED_PIPELINE|storage": 712.9,
+   "CDR_OPERATING_2025__MODEL_COMMITTED_PIPELINE|wind": 265.4,
+   "MODEL_ACTIVE_2025__CDR_NOT_CORE_2025|gas": 0.0,
+   "MODEL_ACTIVE_2025__CDR_NOT_CORE_2025|solar": 0.0,
+   "MODEL_ACTIVE_2025__CDR_NOT_CORE_2025|storage": 0.0,
+   "MODEL_ACTIVE_2025__CDR_NOT_CORE_2025|wind": 0.0
+  }
+ },
+ "historical_aidc": {
+  "sites": 11,
+  "algebra_ok": true,
+  "bus_ramp_ok": true,
+  "inherited_ramp_IT_MW": 460.73,
+  "verified_count": 0
+ },
+ "uplift": {
+  "calibration_2025_lines": 18,
+  "calibration_2025_MVA": 4993.911832823386,
+  "residual_shed_MWh": 102.20466561114219,
+  "ledger_matches_LP": true,
+  "final_identity_max_err_MVA": 2.7499258976604324e-05,
+  "S0CAL_lines": 9,
+  "S0CAL_MW": 1095.6237013311218,
+  "S0CAL_sees_final_2025_s_nom": true,
+  "baseline_nc": {
+   "status": "CHECKED",
+   "path": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu/baseline_2025_tamu_prepared.nc",
+   "sha256": "19034285be0aa9b9906ab5b0e03778f3a16e7c1c39e97ac97b368d9097cafadb",
+   "lines": 162,
+   "max_abs_s_nom_error_MVA": 1.8189894035458565e-12,
+   "ac_s0cal_links_in_baseline": 0,
+   "ok": true
+  },
+  "note": "MVA (2025 line uplift, inside s_nom) and MW (S0CAL fixed Links from 2026) are separate layers; never summed"
+ }
+}
+exit 0

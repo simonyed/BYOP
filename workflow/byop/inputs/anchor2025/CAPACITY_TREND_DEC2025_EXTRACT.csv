@@ -1,0 +1,6 @@
+sheet,excel_row,year,chart_cumulative_MW,operational_MW,IA_FS_MW,IA_no_FS_MW,other_planned_MW,small_generator_MW,source
+Wind Chart,99,2025,40718.7500000000,40718.7500000000,0.0000000000,0.0000000000,0.0000000000,0.0000000000,"Capacity_December2025.xlsx; snapshot December 2025, published January 2026"
+Solar Chart,75,2025,37442.7400000000,37442.7400000000,0.0000000000,0.0000000000,0.0000000000,0.0000000000,"Capacity_December2025.xlsx; snapshot December 2025, published January 2026"
+Battery Chart,74,2025,16655.8600000000,16645.9000000000,0.0000000000,0.0000000000,0.0000000000,9.9600000000,"Capacity_December2025.xlsx; snapshot December 2025, published January 2026"
+Gas-Combined Cycle Chart,81,2025,44100.6090000000,44100.6090000000,0.0000000000,0.0000000000,0.0000000000,0.0000000000,"Capacity_December2025.xlsx; snapshot December 2025, published January 2026"
+Gas-Other Chart,83,2025,24523.6300000000,24523.6300000000,0.0000000000,0.0000000000,0.0000000000,0.0000000000,"Capacity_December2025.xlsx; snapshot December 2025, published January 2026"

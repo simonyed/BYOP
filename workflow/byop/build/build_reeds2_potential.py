@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Mainline v1.3 WP-C: ERCOT onshore-wind / utility-PV new-build potential per TAMU 64s bus from the local ReEDS2 reV
-supply curves (read only; D:/ReEDS2 is never copied or committed).
+supply curves (read only; the local ReEDS2 checkout is never copied or committed).
 
   supply curve   inputs/supply_curve/supplycurve_{wind-ons,upv}-reference.csv  (reV, reference siting; wind MW_AC,
                  UPV MW_DC -> MW_AC with ReEDS scalar ilr_utility = 1.34)
@@ -13,7 +13,7 @@ supply curves (read only; D:/ReEDS2 is never copied or committed).
                  2025 baseline weather year); ReEDS reV cf is reported per bus only as a cross-check
 Outputs (small derived tables, tracked): inputs/grid/REEDS2_SOURCE_INVENTORY.csv, REEDS2_TO_TAMU64.csv,
 ERCOT_WIND_SOLAR_POTENTIAL.csv. Run locally from pypsa-usa/workflow:
-    python byop/build/build_reeds2_potential.py [--reeds D:/ReEDS2]
+    python byop/build/build_reeds2_potential.py --reeds <ReEDS2 root>   (or env BYOP_REEDS2_ROOT)
 """
 from __future__ import annotations
 
@@ -25,6 +25,9 @@ import numpy as np
 import pandas as pd
 
 HERE = Path(__file__).resolve().parent
+import sys  # noqa: E402
+sys.path.insert(0, str(HERE.parent / 'model'))
+import byop_paths as BP  # noqa: E402
 WF = HERE.parents[1]
 OUT = HERE.parent / 'inputs/grid'
 BASE = WF / 'results/BYOP/baseline_2025_tamu'
@@ -45,7 +48,7 @@ def sitemap(path):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--reeds', default='D:/ReEDS2')
+    ap.add_argument('--reeds', default=str(BP.REEDS2_ROOT) if BP.REEDS2_ROOT else None, required=BP.REEDS2_ROOT is None)
     a = ap.parse_args()
     R = Path(a.reeds)
     sc_dir = R / 'inputs/supply_curve'

@@ -1,0 +1,48 @@
+== gate legacy
+{
+ "siting": {
+  "variant": "epoch8_legacy",
+  "research_cohorts": "byop/inputs/dc/MAINLINE_RESEARCH_COHORTS_TAMU64.csv",
+  "poi": "byop/inputs/poi/GREAL_POI_ASSUMPTIONS.csv",
+  "research_cohorts_sha256": "5373983ea59e2f7696ffb14e914fdc8d0e3e8186879f6e17b60c78c41ac2e173",
+  "poi_sha256": "9b7fa75c49ac1d6defd523e708f0670cc3543bceea956503029744a93bb4ed34"
+ },
+ "approved": false,
+ "reasons": [
+  "run_authorization=NOT_APPROVED",
+  "approved_git_sha missing",
+  "sha256 mismatch: workflow/byop/model/rearch_mech.py",
+  "sha256 mismatch: workflow/byop/model/byop_paths.py",
+  "sha256 mismatch: workflow/byop/post/collect_mainline.py",
+  "sha256 mismatch: workflow/byop/run/run_mainline.sh",
+  "sha256 mismatch: workflow/byop/build/build_mainline_inputs.py",
+  "sha256 mismatch: workflow/byop/build/build_reeds2_potential.py",
+  "sha256 mismatch: workflow/byop/tests/test_mainline_v13.py",
+  "sha256 mismatch: workflow/byop/tests/structural_mainline_v13.py"
+ ],
+ "head": "093e3247845f8bcac83b6148ea7bf736629ac315",
+ "approved_git_sha": null,
+ "config": "config/config.byop_ercot_mainline.yaml"
+}
+== gate dynamic
+{
+ "siting": {
+  "variant": "dynamic_pnnl_v1",
+  "research_cohorts": "byop/inputs/dc/MAINLINE_RESEARCH_COHORTS_TAMU64_GEO_DYNAMIC_V1.csv",
+  "poi": "byop/inputs/poi/GREAL_POI_ASSUMPTIONS_GEO_DYNAMIC_V1.csv",
+  "research_cohorts_sha256": "0338df13e931081ab5f5d36a46b9eb8c23fee8c87ec7e97472b325952c3cac41",
+  "poi_sha256": "81f3abcf61726114ffc03f1e7b38df300dccf01c71e0007c81bbf75acbea114a"
+ },
+ "approved": false,
+ "reasons": [
+  "run_authorization=NOT_APPROVED",
+  "approved_git_sha missing",
+  "sha256 mismatch: workflow/byop/model/byop_paths.py",
+  "sha256 mismatch: workflow/byop/build/build_mainline_inputs.py",
+  "sha256 mismatch: workflow/byop/build/build_reeds2_potential.py",
+  "sha256 mismatch: workflow/byop/tests/test_dynamic_siting.py"
+ ],
+ "head": "093e3247845f8bcac83b6148ea7bf736629ac315",
+ "approved_git_sha": null,
+ "config": "config/config.byop_ercot_mainline_geo_dynamic_v1.yaml"
+}

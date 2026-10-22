@@ -1,0 +1,58 @@
+{
+ "all_equal": true,
+ "tables": {
+  "CAPACITY_DEFINITION_BRIDGE.csv": true,
+  "CAPACITY_TREND_DEC2025_EXTRACT.csv": true,
+  "CDR_DEC2025_UNIT_REGISTER_AUDIT_ONLY.csv": true,
+  "CDR_UNIT_STATUS_FUEL_SUMMARY.csv": true,
+  "ERCOT_NATIVE_LOAD_2025_1H.csv": true,
+  "ERCOT_NATIVE_LOAD_2025_3H.csv": true,
+  "FUEL_MIX_2025_GWH.csv": true,
+  "HISTORICAL_DEMAND_STRESS_DAYS.csv": true,
+  "LOAD_MONTHLY_TWH.csv": true
+ },
+ "metrics": {
+  "source_xlsx_sha256": true,
+  "source_hash_matches_repository": true,
+  "rows": true,
+  "energy_TWh": true,
+  "peak_1h_MW": true,
+  "peak_1h_source_label": true,
+  "peak_3h_MW": true,
+  "zone_sum_max_abs_error_MW": true,
+  "official_annual_report_peak_MW": true,
+  "annual_report_minus_native_peak_MW": true,
+  "source_DST_labels": true,
+  "time_axis_policy": true,
+  "nuclear_CDR_installed_MW": true,
+  "nuclear_CDR_summer2026_MW": true,
+  "model_nuclear_summer_based_MW": true,
+  "fuelmix_total_GWh": true,
+  "fuelmix_total_minus_native_GWh": true
+ },
+ "official_sources_sha256": {
+  "raw/Native_Load_2025.zip": "20f6699f4d1f577561e9581ce370a39b0b7af339c2c263c99c7b7fd605580854",
+  "raw/Native_Load_2025.xlsx": "23664b0cddb047692f6cac26a4300e987c6309795395d394bf2dc223f37b53aa",
+  "raw/ERCOT_2025_Annual_Report.pdf": "397a4c38a3dadbed04d02041f1fdaa970bb50b122366594ac01652f13be19cfb",
+  "raw/Capacity_December2025.xlsx": "acb4e59c8cf97c0b48c078c744d2e93cb1773a121e936485661d131e2736a6b6",
+  "raw/Capacity_November2025.xlsx": "a0f1f651ce9eef0c631db154c738f759212ddb68321ce83d09da110a61b93c2c",
+  "raw/CDR_December2025.xlsx": "c26afc32ca220a61b0ec9854b074917d933a37bffa8a164f7d2ff7df6135db67",
+  "raw/IntGenbyFuel2025.xlsx": "bb534618700ff3500eee36b62fa2a9ab07b0923ed536f6d049868101189cfc54",
+  "raw/MORA_August2025.xlsx": "8828d0e39933acffcf85c0ce4869a98009dfade35694f6ff7f9c581d7ae354ca",
+  "raw/ERCOT_Monthly_December2025.pdf": "08edb4d875f9506711171295a3e1fca10bb4ea2f68b2e9979a8f9a989a939913",
+  "raw/ERCOT_Constraints_Needs_2025.pdf": "e13bd274d39a423153d808910e3f99ad90cd28072eb25af274cfd90b3abea758"
+ },
+ "baseline_audit_sha256": "993fb0f7bca72e587d7ce16bf7419b950debee281c510a40dacf8d491239b0b6",
+ "outputs_sha256": {
+  "CAPACITY_DEFINITION_BRIDGE.csv": "ce5003236e255addf859f81f5dc229dea9eb10e70633237f09f853b643d24c95",
+  "CAPACITY_TREND_DEC2025_EXTRACT.csv": "0c213ade48af247922e92b2dba78e370561cb36e8084b5b3dd2b5058cfcf1ca0",
+  "CDR_DEC2025_UNIT_REGISTER_AUDIT_ONLY.csv": "e478d334bc7d07e31302cc2f5d1eac2cb85ad740f864efd16382162d51059ee2",
+  "CDR_UNIT_STATUS_FUEL_SUMMARY.csv": "99b59a25f47528709fea4013b38111c48202c9bb353b43295a2516694cb6bbd1",
+  "ERCOT_NATIVE_LOAD_2025_1H.csv": "226bf8bcbc5e67b091cc387be05e18d33320a98a99e27cd10de5fe940a5ae0e5",
+  "ERCOT_NATIVE_LOAD_2025_3H.csv": "e0badb618c217fc5b6add55f68fec92e8a4e1e328171d7fa89f49fed7ffc5f52",
+  "FUEL_MIX_2025_GWH.csv": "5e4f95dafe9e7c86646e66e7f1b1909b6ffe15eaef281ad8028c507fd3c5e6fd",
+  "HISTORICAL_DEMAND_STRESS_DAYS.csv": "c83557dabefb69521a6a2c9374c81fc6e9a21975e0ac8f9babea555ff9bae9cb",
+  "LOAD_MONTHLY_TWH.csv": "90e541d8ee67e41539dd706630ef51940ba398d29090f3dcb295d3855fa7224e",
+  "VERIFIED_METRICS.json": "8c6ab80e623af89e01f7a1c31a3d00fe0ed3553c24d463ef53a5e95390e1318b"
+ }
+}

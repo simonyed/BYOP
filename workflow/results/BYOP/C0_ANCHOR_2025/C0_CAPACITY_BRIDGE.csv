@@ -1,0 +1,178 @@
+family,ar_category,unit,component,MW,basis
+ALL:gas+coal+nuclear+biomass,Thermal,MW,annual_report_installed_MW,89507.000000,"2025 ERCOT Annual Report p.6 (installed ratings, broad scope)"
+ALL:gas+coal+nuclear+biomass,Thermal,MW,model_active2025_summer_MW,72455.300000,sum of families
+ALL:gas+coal+nuclear+biomass,Thermal,MW,apparent_gap_AR_minus_model_MW,17051.700000,CAPACITY_DEFINITION_BRIDGE apparent gap
+ALL:gas+coal+nuclear+biomass,Thermal,MW,cdr_core_minus_model_MW,1766.620000,explained component by component in the family rows
+ALL:gas+coal+nuclear+biomass,Thermal,MW,UNEXPLAINED_AR_minus_cdr_core_MW,15285.080000,"publication scope / rating / snapshot residual; candidates: private-network, DG, switchable, outage, nameplate vs installed - NOT allocated"
+ALL:wind,Wind,MW,annual_report_installed_MW,40719.000000,"2025 ERCOT Annual Report p.6 (installed ratings, broad scope)"
+ALL:wind,Wind,MW,model_active2025_summer_MW,40028.800000,sum of families
+ALL:wind,Wind,MW,apparent_gap_AR_minus_model_MW,690.200000,CAPACITY_DEFINITION_BRIDGE apparent gap
+ALL:wind,Wind,MW,cdr_core_minus_model_MW,-42.210000,explained component by component in the family rows
+ALL:wind,Wind,MW,UNEXPLAINED_AR_minus_cdr_core_MW,732.410000,"publication scope / rating / snapshot residual; candidates: private-network, DG, switchable, outage, nameplate vs installed - NOT allocated"
+ALL:solar,Solar,MW,annual_report_installed_MW,37443.000000,"2025 ERCOT Annual Report p.6 (installed ratings, broad scope)"
+ALL:solar,Solar,MW,model_active2025_summer_MW,29262.700000,sum of families
+ALL:solar,Solar,MW,apparent_gap_AR_minus_model_MW,8180.300000,CAPACITY_DEFINITION_BRIDGE apparent gap
+ALL:solar,Solar,MW,cdr_core_minus_model_MW,3080.440000,explained component by component in the family rows
+ALL:solar,Solar,MW,UNEXPLAINED_AR_minus_cdr_core_MW,5099.860000,"publication scope / rating / snapshot residual; candidates: private-network, DG, switchable, outage, nameplate vs installed - NOT allocated"
+ALL:storage,Storage,MW,annual_report_installed_MW,16656.000000,"2025 ERCOT Annual Report p.6 (installed ratings, broad scope)"
+ALL:storage,Storage,MW,model_active2025_summer_MW,12768.400000,sum of families
+ALL:storage,Storage,MW,apparent_gap_AR_minus_model_MW,3887.600000,CAPACITY_DEFINITION_BRIDGE apparent gap
+ALL:storage,Storage,MW,cdr_core_minus_model_MW,606.600000,explained component by component in the family rows
+ALL:storage,Storage,MW,UNEXPLAINED_AR_minus_cdr_core_MW,3281.000000,"publication scope / rating / snapshot residual; candidates: private-network, DG, switchable, outage, nameplate vs installed - NOT allocated"
+ALL:hydro,Hydro,MW,annual_report_installed_MW,579.000000,"2025 ERCOT Annual Report p.6 (installed ratings, broad scope)"
+ALL:hydro,Hydro,MW,model_active2025_summer_MW,535.400000,sum of families
+ALL:hydro,Hydro,MW,apparent_gap_AR_minus_model_MW,43.600000,CAPACITY_DEFINITION_BRIDGE apparent gap
+ALL:hydro,Hydro,MW,cdr_core_minus_model_MW,32.500000,explained component by component in the family rows
+ALL:hydro,Hydro,MW,UNEXPLAINED_AR_minus_cdr_core_MW,11.100000,"publication scope / rating / snapshot residual; candidates: private-network, DG, switchable, outage, nameplate vs installed - NOT allocated"
+biomass,Thermal,MW,model_active2025_summer_MW,123.000000,"ReEDS DB active 2025 (OP/SB, Start<=2025<Retire), summer MW = model fleet"
+biomass,Thermal,MW,cdr_core_2025_installed_MW,116.450000,"CDR OPER/RMR + OPER-SYN/UNFC/UNR, CONV(-TGR), in-service <= 2025-12-31 or unknown"
+biomass,Thermal,MW,decomp_rating_diff,16.450000,matched groups: CDR installed - model summer (rating definition + phase coverage inside the group)
+biomass,Thermal,MW,decomp_pipeline_cross,0.000000,CDR operating by 2025 but model holds the group only in the committed pipeline (B4 cross-ledger)
+biomass,Thermal,MW,decomp_matched_no_model,0.000000,matched group without model active / committed units (retired / out of service in the DB)
+biomass,Thermal,MW,decomp_candidate_pairs,-15.000000,capacity-assisted county + family candidates (names differ): CDR core - model active; identity NOT confirmed
+biomass,Thermal,MW,decomp_cdr_unmatched,0.000000,CDR core MW without a matched model group: suspected omission OR unresolved name (not decided)
+biomass,Thermal,MW,decomp_model_unmatched,-8.000000,model active MW without a matched CDR group (negative)
+biomass,Thermal,MW,decomp_model_matched_noncore,0.000000,model active MW whose CDR match is outside the 2025 core (PLAN / private / DG / outage) (negative)
+biomass,Thermal,MW,identity_check_cdr_core_minus_model,0.000000,must be 0
+biomass,Thermal,MW,scope_info_OPERATING_QUALIFIED,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+biomass,Thermal,MW,scope_info_PRIVATE_NETWORK,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+biomass,Thermal,MW,scope_info_DISTRIBUTION_DG,25.800000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+biomass,Thermal,MW,scope_info_SWITCHABLE_AVAILABLE,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+biomass,Thermal,MW,scope_info_SWITCHABLE_UNAVAILABLE_ADJ,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+biomass,Thermal,MW,scope_info_OUTAGE_OR_SEASONAL,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+biomass,Thermal,MW,scope_info_MOTHBALLED_INDEFINITE,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+biomass,Thermal,MW,scope_info_PLANNED_NOT_2025,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+coal,Thermal,MW,model_active2025_summer_MW,10774.000000,"ReEDS DB active 2025 (OP/SB, Start<=2025<Retire), summer MW = model fleet"
+coal,Thermal,MW,cdr_core_2025_installed_MW,13705.390000,"CDR OPER/RMR + OPER-SYN/UNFC/UNR, CONV(-TGR), in-service <= 2025-12-31 or unknown"
+coal,Thermal,MW,decomp_rating_diff,2887.190000,matched groups: CDR installed - model summer (rating definition + phase coverage inside the group)
+coal,Thermal,MW,decomp_pipeline_cross,0.000000,CDR operating by 2025 but model holds the group only in the committed pipeline (B4 cross-ledger)
+coal,Thermal,MW,decomp_matched_no_model,0.000000,matched group without model active / committed units (retired / out of service in the DB)
+coal,Thermal,MW,decomp_candidate_pairs,44.200000,capacity-assisted county + family candidates (names differ): CDR core - model active; identity NOT confirmed
+coal,Thermal,MW,decomp_cdr_unmatched,0.000000,CDR core MW without a matched model group: suspected omission OR unresolved name (not decided)
+coal,Thermal,MW,decomp_model_unmatched,0.000000,model active MW without a matched CDR group (negative)
+coal,Thermal,MW,decomp_model_matched_noncore,0.000000,model active MW whose CDR match is outside the 2025 core (PLAN / private / DG / outage) (negative)
+coal,Thermal,MW,identity_check_cdr_core_minus_model,0.000000,must be 0
+coal,Thermal,MW,scope_info_OPERATING_QUALIFIED,2137.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+coal,Thermal,MW,scope_info_PRIVATE_NETWORK,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+coal,Thermal,MW,scope_info_DISTRIBUTION_DG,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+coal,Thermal,MW,scope_info_SWITCHABLE_AVAILABLE,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+coal,Thermal,MW,scope_info_SWITCHABLE_UNAVAILABLE_ADJ,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+coal,Thermal,MW,scope_info_OUTAGE_OR_SEASONAL,1008.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+coal,Thermal,MW,scope_info_MOTHBALLED_INDEFINITE,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+coal,Thermal,MW,scope_info_PLANNED_NOT_2025,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+gas,Thermal,MW,model_active2025_summer_MW,56578.300000,"ReEDS DB active 2025 (OP/SB, Start<=2025<Retire), summer MW = model fleet"
+gas,Thermal,MW,cdr_core_2025_installed_MW,55132.080000,"CDR OPER/RMR + OPER-SYN/UNFC/UNR, CONV(-TGR), in-service <= 2025-12-31 or unknown"
+gas,Thermal,MW,decomp_rating_diff,2748.170000,matched groups: CDR installed - model summer (rating definition + phase coverage inside the group)
+gas,Thermal,MW,decomp_pipeline_cross,0.000000,CDR operating by 2025 but model holds the group only in the committed pipeline (B4 cross-ledger)
+gas,Thermal,MW,decomp_matched_no_model,0.000000,matched group without model active / committed units (retired / out of service in the DB)
+gas,Thermal,MW,decomp_candidate_pairs,-362.680000,capacity-assisted county + family candidates (names differ): CDR core - model active; identity NOT confirmed
+gas,Thermal,MW,decomp_cdr_unmatched,5751.990000,CDR core MW without a matched model group: suspected omission OR unresolved name (not decided)
+gas,Thermal,MW,decomp_model_unmatched,-5690.700000,model active MW without a matched CDR group (negative)
+gas,Thermal,MW,decomp_model_matched_noncore,-3893.000000,model active MW whose CDR match is outside the 2025 core (PLAN / private / DG / outage) (negative)
+gas,Thermal,MW,identity_check_cdr_core_minus_model,0.000000,must be 0
+gas,Thermal,MW,scope_info_OPERATING_QUALIFIED,2755.500000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+gas,Thermal,MW,scope_info_PRIVATE_NETWORK,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+gas,Thermal,MW,scope_info_DISTRIBUTION_DG,10.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+gas,Thermal,MW,scope_info_SWITCHABLE_AVAILABLE,4066.120000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+gas,Thermal,MW,scope_info_SWITCHABLE_UNAVAILABLE_ADJ,-2596.120000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+gas,Thermal,MW,scope_info_OUTAGE_OR_SEASONAL,219.750000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+gas,Thermal,MW,scope_info_MOTHBALLED_INDEFINITE,732.200000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+gas,Thermal,MW,scope_info_PLANNED_NOT_2025,3415.890000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+gas,Thermal,MW,dec2025_trend_operational_MW,68624.239000,Capacity_December2025.xlsx 2025 operational
+gas,Thermal,MW,trend_minus_cdr_core_MW,13492.159000,snapshot / status definition between two ERCOT December publications: UNEXPLAINED
+hydro,Hydro,MW,model_active2025_summer_MW,535.400000,"ReEDS DB active 2025 (OP/SB, Start<=2025<Retire), summer MW = model fleet"
+hydro,Hydro,MW,cdr_core_2025_installed_MW,567.900000,"CDR OPER/RMR + OPER-SYN/UNFC/UNR, CONV(-TGR), in-service <= 2025-12-31 or unknown"
+hydro,Hydro,MW,decomp_rating_diff,38.100000,matched groups: CDR installed - model summer (rating definition + phase coverage inside the group)
+hydro,Hydro,MW,decomp_pipeline_cross,0.000000,CDR operating by 2025 but model holds the group only in the committed pipeline (B4 cross-ledger)
+hydro,Hydro,MW,decomp_matched_no_model,0.000000,matched group without model active / committed units (retired / out of service in the DB)
+hydro,Hydro,MW,decomp_candidate_pairs,-3.600000,capacity-assisted county + family candidates (names differ): CDR core - model active; identity NOT confirmed
+hydro,Hydro,MW,decomp_cdr_unmatched,0.000000,CDR core MW without a matched model group: suspected omission OR unresolved name (not decided)
+hydro,Hydro,MW,decomp_model_unmatched,-2.000000,model active MW without a matched CDR group (negative)
+hydro,Hydro,MW,decomp_model_matched_noncore,0.000000,model active MW whose CDR match is outside the 2025 core (PLAN / private / DG / outage) (negative)
+hydro,Hydro,MW,identity_check_cdr_core_minus_model,0.000000,must be 0
+hydro,Hydro,MW,scope_info_OPERATING_QUALIFIED,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+hydro,Hydro,MW,scope_info_PRIVATE_NETWORK,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+hydro,Hydro,MW,scope_info_DISTRIBUTION_DG,11.300000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+hydro,Hydro,MW,scope_info_SWITCHABLE_AVAILABLE,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+hydro,Hydro,MW,scope_info_SWITCHABLE_UNAVAILABLE_ADJ,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+hydro,Hydro,MW,scope_info_OUTAGE_OR_SEASONAL,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+hydro,Hydro,MW,scope_info_MOTHBALLED_INDEFINITE,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+hydro,Hydro,MW,scope_info_PLANNED_NOT_2025,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+nuclear,Thermal,MW,model_active2025_summer_MW,4980.000000,"ReEDS DB active 2025 (OP/SB, Start<=2025<Retire), summer MW = model fleet"
+nuclear,Thermal,MW,cdr_core_2025_installed_MW,5268.000000,"CDR OPER/RMR + OPER-SYN/UNFC/UNR, CONV(-TGR), in-service <= 2025-12-31 or unknown"
+nuclear,Thermal,MW,decomp_rating_diff,288.000000,matched groups: CDR installed - model summer (rating definition + phase coverage inside the group)
+nuclear,Thermal,MW,decomp_pipeline_cross,0.000000,CDR operating by 2025 but model holds the group only in the committed pipeline (B4 cross-ledger)
+nuclear,Thermal,MW,decomp_matched_no_model,0.000000,matched group without model active / committed units (retired / out of service in the DB)
+nuclear,Thermal,MW,decomp_candidate_pairs,0.000000,capacity-assisted county + family candidates (names differ): CDR core - model active; identity NOT confirmed
+nuclear,Thermal,MW,decomp_cdr_unmatched,0.000000,CDR core MW without a matched model group: suspected omission OR unresolved name (not decided)
+nuclear,Thermal,MW,decomp_model_unmatched,0.000000,model active MW without a matched CDR group (negative)
+nuclear,Thermal,MW,decomp_model_matched_noncore,0.000000,model active MW whose CDR match is outside the 2025 core (PLAN / private / DG / outage) (negative)
+nuclear,Thermal,MW,identity_check_cdr_core_minus_model,0.000000,must be 0
+nuclear,Thermal,MW,scope_info_OPERATING_QUALIFIED,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+nuclear,Thermal,MW,scope_info_PRIVATE_NETWORK,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+nuclear,Thermal,MW,scope_info_DISTRIBUTION_DG,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+nuclear,Thermal,MW,scope_info_SWITCHABLE_AVAILABLE,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+nuclear,Thermal,MW,scope_info_SWITCHABLE_UNAVAILABLE_ADJ,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+nuclear,Thermal,MW,scope_info_OUTAGE_OR_SEASONAL,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+nuclear,Thermal,MW,scope_info_MOTHBALLED_INDEFINITE,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+nuclear,Thermal,MW,scope_info_PLANNED_NOT_2025,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+solar,Solar,MW,model_active2025_summer_MW,29262.700000,"ReEDS DB active 2025 (OP/SB, Start<=2025<Retire), summer MW = model fleet"
+solar,Solar,MW,cdr_core_2025_installed_MW,32343.140000,"CDR OPER/RMR + OPER-SYN/UNFC/UNR, CONV(-TGR), in-service <= 2025-12-31 or unknown"
+solar,Solar,MW,decomp_rating_diff,-456.030000,matched groups: CDR installed - model summer (rating definition + phase coverage inside the group)
+solar,Solar,MW,decomp_pipeline_cross,1993.400000,CDR operating by 2025 but model holds the group only in the committed pipeline (B4 cross-ledger)
+solar,Solar,MW,decomp_matched_no_model,819.990000,matched group without model active / committed units (retired / out of service in the DB)
+solar,Solar,MW,decomp_candidate_pairs,156.790000,capacity-assisted county + family candidates (names differ): CDR core - model active; identity NOT confirmed
+solar,Solar,MW,decomp_cdr_unmatched,7034.090000,CDR core MW without a matched model group: suspected omission OR unresolved name (not decided)
+solar,Solar,MW,decomp_model_unmatched,-5074.300000,model active MW without a matched CDR group (negative)
+solar,Solar,MW,decomp_model_matched_noncore,-1393.500000,model active MW whose CDR match is outside the 2025 core (PLAN / private / DG / outage) (negative)
+solar,Solar,MW,identity_check_cdr_core_minus_model,0.000000,must be 0
+solar,Solar,MW,scope_info_OPERATING_QUALIFIED,12479.150000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+solar,Solar,MW,scope_info_PRIVATE_NETWORK,332.990000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+solar,Solar,MW,scope_info_DISTRIBUTION_DG,347.810000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+solar,Solar,MW,scope_info_SWITCHABLE_AVAILABLE,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+solar,Solar,MW,scope_info_SWITCHABLE_UNAVAILABLE_ADJ,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+solar,Solar,MW,scope_info_OUTAGE_OR_SEASONAL,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+solar,Solar,MW,scope_info_MOTHBALLED_INDEFINITE,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+solar,Solar,MW,scope_info_PLANNED_NOT_2025,29441.270000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+solar,Solar,MW,dec2025_trend_operational_MW,37442.740000,Capacity_December2025.xlsx 2025 operational
+solar,Solar,MW,trend_minus_cdr_core_MW,5099.600000,snapshot / status definition between two ERCOT December publications: UNEXPLAINED
+storage,Storage,MW,model_active2025_summer_MW,12768.400000,"ReEDS DB active 2025 (OP/SB, Start<=2025<Retire), summer MW = model fleet"
+storage,Storage,MW,cdr_core_2025_installed_MW,13375.000000,"CDR OPER/RMR + OPER-SYN/UNFC/UNR, CONV(-TGR), in-service <= 2025-12-31 or unknown"
+storage,Storage,MW,decomp_rating_diff,-88.140000,matched groups: CDR installed - model summer (rating definition + phase coverage inside the group)
+storage,Storage,MW,decomp_pipeline_cross,254.780000,CDR operating by 2025 but model holds the group only in the committed pipeline (B4 cross-ledger)
+storage,Storage,MW,decomp_matched_no_model,406.400000,matched group without model active / committed units (retired / out of service in the DB)
+storage,Storage,MW,decomp_candidate_pairs,39.670000,capacity-assisted county + family candidates (names differ): CDR core - model active; identity NOT confirmed
+storage,Storage,MW,decomp_cdr_unmatched,2286.690000,CDR core MW without a matched model group: suspected omission OR unresolved name (not decided)
+storage,Storage,MW,decomp_model_unmatched,-1661.300000,model active MW without a matched CDR group (negative)
+storage,Storage,MW,decomp_model_matched_noncore,-631.500000,model active MW whose CDR match is outside the 2025 core (PLAN / private / DG / outage) (negative)
+storage,Storage,MW,identity_check_cdr_core_minus_model,0.000000,must be 0
+storage,Storage,MW,scope_info_OPERATING_QUALIFIED,2288.250000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+storage,Storage,MW,scope_info_PRIVATE_NETWORK,641.410000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+storage,Storage,MW,scope_info_DISTRIBUTION_DG,1032.660000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+storage,Storage,MW,scope_info_SWITCHABLE_AVAILABLE,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+storage,Storage,MW,scope_info_SWITCHABLE_UNAVAILABLE_ADJ,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+storage,Storage,MW,scope_info_OUTAGE_OR_SEASONAL,101.700000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+storage,Storage,MW,scope_info_MOTHBALLED_INDEFINITE,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+storage,Storage,MW,scope_info_PLANNED_NOT_2025,22965.850000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+storage,Storage,MW,dec2025_trend_operational_MW,16645.900000,Capacity_December2025.xlsx 2025 operational
+storage,Storage,MW,trend_minus_cdr_core_MW,3270.900000,snapshot / status definition between two ERCOT December publications: UNEXPLAINED
+wind,Wind,MW,model_active2025_summer_MW,40028.800000,"ReEDS DB active 2025 (OP/SB, Start<=2025<Retire), summer MW = model fleet"
+wind,Wind,MW,cdr_core_2025_installed_MW,39986.590000,"CDR OPER/RMR + OPER-SYN/UNFC/UNR, CONV(-TGR), in-service <= 2025-12-31 or unknown"
+wind,Wind,MW,decomp_rating_diff,201.040000,matched groups: CDR installed - model summer (rating definition + phase coverage inside the group)
+wind,Wind,MW,decomp_pipeline_cross,265.400000,CDR operating by 2025 but model holds the group only in the committed pipeline (B4 cross-ledger)
+wind,Wind,MW,decomp_matched_no_model,263.370000,matched group without model active / committed units (retired / out of service in the DB)
+wind,Wind,MW,decomp_candidate_pairs,-188.620000,capacity-assisted county + family candidates (names differ): CDR core - model active; identity NOT confirmed
+wind,Wind,MW,decomp_cdr_unmatched,3036.200000,CDR core MW without a matched model group: suspected omission OR unresolved name (not decided)
+wind,Wind,MW,decomp_model_unmatched,-3169.600000,model active MW without a matched CDR group (negative)
+wind,Wind,MW,decomp_model_matched_noncore,-450.000000,model active MW whose CDR match is outside the 2025 core (PLAN / private / DG / outage) (negative)
+wind,Wind,MW,identity_check_cdr_core_minus_model,0.000000,must be 0
+wind,Wind,MW,scope_info_OPERATING_QUALIFIED,4622.620000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+wind,Wind,MW,scope_info_PRIVATE_NETWORK,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+wind,Wind,MW,scope_info_DISTRIBUTION_DG,2.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+wind,Wind,MW,scope_info_SWITCHABLE_AVAILABLE,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+wind,Wind,MW,scope_info_SWITCHABLE_UNAVAILABLE_ADJ,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+wind,Wind,MW,scope_info_OUTAGE_OR_SEASONAL,0.000000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+wind,Wind,MW,scope_info_MOTHBALLED_INDEFINITE,6.600000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+wind,Wind,MW,scope_info_PLANNED_NOT_2025,4792.980000,"CDR scope bucket (information; candidate explanation, NOT allocated to any residual)"
+wind,Wind,MW,dec2025_trend_operational_MW,40718.750000,Capacity_December2025.xlsx 2025 operational
+wind,Wind,MW,trend_minus_cdr_core_MW,732.160000,snapshot / status definition between two ERCOT December publications: UNEXPLAINED

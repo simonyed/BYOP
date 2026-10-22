@@ -1,0 +1,18 @@
+component,value,unit,check,location
+native_load_1h_rows,8760.000000,rows,True,inputs/anchor2025/ERCOT_NATIVE_LOAD_2025_1H.csv
+native_load_DST_rows_kept,1.000000,rows,True,source_row_1based kept; the 02:00 DST repeat is not dropped
+native_load_HE_24_00_rows_kept,365.000000,rows,True,HE 24:00 kept as the last hour of its day (not double-counted as the next day 00:00)
+native_load_source_rows_unique_sequential,1.000000,bool,True,row order = repository order
+native_load_energy_MWh,488233578.542299,MWh,True,VERIFIED_METRICS energy_TWh
+3h_periods_x_weight,8760.000000,h,True,"row-order 3 h means, weight 3"
+3h_energy_conservation_abs_MWh,0.000000,MWh,True,sum(3h mean x 3) = 1 h energy
+baseline_bus_load_energy_MWh,488233578.541510,MWh,True,results/BYOP/baseline_2025_tamu/ercot_load_2025_3h_by_bus.csv.gz (weather zone -> county lpf -> substation -> bus)
+baseline_bus_load_per_step_max_abs_error_MW,0.000002,MW,True,each 3 h step: sum over buses = ERCOT 3 h native load
+baseline_bus_count,63.000000,buses,True,"historical load buses (spatial split is a model rule, not metered)"
+historical_AIDC_2025_avg_added_on_top,0.000000,MW,True,rearch_mech: no 2025 AIDC Load is added; the 2025 average (140.27 MW IT) is inside the native load
+inherited_ramp_IT_MW_from_2026,460.730000,MW IT,True,"rearch_mech.add_inherited_ramp (periods >= 2026, x PUE(period); never in a 2025 period)"
+background_load_scale_factor_2025,1.000000,-,True,"v240_mech.build bg_traj (factor_vs_2025, TX); 2026+: 2026:1.009327, 2027:1.019219, 2028:1.032252, 2029:1.043080, 2030:1.050280, 2031:1.057430"
+storage_charging_in_load,0.000000,MW,True,"battery charging is a StorageUnit dispatch variable, not a Load; Fuel Mix WSL (negative) is a generation-side ledger item"
+research_AIDC_in_2025,0.000000,MW,True,research cohorts start 2026 (S0 has none at all)
+regional_dc_and_competing_queue_mainline,0.000000,MW,True,"mainline forces regional_dc=off, competing=0 (rearch_mech.main)"
+fuelmix_minus_native_GWh,-161.027854,GWh,True,reported only (-0.033 %); neither ledger is adjusted to close it

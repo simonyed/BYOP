@@ -1,0 +1,149 @@
+{
+ "stage": "C0 offline reconciliation (ERCOT 2025 official anchor v1.3)",
+ "solver_executions": 0,
+ "source_sha_ok": true,
+ "verified_metrics": {
+  "source_xlsx_sha256": "23664b0cddb047692f6cac26a4300e987c6309795395d394bf2dc223f37b53aa",
+  "source_hash_matches_repository": true,
+  "rows": 8760,
+  "energy_TWh": 488.233578542299,
+  "peak_1h_MW": 83679.001697,
+  "peak_1h_source_label": "08/18/2025 18:00",
+  "peak_3h_MW": 83403.65211466666,
+  "zone_sum_max_abs_error_MW": 3.0000010156072676e-06,
+  "official_annual_report_peak_MW": 83707,
+  "annual_report_minus_native_peak_MW": 27.998303000000305,
+  "source_DST_labels": [
+   "11/02/2025 02:00 DST"
+  ],
+  "time_axis_policy": "Preserve original HE strings; row-order alignment reproduces repository; synthetic timestamps are not UTC.",
+  "nuclear_CDR_installed_MW": 5268.0,
+  "nuclear_CDR_summer2026_MW": 4973.2,
+  "model_nuclear_summer_based_MW": 4980.0,
+  "fuelmix_total_GWh": 488072.550688,
+  "fuelmix_total_minus_native_GWh": -161.02785429905634
+ },
+ "load_checks_all_pass": true,
+ "load_checks": {
+  "native_load_1h_rows": true,
+  "native_load_DST_rows_kept": true,
+  "native_load_HE_24_00_rows_kept": true,
+  "native_load_source_rows_unique_sequential": true,
+  "native_load_energy_MWh": true,
+  "3h_periods_x_weight": true,
+  "3h_energy_conservation_abs_MWh": true,
+  "baseline_bus_load_energy_MWh": true,
+  "baseline_bus_load_per_step_max_abs_error_MW": true,
+  "baseline_bus_count": true,
+  "historical_AIDC_2025_avg_added_on_top": true,
+  "inherited_ramp_IT_MW_from_2026": true,
+  "background_load_scale_factor_2025": true,
+  "storage_charging_in_load": true,
+  "research_AIDC_in_2025": true,
+  "regional_dc_and_competing_queue_mainline": true,
+  "fuelmix_minus_native_GWh": true
+ },
+ "model_fleet_equals_audit": true,
+ "model_fleet_MW": 155050.59999999998,
+ "audit_fleet_MW": 155050.6,
+ "no_model_group_matched_twice": true,
+ "plan_units_in_2025_core": 0,
+ "capacity_bridge_identity_ok": true,
+ "coverage": {
+  "cdr_core_units": 1187,
+  "cdr_core_MW": 160494.55,
+  "cdr_core_matched_units": 903,
+  "cdr_core_matched_MW": 130047.92000000001,
+  "cdr_core_match_share_units": 0.7607413647851727,
+  "cdr_core_match_share_MW": 0.8102949290178391,
+  "cdr_core_ambiguous_MW": 1759.6100000000001,
+  "cdr_core_candidate_MW": 12337.66,
+  "cdr_core_matched_or_candidate_share_MW": 0.8871676951024193,
+  "cdr_core_unmatched_MW": 16349.359999999997,
+  "model_active_units": 1697,
+  "model_active_MW": 155050.59999999998,
+  "model_active_matched_units": 862,
+  "model_active_matched_MW": 126777.8,
+  "model_active_match_share_MW": 0.8176543657360889,
+  "model_active_matched_or_candidate_share_MW": 0.8993496316686297,
+  "by_status": {
+   "AMBIGUOUS": {
+    "units": 21,
+    "MW": 1766.21
+   },
+   "CANDIDATE_COUNTY_FUEL_CAPACITY": {
+    "units": 160,
+    "MW": 17803.55
+   },
+   "MATCH_EXACT": {
+    "units": 809,
+    "MW": 114053.15
+   },
+   "MATCH_FUZZY": {
+    "units": 225,
+    "MW": 25452.61
+   },
+   "MATCH_FUZZY_OTHER_COUNTY": {
+    "units": 63,
+    "MW": 6032.77
+   },
+   "NOT_MATCHED_BY_RULE": {
+    "units": 4,
+    "MW": 1220.0
+   },
+   "UNMATCHED": {
+    "units": 490,
+    "MW": 67543.94
+   }
+  },
+  "county_name_basis": "Census cb_2020 county shapefile"
+ },
+ "pipeline_reclass_suggestions": {
+  "rows": 106,
+  "cdr_operating_model_committed_MW": 2971.68,
+  "by_family": {
+   "CDR_OPERATING_2025__MODEL_COMMITTED_PIPELINE|solar": 1993.4,
+   "CDR_OPERATING_2025__MODEL_COMMITTED_PIPELINE|storage": 712.9,
+   "CDR_OPERATING_2025__MODEL_COMMITTED_PIPELINE|wind": 265.4,
+   "MODEL_ACTIVE_2025__CDR_NOT_CORE_2025|gas": 0.0,
+   "MODEL_ACTIVE_2025__CDR_NOT_CORE_2025|solar": 0.0,
+   "MODEL_ACTIVE_2025__CDR_NOT_CORE_2025|storage": 0.0,
+   "MODEL_ACTIVE_2025__CDR_NOT_CORE_2025|wind": 0.0
+  }
+ },
+ "historical_aidc": {
+  "sites": 11,
+  "algebra_ok": true,
+  "bus_ramp_ok": true,
+  "inherited_ramp_IT_MW": 460.73,
+  "verified_count": 0
+ },
+ "uplift": {
+  "calibration_2025_lines": 18,
+  "calibration_2025_MVA": 4993.911832823386,
+  "residual_shed_MWh": 102.20466561114219,
+  "ledger_matches_LP": true,
+  "final_identity_max_err_MVA": 2.7499258976604324e-05,
+  "S0CAL_lines": 9,
+  "S0CAL_MW": 1095.6237013311218,
+  "S0CAL_sees_final_2025_s_nom": true,
+  "baseline_nc": {
+   "status": "CHECKED",
+   "path": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu/baseline_2025_tamu_prepared.nc",
+   "sha256": "19034285be0aa9b9906ab5b0e03778f3a16e7c1c39e97ac97b368d9097cafadb",
+   "lines": 162,
+   "max_abs_s_nom_error_MVA": 1.8189894035458565e-12,
+   "ac_s0cal_links_in_baseline": 0,
+   "ok": true
+  },
+  "note": "MVA (2025 line uplift, inside s_nom) and MW (S0CAL fixed Links from 2026) are separate layers; never summed"
+ },
+ "outputs": {
+  "C0_CAPACITY_BRIDGE.csv": "e9787e3198ffa7ebec2ba6937e17a18eab833e54c1fce48efff00896b2955816",
+  "C0_GENERATOR_MATCH.csv": "4ff58dd60e9d61d4ebefcfff2a0d29c71bf176faa525065f15326ac1dde82890",
+  "C0_HISTORICAL_AIDC_EVIDENCE.csv": "767b1c178e33b46b6fc94421bdb90e355bec6b47f39e5c761380ef477ee29c05",
+  "C0_LOAD_ACCOUNTING.csv": "0a7fb33c4b61708cfbe40bb7868920d55c54d399692420aa0a756c0dd7a1dba4",
+  "C0_PIPELINE_RECLASS_SUGGESTIONS.csv": "8747aacc71f5319c89d16835ce3548706ae3c0ed12258cfb5ad5a887ab558d4c",
+  "C0_UPLIFT_LEDGER.csv": "a4d598610e83da401fdbde7ad6f94303200e8c88a29e208a41df63387bf9fb3b"
+ }
+}

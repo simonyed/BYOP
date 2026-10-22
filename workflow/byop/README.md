@@ -70,3 +70,16 @@ The builder writes only `*_GEO_DYNAMIC_V1*` files (legacy inputs are SHA-checked
 alpha / beta / gamma, g0 / g50 mix, 36 MW eligibility threshold, reviewed `locked_verified` Epoch increments, new-bus POI
 proxies) live in the versioned YAML only. Matched-service (M4) keys = research buses x model years from the case's own
 input record (`collect_mainline.expected_service_keys`), not a fixed 48. Reports: `current_work_pckg/_completed/BYOP_ERCOT_AIDC_Geospatial_Distribution_v1.0/`.
+
+### C0 ERCOT 2025 official anchor (2026-10-22): offline reconciliation, no solver
+
+Official ERCOT files: `data/byop/ercot_official_anchor_2025/` (local + L2, SHA in `SOURCE_MANIFEST.json`); paths in `model/byop_paths.py`
+(`ANCHOR2025*`, `REEDS_GENDB`, `C0_RESULTS`). Optional external raw paths by environment variable only (`BYOP_EPOCH_TIMELINE_RAW`, `BYOP_REEDS2_ROOT`).
+
+```bash
+python byop/build/c0_anchor_evidence.py          # rebuild inputs/anchor2025/* (= researcher derived tables, value-checked)
+python byop/build/c0_anchor_audit.py --check-nc  # results/BYOP/C0_ANCHOR_2025/C0_* (match, bridge, load, AIDC evidence, uplift, QA)
+python -m pytest -q byop/tests/test_c0_anchor.py
+```
+Neither script imports linopy / gurobipy or the baseline builder (whose default path runs the calibrate_2025 LP); `--check-nc`
+only reads the baseline network. Report: `current_work_pckg/C0_INPUT_RECONCILIATION.md`.

@@ -1,0 +1,58 @@
+{
+ "metrics": {
+  "source_xlsx_sha256": "23664b0cddb047692f6cac26a4300e987c6309795395d394bf2dc223f37b53aa",
+  "source_hash_matches_repository": true,
+  "rows": 8760,
+  "energy_TWh": 488.233578542299,
+  "peak_1h_MW": 83679.001697,
+  "peak_1h_source_label": "08/18/2025 18:00",
+  "peak_3h_MW": 83403.65211466666,
+  "zone_sum_max_abs_error_MW": 3.0000010156072676e-06,
+  "official_annual_report_peak_MW": 83707,
+  "annual_report_minus_native_peak_MW": 27.998303000000305,
+  "source_DST_labels": [
+   "11/02/2025 02:00 DST"
+  ],
+  "time_axis_policy": "Preserve original HE strings; row-order alignment reproduces repository; synthetic timestamps are not UTC.",
+  "nuclear_CDR_installed_MW": 5268.0,
+  "nuclear_CDR_summer2026_MW": 4973.2,
+  "model_nuclear_summer_based_MW": 4980.0,
+  "fuelmix_total_GWh": 488072.550688,
+  "fuelmix_total_minus_native_GWh": -161.02785429905634
+ },
+ "rebuild_check": {
+  "all_equal": true,
+  "tables": {
+   "CAPACITY_DEFINITION_BRIDGE.csv": true,
+   "CAPACITY_TREND_DEC2025_EXTRACT.csv": true,
+   "CDR_DEC2025_UNIT_REGISTER_AUDIT_ONLY.csv": true,
+   "CDR_UNIT_STATUS_FUEL_SUMMARY.csv": true,
+   "ERCOT_NATIVE_LOAD_2025_1H.csv": true,
+   "ERCOT_NATIVE_LOAD_2025_3H.csv": true,
+   "FUEL_MIX_2025_GWH.csv": true,
+   "HISTORICAL_DEMAND_STRESS_DAYS.csv": true,
+   "LOAD_MONTHLY_TWH.csv": true
+  },
+  "metrics": {
+   "source_xlsx_sha256": true,
+   "source_hash_matches_repository": true,
+   "rows": true,
+   "energy_TWh": true,
+   "peak_1h_MW": true,
+   "peak_1h_source_label": true,
+   "peak_3h_MW": true,
+   "zone_sum_max_abs_error_MW": true,
+   "official_annual_report_peak_MW": true,
+   "annual_report_minus_native_peak_MW": true,
+   "source_DST_labels": true,
+   "time_axis_policy": true,
+   "nuclear_CDR_installed_MW": true,
+   "nuclear_CDR_summer2026_MW": true,
+   "model_nuclear_summer_based_MW": true,
+   "fuelmix_total_GWh": true,
+   "fuelmix_total_minus_native_GWh": true
+  },
+  "baseline_audit_sha256": "993fb0f7bca72e587d7ce16bf7419b950debee281c510a40dacf8d491239b0b6"
+ }
+}
+exit 0
