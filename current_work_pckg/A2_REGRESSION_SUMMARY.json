@@ -1,0 +1,61 @@
+{
+ "stage": "A2 static regression (NEXT-02 A2-FIX-06)",
+ "code_commit": "a7f195b239a739101c2bb8cd53f495febbf0e789",
+ "solver_calls": 0,
+ "runs": [
+  {
+   "where": "L2 A2 worktree (LF checkout, core.autocrlf=input; data/resources symlinked to the main checkout)",
+   "command": "python -m pytest -q byop/tests",
+   "passed": 230,
+   "failed": 0,
+   "skipped": 0,
+   "errors": 0,
+   "seconds": 279,
+   "log": "workflow/results/BYOP/post_v16_a2_static/NEXT02_REGRESSION_WORKTREE.log"
+  },
+  {
+   "where": "L2 fresh git clone of work/a2-postv16-static in /tmp/a2fresh (LF; data/resources symlinked; v1.6 baseline .nc absent)",
+   "command": "python -m pytest -q byop/tests",
+   "passed": 228,
+   "failed": 0,
+   "skipped": 2,
+   "errors": 0,
+   "skipped_reason": "v1.6 baseline .nc only on L2 main path (2 tests)",
+   "seconds": 244,
+   "log": "workflow/results/BYOP/post_v16_a2_static/NEXT02_REGRESSION_FRESH_CLONE.log"
+  }
+ ],
+ "history": [
+  {
+   "commit": "ba73e600 (NEXT-01)",
+   "passed": 202,
+   "failed": 2,
+   "cause": "A1 pins = CRLF bytes; plus a corrupt LF-converted .csv.gz blob (found in NEXT-02)"
+  },
+  {
+   "commit": "2966b80c",
+   "passed": 228,
+   "failed": 2,
+   "cause": ".gz still corrupt in the checkout; A0 guard test expected the removed NOT_READY text"
+  },
+  {
+   "commit": "33f158d5",
+   "passed": 229,
+   "failed": 1,
+   "cause": "binary .gz has lone CR bytes -> raw match must be accepted first"
+  }
+ ],
+ "new_tests": {
+  "file": "byop/tests/test_next02_a2_static.py",
+  "n": 11,
+  "all_pass": true
+ },
+ "structural": {
+  "checks": 66,
+  "passed": 66,
+  "failed": 0,
+  "solver_executions": 0,
+  "log": "workflow/results/BYOP/post_v16_a2_static/NEXT02_STRUCTURAL.log"
+ },
+ "A2_ALL_REGRESSIONS": "PASSED"
+}
