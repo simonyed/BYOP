@@ -1,0 +1,281 @@
+{
+ "step": "W6 lossy LP2 static build",
+ "solver_calls": 0,
+ "gate": {
+  "LP2_LOSSY_ASIS": {
+   "approved": false,
+   "reasons": [
+    "run_authorization=NOT_APPROVED",
+    "approved_by missing",
+    "approved_git_sha missing",
+    "worktree not clean for code / config / inputs: ['workflow/byop/run/run_post_v16_a2.sh', 'workflow/byop/post/next07_w6_line_loss_audit.py', 'workflow/byop/run/loss_basis_lp2.py', 'workflow/config/config.byop_loss_basis_lp2.yaml']",
+    "manifest missing: current_work_pckg/BYOP_NEXT_07/W6_LOSSY_LP2_PRE_RUN_MANIFEST.json"
+   ],
+   "head": "eb71bb38b7989e44b55bb4262dbdba342bc4ca94",
+   "approved_git_sha": null,
+   "stage": "LP2_LOSSY_ASIS"
+  },
+  "LP2_LOSSY_R_PARALLEL": {
+   "approved": false,
+   "reasons": [
+    "run_authorization=NOT_APPROVED",
+    "approved_by missing",
+    "approved_git_sha missing",
+    "worktree not clean for code / config / inputs: ['workflow/byop/run/run_post_v16_a2.sh', 'workflow/byop/post/next07_w6_line_loss_audit.py', 'workflow/byop/run/loss_basis_lp2.py', 'workflow/config/config.byop_loss_basis_lp2.yaml']",
+    "manifest missing: current_work_pckg/BYOP_NEXT_07/W6_LOSSY_LP2_PRE_RUN_MANIFEST.json",
+    "LP2_LOSSY_R_PARALLEL only after an optimal LP2_LOSSY_ASIS that FAILED the v1.6 acceptance"
+   ],
+   "head": "eb71bb38b7989e44b55bb4262dbdba342bc4ca94",
+   "approved_git_sha": null,
+   "stage": "LP2_LOSSY_R_PARALLEL"
+  }
+ },
+ "LP2_LOSSY_ASIS": {
+  "n_vars": 2093640,
+  "n_cons": 6902642,
+  "has_line_loss": true,
+  "loss_rows": [
+   "Line-loss_tangents-1--1",
+   "Line-loss_tangents-1-1",
+   "Line-loss_tangents-2--1",
+   "Line-loss_tangents-2-1",
+   "Line-loss_upper"
+  ],
+  "committable": 0,
+  "lines": 162,
+  "line_capacity_MW": 198015.4325200225,
+  "r_sum_ohm": 1836.2977179843697,
+  "x_sum_ohm": 8722.753602070337,
+  "prepare": {
+   "removed_global_constraints": [
+    "lv_limit"
+   ],
+   "generators": 264,
+   "storage_units": 43,
+   "lines": 162,
+   "storage_MW": 13068.4,
+   "fleet_MW_by_carrier": {
+    "CCGT": 35914.3,
+    "OCGT": 8815.7,
+    "biomass": 123.0,
+    "coal": 10774.0,
+    "gas_steam": 11848.3,
+    "hydro": 535.4,
+    "nuclear": 4980.0,
+    "onwind": 40277.8,
+    "solar": 29110.0
+   }
+  },
+  "r_changes": null
+ },
+ "LP2_LOSSY_R_PARALLEL": {
+  "n_vars": 2093640,
+  "n_cons": 6902642,
+  "has_line_loss": true,
+  "loss_rows": [
+   "Line-loss_tangents-1--1",
+   "Line-loss_tangents-1-1",
+   "Line-loss_tangents-2--1",
+   "Line-loss_tangents-2-1",
+   "Line-loss_upper"
+  ],
+  "committable": 0,
+  "lines": 162,
+  "line_capacity_MW": 198015.4325200225,
+  "r_sum_ohm": 1680.474292335671,
+  "x_sum_ohm": 8722.753602070337,
+  "prepare": {
+   "removed_global_constraints": [
+    "lv_limit"
+   ],
+   "generators": 264,
+   "storage_units": 43,
+   "lines": 162,
+   "storage_MW": 13068.4,
+   "fleet_MW_by_carrier": {
+    "CCGT": 35914.3,
+    "OCGT": 8815.7,
+    "biomass": 123.0,
+    "coal": 10774.0,
+    "gas_steam": 11848.3,
+    "hydro": 535.4,
+    "nuclear": 4980.0,
+    "onwind": 40277.8,
+    "solar": 29110.0
+   }
+  },
+  "r_changes": [
+   {
+    "name": "TL12",
+    "r_before": 70.6844,
+    "s_nom_raw": 108.759,
+    "s_nom_prepared": 358.7493,
+    "scale": 0.3032,
+    "r_after": 21.4288,
+    "x_unchanged": true
+   },
+   {
+    "name": "TL13",
+    "r_before": 12.391,
+    "s_nom_raw": 610.523,
+    "s_nom_prepared": 909.8314,
+    "scale": 0.671,
+    "r_after": 8.3147,
+    "x_unchanged": true
+   },
+   {
+    "name": "TL15",
+    "r_before": 7.0782,
+    "s_nom_raw": 108.759,
+    "s_nom_prepared": 437.8405,
+    "scale": 0.2484,
+    "r_after": 1.7582,
+    "x_unchanged": true
+   },
+   {
+    "name": "TL26",
+    "r_before": 20.7482,
+    "s_nom_raw": 98.0,
+    "s_nom_prepared": 145.3581,
+    "scale": 0.6742,
+    "r_after": 13.9884,
+    "x_unchanged": true
+   },
+   {
+    "name": "TL3",
+    "r_before": 21.8705,
+    "s_nom_raw": 187.0,
+    "s_nom_prepared": 202.6512,
+    "scale": 0.9228,
+    "r_after": 20.1814,
+    "x_unchanged": true
+   },
+   {
+    "name": "TL35",
+    "r_before": 15.6273,
+    "s_nom_raw": 117.2564,
+    "s_nom_prepared": 659.8625,
+    "scale": 0.1777,
+    "r_after": 2.7769,
+    "x_unchanged": true
+   },
+   {
+    "name": "TL36",
+    "r_before": 9.4951,
+    "s_nom_raw": 90.1972,
+    "s_nom_prepared": 196.4179,
+    "scale": 0.4592,
+    "r_after": 4.3602,
+    "x_unchanged": true
+   },
+   {
+    "name": "TL37",
+    "r_before": 6.1115,
+    "s_nom_raw": 468.0,
+    "s_nom_prepared": 1063.9413,
+    "scale": 0.4399,
+    "r_after": 2.6883,
+    "x_unchanged": true
+   },
+   {
+    "name": "TL38",
+    "r_before": 3.0106,
+    "s_nom_raw": 729.3,
+    "s_nom_prepared": 1797.4849,
+    "scale": 0.4057,
+    "r_after": 1.2215,
+    "x_unchanged": true
+   },
+   {
+    "name": "TL39",
+    "r_before": 1.5018,
+    "s_nom_raw": 450.0,
+    "s_nom_prepared": 1247.924,
+    "scale": 0.3606,
+    "r_after": 0.5415,
+    "x_unchanged": true
+   },
+   {
+    "name": "TL40",
+    "r_before": 29.9923,
+    "s_nom_raw": 98.0,
+    "s_nom_prepared": 258.978,
+    "scale": 0.3784,
+    "r_after": 11.3494,
+    "x_unchanged": true
+   },
+   {
+    "name": "TL41",
+    "r_before": 13.7848,
+    "s_nom_raw": 221.0,
+    "s_nom_prepared": 359.6312,
+    "scale": 0.6145,
+    "r_after": 8.471,
+    "x_unchanged": true
+   },
+   {
+    "name": "TL42",
+    "r_before": 23.3694,
+    "s_nom_raw": 163.9,
+    "s_nom_prepared": 389.8236,
+    "scale": 0.4204,
+    "r_after": 9.8256,
+    "x_unchanged": true
+   },
+   {
+    "name": "TL43",
+    "r_before": 15.4464,
+    "s_nom_raw": 98.0,
+    "s_nom_prepared": 169.97,
+    "scale": 0.5766,
+    "r_after": 8.906,
+    "x_unchanged": true
+   },
+   {
+    "name": "TL63",
+    "r_before": 3.056,
+    "s_nom_raw": 374.0,
+    "s_nom_prepared": 530.1113,
+    "scale": 0.7055,
+    "r_after": 2.156,
+    "x_unchanged": true
+   },
+   {
+    "name": "TL68",
+    "r_before": 25.6296,
+    "s_nom_raw": 132.5457,
+    "s_nom_prepared": 154.9856,
+    "scale": 0.8552,
+    "r_after": 21.9188,
+    "x_unchanged": true
+   },
+   {
+    "name": "TL69",
+    "r_before": 48.8406,
+    "s_nom_raw": 132.5457,
+    "s_nom_prepared": 192.42,
+    "scale": 0.6888,
+    "r_after": 33.6431,
+    "x_unchanged": true
+   },
+   {
+    "name": "TL73",
+    "r_before": 3.4276,
+    "s_nom_raw": 999.0,
+    "s_nom_prepared": 1262.6388,
+    "scale": 0.7912,
+    "r_after": 2.7119,
+    "x_unchanged": true
+   }
+  ]
+ },
+ "checks": {
+  "both_have_losses": true,
+  "same_size": true,
+  "no_capacity_change": true,
+  "x_unchanged": true,
+  "r_changed_only_on_uplifted": true,
+  "no_committable": true,
+  "no_solver_called": true
+ }
+}

@@ -1,0 +1,29 @@
+# BYOP NEXT-07 W6 (2026-10-23): the researcher chose the LOSSY transmission basis for S0-S3 (W6_LOSS_BASIS_DECISION_RECORD.md).
+# Before any v1.6 calibration change, the 2025 fixed-asset LP2 is re-validated with losses (byop/run/loss_basis_lp2.py):
+#   LP2_LOSSY_ASIS        the v1.6 prepared baseline as is, transmission_losses 2                               (1 call)
+#   LP2_LOSSY_R_PARALLEL  only if ASIS solves optimal AND fails the v1.6 acceptance: r of the 18 calibration-uplifted lines
+#                         scaled by raw / prepared s_nom (builder parallel-circuit convention, resistance only; x and every
+#                         capacity unchanged) - a candidate engineering repair, not a capacity increase              (1 call)
+# Separate from the consumed v1.6 runner / ledger (results/BYOP/baseline_2025_tamu_v16 untouched). This file is a REQUEST:
+# only the researcher authorises it (three fields below, config-only commit).
+loss_basis:
+  run_authorization: NOT_APPROVED
+  approved_git_sha: null
+  approved_by: null
+  authorization_source: current_work_pckg/BYOP_NEXT_07/W6_LOSS_BASIS_DECISION_RECORD.md
+  authorization_source_sha256: ef50f3a601a42faeb779b3a12e7729342218cf88f4c44b3e9c018a4dbf311ffb   # LF content SHA
+  manifest: current_work_pckg/BYOP_NEXT_07/W6_LOSSY_LP2_PRE_RUN_MANIFEST.json
+  stage: A2                                     # manifest-builder compatibility only (independent gate in loss_basis_lp2.py)
+  stages: [LP2_LOSSY_ASIS, LP2_LOSSY_R_PARALLEL]
+  max_lp_calls: 2
+  max_scenario_attempts: 2
+  max_top_level_optimizer_calls: 2
+  optimizer_call_plan: {LP2_LOSSY_ASIS: [LP2_COST], LP2_LOSSY_R_PARALLEL: [LP2_COST]}
+  max_retries: 0
+  transmission_losses: 2
+  mainline_config: config/config.byop_baseline_v16_calibration.yaml   # pinned as input (v1.6 C1 rules, solver options, acceptance)
+  out_dir: results/BYOP/next07_loss_basis
+  baseline:
+    path: workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc
+    sha256: a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16
+  acceptance: "v1.6 tolerances unchanged (config.byop_baseline_v16_calibration.yaml): EENS <= 1e-5 x 2025 energy (4,882 MWh), max gap <= 1e-3 x peak (83.7 MW)"
