@@ -1,0 +1,29 @@
+{
+ "phase": "H2_REVALIDATION_RUNNING",
+ "updated": "2026-10-23 ~00:35 EDT",
+ "code_sha": {
+  "a1_rerun_approved": "07c881a4c643a800dfc55257716671e2791a48ab",
+  "unified_mainline": "8a32d74c (merge 8e4ad312 + A1 report)"
+ },
+ "baseline_sha": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16",
+ "prior_failed_attempt": "POST_V16_A1_HEADROOM/HEADROOM_SOLVE_LOG.csv LP_R_H_RESOURCE#1 output_failed (consumed 1)",
+ "a1_rerun_parent_calls": 2,
+ "a1_rerun_results": {
+  "LP_R": "PASS H_resource 2587.77 MW facility",
+  "LP_N": "INFEASIBLE network side"
+ },
+ "a1_g2": "A1_FIXED_NETWORK_EXCEPTION",
+ "a2_parent_calls": 0,
+ "a2_child_calls": 0,
+ "a3_child_calls": 0,
+ "remaining_budget": {
+  "a1_rerun1": 0,
+  "a2_scenario_attempts": 2,
+  "a2_top_level_calls": 3,
+  "a3_top_level_calls": 30
+ },
+ "current_process": "L2: H2 revalidation (pytest + structural + manifest + gate), 0 solver calls",
+ "last_pass": "A1 rerun1 LP-R PASS",
+ "blocker": null,
+ "next_safe_command": "after H2 PASS: A2 config-only approval commit (approved_git_sha = unified code SHA), sync, then on L2 main workflow/: bash byop/run/run_post_v16_a2.sh gate; THREADS=<T> bash byop/run/run_post_v16_a2.sh s0s1"
+}

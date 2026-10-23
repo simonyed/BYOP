@@ -70,13 +70,13 @@
   },
   "workflow/byop/model/post_v16_gate.py": {
    "text": true,
-   "raw": "339262e94d390a3c03be88413703b5414e38c5ad8d7545fef741e529c8b4b48d",
-   "lf": "339262e94d390a3c03be88413703b5414e38c5ad8d7545fef741e529c8b4b48d",
-   "crlf": "cd2ce9f08b0e934d8409a0698614bd25a138b963ee9ad25860936cc8514993c1"
+   "raw": "4e8ec5d7a4e889cc05876a8ccf1af859bc67813accdcff59a4ec662191f1a800",
+   "lf": "9ebc215ec3e07db963f4966bdcaaef069e5c992342fd626f1fa787b8ae93e360",
+   "crlf": "4e8ec5d7a4e889cc05876a8ccf1af859bc67813accdcff59a4ec662191f1a800"
   },
   "workflow/byop/model/post_v16_headroom.py": {
    "text": true,
-   "raw": "02c8ec6d44c4aebd056d742516bbebda85ea48d9733f48d57c064381436b0296",
+   "raw": "f45940f7cf347c2d456194b8a9bb2cb19d5df9dfa0555e1809224ed6b4749e2d",
    "lf": "02c8ec6d44c4aebd056d742516bbebda85ea48d9733f48d57c064381436b0296",
    "crlf": "f45940f7cf347c2d456194b8a9bb2cb19d5df9dfa0555e1809224ed6b4749e2d"
   },
@@ -94,7 +94,7 @@
   },
   "workflow/byop/model/v240_mech.py": {
    "text": true,
-   "raw": "c755bc4594f208519c1360c008fea52b2fc552a6cbc75be09aa1c2a957720de3",
+   "raw": "728346fbeb5d651ab9d47c6b7f8419a3b0aa7e6c1aaca55d244f183ab3c6b925",
    "lf": "c755bc4594f208519c1360c008fea52b2fc552a6cbc75be09aa1c2a957720de3",
    "crlf": "728346fbeb5d651ab9d47c6b7f8419a3b0aa7e6c1aaca55d244f183ab3c6b925"
   },
@@ -142,9 +142,9 @@
   },
   "workflow/byop/run/post_v16_a1.py": {
    "text": true,
-   "raw": "7b4ad1f08a8bf62d8538e70e6dadf276be6fe457e2c6eb5d84aa141794161e40",
-   "lf": "7b4ad1f08a8bf62d8538e70e6dadf276be6fe457e2c6eb5d84aa141794161e40",
-   "crlf": "1d6dcccc77100435df0032a5c212db08bc667831bc83bb2699a090c8c2187f04"
+   "raw": "ff0c7181288561d4e4ff8b2395a2a711804e1602f2279872a68d839ac62e82f1",
+   "lf": "f102239df2174e56b52e997558fd1cefb83f4201abe3cfeecefa5fbc89a5dcfc",
+   "crlf": "ff0c7181288561d4e4ff8b2395a2a711804e1602f2279872a68d839ac62e82f1"
   },
   "workflow/byop/run/run_ctrl7.sh": {
    "text": true,
@@ -196,415 +196,415 @@
   },
   "workflow/scripts/_helpers.py": {
    "text": true,
-   "raw": "85fb7ef2495b5cf6f6a3fe8f6c58e04c3613da36f035f03c7915111ca3331f2e",
+   "raw": "ecfce0ba81e0740c5e42d43f8efb05b390f85b4eb08971943ac1ee6d6fd5cba2",
    "lf": "85fb7ef2495b5cf6f6a3fe8f6c58e04c3613da36f035f03c7915111ca3331f2e",
    "crlf": "ecfce0ba81e0740c5e42d43f8efb05b390f85b4eb08971943ac1ee6d6fd5cba2"
   },
   "workflow/scripts/add_demand.py": {
    "text": true,
-   "raw": "b4357f08a65e308c64e1ec1d3cbecd21a03c3d58706a17d323785193cb87e4d3",
+   "raw": "3f3f8db4952ae34c130978a88fd6e5ab21b4b418a780a267769df4043a4334b0",
    "lf": "b4357f08a65e308c64e1ec1d3cbecd21a03c3d58706a17d323785193cb87e4d3",
    "crlf": "3f3f8db4952ae34c130978a88fd6e5ab21b4b418a780a267769df4043a4334b0"
   },
   "workflow/scripts/add_electricity.py": {
    "text": true,
-   "raw": "d9161dd36180182f7c2de6fac70c97b7cce433ed2fd41963ba88a052b421095f",
+   "raw": "202adc42abe6a6374d1ef2f438061e0dc6199ef642a940ead143e1039437a353",
    "lf": "d9161dd36180182f7c2de6fac70c97b7cce433ed2fd41963ba88a052b421095f",
    "crlf": "202adc42abe6a6374d1ef2f438061e0dc6199ef642a940ead143e1039437a353"
   },
   "workflow/scripts/add_extra_components.py": {
    "text": true,
-   "raw": "5939f27073ed2a83b07d4c4538b72be28bb68cf24e54e79b6924b4b64e289249",
+   "raw": "aba8859c6373bc74e2f0ec1320bb6864631b71df13feba9c47d7f2a4e8e1ed4d",
    "lf": "5939f27073ed2a83b07d4c4538b72be28bb68cf24e54e79b6924b4b64e289249",
    "crlf": "aba8859c6373bc74e2f0ec1320bb6864631b71df13feba9c47d7f2a4e8e1ed4d"
   },
   "workflow/scripts/add_sectors.py": {
    "text": true,
-   "raw": "fba346f2707f253471baf0afb344f078f698ada19efbdc442c23b4a83678d4bc",
+   "raw": "aeb988b91d7848f5a2437656f08b4fcfe2ad23a991e49472fd94c5730dd32c85",
    "lf": "fba346f2707f253471baf0afb344f078f698ada19efbdc442c23b4a83678d4bc",
    "crlf": "aeb988b91d7848f5a2437656f08b4fcfe2ad23a991e49472fd94c5730dd32c85"
   },
   "workflow/scripts/aggregate_egs.py": {
    "text": true,
-   "raw": "162cc851df0309e27a63239c0cc6f3d3219ef9c6358053f1fd78d635906502b8",
+   "raw": "e771ea335af49a017b08b8b028e706ed198d25ffacbeecb1e8aaa5745cc88521",
    "lf": "162cc851df0309e27a63239c0cc6f3d3219ef9c6358053f1fd78d635906502b8",
    "crlf": "e771ea335af49a017b08b8b028e706ed198d25ffacbeecb1e8aaa5745cc88521"
   },
   "workflow/scripts/aggregate_to_substations.py": {
    "text": true,
-   "raw": "d39c5872f90ed4afb7b3edebee4cc692f912c6148481faf350769b5d46350e4b",
+   "raw": "4f3479d39621cf91cd72cb33a8309f2694a6654854c1558e54b19fe03d1ef672",
    "lf": "d39c5872f90ed4afb7b3edebee4cc692f912c6148481faf350769b5d46350e4b",
    "crlf": "4f3479d39621cf91cd72cb33a8309f2694a6654854c1558e54b19fe03d1ef672"
   },
   "workflow/scripts/benchmark_cpuc_baseline.py": {
    "text": true,
-   "raw": "be5cdae2436bd71bb7dc9aa771a57d84f0a0b98320cfd7a49aee2d3cce22045a",
+   "raw": "cb0884c4882c45de90a3d571a236a38bfeabb7198d1f36239084f5c25947b0de",
    "lf": "be5cdae2436bd71bb7dc9aa771a57d84f0a0b98320cfd7a49aee2d3cce22045a",
    "crlf": "cb0884c4882c45de90a3d571a236a38bfeabb7198d1f36239084f5c25947b0de"
   },
   "workflow/scripts/build_base_network.py": {
    "text": true,
-   "raw": "656e476fed9e883cc5b0255aa940e6080b4cb481e578863eeead3f722fe09d8b",
+   "raw": "581fa46711fbe32646b42eff324e16b6077723f2000d06f785c840acd8f25c1d",
    "lf": "656e476fed9e883cc5b0255aa940e6080b4cb481e578863eeead3f722fe09d8b",
    "crlf": "581fa46711fbe32646b42eff324e16b6077723f2000d06f785c840acd8f25c1d"
   },
   "workflow/scripts/build_bus_population.py": {
    "text": true,
-   "raw": "07cca844e12c106265bd1639406f30e4ee6f924c2c63b6d47c4eed1da142e69d",
+   "raw": "e4e2166c6e9bb7bba19cb1543b60f8937b4602cdd802bb7960fd08baa8c62bee",
    "lf": "07cca844e12c106265bd1639406f30e4ee6f924c2c63b6d47c4eed1da142e69d",
    "crlf": "e4e2166c6e9bb7bba19cb1543b60f8937b4602cdd802bb7960fd08baa8c62bee"
   },
   "workflow/scripts/build_bus_regions.py": {
    "text": true,
-   "raw": "9088e56788040c617eb747c058c7b82bbbe91a9592a0ce828a9543e0aca6a221",
+   "raw": "8cfc72efe73ebf1b17c351b3a705817210533fbbba8a9452a7130e5cf668de0e",
    "lf": "9088e56788040c617eb747c058c7b82bbbe91a9592a0ce828a9543e0aca6a221",
    "crlf": "8cfc72efe73ebf1b17c351b3a705817210533fbbba8a9452a7130e5cf668de0e"
   },
   "workflow/scripts/build_clustered_population_layouts.py": {
    "text": true,
-   "raw": "3085f99d22d0c2587419033d3e07661650beb59cc3acc4c56afd3681bff05ce3",
+   "raw": "785b03c79a97a89e8aeb64f56ef705a548e1b1f9e4feee9dbd40fbc1f7a23d5a",
    "lf": "3085f99d22d0c2587419033d3e07661650beb59cc3acc4c56afd3681bff05ce3",
    "crlf": "785b03c79a97a89e8aeb64f56ef705a548e1b1f9e4feee9dbd40fbc1f7a23d5a"
   },
   "workflow/scripts/build_co2_storage.py": {
    "text": true,
-   "raw": "445d98a04806135504bff6d5437d64439fcc390c2f0323ce1e9466b2a5de05e9",
+   "raw": "0754d704734ad5be4aca175b2c0630fc06f8ef8307f8ff86e8e989e324b1c7a2",
    "lf": "445d98a04806135504bff6d5437d64439fcc390c2f0323ce1e9466b2a5de05e9",
    "crlf": "0754d704734ad5be4aca175b2c0630fc06f8ef8307f8ff86e8e989e324b1c7a2"
   },
   "workflow/scripts/build_cop_profiles.py": {
    "text": true,
-   "raw": "a9f8f6b030b341e477f2daf1d44e9101248cd5a75d4248a9d0b26ef0bab0ef11",
+   "raw": "3207e22a8c9c3ae3bdcf01c97823d6801c6b58d7695b38fbb4c178f26c2b52bc",
    "lf": "a9f8f6b030b341e477f2daf1d44e9101248cd5a75d4248a9d0b26ef0bab0ef11",
    "crlf": "3207e22a8c9c3ae3bdcf01c97823d6801c6b58d7695b38fbb4c178f26c2b52bc"
   },
   "workflow/scripts/build_cost_data.py": {
    "text": true,
-   "raw": "a19b473d149a6aac99bb5859dd4c6829d236ad2c333c14f1826cea72eea45a98",
+   "raw": "f05973091383c09e56a597de8a3ec463fcecee349bee131617c27d34decc9c1a",
    "lf": "a19b473d149a6aac99bb5859dd4c6829d236ad2c333c14f1826cea72eea45a98",
    "crlf": "f05973091383c09e56a597de8a3ec463fcecee349bee131617c27d34decc9c1a"
   },
   "workflow/scripts/build_cutout.py": {
    "text": true,
-   "raw": "bec2d11adb0799bc325cd9684deb159a8b230adf2bbabbabe44e42eb6a3db957",
+   "raw": "5be9859ec828ff62dcb08d85160c63616c5926d4eaaf88e8c22621634ddfc1ff",
    "lf": "bec2d11adb0799bc325cd9684deb159a8b230adf2bbabbabe44e42eb6a3db957",
    "crlf": "5be9859ec828ff62dcb08d85160c63616c5926d4eaaf88e8c22621634ddfc1ff"
   },
   "workflow/scripts/build_demand.py": {
    "text": true,
-   "raw": "8f5a7443d4071be1972604ac822f31a63393579caec8d27d30f4ddae33c104a7",
+   "raw": "69a0bb40fa2b51d002f2adb01a05853b420cc5b81f6b0db2db7e3aef0172245b",
    "lf": "8f5a7443d4071be1972604ac822f31a63393579caec8d27d30f4ddae33c104a7",
    "crlf": "69a0bb40fa2b51d002f2adb01a05853b420cc5b81f6b0db2db7e3aef0172245b"
   },
   "workflow/scripts/build_electricity_sector.py": {
    "text": true,
-   "raw": "c3693e8581099e399e72a81499eacdf76b9c476e1674b607650ecf6b8a419154",
+   "raw": "7bc445e4a6dac87dc6d9c43ec80d7502b6290238a5918fcfdb52ea05aebf779b",
    "lf": "c3693e8581099e399e72a81499eacdf76b9c476e1674b607650ecf6b8a419154",
    "crlf": "7bc445e4a6dac87dc6d9c43ec80d7502b6290238a5918fcfdb52ea05aebf779b"
   },
   "workflow/scripts/build_emission_tracking.py": {
    "text": true,
-   "raw": "230f7c9bffc83a18bd306d186cf9ad7cc0ab4f265b219c030209eb7c3285d75a",
+   "raw": "56fed320ddeedd543f7f763b48137cf9fc6f9e757680aea3a69d25b4270c1c42",
    "lf": "230f7c9bffc83a18bd306d186cf9ad7cc0ab4f265b219c030209eb7c3285d75a",
    "crlf": "56fed320ddeedd543f7f763b48137cf9fc6f9e757680aea3a69d25b4270c1c42"
   },
   "workflow/scripts/build_fuel_prices.py": {
    "text": true,
-   "raw": "be8ce8f7285550f14ff47c724924597c946630947cd54fe6a919e6a2da96ec99",
+   "raw": "8470182fda0ceb006129de894c17b14cbec6a3f9278f46afa8fda99fcfc02802",
    "lf": "be8ce8f7285550f14ff47c724924597c946630947cd54fe6a919e6a2da96ec99",
    "crlf": "8470182fda0ceb006129de894c17b14cbec6a3f9278f46afa8fda99fcfc02802"
   },
   "workflow/scripts/build_heat.py": {
    "text": true,
-   "raw": "efa2052d5806c56df1a0fb039acb961391aefc7c62cce3630d44587d38efb70b",
+   "raw": "d3c5b2e12f4bf9b50609516bad4c546e747c1d7903d763a03487a07171045910",
    "lf": "efa2052d5806c56df1a0fb039acb961391aefc7c62cce3630d44587d38efb70b",
    "crlf": "d3c5b2e12f4bf9b50609516bad4c546e747c1d7903d763a03487a07171045910"
   },
   "workflow/scripts/build_natural_gas.py": {
    "text": true,
-   "raw": "3d4bf209874fec7ae4f4c78a58ca0e4513778d3c620668239fe42a304b29f31b",
+   "raw": "e6f00f4384b5999b635a376a8b812d78c94988020fd223872e185902ae1805a1",
    "lf": "3d4bf209874fec7ae4f4c78a58ca0e4513778d3c620668239fe42a304b29f31b",
    "crlf": "e6f00f4384b5999b635a376a8b812d78c94988020fd223872e185902ae1805a1"
   },
   "workflow/scripts/build_population_layouts.py": {
    "text": true,
-   "raw": "a015da4433f43b0593c670a03f8fbb97b2f331ad650fdb992bbb207b1614d5d9",
+   "raw": "b2943ad581deefae2f659308fbebb5ba28ca890d6630a9967ea16427afc95baf",
    "lf": "a015da4433f43b0593c670a03f8fbb97b2f331ad650fdb992bbb207b1614d5d9",
    "crlf": "b2943ad581deefae2f659308fbebb5ba28ca890d6630a9967ea16427afc95baf"
   },
   "workflow/scripts/build_powerplants.py": {
    "text": true,
-   "raw": "03b7009491a03131ffb2c1e3194a378f0bdf98135a14cc5bfdb8305010fd0115",
+   "raw": "e6b92d70cbcc9af7c3ce426ad0f5fa50cc684f01cb4052587f5fcb7b5e378dc7",
    "lf": "03b7009491a03131ffb2c1e3194a378f0bdf98135a14cc5bfdb8305010fd0115",
    "crlf": "e6b92d70cbcc9af7c3ce426ad0f5fa50cc684f01cb4052587f5fcb7b5e378dc7"
   },
   "workflow/scripts/build_renewable_profiles.py": {
    "text": true,
-   "raw": "88d0b727b5d8ba3149293af8dfedb43c3be6092cf2aa2a3bb26aae34b6ed70e5",
+   "raw": "21b2117c23a54c155cd58f6beccfb841864afc325743c7ca60c7c100d55d194c",
    "lf": "88d0b727b5d8ba3149293af8dfedb43c3be6092cf2aa2a3bb26aae34b6ed70e5",
    "crlf": "21b2117c23a54c155cd58f6beccfb841864afc325743c7ca60c7c100d55d194c"
   },
   "workflow/scripts/build_sector_costs.py": {
    "text": true,
-   "raw": "9131068ba9758c10ac95d57ecadf2397dd7cb17daf2206bcac158853245f752c",
+   "raw": "e5d299e4e0601e97428cd5695f3c2e449a25e5c22296ba1440b39139045b2cb0",
    "lf": "9131068ba9758c10ac95d57ecadf2397dd7cb17daf2206bcac158853245f752c",
    "crlf": "e5d299e4e0601e97428cd5695f3c2e449a25e5c22296ba1440b39139045b2cb0"
   },
   "workflow/scripts/build_servm_load_weights.py": {
    "text": true,
-   "raw": "bf5d334e6ac20faf3c28c77e5a09a10e3ec17c9b5a0e4e29e6ac2424f341314d",
+   "raw": "d603c900ee07c590bb6df7f835f55721581fe4f827fa8bd978c7b59c63ea8391",
    "lf": "bf5d334e6ac20faf3c28c77e5a09a10e3ec17c9b5a0e4e29e6ac2424f341314d",
    "crlf": "d603c900ee07c590bb6df7f835f55721581fe4f827fa8bd978c7b59c63ea8391"
   },
   "workflow/scripts/build_shapes.py": {
    "text": true,
-   "raw": "2cbec112934e5fcbcebdddd6b423121f9259acca56c20d4aeafda9f39b6b9a64",
+   "raw": "00a6bc5e89271c78c3193fe25778e18079f47590f1bcff444d8c43f1d01dd745",
    "lf": "2cbec112934e5fcbcebdddd6b423121f9259acca56c20d4aeafda9f39b6b9a64",
    "crlf": "00a6bc5e89271c78c3193fe25778e18079f47590f1bcff444d8c43f1d01dd745"
   },
   "workflow/scripts/build_stock_data.py": {
    "text": true,
-   "raw": "42b4867990659a0fd0176c9e21d30fdb3ab82be3b827349fc248768dd4310ed4",
+   "raw": "89bf1b6658300fd3b5b103f6cc8c2557e221b4dbdf7b4e9b70d994745720243b",
    "lf": "42b4867990659a0fd0176c9e21d30fdb3ab82be3b827349fc248768dd4310ed4",
    "crlf": "89bf1b6658300fd3b5b103f6cc8c2557e221b4dbdf7b4e9b70d994745720243b"
   },
   "workflow/scripts/build_temperature_profiles.py": {
    "text": true,
-   "raw": "74518fb9ecb73a0b8c99b2335f3cce98f5d4ffb97f08b38df51d6a3be82b2a42",
+   "raw": "474a1cb660c47415b264d440e0bff55f1d917579886c03ffcc2d0a38ef3cadcf",
    "lf": "74518fb9ecb73a0b8c99b2335f3cce98f5d4ffb97f08b38df51d6a3be82b2a42",
    "crlf": "474a1cb660c47415b264d440e0bff55f1d917579886c03ffcc2d0a38ef3cadcf"
   },
   "workflow/scripts/build_transportation.py": {
    "text": true,
-   "raw": "6fc44237ca67a579a4b24cca912fc1441fb1a717ea43b51f69868dfc85f6ad0c",
+   "raw": "d0e760f5fe401e6dfeae39de81993129d72350b416c3023905f836160e8495a0",
    "lf": "6fc44237ca67a579a4b24cca912fc1441fb1a717ea43b51f69868dfc85f6ad0c",
    "crlf": "d0e760f5fe401e6dfeae39de81993129d72350b416c3023905f836160e8495a0"
   },
   "workflow/scripts/cluster_network.py": {
    "text": true,
-   "raw": "61b26049dd1eb8be932c7a1f3d1e7d613b96153273e479056699e08707733bd3",
+   "raw": "a987e820aa74a54899fdb5a4f301e5af1ae2067a7ab244d02e9fd54883ca8e44",
    "lf": "61b26049dd1eb8be932c7a1f3d1e7d613b96153273e479056699e08707733bd3",
    "crlf": "a987e820aa74a54899fdb5a4f301e5af1ae2067a7ab244d02e9fd54883ca8e44"
   },
   "workflow/scripts/cluster_simpl.py": {
    "text": true,
-   "raw": "0305e74c4445e4e1334fd4f2935d15c3426161002cb081fa328f03f0df69f7aa",
+   "raw": "9331b94955806b128ddb419afc642c237317178e6ec205a6d3598cba1576fd68",
    "lf": "0305e74c4445e4e1334fd4f2935d15c3426161002cb081fa328f03f0df69f7aa",
    "crlf": "9331b94955806b128ddb419afc642c237317178e6ec205a6d3598cba1576fd68"
   },
   "workflow/scripts/constants.py": {
    "text": true,
-   "raw": "27f30e0e9037b70508460737c0ec5e347be4762531999e98b811c4adcd7900b2",
+   "raw": "fae16b01e0a4d9c3f808e20c28bc1ee4c7975943930c9e2b60d68c63ddfd15f1",
    "lf": "27f30e0e9037b70508460737c0ec5e347be4762531999e98b811c4adcd7900b2",
    "crlf": "fae16b01e0a4d9c3f808e20c28bc1ee4c7975943930c9e2b60d68c63ddfd15f1"
   },
   "workflow/scripts/constants_sector.py": {
    "text": true,
-   "raw": "efb6afda8c9658af4b677c712db30258cbd76ce3c8461dbb7ff39008aafe7bbb",
+   "raw": "6a4021463fc71cfac8266a96ab5d70adcbc23c0942d36faf141d04099e92b25e",
    "lf": "efb6afda8c9658af4b677c712db30258cbd76ce3c8461dbb7ff39008aafe7bbb",
    "crlf": "6a4021463fc71cfac8266a96ab5d70adcbc23c0942d36faf141d04099e92b25e"
   },
   "workflow/scripts/eia.py": {
    "text": true,
-   "raw": "809d6cc63bca2fdea558eeb06f0e107caebdae88ab8a1441d2061bd47d616d20",
+   "raw": "a881a5e6aaa8de0ca2ebfa375e26749233894ae45bc739a9c716588882a4f59e",
    "lf": "809d6cc63bca2fdea558eeb06f0e107caebdae88ab8a1441d2061bd47d616d20",
    "crlf": "a881a5e6aaa8de0ca2ebfa375e26749233894ae45bc739a9c716588882a4f59e"
   },
   "workflow/scripts/eulp.py": {
    "text": true,
-   "raw": "e441f069f9001b7c61d14b72a30672295fbeb121896ef0114d1836d7f0af7f10",
+   "raw": "dfe9d9fb52afab3d638fdbfcf2f2f654c979c39f4a43ee1f71e8bce882ea5e34",
    "lf": "e441f069f9001b7c61d14b72a30672295fbeb121896ef0114d1836d7f0af7f10",
    "crlf": "dfe9d9fb52afab3d638fdbfcf2f2f654c979c39f4a43ee1f71e8bce882ea5e34"
   },
   "workflow/scripts/external_regions.py": {
    "text": true,
-   "raw": "fc299afd2a75ee6d1164172d5d8856f4817a19d9eed9d53bff7cb6a03c3b4a67",
+   "raw": "fa0b6d2d22332f052c5b2756f5746605c2317ec4c87ebb11bccd2fdfef90b730",
    "lf": "fc299afd2a75ee6d1164172d5d8856f4817a19d9eed9d53bff7cb6a03c3b4a67",
    "crlf": "fa0b6d2d22332f052c5b2756f5746605c2317ec4c87ebb11bccd2fdfef90b730"
   },
   "workflow/scripts/godeeep_cf_registry.py": {
    "text": true,
-   "raw": "7bd92f3ca0058bd8472d1013430af3857a804d44f5ea467c0686fe645dbb6ad9",
+   "raw": "9b9b1537469a140308fe0167eee4d588a0fb753a9adc9a238277df6efc4de598",
    "lf": "7bd92f3ca0058bd8472d1013430af3857a804d44f5ea467c0686fe645dbb6ad9",
    "crlf": "9b9b1537469a140308fe0167eee4d588a0fb753a9adc9a238277df6efc4de598"
   },
   "workflow/scripts/nrel_exclusion/__init__.py": {
    "text": true,
-   "raw": "432bd9e389135843588d97ce3c83af70db2326700dcce3f41617828d3ad45cef",
+   "raw": "84696f064840aee56ff9becf5e4a240cc593ea2170753946a1a1a0f6c983ccc2",
    "lf": "432bd9e389135843588d97ce3c83af70db2326700dcce3f41617828d3ad45cef",
    "crlf": "84696f064840aee56ff9becf5e4a240cc593ea2170753946a1a1a0f6c983ccc2"
   },
   "workflow/scripts/nrel_exclusion/aggregate_godeeep_weighted.py": {
    "text": true,
-   "raw": "b9778ad9e59f48ae12496d8e6755484e665e411b8fd0d24ae79971b61347bb4e",
+   "raw": "25a582be3f5f4aea366d8064174200b4aa88ae9648e6e18b4b6b7a90bd27a3b6",
    "lf": "b9778ad9e59f48ae12496d8e6755484e665e411b8fd0d24ae79971b61347bb4e",
    "crlf": "25a582be3f5f4aea366d8064174200b4aa88ae9648e6e18b4b6b7a90bd27a3b6"
   },
   "workflow/scripts/nrel_exclusion/build_nrel_artifacts.sh": {
    "text": true,
-   "raw": "dac136ea106e7c4d574b7001ba8ce312c0c661397c3b2418742f561a779e39c2",
+   "raw": "edcdaeafdb4958d8069320f3df99a7ed67db8a08d5ebeb62127d6f5e19af07e3",
    "lf": "dac136ea106e7c4d574b7001ba8ce312c0c661397c3b2418742f561a779e39c2",
    "crlf": "edcdaeafdb4958d8069320f3df99a7ed67db8a08d5ebeb62127d6f5e19af07e3"
   },
   "workflow/scripts/nrel_exclusion/build_nrel_availability.py": {
    "text": true,
-   "raw": "aa2e5b18c9cb07a9513c9ef8b702fb7eb66c43dc452208e4a0f54edc5cac4443",
+   "raw": "7f9e9f9bbe5ed3d1292240f00895ccda1adb16ac52146be2e0f5cbf2b5fdaccb",
    "lf": "aa2e5b18c9cb07a9513c9ef8b702fb7eb66c43dc452208e4a0f54edc5cac4443",
    "crlf": "7f9e9f9bbe5ed3d1292240f00895ccda1adb16ac52146be2e0f5cbf2b5fdaccb"
   },
   "workflow/scripts/nrel_exclusion/build_nrel_bus_capacities.py": {
    "text": true,
-   "raw": "4bbf3e9549b94619e24307200c22ab9c56729b7480eaa8e2466d989d8d240b92",
+   "raw": "e9e43e71810a7bf4f87a369f77876b1cbabe6b400c5b7c3cc7b4eddeed9f17b5",
    "lf": "4bbf3e9549b94619e24307200c22ab9c56729b7480eaa8e2466d989d8d240b92",
    "crlf": "e9e43e71810a7bf4f87a369f77876b1cbabe6b400c5b7c3cc7b4eddeed9f17b5"
   },
   "workflow/scripts/nrel_exclusion/compare_legacy_vs_nrel.py": {
    "text": true,
-   "raw": "cc19aef2ce5d86082c0fd6cc82a9234b64df89269e9022dd85f8156dcd07f854",
+   "raw": "71ff9b8f96c024e6b4060353b565000b39a7c3382d29cbf8d1233fc37dd4312a",
    "lf": "cc19aef2ce5d86082c0fd6cc82a9234b64df89269e9022dd85f8156dcd07f854",
    "crlf": "71ff9b8f96c024e6b4060353b565000b39a7c3382d29cbf8d1233fc37dd4312a"
   },
   "workflow/scripts/nrel_exclusion/compress_godeeep.py": {
    "text": true,
-   "raw": "65578497edc0c9f8b8a79d4891013a5b454adac6624cce8546fd4f0aed0942ef",
+   "raw": "307734a844d2e520c4a158b446929bee578ea8c95949767b5c03ce7bf2506c5c",
    "lf": "65578497edc0c9f8b8a79d4891013a5b454adac6624cce8546fd4f0aed0942ef",
    "crlf": "307734a844d2e520c4a158b446929bee578ea8c95949767b5c03ce7bf2506c5c"
   },
   "workflow/scripts/nrel_exclusion/compress_godeeep_task.sh": {
    "text": true,
-   "raw": "11dc6a089932ca67dce2d51cc666adfa5afcf827da17fbf805302b8d098f66af",
+   "raw": "467a7c6952bfc2d6e2c2844882a76807eb5fddd7f91cb6d10eb2d5b0f2637e17",
    "lf": "11dc6a089932ca67dce2d51cc666adfa5afcf827da17fbf805302b8d098f66af",
    "crlf": "467a7c6952bfc2d6e2c2844882a76807eb5fddd7f91cb6d10eb2d5b0f2637e17"
   },
   "workflow/scripts/nrel_exclusion/make_compress_tasks.py": {
    "text": true,
-   "raw": "53412e580759aec109d353a1c4b14a26aa1dd425ee44db4b75ebee7038dfa48b",
+   "raw": "40d22a52833ec562799821853687488dddfec7f4df093d528b7ee71e2fbdd690",
    "lf": "53412e580759aec109d353a1c4b14a26aa1dd425ee44db4b75ebee7038dfa48b",
    "crlf": "40d22a52833ec562799821853687488dddfec7f4df093d528b7ee71e2fbdd690"
   },
   "workflow/scripts/nrel_exclusion/plot_caps_summary.py": {
    "text": true,
-   "raw": "a672f19ce956ca6ddb0ba631d4152c061d7a431a832137a17900d011effe0f6d",
+   "raw": "e4627f1400d42842c34b180cf373567df8b4dbbd43954d0a161b1a23e6dbcad1",
    "lf": "a672f19ce956ca6ddb0ba631d4152c061d7a431a832137a17900d011effe0f6d",
    "crlf": "e4627f1400d42842c34b180cf373567df8b4dbbd43954d0a161b1a23e6dbcad1"
   },
   "workflow/scripts/nrel_exclusion/stage_godeeep_member.py": {
    "text": true,
-   "raw": "9275972a5e8a6e8c5ac553a2fc7f4fd4a074311e288d74582e1ec98bbd673570",
+   "raw": "17e058ae9a68fe9fa58e0ebd06cfd989028f452f703dca2c6042cc2c1cb7eec3",
    "lf": "9275972a5e8a6e8c5ac553a2fc7f4fd4a074311e288d74582e1ec98bbd673570",
    "crlf": "17e058ae9a68fe9fa58e0ebd06cfd989028f452f703dca2c6042cc2c1cb7eec3"
   },
   "workflow/scripts/opts/_helpers.py": {
    "text": true,
-   "raw": "e7c9968c6c159ac5f095467a20f76733876f789c69e02bea843def390ca92c82",
+   "raw": "561f3b545c370bbee9dfb42624a4cc1ffca04557b1d6ac74c8cdacb5c48ab39d",
    "lf": "e7c9968c6c159ac5f095467a20f76733876f789c69e02bea843def390ca92c82",
    "crlf": "561f3b545c370bbee9dfb42624a4cc1ffca04557b1d6ac74c8cdacb5c48ab39d"
   },
   "workflow/scripts/opts/bidirectional_link.py": {
    "text": true,
-   "raw": "a9fe11601d01c75022e659b89a55d6bda08b2e66d6d883322b13dd688c1ca7ae",
+   "raw": "06193270e437c69e2675b9264aefa0697d4dbbd5a10caeb040a86cf7c828358b",
    "lf": "a9fe11601d01c75022e659b89a55d6bda08b2e66d6d883322b13dd688c1ca7ae",
    "crlf": "06193270e437c69e2675b9264aefa0697d4dbbd5a10caeb040a86cf7c828358b"
   },
   "workflow/scripts/opts/interchange.py": {
    "text": true,
-   "raw": "e322ce458d5f847fcdf4d1efb55c3f80b6c93ff9fef701da948d6b98ce24bf5f",
+   "raw": "6335e5a485df2046e3d7a860d4789625d8c758ee44de7626aec6951bba4e10f6",
    "lf": "e322ce458d5f847fcdf4d1efb55c3f80b6c93ff9fef701da948d6b98ce24bf5f",
    "crlf": "6335e5a485df2046e3d7a860d4789625d8c758ee44de7626aec6951bba4e10f6"
   },
   "workflow/scripts/opts/interfaces.py": {
    "text": true,
-   "raw": "edc0137021939bd4c4e2209d735196ca25665e50e11fa0a8319d0b9737d01ca2",
+   "raw": "5255b5c64f45fec38af7e69fd09ec844723c44acd2db605fcff9047483c6e5bd",
    "lf": "edc0137021939bd4c4e2209d735196ca25665e50e11fa0a8319d0b9737d01ca2",
    "crlf": "5255b5c64f45fec38af7e69fd09ec844723c44acd2db605fcff9047483c6e5bd"
   },
   "workflow/scripts/opts/land.py": {
    "text": true,
-   "raw": "8ffcccb2d4408fa36aa9e5ddf188d5a7a9e8165685233acc1e4f2a9ca2cc505f",
+   "raw": "4a4b5aa6503d94d5551b2e8e4cd750d1acc921343e69b9f1373c1ea0bcd93388",
    "lf": "8ffcccb2d4408fa36aa9e5ddf188d5a7a9e8165685233acc1e4f2a9ca2cc505f",
    "crlf": "4a4b5aa6503d94d5551b2e8e4cd750d1acc921343e69b9f1373c1ea0bcd93388"
   },
   "workflow/scripts/opts/policy.py": {
    "text": true,
-   "raw": "d964a60e9f36873cc8b8de04ba6dac3df6a4ffe32f767d637ff4e2f685a2bcb8",
+   "raw": "24038610ab59dfcb3cb611e7e568c7ca52d30a3b17610d55129e2cfd52074d54",
    "lf": "d964a60e9f36873cc8b8de04ba6dac3df6a4ffe32f767d637ff4e2f685a2bcb8",
    "crlf": "24038610ab59dfcb3cb611e7e568c7ca52d30a3b17610d55129e2cfd52074d54"
   },
   "workflow/scripts/opts/reserves.py": {
    "text": true,
-   "raw": "5f6d19f38394d188b556f947157883be77c452cd98247f55e9eacebae553b8af",
+   "raw": "e95a67b2eb57eee2fd45628ee4ad3dd3c6f6e95a29a667bc3426b5767ac8667c",
    "lf": "5f6d19f38394d188b556f947157883be77c452cd98247f55e9eacebae553b8af",
    "crlf": "e95a67b2eb57eee2fd45628ee4ad3dd3c6f6e95a29a667bc3426b5767ac8667c"
   },
   "workflow/scripts/opts/sector.py": {
    "text": true,
-   "raw": "85396676208fe761eff3393ab65d778845f62e8f7d6d9b8ba4ef918d3fb2fc73",
+   "raw": "815f115fc3692807166ea3420db619aa3aad0d129ad2507fc75152b8b670065e",
    "lf": "85396676208fe761eff3393ab65d778845f62e8f7d6d9b8ba4ef918d3fb2fc73",
    "crlf": "815f115fc3692807166ea3420db619aa3aad0d129ad2507fc75152b8b670065e"
   },
   "workflow/scripts/plot_docs_figures.py": {
    "text": true,
-   "raw": "93e0802e748393883691479969fe7c8a196f00bc6ec872fc0f83494e65d3d180",
+   "raw": "e3fc17d8430d3ee4ef77671938bf852c0b058f78a484fb0b3e1e99f358639084",
    "lf": "93e0802e748393883691479969fe7c8a196f00bc6ec872fc0f83494e65d3d180",
    "crlf": "e3fc17d8430d3ee4ef77671938bf852c0b058f78a484fb0b3e1e99f358639084"
   },
   "workflow/scripts/plot_natural_gas.py": {
    "text": true,
-   "raw": "082f058b5c135d55d6af4f08bfe90e5281da0e1335bd2b6575ba0e6f4f3fbe00",
+   "raw": "bd72f35f5603be39bfd61e2056353efa5f622b17b76e9de6897661162996b944",
    "lf": "082f058b5c135d55d6af4f08bfe90e5281da0e1335bd2b6575ba0e6f4f3fbe00",
    "crlf": "bd72f35f5603be39bfd61e2056353efa5f622b17b76e9de6897661162996b944"
   },
   "workflow/scripts/plot_network_maps.py": {
    "text": true,
-   "raw": "207c560d3cb9c87d65e88168ee5f076f62d7c9e1cd9d322ea51e8dac55e00c60",
+   "raw": "685529f08bfce0a3f330e6d6c82d3ddc9acf11c7140c27fdbc56d9b97659a817",
    "lf": "207c560d3cb9c87d65e88168ee5f076f62d7c9e1cd9d322ea51e8dac55e00c60",
    "crlf": "685529f08bfce0a3f330e6d6c82d3ddc9acf11c7140c27fdbc56d9b97659a817"
   },
   "workflow/scripts/plot_rec_trading_zones.py": {
    "text": true,
-   "raw": "6f5c3cc9d0920d46d6f1cedd28663eec71cfc9d6043eb26955e129d561c1251e",
+   "raw": "e07bf6c565b18732464288d6c2ebc206311cfc347a4de6780032cfce4521fd27",
    "lf": "6f5c3cc9d0920d46d6f1cedd28663eec71cfc9d6043eb26955e129d561c1251e",
    "crlf": "e07bf6c565b18732464288d6c2ebc206311cfc347a4de6780032cfce4521fd27"
   },
   "workflow/scripts/plot_sankey_carbon.py": {
    "text": true,
-   "raw": "03b9b0e67822022430ceee433a9863c0de4b0130f0e9c49ecbd2c3de8fdfc691",
+   "raw": "f88574f5d98b55690d7cde7bcc999ccf00140c6b7ce838a63beafd36991b7df7",
    "lf": "03b9b0e67822022430ceee433a9863c0de4b0130f0e9c49ecbd2c3de8fdfc691",
    "crlf": "f88574f5d98b55690d7cde7bcc999ccf00140c6b7ce838a63beafd36991b7df7"
   },
   "workflow/scripts/plot_sankey_energy.py": {
    "text": true,
-   "raw": "df0117063dd1519e371874f443de2bb97d2866d663931d6d744b0d0984030306",
+   "raw": "f21b96145686c10e0c8797ea4b76ad5ec8d33ab024a4dc03d7198ef7cb06dc4b",
    "lf": "df0117063dd1519e371874f443de2bb97d2866d663931d6d744b0d0984030306",
    "crlf": "f21b96145686c10e0c8797ea4b76ad5ec8d33ab024a4dc03d7198ef7cb06dc4b"
   },
   "workflow/scripts/plot_statistics.py": {
    "text": true,
-   "raw": "969da0bc6f86fabe13d136b1d4a0f970fd0fb73bb2adc82d58ac881e78833c69",
+   "raw": "dd30394e85baa776d24c6fc8c56d12ab6febe8cdfd3c55668d4f68e37dd14943",
    "lf": "969da0bc6f86fabe13d136b1d4a0f970fd0fb73bb2adc82d58ac881e78833c69",
    "crlf": "dd30394e85baa776d24c6fc8c56d12ab6febe8cdfd3c55668d4f68e37dd14943"
   },
   "workflow/scripts/plot_statistics_sector.py": {
    "text": true,
-   "raw": "daddb60936b05f5f59fea4803298a4f33625febde42aa85b523a52818c0ea68d",
+   "raw": "60a1482ee1b9e2c0e6998c098258a104363aa1ed48765ee06a90ee550927ca0b",
    "lf": "daddb60936b05f5f59fea4803298a4f33625febde42aa85b523a52818c0ea68d",
    "crlf": "60a1482ee1b9e2c0e6998c098258a104363aa1ed48765ee06a90ee550927ca0b"
   },
   "workflow/scripts/plot_tct_targets.py": {
    "text": true,
-   "raw": "f935234994c132d396291fce98e7d20cc94639eefa150a5e394d511ca389d559",
+   "raw": "04256c8cf7b31b8f9944bedf329cd995259841bc159aadfb0970a3befc122cfb",
    "lf": "f935234994c132d396291fce98e7d20cc94639eefa150a5e394d511ca389d559",
    "crlf": "04256c8cf7b31b8f9944bedf329cd995259841bc159aadfb0970a3befc122cfb"
   },
   "workflow/scripts/plot_validation_production.py": {
    "text": true,
-   "raw": "b86090b075d9ec8d543204e96c27c76715d82cfd55056f8d5880b8c4acc2b64b",
+   "raw": "6122263c29e8899ffbb01bc294d6f987582a57b86f3d0d2ef973b3021f4d4b6e",
    "lf": "b86090b075d9ec8d543204e96c27c76715d82cfd55056f8d5880b8c4acc2b64b",
    "crlf": "6122263c29e8899ffbb01bc294d6f987582a57b86f3d0d2ef973b3021f4d4b6e"
   },
   "workflow/scripts/plot_validation_sector.py": {
    "text": true,
-   "raw": "1d7b41ca623863644c5b21f59beb71e8957df8fad3ebdf467c9a5d1ceeac78f5",
+   "raw": "397b81b80414799b2eea9f6db1fe7b41d3999e8c5e6a4aaca2a1be0dd5c3bd76",
    "lf": "1d7b41ca623863644c5b21f59beb71e8957df8fad3ebdf467c9a5d1ceeac78f5",
    "crlf": "397b81b80414799b2eea9f6db1fe7b41d3999e8c5e6a4aaca2a1be0dd5c3bd76"
   },
@@ -616,307 +616,307 @@
   },
   "workflow/scripts/retrieve_caiso_data.py": {
    "text": true,
-   "raw": "519dcade066041c4ba614925af168d0d37b06fa15a878241c5eacb1ed847d611",
+   "raw": "9b96738cf2b3a961065612393b86488fdcb07ffe426dffdb043f1960586e81a6",
    "lf": "519dcade066041c4ba614925af168d0d37b06fa15a878241c5eacb1ed847d611",
    "crlf": "9b96738cf2b3a961065612393b86488fdcb07ffe426dffdb043f1960586e81a6"
   },
   "workflow/scripts/retrieve_cpuc_data.py": {
    "text": true,
-   "raw": "7e7de8223220ed33d109b7eae1d3c5830115742be0af0b0c6793418d584699eb",
+   "raw": "4bccf5b079d20c94cc5a6580246b8795718ccec4da95e73bc202e58c87e1df5c",
    "lf": "7e7de8223220ed33d109b7eae1d3c5830115742be0af0b0c6793418d584699eb",
    "crlf": "4bccf5b079d20c94cc5a6580246b8795718ccec4da95e73bc202e58c87e1df5c"
   },
   "workflow/scripts/retrieve_databundles.py": {
    "text": true,
-   "raw": "988cee5f6244d84bd1053c0d079cbb8c2bfa88d5faf9089cf66cdb7c78f994e2",
+   "raw": "3836a8576458a09185fdfc5fa1c1a4a7a84926ae88cb26e9a2486b08983a0c79",
    "lf": "988cee5f6244d84bd1053c0d079cbb8c2bfa88d5faf9089cf66cdb7c78f994e2",
    "crlf": "3836a8576458a09185fdfc5fa1c1a4a7a84926ae88cb26e9a2486b08983a0c79"
   },
   "workflow/scripts/retrieve_eer_data.py": {
    "text": true,
-   "raw": "37fb3307975770ee7c3e363493ee12846535bc417148ee6649e7fb251426d637",
+   "raw": "78135d25dd3e32ad6eb8b49657b87df16d7e5602721179cf4232912095354cbf",
    "lf": "37fb3307975770ee7c3e363493ee12846535bc417148ee6649e7fb251426d637",
    "crlf": "78135d25dd3e32ad6eb8b49657b87df16d7e5602721179cf4232912095354cbf"
   },
   "workflow/scripts/retrieve_egs.py": {
    "text": true,
-   "raw": "19ae4597cf811918018253b262f6945584a8599db25c8a9e488b62b39dccb040",
+   "raw": "7ab17c3467b1905487e43228f496a17357f58a9bbdee4fe3685a055daf7aeaae",
    "lf": "19ae4597cf811918018253b262f6945584a8599db25c8a9e488b62b39dccb040",
    "crlf": "7ab17c3467b1905487e43228f496a17357f58a9bbdee4fe3685a055daf7aeaae"
   },
   "workflow/scripts/retrieve_eulp.py": {
    "text": true,
-   "raw": "1339b759e637b0c1700c7e4200a256a8a3453a061c1f8a15f249f3afc58a71dc",
+   "raw": "f576a4d33aff30f8327f9899e814a0f0c1a99847f9f168db1e799fe565c9027e",
    "lf": "1339b759e637b0c1700c7e4200a256a8a3453a061c1f8a15f249f3afc58a71dc",
    "crlf": "f576a4d33aff30f8327f9899e814a0f0c1a99847f9f168db1e799fe565c9027e"
   },
   "workflow/scripts/retrieve_godeeep_cf.py": {
    "text": true,
-   "raw": "389954f99e0d5468506439a39699343edffc4d3de28cbca38e3c95bf39ed82f1",
+   "raw": "deedf8f2587fa25763969efad542f49248fac2217e0bda01dc623c981f24c7c1",
    "lf": "389954f99e0d5468506439a39699343edffc4d3de28cbca38e3c95bf39ed82f1",
    "crlf": "deedf8f2587fa25763969efad542f49248fac2217e0bda01dc623c981f24c7c1"
   },
   "workflow/scripts/retrieve_gridemissions_data.py": {
    "text": true,
-   "raw": "3e785c532d91046188e91c9b5e4b3dccee83f185daf52c876d55a33ba4a93656",
+   "raw": "c402deb8d1f76ee729b1ad01c18375c174dc68bf8ebd3b9dbaefab2d602dc55a",
    "lf": "3e785c532d91046188e91c9b5e4b3dccee83f185daf52c876d55a33ba4a93656",
    "crlf": "c402deb8d1f76ee729b1ad01c18375c174dc68bf8ebd3b9dbaefab2d602dc55a"
   },
   "workflow/scripts/retrieve_nrel_exclusion.py": {
    "text": true,
-   "raw": "52429028363d056061d836ef2464eee6be3dd77a81a95eae3d8a63b79f0c8402",
+   "raw": "ea7bab119fbcf2318366c31344b887b7993627d1b87744f57584fb46a828eeef",
    "lf": "52429028363d056061d836ef2464eee6be3dd77a81a95eae3d8a63b79f0c8402",
    "crlf": "ea7bab119fbcf2318366c31344b887b7993627d1b87744f57584fb46a828eeef"
   },
   "workflow/scripts/retrieve_pudl.py": {
    "text": true,
-   "raw": "35f630bd24fc9813a6985521169ce37bacf5107d52e3c5fb41a457f3393c94b5",
+   "raw": "7fc92121bf1cd6214457dd97714210d0c09f8c370aadab0a19a89266334aaa20",
    "lf": "35f630bd24fc9813a6985521169ce37bacf5107d52e3c5fb41a457f3393c94b5",
    "crlf": "7fc92121bf1cd6214457dd97714210d0c09f8c370aadab0a19a89266334aaa20"
   },
   "workflow/scripts/retrieve_seismic_risk_mask.py": {
    "text": true,
-   "raw": "1365e333700d84b2862012c7da03190dc6c3594ccb90b101eb115ad98dfbc909",
+   "raw": "9ccec7e86dacd28674686c0b1f05c8bcbe6653954b5b2334415ea933d49ef6e8",
    "lf": "1365e333700d84b2862012c7da03190dc6c3594ccb90b101eb115ad98dfbc909",
    "crlf": "9ccec7e86dacd28674686c0b1f05c8bcbe6653954b5b2334415ea933d49ef6e8"
   },
   "workflow/scripts/scenario_comparison.py": {
    "text": true,
-   "raw": "a1a6ab2196296089a8c8404c1d54d6e702c8f467bda9463819c7f298aa1f92f0",
+   "raw": "30570e5713d70cc6d3177bba78daa0d55f384787b0a0ba00f35d7cefd656db92",
    "lf": "a1a6ab2196296089a8c8404c1d54d6e702c8f467bda9463819c7f298aa1f92f0",
    "crlf": "30570e5713d70cc6d3177bba78daa0d55f384787b0a0ba00f35d7cefd656db92"
   },
   "workflow/scripts/solve_network.py": {
    "text": true,
-   "raw": "5e1ca0ee4a45bcdfae1fe87627424514a97ff2a153994099751ba6e1d2a3b49f",
+   "raw": "8f7eea1a1d7d93409c37eb5ccae69eda688d78ed50e1a6e3da933b80049c2b27",
    "lf": "5e1ca0ee4a45bcdfae1fe87627424514a97ff2a153994099751ba6e1d2a3b49f",
    "crlf": "8f7eea1a1d7d93409c37eb5ccae69eda688d78ed50e1a6e3da933b80049c2b27"
   },
   "workflow/scripts/summary.py": {
    "text": true,
-   "raw": "5260428d73bdab32027460438bb47e9e5019714a95626bbc41afe2d06ac24120",
+   "raw": "cbf754e4691b9b16883e61f72c538542ed9c69588210842a114e13a2ce840e64",
    "lf": "5260428d73bdab32027460438bb47e9e5019714a95626bbc41afe2d06ac24120",
    "crlf": "cbf754e4691b9b16883e61f72c538542ed9c69588210842a114e13a2ce840e64"
   },
   "workflow/scripts/summary_natural_gas.py": {
    "text": true,
-   "raw": "dd609f173b8015f867b33ac862f2afd7eb42a57585843509f6614d1e84228938",
+   "raw": "bf9650e80de55e60a66de5b08519920d2b47a377ec34c182899122c5781f4d2d",
    "lf": "dd609f173b8015f867b33ac862f2afd7eb42a57585843509f6614d1e84228938",
    "crlf": "bf9650e80de55e60a66de5b08519920d2b47a377ec34c182899122c5781f4d2d"
   },
   "workflow/scripts/summary_sector.py": {
    "text": true,
-   "raw": "641bba5623254f9665d6baa4620fe45548adc4696f0a5e97f3b5ab0573905df6",
+   "raw": "d3ea94a1ddfc1f9d0ac963c32b0556b8bc8eaa8f20eaca02f48cb360b2006701",
    "lf": "641bba5623254f9665d6baa4620fe45548adc4696f0a5e97f3b5ab0573905df6",
    "crlf": "d3ea94a1ddfc1f9d0ac963c32b0556b8bc8eaa8f20eaca02f48cb360b2006701"
   },
   "workflow/scripts/test/conftest.py": {
    "text": true,
-   "raw": "2dca24f4ca021b73245bf52da22cae0be4f899abeeb5e1996ec3b8b57f900e78",
+   "raw": "454d3dd1b10f381e15bed5e50817fa0124e717e15e8fdc4117b2ca193a3067db",
    "lf": "2dca24f4ca021b73245bf52da22cae0be4f899abeeb5e1996ec3b8b57f900e78",
    "crlf": "454d3dd1b10f381e15bed5e50817fa0124e717e15e8fdc4117b2ca193a3067db"
   },
   "workflow/scripts/test/fixtures/build_test_network.py": {
    "text": true,
-   "raw": "2a2ee3a4ecd7f6d937a8d54eb676cbfb37b7d0ca5ae3cb9cfb3a7c17a20af095",
+   "raw": "726c97107b5ce5043fa4d5dd98f6c26f4d0c5b0048a8b7621251dda1d49f3345",
    "lf": "2a2ee3a4ecd7f6d937a8d54eb676cbfb37b7d0ca5ae3cb9cfb3a7c17a20af095",
    "crlf": "726c97107b5ce5043fa4d5dd98f6c26f4d0c5b0048a8b7621251dda1d49f3345"
   },
   "workflow/scripts/test/test_aggregate_godeeep_weighted.py": {
    "text": true,
-   "raw": "03cdcea729911c7a524563b9684fca16bce6380c6ab8f1b62a8bbe7d77f118c8",
+   "raw": "d82e145dc89036297c2e1d77e3d324b92941f9eb98e797c51860f411970e81a4",
    "lf": "03cdcea729911c7a524563b9684fca16bce6380c6ab8f1b62a8bbe7d77f118c8",
    "crlf": "d82e145dc89036297c2e1d77e3d324b92941f9eb98e797c51860f411970e81a4"
   },
   "workflow/scripts/test/test_assign_missing_regions.py": {
    "text": true,
-   "raw": "1b9e8f68fc5b57a4fb7952f0f0dc2e29a4f92239fe191a372eac44b3fbd05e5f",
+   "raw": "93cf456d4c2a3bfdf985bd21a422dd03d5d94f36c990f8749e0617528513adac",
    "lf": "1b9e8f68fc5b57a4fb7952f0f0dc2e29a4f92239fe191a372eac44b3fbd05e5f",
    "crlf": "93cf456d4c2a3bfdf985bd21a422dd03d5d94f36c990f8749e0617528513adac"
   },
   "workflow/scripts/test/test_benchmark_cpuc_baseline.py": {
    "text": true,
-   "raw": "92de53bca964ddc4fecc2a4cbfa464e7d8d50e0fff26362b3e8db421abb791bd",
+   "raw": "d757f90fff75b43777b520617e83401f5446d940c73e72e23dbfbd66d0918cd6",
    "lf": "92de53bca964ddc4fecc2a4cbfa464e7d8d50e0fff26362b3e8db421abb791bd",
    "crlf": "d757f90fff75b43777b520617e83401f5446d940c73e72e23dbfbd66d0918cd6"
   },
   "workflow/scripts/test/test_bidirectional_link.py": {
    "text": true,
-   "raw": "9f4bc8b80f69ab8dbf3a52769e6d3e89f23bc260967d999bdf77171c99b748d8",
+   "raw": "5d8778199c5988e4a6402cbe49c3c31fb012a733a4d1580263d5c04d4218da3d",
    "lf": "9f4bc8b80f69ab8dbf3a52769e6d3e89f23bc260967d999bdf77171c99b748d8",
    "crlf": "5d8778199c5988e4a6402cbe49c3c31fb012a733a4d1580263d5c04d4218da3d"
   },
   "workflow/scripts/test/test_build_demand_conservation.py": {
    "text": true,
-   "raw": "10ea069a35e2901f034d2ed95550587370e607638c8a610ca154b1f9425d3835",
+   "raw": "ff0d78cc135b2ae6373ccb3ddcf03aba942a3735bc91adf14aa4f738a1b723d1",
    "lf": "10ea069a35e2901f034d2ed95550587370e607638c8a610ca154b1f9425d3835",
    "crlf": "ff0d78cc135b2ae6373ccb3ddcf03aba942a3735bc91adf14aa4f738a1b723d1"
   },
   "workflow/scripts/test/test_build_demand_eer.py": {
    "text": true,
-   "raw": "58ca9ea4bd87bb87752a30895e159402174b4fc7088d432c286f69ca89fc36ba",
+   "raw": "8e38d7d7943dc51fa0e781a6afafdd20dbd58263d1b82c0a2aa497497b4922bb",
    "lf": "58ca9ea4bd87bb87752a30895e159402174b4fc7088d432c286f69ca89fc36ba",
    "crlf": "8e38d7d7943dc51fa0e781a6afafdd20dbd58263d1b82c0a2aa497497b4922bb"
   },
   "workflow/scripts/test/test_build_demand_servm.py": {
    "text": true,
-   "raw": "691350c7409256450ef4def45d3753d955ce0e39bb3edd994fd345915353b494",
+   "raw": "8a3c490e866e5779ea3476e7faddf9e2c7b6e5d6d30dfe2d779be2ffd2333a92",
    "lf": "691350c7409256450ef4def45d3753d955ce0e39bb3edd994fd345915353b494",
    "crlf": "8a3c490e866e5779ea3476e7faddf9e2c7b6e5d6d30dfe2d779be2ffd2333a92"
   },
   "workflow/scripts/test/test_build_demand_servm_write.py": {
    "text": true,
-   "raw": "cf60dd00090ea00dd68326fad8e71687755ec1f00e53755a8cc5ad895bee3865",
+   "raw": "f68aee8fe011be9d0ca61b0e1654b0c12727c0f416ab8ffd841722f877a48323",
    "lf": "cf60dd00090ea00dd68326fad8e71687755ec1f00e53755a8cc5ad895bee3865",
    "crlf": "f68aee8fe011be9d0ca61b0e1654b0c12727c0f416ab8ffd841722f877a48323"
   },
   "workflow/scripts/test/test_build_fuel_prices.py": {
    "text": true,
-   "raw": "a4ad21a88ff83789de14ffafa2363848021fd575c3a909bb78767031ef984658",
+   "raw": "0c46869a12822a2d5cc3ef23d8711f3e8b31dc81be4de0ccb5d9b6506107feef",
    "lf": "a4ad21a88ff83789de14ffafa2363848021fd575c3a909bb78767031ef984658",
    "crlf": "0c46869a12822a2d5cc3ef23d8711f3e8b31dc81be4de0ccb5d9b6506107feef"
   },
   "workflow/scripts/test/test_build_servm_load_weights.py": {
    "text": true,
-   "raw": "211e8af1f9e4027e0079858541afe2827c362385e0083dadff53394deee8035b",
+   "raw": "ece4d53fbfd50f94609e29c3aad02256fc20934fb3fe0b111b7b3255ac60a677",
    "lf": "211e8af1f9e4027e0079858541afe2827c362385e0083dadff53394deee8035b",
    "crlf": "ece4d53fbfd50f94609e29c3aad02256fc20934fb3fe0b111b7b3255ac60a677"
   },
   "workflow/scripts/test/test_bus_population.py": {
    "text": true,
-   "raw": "411276380da7d02beb76bf039cc7d917aba98a30a972b02f44a5c8fc16fd89ca",
+   "raw": "57d04bdfb4248e545d0d3470e2318ff16b4819c93ba4b07a10028e0708d39082",
    "lf": "411276380da7d02beb76bf039cc7d917aba98a30a972b02f44a5c8fc16fd89ca",
    "crlf": "57d04bdfb4248e545d0d3470e2318ff16b4819c93ba4b07a10028e0708d39082"
   },
   "workflow/scripts/test/test_cluster_simpl.py": {
    "text": true,
-   "raw": "5ff4d000d1b9fcf50c5b290b65500c1e8e639fbae77115522208ec946b4bff34",
+   "raw": "0394591eb4b6d293d500172616d78b7f98d4b7e5f7291c9de7641212d8830025",
    "lf": "5ff4d000d1b9fcf50c5b290b65500c1e8e639fbae77115522208ec946b4bff34",
    "crlf": "0394591eb4b6d293d500172616d78b7f98d4b7e5f7291c9de7641212d8830025"
   },
   "workflow/scripts/test/test_cluster_wildcard.py": {
    "text": true,
-   "raw": "a7ff05727a9d57c47117152238294a4c9c0b00bfd65c4b6d9297a99191f0cfe3",
+   "raw": "8d26b210b8006dbff71cb24203d25c139d6bcba8a8a528492d83204aa82ff101",
    "lf": "a7ff05727a9d57c47117152238294a4c9c0b00bfd65c4b6d9297a99191f0cfe3",
    "crlf": "8d26b210b8006dbff71cb24203d25c139d6bcba8a8a528492d83204aa82ff101"
   },
   "workflow/scripts/test/test_compress_godeeep.py": {
    "text": true,
-   "raw": "6275e65e89993bfc278bdc7bd79a5ca14166490095bcbeb304525381b581a859",
+   "raw": "008667a80270a1afa8fca972c13ae9bd0b2eb414e5870569c959887cd5ab2ac6",
    "lf": "6275e65e89993bfc278bdc7bd79a5ca14166490095bcbeb304525381b581a859",
    "crlf": "008667a80270a1afa8fca972c13ae9bd0b2eb414e5870569c959887cd5ab2ac6"
   },
   "workflow/scripts/test/test_constants.py": {
    "text": true,
-   "raw": "803ac0b32cc3895dc541314d7f4b78b23b4bc23c85eb2857c35b37d24f5df75c",
+   "raw": "ac4148104b3c1d656aa951672d241f43ed2c32cfb6c805de75cfbdc0bdc50893",
    "lf": "803ac0b32cc3895dc541314d7f4b78b23b4bc23c85eb2857c35b37d24f5df75c",
    "crlf": "ac4148104b3c1d656aa951672d241f43ed2c32cfb6c805de75cfbdc0bdc50893"
   },
   "workflow/scripts/test/test_eia_cache.py": {
    "text": true,
-   "raw": "bed4c9881d09afdc29188dbac2f4c27660b72f4f023de9908c898e8e432461a9",
+   "raw": "3e537187321b4d9b5add986951241ddb5a218dca35526d9f8de8d15ce0fb1d31",
    "lf": "bed4c9881d09afdc29188dbac2f4c27660b72f4f023de9908c898e8e432461a9",
    "crlf": "3e537187321b4d9b5add986951241ddb5a218dca35526d9f8de8d15ce0fb1d31"
   },
   "workflow/scripts/test/test_godeeep_cf_registry.py": {
    "text": true,
-   "raw": "8fc962eddffa1c3b19d0d0d98beecb6ac5998cba86556e85ed33e64ebc9852c9",
+   "raw": "46ee6ee014976c8562aa5e569d11ba9257984c7a9ef840004ed4d12400cd31c1",
    "lf": "8fc962eddffa1c3b19d0d0d98beecb6ac5998cba86556e85ed33e64ebc9852c9",
    "crlf": "46ee6ee014976c8562aa5e569d11ba9257984c7a9ef840004ed4d12400cd31c1"
   },
   "workflow/scripts/test/test_helpers_opts.py": {
    "text": true,
-   "raw": "1f10e0d850afcc7a6e1f6e17a7e6c101f26e2c7e3e5511145582e2a6e97e1acf",
+   "raw": "573ac1c9c96b50d4a40e3ec4c2cb37c7b513af20753eeb279fd1f0705ee40c06",
    "lf": "1f10e0d850afcc7a6e1f6e17a7e6c101f26e2c7e3e5511145582e2a6e97e1acf",
    "crlf": "573ac1c9c96b50d4a40e3ec4c2cb37c7b513af20753eeb279fd1f0705ee40c06"
   },
   "workflow/scripts/test/test_helpers_schema.py": {
    "text": true,
-   "raw": "2752133e23a36ba50248cabbf4983e819fe42e18fc2f9e38481dcc5cf2630ad3",
+   "raw": "67ee345e6cef5214f8d2b27783d218ca9b0e558ab0f380e6d025f447e2e9a80c",
    "lf": "2752133e23a36ba50248cabbf4983e819fe42e18fc2f9e38481dcc5cf2630ad3",
    "crlf": "67ee345e6cef5214f8d2b27783d218ca9b0e558ab0f380e6d025f447e2e9a80c"
   },
   "workflow/scripts/test/test_interfaces.py": {
    "text": true,
-   "raw": "a99a5890a6f62eb304c4cc8739a13ce4cf987bfc1e408e753146645eeeaac3c9",
+   "raw": "a5dfbdc31a7856a6da5d1cdf8cd64ef278581d42ed5bccc59f115cee0a6b27e0",
    "lf": "a99a5890a6f62eb304c4cc8739a13ce4cf987bfc1e408e753146645eeeaac3c9",
    "crlf": "a5dfbdc31a7856a6da5d1cdf8cd64ef278581d42ed5bccc59f115cee0a6b27e0"
   },
   "workflow/scripts/test/test_land.py": {
    "text": true,
-   "raw": "49a645c8bcaf8c35b46929f8a7d1e058b8a499f92829c9a0cd45ec8b4a7c513a",
+   "raw": "ee55454a344f22881f0a4489c0a4842f9dc030f50caad8efe87c2acde61365a7",
    "lf": "49a645c8bcaf8c35b46929f8a7d1e058b8a499f92829c9a0cd45ec8b4a7c513a",
    "crlf": "ee55454a344f22881f0a4489c0a4842f9dc030f50caad8efe87c2acde61365a7"
   },
   "workflow/scripts/test/test_load_powerplants_retirement.py": {
    "text": true,
-   "raw": "a1c4b359890545bd208c32c27e74ea50e55c1365098bf46c0204ae31dd255bef",
+   "raw": "b25587bc9cca3d4124c9a3fe56171c274e682ed65abf5c9d10c05e54eb01a81f",
    "lf": "a1c4b359890545bd208c32c27e74ea50e55c1365098bf46c0204ae31dd255bef",
    "crlf": "b25587bc9cca3d4124c9a3fe56171c274e682ed65abf5c9d10c05e54eb01a81f"
   },
   "workflow/scripts/test/test_match_plant_to_bus.py": {
    "text": true,
-   "raw": "2ca5ee0bc406ef39aeb4261272fab88524ae39b0d8dedee1c06d9753d13a1d7a",
+   "raw": "1cbc9736857c871949d0a9008a607640c3627073ececd8baa8a86cdfc53a5ea7",
    "lf": "2ca5ee0bc406ef39aeb4261272fab88524ae39b0d8dedee1c06d9753d13a1d7a",
    "crlf": "1cbc9736857c871949d0a9008a607640c3627073ececd8baa8a86cdfc53a5ea7"
   },
   "workflow/scripts/test/test_policy.py": {
    "text": true,
-   "raw": "58e08d35150148af4da44350269728509b62f484b63a557cee2ffd0c0088471a",
+   "raw": "72f09c705fda4710680d195e5978814791025dd4ccb0b3ed56b8ae0948b37d2b",
    "lf": "58e08d35150148af4da44350269728509b62f484b63a557cee2ffd0c0088471a",
    "crlf": "72f09c705fda4710680d195e5978814791025dd4ccb0b3ed56b8ae0948b37d2b"
   },
   "workflow/scripts/test/test_remap_caps.py": {
    "text": true,
-   "raw": "5f793df300d292eeb2f13b56bdb51f1f61d0a8a6f088d32459d4da33a4464ff7",
+   "raw": "de314ff4df59056905de08e69f9402044593e1eca0c81272b7974606408b1073",
    "lf": "5f793df300d292eeb2f13b56bdb51f1f61d0a8a6f088d32459d4da33a4464ff7",
    "crlf": "de314ff4df59056905de08e69f9402044593e1eca0c81272b7974606408b1073"
   },
   "workflow/scripts/test/test_remote_contracted.py": {
    "text": true,
-   "raw": "b7b42174a89fa1755c016f83862dcba98ffee5eef700dc81fd8787d34274d3d2",
+   "raw": "4d25fce59d49c934bebd8e521a0371fa6a8c00905ae41cb6283fd6a53e20acda",
    "lf": "b7b42174a89fa1755c016f83862dcba98ffee5eef700dc81fd8787d34274d3d2",
    "crlf": "4d25fce59d49c934bebd8e521a0371fa6a8c00905ae41cb6283fd6a53e20acda"
   },
   "workflow/scripts/test/test_reserves.py": {
    "text": true,
-   "raw": "6d368fe9f64a42b57922c9897844b4d1317a95a1c0e430a58abb392163ab75fb",
+   "raw": "47b5c84e3ff685a789a904bbc8155e044ef817c219744e525792e2ef8ec965ac",
    "lf": "6d368fe9f64a42b57922c9897844b4d1317a95a1c0e430a58abb392163ab75fb",
    "crlf": "47b5c84e3ff685a789a904bbc8155e044ef817c219744e525792e2ef8ec965ac"
   },
   "workflow/scripts/test/test_seam_plants.py": {
    "text": true,
-   "raw": "18ba613dc05f5afdc40fec034562338a8c40644263a4060a53144ced46e305c4",
+   "raw": "55bd899b820cb4a015ee7c3a3b4694adbdba7947ea760f0d7bc126a1864dc941",
    "lf": "18ba613dc05f5afdc40fec034562338a8c40644263a4060a53144ced46e305c4",
    "crlf": "55bd899b820cb4a015ee7c3a3b4694adbdba7947ea760f0d7bc126a1864dc941"
   },
   "workflow/scripts/test/test_sector_heat_pumps.py": {
    "text": true,
-   "raw": "80f82470fc7d1f4dd1c975abf0f6488497f9a9a8f790e5dd0d1096c06b6900c7",
+   "raw": "698ac8ef457e7d788cd24d4afbe7e46c4289abbc5c8113cbba38b39d4edd2351",
    "lf": "80f82470fc7d1f4dd1c975abf0f6488497f9a9a8f790e5dd0d1096c06b6900c7",
    "crlf": "698ac8ef457e7d788cd24d4afbe7e46c4289abbc5c8113cbba38b39d4edd2351"
   },
   "workflow/scripts/test/test_solve_network.py": {
    "text": true,
-   "raw": "337932312191ad1b1b3e5b376c6e0bb4318524ae64fbaf78e8aaff72da46e51d",
+   "raw": "e19fc267ac44ac29c730f08cdd4ebd131fbadd9a7acfc1b8dcf4eb7cdbc91e00",
    "lf": "337932312191ad1b1b3e5b376c6e0bb4318524ae64fbaf78e8aaff72da46e51d",
    "crlf": "e19fc267ac44ac29c730f08cdd4ebd131fbadd9a7acfc1b8dcf4eb7cdbc91e00"
   },
   "workflow/scripts/test/test_uc_bounds.py": {
    "text": true,
-   "raw": "cb75f770748727ad382075738ba4cfd2e1f7cfa27f439776e4ffe9b4d6264e83",
+   "raw": "055b795fc40dd4f9f29e72548fb07d6e1f74f194518d460b1cce203ea11344f7",
    "lf": "cb75f770748727ad382075738ba4cfd2e1f7cfa27f439776e4ffe9b4d6264e83",
    "crlf": "055b795fc40dd4f9f29e72548fb07d6e1f74f194518d460b1cce203ea11344f7"
   },
   "workflow/scripts/test/test_zenodo_downloader.py": {
    "text": true,
-   "raw": "de9d14b620c42586ba31e7c276f5d059c4de76ec3e7d2bef2d8400f06ba2ca53",
+   "raw": "362333af446f324329dbc3419a91b6b0025a3630305aa1c1e98acb9864f4da5b",
    "lf": "de9d14b620c42586ba31e7c276f5d059c4de76ec3e7d2bef2d8400f06ba2ca53",
    "crlf": "362333af446f324329dbc3419a91b6b0025a3630305aa1c1e98acb9864f4da5b"
   },
   "workflow/scripts/zenodo_downloader.py": {
    "text": true,
-   "raw": "30036e5886c073b8902415d2620bc0dd477be81bddd2b02caabc90c8d007b596",
+   "raw": "d64be352fc523ee9800930fff8da0df6d65ee8f13e8aae22bbb411b1053ae8fb",
    "lf": "30036e5886c073b8902415d2620bc0dd477be81bddd2b02caabc90c8d007b596",
    "crlf": "d64be352fc523ee9800930fff8da0df6d65ee8f13e8aae22bbb411b1053ae8fb"
   }
@@ -1266,7 +1266,7 @@
   },
   "workflow/byop/inputs/grid/ERCOT_WIND_SOLAR_POTENTIAL.csv": {
    "text": true,
-   "raw": "3bcf4395674c627a6fca4dc3cbb34c3d49fdc2742fd18de2e55f21944646d5b8",
+   "raw": "aba7a41e4fbd0a51e22f41231c1d054bf3e260415bd282dd470c83e87f763b56",
    "lf": "3bcf4395674c627a6fca4dc3cbb34c3d49fdc2742fd18de2e55f21944646d5b8",
    "crlf": "aba7a41e4fbd0a51e22f41231c1d054bf3e260415bd282dd470c83e87f763b56"
   },
@@ -1398,7 +1398,7 @@
   },
   "workflow/byop/inputs/post_v16/STAGING_SHA_QA.json": {
    "text": true,
-   "raw": "0e176eee872d8dad3d182fd2ceffd94a44397c6d140fbdf2321f81e1da4ee6c6",
+   "raw": "9d7ba7558fc4c54f53f93ca89eb21dfb0ca5c0d856c9d1f6baf226fa41159175",
    "lf": "0e176eee872d8dad3d182fd2ceffd94a44397c6d140fbdf2321f81e1da4ee6c6",
    "crlf": "9d7ba7558fc4c54f53f93ca89eb21dfb0ca5c0d856c9d1f6baf226fa41159175"
   },
@@ -1518,13 +1518,13 @@
   },
   "workflow/byop/inputs/tech/MAINLINE_V13_GAS_PRICES_2026_2031.csv": {
    "text": true,
-   "raw": "2c9ee0b5bd1f7ba0dc1b75ad3348fffdc6c23da26855e6b9914ae1a74451418c",
+   "raw": "d57aafea4808de4789da0c4ff27c4bf3c564ced64927efe050f6d55e839efa9e",
    "lf": "2c9ee0b5bd1f7ba0dc1b75ad3348fffdc6c23da26855e6b9914ae1a74451418c",
    "crlf": "d57aafea4808de4789da0c4ff27c4bf3c564ced64927efe050f6d55e839efa9e"
   },
   "workflow/byop/inputs/tech/MAINLINE_V13_TECH_DEFAULTS.csv": {
    "text": true,
-   "raw": "5a884b23843bd8f533571d8fa8b5acab4bc63995f8b83e3b9151a58a2a1940b9",
+   "raw": "b2fb58e38fcb61f4ab9d3868d195a9de5c9d3c0c2171bdaff09c3465cf691752",
    "lf": "5a884b23843bd8f533571d8fa8b5acab4bc63995f8b83e3b9151a58a2a1940b9",
    "crlf": "b2fb58e38fcb61f4ab9d3868d195a9de5c9d3c0c2171bdaff09c3465cf691752"
   },
@@ -1536,19 +1536,19 @@
   },
   "workflow/byop/inputs/tech_calibrated_v2/BYOP_COUNTY_OZONE_RULES_2026.csv": {
    "text": true,
-   "raw": "b4f84e94db5c9db932f3b20a144da65a785499b1cf9998ce097758c7e96eb26b",
+   "raw": "8bfc4de5dd864e0107b8e1482c3d4193e31c43dad18aab81343910fd667def24",
    "lf": "b4f84e94db5c9db932f3b20a144da65a785499b1cf9998ce097758c7e96eb26b",
    "crlf": "8bfc4de5dd864e0107b8e1482c3d4193e31c43dad18aab81343910fd667def24"
   },
   "workflow/byop/inputs/tech_calibrated_v2/BYOP_SUPPLY_POOL_PROXY_V2.csv": {
    "text": true,
-   "raw": "3e9154f079e6c78a20fe502d569d6d8b738c9da8f5553944a7adca797b4ee59f",
+   "raw": "181af58f60dec3a87e2a812ab235debd79b5ca58db23fdbb2f949a5e3c0ce988",
    "lf": "3e9154f079e6c78a20fe502d569d6d8b738c9da8f5553944a7adca797b4ee59f",
    "crlf": "181af58f60dec3a87e2a812ab235debd79b5ca58db23fdbb2f949a5e3c0ce988"
   },
   "workflow/byop/inputs/tech_calibrated_v2/BYOP_TECH_PARAMETERS_V2.csv": {
    "text": true,
-   "raw": "b2603984a08af4f05c903df7cc6071b0e8a6d37de3be025ccfdd1e8c9664122b",
+   "raw": "3956cdd25f25087dd74f0f6c959cf21bafb6eec1fd61ad295c0b91bbb9dcf26c",
    "lf": "b2603984a08af4f05c903df7cc6071b0e8a6d37de3be025ccfdd1e8c9664122b",
    "crlf": "3956cdd25f25087dd74f0f6c959cf21bafb6eec1fd61ad295c0b91bbb9dcf26c"
   },
@@ -1583,7 +1583,7 @@
    "crlf": "df4d088b47d81bf8dc9763c9bfb4f0e98e03288eea7bd5a984b8d25dbc479881"
   }
  },
- "head_when_built": "81bd57438c7b002d6cfe455ec2b3f973f33ed12c",
- "built_utc": "2026-10-23T01:24:29+00:00",
+ "head_when_built": "8a32d74c39f7b939cce734d13bd99c53ce26096e",
+ "built_utc": "2026-10-23T04:41:17+00:00",
  "note": "verification: post_v16_a2_gate.manifest_mismatches; A1 manifest / gate untouched"
 }
