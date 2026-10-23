@@ -22,6 +22,24 @@ import post_v16_gate as G  # noqa: E402
 
 CFG = WF / 'config/config.byop_post_v16_a1.yaml'
 sha = lambda p: hashlib.sha256(Path(p).read_bytes()).hexdigest()
+
+
+def eol_layers(p):
+    """NEXT-02 A2-FIX-06: raw / LF / CRLF SHA-256 of a text file. The pinned value must equal one of them (same content, any checkout
+    EOL); a lone CR or mixed endings make the LF and CRLF layers differ from any clean pin, so a content change is never accepted"""
+    b = Path(p).read_bytes()
+    lf = b.replace(b'
+', b'
+')
+    return dict(raw=hashlib.sha256(b).hexdigest(), lf=hashlib.sha256(lf).hexdigest(), crlf=hashlib.sha256(lf.replace(b'
+', b'
+')).hexdigest(),
+                lone_cr=b'' in lf)
+
+
+def pinned_text_ok(p, pinned):
+    e = eol_layers(p)
+    return not e['lone_cr'] and pinned in (e['raw'], e['lf'], e['crlf'])
 need_base = pytest.mark.skipif(not BP.BASE_TAMU_V16.exists(), reason='v1.6 baseline .nc only on L2')
 FORBIDDEN = ('--calibrate', '--erm-cal', '--s0-calibrate', '--s0-cal-file')
 
@@ -51,7 +69,7 @@ def test_staging_sha_qa_pass():
     assert q['status'] == 'PASS' and q['files_ok'] == q['files'] == 53 and q['raw_registry_ok'] == 20 and q['solver_calls'] == 0
     for r in q['rows']:
         if r['path'].startswith('derived/'):
-            assert sha(ROOT / r['staged']) == r['expected']
+            assert pinned_text_ok(ROOT / r['staged'], r['expected']), r['staged']      # A2-FIX-06: content-strict, EOL-portable
 
 
 def test_v16_base_pins_agree():
@@ -72,8 +90,12 @@ def test_manifest_is_current():
     import build_post_v16_manifest as BM
     m = json.loads((ROOT / 'current_work_pckg/POST_V16_A1_PRE_RUN_MANIFEST.json').read_text())
     now = BM.build()
-    for k in ('code_sha256', 'inputs_sha256', 'config_sha256_normalised', 'baseline', 'stages'):
+    for k in ('config_sha256_normalised', 'baseline', 'stages'):
         assert m[k] == now[k], k
+    for k in ('code_sha256', 'inputs_sha256'):           # A2-FIX-06: the A1 pins are CRLF bytes of the main checkouts
+        assert set(m[k]) == set(now[k]), k
+        for rel, h in m[k].items():
+            assert h == now[k][rel] or pinned_text_ok(ROOT / rel, h), rel
 
 
 # ------------------------------------------------------------------------------------------------ windows, weights, load

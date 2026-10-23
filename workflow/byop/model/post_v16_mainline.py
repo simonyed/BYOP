@@ -114,7 +114,7 @@ def interval_start_soc(n, snapshots, S):
     m = n.model
     su = n.storage_units
     w = n.snapshot_weightings.stores.loc[snapshots]
-    frame = lambda f: pd.DataFrame({x: f(x) for x in S}, index=snapshots).rename_axis(index='snapshot', columns='name')
+    frame = lambda f: pd.DataFrame({x: f(x) for x in S}, index=snapshots).rename_axis(columns='name')
     soc = m['StorageUnit-state_of_charge'].sel(name=S, snapshot=snapshots)
     ws = _like(soc, frame(lambda x: w.values * float(su.efficiency_store[x])))
     wd = _like(soc, frame(lambda x: w.values / float(su.efficiency_dispatch[x])))

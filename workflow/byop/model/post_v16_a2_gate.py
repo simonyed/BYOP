@@ -93,7 +93,8 @@ def check(stage, base_path, scenarios=None, cfg_path=CFG, root=ROOT, git_fn=G.gi
     elif not head.startswith(asha):
         anc = git_fn('merge-base', '--is-ancestor', asha, 'HEAD').returncode == 0
         since = set(git_fn('diff', '--name-only', asha, 'HEAD', '--', *G.CLEAN_PATHS).stdout.split())
-        cfg_rel = Path(cfg_path).resolve().relative_to(Path(root).resolve()).as_posix()
+        cp, rp = Path(cfg_path).resolve(), Path(root).resolve()
+        cfg_rel = cp.relative_to(rp).as_posix() if cp.is_relative_to(rp) else None
         if not anc:
             reasons.append(f'approved_git_sha {asha} is not HEAD {head} or an ancestor of it')
         elif since - {cfg_rel}:
@@ -225,7 +226,7 @@ def acceptance(n, tag, res, shed_S0=None, tol_balance=1e-3, tol_reserve=1e-3, to
             val['no_harm_max_excess_MW'] = float((shed - ref).max().max()) if shed.size else 0.0
             chk['no_harm_ok'] = val['no_harm_max_excess_MW'] <= 0.001 + tol_noharm
     lk = n.links
-    fwd = lk.index[(lk.carrier == 'AC_exp') & lk.index.str.endswith('_fwd')]
+    fwd = pd.Index([x for x in lk.index if lk.carrier[x] == 'AC_exp' and str(x).endswith('_fwd')])
     if len(fwd):
         rev = fwd.str.replace('_fwd$', '_rev', regex=True)
         d = (lk.p_nom_opt[fwd].values - lk.p_nom_opt[rev].values)

@@ -23,7 +23,7 @@ def multiperiod(P=(2026, 2027, 2028, 2029, 2030, 2031), steps=2):
     pypsa = pytest.importorskip('pypsa')
     mi = pd.MultiIndex.from_product([list(P), pd.date_range('2030-01-01', periods=steps, freq='3h')], names=['period', 'timestep'])
     n = pypsa.Network(); n.set_snapshots(mi); n.investment_periods = list(P)
-    n.snapshot_weightings.loc[:, :] = 3.0
+    n.snapshot_weightings = n.snapshot_weightings * 0.0 + 3.0
     n.add('Bus', ['a', 'b']); n.add('Carrier', ['CCGT', 'OCGT', 'battery', 'AC_exp', 'load_shed'])
     n.add('Generator', 'a CCGT', bus='a', carrier='CCGT', p_nom=5000, marginal_cost=30, build_year=2025, lifetime=50)
     n.add('Generator', 'b OCGT pub2029', bus='b', carrier='OCGT', p_nom_extendable=True, capital_cost=1e5, marginal_cost=50,
@@ -131,6 +131,8 @@ def test_interval_start_soc_equals_previous_soc_on_a_hand_path():
     soc = np.zeros(4); prev = 1500.0
     for i in range(4):
         soc[i] = prev + 3.0 * (0.95 * ps[i] - pd_[i] / 0.9); prev = soc[i]
+    for name in m.variables:                                            # every variable needs a (zero) solution first
+        m.variables[name].solution = m[name].labels.copy(data=np.zeros(m[name].labels.shape))
     for name, vals in (('StorageUnit-state_of_charge', soc), ('StorageUnit-p_store', ps), ('StorageUnit-p_dispatch', pd_)):
         lab = m[name].labels
         full = np.zeros(lab.shape)
@@ -140,6 +142,7 @@ def test_interval_start_soc_equals_previous_soc_on_a_hand_path():
         else:
             full[idx, :] = vals
         m.variables[name].solution = lab.copy(data=full)
+    m.status, m.termination_condition = 'ok', 'optimal'      # injected, not solved
     start = np.asarray(e.sel(name='a bat').solution.values).ravel()
     assert np.allclose(start, np.r_[1500.0, soc[:-1]])
 
@@ -204,7 +207,7 @@ def test_acceptance_on_injected_solution():
     pypsa = pytest.importorskip('pypsa')
     n = pypsa.Network(); n.set_snapshots(pd.date_range('2030-01-01', periods=2, freq='3h'))
     n.add('Bus', 'a'); n.add('Carrier', ['gas', 'load_shed'])
-    n.add('Generator', 'g', bus='a', carrier='gas', p_nom=200)
+    n.add('Generator', 'g', bus='a', carrier='gas', p_nom=200, marginal_cost=20.0)
     n.add('Generator', 'a load_shed', bus='a', carrier='load_shed', p_nom=1e3)
     n.add('Load', 'l', bus='a', p_set=100.0)
     n.optimize.create_model()
@@ -212,6 +215,7 @@ def test_acceptance_on_injected_solution():
     lab = m['Generator-p'].labels
     vals = np.zeros(lab.shape); i = list(lab.coords['name'].values).index('g'); vals[:, i] = 100.0
     m.variables['Generator-p'].solution = lab.copy(data=vals)
+    m.status, m.termination_condition = 'ok', 'optimal'      # injected, not solved
     n.generators_t.p = pd.DataFrame({'g': [100.0, 100.0], 'a load_shed': [0.0, 0.0]}, index=n.snapshots)
     acc = A2G.acceptance(n, 'S0', dict(status='ok', termination='optimal', integer_vars=0))
     assert acc['checks']['balance_residual_ok'] and acc['values']['balance_residual_MW_max'] == 0.0
