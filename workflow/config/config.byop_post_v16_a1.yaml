@@ -3,9 +3,9 @@
 # approved_git_sha and approved_by. byop/model/post_v16_gate.py refuses every optimizer call otherwise (and on any SHA drift).
 # Isolated from the legacy mainline configs (config.byop_ercot_mainline*.yaml), which are not read here.
 post_v16:
-  run_authorization: NOT_APPROVED
-  approved_git_sha: null
-  approved_by: null
+  run_authorization: APPROVED
+  approved_git_sha: 07c881a4c643a800dfc55257716671e2791a48ab
+  approved_by: sw2434@cornell.edu
   authorization_source: current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1/CURRENT_EXECUTION_WORK_PACKAGE_v1.1.md
   authorization_source_sha256: c3c1a0a55d2fab68076314c4ea7a25a0966907ed5cae3d13510523657e55dfad
   manifest: current_work_pckg/POST_V16_A1_PRE_RUN_MANIFEST.json
