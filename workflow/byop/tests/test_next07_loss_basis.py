@@ -37,7 +37,7 @@ def test_config_locked_and_separate_from_v16():
 
 def tmp_cfg(tmp_path):
     raw = yaml.safe_load(CFG.read_text(encoding='utf-8'))
-    raw['loss_basis']['out_dir'] = str(tmp_path / 'lb')
+    raw['post_v16']['out_dir'] = str(tmp_path / 'lb')
     p = tmp_path / 'config.byop_loss_basis_lp2.yaml'
     p.write_text(yaml.safe_dump(raw), encoding='utf-8')
     return p

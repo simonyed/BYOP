@@ -35,7 +35,7 @@ LOG_COLS = ['attempt_id', 'stage', 'state', 'started_utc', 'finished_utc', 'stat
 
 
 def load(cfg_path=CFG):
-    return yaml.safe_load(Path(cfg_path).read_text(encoding='utf-8'))['loss_basis']
+    return yaml.safe_load(Path(cfg_path).read_text(encoding='utf-8'))['post_v16']
 
 
 def out_dir(c):

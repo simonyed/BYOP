@@ -6,7 +6,7 @@
 #                         capacity unchanged) - a candidate engineering repair, not a capacity increase              (1 call)
 # Separate from the consumed v1.6 runner / ledger (results/BYOP/baseline_2025_tamu_v16 untouched). This file is a REQUEST:
 # only the researcher authorises it (three fields below, config-only commit).
-loss_basis:
+post_v16:                                       # key shared with the A2-type manifest builder; gate = loss_basis_lp2.check
   run_authorization: NOT_APPROVED
   approved_git_sha: null
   approved_by: null
