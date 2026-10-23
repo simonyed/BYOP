@@ -300,6 +300,9 @@ def gate_env(tmp_path, approve=True, base_bytes=b'v16', pin=None):
     p = c['post_v16']
     p.update(authorization_source='wp.md', authorization_source_sha256=sha(src), manifest='man.json')
     p['baseline']['sha256'] = pin or hashlib.sha256(b'v16').hexdigest()
+    for rec in p.get('prior_ledgers') or []:          # NEXT-04: stand-in prior evidence at the pinned paths of the fake root
+        f = root / rec['path']; f.parent.mkdir(parents=True, exist_ok=True); f.write_text(f"prior evidence {rec['path']}\n")
+        rec['sha256'] = sha(f)
     if approve:
         p.update(run_authorization='APPROVED', approved_git_sha='a' * 12, approved_by='researcher')
     cfg = root / 'workflow/config/config.byop_post_v16_a1.yaml'
