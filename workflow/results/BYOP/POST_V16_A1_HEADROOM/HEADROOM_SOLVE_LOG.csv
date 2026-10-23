@@ -1,0 +1,2 @@
+attempt_id,stage,attempt,state,started_utc,finished_utc,status,termination,failure_class,pass,seconds,manifest_sha256,base_sha256,note
+LP_R_H_RESOURCE#1,LP_R_H_RESOURCE,1,DONE,2026-10-23T02:54:01+00:00,2026-10-23T02:55:18+00:00,ok,optimal,output_failed,False,77.4,d0f0b7f90568d2ec4b5b275a03cf242dfebf826769ac80eb6d96f9b425f4f5d1,a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16,

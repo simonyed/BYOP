@@ -1,0 +1,61 @@
+{
+ "stage": "LP_R_H_RESOURCE",
+ "attempt_id": "LP_R_H_RESOURCE#1",
+ "solver_options": {
+  "Method": 2,
+  "Crossover": 1,
+  "BarConvTol": 1e-08,
+  "NumericFocus": 2,
+  "BarHomogeneous": 1,
+  "Threads": 10
+ },
+ "gate": {
+  "approved": true,
+  "reasons": [],
+  "head": "f6dc3151fe9228f0d162829ee3df4224d1eeced1",
+  "approved_git_sha": "802c9d9414514641fd2b088b45ec7ea945be18a4",
+  "stage": "LP_R_H_RESOURCE",
+  "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+  "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a1.yaml"
+ },
+ "outputs_written": false,
+ "structure": {
+  "n_vars": 373249,
+  "n_cons": 967980,
+  "components": 1,
+  "buses": 63,
+  "lines": 162,
+  "generators": 280,
+  "storage_units": 43,
+  "snapshots": 432,
+  "lambda_coefficients": 16,
+  "integer_vars": 0
+ },
+ "headroom": {
+  "eligible_thermal": 125,
+  "eligible_thermal_MW": 68010.7,
+  "storage": 43,
+  "storage_MW": 13068.4
+ },
+ "status": "ok",
+ "termination": "optimal",
+ "seconds": 77.4,
+ "output_error": "KeyError(\"['TL10', 'TL100', 'TL101', 'TL102', 'TL103', 'TL104', 'TL105', 'TL106', 'TL107', 'TL108', 'TL109', 'TL11', 'TL110', 'TL111', 'TL112', 'TL113', 'TL114', 'TL115', 'TL116', 'TL117', 'TL118', 'TL119', 'TL12', 'TL120', 'TL121', 'TL122', 'TL123', 'TL124', 'TL125', 'TL126', 'TL127', 'TL128', 'TL1",
+ "acceptance": {
+  "checks": {
+   "status_ok": true,
+   "termination_optimal": true,
+   "outputs_present": false,
+   "lambda_finite_nonneg": false,
+   "lambda_below_artificial_upper": false,
+   "existing_shed_zero_B0": false,
+   "existing_shed_zero_BL": false,
+   "reserve_met": false,
+   "balance_residual_ok": false
+  },
+  "PASS": false,
+  "lambda_upper_MW": 200000.0,
+  "balance_tolerance_MW": 0.001
+ },
+ "failure_class": "output_failed"
+}

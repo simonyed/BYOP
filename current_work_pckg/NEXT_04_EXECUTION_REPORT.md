@@ -2,16 +2,16 @@
 
 ```text
 WORK_PACKAGE: BYOP-POST-V16-NEXT-04
-A1_APPROVAL: NOT_APPROVED
-A1_LP_R: NOT_RUN
-A1_LP_N: NOT_RUN
-A1_OPTIMIZER_CALLS_ACTUAL: 0
-H_RESOURCE_MW: NOT_AVAILABLE
+A1_APPROVAL: APPROVED (researcher 2026-10-22, approved_by sw2434@cornell.edu, config-only commit f6dc3151fe9228f0d162829ee3df4224d1eeced1)
+A1_LP_R: FAILED (solver ok / optimal; post-solve output reader KeyError -> acceptance not evaluable -> failure_class output_failed, pass=False)
+A1_LP_N: NOT_RUN (requires a PASSED LP-R)
+A1_OPTIMIZER_CALLS_ACTUAL: 1
+H_RESOURCE_MW: NOT_AVAILABLE (unaccepted objective 2587.77 MW facility recorded for information only)
 H_NETWORK_MW: NOT_AVAILABLE
-A1_RESEARCHER_REVIEW: PENDING
+A1_RESEARCHER_REVIEW: PENDING (G2 decision requested: Option 1 fix reader + re-authorise / Option 2 written exception / Option 3 stop)
 A2_MERGE: NOT_STARTED
 UNIFIED_MAIN_SHA: NOT_AVAILABLE
-A2_STATIC_REVALIDATION: NOT_RUN (merge-dependent; pre-merge branch evidence at 81bd5743: structural 75/75, regression 245/0, fresh clone 243/0/2)
+A2_STATIC_REVALIDATION: NOT_RUN
 A2_APPROVAL: NOT_APPROVED
 A2_SCENARIO_ATTEMPTS_ACTUAL: 0
 A2_TOP_LEVEL_OPTIMIZER_CALLS_ACTUAL: 0
@@ -19,27 +19,27 @@ S0: NOT_RUN
 S1_EARLIEST: NOT_RUN
 S0_S1_COMPARISON: NOT_AVAILABLE
 A3_SOLVER_CALLS_ACTUAL: 0
-RESEARCHER_DECISIONS_REMAINING: G1 (A1 approval), G2 (A1 review), D2, D4, D5, D6, G3/D7 (A2 approval on the merged SHA)
+RESEARCHER_DECISIONS_REMAINING: G2 (A1 blocked disposition), D2, D4, D5, D6, G3/D7 (A2 approval on a future merged SHA)
 ```
 
-## Outcome: legal end state A (no authorisation)
+## Sequence
 
-| Phase | Status |
+| Phase | Outcome |
 |---|---|
-| **P0 (read-only, once)** | **PASS.** Details: `NEXT_04_APPROVAL_STATUS.md`; L2 log `workflow/results/BYOP/POST_V16_A1_HEADROOM/NEXT04_P0_READONLY.log`. |
-| **G1** | **No explicit A1 approval → STOP.** |
-| P1–P4 | Not started. The A2 merge (P2) is gated on the A1 run and review and was **not** done. The A1 checkout is untouched. |
+| **P0** | **PASS** (read-only; `NEXT_04_APPROVAL_STATUS.md`) |
+| **G1** | Your words: "I approve A1 (LP-R then LP-N, max 2 calls, 0 retries) at approved_git_sha 802c9d9414514641fd2b088b45ec7ea945be18a4". `approved_by` = `sw2434@cornell.edu`, given explicitly in reply to my question. Config-only commit `f6dc3151`, synced to L2 and GitHub; the gate then approved LP-R. |
+| **P1, LP-R** | 22:54 EDT, THREADS = 10. Gurobi optimal in 77 s (objective −2,587.772). The output reader crashed (merged `m.solution` coordinates), so acceptance could not be evaluated. Ledger: DONE / ok / optimal / output_failed / pass = False. **Cause reproduced without a solver; the LP formulation itself is sound** (`A1_EXECUTION_REPORT.md` §2). |
+| **P1, LP-N** | Not run (rule: LP-R must PASS). |
+| **G2** | **STOP: decision requested** (`A1_EXECUTION_REPORT.md` §5). |
+| P2–P4 | Not started. The A1 checkout is untouched since the run; no A2 merge. |
 
-P0 detail:
-- **A1 HEAD:** `1e637e6d94f03404419c41fde91213186808ac50`. It descends from `802c9d94`, with 0 gated changes, a clean tree and an absent ledger. The gate refuses only on the approval fields.
-- **A2:** `work/a2-postv16-static` at `39a74ff5f96acafc356d40978e33048768fce6a7` (code `81bd5743`) still carries FIX-08/09. The gate is LOCKED and no ledger exists.
+## Evidence
 
-## Process
+On L2 in `workflow/results/BYOP/POST_V16_A1_HEADROOM/`, pulled to GitHub by the sync tool (small files):
 
-Per NEXT-04 §0/§11 no new development round was opened: no model change, no rebuild, no additional sensitivity. Only these were written:
-- `NEXT_04_APPROVAL_STATUS.md`;
-- `NEXT_04_RESEARCHER_DECISIONS.md`;
-- this report;
-- the package original `BYOP_POST_V16_NEXT_04_v1.0/` (local copy in `work_pkgs/`).
-
-The next action is yours: G1.
+| File | SHA-256 |
+|---|---|
+| `HEADROOM_SOLVE_LOG.csv` | `05bd03c2fa629f7af0f1f767d9d9758bd5b156856c00f5d75ce06a5e7142e28d` |
+| `LP_R_H_RESOURCE_RESULT.json` | `d80d6f9e11b3765699ddc052021c06742f26e0a2d288daeafc81ad8d0162bd27` |
+| `HEADROOM_BY_BUS_LP_R_H_RESOURCE.csv` | `551f57dad0ed4eb67d2f4452c6ec9e6e7bb7438e3af1b92270844467489083f5` |
+| `A1_LP_R_CONSOLE.log` | `13ab4ab141fe54dc4caae54b3c359be2fcc5a8abc79cb6ed92a2c606b85e89b7` (contains the full Gurobi log) |
