@@ -9,17 +9,17 @@
  "max_lp_calls": 2,
  "max_retries": 0,
  "config": "workflow/config/config.byop_post_v16_a1.yaml",
- "config_sha256_normalised": "202c34d3d67f1e7303679fea12965d11359a941b64d9eea88f3a2e9998db9359",
+ "config_sha256_normalised": "adffc9c79c7128ebe7e35c10c6b47ac3b7c27fe578e54fda0435980b9f44a5d1",
  "baseline": {
   "path": "workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
   "sha256": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16",
   "location": "L2 only (.nc not in git)"
  },
  "code_sha256": {
-  "workflow/byop/model/post_v16_gate.py": "cd2ce9f08b0e934d8409a0698614bd25a138b963ee9ad25860936cc8514993c1",
+  "workflow/byop/model/post_v16_gate.py": "4e8ec5d7a4e889cc05876a8ccf1af859bc67813accdcff59a4ec662191f1a800",
   "workflow/byop/model/post_v16_headroom.py": "f45940f7cf347c2d456194b8a9bb2cb19d5df9dfa0555e1809224ed6b4749e2d",
   "workflow/byop/model/byop_paths.py": "45ecab7908b7069eff980b26dd347de458101ef07e1b6669f7acbf9c07fe4fbd",
-  "workflow/byop/run/post_v16_a1.py": "1d6dcccc77100435df0032a5c212db08bc667831bc83bb2699a090c8c2187f04",
+  "workflow/byop/run/post_v16_a1.py": "ff0c7181288561d4e4ff8b2395a2a711804e1602f2279872a68d839ac62e82f1",
   "workflow/byop/run/run_post_v16.sh": "6657632d79624883f3cf99b37d3c2cb00658a94d5190ef5ad741d4dc0941e53a"
  },
  "inputs_sha256": {
@@ -34,6 +34,6 @@
   "workflow/results/BYOP/baseline_2025_tamu_v16/COUNTY_TO_BUS_SHARES.csv": "6946ddd4fe03a8858d194ab6fbd18c9dd20bd6d5cda15c79cf454e4354604b2e",
   "current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1/CURRENT_EXECUTION_WORK_PACKAGE_v1.1.md": "c3c1a0a55d2fab68076314c4ea7a25a0966907ed5cae3d13510523657e55dfad"
  },
- "head_when_built": "ed72b20865eb152178068f7e51e8b8cc98024cd4",
+ "head_when_built": "7865fc5d230cbb3541ea8f3d8981b6f4e6364dc7",
  "note": "approve the commit that CONTAINS this file; the gate requires approved_git_sha == HEAD"
 }
