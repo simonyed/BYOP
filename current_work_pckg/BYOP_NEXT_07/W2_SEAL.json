@@ -1,0 +1,43 @@
+{
+ "work_package": "BYOP_NEXT_07",
+ "step": "W2 seal",
+ "solved_code_sha": "5df4dda75efc4efb1796393c1131f93a8d801599",
+ "approval_commit": "6181ff5f56d21b75e769f7b1515065c1000e7aad",
+ "approved_by": "sw2434@cornell.edu",
+ "optimizer_calls": 1,
+ "retries": 0,
+ "termination": "optimal",
+ "acceptance": "PASS",
+ "label": "DIAGNOSTIC_NONCOMPLIANT_WITH_FORMAL_3GW_REQUIREMENT",
+ "class_": "RESERVE_REQUIREMENT_NOT_PRIMARY_IN_THIS_COUNTERFACTUAL",
+ "files": {
+  "A2_SOLVE_LOG.csv": "080dcb59a017dc315f8e636402d80ceb484364049d46f5060a4d3ed053882a90",
+  "A2_OPTIMIZER_CALL_LOG.csv": "f41b9bdc7b3b49cc0cab0017bfeb4e052c1813229204983e8eb48640733a72dd",
+  "S0_RESULT.json": "0197d9a6c3fc18814a9eaa8a93524b8a6788f429d903bea47f7a1a732a746155",
+  "S0_shed_by_snapshot_frozen.csv.gz": "e792fdffa151e8bfa3e3ce4117dfbf1b0b125183c142d178b77b69916df4cb1a",
+  "RUN_GATE.json": "75e95586330bc16a695b8b06bdef8923ab5eec0adf957b25ab42d9a4f3eb0eb3",
+  "prices_S0.csv.gz": "1e9f20dc38d328a81de3a8a86f69a55600c98a51d087f1dd8abd637810b4ef9d",
+  "W2_RESERVE_CAUSAL_COMPARISON.csv": "06a9d74f76aebe59e6ed1aa21b352a14f1a22379c4fc80bc78b8eb4d15db79d6",
+  "W2_RESERVE_CAUSAL_SUMMARY.json": "a63afee5559dd3f955d0e3c46da836ce3a944181003befdd7cd73269e8d0ac64"
+ },
+ "solution_on_L2": {
+  "storage_soc.csv.gz": "431e225f417673519028dd4ed00cc5ddb8d14b9f08b98aa36036215c13f686a6",
+  "storage_p_store.csv.gz": "207ce89f3043f884874cc33d9e2d067d8668402f23d77a8fa6fad91595861752",
+  "storage_p_dispatch.csv.gz": "dc0892fbef17a17838ca99c75748858afc4c8ec9df9e063d48570b61d9ea7ef7",
+  "line_p0.csv.gz": "879784d18779d2884cfd7d37d7bfa292dac446c20cd27f578042c96ac0d7f6af",
+  "link_p0.csv.gz": "e292088eba027bb507dfbb8d25bafb6be2904723479f3ec4d2c0cb8d660da306",
+  "generator_p.csv.gz": "26f878bd5d4636751111bfd6d10c9843633e8bd0099e62141106a32068a09909",
+  "bus_marginal_price.csv.gz": "71f583042d8f2b03f447f50d477b339510bbed9c66035b95377a692448a9a0be",
+  "snapshot_weightings.csv.gz": "3fb3e72242fc5699c99b7b5574f7489989ad0d2f2c572e9c95459c41b3e155ca",
+  "SOC_SEGMENT_POSTSOLVE_AUDIT.csv": "509d0ad968a5ccbdd0a83b6b6980eb9f74f9fe262958ea246253f78b9a4cf62e",
+  "reserve_by_snapshot.csv.gz": "a59d273c1bd30df6d0d2de69404348eb722cdcaf2c2ac99aee308620995c2e8a",
+  "thermal_online_cap.csv.gz": "280c908cdf0152279295e541516c5fc193e0760de83c13ba696bbb3a75d4ee6d",
+  "thermal_reserve.csv.gz": "11090e510b4bd9d2561e5e2017ed576947c5ec573454f069970b081a5ad37ea9",
+  "thermal_available_cap.csv.gz": "b2a2975a9aa895edd7ec27297f2f83951c68863326188ca503e8bf17b691dabd",
+  "bess_reserve.csv.gz": "c6229ee59aa7aa66efdeefcd7eaf2a716fcda1dac2d3e5bd5c73000e0e46b56e"
+ },
+ "original_a2_ledgers_unchanged": {
+  "A2_SOLVE_LOG.csv": "9e521a494ed5d21899322838f4890a18da391cff5ecb3da0711daab25116b4a1",
+  "A2_OPTIMIZER_CALL_LOG.csv": "4971d9d85a49fb0e31d7f42b59db6a491d8136901e60b30cca165d8fb9e30011"
+ }
+}

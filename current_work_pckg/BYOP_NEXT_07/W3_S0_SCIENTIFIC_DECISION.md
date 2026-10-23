@@ -1,4 +1,4 @@
-# W3_S0_SCIENTIFIC_DECISION (NEXT-07), 2026-10-23, 0 optimizer calls
+# W3_S0_SCIENTIFIC_DECISION (NEXT-07), 2026-10-23 (updated after the approved W2 probe; W3 itself: 0 optimizer calls)
 
 **Proposed verdict: `BASELINE_RELIABILITY_UNRESOLVED` (unchanged).** The A3 gate reads `current_work_pckg/BYOP_NEXT_06/S0_SCIENTIFIC_STATUS.json`, and that file is **not** modified. The proposal is in `W3_S0_RELIABILITY_VERDICT_PROPOSAL.json`.
 
@@ -6,7 +6,7 @@
 
 | | Question | Status after NEXT-07 (no new solve) |
 |---|---|---|
-| **M** (mechanism) | Does the 3 GW reserve requirement cause the 2026 Far West nightly shortage in the same sampled world? | **Open.** W1 proved the probe changes only the reserve RHS. The answer needs the one W2 LP (`W2_APPROVAL_REQUEST.md`). |
+| **M** (mechanism) | Does the 3 GW reserve requirement cause the 2026 Far West nightly shortage in the same sampled world? | **Answered: no.** The W2 probe (RHS 0, 1 call, optimal, acceptance PASS) leaves the 2026 Far West nightly shed at 47,297.4 vs 47,297.9 MWh (−0.0009 %): `RESERVE_REQUIREMENT_NOT_PRIMARY_IN_THIS_COUNTERFACTUAL`. The binding cause is a deliverability limit into the pocket: TL43 at 117.05 MW plus TL35 at its KVL share of 387.63 MW, so the import is capped at 504.68 MW. See `W2_RESERVE_CAUSAL_VERDICT.md`. |
 | **T** (representativeness) | Do the two sampled weeks over-state the 2026 year? | **Partly answered without an LP: no evidence of over-extrapolation under the A2 rules** (section 2). Not proven, because the deliverable supply into the pocket is endogenous. |
 
 Even if W2 shows a large reserve effect, T stays a separate question. A mechanism result does not upgrade the 51 GWh weighted figure into a credible annual EENS.
@@ -62,6 +62,18 @@ A solver-free build of exactly the NEXT-06 diagnostic was run on L2 (2026 only, 
 
 **Paired formal S0/S1 rerun:** not justified now. No implementation bug has been evidenced. W0 found only reporting-ratio errors, and W1 found no build difference.
 
-## 5. The one decision needed from the researcher
+## 5. After W2 (the probe ran: class NOT_PRIMARY)
 
-Approve, or decline, the single W2 reserve-probe LP at `5df4dda75efc4efb1796393c1131f93a8d801599` (`W2_APPROVAL_REQUEST.md`). The full-year LP is **not** requested.
+**The reserve rule is cleared as the cause.** The shortage is a network deliverability limit into the pocket at night. The same lines served these hours in the v1.6 LP2 2025 check, so what differs is the night-time flow pattern across the West mesh, which sets the TL35/TL43 split. That pattern comes from inputs or rules other than the reserve:
+- the 2026 fleet and committed-asset representation (DWB uniform 0.51 derate, PBRP);
+- load growth elsewhere;
+- the sampled-week chronology and segment SOC;
+- TL43's effective model limit (117.05 MW, 98.4 % of its baseline s_nom × s_max_pu).
+
+All of these can be examined **read-only** from the persisted probe state (bus angles via flows, upstream injections) against the LP2 2025 solution. That is the cheapest next step and needs no solve.
+
+**Verdict proposal unchanged: `BASELINE_RELIABILITY_UNRESOLVED`.** Moving to `PHYSICAL_SCARCITY_VALIDATED_WITH_LIMITS` would need two things:
+- an explanation of why the LP2 2025 check had no shed (evidence that the 2026 limit is physical, not an artefact);
+- your explicit decision.
+
+There is no evidence of an implementation bug, so `METHOD_BUG_CONFIRMED_REPAIR_REQUIRED` does not apply and no paired S0/S1 rerun is proposed. The full-year LP stays `NOT_AUTHORIZED` (and is not runnable as prepared). The decision the researcher needs to make next is whether to commission the read-only LP2-vs-S0 mesh-flow comparison, or to accept the pocket limit as physical scarcity with stated limits.

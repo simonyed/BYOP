@@ -1,0 +1,37 @@
+{
+ "work_package": "BYOP_NEXT_07",
+ "step": "W2.3",
+ "optimizer_calls_this_step": 0,
+ "acceptance_PASS": true,
+ "acceptance_checks": {
+  "status_ok": true,
+  "termination_optimal": true,
+  "no_integer_vars": true,
+  "balance_residual_ok": true,
+  "reserve_ok": true,
+  "reserve_soc_ok": true,
+  "soc_segment_rows_present": true,
+  "expansion_pairs_equal": true,
+  "no_free_public_expansion": true,
+  "optimizer_calls_complete": true
+ },
+ "diagnostic_label": "DIAGNOSTIC_NONCOMPLIANT_WITH_FORMAL_3GW_REQUIREMENT",
+ "same_snapshot_index": true,
+ "preregistered_metric": "2026 Far West pocket {p610 4, p620 6, p620 7} weighted shed, snapshots starting 00-09",
+ "original_MWh": 47297.863143125534,
+ "probe_MWh": 47297.437420646726,
+ "reduction": 9.000881869031532e-06,
+ "reduction_abs_MWh": 0.42572247880889336,
+ "CLASS": "RESERVE_REQUIREMENT_NOT_PRIMARY_IN_THIS_COUNTERFACTUAL",
+ "pocket_raw_3h_MWh": {
+  "original": 3049.32334232689,
+  "probe": 3049.2701634292584
+ },
+ "fleet_2026_identical": true,
+ "solve": {
+  "status": "ok",
+  "termination": "optimal",
+  "seconds": 877.2,
+  "objective": 52729586351.78793
+ }
+}
