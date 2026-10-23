@@ -6,9 +6,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 PyPSA-USA is a Snakemake-orchestrated PyPSA workflow for capacity expansion, production-cost simulation, and power-flow analysis of the US bulk transmission system. Configuration is layered YAML; intermediate and final artifacts are netCDF/CSV/GeoJSON files produced by rules in `workflow/rules/*.smk` and Python scripts in `workflow/scripts/`.
 
-## Branch policy: work against `develop`, not `master`
+## Branch policy (BYOP): `main` of github.com/simonyed/BYOP is the only baseline
 
-`develop` is the integration branch and is often well ahead of `master`. Any work on the model — code changes, config changes, reviews, audits, or analysis of "current state" — MUST reference `origin/develop`, not `master` or whatever the working tree happens to have checked out. Before drawing conclusions about how something works or proposing changes, run `git fetch origin develop` and check the file's state on `origin/develop` (`git show origin/develop:<path>` or check out a branch based on it). Base all feature branches and PRs on `develop`; never target `master` directly.
+This repository is the BYOP research fork. **`main` of `https://github.com/simonyed/BYOP` is the single formal development and integration baseline** (since 2026-10-23, NEXT-08). Every executor (Claude, Codex, others) starts from the latest `main`: fetch it first and judge "current state" from `main`, not from whatever is checked out. Temporary work branches are named `work/<task-name>`, are created from the latest `main`, are merged back into `main` when done and are then deleted. No other long-lived branch is kept; milestones are kept as annotated tags (`byop/*` solved-code SHAs, `archive/branch-*` heads of retired branches). Approved run SHAs are commits on `main` (or its ancestors) and are never rewritten: no force-push, no history rewrite.
+
+The upstream PyPSA-USA project (remote `origin`, `github.com/PyPSA/pypsa-usa`) integrates on its own `develop` branch; that applies only when contributing upstream, not to BYOP work. In the local clone the remote for GitHub BYOP is named `byop` and the local branch that mirrors its `main` is also named `byop`; use `refs/heads/byop` / `byop/main` explicitly where a name could be ambiguous.
 
 ## Running the workflow
 
