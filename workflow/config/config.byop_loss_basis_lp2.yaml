@@ -7,9 +7,9 @@
 # Separate from the consumed v1.6 runner / ledger (results/BYOP/baseline_2025_tamu_v16 untouched). This file is a REQUEST:
 # only the researcher authorises it (three fields below, config-only commit).
 post_v16:                                       # key shared with the A2-type manifest builder; gate = loss_basis_lp2.check
-  run_authorization: NOT_APPROVED
-  approved_git_sha: null
-  approved_by: null
+  run_authorization: APPROVED
+  approved_git_sha: c93cca5de7d799b290711012347e97e9e5c75f0a
+  approved_by: sw2434@cornell.edu
   authorization_source: current_work_pckg/BYOP_NEXT_07/W6_LOSS_BASIS_DECISION_RECORD.md
   authorization_source_sha256: ef50f3a601a42faeb779b3a12e7729342218cf88f4c44b3e9c018a4dbf311ffb   # LF content SHA
   manifest: current_work_pckg/BYOP_NEXT_07/W6_LOSSY_LP2_PRE_RUN_MANIFEST.json
