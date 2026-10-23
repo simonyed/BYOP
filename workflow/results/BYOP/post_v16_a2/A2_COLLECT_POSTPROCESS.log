@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/post/collect_mainline.py", line 386, in <module>
+    print(collect(sys.argv[1]))
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/post/collect_mainline.py", line 324, in collect
+    w(pd.concat([pd.read_csv(f) for f in fl_parts], ignore_index=True), 'STAGE_B3_S0CAL_LINE_FLOW_UTILISATION.csv')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/post/collect_mainline.py", line 324, in <listcomp>
+    w(pd.concat([pd.read_csv(f) for f in fl_parts], ignore_index=True), 'STAGE_B3_S0CAL_LINE_FLOW_UTILISATION.csv')
+                 ^^^^^^^^^^^^^^
+  File "/datasets/prgm/pypsa-usa/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 873, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/datasets/prgm/pypsa-usa/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 300, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/datasets/prgm/pypsa-usa/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1645, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/datasets/prgm/pypsa-usa/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1922, in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/datasets/prgm/pypsa-usa/.venv/lib/python3.11/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 95, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/parsers.pyx", line 575, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
