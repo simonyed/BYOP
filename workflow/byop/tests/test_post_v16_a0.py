@@ -28,13 +28,9 @@ def eol_layers(p):
     """NEXT-02 A2-FIX-06: raw / LF / CRLF SHA-256 of a text file. The pinned value must equal one of them (same content, any checkout
     EOL); a lone CR or mixed endings make the LF and CRLF layers differ from any clean pin, so a content change is never accepted"""
     b = Path(p).read_bytes()
-    lf = b.replace(b'
-', b'
-')
-    return dict(raw=hashlib.sha256(b).hexdigest(), lf=hashlib.sha256(lf).hexdigest(), crlf=hashlib.sha256(lf.replace(b'
-', b'
-')).hexdigest(),
-                lone_cr=b'' in lf)
+    lf = b.replace(b'\r\n', b'\n')
+    return dict(raw=hashlib.sha256(b).hexdigest(), lf=hashlib.sha256(lf).hexdigest(), crlf=hashlib.sha256(lf.replace(b'\n', b'\r\n')).hexdigest(),
+                lone_cr=b'\r' in lf)
 
 
 def pinned_text_ok(p, pinned):
