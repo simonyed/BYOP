@@ -1,0 +1,9 @@
+2026-10-23T14:18:30Z start python byop/build/build_post_v16_a2_manifest.py config/config.byop_post_v16_n06_diag.yaml
+{
+ "manifest": "current_work_pckg/BYOP_NEXT_06/N06_DIAG_PRE_RUN_MANIFEST.json",
+ "code": 149,
+ "inputs": 110,
+ "head": "c57da5ba0bc521bfa5c96983a6440ca7c201f918",
+ "mismatches_now": []
+}
+2026-10-23T14:18:31Z end rc=0
