@@ -1,0 +1,201 @@
+{
+ "work_package": "BYOP_NEXT_07",
+ "report_commit_parent": "f58a4e31b0962313c0931e034f546f880a790e0e",
+ "branch": "mainline-v13-stageA",
+ "w2_approvable_code_sha": "5df4dda75efc4efb1796393c1131f93a8d801599",
+ "w4_branch": "work/next07-a3-static",
+ "w4_branch_sha": "79134c9fc3499e923240e1ed537ef2d8b87dc5da",
+ "solved_code_sha_this_package": null,
+ "original_s0_s1_code_sha": "cdfdea06146a6fe73df89cb410d6a88cb5fda306",
+ "optimizer_calls_total": 0,
+ "tests": {
+  "main_l2": "272 passed / 0 failed (5df4dda7 code)",
+  "w4_branch_l2_clone": "289 passed / 0 failed"
+ },
+ "statuses": {
+  "W0_DATA_QA": "PASS",
+  "W1_RESERVE_RHS_ONLY_STATIC": "PASS",
+  "W2": "NOT_RUN (NOT_APPROVED)",
+  "W2_RHS_CHANGED_ONLY": "YES",
+  "W3_S0_RELIABILITY_VERDICT": "BASELINE_RELIABILITY_UNRESOLVED",
+  "W3_FULL_YEAR_DIAGNOSTIC": "NOT_AUTHORIZED",
+  "W4_A3_RUNTIME_STATIC": "PARTIAL"
+ },
+ "l2_only": {
+  "note": "large / per-run files stay on L2",
+  "paths": [
+   "/tmp/byop_n07/clone (W4 test clone)",
+   "/tmp/byop_n07/W4_TESTS.log"
+  ]
+ },
+ "files": [
+  {
+   "path": "current_work_pckg/BYOP_NEXT_07/BYOP_NEXT_07_S0_Reserve_Causal_Diagnostic_and_A3_Readiness_2026-10-23.md",
+   "sha256": "dec9259865f687c0a13ebbc4fb4c125dc06a69a94dc7afbfaed3ac18d1f3d3c5",
+   "academic_use": "WORK_PACKAGE_SOURCE",
+   "solver_calls": 0
+  },
+  {
+   "path": "current_work_pckg/BYOP_NEXT_07/N07_RESERVE_PROBE_PRE_RUN_MANIFEST.json",
+   "sha256": "c2603d1f181f994f0b33feada59d693aacfaf57899e501a9333433b3e0fe8a44",
+   "academic_use": "DIAGNOSTIC_EVIDENCE",
+   "solver_calls": 0
+  },
+  {
+   "path": "current_work_pckg/BYOP_NEXT_07/NEXT_07_EXECUTION_REPORT.md",
+   "sha256": "74db8b7795fb8a18d2db8efa08f0bb6e32205d7210d0fa3ce4b4cf1a358729d7",
+   "academic_use": "DIAGNOSTIC_EVIDENCE",
+   "solver_calls": 0
+  },
+  {
+   "path": "current_work_pckg/BYOP_NEXT_07/W0_RECONCILIATION_VERDICT.json",
+   "sha256": "7aa80c66bb52026ca751bd7cdf3bb51007bb79f178f59a1bb9ccb0fc7a9e6e79",
+   "academic_use": "DIAGNOSTIC_EVIDENCE",
+   "solver_calls": 0
+  },
+  {
+   "path": "current_work_pckg/BYOP_NEXT_07/W0_SHED_RECONCILIATION_CORRECTED.csv",
+   "sha256": "1bf7ffbe1cd1526ee9f4358301b5cd4ac44b4ac9c35ad7582cb622c6bdc3419b",
+   "academic_use": "DIAGNOSTIC_EVIDENCE",
+   "solver_calls": 0
+  },
+  {
+   "path": "current_work_pckg/BYOP_NEXT_07/W1_CONSTRAINT_DIFF.csv",
+   "sha256": "29349e1a32b0f08c30bbeadfd2b27d0395c813c32907a4663ec9cf566da1cbb4",
+   "academic_use": "DIAGNOSTIC_EVIDENCE",
+   "solver_calls": 0
+  },
+  {
+   "path": "current_work_pckg/BYOP_NEXT_07/W1_MODEL_EQUALS_EXCEPT_RESERVE_RHS.json",
+   "sha256": "c3d2910a0db3cea5593644cc0f60505664d2449714ad7ea3757c614664b56c0d",
+   "academic_use": "DIAGNOSTIC_EVIDENCE",
+   "solver_calls": 0
+  },
+  {
+   "path": "current_work_pckg/BYOP_NEXT_07/W2_APPROVAL_REQUEST.md",
+   "sha256": "3949eb38faf728becd575fd8c9090d78809f02c9f026fbfa67acc0e1adbefc95",
+   "academic_use": "DIAGNOSTIC_EVIDENCE",
+   "solver_calls": 0
+  },
+  {
+   "path": "current_work_pckg/BYOP_NEXT_07/W2_RESERVE_CAUSAL_COMPARISON.csv",
+   "sha256": "eb71dfbcdd5a68c2b9ada59c513d4dd593d72cf12282b0076866dab873d62f96",
+   "academic_use": "NOT_RUN_PLACEHOLDER",
+   "solver_calls": 0
+  },
+  {
+   "path": "current_work_pckg/BYOP_NEXT_07/W2_RESERVE_CAUSAL_VERDICT.md",
+   "sha256": "b55ab0d77480844f988ff172ebaec54c5d690b0186022ff9a08d74c7dbb910b8",
+   "academic_use": "NOT_RUN_PLACEHOLDER",
+   "solver_calls": 0
+  },
+  {
+   "path": "current_work_pckg/BYOP_NEXT_07/W3_FULLYEAR_DECISION_TABLE.csv",
+   "sha256": "b28eb64f81429e98068ea0fa2826d62842781242b55eee0b8699e9ac8181c7c0",
+   "academic_use": "DIAGNOSTIC_EVIDENCE",
+   "solver_calls": 0
+  },
+  {
+   "path": "current_work_pckg/BYOP_NEXT_07/W3_S0_RELIABILITY_VERDICT_PROPOSAL.json",
+   "sha256": "ea50a1ed56f7febd01448f512e6974774ec21f2f4b840f0d69cf1181c55a740b",
+   "academic_use": "DIAGNOSTIC_EVIDENCE",
+   "solver_calls": 0
+  },
+  {
+   "path": "current_work_pckg/BYOP_NEXT_07/W3_S0_SCIENTIFIC_DECISION.md",
+   "sha256": "ce5bd2b9c67633edca28f9db08eae3f595a8a0deafc949e7bc3baddbc9ac6848",
+   "academic_use": "DIAGNOSTIC_EVIDENCE",
+   "solver_calls": 0
+  },
+  {
+   "path": "current_work_pckg/BYOP_NEXT_07/W4_A3_STATIC_READINESS.md",
+   "sha256": "d63c24920ce5c878b77fd855bdca87d7d14f64912dabd3a14b632eeecd7d4ac9",
+   "academic_use": "DIAGNOSTIC_EVIDENCE",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/_fullyear_size/SIZE.log",
+   "sha256": "b23d5528fc6a56493681fb5d0bd161d4bdaa4ad60b1872977d2bb13999da9dc9",
+   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/_fullyear_size/SIZE_BUILD_FAILURE.excerpt.log",
+   "sha256": "02672ad4dc4575b494c337b36a3495ff1ef35e1a3c5956d3524369dabe09707a",
+   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/_static_w1/N07_STATIC.log",
+   "sha256": "4867f228d78676596a1ae41193071e4058dcdab77dfd3673db34d82c6e37368d",
+   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/_static_w1/W1_CONSTRAINT_DIFF.csv",
+   "sha256": "29349e1a32b0f08c30bbeadfd2b27d0395c813c32907a4663ec9cf566da1cbb4",
+   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/_static_w1/W1_MODEL_EQUALS_EXCEPT_RESERVE_RHS.json",
+   "sha256": "c3d2910a0db3cea5593644cc0f60505664d2449714ad7ea3757c614664b56c0d",
+   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/_w4_static/A3_CLI_REFUSAL.log",
+   "sha256": "b107e16e9e09b8251ed462e9f33ad6b9718510cc4f1dc595e7d66902d6c01da8",
+   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/_w4_static/README.txt",
+   "sha256": "dab266e3c4fa24365e8a74f3845aaf7b42675242a03147dfdbb611d89dd3e7c2",
+   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/_w4_static/W4_TESTS.excerpt.log",
+   "sha256": "157acbb3f808d6f6e6b882338041781d72873297967ca11d4f084b782ae5d724",
+   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/N07_TESTS.log",
+   "sha256": "3bc280d43c830c844ea3cf27276502e86b6246081d8bec1a76990e947bb0c648",
+   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/W3_POCKET_LOAD_FULL_YEAR_3H.csv.gz",
+   "sha256": "a63618293cab3d0acc980eb9baf4ab77cddb4cf768c1516a23ff7d8a64df55c2",
+   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/W3_REPRESENTATIVENESS.json",
+   "sha256": "4f7e314f2c0e15a939ec1a1a7c72ffd8f008689f70e663f0d7a59bb1e5156d37",
+   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/W3_REPRESENTATIVENESS_BOUNDS.csv",
+   "sha256": "2d8427e66bf9f6b756ca28dff24ecd0b72171735f5c1b35d9eaae11b863d69c9",
+   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/W3_REPRESENTATIVENESS_DISTRIBUTION.csv",
+   "sha256": "3fd7fde3c59f0c1deff4dbb1ace2f6b009f4fca8bfeeb3d0b6f01a6f427f631f",
+   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/W3_REPRESENTATIVENESS_S0_POCKET_SNAPSHOTS.csv",
+   "sha256": "77752d3ab4313fa931b57ad4910e00b5f8dd8eceb33df64008b47e747d61af24",
+   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "solver_calls": 0
+  }
+ ]
+}
