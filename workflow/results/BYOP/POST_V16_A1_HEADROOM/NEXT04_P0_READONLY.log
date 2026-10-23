@@ -1,0 +1,45 @@
+== A1 main checkout
+Thu 22 Oct 2026 10:10:09 PM EDT
+ 22:10:09 up 42 days, 14:39,  5 users,  load average: 13.02, 13.38, 13.90
+1e637e6d94f03404419c41fde91213186808ac50
+ancestor=yes
+gated_changes_since_802c9d94=0
+gated_dirty=0 gated_untracked=0
+# A0 = zero solver calls. This file is the A1 request; it is NOT an approval: only the researcher sets run_authorization: APPROVED,
+# approved_git_sha and approved_by. byop/model/post_v16_gate.py refuses every optimizer call otherwise (and on any SHA drift).
+  run_authorization: NOT_APPROVED
+ls: cannot access 'workflow/results/BYOP/POST_V16_A1_HEADROOM/HEADROOM_SOLVE_LOG.csv': No such file or directory
+ "reasons": [
+  "run_authorization=NOT_APPROVED",
+  "approved_by missing",
+  "approved_git_sha missing"
+ ],
+ "head": "1e637e6d94f03404419c41fde91213186808ac50",
+--
+ "reasons": [
+  "run_authorization=NOT_APPROVED",
+  "approved_by missing",
+  "approved_git_sha missing",
+  "LP_N_H_NETWORK needs a PASSED LP_R_H_RESOURCE first: LP_R_H_RESOURCE has no ledger row"
+ ],
+== A2 worktree
+39a74ff5f96acafc356d40978e33048768fce6a7
+has_81bd5743
+# This file is the A2 REQUEST, not an approval: only the researcher sets run_authorization: APPROVED, approved_git_sha and
+# approved_by (config-only commit). byop/model/post_v16_a2_gate.py refuses every A2 optimizer call otherwise. It is independent of
+  run_authorization: NOT_APPROVED
+ls: cannot access 'workflow/results/BYOP/post_v16_a2/': No such file or directory
+  "reasons": [
+   "run_authorization=NOT_APPROVED",
+   "approved_by missing",
+   "approved_git_sha missing"
+  ],
+  "head": "39a74ff5f96acafc356d40978e33048768fce6a7",
+  "approved_git_sha": null,
+--
+  "reasons": [
+   "run_authorization=NOT_APPROVED",
+   "approved_by missing",
+   "approved_git_sha missing",
+   "S1_EARLIEST needs a PASSED S0 first: S0 has no ledger row",
+   "S0 no-harm reference S0_NO_HARM_REFERENCE.csv missing"
