@@ -4,9 +4,9 @@
 # (W5_LP2_VS_S0_MESH_FLOW_EXPLANATION.md)? Diagnostic only - NOT a formal S0, does not replace POST_V16_A2_S0S1, does not choose the
 # study's loss basis. This file is a REQUEST: only the researcher authorises it (three fields below, config-only commit).
 post_v16:
-  run_authorization: APPROVED
-  approved_git_sha: bf61d873b1e2e1d0df9befd70d3b41896df967d6
-  approved_by: sw2434@cornell.edu
+  run_authorization: NOT_APPROVED   # CLOSED 2026-10-23 after the single approved call (approval history: commit 9dce6b5d, ledgers)
+  approved_git_sha: null
+  approved_by: null
   authorization_source: current_work_pckg/BYOP_NEXT_07/BYOP_NEXT_07_S0_Reserve_Causal_Diagnostic_and_A3_Readiness_2026-10-23.md
   authorization_source_sha256: dec9259865f687c0a13ebbc4fb4c125dc06a69a94dc7afbfaed3ac18d1f3d3c5   # LF content SHA
   manifest: current_work_pckg/BYOP_NEXT_07/N07_LOSSLESS_PROBE_PRE_RUN_MANIFEST.json

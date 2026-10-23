@@ -10,19 +10,20 @@ ORIGINAL_S0_S1_CODE_SHA: cdfdea06146a6fe73df89cb410d6a88cb5fda306
 W0_DATA_QA: PASS
 W1_RESERVE_RHS_ONLY_STATIC: PASS
 W2_NEW_SOLVER_CALLS: 1
+W5P_LOSSLESS_PROBE_CALLS: 1 (approved bf61d873 via config commit 9dce6b5d; optimal, PASS; class LOSS_BASIS_CONFIRMED_MAIN_CAUSE)
 W2_AUTHORIZATION: APPROVED (researcher in chat, 2026-10-23; approved_by sw2434@cornell.edu)
 W2_SOLVER_AND_ACCEPTANCE: PASS (optimal, 877 s; diagnostic label DIAGNOSTIC_NONCOMPLIANT_WITH_FORMAL_3GW_REQUIREMENT)
 W2_RHS_CHANGED_ONLY: YES
 W2_CLASS: RESERVE_REQUIREMENT_NOT_PRIMARY_IN_THIS_COUNTERFACTUAL (2026 Far West nightly shed 47,297.9 -> 47,297.4 MWh, -0.0009 %)
-W3_S0_RELIABILITY_VERDICT: BASELINE_RELIABILITY_UNRESOLVED (proposal; gated status file unchanged)
+W3_S0_RELIABILITY_VERDICT: METHOD_BUG_CONFIRMED_REPAIR_REQUIRED (proposal after W5/W5P: calibration lossless vs scenarios with transmission_losses 2; gated status file unchanged)
 W3_FULL_YEAR_DIAGNOSTIC: NOT_AUTHORIZED (and not runnable as prepared)
 W4_A3_RUNTIME_STATIC: PASS (merged after the W2 seal; A3 manifest rebuilt; suite 290/0; zero-solver A3 E2E 13/13)
 A3_SOLVER_CALLS: 0
 ORIGINAL_A2_LEDGERS_UNCHANGED: YES (SHA-checked before and after the probe)
-NEXT_DECISION_REQUIRED: S0 verdict path - commission the read-only LP2-2025 vs S0-2026 mesh-flow comparison (why TL35/TL43 cap the pocket at 504.7 MW in S0 but not in LP2), or accept the pocket limit as physical scarcity with limits; and confirm the S2 developer-LP reserve rule found by the A3 dry run
+NEXT_DECISION_REQUIRED: choose ONE loss basis for calibration and S0-S3 ((a) losses on + re-check v1.6, or (b) lossless study), then a separately approved paired S0/S1 rerun; confirm the S2 developer-LP reserve rule
 ```
 
-**Optimizer calls in this package: exactly 1.** It was the approved W2 probe: `S0#1/S0_COST`, 0 retries. A3 made 0 calls; every other model build had its solver intercepted.
+**Optimizer calls in this package: exactly 2** (W2 reserve probe; W5P lossless probe), each separately approved, 0 retries. Previously: It was the approved W2 probe: `S0#1/S0_COST`, 0 retries. A3 made 0 calls; every other model build had its solver intercepted.
 
 ## W0: corrected shed reconciliation (`W0_*`)
 
@@ -119,3 +120,19 @@ Suite at the solved code: 272 / 0.
   - `_static_w1/`, `_fullyear_size/`, `_w4_static/`, `_w4_merged/`, `_a3_e2e/`.
 
 **Originals unchanged:** `POST_V16_A2_S0S1/*`, `next06_s0_diagnostic/`, `BYOP_NEXT_06/`, `POST_V16_A1_HEADROOM/`.
+
+## W5 / W5P: why S0 sheds where LP2 did not (`W5_LP2_VS_S0_MESH_FLOW_EXPLANATION.md`, `W5P_LOSSLESS_VERDICT.md`)
+
+**W5, read-only.** The mainline S0 is solved with `transmission_losses: 2` (inherited from `config.default.yaml` via the baseline meta). The v1.6 calibration LP1/LP2 were lossless.
+- TL35 loses 49.5 MW (12 %) and delivers 387.6 of its 461.9 MW rating; TL43 delivers 113.2 of 118.98 MW.
+- That is about 80 MW of pocket deliverability lost, more than the shortfall.
+- Ratings, reactances and topology are identical to LP2.
+- The W2 wording on TL35 was corrected (erratum in `W2_RESERVE_CAUSAL_VERDICT.md`).
+
+**W5P, 1 approved call.** The formal S0 with `transmission_losses: 0`, everything else formal (static proof `W5P_STATIC_PASS`: only the loss terms differ).
+- Optimal, acceptance PASS.
+- 2026 shed: 51,049.9 → **0** MWh. 2026–2031: 54,205.8 → 646.8 MWh (the remainder is B7 stress days 2027–29, LP2-sized).
+- Public builds about −10 GW; social cost −$3.94 B PV (−7.5 %).
+- Class **`LOSS_BASIS_CONFIRMED_MAIN_CAUSE`**.
+
+**Consequence.** The formal S0/S1 keep their record but should not be used for reliability or S1−S0 cost claims until the study runs on one loss basis. The researcher chooses that basis. The A3 manifest (`4edf7bac`) is stale after the W5P code changes; A3 remains locked.

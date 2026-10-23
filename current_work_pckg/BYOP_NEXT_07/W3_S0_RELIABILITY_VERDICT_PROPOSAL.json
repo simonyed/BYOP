@@ -1,7 +1,7 @@
 {
  "work_package": "BYOP_NEXT_07",
  "status": "PROPOSED (not written to the A3-gated S0_SCIENTIFIC_STATUS.json)",
- "S0_RELIABILITY_VERDICT_PROPOSED": "METHOD_BUG_CONFIRMED_REPAIR_REQUIRED (pending researcher confirmation; loss basis to be chosen; gated status file unchanged)",
+ "S0_RELIABILITY_VERDICT_PROPOSED": "METHOD_BUG_CONFIRMED_REPAIR_REQUIRED (calibration lossless vs scenarios lossy; pending researcher confirmation; gated status file unchanged)",
  "allowed_values": [
   "BASELINE_RELIABILITY_UNRESOLVED",
   "METHOD_BUG_CONFIRMED_REPAIR_REQUIRED",
@@ -13,9 +13,10 @@
  "method_bug_evidence": "none (W0: reporting-ratio errata only; W1: no build difference)",
  "full_year_diagnostic": "NOT_AUTHORIZED; prepared NEXT-06 config not runnable (single-period build KeyError Generator-p_nom; SHA e2daf9d3 stale)",
  "A3": "LOCKED (prerequisite unchanged)",
- "optimizer_calls": 1,
+ "optimizer_calls": 2,
  "decided_by": null,
  "W2_class": "RESERVE_REQUIREMENT_NOT_PRIMARY_IN_THIS_COUNTERFACTUAL",
- "open_question": "researcher choice of one loss basis for calibration + S0-S3; optional confirming lossless S0 probe (1 call) before the paired S0/S1 rerun",
- "W5_finding": "loss-basis mismatch: mainline S0 solved with transmission_losses=2 (inherited from config.default.yaml), v1.6 calibration LP1/LP2 lossless; TL35 loses 49.5 MW (12 %) and delivers 387.6 of 461.9 MW, TL43 delivers 113.2 of 118.98 MW -> ~80 MW pocket deliverability lost > 24 MW mean / 98 MW peak shed"
+ "open_question": "researcher: choose one loss basis (a) losses on + re-check / recalibrate v1.6, or (b) lossless study; then a separately approved paired S0/S1 rerun",
+ "W5_finding": "loss-basis mismatch: mainline S0 solved with transmission_losses=2 (inherited from config.default.yaml), v1.6 calibration LP1/LP2 lossless; TL35 loses 49.5 MW (12 %) and delivers 387.6 of 461.9 MW, TL43 delivers 113.2 of 118.98 MW -> ~80 MW pocket deliverability lost > 24 MW mean / 98 MW peak shed",
+ "W5P_lossless_probe": "CONFIRMED: formal S0 with transmission_losses 0 (1 approved S0_COST call, optimal, PASS): 2026 shed 51,049.9 -> 0 MWh, 2026-2031 54,205.8 -> 646.8 MWh (remaining = B7 stress days 2027-29, LP2-like); public builds ~-10 GW; social cost -3.94 B$ PV (-7.5 %)"
 }
