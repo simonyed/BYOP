@@ -33,13 +33,14 @@ DROP = ('run_authorization', 'approved_by', 'approved_git_sha', 'worktree not cl
 
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument('--out', required=True)
+    ap = argparse.ArgumentParser(); ap.add_argument('--out', required=True); ap.add_argument('--config', default=str(L.CFG))
     a = ap.parse_args()
     out = Path(a.out).resolve()
     if out.exists():
         shutil.rmtree(out)
     out.mkdir(parents=True)
-    raw = yaml.safe_load(L.CFG.read_text(encoding='utf-8'))
+    base_cfg = Path(a.config).resolve()
+    raw = yaml.safe_load(base_cfg.read_text(encoding='utf-8'))
     raw['post_v16']['out_dir'] = str(out / 'scratch')
     cfgp = out / 'config.byop_lossy_lp1.ZERO_SOLVER.yaml'
     cfgp.write_text(yaml.safe_dump(raw), encoding='utf-8')
@@ -50,7 +51,7 @@ def main():
         g = L.check(stage, cfg_path=cfgp)
         keep = [x for x in g['reasons'] if not x.startswith(DROP)]
         return dict(g, approved=not keep, reasons=keep, dropped_for_test=[x for x in g['reasons'] if x.startswith(DROP)])
-    rep = dict(step='NEXT-08 zero-solver lossy LP1 chain on the real v1.6 networks', real_solver_calls=0, stages={}, gate_before={s: gate(s)['reasons'] for s in L.STAGES})
+    rep = dict(step='NEXT-08 zero-solver lossy LP1 chain on the real v1.6 networks', config=str(base_cfg), tangent_reference=c.get('loss_tangent_reference', 'cap'), real_solver_calls=0, stages={}, gate_before={s: gate(s)['reasons'] for s in L.STAGES})
     for st in L.STAGES:
         q = L.run(st, 4, cfg_path=cfgp, gate_fn=gate)
         rep['stages'][st] = {k: q.get(k) for k in ('status', 'termination', 'n_vars', 'n_cons', 'r_converged', 'candidate_written', 'acceptance_pass')}
@@ -70,7 +71,7 @@ def main():
         ledger=list(lg.stage) == L.STAGES and set(lg.state) == {'DONE'},
         zero_retries=not retry['approved'] and any('already has a logged call' in x for x in retry['reasons']),
         frozen_v16_files_unchanged={k: A2G.file_shas(L.ROOT / c[k]['path'])['raw'] for k in ('baseline', 'raw_baseline')} == frozen,
-        real_ledger_untouched=not (L.WF / L.load()['out_dir'] / 'LOSSY_LP1_SOLVE_LOG.csv').exists())
+        real_ledger_untouched=not (L.WF / L.load(base_cfg)['out_dir'] / 'LOSSY_LP1_SOLVE_LOG.csv').exists())
     rep['verdict'] = 'ZERO_SOLVER_CHAIN_PASS' if all(rep['checks'].values()) else 'ZERO_SOLVER_CHAIN_FAIL'
     rep['fake_solve_calls'] = F.CALLS
     (out / 'NEXT08_ZERO_SOLVER_CHAIN.json').write_text(json.dumps(rep, indent=1, default=str), encoding='utf-8')

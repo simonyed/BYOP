@@ -1,0 +1,118 @@
+{
+ "step": "NEXT-08 lossy LP1 static build",
+ "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_lossy_lp1_v2.yaml",
+ "tangent_reference": "s_ref",
+ "solver_calls": 0,
+ "gate": {
+  "LP1_LOSSY_IT1": {
+   "approved": false,
+   "reasons": [
+    "run_authorization=NOT_APPROVED",
+    "approved_by missing",
+    "approved_git_sha missing",
+    "worktree not clean for code / config / inputs: ['workflow/byop/run/loss_basis_lp1.py', 'workflow/byop/run/run_post_v16_a2.sh', 'workflow/byop/post/next08b_loss_envelope.py', 'workflow/config/config.byop_lossy_lp1_v2.yaml']",
+    "manifest missing: current_work_pckg/BYOP_NEXT_08B_LP1_TANGENT_FIX/LOSSY_LP1_V2_PRE_RUN_MANIFEST.json"
+   ],
+   "head": "36790ae3318877089a88f119f0b87784e314566b",
+   "approved_git_sha": null,
+   "stage": "LP1_LOSSY_IT1"
+  },
+  "LP1_LOSSY_IT2": {
+   "approved": false,
+   "reasons": [
+    "run_authorization=NOT_APPROVED",
+    "approved_by missing",
+    "approved_git_sha missing",
+    "worktree not clean for code / config / inputs: ['workflow/byop/run/loss_basis_lp1.py', 'workflow/byop/run/run_post_v16_a2.sh', 'workflow/byop/post/next08b_loss_envelope.py', 'workflow/config/config.byop_lossy_lp1_v2.yaml']",
+    "manifest missing: current_work_pckg/BYOP_NEXT_08B_LP1_TANGENT_FIX/LOSSY_LP1_V2_PRE_RUN_MANIFEST.json",
+    "LP1_LOSSY_IT2 only after an optimal LP1_LOSSY_IT1 that is NOT r-converged"
+   ],
+   "head": "36790ae3318877089a88f119f0b87784e314566b",
+   "approved_git_sha": null,
+   "stage": "LP1_LOSSY_IT2"
+  },
+  "LP2_LOSSY_CANDIDATE": {
+   "approved": false,
+   "reasons": [
+    "run_authorization=NOT_APPROVED",
+    "approved_by missing",
+    "approved_git_sha missing",
+    "worktree not clean for code / config / inputs: ['workflow/byop/run/loss_basis_lp1.py', 'workflow/byop/run/run_post_v16_a2.sh', 'workflow/byop/post/next08b_loss_envelope.py', 'workflow/config/config.byop_lossy_lp1_v2.yaml']",
+    "manifest missing: current_work_pckg/BYOP_NEXT_08B_LP1_TANGENT_FIX/LOSSY_LP1_V2_PRE_RUN_MANIFEST.json",
+    "LP2_LOSSY_CANDIDATE only after an optimal, r-converged LP1 whose expansion guards all pass",
+    "candidate network baseline_2025_tamu_lossy_candidate.nc missing"
+   ],
+   "head": "36790ae3318877089a88f119f0b87784e314566b",
+   "approved_git_sha": null,
+   "stage": "LP2_LOSSY_CANDIDATE"
+  }
+ },
+ "LP1_LOSSY_IT1": {
+  "n_vars": 2093803,
+  "n_cons": 6902966,
+  "has_line_loss": true,
+  "has_line_s_nom": true,
+  "loss_rows": [
+   "Line-loss_tangents-1--1",
+   "Line-loss_tangents-1-1",
+   "Line-loss_tangents-2--1",
+   "Line-loss_tangents-2-1",
+   "Line-loss_upper"
+  ],
+  "lines": 162,
+  "all_lines_extendable": true,
+  "s_nom_max_finite": true,
+  "cap_over_v16_prepared": 2.0,
+  "s_nom_min_equals_raw": true,
+  "capital_cost_unique": [
+   2000000.0
+  ],
+  "x_equals_raw": true,
+  "r_scaled_lines": 18,
+  "r_sum_ohm": 1680.474292335671,
+  "generators": 264,
+  "shed_units": 63,
+  "storage_units": 43,
+  "snapshots": 2920,
+  "committable": 0,
+  "tangent_reference": "s_ref",
+  "tangent_rows_vs_reference": {
+   "1-": {
+    "offset_max_abs_dev": 7.105427357601002e-15,
+    "slope_max_abs_dev": 0.0
+   },
+   "1+": {
+    "offset_max_abs_dev": 7.105427357601002e-15,
+    "slope_max_abs_dev": 0.0
+   },
+   "2-": {
+    "offset_max_abs_dev": 2.842170943040401e-14,
+    "slope_max_abs_dev": 0.0
+   },
+   "2+": {
+    "offset_max_abs_dev": 2.842170943040401e-14,
+    "slope_max_abs_dev": 0.0
+   }
+  },
+  "tangent_rows_match": true,
+  "capacity_row_rhs_equals_cap": true
+ },
+ "candidate_from_v16_capacities": {
+  "r_sum_ohm": 1680.474292335671,
+  "s_nom_sum": 282879.1893143179,
+  "x_equals_raw": true
+ },
+ "checks": {
+  "loss_terms": true,
+  "capacity_variables": true,
+  "finite_caps": true,
+  "cap_factor_respected": true,
+  "lp1_like_v16": true,
+  "x_unchanged": true,
+  "r_scaled_on_v16_uplifted_lines": true,
+  "no_committable": true,
+  "tangent_rows_match_reference": true,
+  "capacity_row_is_guard_cap": true,
+  "no_solver_called": true
+ }
+}

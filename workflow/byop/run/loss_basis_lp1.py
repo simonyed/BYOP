@@ -156,6 +156,46 @@ def candidate_network(raw_nc, s_final):
     return n
 
 
+def apply_reference_tangents(n, s_ref, cap):
+    """NEXT-08b: PyPSA places the two loss tangents at 1/2 and 1 x s_max_pu x s_nom_max of each line. The model is created with
+    s_nom_max = s_ref (the iteration's reference capacity), so the tangents are exactly the ones a fixed-capacity LP2 / S0-S3 model
+    of that capacity uses; afterwards the capacity row (Line-ext-s_nom-upper) and the loss upper bound (Line-loss_upper) are reset
+    to the guard cap, so the feasible capacity range is unchanged. Purely parameter changes of existing rows: the model stays an LP
+    with the same size. Returns the per-line reference used."""
+    m = n.model
+    up = m.constraints['Line-ext-s_nom-upper']
+    names = list(up.rhs.coords['name'].values)
+    up.update(rhs=up.rhs.copy(data=np.asarray(cap.reindex(names).values, dtype=float)))
+    import xarray as xr
+    lu = m.constraints['Line-loss_upper']
+    lnames = list(lu.rhs.coords['name'].values)
+    scale = ((cap.reindex(lnames) / s_ref.reindex(lnames)) ** 2).values
+    lu.update(rhs=lu.rhs * xr.DataArray(scale, coords={'name': lnames}, dims='name'))   # r (s_max_pu cap)^2 = r (s_max_pu s_ref)^2 x scale
+    n.lines['s_nom_max'] = cap.reindex(n.lines.index)
+    return s_ref.reindex(names)
+
+
+def tangent_rows_vs_reference(n, s_ref, segments=2):
+    """static proof: every Line-loss_tangents row of the built model has slope 2 r_pu p_k and offset -r_pu p_k^2 with
+    p_k = k / segments x s_max_pu x s_ref (the fixed-capacity LP2 / S0-S3 rows of that capacity); returns max abs deviations"""
+    m = n.model
+    r_pu = n.lines.r / n.buses.v_nom.reindex(n.lines.bus0).values ** 2
+    slabels = np.asarray(m.variables['Line-s'].labels.values).ravel()
+    out = {}
+    for k in range(1, segments + 1):
+        for sign in (-1, 1):
+            c = m.constraints[f'Line-loss_tangents-{k}-{sign}']
+            names = list(c.rhs.coords['name'].values)
+            pk = k / segments * n.lines.s_max_pu.reindex(names).values * s_ref.reindex(names).values
+            rp = r_pu.reindex(names).values
+            rhs = np.asarray(c.rhs.transpose(..., 'name').values, dtype=float)
+            v = np.asarray(c.vars.transpose(..., 'name', '_term').values); co = np.asarray(c.coeffs.transpose(..., 'name', '_term').values, dtype=float)
+            slope = np.where(np.isin(v, slabels), co, 0.0).sum(axis=-1)
+            out[f'{k}{"+" if sign > 0 else "-"}'] = dict(offset_max_abs_dev=float(np.nanmax(np.abs(rhs - (-rp * pk ** 2)))),
+                                                         slope_max_abs_dev=float(np.nanmax(np.abs(slope - sign * 2 * rp * pk))))
+    return out
+
+
 def build_lp1(stage, c):
     v, raw_nc, prep_nc = v16_files()
     import pypsa
@@ -164,9 +204,24 @@ def build_lp1(stage, c):
         s_ref = s_prep.copy()
     else:
         s_ref = pd.read_csv(out_dir(c) / 'LP1_LOSSY_IT1' / 'LP1_LINE_SOLUTION.csv', index_col=0).s_nom_opt
+    n, info = build_lp1_from(raw_nc, s_prep, s_ref, c)
+    return n, dict(info, raw_nc=raw_nc), v
+
+
+def build_lp1_from(raw_nc, s_prep, s_ref, c):
+    """the LP1 model from explicit inputs (used by build_lp1 and by the static tests on small networks)"""
     n, info = prepare_lp1(raw_nc, s_ref, float(c['cap_factor']), s_prep)
-    n.optimize.create_model(transmission_losses=int(c['transmission_losses']))
-    return n, dict(info, s_ref=s_ref, s_prep=s_prep, raw_nc=raw_nc), v
+    tangent_ref = c.get('loss_tangent_reference', 'cap')          # v1 (NEXT-08): 'cap'; v2 (NEXT-08b): 's_ref'
+    if tangent_ref == 's_ref':
+        cap = n.lines.s_nom_max.copy()
+        n.lines['s_nom_max'] = s_ref.reindex(n.lines.index)
+        n.optimize.create_model(transmission_losses=int(c['transmission_losses']))
+        apply_reference_tangents(n, s_ref.reindex(n.lines.index), cap)
+    elif tangent_ref == 'cap':
+        n.optimize.create_model(transmission_losses=int(c['transmission_losses']))
+    else:
+        raise ValueError(f'loss_tangent_reference {tangent_ref!r} not in (cap, s_ref)')
+    return n, dict(info, s_ref=s_ref, s_prep=s_prep, tangent_reference=tangent_ref)
 
 
 def build_lp2(stage, c):
@@ -254,12 +309,13 @@ def postprocess_lp1(n, info, v, c, stage, st, term, sec, g, threads, od):
 
 
 # ------------------------------------------------------------------------------------------------ static build
-def build_only(threads):
+def build_only(threads, cfg_path=CFG):
     import linopy
     calls = []
     linopy.Model.solve = lambda *a, **k: calls.append(1) or (_ for _ in ()).throw(RuntimeError('no solver in --build'))
-    c = load()
-    rep = dict(step='NEXT-08 lossy LP1 static build', solver_calls=0, gate={s: check(s) for s in STAGES})
+    c = load(cfg_path)
+    rep = dict(step='NEXT-08 lossy LP1 static build', config=str(cfg_path), tangent_reference=c.get('loss_tangent_reference', 'cap'),
+               solver_calls=0, gate={s: check(s, cfg_path) for s in STAGES})
     n, info, v = build_lp1('LP1_LOSSY_IT1', c)
     m = n.model
     L = n.lines
@@ -274,6 +330,13 @@ def build_only(threads):
     import pypsa
     raw = pypsa.Network(str(info['raw_nc']))
     rep['LP1_LOSSY_IT1']['x_equals_raw'] = bool(np.array_equal(L.x.values, raw.lines.x.reindex(L.index).values))
+    tref = info['s_ref'] if info.get('tangent_reference') == 's_ref' else L.s_nom_max
+    dev = tangent_rows_vs_reference(n, tref.reindex(L.index))
+    m_ = n.model
+    cap_rhs = np.asarray(m_.constraints['Line-ext-s_nom-upper'].rhs.values, dtype=float)
+    rep['LP1_LOSSY_IT1'].update(tangent_reference=info.get('tangent_reference'), tangent_rows_vs_reference=dev,
+                                tangent_rows_match=all(d['offset_max_abs_dev'] < 1e-9 and d['slope_max_abs_dev'] < 1e-12 for d in dev.values()),
+                                capacity_row_rhs_equals_cap=bool(np.allclose(cap_rhs, L.s_nom_max.reindex(list(m_.constraints['Line-ext-s_nom-upper'].rhs.coords['name'].values)).values)))
     del n
     cand = candidate_network(info['raw_nc'], info['s_prep'])           # the v1.6 capacities as a stand-in LP1 solution (no file written)
     rep['candidate_from_v16_capacities'] = dict(r_sum_ohm=float(cand.lines.r.sum()), s_nom_sum=float(cand.lines.s_nom.sum()),
@@ -283,6 +346,7 @@ def build_only(threads):
                          finite_caps=a['s_nom_max_finite'], cap_factor_respected=abs(a['cap_over_v16_prepared'] - float(c['cap_factor'])) < 1e-9,
                          lp1_like_v16=a['all_lines_extendable'] and a['s_nom_min_equals_raw'] and a['capital_cost_unique'] == [UPLIFT_COST],
                          x_unchanged=a['x_equals_raw'], r_scaled_on_v16_uplifted_lines=a['r_scaled_lines'] == 18, no_committable=a['committable'] == 0,
+                         tangent_rows_match_reference=a['tangent_rows_match'], capacity_row_is_guard_cap=a['capacity_row_rhs_equals_cap'],
                          no_solver_called=not calls)
     od = out_dir(c); od.mkdir(parents=True, exist_ok=True)
     (od / 'LOSSY_LP1_BUILD.json').write_text(json.dumps(rep, indent=1, default=str), encoding='utf-8')
@@ -293,11 +357,13 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--build', action='store_true'); ap.add_argument('--stage', choices=STAGES)
     ap.add_argument('--threads', type=int, default=int(os.environ.get('THREADS', 20)))
+    ap.add_argument('--config', default=str(CFG), help='gate config (default: the NEXT-08 v1 config; NEXT-08b: config.byop_lossy_lp1_v2.yaml)')
     a = ap.parse_args()
+    cfgp = Path(a.config).resolve()
     if a.build:
-        build_only(a.threads)
+        build_only(a.threads, cfgp)
     elif a.stage:
-        run(a.stage, a.threads)
+        run(a.stage, a.threads, cfg_path=cfgp)
     else:
         ap.error('--build or --stage')
 

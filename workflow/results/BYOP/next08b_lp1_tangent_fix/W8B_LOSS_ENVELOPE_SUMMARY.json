@@ -1,0 +1,450 @@
+{
+ "step": "NEXT-08b loss-envelope comparison (read-only)",
+ "optimizer_calls": 0,
+ "flows": "LP2 candidate solution, s = p0 - loss/2, 2,920 x 3 h",
+ "validation": {
+  "LP2_envelope_at_own_flows_MWh": 5057964.548520293,
+  "LP2_loss_solution_MWh": 5320763.484,
+  "rel_diff": 0.04939120791028701
+ },
+ "totals_MWh": {
+  "LP2_solution": 5320763.484,
+  "LP2_MWh": 5057964.548520293,
+  "A_MWh": 3222707.8306666454,
+  "B_MWh": 5063793.793980408,
+  "C_MWh": 5045019.177323292,
+  "A_rfinal_MWh": 3233241.201425142,
+  "B_rfinal_MWh": 5075125.417828926,
+  "C_rfinal_MWh": 5056117.545971882,
+  "LP2_rused_MWh": 5046841.429900598
+ },
+ "ratios_to_LP2": {
+  "A": 0.6371550847681303,
+  "B": 1.0011524883980891,
+  "C": 0.9974405966920452,
+  "A_rfinal": 0.6392376163195976,
+  "B_rfinal": 1.0033928409628046,
+  "C_rfinal": 0.9996348328402278,
+  "r_effect": 0.9978008705847989
+ },
+ "lines_with_LP2_loss_over_1GWh": 117,
+ "A": {
+  "lines_under_5pct": 109,
+  "worst": [
+   {
+    "line": "TL101",
+    "A_over_LP2": 0.0,
+    "loss_LP2_MWh": 36681.2801
+   },
+   {
+    "line": "TL30",
+    "A_over_LP2": 0.0,
+    "loss_LP2_MWh": 15994.2007
+   },
+   {
+    "line": "TL5",
+    "A_over_LP2": 0.0,
+    "loss_LP2_MWh": 11448.7696
+   },
+   {
+    "line": "TL105",
+    "A_over_LP2": 0.0,
+    "loss_LP2_MWh": 7662.4067
+   },
+   {
+    "line": "TL45",
+    "A_over_LP2": 0.0,
+    "loss_LP2_MWh": 5230.7391
+   }
+  ],
+  "loss_weighted": 0.6388179207333914
+ },
+ "B": {
+  "lines_under_5pct": 0,
+  "worst": [
+   {
+    "line": "TL26",
+    "B_over_LP2": 0.9637,
+    "loss_LP2_MWh": 9477.9526
+   },
+   {
+    "line": "TL69",
+    "B_over_LP2": 0.9917,
+    "loss_LP2_MWh": 41727.0933
+   },
+   {
+    "line": "TL68",
+    "B_over_LP2": 0.9953,
+    "loss_LP2_MWh": 18230.7627
+   },
+   {
+    "line": "TL36",
+    "B_over_LP2": 0.9959,
+    "loss_LP2_MWh": 7163.9403
+   },
+   {
+    "line": "TL3",
+    "B_over_LP2": 0.9963,
+    "loss_LP2_MWh": 50533.8942
+   }
+  ],
+  "loss_weighted": 1.0011555924663371
+ },
+ "C": {
+  "lines_under_5pct": 0,
+  "worst": [
+   {
+    "line": "TL69",
+    "C_over_LP2": 0.9763,
+    "loss_LP2_MWh": 41727.0933
+   },
+   {
+    "line": "TL13",
+    "C_over_LP2": 0.9797,
+    "loss_LP2_MWh": 297317.3514
+   },
+   {
+    "line": "TL68",
+    "C_over_LP2": 0.9817,
+    "loss_LP2_MWh": 18230.7627
+   },
+   {
+    "line": "TL12",
+    "C_over_LP2": 0.9834,
+    "loss_LP2_MWh": 159732.0689
+   },
+   {
+    "line": "TL41",
+    "C_over_LP2": 0.9892,
+    "loss_LP2_MWh": 15875.0732
+   }
+  ],
+  "loss_weighted": 0.9974337032928967
+ },
+ "pointwise_worst_0p3_1": {
+  "A": 1.0,
+  "B": 0.9034765243025125,
+  "C": 0.08626679532202064
+ },
+ "r_used_over_final": {
+  "min": 0.9794178493009398,
+  "max": 1.0027363437255734
+ },
+ "focus_lines": [
+  {
+   "line": "TL12",
+   "bus0": "p600 1",
+   "bus1": "p620 2",
+   "rating_MW": 278.822,
+   "flow_share_p50": 0.847,
+   "flow_share_p90": 0.915,
+   "flow_share_max": 0.915,
+   "loss_LP2_MWh": 159732.069,
+   "A_over_LP2": 0.982,
+   "B_over_LP2": 1.002,
+   "C_over_LP2": 0.983,
+   "r_used_over_final": 0.986,
+   "worst_pointwise_under_B_0p3_1": 0.047
+  },
+  {
+   "line": "TL42",
+   "bus0": "p620 2",
+   "bus1": "p620 5",
+   "rating_MW": 297.138,
+   "flow_share_p50": 0.542,
+   "flow_share_p90": 0.786,
+   "flow_share_max": 0.954,
+   "loss_LP2_MWh": 41717.979,
+   "A_over_LP2": 0.718,
+   "B_over_LP2": 1.003,
+   "C_over_LP2": 0.99,
+   "r_used_over_final": 0.991,
+   "worst_pointwise_under_B_0p3_1": 0.039
+  },
+  {
+   "line": "TL6",
+   "bus0": "p600 0",
+   "bus1": "p610 1",
+   "rating_MW": 683.786,
+   "flow_share_p50": 0.361,
+   "flow_share_p90": 0.549,
+   "flow_share_max": 0.705,
+   "loss_LP2_MWh": 36562.12,
+   "A_over_LP2": 0.173,
+   "B_over_LP2": 1.0,
+   "C_over_LP2": 1.0,
+   "r_used_over_final": 1.0,
+   "worst_pointwise_under_B_0p3_1": 0.0
+  },
+  {
+   "line": "TL29",
+   "bus0": "p610 2",
+   "bus1": "p630 2",
+   "rating_MW": 574.236,
+   "flow_share_p50": 0.256,
+   "flow_share_p90": 0.498,
+   "flow_share_max": 0.651,
+   "loss_LP2_MWh": 36373.737,
+   "A_over_LP2": 0.142,
+   "B_over_LP2": 1.0,
+   "C_over_LP2": 1.0,
+   "r_used_over_final": 1.0,
+   "worst_pointwise_under_B_0p3_1": 0.0
+  },
+  {
+   "line": "TL14",
+   "bus0": "p600 2",
+   "bus1": "p620 2",
+   "rating_MW": 310.74,
+   "flow_share_p50": 0.444,
+   "flow_share_p90": 0.969,
+   "flow_share_max": 0.969,
+   "loss_LP2_MWh": 27207.379,
+   "A_over_LP2": 0.728,
+   "B_over_LP2": 1.0,
+   "C_over_LP2": 1.0,
+   "r_used_over_final": 1.0,
+   "worst_pointwise_under_B_0p3_1": 0.0
+  },
+  {
+   "line": "TL48",
+   "bus0": "p630 0",
+   "bus1": "p630 2",
+   "rating_MW": 961.1,
+   "flow_share_p50": 0.25,
+   "flow_share_p90": 0.401,
+   "flow_share_max": 0.707,
+   "loss_LP2_MWh": 22056.684,
+   "A_over_LP2": 0.058,
+   "B_over_LP2": 1.0,
+   "C_over_LP2": 1.0,
+   "r_used_over_final": 1.0,
+   "worst_pointwise_under_B_0p3_1": 0.0
+  },
+  {
+   "line": "TL72",
+   "bus0": "p630 2",
+   "bus1": "p630 4",
+   "rating_MW": 366.8,
+   "flow_share_p50": 0.273,
+   "flow_share_p90": 0.543,
+   "flow_share_max": 0.837,
+   "loss_LP2_MWh": 19998.213,
+   "A_over_LP2": 0.299,
+   "B_over_LP2": 1.0,
+   "C_over_LP2": 1.0,
+   "r_used_over_final": 1.0,
+   "worst_pointwise_under_B_0p3_1": 0.0
+  },
+  {
+   "line": "TL63",
+   "bus0": "p630 12",
+   "bus1": "p630 2",
+   "rating_MW": 375.393,
+   "flow_share_p50": 0.616,
+   "flow_share_p90": 0.92,
+   "flow_share_max": 0.985,
+   "loss_LP2_MWh": 19521.022,
+   "A_over_LP2": 0.83,
+   "B_over_LP2": 1.003,
+   "C_over_LP2": 1.0,
+   "r_used_over_final": 1.0,
+   "worst_pointwise_under_B_0p3_1": 0.006
+  },
+  {
+   "line": "TL28",
+   "bus0": "p610 1",
+   "bus1": "p640 5",
+   "rating_MW": 864.433,
+   "flow_share_p50": 0.162,
+   "flow_share_p90": 0.34,
+   "flow_share_max": 0.583,
+   "loss_LP2_MWh": 19273.393,
+   "A_over_LP2": 0.011,
+   "B_over_LP2": 1.0,
+   "C_over_LP2": 1.0,
+   "r_used_over_final": 1.0,
+   "worst_pointwise_under_B_0p3_1": 0.0
+  },
+  {
+   "line": "TL27",
+   "bus0": "p610 1",
+   "bus1": "p630 13",
+   "rating_MW": 340.881,
+   "flow_share_p50": 0.254,
+   "flow_share_p90": 0.438,
+   "flow_share_max": 0.573,
+   "loss_LP2_MWh": 17203.713,
+   "A_over_LP2": 0.009,
+   "B_over_LP2": 1.0,
+   "C_over_LP2": 1.0,
+   "r_used_over_final": 1.0,
+   "worst_pointwise_under_B_0p3_1": 0.0
+  },
+  {
+   "line": "TL41",
+   "bus0": "p620 2",
+   "bus1": "p620 3",
+   "rating_MW": 270.48,
+   "flow_share_p50": 0.338,
+   "flow_share_p90": 0.708,
+   "flow_share_max": 0.963,
+   "loss_LP2_MWh": 15875.073,
+   "A_over_LP2": 0.646,
+   "B_over_LP2": 1.01,
+   "C_over_LP2": 0.989,
+   "r_used_over_final": 0.991,
+   "worst_pointwise_under_B_0p3_1": 0.033
+  },
+  {
+   "line": "TL73",
+   "bus0": "p630 2",
+   "bus1": "p630 5",
+   "rating_MW": 956.406,
+   "flow_share_p50": 0.09,
+   "flow_share_p90": 0.396,
+   "flow_share_max": 0.958,
+   "loss_LP2_MWh": 15180.801,
+   "A_over_LP2": 0.657,
+   "B_over_LP2": 1.03,
+   "C_over_LP2": 0.992,
+   "r_used_over_final": 0.994,
+   "worst_pointwise_under_B_0p3_1": 0.036
+  },
+  {
+   "line": "TL23",
+   "bus0": "p610 0",
+   "bus1": "p630 14",
+   "rating_MW": 224.204,
+   "flow_share_p50": 0.12,
+   "flow_share_p90": 0.353,
+   "flow_share_max": 0.631,
+   "loss_LP2_MWh": 9935.912,
+   "A_over_LP2": 0.155,
+   "B_over_LP2": 1.0,
+   "C_over_LP2": 1.0,
+   "r_used_over_final": 1.0,
+   "worst_pointwise_under_B_0p3_1": 0.0
+  },
+  {
+   "line": "TL26",
+   "bus0": "p610 1",
+   "bus1": "p610 2",
+   "rating_MW": 85.961,
+   "flow_share_p50": 0.686,
+   "flow_share_p90": 0.974,
+   "flow_share_max": 0.974,
+   "loss_LP2_MWh": 9477.953,
+   "A_over_LP2": 0.784,
+   "B_over_LP2": 0.964,
+   "C_over_LP2": 1.001,
+   "r_used_over_final": 1.001,
+   "worst_pointwise_under_B_0p3_1": 0.903
+  },
+  {
+   "line": "TL67",
+   "bus0": "p630 13",
+   "bus1": "p630 14",
+   "rating_MW": 73.467,
+   "flow_share_p50": 0.292,
+   "flow_share_p90": 0.736,
+   "flow_share_max": 0.97,
+   "loss_LP2_MWh": 3463.824,
+   "A_over_LP2": 0.73,
+   "B_over_LP2": 1.014,
+   "C_over_LP2": 0.994,
+   "r_used_over_final": 0.995,
+   "worst_pointwise_under_B_0p3_1": 0.032
+  },
+  {
+   "line": "TL75",
+   "bus0": "p630 2",
+   "bus1": "p630 7",
+   "rating_MW": 1181.6,
+   "flow_share_p50": 0.144,
+   "flow_share_p90": 0.263,
+   "flow_share_max": 0.452,
+   "loss_LP2_MWh": 2580.73,
+   "A_over_LP2": 0.0,
+   "B_over_LP2": 1.0,
+   "C_over_LP2": 1.0,
+   "r_used_over_final": 1.0,
+   "worst_pointwise_under_B_0p3_1": 0.0
+  },
+  {
+   "line": "TL76",
+   "bus0": "p630 2",
+   "bus1": "p630 8",
+   "rating_MW": 654.5,
+   "flow_share_p50": 0.157,
+   "flow_share_p90": 0.284,
+   "flow_share_max": 0.528,
+   "loss_LP2_MWh": 1849.109,
+   "A_over_LP2": 0.002,
+   "B_over_LP2": 1.0,
+   "C_over_LP2": 1.0,
+   "r_used_over_final": 1.0,
+   "worst_pointwise_under_B_0p3_1": 0.0
+  },
+  {
+   "line": "TL71",
+   "bus0": "p630 2",
+   "bus1": "p630 3",
+   "rating_MW": 523.6,
+   "flow_share_p50": 0.175,
+   "flow_share_p90": 0.274,
+   "flow_share_max": 0.474,
+   "loss_LP2_MWh": 1748.926,
+   "A_over_LP2": 0.0,
+   "B_over_LP2": 1.0,
+   "C_over_LP2": 1.0,
+   "r_used_over_final": 1.0,
+   "worst_pointwise_under_B_0p3_1": 0.0
+  },
+  {
+   "line": "TL17",
+   "bus0": "p600 4",
+   "bus1": "p610 1",
+   "rating_MW": 288.761,
+   "flow_share_p50": 0.188,
+   "flow_share_p90": 0.278,
+   "flow_share_max": 0.289,
+   "loss_LP2_MWh": 884.542,
+   "A_over_LP2": 0.0,
+   "B_over_LP2": 1.0,
+   "C_over_LP2": 1.0,
+   "r_used_over_final": 1.0,
+   "worst_pointwise_under_B_0p3_1": 0.0
+  },
+  {
+   "line": "TL57",
+   "bus0": "p630 10",
+   "bus1": "p630 2",
+   "rating_MW": 130.9,
+   "flow_share_p50": 0.177,
+   "flow_share_p90": 0.273,
+   "flow_share_max": 0.42,
+   "loss_LP2_MWh": 479.372,
+   "A_over_LP2": 0.0,
+   "B_over_LP2": 1.0,
+   "C_over_LP2": 1.0,
+   "r_used_over_final": 1.0,
+   "worst_pointwise_under_B_0p3_1": 0.0
+  },
+  {
+   "line": "TL74",
+   "bus0": "p630 2",
+   "bus1": "p630 6",
+   "rating_MW": 347.9,
+   "flow_share_p50": 0.087,
+   "flow_share_p90": 0.181,
+   "flow_share_max": 0.469,
+   "loss_LP2_MWh": 114.539,
+   "A_over_LP2": 0.0,
+   "B_over_LP2": 1.0,
+   "C_over_LP2": 1.0,
+   "r_used_over_final": 1.0,
+   "worst_pointwise_under_B_0p3_1": 0.0
+  }
+ ]
+}
