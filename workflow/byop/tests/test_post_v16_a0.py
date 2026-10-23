@@ -35,7 +35,7 @@ def eol_layers(p):
 
 def pinned_text_ok(p, pinned):
     e = eol_layers(p)
-    return not e['lone_cr'] and pinned in (e['raw'], e['lf'], e['crlf'])
+    return pinned == e['raw'] or (not e['lone_cr'] and pinned in (e['lf'], e['crlf']))     # exact bytes, or the same text in the other EOL
 need_base = pytest.mark.skipif(not BP.BASE_TAMU_V16.exists(), reason='v1.6 baseline .nc only on L2')
 FORBIDDEN = ('--calibrate', '--erm-cal', '--s0-calibrate', '--s0-cal-file')
 
@@ -478,7 +478,9 @@ def test_rearch_post_v16_refuses_legacy_flags(tmp_path):
     r = subprocess.run([sys.executable, '-W', 'ignore', str(BY / 'model/rearch_mech.py'), '--mainline', '--post-v16', '--case-id', 't',
                         '--config', c['mainline_config'], '--out', str(WF / c['out_dir']), '--base', base, '--scenarios', 'S0', 'S1_EARLIEST'],
                        cwd=str(WF), capture_output=True, text=True)
-    assert r.returncode == 3 and 'run_authorization=NOT_APPROVED' in r.stdout and 'approved_by missing' in r.stdout
+    assert r.returncode == 3
+    if BP.BASE_TAMU_V16.exists():          # with the v1.6 base present the refusal comes from the A2 approval fields
+        assert 'run_authorization=NOT_APPROVED' in r.stdout and 'approved_by missing' in r.stdout
     assert not (WF / c['out_dir'] / 'A2_SOLVE_LOG.csv').exists()          # refused before any ledger row / build
     r = subprocess.run([sys.executable, '-W', 'ignore', str(BY / 'model/rearch_mech.py'), '--post-v16', '--case-id', 't', '--out', str(tmp_path),
                         '--base', str(BP.BASE_TAMU_DIR / 'baseline_2025_tamu_prepared.nc')], cwd=str(WF), capture_output=True, text=True)
