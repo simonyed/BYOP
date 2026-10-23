@@ -1,0 +1,38 @@
+{
+ "work_package": "BYOP-POST-V16-NEXT-03 A2-FIX-09",
+ "status": "PLAN (no call made; A2 NOT_APPROVED)",
+ "budgets": {
+  "max_scenario_attempts": 2,
+  "max_top_level_optimizer_calls": 3,
+  "max_retries": 0,
+  "note": "the NEXT-02 'max_lp_calls: 2' counted scenario attempts; it is replaced and must not be presented as two optimizer calls"
+ },
+ "scenario_attempts": [
+  {
+   "stage": "S0",
+   "parent_ledger": "results/BYOP/post_v16_a2/POST_V16_A2_S0S1/A2_SOLVE_LOG.csv",
+   "children": [
+    {"kind": "S0_COST", "entry": "PyPSA solve_network -> n.optimize -> linopy.Model.solve (controlled entry rearch_mech._arm_post_v16_optimizer_lock)", "objectives": 1}
+   ]
+  },
+  {
+   "stage": "S1_EARLIEST",
+   "requires": "S0 parent DONE / ok / optimal / pass + S0_RESULT.json acceptance PASS + S0_NO_HARM_REFERENCE.csv with the SHA recorded in S0_RESULT.json",
+   "children": [
+    {"kind": "S1_SPEED_HIERARCHY", "entry": "rearch_mech.lex_presolve: gurobipy Model.optimize (explicit A2G.child_start / child_finish in the code; gurobipy is not monkey-patched)", "objectives": "one A1 level per year + one A2 fair-share level per year with >= 2 eligible sites (counted at run time, logged as n_objectives); Gurobi's internal passes are audit metadata"},
+    {"kind": "S1_COST", "entry": "PyPSA solve_network -> linopy.Model.solve (controlled entry)", "objectives": 1, "post_check": "every A1 level of S1_SPEED_HIERARCHY still holds in the cost-stage solution (speed_levels_hold)"}
+   ]
+  }
+ ],
+ "child_ledger": "results/BYOP/post_v16_a2/POST_V16_A2_S0S1/A2_OPTIMIZER_CALL_LOG.csv",
+ "child_columns": ["call_id", "parent_attempt_id", "stage", "kind", "state", "started_utc", "finished_utc", "status", "termination", "n_vars", "n_cons", "n_objectives", "seconds", "note"],
+ "refusals": [
+  "optimizer call outside an armed, STARTED parent attempt",
+  "kind not in the stage's plan (e.g. any S2 developer solve, iterative re-solve, attribution run)",
+  "same kind twice for one parent (zero retries)",
+  "top-level budget (3) used",
+  "unreadable / malformed parent or child ledger",
+  "linopy.Model.solve outside post_v16_solve_wrapper"
+ ],
+ "parent_failure_rule": "an exception in any child marks that child ERROR and the parent ERROR; a parent whose children are not exactly the planned kinds, each DONE / ok / optimal, fails acceptance; no row is ever deleted or rewritten except its own state fields"
+}

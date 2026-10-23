@@ -1,0 +1,74 @@
+{
+ "stage": "NEXT-03 A2-FIX-09 forced-failure injection",
+ "solver_calls": 0,
+ "formal_ledgers_touched": false,
+ "note": "every injected solve is a fake function; ledgers written only to pytest tmp directories; formal results/BYOP/post_v16_a2/ does not exist",
+ "cases": [
+  {
+   "case": "hierarchical pre-solve fails",
+   "expected": "child S1_SPEED_HIERARCHY ERROR, parent ERROR, exception re-raised",
+   "test": "test_injection_hierarchy_failure_marks_child_and_parent_error",
+   "result": "PASS"
+  },
+  {
+   "case": "hierarchy OK, cost stage fails",
+   "expected": "hierarchy DONE, S1_COST ERROR, parent ERROR",
+   "test": "test_injection_cost_failure_after_hierarchy_success",
+   "result": "PASS"
+  },
+  {
+   "case": "solve returns optimal with no logged optimizer call",
+   "expected": "acceptance FAIL, parent pass=False, STOP",
+   "test": "test_injection_missing_child_call_fails_acceptance",
+   "result": "PASS"
+  },
+  {
+   "case": "crash after parent STARTED, then second command",
+   "expected": "gate refuses (zero retries), row kept",
+   "test": "test_injection_crash_second_run_corrupt_ledger_and_skipping_s0",
+   "result": "PASS"
+  },
+  {
+   "case": "corrupt parent / child ledger",
+   "expected": "gate refuses, files kept",
+   "test": "same",
+   "result": "PASS"
+  },
+  {
+   "case": "S1 without PASSED S0",
+   "expected": "gate refuses",
+   "test": "same",
+   "result": "PASS"
+  },
+  {
+   "case": "child outside parent / unplanned kind / repeated kind",
+   "expected": "SystemExit before any call",
+   "test": "test_child_calls_need_a_started_parent_and_the_plan",
+   "result": "PASS"
+  },
+  {
+   "case": "4th top-level call",
+   "expected": "gate refuses (budget 3)",
+   "test": "test_top_level_budget",
+   "result": "PASS"
+  },
+  {
+   "case": "linopy solve outside wrapper",
+   "expected": "SystemExit; gurobipy_locked reported False",
+   "test": "test_linopy_lock_refuses_outside_wrapper",
+   "result": "PASS"
+  },
+  {
+   "case": "tampered / mismatched S0 no-harm reference",
+   "expected": "SHA / unit / snapshot checks FAIL",
+   "test": "test_no_harm_reference_is_strict",
+   "result": "PASS"
+  },
+  {
+   "case": "well-formed A2 command while NOT_APPROVED",
+   "expected": "exit 3 before any ledger row",
+   "test": "test_post_v16_a0::test_rearch_post_v16_refuses_legacy_flags",
+   "result": "PASS"
+  }
+ ]
+}

@@ -1,0 +1,148 @@
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.optimization.window:Building the multi-period model over a MultiIndex `snapshot`. Opt into the flat representation via `pypsa.options.optimization.model_snapshot_index = 'flat'`.
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+{
+ "git": {
+  "head": "303eb35be204a37a9f3d11d5f8037235dba38410",
+  "approvable": "802c9d9414514641fd2b088b45ec7ea945be18a4",
+  "approvable_is_ancestor": true,
+  "changed_since_approvable_gated": [],
+  "changed_since_approvable_all": [
+   ".gitignore",
+   "current_work_pckg/A1_EXECUTION_REPORT.md",
+   "current_work_pckg/A1_FINAL_APPROVAL_REQUEST.md",
+   "current_work_pckg/A1_FINAL_RECHECK.json",
+   "current_work_pckg/A1_PREAPPROVAL_CHECK.md",
+   "current_work_pckg/A1_PREAPPROVAL_GATE.json",
+   "current_work_pckg/A2_EOL_SHA_PORTABILITY_REPORT.md",
+   "current_work_pckg/A2_EXPANSION_PAIR_AND_COST_AUDIT.md",
+   "current_work_pckg/A2_GATE_VERDICT.json",
+   "current_work_pckg/A2_PRE_RUN_MANIFEST.json",
+   "current_work_pckg/A2_PRE_SOLVE_RESEARCHER_DECISION.md",
+   "current_work_pckg/A2_READINESS_MATRIX.csv",
+   "current_work_pckg/A2_REGRESSION_SUMMARY.json",
+   "current_work_pckg/A2_RESERVE_SOC_TIME_QA.md",
+   "current_work_pckg/A2_STATIC_INTEGRATION_REPORT.md",
+   "current_work_pckg/A3_READINESS_HANDOFF.md",
+   "current_work_pckg/BYOP_POST_V16_NEXT_02_v1.0/BYOP_POST_V16_NEXT_02_A1_to_Formal_S0_S1_2026-10-22.md",
+   "current_work_pckg/COMMITTED_PUBLIC_ASSET_COST_LEDGER.csv",
+   "current_work_pckg/ENVIRONMENT_MECHANISM_LIMITATIONS.md",
+   "current_work_pckg/NATIVE_LOAD_NO_HARM_QA.csv",
+   "current_work_pckg/NEXT_02_EXECUTION_REPORT.md",
+   "current_work_pckg/NEXT_02_RETURN_PACKAGE.zip",
+   "current_work_pckg/NEXT_STAGE_EXECUTION_REPORT.md",
+   "current_work_pckg/NEXT_STAGE_RETURN_PACKAGE.zip",
+   "current_work_pckg/PARTIAL_YEAR_DELIVERY_CONSISTENCY_QA.csv",
+   "current_work_pckg/PERMIT_GAS_EVIDENCE_PRIORITY.csv",
+   "current_work_pckg/PERMIT_TO_COD_CAUSAL_AUDIT_VNEXT.csv",
+   "current_work_pckg/PUBLIC_EXPANSION_CAPACITY_RIGHTS_QA.csv",
+   "current_work_pckg/PUBLIC_EXPANSION_COST_COD_AUDIT.csv",
+   "current_work_pckg/README.md",
+   "current_work_pckg/S0_S1_IDENTICAL_PUBLIC_INPUTS.json",
+   "current_work_pckg/_a1_gate_console.txt",
+   "current_work_pckg/a1_final_recheck_next02.py",
+   "current_work_pckg/a1_preapproval_check.py",
+   "workflow/results/BYOP/POST_V16_A1_HEADROOM/NEXT02_A1_DONE.flag",
+   "workflow/results/BYOP/POST_V16_A1_HEADROOM/NEXT02_A1_FINAL_RECHECK.log",
+   "workflow/results/BYOP/POST_V16_A1_HEADROOM/NEXT02_A1_GATE.log",
+   "workflow/results/BYOP/post_v16_a2_static/A2_STRUCTURAL_CONSOLE.log",
+   "workflow/results/BYOP/post_v16_a2_static/BRANCH_TESTS_L2.log",
+   "workflow/results/BYOP/post_v16_a2_static/NEXT02_A2_GATE.log",
+   "workflow/results/BYOP/post_v16_a2_static/NEXT02_A2_MANIFEST.log",
+   "workflow/results/BYOP/post_v16_a2_static/NEXT02_REGRESSION_FRESH_CLONE.log",
+   "workflow/results/BYOP/post_v16_a2_static/NEXT02_REGRESSION_WORKTREE.log",
+   "workflow/results/BYOP/post_v16_a2_static/NEXT02_STRUCTURAL.log",
+   "workflow/results/BYOP/post_v16_a2_static/_structural/A2_STRUCTURAL_CHECKS.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural/A2_STRUCTURAL_REPORT.json",
+   "workflow/results/BYOP/post_v16_a2_static/_structural/PUBLIC_EXPANSION_LEDGER_S0.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural/PUBLIC_EXPANSION_LEDGER_S1_EARLIEST.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural/PUBLIC_EXPANSION_LEDGER_S3.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural/poi_cohorts.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural_next02/A2_STRUCTURAL_CHECKS.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural_next02/A2_STRUCTURAL_REPORT.json",
+   "workflow/results/BYOP/post_v16_a2_static/_structural_next02/COD_ACTIVITY_AUDIT_S0.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural_next02/COD_ACTIVITY_AUDIT_S1_EARLIEST.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural_next02/COD_ACTIVITY_AUDIT_S3.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural_next02/COMMITTED_LINKS_AUDIT_S0.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural_next02/COMMITTED_LINKS_AUDIT_S1_EARLIEST.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural_next02/COMMITTED_LINKS_AUDIT_S3.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural_next02/EXPANSION_PAIR_AUDIT_S0.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural_next02/EXPANSION_PAIR_AUDIT_S1_EARLIEST.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural_next02/EXPANSION_PAIR_AUDIT_S3.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural_next02/NATIVE_LOAD_NO_HARM_QA_S0.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural_next02/NATIVE_LOAD_NO_HARM_QA_S1_EARLIEST.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural_next02/NATIVE_LOAD_NO_HARM_QA_S3.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural_next02/PUBLIC_EXPANSION_LEDGER_S0.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural_next02/PUBLIC_EXPANSION_LEDGER_S1_EARLIEST.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural_next02/PUBLIC_EXPANSION_LEDGER_S3.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural_next02/S0_S1_IDENTICAL_PUBLIC_INPUTS.json",
+   "workflow/results/BYOP/post_v16_a2_static/_structural_next02/poi_cohorts.csv"
+  ],
+  "dirty_code_config_inputs": [],
+  "untracked_code_config_inputs": [],
+  "log": [
+   "303eb35be204a37a9f3d11d5f8037235dba38410 NEXT-02 (reports only, 0 solver calls): A1 final read-only recheck PASS (HEAD b2b2e48e descends 802c9d94, 0 gated changes, ledger empty) + A1_FINAL_APPROVAL_REQUEST; A2 static repairs on branch work/a2-postv16-static fa93d257 (code a7f195b2): pair/COD/cost audits PASS, stores weighting + start-SOC reserve fix, independent A2 gate LOCKED, regression 230/0 + fresh clone 228/0/2, structural 66/66; A2_PRE_SOLVE_RESEARCHER_DECISION; A3 handoff; A1/A2/A3 NOT_APPROVED",
+   "b2b2e48e5c3c782e13ccfe5511e652018a92673d NEXT-01 (reports only, 0 solver calls): NEXT_STAGE_EXECUTION_REPORT.md; A1 NOT_RUN (not approved, approvable 802c9d94); A2_STATIC_INTEGRATION_REPORT + A2_READINESS_MATRIX (branch work/a2-postv16-static ba73e600, 40/40 structural); A3 permit/gas/partial-year static outputs; return package",
+   "ac4eeeb8a1eac47caa7fea732466dd5a48adde42 NEXT-01 P0 (report only, 0 solver calls): A1_PREAPPROVAL_CHECK.md + A1_PREAPPROVAL_GATE.json (HEAD 802c9d94 clean, manifest/baseline/tech SHAs match, ledger empty, DRY both LPs 373,249/967,980/0 int, objective -lambda, zero-shed, sum w=1); A1 NOT_APPROVED, NOT_RUN"
+  ]
+ },
+ "authorization": {
+  "run_authorization": "NOT_APPROVED",
+  "approved_git_sha": null,
+  "approved_by": null
+ },
+ "authorization_source": {
+  "path": "current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1/CURRENT_EXECUTION_WORK_PACKAGE_v1.1.md",
+  "ok": true
+ },
+ "baseline": {
+  "path": "workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+  "sha256": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16",
+  "ok": true
+ },
+ "ledger": {
+  "path": "workflow/results/BYOP/POST_V16_A1_HEADROOM/HEADROOM_SOLVE_LOG.csv",
+  "exists": false,
+  "rows": 0,
+  "problem": null,
+  "sha256": null
+ },
+ "status": "PASS_READY_FOR_A1_APPROVAL",
+ "solver_calls": 0
+}
+{
+ "R": {
+  "n_vars": 373249,
+  "n_cons": 967980,
+  "integer_vars": 0,
+  "buses": 63,
+  "lines": 162,
+  "snapshots": 432,
+  "objective_only_lambda": true,
+  "zero_shed_rows": 27216,
+  "weights_n": 16,
+  "weights_sum": 1.0,
+  "line_limit_total_MVA": 162000000.0,
+  "reserve_MW": 3000
+ },
+ "N": {
+  "n_vars": 373249,
+  "n_cons": 967980,
+  "integer_vars": 0,
+  "buses": 63,
+  "lines": 162,
+  "snapshots": 432,
+  "objective_only_lambda": true,
+  "zero_shed_rows": 27216,
+  "weights_n": 16,
+  "weights_sum": 1.0,
+  "line_limit_total_MVA": 198015.4325200225,
+  "reserve_MW": 3000
+ },
+ "line_limit_relation_R_ge_N": true,
+ "identical_structure": true
+}
+{'R': ['run_authorization=NOT_APPROVED', 'approved_by missing', 'approved_git_sha missing'], 'N': ['run_authorization=NOT_APPROVED', 'approved_by missing', 'approved_git_sha missing', 'LP_N_H_NETWORK needs a PASSED LP_R_H_RESOURCE first: LP_R_H_RESOURCE has no ledger row']}
+rc=0

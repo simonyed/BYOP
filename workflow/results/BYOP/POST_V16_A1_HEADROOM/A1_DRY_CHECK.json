@@ -10,7 +10,7 @@
     "approved_by missing",
     "approved_git_sha missing"
    ],
-   "head": "7d4bdfd0f3b9be8a75b9e008b5bfe9ba284716d0",
+   "head": "303eb35be204a37a9f3d11d5f8037235dba38410",
    "approved_git_sha": null,
    "stage": "LP_R_H_RESOURCE",
    "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
@@ -24,7 +24,7 @@
     "approved_git_sha missing",
     "LP_N_H_NETWORK needs a PASSED LP_R_H_RESOURCE first: LP_R_H_RESOURCE has no ledger row"
    ],
-   "head": "7d4bdfd0f3b9be8a75b9e008b5bfe9ba284716d0",
+   "head": "303eb35be204a37a9f3d11d5f8037235dba38410",
    "approved_git_sha": null,
    "stage": "LP_N_H_NETWORK",
    "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
@@ -85,7 +85,7 @@
    "storage": 43,
    "storage_MW": 13068.4
   },
-  "build_seconds": 16.0,
+  "build_seconds": 12.3,
   "reserve": {
    "CCGT": {
     "pmin": 0.5,
@@ -180,7 +180,7 @@
    "storage": 43,
    "storage_MW": 13068.4
   },
-  "build_seconds": 16.8,
+  "build_seconds": 13.8,
   "reserve": {
    "CCGT": {
     "pmin": 0.5,

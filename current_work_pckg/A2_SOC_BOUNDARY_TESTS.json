@@ -1,0 +1,75 @@
+{
+ "stage": "NEXT-03 A2-FIX-08 SOC boundary tests",
+ "solver_calls": 0,
+ "code_commit": "81bd57438c7b002d6cfe455ec2b3f973f33ed12c",
+ "unit_tests": {
+  "file": "byop/tests/test_next03_a2_static.py",
+  "cases": {
+   "test_segments_contiguous_gap_stress_and_period": "continuous 3 h = 1 segment; weeks apart = 2; inserted 2-day stress event stays 1; never across periods",
+   "test_pypsa_chains_soc_across_the_gap_and_segment_rows_cut_it": "PyPSA energy_balance at the first snapshot after a gap contains the SOC before the gap; one >= row per unit x segment with the true predecessor (per-period cyclic)",
+   "test_horizon_cyclic_unit_links_across_periods_and_is_cut_too": "cyclic_state_of_charge_per_period=False units: predecessor of a period start is the previous period end -> also neutral",
+   "test_four_hour_battery_cannot_carry_energy_across_a_gap": "4 h battery: charge 400 MWh in segment 1, discharge in segment 2: PyPSA balance satisfied, segment rows violated",
+   "test_segment_map_kinds": "SAMPLED_WEEK / B7_STRESS_ONLY labels"
+  },
+  "result": "PASS (L2: 26/26 with NEXT-02 static tests; full suite 245/0)"
+ },
+ "structural": [
+  {
+   "check": "S0: PyPSA chains SOC across every within-period time gap (risk confirmed on the real model)",
+   "result": "PASS",
+   "detail": "{'gaps': 24, 'linked': 24}"
+  },
+  {
+   "check": "S0: one segment-neutrality row per active StorageUnit x segment (no binaries)",
+   "result": "PASS",
+   "detail": "{'rows': 11305, 'expected': 11305, 'segments': 30}"
+  },
+  {
+   "check": "S0: segments never span a time gap or a period; stress events kept contiguous",
+   "result": "PASS",
+   "detail": NaN
+  },
+  {
+   "check": "S1_EARLIEST: PyPSA chains SOC across every within-period time gap (risk confirmed on the real model)",
+   "result": "PASS",
+   "detail": "{'gaps': 24, 'linked': 24}"
+  },
+  {
+   "check": "S1_EARLIEST: one segment-neutrality row per active StorageUnit x segment (no binaries)",
+   "result": "PASS",
+   "detail": "{'rows': 11305, 'expected': 11305, 'segments': 30}"
+  },
+  {
+   "check": "S1_EARLIEST: segments never span a time gap or a period; stress events kept contiguous",
+   "result": "PASS",
+   "detail": NaN
+  },
+  {
+   "check": "S3: PyPSA chains SOC across every within-period time gap (risk confirmed on the real model)",
+   "result": "PASS",
+   "detail": "{'gaps': 24, 'linked': 24}"
+  },
+  {
+   "check": "S3: one segment-neutrality row per active StorageUnit x segment (no binaries)",
+   "result": "PASS",
+   "detail": "{'rows': 12985, 'expected': 12985, 'segments': 30}"
+  },
+  {
+   "check": "S3: segments never span a time gap or a period; stress events kept contiguous",
+   "result": "PASS",
+   "detail": NaN
+  }
+ ],
+ "segment_summary": {
+  "periods": 6,
+  "segments_per_period": 5,
+  "within_period_gaps": 24,
+  "gaps_linked_by_pypsa": 24,
+  "rows_S0": 11305,
+  "rows_S1": 11305,
+  "rows_S3": 12985,
+  "stores_weight_h": 3.0,
+  "base_snapshot_weight_h": 77.571,
+  "stress_snapshot_weight_h": 3.0
+ }
+}

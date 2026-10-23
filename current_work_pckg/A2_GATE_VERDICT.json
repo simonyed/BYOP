@@ -1,15 +1,22 @@
 {
  "A2_GATE": "LOCKED",
- "checked_utc": "2026-10-23T00:43:49Z (2026-10-22 20:43 EDT)",
+ "checked_utc": "2026-10-23T01:24:30Z (2026-10-22 21:24 EDT)",
  "machine": "L2 A2 worktree /datasets/prgm/BYOP_impact/pypsa-usa/.worktrees/a2",
- "code_commit_requested_for_approval": "a7f195b239a739101c2bb8cd53f495febbf0e789",
- "manifest": "current_work_pckg/A2_PRE_RUN_MANIFEST.json (built on L2 at a7f195b2; 149 code + 110 input files; 0 mismatches)",
- "config_sha256_normalised": "bdc57dca457a9720d135b173969bbf313c959b8d5e946f6183ab5616204080da",
+ "code_commit_requested_for_approval": "81bd57438c7b002d6cfe455ec2b3f973f33ed12c",
+ "manifest": "current_work_pckg/A2_PRE_RUN_MANIFEST.json (built on L2 at 81bd5743; 149 code + 110 input files; 0 mismatches)",
+ "config_sha256_normalised": "31f1c3fc6cfeb91a887e2f66329a12059182b34705770dc4c5d7eaf39732228f",
+ "budgets": {
+  "max_scenario_attempts": 2,
+  "max_top_level_optimizer_calls": 3
+ },
+ "authorization_source": "current_work_pckg/BYOP_POST_V16_NEXT_03_v1.0/BYOP_POST_V16_NEXT_03_A1_A2_Formal_S0_S1_Execution_2026-10-22.md",
  "baseline": {
   "path": "workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
   "sha256": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16"
  },
- "ledger_rows": 0,
+ "parent_ledger_rows": 0,
+ "child_ledger_rows": 0,
+ "formal_out_dir_exists": false,
  "solver_calls": 0,
  "verdicts": {
   "S0": {
@@ -19,7 +26,7 @@
     "approved_by missing",
     "approved_git_sha missing"
    ],
-   "head": "a7f195b239a739101c2bb8cd53f495febbf0e789",
+   "head": "81bd57438c7b002d6cfe455ec2b3f973f33ed12c",
    "approved_git_sha": null,
    "stage": "S0",
    "base": "/datasets/prgm/BYOP_impact/pypsa-usa/.worktrees/a2/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
@@ -33,9 +40,9 @@
     "approved_by missing",
     "approved_git_sha missing",
     "S1_EARLIEST needs a PASSED S0 first: S0 has no ledger row",
-    "S0 no-harm reference S0_shed_by_snapshot_frozen.csv.gz missing"
+    "S0 no-harm reference S0_NO_HARM_REFERENCE.csv missing"
    ],
-   "head": "a7f195b239a739101c2bb8cd53f495febbf0e789",
+   "head": "81bd57438c7b002d6cfe455ec2b3f973f33ed12c",
    "approved_git_sha": null,
    "stage": "S1_EARLIEST",
    "base": "/datasets/prgm/BYOP_impact/pypsa-usa/.worktrees/a2/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
@@ -43,5 +50,5 @@
    "ledger": "/datasets/prgm/BYOP_impact/pypsa-usa/.worktrees/a2/workflow/results/BYOP/post_v16_a2/POST_V16_A2_S0S1/A2_SOLVE_LOG.csv"
   }
  },
- "note": "Refusal reasons are only the three approval fields (S1 additionally needs a PASSED S0). Approving = config-only commit on work/a2-postv16-static with approved_git_sha a7f195b2 (or this manifest commit, which changes only current_work_pckg/)."
+ "note": "Refusal reasons are only the three approval fields (S1 additionally needs a PASSED S0 and its SHA-pinned no-harm reference). Approving = config-only commit on work/a2-postv16-static with approved_git_sha 81bd5743 (later commits change only current_work_pckg/)."
 }

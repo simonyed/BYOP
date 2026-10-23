@@ -1,16 +1,26 @@
 {
  "status": "A2_PRE_RUN_MANIFEST (NOT an approval)",
- "work_package": "current_work_pckg/BYOP_POST_V16_NEXT_02_v1.0/BYOP_POST_V16_NEXT_02_A1_to_Formal_S0_S1_2026-10-22.md",
- "work_package_lf_sha256": "a6baf46481a1221d31d3b87f1799f65f5745e8af34649933d152b5593a944efd",
+ "work_package": "current_work_pckg/BYOP_POST_V16_NEXT_03_v1.0/BYOP_POST_V16_NEXT_03_A1_A2_Formal_S0_S1_Execution_2026-10-22.md",
+ "work_package_lf_sha256": "f1b1a2499182dd4000c4048834fe589f08d240a41cb4d4f2518d90431113c46b",
  "stage": "A2",
  "stages": [
   "S0",
   "S1_EARLIEST"
  ],
- "max_lp_calls": 2,
+ "max_scenario_attempts": 2,
+ "max_top_level_optimizer_calls": 3,
+ "optimizer_call_plan": {
+  "S0": [
+   "S0_COST"
+  ],
+  "S1_EARLIEST": [
+   "S1_SPEED_HIERARCHY",
+   "S1_COST"
+  ]
+ },
  "max_retries": 0,
  "config": "workflow/config/config.byop_post_v16_a2.yaml",
- "config_sha256_normalised": "bdc57dca457a9720d135b173969bbf313c959b8d5e946f6183ab5616204080da",
+ "config_sha256_normalised": "31f1c3fc6cfeb91a887e2f66329a12059182b34705770dc4c5d7eaf39732228f",
  "baseline": {
   "path": "workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
   "sha256": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16"
@@ -54,9 +64,9 @@
   },
   "workflow/byop/model/post_v16_a2_gate.py": {
    "text": true,
-   "raw": "d45b16ad73a7fc2694c2b88d9771b6e39b4fc4bf36b1e1c63f009359d700f6a6",
-   "lf": "d45b16ad73a7fc2694c2b88d9771b6e39b4fc4bf36b1e1c63f009359d700f6a6",
-   "crlf": "d8164f9feaf00a121fefffcadb1047dc624bb2a778d94feed791e2fe95b0857b"
+   "raw": "af2562bc2f2fc0d742c6bd5a88d7062f8d33fe7074f3041fb2af1057c1b6614b",
+   "lf": "af2562bc2f2fc0d742c6bd5a88d7062f8d33fe7074f3041fb2af1057c1b6614b",
+   "crlf": "a05bc95dbf9b37d8b2848c88fa7873f1bb49251894f51c2d76d9de95913a884a"
   },
   "workflow/byop/model/post_v16_gate.py": {
    "text": true,
@@ -72,15 +82,15 @@
   },
   "workflow/byop/model/post_v16_mainline.py": {
    "text": true,
-   "raw": "16ed866121d1e975e55fb183c8008487b9554309459563632752635262e36175",
-   "lf": "16ed866121d1e975e55fb183c8008487b9554309459563632752635262e36175",
-   "crlf": "8863792d8707b928d149255617f8db9f0aaeb3428a6ae34594453d3c15ebfa2e"
+   "raw": "0d1f2dd157518e81bade3d2cfa611c345a9e8f60eebc5f585adb387995b1704f",
+   "lf": "0d1f2dd157518e81bade3d2cfa611c345a9e8f60eebc5f585adb387995b1704f",
+   "crlf": "5d410cbc06df7225b1ceed7421dded63bf469da0df5576d6e01cecc9b76009e1"
   },
   "workflow/byop/model/rearch_mech.py": {
    "text": true,
-   "raw": "fdccf5eaf66faf3efa53de169e13d16922da50ea6834faea1f71df699e6673f7",
-   "lf": "fdccf5eaf66faf3efa53de169e13d16922da50ea6834faea1f71df699e6673f7",
-   "crlf": "5399d131330469a4c72134e0683ea16a844eb9cc785cfd2a5dc6e7d43b9e4a57"
+   "raw": "a20dc75094d78721f1cc2c2cbeb53409b924c0325e4ef5411dd551c82ba8366b",
+   "lf": "a20dc75094d78721f1cc2c2cbeb53409b924c0325e4ef5411dd551c82ba8366b",
+   "crlf": "f575ff90a411159566f86ec51aa0bb87f1a1e20dc3da08038b57a78682ba9b0f"
   },
   "workflow/byop/model/v240_mech.py": {
    "text": true,
@@ -1573,7 +1583,7 @@
    "crlf": "df4d088b47d81bf8dc9763c9bfb4f0e98e03288eea7bd5a984b8d25dbc479881"
   }
  },
- "head_when_built": "a7f195b239a739101c2bb8cd53f495febbf0e789",
- "built_utc": "2026-10-23T00:43:48+00:00",
+ "head_when_built": "81bd57438c7b002d6cfe455ec2b3f973f33ed12c",
+ "built_utc": "2026-10-23T01:24:29+00:00",
  "note": "verification: post_v16_a2_gate.manifest_mismatches; A1 manifest / gate untouched"
 }

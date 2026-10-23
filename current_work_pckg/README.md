@@ -13,7 +13,24 @@ Storage rules (set by the researcher on 2026-10-20):
 
 Project-level documents that span work packages are in `workflow/byop/docs/`.
 
-## Current work package: BYOP-POST-V16-NEXT-02 v1.0 (2026-10-22): A1 approval request, A2 static repairs and gate, S0/S1 request
+## Current work package: BYOP-POST-V16-NEXT-03 v1.0 (2026-10-22): A1 recheck, A2-FIX-08 / FIX-09, S0/S1 request
+
+- **Original:** `BYOP_POST_V16_NEXT_03_v1.0/BYOP_POST_V16_NEXT_03_A1_A2_Formal_S0_S1_Execution_2026-10-22.md` (byte-identical; LF SHA `f1b1a249…`, pinned by the A2 gate). Local copy: `work_pkgs/BYOP_POST_V16_NEXT_03_v1.0/`.
+- **Outcome:** 0 solver calls. A1 recheck PASS; A1 NOT_APPROVED. A2 static PASS: SOC segment neutrality, child-call ledger, structural 75/75, regression 245/0. A2 gate LOCKED. S0/S1 NOT_RUN. A3 handoff only.
+- **Archiving deferred** (as for NEXT-02): the NEXT-02 text stays in place, and the earlier packages stay until A1 is frozen.
+
+| File | Status |
+|---|---|
+| `NEXT_03_EXECUTION_REPORT.md` | Stage summary and fixed return block |
+| `A1_FINAL_APPROVAL_REQUEST.md` (updated), `A1_FINAL_RECHECK_NEXT03.json`, `A1_EXECUTION_REPORT.md` | PASS_READY_FOR_A1_APPROVAL; NOT_RUN |
+| `A2_REPRESENTATIVE_PERIOD_SOC_BOUNDARY_AUDIT.md`, `A2_SOC_SEGMENT_MAP.csv`, `A2_SOC_BOUNDARY_TESTS.json` | FIX-08 PASS (static) |
+| `A2_SOLVER_ACCOUNTING_AUDIT.md`, `A2_OPTIMIZER_CALL_PLAN.json`, `A2_GATE_FAILURE_INJECTION_QA.json` | FIX-09 PASS (static) |
+| `A2_PRE_SOLVE_RESEARCHER_DECISION.md` (updated), `A2_GATE_VERDICT.json`, `A2_PRE_RUN_MANIFEST.json`, `A2_REGRESSION_SUMMARY.json` | STOP: A2 approval requested (code `81bd5743`) |
+| `S0_S1_EXECUTION_REPORT.md` | NOT_RUN |
+| `A3_NEXT_GATE_HANDOFF.md` | Handoff only; A3 NOT_APPROVED |
+| `NEXT_03_RETURN_PACKAGE.zip` | Return package |
+
+## Previous: BYOP-POST-V16-NEXT-02 v1.0 (2026-10-22): A1 approval request, A2 static repairs and gate, S0/S1 request
 
 - **Original:** `BYOP_POST_V16_NEXT_02_v1.0/BYOP_POST_V16_NEXT_02_A1_to_Formal_S0_S1_2026-10-22.md` (byte-identical; SHA-256 `a6baf464…`, pinned by the A2 gate). Local copy: `work_pkgs/BYOP_POST_V16_NEXT_02_v1.0/`.
 - **Scope this round:** A1 read-only recheck and approval request; A2-FIX-01..07 static work on branch `work/a2-postv16-static`; A3 handoff. **0 solver calls** (A1, A2 and A3 all NOT_APPROVED).

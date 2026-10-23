@@ -89,7 +89,8 @@ def main():
           and all(set(g['reasons']) <= allowed or (k == 'N' and all(r.startswith(('run_authorization', 'approved_', 'LP_N_H_NETWORK needs a PASSED'))
                                                                      for r in g['reasons'])) for k, g in out['gate'].items()))
     out['status'] = 'PASS_READY_FOR_A1_APPROVAL' if ok else 'BLOCKED'
-    (ROOT / 'current_work_pckg/A1_FINAL_RECHECK.json').write_text(json.dumps(out, indent=1, default=str), encoding='utf-8')
+    name = sys.argv[1] if len(sys.argv) > 1 else 'A1_FINAL_RECHECK.json'      # NEXT-03: A1_FINAL_RECHECK_NEXT03.json
+    (ROOT / 'current_work_pckg' / name).write_text(json.dumps(out, indent=1, default=str), encoding='utf-8')
     print(json.dumps({k: out[k] for k in ('git', 'authorization', 'authorization_source', 'baseline', 'ledger', 'status', 'solver_calls')},
                      indent=1, default=str))
     print(json.dumps({k: (v if not isinstance(v, dict) else {kk: vv for kk, vv in v.items() if kk != 'windows'}) for k, v in models.items()},

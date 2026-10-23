@@ -1,0 +1,2 @@
+scenario,carrier,units,role,inherited_ramp_units,native_bus_units,in_no_harm_row,no_harm_row_present,no_harm_tolerance_MW,marginal_cost_min,marginal_cost_max
+S1_EARLIEST,load_shed,68,EXISTING_CUSTOMER_SHED (no-harm protected),5,63,68,True,0.001,35685.0,35685.0

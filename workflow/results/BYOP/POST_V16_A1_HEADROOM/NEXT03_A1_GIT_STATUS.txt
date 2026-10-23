@@ -1,0 +1,100 @@
+ M current_work_pckg/a1_final_recheck_next02.py
+ M workflow/byop/build/calibrate_itl_lp.py
+ M "workflow/byop/docs/\350\256\272\346\226\207\351\241\266\345\261\202\350\256\276\350\256\241.md"
+ M workflow/byop/inputs/dc/EPOCH_SITE_SERVICE_TAMU64.csv
+ M workflow/byop/inputs/dc/EPOCH_TAMU64_PROVENANCE.json
+ M workflow/byop/inputs/dc/EPOCH_TX_SITES_TAMU64.csv
+ M workflow/byop/inputs/dc/ERCOT_DC_CAPACITY_ALLOCATION_TAMU64.csv
+ M workflow/byop/inputs/dc/ERCOT_DC_TOTALS_2026_2035.csv
+ M workflow/byop/inputs/dc/ercot_cohorts_2026_2035_tamu64.csv
+ M workflow/byop/inputs/dc/state_pue_2022_2050.csv
+ M workflow/byop/inputs/dc/yearly_task_parameters_2022_2050.csv
+ M workflow/byop/inputs/grid/COMMITTED_BASE_ASSETS.csv
+ M workflow/byop/inputs/grid/TPIT_2026-07-13_project_register_v250.csv
+ M workflow/byop/inputs/grid/TPIT_FARWEST_EVIDENCE_LEDGER.csv
+ M workflow/byop/inputs/grid/TPIT_TO_COUNTY_ASSET_MAP.csv
+ M workflow/byop/inputs/load/background_load_growth_states_AEO2023_reference.csv
+ M workflow/byop/inputs/poi/GREAL_R_ASSET_POOL.csv
+ M workflow/byop/post/collect_p1.py
+ M workflow/results/BYOP/POST_V16_A1_HEADROOM/A1_DRY_CHECK.json
+ D workflow/results/BYOP/post_v16_a2_static/NEXT02_A2_GATE.log
+ D workflow/results/BYOP/post_v16_a2_static/NEXT02_A2_MANIFEST.log
+ D workflow/results/BYOP/post_v16_a2_static/NEXT02_REGRESSION_FRESH_CLONE.log
+ D workflow/results/BYOP/post_v16_a2_static/NEXT02_REGRESSION_WORKTREE.log
+ D workflow/results/BYOP/post_v16_a2_static/NEXT02_STRUCTURAL.log
+ D workflow/results/BYOP/post_v16_a2_static/_structural_next02/A2_STRUCTURAL_CHECKS.csv
+ D workflow/results/BYOP/post_v16_a2_static/_structural_next02/A2_STRUCTURAL_REPORT.json
+ D workflow/results/BYOP/post_v16_a2_static/_structural_next02/COD_ACTIVITY_AUDIT_S0.csv
+ D workflow/results/BYOP/post_v16_a2_static/_structural_next02/COD_ACTIVITY_AUDIT_S1_EARLIEST.csv
+ D workflow/results/BYOP/post_v16_a2_static/_structural_next02/COD_ACTIVITY_AUDIT_S3.csv
+ D workflow/results/BYOP/post_v16_a2_static/_structural_next02/COMMITTED_LINKS_AUDIT_S0.csv
+ D workflow/results/BYOP/post_v16_a2_static/_structural_next02/COMMITTED_LINKS_AUDIT_S1_EARLIEST.csv
+ D workflow/results/BYOP/post_v16_a2_static/_structural_next02/COMMITTED_LINKS_AUDIT_S3.csv
+ D workflow/results/BYOP/post_v16_a2_static/_structural_next02/EXPANSION_PAIR_AUDIT_S0.csv
+ D workflow/results/BYOP/post_v16_a2_static/_structural_next02/EXPANSION_PAIR_AUDIT_S1_EARLIEST.csv
+ D workflow/results/BYOP/post_v16_a2_static/_structural_next02/EXPANSION_PAIR_AUDIT_S3.csv
+ D workflow/results/BYOP/post_v16_a2_static/_structural_next02/NATIVE_LOAD_NO_HARM_QA_S0.csv
+ D workflow/results/BYOP/post_v16_a2_static/_structural_next02/NATIVE_LOAD_NO_HARM_QA_S1_EARLIEST.csv
+ D workflow/results/BYOP/post_v16_a2_static/_structural_next02/NATIVE_LOAD_NO_HARM_QA_S3.csv
+ D workflow/results/BYOP/post_v16_a2_static/_structural_next02/PUBLIC_EXPANSION_LEDGER_S0.csv
+ D workflow/results/BYOP/post_v16_a2_static/_structural_next02/PUBLIC_EXPANSION_LEDGER_S1_EARLIEST.csv
+ D workflow/results/BYOP/post_v16_a2_static/_structural_next02/PUBLIC_EXPANSION_LEDGER_S3.csv
+ D workflow/results/BYOP/post_v16_a2_static/_structural_next02/S0_S1_IDENTICAL_PUBLIC_INPUTS.json
+ D workflow/results/BYOP/post_v16_a2_static/_structural_next02/poi_cohorts.csv
+?? current_work_pckg/A0_IMPLEMENTATION_REPORT.md
+?? current_work_pckg/A0_RETURN_PACKAGE.zip
+?? current_work_pckg/A1_FINAL_RECHECK_NEXT03.json
+?? current_work_pckg/ASSET_OVERRIDE_AUDIT.csv
+?? current_work_pckg/BASELINE_AND_RESERVE_CONSTRAINT_INVENTORY.csv
+?? current_work_pckg/BASELINE_V16_FIXED_ASSET_QA.json
+?? current_work_pckg/BASELINE_V16_INPUT_DIFF.csv
+?? current_work_pckg/BASELINE_V16_SOLVE_LOG.csv
+?? current_work_pckg/BYOP_Calibration_Closeout_v1.6/
+?? current_work_pckg/BYOP_Post_v1.6_Execution_v1.1/
+?? current_work_pckg/CALIBRATION_CLOSEOUT_REPORT.md
+?? current_work_pckg/POST_V16_A0_RECONCILIATION.md
+?? current_work_pckg/POST_V16_A1_FORMULATION.md
+?? current_work_pckg/RELIABILITY_ANCHOR_BRIDGE.csv
+?? current_work_pckg/S0_S1_BASELINE_V16_PREPARED_MANIFEST.json
+?? current_work_pckg/SWITCHABLE_CAP_QA.csv
+?? current_work_pckg/TRANSMISSION_EXTERNAL_VALIDATION.csv
+?? current_work_pckg/V16_CLOSEOUT_SUMMARY.json
+?? workflow/results/BYOP/C1_X1_STORAGE_V15/stage1_X1/lines_p0.csv.gz
+?? workflow/results/BYOP/C1_X1_STORAGE_V15/stage1_X1/lines_p1.csv.gz
+?? workflow/results/BYOP/C1_X1_STORAGE_V15/stage2_min_throughput/lines_p0.csv.gz
+?? workflow/results/BYOP/C1_X1_STORAGE_V15/stage2_min_throughput/lines_p1.csv.gz
+?? workflow/results/BYOP/POST_V16_A1_HEADROOM/NEXT03_A1_DRY.log
+?? workflow/results/BYOP/POST_V16_A1_HEADROOM/NEXT03_A1_FINAL_RECHECK.log
+?? workflow/results/BYOP/POST_V16_A1_HEADROOM/NEXT03_A1_GATE.log
+?? workflow/results/BYOP/POST_V16_A1_HEADROOM/NEXT03_A1_GIT_STATUS.txt
+?? workflow/results/BYOP/baseline_2025_county/ercot_load_2025_3h_by_county.csv.gz
+?? workflow/results/BYOP/dev_restructure/county.log
+?? workflow/results/BYOP/mainline/MAINLINE_V13_GREAL_MID_B3_EXPLORATORY_V1.log
+?? workflow/results/BYOP/mainline/MAINLINE_V13_GREAL_MID_ERMCAL.log
+?? workflow/results/BYOP/mainline/MAINLINE_V13_GREAL_MID_PILOT_S01.log
+?? workflow/results/BYOP/mainline/MAINLINE_V13_GREAL_MID_PILOT_S01_F1F2_V1.log
+?? workflow/results/BYOP/mainline/MAINLINE_V13_GREAL_MID_S0CAL.log
+?? workflow/results/BYOP/p1/ERM_CAL.log
+?? workflow/results/BYOP/p1/P1_GC.log
+?? workflow/results/BYOP/p1/P1_GI.log
+?? workflow/results/BYOP/p1/P1_GR.log
+?? workflow/results/BYOP/p1/P1_GR_GE.log
+?? workflow/results/BYOP/p1/P1_GR_S2v.log
+?? workflow/results/BYOP/p1_ctrl7/CAL.log
+?? workflow/results/BYOP/p1_ctrl7/S1.log
+?? workflow/results/BYOP/rearch/DEV_GU.log
+?? workflow/results/BYOP/rearch/ERM_CAL_GK.log
+?? workflow/results/BYOP/rearch/ERM_CAL_GW.log
+?? workflow/results/BYOP/rearch/G1_S0_GW.log
+?? workflow/results/BYOP/rearch/R1_GK.log
+?? workflow/results/BYOP/rearch/R1_GW.log
+?? workflow/results/BYOP/rearch_p0/R2_GK_ABORTED_competing600.log
+?? workflow/results/BYOP/rearch_p0/R2_GU_ABORTED_competing600.log
+?? workflow/results/BYOP/rearch_p0/R2_GW.log
+?? workflow/results/BYOP/rearch_p0/S5_GK.log
+?? workflow/results/BYOP/rearch_s0repair/S0CAL_minuplift_2026_2031.log
+?? workflow/results/BYOP/rearch_s0repair/S0CAL_try1_REJECTED_economic_uplift.log
+?? workflow/results/BYOP/rearch_s0repair/S0D_main.log
+?? workflow/results/BYOP/rearch_s0repair/S0D_none.log
+?? workflow/results/BYOP/rearch_s0repair/S0D_sens.log
+303eb35be204a37a9f3d11d5f8037235dba38410

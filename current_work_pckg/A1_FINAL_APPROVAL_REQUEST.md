@@ -1,6 +1,20 @@
-# A1_FINAL_APPROVAL_REQUEST (NEXT-02 W1 §2.2) — 2026-10-22, 20:10 EDT
+# A1_FINAL_APPROVAL_REQUEST (NEXT-02 W1 §2.2; NEXT-03 W1.1 recheck added) — 2026-10-22
 
 **This is a request. It is not an approval.** A1 is `NOT_APPROVED`, the solver ledger is empty, and **0 solver calls** have been made. Two LPs run only after you explicitly approve. A1 approval does not carry over to A2, S2 or S3.
+
+## 0. NEXT-03 W1.1 recheck (2026-10-22, 21:03 EDT, L2 A1 main checkout): still PASS_READY_FOR_A1_APPROVAL
+
+| Item | Value |
+|---|---|
+| HEAD | `303eb35be204a37a9f3d11d5f8037235dba38410` (NEXT-02 report commit); `802c9d94` is an ancestor; **0 changes under gated paths**; no dirty or untracked gated file |
+| Pins | Manifest `d0f0b7f9…`: 0 mismatches. Normalised config OK; authorisation source OK; baseline `a623fb6d…747d16` OK. |
+| Ledger | `HEADROOM_SOLVE_LOG.csv` absent (0 of 2 used) |
+| `a1_dry` | LP-R and LP-N each 373,249 variables / 967,980 constraints / 0 integers, 432 snapshots; objective −λ; zero-shed rows; weights sum to 1 |
+| `a1_gate` | LP-R refused only on `run_authorization` / `approved_by` / `approved_git_sha`; LP-N also needs LP-R PASS |
+| Evidence | `A1_FINAL_RECHECK_NEXT03.json`; L2 logs `POST_V16_A1_HEADROOM/NEXT03_A1_{FINAL_RECHECK,DRY,GATE}.log` |
+| Threads | L2 load 18.5 of 24 at check time. Proposed T = 24 − (other users' load at launch), at least 4 (about 6 now). Re-measured before launch. |
+
+When this request is approved, the approval commit will sit on top of the NEXT-03 report commit. Only `workflow/config/config.byop_post_v16_a1.yaml` changes; the gate accepts this ancestor form.
 
 ## 1. What is being approved
 
