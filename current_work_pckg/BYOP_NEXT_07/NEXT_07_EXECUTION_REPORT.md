@@ -10,6 +10,7 @@ ORIGINAL_S0_S1_CODE_SHA: cdfdea06146a6fe73df89cb410d6a88cb5fda306
 W0_DATA_QA: PASS
 W1_RESERVE_RHS_ONLY_STATIC: PASS
 W2_NEW_SOLVER_CALLS: 1
+W6_LOSSY_LP2_CALLS: 2 (approved c93cca5d via 1601c57c; ASIS EENS 153,266 MWh / gap 746 MW FAIL; R_PARALLEL 13,690 MWh / 438 MW FAIL)
 W5P_LOSSLESS_PROBE_CALLS: 1 (approved bf61d873 via config commit 9dce6b5d; optimal, PASS; class LOSS_BASIS_CONFIRMED_MAIN_CAUSE)
 W2_AUTHORIZATION: APPROVED (researcher in chat, 2026-10-23; approved_by sw2434@cornell.edu)
 W2_SOLVER_AND_ACCEPTANCE: PASS (optimal, 877 s; diagnostic label DIAGNOSTIC_NONCOMPLIANT_WITH_FORMAL_3GW_REQUIREMENT)
@@ -20,7 +21,7 @@ W3_FULL_YEAR_DIAGNOSTIC: NOT_AUTHORIZED (and not runnable as prepared)
 W4_A3_RUNTIME_STATIC: PASS (merged after the W2 seal; A3 manifest rebuilt; suite 290/0; zero-solver A3 E2E 13/13)
 A3_SOLVER_CALLS: 0
 ORIGINAL_A2_LEDGERS_UNCHANGED: YES (SHA-checked before and after the probe)
-NEXT_DECISION_REQUIRED: choose ONE loss basis for calibration and S0-S3 ((a) losses on + re-check v1.6, or (b) lossless study), then a separately approved paired S0/S1 rerun; confirm the S2 developer-LP reserve rule
+NEXT_DECISION_REQUIRED: lossy basis not yet calibrated (both lossy LP2 fail v1.6) - decide whether to repeat the v1.6 LP1 minimum-uplift calibration on the lossy basis (r rule, evidence, budget); formal S0/S1 and S2/S3 not ready
 ```
 
 **Optimizer calls in this package: exactly 2** (W2 reserve probe; W5P lossless probe), each separately approved, 0 retries. Previously: It was the approved W2 probe: `S0#1/S0_COST`, 0 retries. A3 made 0 calls; every other model build had its solver intercepted.
@@ -136,3 +137,20 @@ Suite at the solved code: 272 / 0.
 - Class **`LOSS_BASIS_CONFIRMED_MAIN_CAUSE`**.
 
 **Consequence.** The formal S0/S1 keep their record but should not be used for reliability or S1−S0 cost claims until the study runs on one loss basis. The researcher chooses that basis. The A3 manifest (`4edf7bac`) is stale after the W5P code changes; A3 remains locked.
+
+## W6: lossy 2025 LP2 re-validation (`W6_LOSS_BASIS_AUDIT_AND_CALIBRATION_PLAN.md`, `W6_LOSSY_LP2_RESULTS.md`)
+
+**Static audit.**
+- Units are consistent and the tangent approximation errs by at most 1.2 %.
+- The 18 X1-uplifted lines kept their pre-calibration r.
+
+**Two approved calls, both optimal, both FAIL the v1.6 criteria (EENS ≤ 4,882 MWh, gap ≤ 83.7 MW):**
+
+| Stage | EENS | Largest gap | Losses |
+|---|---:|---:|---:|
+| ASIS | 153,266 MWh | 746 MW | 6.64 TWh |
+| R_PARALLEL (r of the 18 uplifted lines × raw / prepared s_nom; candidate assumption only) | 13,690 MWh | 438 MW | 5.29 TWh |
+
+No baseline file was changed.
+
+**Recommendation.** No formal S0/S1 or S2/S3 yet. A method-consistent next step is a lossy repeat of the v1.6 LP1 minimum-uplift calibration, which needs your decision.

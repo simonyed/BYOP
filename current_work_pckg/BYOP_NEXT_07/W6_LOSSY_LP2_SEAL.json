@@ -1,0 +1,34 @@
+{
+ "work_package": "BYOP_NEXT_07",
+ "step": "W6 lossy LP2 seal",
+ "solved_code_sha": "c93cca5de7d799b290711012347e97e9e5c75f0a",
+ "approval_commit": "1601c57c85d644ef8c84494c1f5396f15865e957",
+ "approved_by": "sw2434@cornell.edu",
+ "optimizer_calls": 2,
+ "retries": 0,
+ "stages": {
+  "LP2_LOSSY_ASIS": "optimal, acceptance FAIL",
+  "LP2_LOSSY_R_PARALLEL": "optimal, acceptance FAIL (run because ASIS was optimal and failed)"
+ },
+ "threads": 16,
+ "note_threads": "16 threads used; the L2 run spec (B ~ 21-22 at load 2-3) asks THREADS = B for single solves - recorded deviation",
+ "files": {
+  "LP2_LOSSY_ASIS\\generation_by_carrier.csv": "ca65c280d4af3b5b20813df5018567440a3ef2f09492717e3bfe27abfdd4a712",
+  "LP2_LOSSY_ASIS\\line_flow_p0.csv.gz": "65ccb7d968e84d867db54d7793713b56b7d79c13a29baa4d70aa6b4ed2771654",
+  "LP2_LOSSY_ASIS\\line_loss.csv.gz": "27a7d7c8f4c7c43df8590689a022b6b15540e4ad6742bcd6b764468eea99dc6a",
+  "LP2_LOSSY_ASIS\\lines.csv": "3a3a77538c73d98c0aa9997d7505838dfc9f3348c435297843941d8f3682868c",
+  "LP2_LOSSY_ASIS\\LOSS_BASIS_LP2_QA.json": "e6bca993a84e00dd5fc453bd1c8b244a237184fa3234615b5f0374c0771ecd48",
+  "LP2_LOSSY_ASIS\\shed_by_bus.csv.gz": "a139130715c2a02e45267810a57c63d2dd3000da4bb8cea058ced48eeae8b1f5",
+  "LP2_LOSSY_ASIS\\shedding_events.csv": "af2e4d301fb5cd551d4a6395de339eb985d6d90612bf3c1007b70cc3b7d5146b",
+  "LP2_LOSSY_R_PARALLEL\\generation_by_carrier.csv": "5cd63192f799ba98af169353eb922a049882b1a80f649454682bc1afd4e41684",
+  "LP2_LOSSY_R_PARALLEL\\line_flow_p0.csv.gz": "122d0df97e00b04e0ab5faa67eb0dabe37aea189c886d87d587aa8058aa5a97a",
+  "LP2_LOSSY_R_PARALLEL\\line_loss.csv.gz": "bfed20298bece150b5484db4e972f17ca1dc4f92a1811e60da598df56a9f0830",
+  "LP2_LOSSY_R_PARALLEL\\lines.csv": "f18ff5f253e14623ad3c7c10e8219a3bc5ba6f00103d1b843b52b97a6c6f60a8",
+  "LP2_LOSSY_R_PARALLEL\\LOSS_BASIS_LP2_QA.json": "102cba46b164fd62333a2a70098775860381080c2bffce76fc7c06f309264248",
+  "LP2_LOSSY_R_PARALLEL\\R_PARALLEL_CHANGES.csv": "384f675c39257027aa39edddd758c2bb668cf21e2b32df8d23cba90d2d165e54",
+  "LP2_LOSSY_R_PARALLEL\\shed_by_bus.csv.gz": "38019c176b058812628482621ad82130e45bc13955cf4e90e58aaa128dbd13ec",
+  "LP2_LOSSY_R_PARALLEL\\shedding_events.csv": "d8728ad5acbb1c64c7f76f7c83d873fb6f2a4fdc578d778c9cbdcb46ce43d674",
+  "LOSS_BASIS_LP2_SOLVE_LOG.csv": "3cc57f49ebdee07edb9a2898e46c5b0c990905e9ab5351441b2053217e4b9ef6"
+ },
+ "v16_ledger_sha256": "0f15bd0e319cb48562e96173dd420b555fb408abf5b9aa0b8f4aa2df20299f57"
+}
