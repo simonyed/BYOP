@@ -1,0 +1,81 @@
+{
+ "step": "W6 zero-solver end-to-end post-processing on the real lossy LP2 models",
+ "real_solver_calls": 0,
+ "stages": {
+  "LP2_LOSSY_ASIS": {
+   "files": [
+    "LOSS_BASIS_LP2_QA.json",
+    "generation_by_carrier.csv",
+    "line_flow_p0.csv.gz",
+    "line_loss.csv.gz",
+    "lines.csv",
+    "shed_by_bus.csv.gz",
+    "shedding_events.csv"
+   ],
+   "n_vars": 2093640,
+   "n_cons": 6902642,
+   "total_loss_MWh": 1419120.0,
+   "eens_MWh": 551880.0,
+   "key_lines": [
+    "TL12",
+    "TL13",
+    "TL15",
+    "TL21",
+    "TL35",
+    "TL36",
+    "TL43",
+    "TL44"
+   ],
+   "r_changes": 0,
+   "acceptance_pass_flag": false
+  },
+  "LP2_LOSSY_R_PARALLEL": {
+   "files": [
+    "LOSS_BASIS_LP2_QA.json",
+    "R_PARALLEL_CHANGES.csv",
+    "generation_by_carrier.csv",
+    "line_flow_p0.csv.gz",
+    "line_loss.csv.gz",
+    "lines.csv",
+    "shed_by_bus.csv.gz",
+    "shedding_events.csv"
+   ],
+   "n_vars": 2093640,
+   "n_cons": 6902642,
+   "total_loss_MWh": 1419120.0,
+   "eens_MWh": 551880.0,
+   "key_lines": [
+    "TL12",
+    "TL13",
+    "TL15",
+    "TL21",
+    "TL35",
+    "TL36",
+    "TL43",
+    "TL44"
+   ],
+   "r_changes": 18,
+   "acceptance_pass_flag": false
+  }
+ },
+ "checks": {
+  "fake_solve_called_once_per_stage": true,
+  "all_outputs_written": true,
+  "line_loss_read_on_real_shape": true,
+  "key_lines_reported": true,
+  "r_parallel_18_lines": true,
+  "ledger_started_then_done": true,
+  "real_ledger_untouched": true
+ },
+ "verdict": "ZERO_SOLVER_POST_PASS",
+ "fake_solve_calls": [
+  {
+   "nvars": 2093640,
+   "ncons": 6902642
+  },
+  {
+   "nvars": 2093640,
+   "ncons": 6902642
+  }
+ ]
+}

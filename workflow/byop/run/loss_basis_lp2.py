@@ -127,12 +127,61 @@ def build(stage, c):
     return n, info, rtab, v
 
 
-def run(stage, threads):
-    c = load()
-    g = check(stage)
+def line_loss_frame(n):
+    """per snapshot x line loss (MW) straight from the linopy solution (never from merged coordinate tables); None if lossless"""
+    m = n.model
+    if 'Line-loss' not in m.variables:
+        return None
+    df = m.variables['Line-loss'].solution.transpose('snapshot', 'name').to_pandas()
+    df = df.reindex(index=n.snapshots)
+    if df.isna().any().any():
+        raise ValueError('Line-loss solution does not cover every snapshot / line')
+    return df
+
+
+def postprocess(n, v, c, stage, st, term, sec, rtab, g, info, var_names, threads, od):
+    """every output of one solved stage (also called by the zero-solver tests on an injected solution); returns the QA dict"""
+    ok = st == 'ok' and term == 'optimal'
+    m, acc, ev, bl, gen, shed = V16.metrics_lp2(n, v)
+    loss = line_loss_frame(n)
+    w = n.snapshot_weightings.generators
+    lw = loss.mul(w.values, axis=0) if loss is not None else None
+    tot = float(lw.sum().sum()) if lw is not None else None
+    shed_bus = shed.mul(w.values, axis=0).sum().sort_values(ascending=False)
+    losses = dict(total_loss_MWh=tot, loss_share_of_2025_energy=tot / v['acceptance']['annual_energy_MWh'] if tot is not None else None,
+                  peak_loss_MW=float(loss.sum(axis=1).max()) if loss is not None else None,
+                  top_lines_MWh={k: float(x) for k, x in lw.sum().sort_values(ascending=False).head(15).items()} if lw is not None else None)
+    key = ['TL35', 'TL43', 'TL36', 'TL44', 'TL12', 'TL13', 'TL15', 'TL21']
+    p0 = n.lines_t.p0
+    lim = n.lines.s_nom * n.lines.s_max_pu
+    key_lines = {l: dict(rating_MW=float(lim[l]), r_ohm=float(n.lines.r[l]), max_abs_p0_MW=float(p0[l].abs().max()),
+                         hours_at_or_above_0p99=float(w[(p0[l].abs() / lim[l] >= 0.99).values].sum()),
+                         loss_MWh=float(lw[l].sum()) if lw is not None else None) for l in key if l in n.lines.index}
+    passed = bool(ok and acc['eens_pass'] and acc['max_gap_pass'])
+    qa = dict(stage=stage, status=st, termination=term, seconds=round(sec, 1), threads=int(threads), transmission_losses=int(c['transmission_losses']),
+              prepare=info, n_vars=int(n.model.nvars), n_cons=int(n.model.ncons), linopy_variables=var_names, metrics=m, acceptance=acc,
+              losses=losses, key_lines=key_lines, shed_by_bus_MWh={k: float(x) for k, x in shed_bus[shed_bus > 1e-3].head(15).items()},
+              acceptance_pass=passed, r_parallel_changes=None if rtab is None else rtab.round(6).reset_index().to_dict('records'),
+              baseline_sha256=c['baseline']['sha256'], gate=g, label='LOSS_BASIS_REVALIDATION (2025 fixed assets); not a scenario result')
+    od.mkdir(parents=True, exist_ok=True)
+    (od / 'LOSS_BASIS_LP2_QA.json').write_text(json.dumps(qa, indent=1, default=str), encoding='utf-8')
+    ev.to_csv(od / 'shedding_events.csv', index=False); bl.to_csv(od / 'lines.csv', index=False); gen.to_csv(od / 'generation_by_carrier.csv', index=False)
+    shed.to_csv(od / 'shed_by_bus.csv.gz'); p0.round(2).to_csv(od / 'line_flow_p0.csv.gz')
+    if loss is not None:
+        loss.round(3).to_csv(od / 'line_loss.csv.gz')
+    if rtab is not None:
+        rtab.to_csv(od / 'R_PARALLEL_CHANGES.csv')
+    return qa
+
+
+def run(stage, threads, cfg_path=CFG, gate_fn=None, build_fn=None):
+    """gate -> build -> STARTED row -> solve -> postprocess -> DONE / ERROR row. gate_fn / build_fn / cfg_path are injectable only
+    for the zero-solver tests (scratch ledger); the CLI always uses the real gate and build."""
+    c = load(cfg_path)
+    g = (gate_fn or (lambda s_: check(s_, cfg_path)))(stage)
     if not g['approved']:
         print(json.dumps(dict(LOSS_BASIS_GATE='REFUSED', **g), indent=1)); raise SystemExit(3)
-    n, info, rtab, v = build(stage, c)
+    n, info, rtab, v = (build_fn or build)(stage, c)
     from c1_fixed_asset_diagnostics import assert_no_build_variables
     var_names = assert_no_build_variables(n)
     p, lg = ledger(c)
@@ -156,37 +205,16 @@ def run(stage, threads):
         raise
     sec = time.time() - t
     st, term = str(st), str(term)
-    ok = st == 'ok' and term == 'optimal'
-    od = out_dir(c) / stage; od.mkdir(parents=True, exist_ok=True)
     try:
-        m, acc, ev, bl, gen, shed = V16.metrics_lp2(n, v)
-        loss = n.model.solution['Line-loss'].to_pandas() if 'Line-loss' in n.model.variables else None
-        if loss is not None and isinstance(loss.index, pd.MultiIndex):
-            loss.index = loss.index.get_level_values(-1)
-        w = n.snapshot_weightings.generators
-        losses = dict(total_loss_MWh=float(loss.mul(w.values, axis=0).sum().sum()) if loss is not None else None,
-                      loss_share_of_load=float(loss.mul(w.values, axis=0).sum().sum() / v['acceptance']['annual_energy_MWh']) if loss is not None else None,
-                      top_lines_MWh={k: float(x) for k, x in loss.mul(w.values, axis=0).sum().sort_values(ascending=False).head(15).items()} if loss is not None else None)
-        passed = ok and acc['eens_pass'] and acc['max_gap_pass']
-        qa = dict(stage=stage, status=st, termination=term, seconds=round(sec, 1), threads=int(threads), solver_options=opts,
-                  transmission_losses=int(c['transmission_losses']), prepare=info, n_vars=int(n.model.nvars), n_cons=int(n.model.ncons),
-                  linopy_variables=var_names, metrics=m, acceptance=acc, losses=losses, acceptance_pass=bool(passed),
-                  r_parallel_changes=None if rtab is None else rtab.round(6).reset_index().to_dict('records'),
-                  baseline_sha256=c['baseline']['sha256'], gate=g, label='LOSS_BASIS_REVALIDATION (2025 fixed assets); not a scenario result')
-        (od / 'LOSS_BASIS_LP2_QA.json').write_text(json.dumps(qa, indent=1, default=str), encoding='utf-8')
-        ev.to_csv(od / 'shedding_events.csv', index=False); bl.to_csv(od / 'lines.csv', index=False); gen.to_csv(od / 'generation_by_carrier.csv', index=False)
-        shed.to_csv(od / 'shed_by_bus.csv.gz'); n.lines_t.p0.round(2).to_csv(od / 'line_flow_p0.csv.gz')
-        if loss is not None:
-            loss.round(3).to_csv(od / 'line_loss.csv.gz')
-        if rtab is not None:
-            rtab.to_csv(od / 'R_PARALLEL_CHANGES.csv')
-        finish(state='DONE', status=st, termination=term, seconds=round(sec, 1), acceptance_pass=passed)
+        qa = postprocess(n, v, c, stage, st, term, sec, rtab, g, info, var_names, threads, out_dir(c) / stage)
+        finish(state='DONE', status=st, termination=term, seconds=round(sec, 1), acceptance_pass=qa['acceptance_pass'])
         print(json.dumps({k: x for k, x in qa.items() if k not in ('linopy_variables', 'r_parallel_changes')}, indent=1, default=str))
     except BaseException as e:
         finish(state='ERROR', status=st, termination=term, seconds=round(sec, 1), note=f'post-solve: {e.__class__.__name__}: {e}'[:300])
         raise
-    if not ok:
+    if not (st == 'ok' and term == 'optimal'):
         raise SystemExit(f'{stage} {st} {term}: BLOCKED (outputs kept, no retry)')
+    return qa
 
 
 def build_only(threads):

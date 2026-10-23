@@ -1,8 +1,8 @@
 ........................................................................ [ 23%]
-........................................................................ [ 47%]
+........................................................................ [ 46%]
 ........................................................................ [ 70%]
-........................................................................ [ 94%]
-.................                                                        [100%]
+........................................................................ [ 93%]
+....................                                                     [100%]
 =============================== warnings summary ===============================
 workflow/byop/tests/test_a0_2_tech_v2.py: 1 warning
 workflow/byop/tests/test_a2_a3_static.py: 2 warnings
@@ -10,6 +10,7 @@ workflow/byop/tests/test_baseline_v16.py: 1 warning
 workflow/byop/tests/test_next02_a2_static.py: 7 warnings
 workflow/byop/tests/test_next03_a2_static.py: 3 warnings
 workflow/byop/tests/test_next07_a3_runtime.py: 3 warnings
+workflow/byop/tests/test_next07_loss_basis.py: 3 warnings
 workflow/byop/tests/test_next07_reserve_probe.py: 4 warnings
 workflow/byop/tests/test_p0_units.py: 2 warnings
 workflow/byop/tests/test_post_v16_a0.py: 8 warnings
@@ -18,6 +19,13 @@ workflow/byop/tests/test_rearch_units.py: 11 warnings
   /datasets/prgm/uv-python/cpython-3.11.17-linux-x86_64-gnu/lib/python3.11/contextlib.py:81: FutureWarning:
   
   The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+
+workflow/byop/tests/test_next07_loss_basis.py::test_full_post_solve_path_with_injected_solution[LP2_LOSSY_ASIS]
+workflow/byop/tests/test_next07_loss_basis.py::test_full_post_solve_path_with_injected_solution[LP2_LOSSY_R_PARALLEL]
+workflow/byop/tests/test_next07_loss_basis.py::test_line_loss_frame_refuses_partial_solution
+  /datasets/prgm/uv-python/cpython-3.11.17-linux-x86_64-gnu/lib/python3.11/contextlib.py:81: FutureWarning:
+  
+  Passing an int for `transmission_losses` is deprecated and will be removed in PyPSA 2.0. Explicitly pass {'mode': 'tangents', 'segments': 2} (current behavior) or use the new secant-based losses via `transmission_losses=True`.
 
 workflow/byop/tests/test_p0_units.py: 8 warnings
 workflow/byop/tests/test_post_v16_a1_writer.py: 1 warning
@@ -42,4 +50,4 @@ workflow/byop/tests/test_p0_units.py::test_ineligible_site_does_not_lock_maxmin
   The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-305 passed, 104 warnings in 234.44s (0:03:54)
+308 passed, 110 warnings in 242.40s (0:04:02)
