@@ -1,0 +1,89 @@
+{
+ "work_package": "BYOP_NEXT_07",
+ "step": "W3.2",
+ "optimizer_calls": 0,
+ "pocket": [
+  "p610 4",
+  "p620 6",
+  "p620 7"
+ ],
+ "growth_2026": 1.009327,
+ "weather_year_index": "2030",
+ "full_year_snapshots": 2920,
+ "pocket_load_2026_MW": {
+  "mean": 507.39277944024224,
+  "max": 592.6815145106737,
+  "night_mean": 505.4318413108514
+ },
+ "s0_shed_snapshots_pocket": 42,
+ "s0_served_at_shed_MW": {
+  "served_min": 458.0522704614625,
+  "served_median": 499.35277841302195,
+  "served_max": 536.5338353058836
+ },
+ "s0_pocket_load_at_shed_MW": [
+  499.5069305836417,
+  557.6764270050419
+ ],
+ "s0_sampled_week_pocket_raw_3h_shed_MWh": 1786.2322322248897,
+ "s0_sampled_week_pocket_weighted_MWh": 46186.862004655144,
+ "sampled_week_night_snapshots": 56,
+ "sampled_week_night_shed_share": 0.5714285714285714,
+ "bounds": [
+  {
+   "supply_level": "served_min",
+   "supply_MW": 458.0522704614625,
+   "scope": "night_only",
+   "snapshots_above": 1414,
+   "hours_above": 4242,
+   "implied_shed_MWh_3h": 208831.85481994026,
+   "implied_shed_MWh_in_sampled_weeks_3h": 7834.585184648043
+  },
+  {
+   "supply_level": "served_min",
+   "supply_MW": 458.0522704614625,
+   "scope": "all_snapshots",
+   "snapshots_above": 2822,
+   "hours_above": 8466,
+   "implied_shed_MWh_3h": 434764.5290959072,
+   "implied_shed_MWh_in_sampled_weeks_3h": 16690.655150113846
+  },
+  {
+   "supply_level": "served_median",
+   "supply_MW": 499.35277841302195,
+   "scope": "night_only",
+   "snapshots_above": 873,
+   "hours_above": 2619,
+   "implied_shed_MWh_3h": 60700.82734166931,
+   "implied_shed_MWh_in_sampled_weeks_3h": 1831.5814726825224
+  },
+  {
+   "supply_level": "served_median",
+   "supply_MW": 499.35277841302195,
+   "scope": "all_snapshots",
+   "snapshots_above": 1774,
+   "hours_above": 5322,
+   "implied_shed_MWh_3h": 136367.63445419408,
+   "implied_shed_MWh_in_sampled_weeks_3h": 4631.159660263004
+  },
+  {
+   "supply_level": "served_max",
+   "supply_MW": 536.5338353058836,
+   "scope": "night_only",
+   "snapshots_above": 178,
+   "hours_above": 534,
+   "implied_shed_MWh_3h": 6975.691906789292,
+   "implied_shed_MWh_in_sampled_weeks_3h": 174.47284711969883
+  },
+  {
+   "supply_level": "served_max",
+   "supply_MW": 536.5338353058836,
+   "scope": "all_snapshots",
+   "snapshots_above": 436,
+   "hours_above": 1308,
+   "implied_shed_MWh_3h": 18969.10351316826,
+   "implied_shed_MWh_in_sampled_weeks_3h": 730.153012068374
+  }
+ ],
+ "reading": "If the night-time deliverable pocket supply seen at the S0 shed snapshots held all year, the implied 2026 shed is the night_only rows (rule-based, no LP; local daytime solar not credited, so all_snapshots is an upper bound). The supply level itself is endogenous to the S0 dispatch (reserve coupling, mesh flows) and varies by season - this bounds T, it does not replace the full-year LP."
+}

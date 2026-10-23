@@ -1,0 +1,18 @@
+{
+ "work_package": "BYOP_NEXT_07",
+ "status": "PROPOSED (not written to the A3-gated S0_SCIENTIFIC_STATUS.json)",
+ "S0_RELIABILITY_VERDICT_PROPOSED": "BASELINE_RELIABILITY_UNRESOLVED",
+ "allowed_values": [
+  "BASELINE_RELIABILITY_UNRESOLVED",
+  "METHOD_BUG_CONFIRMED_REPAIR_REQUIRED",
+  "PHYSICAL_SCARCITY_VALIDATED_WITH_LIMITS",
+  "CALIBRATED_PASS"
+ ],
+ "M_mechanism": "OPEN - W1 static PASS (probe differs only in the reserve RHS); W2 LP not run (awaiting approval at 5df4dda75efc4efb1796393c1131f93a8d801599)",
+ "T_representativeness": "PARTIAL - sampled-week pocket load is typical (night mean 48th pct); median-supply rule reproduces sampled-week shed (1,832 vs 1,786 MWh) and implies ~61 GWh over all 2026 nights: no evidence of sampling over-extrapolation under the A2 rules; deliverable supply endogenous, not proven",
+ "method_bug_evidence": "none (W0: reporting-ratio errata only; W1: no build difference)",
+ "full_year_diagnostic": "NOT_AUTHORIZED; prepared NEXT-06 config not runnable (single-period build KeyError Generator-p_nom; SHA e2daf9d3 stale)",
+ "A3": "LOCKED (prerequisite unchanged)",
+ "optimizer_calls": 0,
+ "decided_by": null
+}

@@ -1,0 +1,35 @@
+Traceback (most recent call last):
+  File "/tmp/byop_n07/structural_n07_fullyear_size.py", line 40, in <module>
+    main()
+  File "/tmp/byop_n07/structural_n07_fullyear_size.py", line 24, in main
+    n, info = S.build_s0(config, out, None)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/byop_n07/structural_n07_reserve_probe.py", line 87, in build_s0
+    M.solve(config, 'S0', out, n)
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/model/v240_mech.py", line 725, in solve
+    return w2.solve(n, cfg, tag, out, erm_dc_mode='B')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/model/wp2_ercot_s0_s1.py", line 169, in solve
+    sn.solve_network(n, config=cfg, solving=copy.deepcopy(cfg['solving']), opts=opts,
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/scripts/solve_network.py", line 358, in solve_network
+    run_optimize(n, rolling_horizon, skip_iterations, cf_solving, **kwargs)
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/scripts/solve_network.py", line 241, in run_optimize
+    status, condition = n.optimize(**kwargs)
+                        ^^^^^^^^^^^^^^^^^^^^
+  File "/datasets/prgm/pypsa-usa/.venv/lib/python3.11/site-packages/pypsa/optimization/optimize.py", line 670, in __call__
+    extra_functionality(n, self._window.model_index)
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/model/rearch_mech.py", line 1030, in extra_rearch
+    V.extra_gce(n, snapshots)        # v240 extra (ERM-DC B, DC task model, serve_cap, R rights, corridors) + TX ERM row
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/model/v250_mech.py", line 209, in extra_gce
+    _extra_v240(n, snapshots)
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/model/v240_mech.py", line 593, in extra
+    pnom = m['Generator-p_nom']
+           ~^^^^^^^^^^^^^^^^^^^
+  File "/datasets/prgm/pypsa-usa/.venv/lib/python3.11/site-packages/linopy/model.py", line 627, in __getitem__
+    return self.variables[key]
+           ~~~~~~~~~~~~~~^^^^^
+  File "/datasets/prgm/pypsa-usa/.venv/lib/python3.11/site-packages/linopy/variables.py", line 1587, in __getitem__
+    return self.data[names]
+           ~~~~~~~~~^^^^^^^
+KeyError: 'Generator-p_nom'

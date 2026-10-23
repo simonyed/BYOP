@@ -1,0 +1,10 @@
+{
+ "POST_V16_A3_GUARD": "REFUSED",
+ "reasons": [
+  "run_authorization=NOT_APPROVED",
+  "approved_by missing",
+  "approved_git_sha missing",
+  "manifest missing: current_work_pckg/BYOP_NEXT_07/A3_PRE_RUN_MANIFEST.json",
+  "prerequisite current_work_pckg/BYOP_NEXT_06/S0_SCIENTIFIC_STATUS.json:S0_RELIABILITY_VERDICT = BASELINE_RELIABILITY_UNRESOLVED not in ['CALIBRATED_PASS', 'PHYSICAL_SCARCITY_VALIDATED_WITH_LIMITS']"
+ ]
+}
