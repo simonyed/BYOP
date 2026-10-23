@@ -1,0 +1,2 @@
+call_id,parent_attempt_id,stage,kind,state,started_utc,finished_utc,status,termination,n_vars,n_cons,n_objectives,seconds,note
+S0#1/S0_COST,S0#1,S0,S0_COST,DONE,2026-10-23T15:42:46+00:00,2026-10-23T15:56:49+00:00,ok,optimal,2660074,7107710,1,843.4,

@@ -1,0 +1,1 @@
+{"timestamp_utc": "2026-10-23T15:57:46.250364+00:00", "run_id": "rearch_NEXT07_S0_RESERVE_PROBE_20261023T154202Z", "case_id": "NEXT07_S0_RESERVE_PROBE", "event": "optimization_solved", "status": "SOLVER_OPTIMAL", "message": "obj 5.272959e+10; vars 2660074; int 0; 932s", "scenario": "S0"}

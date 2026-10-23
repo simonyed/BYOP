@@ -1,0 +1,28 @@
+{
+ "case_id": "NEXT07_S0_RESERVE_PROBE",
+ "case_group": "NEXT07_S0_RESERVE_PROBE",
+ "run_id": "rearch_NEXT07_S0_RESERVE_PROBE_20261023T154202Z",
+ "scenario": "S0",
+ "relax": [],
+ "setting": "G-REAL",
+ "solve": {
+  "tag": "S0",
+  "status": "ok",
+  "termination": "optimal",
+  "objective": 52729586351.78793,
+  "seconds": 877.2,
+  "n_vars": 2660074,
+  "n_cons": 7107166,
+  "integer_vars": 0,
+  "erm_dc_mode": "B",
+  "erm_poi_coeff_snapshot0": null,
+  "F2_load_shed_mc": {
+   "n": 68,
+   "min": 35685.0,
+   "max": 35685.0,
+   "n_inherited": 5,
+   "n_not_at_VOLL": 0
+  }
+ },
+ "timestamp_utc": "2026-10-23T15:57:46.118310+00:00"
+}
