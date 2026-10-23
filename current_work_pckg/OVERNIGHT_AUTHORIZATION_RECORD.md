@@ -13,6 +13,6 @@
 | Stage | Approved code SHA | Scope / budget | Config-only commit | Status |
 |---|---|---|---|---|
 | A1 historical (NEXT-04) | `802c9d94…` | LP-R → LP-N | `f6dc3151` | LP_R_H_RESOURCE#1: solver ok/optimal, **output_failed / pass=False**, consumed 1 (kept unchanged) |
-| A1 rerun1 | `07c881a4c643a800dfc55257716671e2791a48ab` | ≤ 1 LP-R + ≤ 1 LP-N, 0 retries (historical total ≤ 3) | see git log | in progress |
-| A2 S0/S1 | merged revalidated SHA (H2) | ≤ 2 attempts / ≤ 3 top-level calls, 0 retries | — | pending |
+| A1 rerun1 | `07c881a4c643a800dfc55257716671e2791a48ab` | ≤ 1 LP-R + ≤ 1 LP-N, 0 retries (historical total ≤ 3) | `e4bfbe7f` (closed in `cdfdea06`) | done: LP-R PASS, LP-N infeasible (network side) → G2 A1_FIXED_NETWORK_EXCEPTION |
+| A2 S0/S1 | `cdfdea06146a6fe73df89cb410d6a88cb5fda306` (merged, revalidated: 248/0, 75/75) | ≤ 2 attempts / ≤ 3 top-level calls, 0 retries | see git log | in progress |
 | A3 pilot | — | ≤ 30 top-level calls, conditional | — | pending |
