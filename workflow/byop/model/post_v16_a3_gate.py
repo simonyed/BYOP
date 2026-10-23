@@ -58,6 +58,24 @@ def prerequisite_problems(c, root=ROOT):
     return bad
 
 
+def reference_problems(c, root=ROOT):
+    """NEXT-07 W4.1: the accepted A2 S0 / S1_EARLIEST results the A3 re-solves must reproduce, SHA-pinned in the config"""
+    r = c.get('reference') or {}
+    if not r.get('dir') or not r.get('sha256'):
+        return ['reference (accepted A2 S0 / S1 results) not pinned in the A3 config']
+    bad = []
+    for f, h in r['sha256'].items():
+        p = root / 'workflow' / r['dir'] / f
+        if not p.exists():
+            bad.append(f'reference missing: {f}')
+        elif A2G.file_shas(p)['raw'] != h and A2G.file_shas(p)['lf'] != h:
+            bad.append(f'reference SHA differs: {f}')
+    for f in ('S0_RESULT.json', 'S1_EARLIEST_RESULT.json', A2G.NO_HARM_REF):
+        if f not in r['sha256']:
+            bad.append(f'reference {f} not pinned')
+    return bad
+
+
 def check(stage, base_path, cfg_path=CFG, root=ROOT, git_fn=G.git):
     c, out, log, child = paths(cfg_path)
     reasons = []
@@ -101,6 +119,7 @@ def check(stage, base_path, cfg_path=CFG, root=ROOT, git_fn=G.git):
     if base_path is None or Path(base_path).resolve() != want or not want.exists() or A2G.file_shas(want)['raw'] != c['baseline']['sha256']:
         reasons.append('baseline missing / not the pinned v1.6 file')
     reasons += prerequisite_problems(c, root)
+    reasons += reference_problems(c, root)
     stages = list(c['stages'])
     if stage not in stages:
         reasons.append(f'stage {stage} not in the A3 plan {stages}')

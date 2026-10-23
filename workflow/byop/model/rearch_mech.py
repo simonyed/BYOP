@@ -1111,11 +1111,16 @@ def extra_rearch(n, snapshots):
         ml_space(n, m)
     import post_v16_mainline as PM
     if PM.POST_V16['on']:                       # NEXT-01 A2-static: 3 GW operating reserve + RE/BESS firm certificate (build only)
-        STATE['pv16m_reserve'] = PM.add_operating_reserve(n, snapshots, reserve_MW=STATE.get('pv16_reserve_rhs_MW'))
+        # NEXT-07 W4: the S2 developer LP is a private network of DC buses only (no grid unit can hold system reserve, the row
+        # would read 0 >= 3000); the 3 GW system requirement binds on the grid in the S2 public LP and in S3
+        if STATE.get('developer_build'):
+            STATE['pv16m_reserve'] = dict(skipped='S2 developer LP: private DC-bus network, no grid reserve units')
+        else:
+            STATE['pv16m_reserve'] = PM.add_operating_reserve(n, snapshots, reserve_MW=STATE.get('pv16_reserve_rhs_MW'))
         if PM.POST_V16['soc_segments']:         # NEXT-03 A2-FIX-08: no net SOC transfer across sampled-segment gaps / periods
             STATE['pv16m_soc_segments'] = PM.add_segment_soc_neutrality(n, snapshots)
         if PM.POST_V16['re_firm'] and STATE.get('dc'):
-            STATE['pv16m_re_firm'] = PM.add_re_bess_firm_certificate(n, snapshots, STATE['dc'], stress_mask)
+            STATE['pv16m_re_firm'] = PM.add_re_bess_firm_certificate(n, snapshots, STATE['dc'], stress_mask, firm_rule=STATE.get('pv16_firm_rule'))
     if M.CFG.get('tech_version') == 'TECH_COMP_2' and STATE.get('v2_pool_candidates') and 'Generator-p_nom' in m.variables:
         import byop_supply_pools as SP          # A0.2 P3c: common delivery pool per technology and delivery year (all sites / paths)
         STATE['v2_pool_rows'] = SP.add_pool_constraints(n, m, STATE['v2_pool_candidates'])
@@ -1187,18 +1192,23 @@ def lex_presolve(n, m):
     t0 = time.time()
     import post_v16_a2_gate as A2G
     cid = None
-    if A2G.ACCT['armed']:          # NEXT-03 A2-FIX-09: explicit child row BEFORE the hierarchical Gurobi call (refused outside a parent)
+    import post_v16_a3_runtime as RT
+    fin = RT.child_finish if RT.ACCT['armed'] else A2G.child_finish
+    if RT.ACCT['armed']:           # NEXT-07 W4: the same explicit child row in the A3 ledger
+        gm.update()
+        cid = RT.child_start('S1_SPEED_HIERARCHY', n_vars=int(gm.NumVars), n_cons=int(gm.NumConstrs), n_objectives=len(objs))
+    elif A2G.ACCT['armed']:        # NEXT-03 A2-FIX-09: explicit child row BEFORE the hierarchical Gurobi call (refused outside a parent)
         gm.update()
         cid = A2G.child_start('S1_SPEED_HIERARCHY', n_vars=int(gm.NumVars), n_cons=int(gm.NumConstrs), n_objectives=len(objs))
     try:
         gm.optimize()
     except BaseException as e:
         if cid:
-            A2G.child_finish(cid, state='ERROR', status='exception', seconds=round(time.time() - t0, 1), note=f'{e.__class__.__name__}: {e}'[:300])
+            fin(cid, state='ERROR', status='exception', seconds=round(time.time() - t0, 1), note=f'{e.__class__.__name__}: {e}'[:300])
         raise
     ok = gm.Status == gp.GRB.OPTIMAL
     if cid:
-        A2G.child_finish(cid, state='DONE', status='ok' if ok else 'warning', termination='optimal' if ok else f'gurobi_status_{int(gm.Status)}',
+        fin(cid, state='DONE', status='ok' if ok else 'warning', termination='optimal' if ok else f'gurobi_status_{int(gm.Status)}',
                          seconds=round(time.time() - t0, 1))
     res = []
     for i, (kind, y, expr, R) in enumerate(objs):
@@ -1533,12 +1543,14 @@ def developer_joint(config, s1_net, v_priv, mult, reuse_on, iteration):
         Sv = m['Generator-p_nom'].sel(name=[d['S'] for d in STATE['dc'] if d['period'] == p]).sum('name')
         m.objective = -1.0 * Sv
         _require_gate('developer_joint lex')
+        _a3_expect('S2_DEV_LEX')
         st, tc = m.solve(solver_name='gurobi', **opts)
         s_star = float(sum(float(m.solution['Generator-p_nom'].sel(name=d['S'])) for d in STATE['dc'] if d['period'] == p)) if st == 'ok' else 0.0
         lex[p] = dict(S_max_total=s_star, termination=str(tc))
         m.add_constraints(Sv >= max(0.0, s_star * (1 - 1e-6) - 1e-3), name=f'S2J-lex_{p}')
     m.objective = cost_obj
     _require_gate('developer_joint cost')
+    _a3_expect('S2_DEV_COST')
     n.optimize.solve_model(solver_name='gurobi', solver_options=opts)
     STATE['reuse'] = sv_reuse; STATE['corridors'] = sv_corr
     M.STATE['erm'] = True
@@ -1578,6 +1590,13 @@ def developer_joint(config, s1_net, v_priv, mult, reuse_on, iteration):
     return K, {}, rights, out
 
 
+def _a3_expect(kind):
+    """NEXT-07 W4: the next linopy solve of an A3 S2 stage is a developer LP of this kind (no-op outside A3)"""
+    import post_v16_a3_runtime as RT
+    if RT.ACCT['armed']:
+        RT.expect(kind)
+
+
 def developer_joint_build(s1_net, v_priv, mult):
     """the joint developer network and its linopy model (no solve; also used by the Stage A structural test)"""
     dem = M.study_new_demand()
@@ -1605,7 +1624,11 @@ def developer_joint_build(s1_net, v_priv, mult):
     sv_reuse = STATE.get('reuse', []); STATE['reuse'] = []
     sv_corr = STATE.get('corridors', []); STATE['corridors'] = []
     m = n.optimize.create_model(multi_investment_periods=True)
-    extra_rearch(n, n.snapshots)
+    STATE['developer_build'] = True              # NEXT-07 W4: no system reserve row on the private developer network
+    try:
+        extra_rearch(n, n.snapshots)
+    finally:
+        STATE['developer_build'] = False
     return n, m, (sv_reuse, sv_corr)
 
 
@@ -1665,10 +1688,52 @@ def mainline_gate(cfg_path):
 POST_V16_LEGACY_FLAGS = ('calibrate', 'erm_cal', 's0_calibrate', 's0_cal_file')
 
 
+def a3_guard(a):
+    """NEXT-07 W4: the A3 pilot (S0 -> S1_EARLIEST -> S3 -> S2 [1-3 iterations] -> S3_mS2) only through the independent A3 gate
+    (post_v16_a3_gate.py: own config / manifest / ledgers / per-kind call plan, S0 scientific-verdict prerequisite). Fail-closed:
+    any reason -> SystemExit(3). Checked BEFORE anything is built."""
+    import post_v16_a3_gate as A3G
+    import post_v16_a3_runtime as RT
+    import post_v16_mainline as PM
+    cfgp = Path(a.a3_config).resolve()
+    c = A3G.load(cfgp)
+    reasons = [f'legacy flag --{f.replace("_", "-")} not allowed' for f in POST_V16_LEGACY_FLAGS if getattr(a, f, None)]
+    if getattr(a, 'a2_config', None):
+        reasons.append('--a2-config and --a3-config are exclusive')
+    if not a.base or Path(a.base).resolve() != BP.BASE_TAMU_V16.resolve():
+        reasons.append('--base must be the v1.6 baseline')
+    if not a.mainline:
+        reasons.append('--post-v16 needs --mainline')
+    if a.config is None or Path(a.config).as_posix() != c['mainline_config']:
+        reasons.append(f"--config must be {c['mainline_config']}")
+    if a.out is None or Path(a.out).resolve() != (A3G.WF / c['out_dir']).resolve():
+        reasons.append(f"--out must be {c['out_dir']} (the A3 ledger directory)")
+    if a.no_harm != 'on' or a.attribution or a.relax:
+        reasons.append('A3 needs --no-harm on and no --attribution / --relax')
+    if list(a.scenarios) != RT.A3_SCENARIOS:
+        reasons.append(f'--scenarios {list(a.scenarios)} must be exactly {RT.A3_SCENARIOS}')
+    if not 1 <= int(getattr(a, 's2_iter', 3) or 0) <= 3:
+        reasons.append('--s2-iter must be 1-3')
+    if 'diagnostic' in c:
+        reasons.append('A3 config carries a diagnostic block')
+    if c.get('firm_rule') != 'CONSERVATIVE_FIRM_SCREENING' or c.get('firm_rule') not in PM.FIRM_RULES:
+        reasons.append(f"firm_rule {c.get('firm_rule')} is not CONSERVATIVE_FIRM_SCREENING")
+    ref = A3G.reference_problems(c)
+    reasons += ref
+    g = A3G.check('S0', a.base, cfg_path=cfgp) if not reasons else dict(approved=False, reasons=[])
+    reasons += g['reasons']
+    if reasons:
+        print(json.dumps(dict(POST_V16_A3_GUARD='REFUSED', reasons=reasons), indent=1))
+        raise SystemExit(3)
+    return dict(g, a3=True, firm_rule=c['firm_rule'], reference_dir=c['reference']['dir'], diagnostic_reserve_MW=None)
+
+
 def post_v16_guard(a):
     """post-v1.6 main line (NEXT-02 A2-FIX-07): only the SHA-pinned v1.6 baseline, never ERM-02 B / free S0CAL / legacy ERM, and
     only through the independent A2 gate (byop/model/post_v16_a2_gate.py: own config, manifest, ledger, 2-call budget, S0 before
     S1_EARLIEST). Fail-closed: any reason -> SystemExit(3). Returns the approved gate dict otherwise."""
+    if getattr(a, 'a3_config', None):         # NEXT-07 W4: the A3 pilot has its own guard and gate
+        return a3_guard(a)
     import post_v16_a2_gate as A2G
     cfgp = Path(a.a2_config).resolve() if getattr(a, 'a2_config', None) else A2G.CFG   # NEXT-06: an independent A2-type config
     c = A2G.load(cfgp)
@@ -1726,6 +1791,18 @@ def _arm_post_v16_optimizer_lock():
     s0 = linopy.Model.solve
 
     def _solve(self, *a_, **k_):
+        import post_v16_a3_runtime as RT
+        if RT.ACCT['armed']:              # NEXT-07 W4: A3 run - every linopy solve is a child of the open A3 stage
+            cid = RT.child_start(n_vars=int(self.nvars), n_cons=int(self.ncons), n_objectives=1)
+            t0 = time.time()
+            try:
+                r = s0(self, *a_, **k_)
+            except BaseException as e:
+                RT.child_finish(cid, state='ERROR', status='exception', seconds=round(time.time() - t0, 1), note=f'{e.__class__.__name__}: {e}'[:300])
+                raise
+            st, tc = r if isinstance(r, tuple) and len(r) == 2 else (getattr(self, 'status', ''), getattr(self, 'termination_condition', ''))
+            RT.child_finish(cid, state='DONE', status=st, termination=tc, seconds=round(time.time() - t0, 1))
+            return r
         if not PV16_LOCK['inside']:
             raise SystemExit('POST_V16_A2: optimizer call outside a ledgered A2 solve refused (linopy.Model.solve)')
         kind = {'S0': 'S0_COST', 'S1_EARLIEST': 'S1_COST'}.get(A2G.ACCT.get('stage'), 'UNPLANNED_LINOPY_SOLVE')
@@ -1819,6 +1896,100 @@ def post_v16_solve_wrapper(solve0, a, out, cfg_path=None, gate_fn=None, state=No
             raise SystemExit(f'POST_V16_A2 {tag} acceptance FAILED (STOP, no retry): ' + json.dumps(acc['checks'], default=str))
         return res
     return _solve
+
+
+def a3_solve_wrapper(solve0, a, out, gate, state=None):
+    """NEXT-07 W4.1: every A3 scenario solve. Non-S2 stages: A3 gate -> parent STARTED -> solve (every linopy / gurobipy call a
+    child row of the planned kind) -> persisted solution -> acceptance -> <tag>_RESULT.json -> parent DONE / ERROR. S2 iterations:
+    the stage is opened before the developer LPs and closed by the S2 loop after the consistency check (a3_s2_end). Acceptance adds:
+    child-call completeness, A2 reproduction of the re-solved S0 / S1_EARLIEST, S1 speed levels, the matched-service audit of
+    S3_mS2 and the conservative firm rule. Any exception or failed acceptance stops the run (no retry)."""
+    import post_v16_a2_gate as A2G
+    import post_v16_a3_runtime as RT
+    import post_v16_mainline as PM
+    state = STATE if state is None else state
+    ref_dir = A2G.WF / gate['reference_dir']
+    out = Path(out)
+
+    def _solve(config, tag, out_, n, *args_, **kw_):
+        stage = RT.TAG_STAGE.get(tag)
+        if stage is None:
+            raise SystemExit(f'A3: scenario {tag} is not part of the A3 plan - refused')
+        s2 = stage.startswith('S2_IT')
+        if s2 and RT.ACCT['stage'] != stage:
+            raise SystemExit(f"A3: {tag} outside its open S2 stage ({RT.ACCT['stage']}) - refused")
+        if not s2:
+            RT.begin(stage)
+        aid, t0 = RT.ACCT['parent'], time.time()
+        try:
+            res = solve0(config, tag, out_, n, *args_, **kw_)
+        except BaseException as e:
+            RT.end('ERROR', status='exception', failure_class=e.__class__.__name__, seconds=round(time.time() - t0, 1), note=str(e)[:300], **{'pass': False})
+            raise
+        try:
+            saved = PM.persist_solution(n, out / 'solution' / tag)
+        except Exception as e:
+            saved = dict(error=repr(e)[:300])
+        try:
+            acc = A2G.acceptance(n, tag, res, out_dir=ref_dir if tag != 'S0' else None)
+            ok_c, calls = RT.children_complete(aid, stage)
+            acc['checks']['optimizer_calls_complete'] = ok_c
+            acc['values']['optimizer_calls'] = calls
+            if tag in ('S0', 'S1_EARLIEST'):
+                lam = n.generators.index[n.generators.carrier == 'load_shed']
+                rp = RT.a2_reproduction(tag, res['objective'], acc['values']['existing_shed_MWh'],
+                                        n.generators_t.p.reindex(columns=lam).fillna(0.0) if tag == 'S0' else None, ref_dir)
+                acc['checks']['a2_reproduced'] = rp['PASS']
+                acc['values']['a2_reproduction'] = rp
+            if tag == 'S1_EARLIEST':
+                lx = state.get('lex_log') or {}
+                served = {}
+                for d in state.get('dc', []):
+                    served[int(d['period'])] = served.get(int(d['period']), 0.0) + float(n.generators.p_nom_opt[d['S']])
+                acc['checks']['lex_presolve_optimal'] = bool(lx.get('optimal'))
+                acc['checks']['speed_levels_hold_in_cost_stage'], acc['values']['speed_levels'] = A2G.speed_levels_hold(lx.get('levels'), served)
+            if tag == 'S3_mS2':
+                served = {(d['zone'], d['period']): float(n.generators.p_nom_opt[d['S']]) for d in state['dc']}
+                mt, df = RT.matched_service_audit(state.get('a3_s2_target') or {}, served)
+                df.to_csv(out / 'A3_S3_MS2_MATCHED_SERVICE_AUDIT.csv', index=False)
+                acc['checks']['matched_service'] = mt['PASS']
+                acc['values']['matched_service'] = mt
+                state['a3_matched'] = mt
+            rf = (state.get('pv16m_re_firm') or []) if tag not in ('S0', 'S1_EARLIEST') else []
+            acc['checks']['conservative_firm_rule'] = all(not r.get('firm_credit_allowed', True) for r in rf)
+            acc['values']['re_firm_rows'] = len(rf)
+            acc['PASS'] = all(v is True for v in acc['checks'].values())
+        except Exception as e:
+            acc = dict(PASS=False, checks=dict(acceptance_computed=False), values=dict(error=repr(e)))
+        rec = dict(stage=stage, tag=tag, parent_attempt_id=aid, result=res, acceptance=acc, gate={k: v for k, v in gate.items() if k != 'reasons'},
+                   saved_solution=saved, firm_rule=state.get('pv16_firm_rule'))
+        (out / f'{tag}_RESULT.json').write_text(json.dumps(rec, indent=1, default=str), encoding='utf-8')
+        if s2:
+            state['a3_s2_acc'] = acc
+            if not acc['PASS']:
+                RT.end('DONE', status=res.get('status'), termination=res.get('termination'), failure_class='ACCEPTANCE_FAILED',
+                       seconds=round(time.time() - t0, 1), **{'pass': False})
+        else:
+            RT.end('DONE', status=res.get('status'), termination=res.get('termination'), failure_class='' if acc['PASS'] else 'ACCEPTANCE_FAILED',
+                   seconds=round(time.time() - t0, 1), **{'pass': acc['PASS']})
+        if not acc['PASS']:
+            raise SystemExit(f'POST_V16_A3 {tag} acceptance FAILED (STOP, no retry): ' + json.dumps(acc['checks'], default=str))
+        return res
+    return _solve
+
+
+def a3_s2_end(it, bad, state=None):
+    """close the open S2_IT<it> stage after the consistency check: PASS needs the public S2 acceptance and every planned child call
+    (developer lex / cost, public) DONE / optimal; an inconsistent iteration is a result (next iteration), not a failure"""
+    import post_v16_a3_runtime as RT
+    state = STATE if state is None else state
+    acc = state.pop('a3_s2_acc', None) or {}
+    ok_c, _ = RT.children_complete(RT.ACCT['parent'], RT.ACCT['stage'])
+    ok = bool(acc.get('PASS')) and ok_c
+    RT.end('DONE', status='ok' if ok else 'warning', termination='optimal' if ok else '', failure_class='' if ok else 'ACCEPTANCE_FAILED',
+           note=f'iteration {it}: {len(bad)} site-years below plan', **{'pass': ok})
+    if not ok:
+        raise SystemExit(f'POST_V16_A3 S2_IT{it} acceptance FAILED (STOP, no retry)')
 
 
 def extra_rights(n, snapshots):
@@ -1969,6 +2140,8 @@ def main():
     ap.add_argument('--interrupt-cap', type=float, default=0.005, help='D2.3 unplanned interruption cap (share of planned annual facility MWh)')
     ap.add_argument('--no-harm', default='on', choices=['on', 'off'], help='D2.4 existing-customer shed <= frozen S0 per bus x snapshot')
     ap.add_argument('--post-v16', action='store_true', help='post-v1.6 main line (execution package v1.1): v1.6 base only, no ERM-02 B / S0CAL')
+    ap.add_argument('--a3-config', default=None, help='NEXT-07 W4: the A3 pilot gate config (config/config.byop_post_v16_a3.yaml); '
+                    'with --post-v16 every A3 optimizer call is ledgered and gated (S0, S1_EARLIEST, S3, S2 1-3 iterations, S3_mS2)')
     ap.add_argument('--a2-config', default=None, help='NEXT-06: an independent A2-type gate config (own manifest / ledger / budget / run_args); '
                     'default config/config.byop_post_v16_a2.yaml')
     a = ap.parse_args()
@@ -2024,7 +2197,13 @@ def main():
         GCFG.update(s0_calibrate=False, s0_cal_file=None, no_harm=True)
         # NEXT-07: per-build reserve RHS from the validated gate (None = formal 3,000 MW); POST_V16 itself is never changed
         STATE['pv16_reserve_rhs_MW'] = (pv16_gate or {}).get('diagnostic_reserve_MW')
-        M.solve = post_v16_solve_wrapper(M.solve, a, out, cfg_path=Path(a.a2_config).resolve() if a.a2_config else None)
+        if (pv16_gate or {}).get('a3'):           # NEXT-07 W4: A3 pilot - own gate / ledgers, conservative firm rule in S2 and S3
+            import post_v16_a3_runtime as RT
+            STATE['pv16_firm_rule'] = pv16_gate['firm_rule']
+            RT.arm(Path(a.a3_config).resolve(), a.base)
+            M.solve = a3_solve_wrapper(M.solve, a, out, pv16_gate)
+        else:
+            M.solve = post_v16_solve_wrapper(M.solve, a, out, cfg_path=Path(a.a2_config).resolve() if a.a2_config else None)
         _arm_post_v16_optimizer_lock()
         if a.scenarios == ['S1_EARLIEST']:      # S0 solved in an earlier process: the SHA-pinned no-harm reference comes from disk
             import post_v16_a2_gate as A2G
@@ -2183,8 +2362,12 @@ def main():
         return n, mult
 
     byop = M.CFG['byop_techs']
+    a3_on = bool((pv16_gate or {}).get('a3'))
     if 'S0' in a.scenarios:
         go('S0')
+        if a3_on:       # NEXT-07 W4: later no-harm rows use the SHA-pinned formal A2 reference (the re-solve was checked against it)
+            import post_v16_a2_gate as A2G
+            STATE['shed_S0'] = A2G.read_no_harm_reference(A2G.WF / pv16_gate['reference_dir'])
     # P0-2: strict physical earliest grid-only base (offers, triggers, attribution) and the economic S1 (control)
     r1e = go('S1_EARLIEST', lex=True, strict=True) if 'S1_EARLIEST' in a.scenarios else None
     if r1e is not None:
@@ -2219,7 +2402,15 @@ def main():
     if r1 is not None and ({'S2', 'S3_mS2'} & set(a.scenarios)):
         STATE['cond_public'] = {s: True for s in SITES}
         for it in range(1, GCFG['s2_iter'] + 1):
-            K, R, rights, plog = (developer_joint if ML['on'] else developer_stage)(config, n1_keep, M.CFG['v_private'] or v, r1[1], reuse_on, it)
+            if a3_on:          # NEXT-07 W4: the S2_IT<it> stage spans the developer LPs and the public LP
+                import post_v16_a3_runtime as RT
+                RT.begin(f'S2_IT{it}')
+            try:
+                K, R, rights, plog = (developer_joint if ML['on'] else developer_stage)(config, n1_keep, M.CFG['v_private'] or v, r1[1], reuse_on, it)
+            except BaseException as e:
+                if a3_on and RT.ACCT['parent']:
+                    RT.end('ERROR', status='exception', failure_class=e.__class__.__name__, note=str(e)[:300], **{'pass': False})
+                raise
             priv_log += plog
             STATE['rights'] = rights
             STATE['cond_public'] = {s: any(rt['cond'] > 1e-3 for (s_, _), rt in rights.items() if s_ == s) for s in SITES}
@@ -2238,6 +2429,8 @@ def main():
                 if plan - sp > max(0.5, 1e-3 * plan):
                     bad.append(d)
             ev('s2_iteration', 'CONSISTENT' if not bad else 'INCONSISTENT', f'iteration {it}: {len(bad)} site-years below plan')
+            if a3_on:
+                a3_s2_end(it, bad)
             if not bad:
                 break
             for d in bad:      # re-offer: what the public LP actually delivered through the firm POI
@@ -2258,8 +2451,17 @@ def main():
             STATE['cond_public'] = {s: False for s in SITES}
             go('S2_off', byop=byop, byop_fixed={k: 0.0 for k in K}, rfixed={k: 0.0 for k in R} if reuse_on else None)
         STATE['cond_public'] = {s: True for s in SITES}
-        if 'S3_mS2' in a.scenarios:
+        if a3_on:          # NEXT-07 W4: no matched-service S3 and no S2 - S3 efficiency claim without a converged S2_final
+            STATE['a3_s2_target'] = dict(saved['S2_service'])
+            STATE['a3_s2_converged'] = not bad
+        if 'S3_mS2' in a.scenarios and not (a3_on and bad):
             go('S3_mS2', byop=byop, reuse_dedicated=True, s_fixed=saved['S2_service'])
+        if a3_on:
+            import post_v16_a3_runtime as RT
+            summ_a3 = dict(S2_final_iteration=it, S2_status='CONVERGED' if not bad else 'S2_NOT_CONVERGED', S3_mS2_run=not bad,
+                           matched_service=STATE.get('a3_matched'), efficiency_claim=RT.efficiency_claim(not bad, STATE.get('a3_matched')),
+                           firm_rule=STATE.get('pv16_firm_rule'))
+            (out / 'A3_RUN_SUMMARY.json').write_text(json.dumps(summ_a3, indent=1, default=str), encoding='utf-8')
     led = pd.concat(LED, ignore_index=True) if LED else pd.DataFrame()
     svc = pd.concat(SVC, ignore_index=True) if SVC else pd.DataFrame()
     summ = pd.DataFrame(SUM)

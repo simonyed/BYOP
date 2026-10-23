@@ -1,13 +1,14 @@
 # BYOP NEXT-06 W3 (2026-10-23): A3 = the first S3 / S2 / S3_mS2 ERCOT pilot (16 buses, 2026-2031, mid demand, LP only).
-# STATIC REQUEST ONLY: NOT_APPROVED, and the runtime wiring of rearch_mech's S2 / S3 solves through post_v16_a3_gate is not done yet
-# (W3_A3_EXECUTION_READINESS.md). Independent of A1 / A2: own manifest, ledgers, budgets; an A1 / A2 approval never carries over.
+# STATIC REQUEST ONLY: NOT_APPROVED. NEXT-07 W4: every A3 optimizer call is routed through post_v16_a3_gate / post_v16_a3_runtime
+# (rearch_mech --post-v16 --a3-config ...); STATIC_READY_BUT_BLOCKED while the S0 scientific verdict is unresolved.
+# Independent of A1 / A2: own manifest, ledgers, budgets; an A1 / A2 approval never carries over.
 post_v16:
   run_authorization: NOT_APPROVED
   approved_git_sha: null
   approved_by: null
-  authorization_source: current_work_pckg/BYOP_NEXT_06/BYOP_NEXT_06_S0_RELIABILITY_CALIBRATION_AND_A3_READINESS_2026-10-23.md
-  authorization_source_sha256: 5f13a171a5a1074d4abc8fb2446260ab0c574c6df796409f41b599959a5dfb54
-  manifest: current_work_pckg/BYOP_NEXT_06/A3_PRE_RUN_MANIFEST.json
+  authorization_source: current_work_pckg/BYOP_NEXT_07/BYOP_NEXT_07_S0_Reserve_Causal_Diagnostic_and_A3_Readiness_2026-10-23.md
+  authorization_source_sha256: dec9259865f687c0a13ebbc4fb4c125dc06a69a94dc7afbfaed3ac18d1f3d3c5   # LF content SHA
+  manifest: current_work_pckg/BYOP_NEXT_07/A3_PRE_RUN_MANIFEST.json
   stage: A3
   # S2 needs the solved S1 network in memory (rearch_mech main), so the A3 process re-solves S0 and S1 first; they must reproduce
   # the accepted A2 results (same SHA-pinned no-harm reference) or A3 stops.
@@ -26,7 +27,14 @@ post_v16:
   max_retries: 0
   prerequisites:                             # an unresolved / blocked S0 baseline blocks every A3 solve
     - {file: current_work_pckg/BYOP_NEXT_06/S0_SCIENTIFIC_STATUS.json, field: S0_RELIABILITY_VERDICT, allowed: [CALIBRATED_PASS, PHYSICAL_SCARCITY_VALIDATED_WITH_LIMITS]}
-  firm_rule: CONSERVATIVE_FIRM_SCREENING     # dedicated RE + BESS full-year firm credit = 0 in S2 AND S3 until a 48 / 72 h contiguous certificate exists (NOT IMPLEMENTED)
+  firm_rule: CONSERVATIVE_FIRM_SCREENING     # NEXT-07 W4.2: A2-F_cert upper bound 0 in S2 developer, S2 public, S3 and S3_mS2 alike (one extra_rearch path);
+                                             # no 48 / 72 h contiguous certificate exists yet, so dedicated RE + BESS earns no full-year firm IT credit
+  reference:                                 # the accepted A2 results the A3 S0 / S1_EARLIEST re-solves must reproduce (objective, shed);
+    dir: results/BYOP/post_v16_a2/POST_V16_A2_S0S1   # later no-harm rows use this SHA-pinned S0 reference, not the re-solve
+    sha256:
+      S0_RESULT.json: d42b841c35a152a220baf41009e7d78892677c910fb26e8bfe21361cf2f1dbd5
+      S1_EARLIEST_RESULT.json: 548e95d67af14fd368b0493155b3c6550eb3f045346a14a6e3d6e1798e5e4252
+      S0_NO_HARM_REFERENCE.csv: 617da93b6a8336e35bac9f4baa101f13a39c53d9db0164252fe5105a71666d3a
   mainline_config: config/config.byop_ercot_mainline_geo_dynamic_v1_baseline_v16.yaml
   out_dir: results/BYOP/post_v16_a3/POST_V16_A3_PILOT
   baseline:
