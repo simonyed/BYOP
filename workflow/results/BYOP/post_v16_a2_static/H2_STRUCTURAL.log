@@ -1,0 +1,151 @@
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:pypsa.optimization.window:Building the multi-period model over a MultiIndex `snapshot`. Opt into the flat representation via `pypsa.options.optimization.model_snapshot_index = 'flat'`.
+INFO:opts.bidirectional_link:Added 324 bidirectional link constraints
+INFO:opts.sector:Demand response not enabled
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:opts.bidirectional_link:Added 324 bidirectional link constraints
+INFO:opts.sector:Demand response not enabled
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+WARNING:pypsa.optimization.constraints:StorageUnits ['DC_p600 0 BYOP BESS q2026', 'DC_p600 0 BYOP BESS q2027', 'DC_p600 0 BYOP BESS q2028', 'DC_p600 0 BYOP BESS q2029', 'DC_p600 0 BYOP BESS q2030', 'DC_p600 0 BYOP BESS q2031', 'DC_p610 2 BYOP BESS q2026', 'DC_p610 2 BYOP BESS q2027', 'DC_p610 2 BYOP BESS q2028', 'DC_p610 2 BYOP BESS q2029', 'DC_p610 2 BYOP BESS q2030', 'DC_p610 2 BYOP BESS q2031', 'DC_p630 10 BYOP BESS q2026', 'DC_p630 10 BYOP BESS q2027', 'DC_p630 10 BYOP BESS q2028', 'DC_p630 10 BYOP BESS q2029', 'DC_p630 10 BYOP BESS q2030', 'DC_p630 10 BYOP BESS q2031', 'DC_p630 2 BYOP BESS q2026', 'DC_p630 2 BYOP BESS q2027', 'DC_p630 2 BYOP BESS q2028', 'DC_p630 2 BYOP BESS q2029', 'DC_p630 2 BYOP BESS q2030', 'DC_p630 2 BYOP BESS q2031', 'DC_p630 3 BYOP BESS q2026', 'DC_p630 3 BYOP BESS q2027', 'DC_p630 3 BYOP BESS q2028', 'DC_p630 3 BYOP BESS q2029', 'DC_p630 3 BYOP BESS q2030', 'DC_p630 3 BYOP BESS q2031', 'DC_p630 4 BYOP BESS q2026', 'DC_p630 4 BYOP BESS q2027', 'DC_p630 4 BYOP BESS q2028', 'DC_p630 4 BYOP BESS q2029', 'DC_p630 4 BYOP BESS q2030', 'DC_p630 4 BYOP BESS q2031', 'DC_p630 5 BYOP BESS q2026', 'DC_p630 5 BYOP BESS q2027', 'DC_p630 5 BYOP BESS q2028', 'DC_p630 5 BYOP BESS q2029', 'DC_p630 5 BYOP BESS q2030', 'DC_p630 5 BYOP BESS q2031', 'DC_p630 6 BYOP BESS q2026', 'DC_p630 6 BYOP BESS q2027', 'DC_p630 6 BYOP BESS q2028', 'DC_p630 6 BYOP BESS q2029', 'DC_p630 6 BYOP BESS q2030', 'DC_p630 6 BYOP BESS q2031', 'DC_p630 8 BYOP BESS q2026', 'DC_p630 8 BYOP BESS q2027', 'DC_p630 8 BYOP BESS q2028', 'DC_p630 8 BYOP BESS q2029', 'DC_p630 8 BYOP BESS q2030', 'DC_p630 8 BYOP BESS q2031', 'DC_p630 9 BYOP BESS q2026', 'DC_p630 9 BYOP BESS q2027', 'DC_p630 9 BYOP BESS q2028', 'DC_p630 9 BYOP BESS q2029', 'DC_p630 9 BYOP BESS q2030', 'DC_p630 9 BYOP BESS q2031', 'DC_p640 1 BYOP BESS q2026', 'DC_p640 1 BYOP BESS q2027', 'DC_p640 1 BYOP BESS q2028', 'DC_p640 1 BYOP BESS q2029', 'DC_p640 1 BYOP BESS q2030', 'DC_p640 1 BYOP BESS q2031', 'DC_p650 0 BYOP BESS q2026', 'DC_p650 0 BYOP BESS q2027', 'DC_p650 0 BYOP BESS q2028', 'DC_p650 0 BYOP BESS q2029', 'DC_p650 0 BYOP BESS q2030', 'DC_p650 0 BYOP BESS q2031', 'DC_p650 7 BYOP BESS q2026', 'DC_p650 7 BYOP BESS q2027', 'DC_p650 7 BYOP BESS q2028', 'DC_p650 7 BYOP BESS q2029', 'DC_p650 7 BYOP BESS q2030', 'DC_p650 7 BYOP BESS q2031', 'DC_p670 0 BYOP BESS q2026', 'DC_p670 0 BYOP BESS q2027', 'DC_p670 0 BYOP BESS q2028', 'DC_p670 0 BYOP BESS q2029', 'DC_p670 0 BYOP BESS q2030', 'DC_p670 0 BYOP BESS q2031', 'DC_p670 1 BYOP BESS q2026', 'DC_p670 1 BYOP BESS q2027', 'DC_p670 1 BYOP BESS q2028', 'DC_p670 1 BYOP BESS q2029', 'DC_p670 1 BYOP BESS q2030', 'DC_p670 1 BYOP BESS q2031', 'DC_p670 4 BYOP BESS q2026', 'DC_p670 4 BYOP BESS q2027', 'DC_p670 4 BYOP BESS q2028', 'DC_p670 4 BYOP BESS q2029', 'DC_p670 4 BYOP BESS q2030', 'DC_p670 4 BYOP BESS q2031']: Per-period cyclic (cyclic_state_of_charge_per_period=True) overrides global cyclic (cyclic_state_of_charge=True). Storage will cycle within each investment period, not across the entire horizon.
+INFO:opts.bidirectional_link:Added 324 bidirectional link constraints
+INFO:opts.sector:Demand response not enabled
+[PASS] QA-BASE v1.6 baseline file and SHA 
+[PASS] QA-VERSION TECH_COMP_2 selected by the post-v1.6 config; siting dynamic_pnnl_v1 
+[PASS] QA-SPACE 16 research buses (no hard-coded 8 / 17) 
+[PASS] QA-FIPS site county FIPS attached (8 known, 8 UNKNOWN_CONSERVATIVE) 
+[PASS] QA-NOERM S0: no legacy ERM row / shadow storage / ERM-02 margin 
+[PASS] QA-LP S0: continuous LP (no integer / binary) 
+[PASS] QA-RES S0: 3,000 MW reserve row in every snapshot 
+[PASS] QA-RES S0: storage reserve energy uses the dispatch SOC (no shadow SOC) 
+[PASS] QA-RES S0: reserve-eligible units exclude DC-bus BYOP and load_shed 
+[PASS] QA-RES S0: extendable public thermal candidates carry reserve via p_nom (online_cap_ext) 
+[PASS] QA-PUBLIC S0: no free endogenous public expansion; S0CAL absent; every rev priced via a verified fwd equality 
+[PASS] QA-PAIR S0: every AC_exp fwd / rev pair tied by M2-line_sym (rev-only and fwd-only rejected), fwd priced once, corridor cap 
+[PASS] QA-PAIR S0: committed DWB / PBRP links fixed, cost-free in the LP, outside every expansion row 
+[PASS] QA-COD S0: every public candidate inactive before its build year, priced in the objective, approval <= build 
+[PASS] QA-COD S0: counter-example 2027 order / 2029 COD exists and is unavailable in 2027-28 (same rule in S0 and S1) 
+[PASS] QA-SOC S0: storage SOC advances by the elapsed 3 h (stores weighting) while objective / generators keep the sample weight 
+[PASS] QA-SOC S0: reserve energy also bounded at the START of each snapshot (dispatch SOC + same-snapshot flows, no shadow SOC) 
+[PASS] QA-RES S0: reserve rows tie thermal r to online capacity - dispatch, ramp and min-load on the same online variable 
+[PASS] QA-SOCSEG S0: PyPSA chains SOC across every within-period time gap (risk confirmed on the real model) 
+[PASS] QA-SOCSEG S0: one segment-neutrality row per active StorageUnit x segment (no binaries) 
+[PASS] QA-SOCSEG S0: segments never span a time gap or a period; stress events kept contiguous 
+[PASS] QA-F5 S0: no RE+BESS firm certificate rows (A2-FIX-05: S0 / S1 do not rely on BYOP RE+BESS firm) 
+[PASS] QA-PUBLIC S0: committed TPIT / PBRP links listed as sunk common assets 
+[PASS] QA-NOERM S1_EARLIEST: no legacy ERM row / shadow storage / ERM-02 margin 
+[PASS] QA-LP S1_EARLIEST: continuous LP (no integer / binary) 
+[PASS] QA-RES S1_EARLIEST: 3,000 MW reserve row in every snapshot 
+[PASS] QA-RES S1_EARLIEST: storage reserve energy uses the dispatch SOC (no shadow SOC) 
+[PASS] QA-RES S1_EARLIEST: reserve-eligible units exclude DC-bus BYOP and load_shed 
+[PASS] QA-RES S1_EARLIEST: extendable public thermal candidates carry reserve via p_nom (online_cap_ext) 
+[PASS] QA-PUBLIC S1_EARLIEST: no free endogenous public expansion; S0CAL absent; every rev priced via a verified fwd equality 
+[PASS] QA-PAIR S1_EARLIEST: every AC_exp fwd / rev pair tied by M2-line_sym (rev-only and fwd-only rejected), fwd priced once, corridor cap 
+[PASS] QA-PAIR S1_EARLIEST: committed DWB / PBRP links fixed, cost-free in the LP, outside every expansion row 
+[PASS] QA-COD S1_EARLIEST: every public candidate inactive before its build year, priced in the objective, approval <= build 
+[PASS] QA-COD S1_EARLIEST: counter-example 2027 order / 2029 COD exists and is unavailable in 2027-28 (same rule in S0 and S1) 
+[PASS] QA-SOC S1_EARLIEST: storage SOC advances by the elapsed 3 h (stores weighting) while objective / generators keep the sample weight 
+[PASS] QA-SOC S1_EARLIEST: reserve energy also bounded at the START of each snapshot (dispatch SOC + same-snapshot flows, no shadow SOC) 
+[PASS] QA-RES S1_EARLIEST: reserve rows tie thermal r to online capacity - dispatch, ramp and min-load on the same online variable 
+[PASS] QA-SOCSEG S1_EARLIEST: PyPSA chains SOC across every within-period time gap (risk confirmed on the real model) 
+[PASS] QA-SOCSEG S1_EARLIEST: one segment-neutrality row per active StorageUnit x segment (no binaries) 
+[PASS] QA-SOCSEG S1_EARLIEST: segments never span a time gap or a period; stress events kept contiguous 
+[PASS] QA-NOHARM S1_EARLIEST: every existing-customer shed unit (native + inherited ramp) in the D24 no-harm row 
+[PASS] QA-NOHARM S1_EARLIEST: no study-AIDC unserved / interruption unit inside the no-harm row 
+[PASS] QA-F5 S1_EARLIEST: no RE+BESS firm certificate rows (A2-FIX-05: S0 / S1 do not rely on BYOP RE+BESS firm) 
+[PASS] QA-PUBLIC S1_EARLIEST: committed TPIT / PBRP links listed as sunk common assets 
+[PASS] QA-NOERM S3: no legacy ERM row / shadow storage / ERM-02 margin 
+[PASS] QA-LP S3: continuous LP (no integer / binary) 
+[PASS] QA-RES S3: 3,000 MW reserve row in every snapshot 
+[PASS] QA-RES S3: storage reserve energy uses the dispatch SOC (no shadow SOC) 
+[PASS] QA-RES S3: reserve-eligible units exclude DC-bus BYOP and load_shed 
+[PASS] QA-RES S3: extendable public thermal candidates carry reserve via p_nom (online_cap_ext) 
+[PASS] QA-PUBLIC S3: no free endogenous public expansion; S0CAL absent; every rev priced via a verified fwd equality 
+[PASS] QA-PAIR S3: every AC_exp fwd / rev pair tied by M2-line_sym (rev-only and fwd-only rejected), fwd priced once, corridor cap 
+[PASS] QA-PAIR S3: committed DWB / PBRP links fixed, cost-free in the LP, outside every expansion row 
+[PASS] QA-COD S3: every public candidate inactive before its build year, priced in the objective, approval <= build 
+[PASS] QA-COD S3: counter-example 2027 order / 2029 COD exists and is unavailable in 2027-28 (same rule in S0 and S1) 
+[PASS] QA-SOC S3: storage SOC advances by the elapsed 3 h (stores weighting) while objective / generators keep the sample weight 
+[PASS] QA-SOC S3: reserve energy also bounded at the START of each snapshot (dispatch SOC + same-snapshot flows, no shadow SOC) 
+[PASS] QA-RES S3: reserve rows tie thermal r to online capacity - dispatch, ramp and min-load on the same online variable 
+[PASS] QA-SOCSEG S3: PyPSA chains SOC across every within-period time gap (risk confirmed on the real model) 
+[PASS] QA-SOCSEG S3: one segment-neutrality row per active StorageUnit x segment (no binaries) 
+[PASS] QA-SOCSEG S3: segments never span a time gap or a period; stress events kept contiguous 
+[PASS] QA-PUBLIC S3: committed TPIT / PBRP links listed as sunk common assets 
+[PASS] QA-S0S1 NEXT-02: S0 / S1_EARLIEST public inputs identical (hash per component table) 
+[PASS] QA-S0S1 S0 and S1 share the same public generators / candidates / costs (only AIDC rows differ) 
+[PASS] QA-S0S1 S0 and S1 share lines and committed links 
+[PASS] QA-POI S1 POI equipment phased per site and year (some sites > 0 in 2026, others 0) 
+[PASS] QA-S1 S1_EARLIEST is Grid-Only (no BYOP candidates) 
+[PASS] QA-TECH2 S3: BYOP candidates built from TECH_COMP_2 with permit / COD audit 
+[PASS] QA-TECH2 S3: CONTROLLED_ENV candidates for RICE / aero only 
+[PASS] QA-TECH2 S3: every BYOP candidate has a positive capital cost and a COD-consistent build year 
+[PASS] QA-SUPPLY S3: common supply-pool rows V2-supply_pool_<tech>_<year> present (2026-2031 only) 
+[PASS] QA-REFIRM S3: RE+BESS firm certificate variables built and entered into serve_cap 
+[PASS] QA-REFIRM S3: certificate SOC boundary rows on the dispatch SOC 
+[PASS] QA-NOERM S3: no legacy ERM / shadow SOC 
+[PASS] QA-LP no solver was called (only intercepted model calls) 
+{
+ "stage": "A2_STATIC_STRUCTURAL",
+ "solver_executions": 0,
+ "solver_calls_intercepted": 3,
+ "siting": "dynamic_pnnl_v1",
+ "research_buses": [
+  "p600 0",
+  "p610 2",
+  "p630 10",
+  "p630 2",
+  "p630 3",
+  "p630 4",
+  "p630 5",
+  "p630 6",
+  "p630 8",
+  "p630 9",
+  "p640 1",
+  "p650 0",
+  "p650 7",
+  "p670 0",
+  "p670 1",
+  "p670 4"
+ ],
+ "n_checks": 75,
+ "n_pass": 75,
+ "n_fail": 0,
+ "n_vars": {
+  "S0": 2660074,
+  "S1_EARLIEST": 2712538,
+  "S3": 2978054
+ },
+ "n_cons": {
+  "S0": 7107710,
+  "S1_EARLIEST": 7296046,
+  "S3": 7824023
+ },
+ "reserve": {
+  "eligible_thermal": 239,
+  "eligible_thermal_ext": 112,
+  "storage": 693,
+  "soc_interval_start": {
+   "storage": 693,
+   "with_inflow": 0,
+   "weight_h": [
+    3.0
+   ],
+   "spill_term": "omitted (conservative)"
+  }
+ },
+ "re_firm_count": 96,
+ "seconds": 458.3,
+ "base_sha256": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16",
+ "tech_version": "TECH_COMP_2"
+}
+rc=0

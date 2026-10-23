@@ -1,0 +1,6 @@
+8a32d74c39f7b939cce734d13bd99c53ce26096e
+gz_ok
+66069818a05969bc8a32616e48be6b8a358914f1f750899d57952826434fb347  byop/inputs/post_v16/derived/ERCOT_OPERATIONAL_WIND_SOLAR_2023_2025.csv.gz
+ M workflow/byop/inputs/dc/EPOCH_SITE_SERVICE_TAMU64.csv
+ M workflow/byop/inputs/dc/EPOCH_TAMU64_PROVENANCE.json
+ M workflow/byop/inputs/dc/EPOCH_TX_SITES_TAMU64.csv

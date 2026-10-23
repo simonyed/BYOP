@@ -1,0 +1,34 @@
+2026-10-23T04:41:17Z start python -c import sys, json; sys.path.insert(0, 'byop/model'); import post_v16_a2_gate as G; print(json.dumps({s: G.check(s, '/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc') for s in G.STAGES}, indent=1))
+{
+ "S0": {
+  "approved": false,
+  "reasons": [
+   "run_authorization=NOT_APPROVED",
+   "approved_by missing",
+   "approved_git_sha missing"
+  ],
+  "head": "8a32d74c39f7b939cce734d13bd99c53ce26096e",
+  "approved_git_sha": null,
+  "stage": "S0",
+  "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+  "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a2.yaml",
+  "ledger": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/post_v16_a2/POST_V16_A2_S0S1/A2_SOLVE_LOG.csv"
+ },
+ "S1_EARLIEST": {
+  "approved": false,
+  "reasons": [
+   "run_authorization=NOT_APPROVED",
+   "approved_by missing",
+   "approved_git_sha missing",
+   "S1_EARLIEST needs a PASSED S0 first: S0 has no ledger row",
+   "S0 no-harm reference S0_NO_HARM_REFERENCE.csv missing"
+  ],
+  "head": "8a32d74c39f7b939cce734d13bd99c53ce26096e",
+  "approved_git_sha": null,
+  "stage": "S1_EARLIEST",
+  "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+  "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a2.yaml",
+  "ledger": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/post_v16_a2/POST_V16_A2_S0S1/A2_SOLVE_LOG.csv"
+ }
+}
+2026-10-23T04:41:18Z end rc=0

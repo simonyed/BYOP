@@ -1,0 +1,107 @@
+8a32d74c39f7b939cce734d13bd99c53ce26096e
+.................................F...................................... [ 29%]
+........................................................................ [ 58%]
+................................................................F....... [ 87%]
+.......F.......F................                                         [100%]
+=================================== FAILURES ===================================
+______________ test_baseline_pins_and_legacy_disabled_on_new_line ______________
+
+    def test_baseline_pins_and_legacy_disabled_on_new_line():
+        import post_v16_gate as G
+        c = G.load(WF / 'config/config.byop_post_v16_a1.yaml')
+        assert c['baseline']['sha256'] == 'a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16'
+>       assert c['run_authorization'] == 'NOT_APPROVED' and c['approved_git_sha'] is None
+E       AssertionError: assert ('APPROVED' == 'NOT_APPROVED'
+E         
+E         - NOT_APPROVED
+E         ? ----
+E         + APPROVED)
+
+byop/tests/test_a0_2_tech_v2.py:306: AssertionError
+___________________________ test_v16_base_pins_agree ___________________________
+
+    def test_v16_base_pins_agree():
+        c = G.load(CFG)
+        assert c['baseline']['sha256'] == BP.BASE_TAMU_V16_SHA256 == 'a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16'
+        assert (ROOT / c['baseline']['path']).resolve() == BP.BASE_TAMU_V16.resolve()
+        assert 'baseline_2025_tamu_v16' in c['baseline']['path']
+>       assert c['run_authorization'] == 'NOT_APPROVED' and c['approved_git_sha'] is None and c['approved_by'] is None
+E       AssertionError: assert ('APPROVED' == 'NOT_APPROVED'
+E         
+E         - NOT_APPROVED
+E         ? ----
+E         + APPROVED)
+
+byop/tests/test_post_v16_a0.py:76: AssertionError
+_______________ test_gate_refuses_not_approved_and_never_solves ________________
+
+tmp_path = PosixPath('/tmp/pytest-of-wsy/pytest-83/test_gate_refuses_not_approved0')
+
+    def test_gate_refuses_not_approved_and_never_solves(tmp_path):
+        root, cfg, base = gate_env(tmp_path, approve=False)
+        g = G.check(cfg, 'LP_R_H_RESOURCE', base, tmp_path / 'log.csv', root=root, git_fn=FakeGit())
+>       assert not g['approved'] and any('run_authorization=NOT_APPROVED' in r for r in g['reasons'])
+E       assert (not True)
+
+byop/tests/test_post_v16_a0.py:337: AssertionError
+_________________ test_unapproved_lp_refused_before_any_build __________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f8a9999d850>
+
+    def test_unapproved_lp_refused_before_any_build(monkeypatch):
+        import post_v16_a1 as A
+        monkeypatch.setattr(A, 'build', lambda *a, **k: (_ for _ in ()).throw(AssertionError('built before the gate')))
+        with pytest.raises(SystemExit) as e:
+            A.lp('R', str(BP.BASE_TAMU_V16), 1)
+>       assert 'POST_V16_RUN_GATE REFUSED' in str(e.value) and 'NOT_APPROVED' in str(e.value)
+E       assert ('POST_V16_RUN_GATE REFUSED' in 'POST_V16_RUN_GATE REFUSED: ["code / config / inputs changed since the approved commit: [\'workflow/byop/build/build_p...op_tech_parameters_v2.py\']", "LP_R_H_RESOURCE already has a logged call [\'DONE\'] (zero retries)", "LP budget used"]' and 'NOT_APPROVED' in 'POST_V16_RUN_GATE REFUSED: ["code / config / inputs changed since the approved commit: [\'workflow/byop/build/build_p...op_tech_parameters_v2.py\']", "LP_R_H_RESOURCE already has a logged call [\'DONE\'] (zero retries)", "LP budget used"]')
+E        +  where 'POST_V16_RUN_GATE REFUSED: ["code / config / inputs changed since the approved commit: [\'workflow/byop/build/build_p...op_tech_parameters_v2.py\']", "LP_R_H_RESOURCE already has a logged call [\'DONE\'] (zero retries)", "LP budget used"]' = str(SystemExit('POST_V16_RUN_GATE REFUSED: ["code / config / inputs changed since the approved commit: [\'workflow/byop/bu...p_tech_parameters_v2.py\']", "LP_R_H_RESOURCE already has a logged call [\'DONE\'] (zero retries)", "LP budget used"]'))
+E        +    where SystemExit('POST_V16_RUN_GATE REFUSED: ["code / config / inputs changed since the approved commit: [\'workflow/byop/bu...p_tech_parameters_v2.py\']", "LP_R_H_RESOURCE already has a logged call [\'DONE\'] (zero retries)", "LP budget used"]') = <ExceptionInfo SystemExit('POST_V16_RUN_GATE REFUSED: ["code / config / inputs changed since the approved commit: [\'w...rameters_v2.py\']", "LP_R_H_RESOURCE already has a logged call [\'DONE\'] (zero retries)", "LP budget used"]') tblen=3>.value
+E        +  and   'POST_V16_RUN_GATE REFUSED: ["code / config / inputs changed since the approved commit: [\'workflow/byop/build/build_p...op_tech_parameters_v2.py\']", "LP_R_H_RESOURCE already has a logged call [\'DONE\'] (zero retries)", "LP budget used"]' = str(SystemExit('POST_V16_RUN_GATE REFUSED: ["code / config / inputs changed since the approved commit: [\'workflow/byop/bu...p_tech_parameters_v2.py\']", "LP_R_H_RESOURCE already has a logged call [\'DONE\'] (zero retries)", "LP budget used"]'))
+E        +    where SystemExit('POST_V16_RUN_GATE REFUSED: ["code / config / inputs changed since the approved commit: [\'workflow/byop/bu...p_tech_parameters_v2.py\']", "LP_R_H_RESOURCE already has a logged call [\'DONE\'] (zero retries)", "LP budget used"]') = <ExceptionInfo SystemExit('POST_V16_RUN_GATE REFUSED: ["code / config / inputs changed since the approved commit: [\'w...rameters_v2.py\']", "LP_R_H_RESOURCE already has a logged call [\'DONE\'] (zero retries)", "LP budget used"]') tblen=3>.value
+
+byop/tests/test_post_v16_a0.py:437: AssertionError
+=============================== warnings summary ===============================
+workflow/byop/tests/test_a0_2_tech_v2.py: 1 warning
+workflow/byop/tests/test_a2_a3_static.py: 2 warnings
+workflow/byop/tests/test_baseline_v16.py: 1 warning
+workflow/byop/tests/test_next02_a2_static.py: 7 warnings
+workflow/byop/tests/test_next03_a2_static.py: 3 warnings
+workflow/byop/tests/test_p0_units.py: 2 warnings
+workflow/byop/tests/test_post_v16_a0.py: 8 warnings
+workflow/byop/tests/test_post_v16_a1_writer.py: 2 warnings
+workflow/byop/tests/test_rearch_units.py: 11 warnings
+  /datasets/prgm/uv-python/cpython-3.11.17-linux-x86_64-gnu/lib/python3.11/contextlib.py:81: FutureWarning:
+  
+  The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+
+workflow/byop/tests/test_p0_units.py: 8 warnings
+workflow/byop/tests/test_post_v16_a1_writer.py: 1 warning
+workflow/byop/tests/test_rearch_units.py: 44 warnings
+  /datasets/prgm/pypsa-usa/.venv/lib/python3.11/site-packages/linopy/common.py:306: UserWarning:
+  
+  Coordinates across variables not equal. Perform outer join.
+
+workflow/byop/tests/test_p0_units.py::test_no_harm_existing_customers
+  /datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/tests/test_p0_units.py:130: FutureWarning:
+  
+  The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+
+workflow/byop/tests/test_p0_units.py::test_no_harm_existing_customers
+workflow/byop/tests/test_p0_units.py::test_earliest_ge_econ_and_maxmin
+workflow/byop/tests/test_p0_units.py::test_earliest_ge_econ_and_maxmin
+workflow/byop/tests/test_p0_units.py::test_earliest_monotone_in_options
+workflow/byop/tests/test_p0_units.py::test_earliest_monotone_in_options
+workflow/byop/tests/test_p0_units.py::test_ineligible_site_does_not_lock_maxmin
+  /datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/tests/test_p0_units.py:79: FutureWarning:
+  
+  The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED byop/tests/test_a0_2_tech_v2.py::test_baseline_pins_and_legacy_disabled_on_new_line
+FAILED byop/tests/test_post_v16_a0.py::test_v16_base_pins_agree - AssertionEr...
+FAILED byop/tests/test_post_v16_a0.py::test_gate_refuses_not_approved_and_never_solves
+FAILED byop/tests/test_post_v16_a0.py::test_unapproved_lp_refused_before_any_build
+4 failed, 244 passed, 97 warnings in 340.38s (0:05:40)
+rc=1
