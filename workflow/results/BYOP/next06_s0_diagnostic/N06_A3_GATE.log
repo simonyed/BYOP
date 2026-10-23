@@ -1,0 +1,32 @@
+{
+ "S0": {
+  "approved": false,
+  "reasons": [
+   "run_authorization=NOT_APPROVED",
+   "approved_by missing",
+   "approved_git_sha missing",
+   "prerequisite current_work_pckg/BYOP_NEXT_06/S0_SCIENTIFIC_STATUS.json:S0_RELIABILITY_VERDICT = BASELINE_RELIABILITY_UNRESOLVED not in ['CALIBRATED_PASS', 'PHYSICAL_SCARCITY_VALIDATED_WITH_LIMITS']"
+  ],
+  "head": "66a44da8b060d62665086168086937e43dc2f922",
+  "stage": "S0",
+  "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a3.yaml",
+  "ledger": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/post_v16_a3/POST_V16_A3_PILOT/A3_SOLVE_LOG.csv",
+  "child_ledger": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/post_v16_a3/POST_V16_A3_PILOT/A3_OPTIMIZER_CALL_LOG.csv"
+ },
+ "S3": {
+  "approved": false,
+  "reasons": [
+   "run_authorization=NOT_APPROVED",
+   "approved_by missing",
+   "approved_git_sha missing",
+   "prerequisite current_work_pckg/BYOP_NEXT_06/S0_SCIENTIFIC_STATUS.json:S0_RELIABILITY_VERDICT = BASELINE_RELIABILITY_UNRESOLVED not in ['CALIBRATED_PASS', 'PHYSICAL_SCARCITY_VALIDATED_WITH_LIMITS']",
+   "S3 needs a PASSED S0 first",
+   "S3 needs a PASSED S1_EARLIEST first"
+  ],
+  "head": "66a44da8b060d62665086168086937e43dc2f922",
+  "stage": "S3",
+  "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a3.yaml",
+  "ledger": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/post_v16_a3/POST_V16_A3_PILOT/A3_SOLVE_LOG.csv",
+  "child_ledger": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/post_v16_a3/POST_V16_A3_PILOT/A3_OPTIMIZER_CALL_LOG.csv"
+ }
+}

@@ -1,0 +1,12 @@
+stage,kind,max_top_level_calls,code_path,role,instrumentation,counts_toward_budget
+S0,S0_COST,1,go(S0) -> M.solve -> linopy.Model.solve (controlled entry),re-solve needed: S2 requires S1 network in memory; must reproduce the accepted A2 S0 (no-harm reference SHA),A2 wrapper instrumented,True
+S1_EARLIEST,S1_SPEED_HIERARCHY,1,"extra_rearch -> lex_presolve -> gurobipy Model.optimize (hierarchical, ~12 objectives = metadata)",same,A2 explicit instrumentation,True
+S1_EARLIEST,S1_COST,1,linopy.Model.solve,same,A2 wrapper instrumented,True
+S3,S3_COST,1,"go('S3', byop, reuse_dedicated) -> M.solve -> linopy.Model.solve",coordinated public + BYOP co-optimisation,NOT YET routed through A3 gate,True
+S2_IT1,S2_DEV_LEX,6,developer_joint: per period p (2026-2031) m.solve(max total IT online) + lex lock,private developer speed-first levels,NOT YET routed (refused today by the A2 linopy lock as UNPLANNED),True
+S2_IT1,S2_DEV_COST,1,developer_joint: n.optimize.solve_model (private cost at locked speed),private cost second,NOT YET routed,True
+S2_IT1,S2_PUBLIC,1,"go('S2', extra=extra_rights, byop_fixed=K) -> M.solve",public response with developer rights,NOT YET routed,True
+S2_IT2,S2_DEV_LEX + S2_DEV_COST + S2_PUBLIC,8,only if IT1 public delivery < developer plan (re-offer),optional,NOT YET routed,True
+S2_IT3,S2_DEV_LEX + S2_DEV_COST + S2_PUBLIC,8,only if IT2 inconsistent (s2_iter = 3),optional; not converged after IT3 -> S2_NOT_CONVERGED,NOT YET routed,True
+S3_mS2,S3_MS2_COST,1,"go('S3_mS2', s_fixed = S2_final delivered service)",matched-service coordinated cost,NOT YET routed,True
+TOTAL,,29,,"budget 30 (NEXT-05 A3, unused, NOT unlocked by W3)",,True

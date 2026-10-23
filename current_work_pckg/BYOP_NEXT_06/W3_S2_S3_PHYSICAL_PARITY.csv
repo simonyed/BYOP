@@ -1,0 +1,10 @@
+element,S3_coordinated,S2_developer_and_public,parity_status,note
+technology set / costs / COD,TECH_COMP_2 via add_byop_cohorts (same builder),same builder (S3 build) / developer network uses the same cohort builder,SHARED_BY_CODE,structural S3 QA-TECH2 PASS
+gas deliverability / permit -> COD,byop_delivery_and_permit (same functions),same,SHARED_BY_CODE,16 buses permit delay 0 (L2 gas dominates)
+supply pools (manufacturing),V2-supply_pool rows in S3,developer LP: pool rows present? (developer_joint_build),TO_VERIFY_AT_RUNTIME,pool rows audited in S3 only
+POI equipment / upgrades,POI-eq rows,S2 public LP with rights (extra_rights) uses the same POI rows,SHARED_BY_CODE,
+public assets DWB / PBRP + candidates,common (S0 = S1 hash identical),S2 public LP = same public world,SHARED_BY_CODE,S0_S1_IDENTICAL_PUBLIC_INPUTS.json
+"3 GW reserve, start/end SOC, segment SOC neutrality",PV16M rows in every public LP,developer private LP (DC buses only): no system reserve (BYOP never provides system reserve),SHARED_BY_CODE (public LPs),
+no-harm (S0 reference),D24 rows in S1-type public LPs,S2 public: no_harm_now when shed_S0 present,SHARED_BY_CODE,requires S0 re-solve in the A3 process
+RE + BESS firm credit,A2-F_cert (24 h B7 stress days) enters serve_cap in S3,developer LP: same certificate? -> TO_VERIFY,GAP,48/72 h contiguous certificate NOT implemented; conservative rule (firm credit = 0 in S2 AND S3) NOT implemented
+objective,"social resource cost (S3, S3_mS2)",private cost after speed-first lex (S2 dev); social cost for S2 public,DIFFERENT_BY_DESIGN,

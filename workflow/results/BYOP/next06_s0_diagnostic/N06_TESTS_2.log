@@ -1,0 +1,76 @@
+66a44da8b060d62665086168086937e43dc2f922
+........................................................................ [ 28%]
+........................................................................ [ 56%]
+........................................................................ [ 84%]
+..........................F.............                                 [100%]
+=================================== FAILURES ===================================
+__________________ test_rearch_post_v16_refuses_legacy_flags ___________________
+
+tmp_path = PosixPath('/tmp/pytest-of-wsy/pytest-86/test_rearch_post_v16_refuses_l0')
+
+    def test_rearch_post_v16_refuses_legacy_flags(tmp_path):
+        pytest.importorskip('pypsa')
+        base = str(BP.BASE_TAMU_V16)
+        for extra in (['--calibrate'], ['--erm-cal', 'x.json'], ['--s0-calibrate'], ['--s0-cal-file', 'x.csv'], []):
+            r = subprocess.run([sys.executable, '-W', 'ignore', str(BY / 'model/rearch_mech.py'), '--post-v16', '--case-id', 't', '--out', str(tmp_path),
+                                '--base', base, *extra], cwd=str(WF), capture_output=True, text=True)
+            assert r.returncode == 3, r.stderr[-500:]
+            assert '"POST_V16_GUARD": "REFUSED"' in r.stdout       # NEXT-02: the A2 gate replaced the unconditional NOT_READY refusal
+            if extra:
+                assert f'legacy flag {extra[0]}' in r.stdout
+        # NEXT-02 A2-FIX-07: a well-formed A2 command is still refused (fail-closed) while config.byop_post_v16_a2.yaml is NOT_APPROVED
+        import post_v16_a2_gate as A2G
+        c = A2G.load()
+        r = subprocess.run([sys.executable, '-W', 'ignore', str(BY / 'model/rearch_mech.py'), '--mainline', '--post-v16', '--case-id', 't',
+                            '--config', c['mainline_config'], '--out', str(WF / c['out_dir']), '--base', base, '--scenarios', 'S0', 'S1_EARLIEST'],
+                           cwd=str(WF), capture_output=True, text=True)
+        assert r.returncode == 3
+        if BP.BASE_TAMU_V16.exists():          # with the v1.6 base present the refusal comes from the A2 approval fields
+            assert 'run_authorization=NOT_APPROVED' in r.stdout and 'approved_by missing' in r.stdout
+>       assert not (WF / c['out_dir'] / 'A2_SOLVE_LOG.csv').exists()          # refused before any ledger row / build
+E       AssertionError: assert not True
+E        +  where True = exists()
+E        +    where exists = ((PosixPath('/datasets/prgm/BYOP_impact/pypsa-usa/workflow') / 'results/BYOP/post_v16_a2/POST_V16_A2_S0S1') / 'A2_SOLVE_LOG.csv').exists
+
+byop/tests/test_post_v16_a0.py:487: AssertionError
+=============================== warnings summary ===============================
+workflow/byop/tests/test_a0_2_tech_v2.py: 1 warning
+workflow/byop/tests/test_a2_a3_static.py: 2 warnings
+workflow/byop/tests/test_baseline_v16.py: 1 warning
+workflow/byop/tests/test_next02_a2_static.py: 7 warnings
+workflow/byop/tests/test_next03_a2_static.py: 3 warnings
+workflow/byop/tests/test_p0_units.py: 2 warnings
+workflow/byop/tests/test_post_v16_a0.py: 8 warnings
+workflow/byop/tests/test_post_v16_a1_writer.py: 2 warnings
+workflow/byop/tests/test_rearch_units.py: 11 warnings
+  /datasets/prgm/uv-python/cpython-3.11.17-linux-x86_64-gnu/lib/python3.11/contextlib.py:81: FutureWarning:
+  
+  The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+
+workflow/byop/tests/test_p0_units.py: 8 warnings
+workflow/byop/tests/test_post_v16_a1_writer.py: 1 warning
+workflow/byop/tests/test_rearch_units.py: 44 warnings
+  /datasets/prgm/pypsa-usa/.venv/lib/python3.11/site-packages/linopy/common.py:306: UserWarning:
+  
+  Coordinates across variables not equal. Perform outer join.
+
+workflow/byop/tests/test_p0_units.py::test_no_harm_existing_customers
+  /datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/tests/test_p0_units.py:130: FutureWarning:
+  
+  The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+
+workflow/byop/tests/test_p0_units.py::test_no_harm_existing_customers
+workflow/byop/tests/test_p0_units.py::test_earliest_ge_econ_and_maxmin
+workflow/byop/tests/test_p0_units.py::test_earliest_ge_econ_and_maxmin
+workflow/byop/tests/test_p0_units.py::test_earliest_monotone_in_options
+workflow/byop/tests/test_p0_units.py::test_earliest_monotone_in_options
+workflow/byop/tests/test_p0_units.py::test_ineligible_site_does_not_lock_maxmin
+  /datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/tests/test_p0_units.py:79: FutureWarning:
+  
+  The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED byop/tests/test_post_v16_a0.py::test_rearch_post_v16_refuses_legacy_flags
+1 failed, 255 passed, 97 warnings in 214.70s (0:03:34)
+rc=1
