@@ -22,7 +22,9 @@ import byop_paths as BP  # noqa: E402
 import post_v16_gate as G  # noqa: E402
 
 CFG = WF / 'config/config.byop_post_v16_a1.yaml'
-OUT = BP.POST_V16_RESULTS
+# NEXT-04 Option 1: a researcher-approved rerun writes its ledger and outputs into its own sub-directory (config run_dir); the
+# first attempt's ledger / RESULT files stay untouched in POST_V16_A1_HEADROOM/ and are SHA-pinned by the gate (prior_ledgers)
+OUT = BP.POST_V16_RESULTS / (G.load(CFG).get('run_dir') or '')
 LOG = OUT / 'HEADROOM_SOLVE_LOG.csv'
 STAGE = {'R': 'LP_R_H_RESOURCE', 'N': 'LP_N_H_NETWORK'}
 sha = lambda p: hashlib.sha256(Path(p).read_bytes()).hexdigest()
@@ -91,12 +93,14 @@ def finish_attempt(attempt_id, path=None, **kw):
 def solution_view(n, info):
     """everything the writers need, as pandas objects (so the writers are testable without a solver)"""
     m = n.model
-    sol = m.solution
     g = n.generators
-    return dict(lam=float(sol['PV16-lambda'].values), weights=pd.DataFrame(info['weights']).set_index('bus'), meta=info['meta'],
+    # NEXT-04 fix: read each variable's OWN solution. linopy's merged m.solution Dataset carries the union of every component's
+    # 'name' coordinate (lines + generators + storage), which padded the reserve frames and broke the LP-R writer (KeyError)
+    sol = lambda k: m[k].solution.to_pandas()
+    return dict(lam=float(m['PV16-lambda'].solution.values), weights=pd.DataFrame(info['weights']).set_index('bus'), meta=info['meta'],
                 p=n.generators_t.p.copy(), carrier=g.carrier.copy(), bus=g.bus.copy(), p_nom=g.p_nom.copy(),
-                r_thermal=sol['PV16-res_thermal'].to_pandas(), online=sol['PV16-online_cap'].to_pandas(),
-                r_su=sol['PV16-res_su'].to_pandas() if 'PV16-res_su' in sol else pd.DataFrame(),
+                r_thermal=sol('PV16-res_thermal'), online=sol('PV16-online_cap'),
+                r_su=sol('PV16-res_su') if 'PV16-res_su' in m.variables else pd.DataFrame(),
                 su_dispatch=n.storage_units_t.p_dispatch.copy(), su_store=n.storage_units_t.p_store.copy(),
                 soc=n.storage_units_t.state_of_charge.copy(), su_pnom=n.storage_units.p_nom.copy(),
                 su_effd=n.storage_units.efficiency_dispatch.copy(), p0=n.lines_t.p0.copy(),
@@ -104,6 +108,29 @@ def solution_view(n, info):
                 zone=n.buses.reeds_zone.copy() if 'reeds_zone' in n.buses else pd.Series(dtype=str),
                 load=n.loads_t.p.T.groupby(n.loads.bus).sum().T if not n.loads_t.p.empty else n.loads_t.p_set.T.groupby(n.loads.bus).sum().T,
                 duals_line=None, R=float(info['reserve_MW']), tau=float(info['tau_h']), mode=info['mode'])
+
+
+def save_solution(n, out, tag):
+    """the solved network (netCDF, L2 only) and every PV16-* variable's own solution (CSV); failures are recorded, never fatal"""
+    rec = {}
+    d = Path(out) / f'{tag}_SOLUTION'
+    try:
+        d.mkdir(parents=True, exist_ok=True)
+        m = n.model
+        for k in [x for x in m.variables if x.startswith('PV16-')]:
+            s_ = m[k].solution
+            (s_.to_pandas().to_frame(k) if s_.ndim == 1 else s_.to_pandas() if s_.ndim == 2 else pd.DataFrame({k: [float(s_.values)]})) \
+                .to_csv(d / f'{k}.csv', lineterminator='\n')
+        rec['pv16_variables_dir'] = str(d)
+    except Exception as e:
+        rec['pv16_variables_error'] = repr(e)[:300]
+    try:
+        f = Path(out) / f'{tag}_SOLVED_NETWORK.nc'
+        n.export_to_netcdf(f)
+        rec.update(network=str(f), network_sha256=sha(f))
+    except Exception as e:
+        rec['network_error'] = repr(e)[:300]
+    return rec
 
 
 def write_outputs(v, out, tag):
@@ -265,6 +292,7 @@ def lp(mode, base, threads, solve_fn=None):
     if not (st == 'ok' and term == 'optimal'):
         fc = classify(mode, st, term)
     else:
+        summ['saved_solution'] = save_solution(n, OUT, tag)   # NEXT-04: persist the solve BEFORE any writer / acceptance step
         try:
             summ.update(write_outputs(solution_view(n, info), OUT, tag))
             summ['balance_residual_max_abs_MW'] = balance_residual(n)

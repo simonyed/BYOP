@@ -3,13 +3,20 @@
 # approved_git_sha and approved_by. byop/model/post_v16_gate.py refuses every optimizer call otherwise (and on any SHA drift).
 # Isolated from the legacy mainline configs (config.byop_ercot_mainline*.yaml), which are not read here.
 post_v16:
-  run_authorization: APPROVED
-  approved_git_sha: 802c9d9414514641fd2b088b45ec7ea945be18a4
-  approved_by: sw2434@cornell.edu
+  run_authorization: NOT_APPROVED
+  approved_git_sha: null
+  approved_by: null
   authorization_source: current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1/CURRENT_EXECUTION_WORK_PACKAGE_v1.1.md
   authorization_source_sha256: c3c1a0a55d2fab68076314c4ea7a25a0966907ed5cae3d13510523657e55dfad
   manifest: current_work_pckg/POST_V16_A1_PRE_RUN_MANIFEST.json
   stage: A1
+  # NEXT-04 Option 1 (researcher 2026-10-22): the first approved LP-R (f6dc3151) solved ok / optimal but the output reader failed
+  # (KeyError, merged m.solution coordinates) -> pass=False. Reader fixed (LP unchanged); this rerun writes its own ledger and outputs
+  # to POST_V16_A1_HEADROOM/rerun1/. The first attempt stays as immutable evidence (SHA-pinned below; never cleared or reused).
+  run_dir: rerun1
+  prior_ledgers:
+    - {path: workflow/results/BYOP/POST_V16_A1_HEADROOM/HEADROOM_SOLVE_LOG.csv, sha256: 05bd03c2fa629f7af0f1f767d9d9758bd5b156856c00f5d75ce06a5e7142e28d}
+    - {path: workflow/results/BYOP/POST_V16_A1_HEADROOM/LP_R_H_RESOURCE_RESULT.json, sha256: d80d6f9e11b3765699ddc052021c06742f26e0a2d288daeafc81ad8d0162bd27}
   stages: [LP_R_H_RESOURCE, LP_N_H_NETWORK]       # order fixed: LP-R first, LP-N only after an optimal LP-R
   max_lp_calls: 2
   max_retries: 0

@@ -11,6 +11,8 @@ anything and refuses unless ALL of the following hold (each failure is one reaso
   6  the stage is in the authorised list, the order is respected (LP-N only after LP-R PASSED: DONE / ok / optimal / pass in the
      ledger AND an LP-R RESULT.json with acceptance PASS), the stage has no earlier ledger row in ANY state (STARTED counts:
      zero retries), the ledger is readable, and the LP budget is not used up (A0.1 FIX-02 / FIX-03)
+  7  NEXT-04: every prior ledger listed in the config (prior_ledgers) still exists with its pinned SHA-256, and is not the
+     current ledger (a researcher-approved rerun uses its own run_dir)
 check() never touches a solver; deny() raises SystemExit(3) with the reasons.
 """
 from __future__ import annotations
@@ -148,6 +150,14 @@ def check(cfg_path, stage, base_path, log_path, root=ROOT, git_fn=git):
     stages = list(c['stages'])
     if stage not in stages:
         reasons.append(f'stage {stage} not authorised ({stages})')
+    # NEXT-04 Option 1: earlier attempts' ledgers are immutable evidence; a rerun (own run_dir / ledger) is allowed only while each
+    # prior ledger is present with its pinned SHA-256 (no clearing, no rewriting, no reuse of the consumed budget)
+    for rec in c.get('prior_ledgers') or []:
+        f = root / rec['path']
+        if not f.exists() or sha(f) != rec['sha256']:
+            reasons.append(f"prior ledger {rec['path']} missing or changed (pinned {rec['sha256'][:12]})")
+        elif Path(f).resolve() == Path(log_path).resolve():
+            reasons.append(f"ledger {rec['path']} is a closed prior ledger; the rerun needs its own run_dir")
     lg, prob = solve_log_rows(log_path)
     if prob:
         reasons.append(prob)
