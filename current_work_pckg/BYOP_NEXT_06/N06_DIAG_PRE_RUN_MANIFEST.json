@@ -1,0 +1,1590 @@
+{
+ "status": "A2_PRE_RUN_MANIFEST (NOT an approval)",
+ "work_package": "current_work_pckg/BYOP_NEXT_06/BYOP_NEXT_06_S0_RELIABILITY_CALIBRATION_AND_A3_READINESS_2026-10-23.md",
+ "work_package_lf_sha256": "5f13a171a5a1074d4abc8fb2446260ab0c574c6df796409f41b599959a5dfb54",
+ "stage": "A2",
+ "stages": [
+  "S0"
+ ],
+ "max_scenario_attempts": 1,
+ "max_top_level_optimizer_calls": 1,
+ "optimizer_call_plan": {
+  "S0": [
+   "S0_COST"
+  ]
+ },
+ "max_retries": 0,
+ "config": "workflow/config/config.byop_post_v16_n06_diag.yaml",
+ "config_sha256_normalised": "d438171fb789cbaca8a2e66d3a02ebf8b40f69bb894896866f037099e62f9fcb",
+ "baseline": {
+  "path": "workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+  "sha256": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16"
+ },
+ "code": {
+  "workflow/byop/model/byop_delivery_and_permit.py": {
+   "text": true,
+   "raw": "99c25b84fafea216b13d27288ad1db568272cf175386e196d87f38d95c360329",
+   "lf": "99c25b84fafea216b13d27288ad1db568272cf175386e196d87f38d95c360329",
+   "crlf": "f07889bc0680e2b4eb64fb624769b8165c61a6d92d167dd16d16b3f4cbc31529"
+  },
+  "workflow/byop/model/byop_emissions.py": {
+   "text": true,
+   "raw": "0bc66ce30ebb3c200477295236607d7e6a679e4430e5bc03fc92e4b727e27f03",
+   "lf": "0bc66ce30ebb3c200477295236607d7e6a679e4430e5bc03fc92e4b727e27f03",
+   "crlf": "e68f25c699fa488bf4e3d484f7578aa9abc34e3ca94374b1a4d57e6346dd892d"
+  },
+  "workflow/byop/model/byop_paths.py": {
+   "text": true,
+   "raw": "45ecab7908b7069eff980b26dd347de458101ef07e1b6669f7acbf9c07fe4fbd",
+   "lf": "45ecab7908b7069eff980b26dd347de458101ef07e1b6669f7acbf9c07fe4fbd",
+   "crlf": "76e9e6e345d0c259e9ebdc4bfa2669f80bb724dbe54b0cf8a4f18cf4f2324136"
+  },
+  "workflow/byop/model/byop_renewable_firm.py": {
+   "text": true,
+   "raw": "60164fdf6168e60d36a79571b516a73d6e395a531d8b1c0400b5be56a43cb41d",
+   "lf": "60164fdf6168e60d36a79571b516a73d6e395a531d8b1c0400b5be56a43cb41d",
+   "crlf": "68eab0aeeb360a1eb4672268ebb9cd9a5a7417bfff31970076331f9753ed99f9"
+  },
+  "workflow/byop/model/byop_supply_pools.py": {
+   "text": true,
+   "raw": "120bbb5852631ff3fc72e700d4e9d088773bdbea1a0c28bf4e5f20ddfe4d0105",
+   "lf": "120bbb5852631ff3fc72e700d4e9d088773bdbea1a0c28bf4e5f20ddfe4d0105",
+   "crlf": "6eb97eefc6c08861039a9e067ef2590672bb3fe588606f9d65e341f2e93f4c05"
+  },
+  "workflow/byop/model/byop_tech_parameters_v2.py": {
+   "text": true,
+   "raw": "2e72833dc6a6261fa006cc8cb24ff1d3d6fe08089b7b42385c6393da44c67aac",
+   "lf": "2e72833dc6a6261fa006cc8cb24ff1d3d6fe08089b7b42385c6393da44c67aac",
+   "crlf": "1f0802b235e4303efb8a9205405216c7ba82446c0913da001c65a1813a4f3d6e"
+  },
+  "workflow/byop/model/post_v16_a2_gate.py": {
+   "text": true,
+   "raw": "af2562bc2f2fc0d742c6bd5a88d7062f8d33fe7074f3041fb2af1057c1b6614b",
+   "lf": "af2562bc2f2fc0d742c6bd5a88d7062f8d33fe7074f3041fb2af1057c1b6614b",
+   "crlf": "a05bc95dbf9b37d8b2848c88fa7873f1bb49251894f51c2d76d9de95913a884a"
+  },
+  "workflow/byop/model/post_v16_a3_gate.py": {
+   "text": true,
+   "raw": "171d5434cf316be095bb622b6bbdac144038438ef893c0eb972d2c04330bf445",
+   "lf": "171d5434cf316be095bb622b6bbdac144038438ef893c0eb972d2c04330bf445",
+   "crlf": "801594918b46e7f84c0d7adebc0fe5e200b8abd0c5bccf84ce3f09bacfb7e9d4"
+  },
+  "workflow/byop/model/post_v16_gate.py": {
+   "text": true,
+   "raw": "4e8ec5d7a4e889cc05876a8ccf1af859bc67813accdcff59a4ec662191f1a800",
+   "lf": "9ebc215ec3e07db963f4966bdcaaef069e5c992342fd626f1fa787b8ae93e360",
+   "crlf": "4e8ec5d7a4e889cc05876a8ccf1af859bc67813accdcff59a4ec662191f1a800"
+  },
+  "workflow/byop/model/post_v16_headroom.py": {
+   "text": true,
+   "raw": "f45940f7cf347c2d456194b8a9bb2cb19d5df9dfa0555e1809224ed6b4749e2d",
+   "lf": "02c8ec6d44c4aebd056d742516bbebda85ea48d9733f48d57c064381436b0296",
+   "crlf": "f45940f7cf347c2d456194b8a9bb2cb19d5df9dfa0555e1809224ed6b4749e2d"
+  },
+  "workflow/byop/model/post_v16_mainline.py": {
+   "text": true,
+   "raw": "ff61a567322c6f0a0c16c9a936ab6d29cd215e9cb3a9c6e2cdbeca8a669e73b0",
+   "lf": "ff61a567322c6f0a0c16c9a936ab6d29cd215e9cb3a9c6e2cdbeca8a669e73b0",
+   "crlf": "ca977e194f1a18bc967c8d86e741327f70c25561631c3d714c38af82b23392d6"
+  },
+  "workflow/byop/model/rearch_mech.py": {
+   "text": true,
+   "raw": "e56d752f9893e02c599283ec73ef9157f6d606ebe536de15931c4ec9b4711a1a",
+   "lf": "e56d752f9893e02c599283ec73ef9157f6d606ebe536de15931c4ec9b4711a1a",
+   "crlf": "8a4789a369446f1a64d3216b596925d420146bc0442e78a0043ad69a103cfec8"
+  },
+  "workflow/byop/model/v240_mech.py": {
+   "text": true,
+   "raw": "728346fbeb5d651ab9d47c6b7f8419a3b0aa7e6c1aaca55d244f183ab3c6b925",
+   "lf": "c755bc4594f208519c1360c008fea52b2fc552a6cbc75be09aa1c2a957720de3",
+   "crlf": "728346fbeb5d651ab9d47c6b7f8419a3b0aa7e6c1aaca55d244f183ab3c6b925"
+  },
+  "workflow/byop/model/v240_path.py": {
+   "text": true,
+   "raw": "13f4178ebf67e0e8e612173f9d7cbaadd2c290f640dbacaa892e27f306284ab3",
+   "lf": "13f4178ebf67e0e8e612173f9d7cbaadd2c290f640dbacaa892e27f306284ab3",
+   "crlf": "fc125b7c951277e96ef0165e868027d8f0f1c10862f2f1f34de39c5a757d2ada"
+  },
+  "workflow/byop/model/v250_mech.py": {
+   "text": true,
+   "raw": "60e98be4b883d843c7eca63fd109b982c8d3bb47785cac11a8f030578a0360a1",
+   "lf": "60e98be4b883d843c7eca63fd109b982c8d3bb47785cac11a8f030578a0360a1",
+   "crlf": "f20fab974e7539e696996f5f714a699373e6bd4e6cbfc97edf27810e7c4e7511"
+  },
+  "workflow/byop/model/wp2_ercot_s0_s1.py": {
+   "text": true,
+   "raw": "099fcb43dd0f124c6f13a4aab3c80813307ff790c5506f25615db1fb009b5339",
+   "lf": "099fcb43dd0f124c6f13a4aab3c80813307ff790c5506f25615db1fb009b5339",
+   "crlf": "8df8fdd4ff13ad4fb364d893d1de73533e181f2191a9d993314d9fcd6852b59f"
+  },
+  "workflow/byop/model/wp2_ercot_s1_real.py": {
+   "text": true,
+   "raw": "df5765cfc61016c78088178e42172a4ac828f5cff332d9fc6b254cc8173e08e8",
+   "lf": "df5765cfc61016c78088178e42172a4ac828f5cff332d9fc6b254cc8173e08e8",
+   "crlf": "6102ac1c8a547410b911834b3361beb458bd737753de630f7790e886ff258ee9"
+  },
+  "workflow/byop/run/baseline_v16_calibration.py": {
+   "text": true,
+   "raw": "ae177dd8b9e73aaac2273543cb36170d7bc8f4da6553e1650cd9fc9e7e3c2438",
+   "lf": "ae177dd8b9e73aaac2273543cb36170d7bc8f4da6553e1650cd9fc9e7e3c2438",
+   "crlf": "15edbdef1ff7ecb3fbb22850707f80c26babea0c9ebeb5af056a72ab22dce5a0"
+  },
+  "workflow/byop/run/c1_fixed_asset_diagnostics.py": {
+   "text": true,
+   "raw": "6e524ac509388a08e33fe7285d3cf2070ce12ab6fc07e444230a2c8a751c7d2e",
+   "lf": "6e524ac509388a08e33fe7285d3cf2070ce12ab6fc07e444230a2c8a751c7d2e",
+   "crlf": "4d2ec54583cd98cbc4a09fbaf48a052b5ab9acc2fa9d1478f8889dc2e6221124"
+  },
+  "workflow/byop/run/c1_x1_storage_v15.py": {
+   "text": true,
+   "raw": "5a2b0669912d35fcc8a3e052e3a770a44d22b671a101ae04cc8b8071e76a1cbe",
+   "lf": "5a2b0669912d35fcc8a3e052e3a770a44d22b671a101ae04cc8b8071e76a1cbe",
+   "crlf": "483cc1d64aec6c268133fa0490ff7c4e2d1b0aabb63317c0a8cdec359c43f48a"
+  },
+  "workflow/byop/run/post_v16_a1.py": {
+   "text": true,
+   "raw": "ff0c7181288561d4e4ff8b2395a2a711804e1602f2279872a68d839ac62e82f1",
+   "lf": "f102239df2174e56b52e997558fd1cefb83f4201abe3cfeecefa5fbc89a5dcfc",
+   "crlf": "ff0c7181288561d4e4ff8b2395a2a711804e1602f2279872a68d839ac62e82f1"
+  },
+  "workflow/byop/run/run_ctrl7.sh": {
+   "text": true,
+   "raw": "493d92a4981199ea0db5b83ece80399248514fb3eb4392d0ccf654d8277bce72",
+   "lf": "493d92a4981199ea0db5b83ece80399248514fb3eb4392d0ccf654d8277bce72",
+   "crlf": "fac7bf7d4da1d178d9da587a559a8c9a8efd3121dafac7980d6e4b75ed87d9ac"
+  },
+  "workflow/byop/run/run_mainline.sh": {
+   "text": true,
+   "raw": "96053a300324b147e903f3a7b3cac4fa326e25b4f0bb80c9370713cb5e4a06c0",
+   "lf": "96053a300324b147e903f3a7b3cac4fa326e25b4f0bb80c9370713cb5e4a06c0",
+   "crlf": "fcaef53066936b5b6a0c2a80f5a019661ff46fe792acd6b85c47338a15c68df4"
+  },
+  "workflow/byop/run/run_p1.sh": {
+   "text": true,
+   "raw": "4ca172245c35c29982a29b18c1d103df82bde595c5e95b792745c6053f85f3bc",
+   "lf": "4ca172245c35c29982a29b18c1d103df82bde595c5e95b792745c6053f85f3bc",
+   "crlf": "1d0e023a45be10290a656cba445641a6458962ddab57f8228d0cb037406fa972"
+  },
+  "workflow/byop/run/run_p1b.sh": {
+   "text": true,
+   "raw": "0e4721cc8f685f37a22734c8fd288c607c690c704cc7a8ae5adfc1e5cc550f49",
+   "lf": "0e4721cc8f685f37a22734c8fd288c607c690c704cc7a8ae5adfc1e5cc550f49",
+   "crlf": "8ff5cefefb8177b2f40a555a1781620dcb97e4d92eab2c97b82eeb893898d17d"
+  },
+  "workflow/byop/run/run_post_v16.sh": {
+   "text": true,
+   "raw": "6657632d79624883f3cf99b37d3c2cb00658a94d5190ef5ad741d4dc0941e53a",
+   "lf": "6657632d79624883f3cf99b37d3c2cb00658a94d5190ef5ad741d4dc0941e53a",
+   "crlf": "91ef4abf1e766ac8480ffe657d6c89882c30f3e2c097b7ac0fdf492304d0fef1"
+  },
+  "workflow/byop/run/run_post_v16_a2.sh": {
+   "text": true,
+   "raw": "a62929603e90c9c16fdcc00941735d021622858a151bc5d1d818098f4cce161a",
+   "lf": "a62929603e90c9c16fdcc00941735d021622858a151bc5d1d818098f4cce161a",
+   "crlf": "6864ea68b1ed550ffeae792e3429353a1af60460ffe836071ae775ce769219fe"
+  },
+  "workflow/byop/run/run_rearch.sh": {
+   "text": true,
+   "raw": "27c4d4df290e7581abb0b4a8dacbf4bd4e4a928165c53948803e1f86c7edd6d0",
+   "lf": "27c4d4df290e7581abb0b4a8dacbf4bd4e4a928165c53948803e1f86c7edd6d0",
+   "crlf": "095989881eebf0c10df0843c6f5380d31265046fe9de999fc3e5246e87f46d3d"
+  },
+  "workflow/byop/run/run_rebuild_v6.sh": {
+   "text": true,
+   "raw": "b52fb29f79c70efc7220add7bf322641df73c665924f9acfe4abc863b9ae1abe",
+   "lf": "b52fb29f79c70efc7220add7bf322641df73c665924f9acfe4abc863b9ae1abe",
+   "crlf": "b1ffa4d9990333c5ecfad81dcaf7612d94d637591b992c5e054c8a742b1b49c0"
+  },
+  "workflow/scripts/_helpers.py": {
+   "text": true,
+   "raw": "ecfce0ba81e0740c5e42d43f8efb05b390f85b4eb08971943ac1ee6d6fd5cba2",
+   "lf": "85fb7ef2495b5cf6f6a3fe8f6c58e04c3613da36f035f03c7915111ca3331f2e",
+   "crlf": "ecfce0ba81e0740c5e42d43f8efb05b390f85b4eb08971943ac1ee6d6fd5cba2"
+  },
+  "workflow/scripts/add_demand.py": {
+   "text": true,
+   "raw": "3f3f8db4952ae34c130978a88fd6e5ab21b4b418a780a267769df4043a4334b0",
+   "lf": "b4357f08a65e308c64e1ec1d3cbecd21a03c3d58706a17d323785193cb87e4d3",
+   "crlf": "3f3f8db4952ae34c130978a88fd6e5ab21b4b418a780a267769df4043a4334b0"
+  },
+  "workflow/scripts/add_electricity.py": {
+   "text": true,
+   "raw": "202adc42abe6a6374d1ef2f438061e0dc6199ef642a940ead143e1039437a353",
+   "lf": "d9161dd36180182f7c2de6fac70c97b7cce433ed2fd41963ba88a052b421095f",
+   "crlf": "202adc42abe6a6374d1ef2f438061e0dc6199ef642a940ead143e1039437a353"
+  },
+  "workflow/scripts/add_extra_components.py": {
+   "text": true,
+   "raw": "aba8859c6373bc74e2f0ec1320bb6864631b71df13feba9c47d7f2a4e8e1ed4d",
+   "lf": "5939f27073ed2a83b07d4c4538b72be28bb68cf24e54e79b6924b4b64e289249",
+   "crlf": "aba8859c6373bc74e2f0ec1320bb6864631b71df13feba9c47d7f2a4e8e1ed4d"
+  },
+  "workflow/scripts/add_sectors.py": {
+   "text": true,
+   "raw": "aeb988b91d7848f5a2437656f08b4fcfe2ad23a991e49472fd94c5730dd32c85",
+   "lf": "fba346f2707f253471baf0afb344f078f698ada19efbdc442c23b4a83678d4bc",
+   "crlf": "aeb988b91d7848f5a2437656f08b4fcfe2ad23a991e49472fd94c5730dd32c85"
+  },
+  "workflow/scripts/aggregate_egs.py": {
+   "text": true,
+   "raw": "e771ea335af49a017b08b8b028e706ed198d25ffacbeecb1e8aaa5745cc88521",
+   "lf": "162cc851df0309e27a63239c0cc6f3d3219ef9c6358053f1fd78d635906502b8",
+   "crlf": "e771ea335af49a017b08b8b028e706ed198d25ffacbeecb1e8aaa5745cc88521"
+  },
+  "workflow/scripts/aggregate_to_substations.py": {
+   "text": true,
+   "raw": "4f3479d39621cf91cd72cb33a8309f2694a6654854c1558e54b19fe03d1ef672",
+   "lf": "d39c5872f90ed4afb7b3edebee4cc692f912c6148481faf350769b5d46350e4b",
+   "crlf": "4f3479d39621cf91cd72cb33a8309f2694a6654854c1558e54b19fe03d1ef672"
+  },
+  "workflow/scripts/benchmark_cpuc_baseline.py": {
+   "text": true,
+   "raw": "cb0884c4882c45de90a3d571a236a38bfeabb7198d1f36239084f5c25947b0de",
+   "lf": "be5cdae2436bd71bb7dc9aa771a57d84f0a0b98320cfd7a49aee2d3cce22045a",
+   "crlf": "cb0884c4882c45de90a3d571a236a38bfeabb7198d1f36239084f5c25947b0de"
+  },
+  "workflow/scripts/build_base_network.py": {
+   "text": true,
+   "raw": "581fa46711fbe32646b42eff324e16b6077723f2000d06f785c840acd8f25c1d",
+   "lf": "656e476fed9e883cc5b0255aa940e6080b4cb481e578863eeead3f722fe09d8b",
+   "crlf": "581fa46711fbe32646b42eff324e16b6077723f2000d06f785c840acd8f25c1d"
+  },
+  "workflow/scripts/build_bus_population.py": {
+   "text": true,
+   "raw": "e4e2166c6e9bb7bba19cb1543b60f8937b4602cdd802bb7960fd08baa8c62bee",
+   "lf": "07cca844e12c106265bd1639406f30e4ee6f924c2c63b6d47c4eed1da142e69d",
+   "crlf": "e4e2166c6e9bb7bba19cb1543b60f8937b4602cdd802bb7960fd08baa8c62bee"
+  },
+  "workflow/scripts/build_bus_regions.py": {
+   "text": true,
+   "raw": "8cfc72efe73ebf1b17c351b3a705817210533fbbba8a9452a7130e5cf668de0e",
+   "lf": "9088e56788040c617eb747c058c7b82bbbe91a9592a0ce828a9543e0aca6a221",
+   "crlf": "8cfc72efe73ebf1b17c351b3a705817210533fbbba8a9452a7130e5cf668de0e"
+  },
+  "workflow/scripts/build_clustered_population_layouts.py": {
+   "text": true,
+   "raw": "785b03c79a97a89e8aeb64f56ef705a548e1b1f9e4feee9dbd40fbc1f7a23d5a",
+   "lf": "3085f99d22d0c2587419033d3e07661650beb59cc3acc4c56afd3681bff05ce3",
+   "crlf": "785b03c79a97a89e8aeb64f56ef705a548e1b1f9e4feee9dbd40fbc1f7a23d5a"
+  },
+  "workflow/scripts/build_co2_storage.py": {
+   "text": true,
+   "raw": "0754d704734ad5be4aca175b2c0630fc06f8ef8307f8ff86e8e989e324b1c7a2",
+   "lf": "445d98a04806135504bff6d5437d64439fcc390c2f0323ce1e9466b2a5de05e9",
+   "crlf": "0754d704734ad5be4aca175b2c0630fc06f8ef8307f8ff86e8e989e324b1c7a2"
+  },
+  "workflow/scripts/build_cop_profiles.py": {
+   "text": true,
+   "raw": "3207e22a8c9c3ae3bdcf01c97823d6801c6b58d7695b38fbb4c178f26c2b52bc",
+   "lf": "a9f8f6b030b341e477f2daf1d44e9101248cd5a75d4248a9d0b26ef0bab0ef11",
+   "crlf": "3207e22a8c9c3ae3bdcf01c97823d6801c6b58d7695b38fbb4c178f26c2b52bc"
+  },
+  "workflow/scripts/build_cost_data.py": {
+   "text": true,
+   "raw": "f05973091383c09e56a597de8a3ec463fcecee349bee131617c27d34decc9c1a",
+   "lf": "a19b473d149a6aac99bb5859dd4c6829d236ad2c333c14f1826cea72eea45a98",
+   "crlf": "f05973091383c09e56a597de8a3ec463fcecee349bee131617c27d34decc9c1a"
+  },
+  "workflow/scripts/build_cutout.py": {
+   "text": true,
+   "raw": "5be9859ec828ff62dcb08d85160c63616c5926d4eaaf88e8c22621634ddfc1ff",
+   "lf": "bec2d11adb0799bc325cd9684deb159a8b230adf2bbabbabe44e42eb6a3db957",
+   "crlf": "5be9859ec828ff62dcb08d85160c63616c5926d4eaaf88e8c22621634ddfc1ff"
+  },
+  "workflow/scripts/build_demand.py": {
+   "text": true,
+   "raw": "69a0bb40fa2b51d002f2adb01a05853b420cc5b81f6b0db2db7e3aef0172245b",
+   "lf": "8f5a7443d4071be1972604ac822f31a63393579caec8d27d30f4ddae33c104a7",
+   "crlf": "69a0bb40fa2b51d002f2adb01a05853b420cc5b81f6b0db2db7e3aef0172245b"
+  },
+  "workflow/scripts/build_electricity_sector.py": {
+   "text": true,
+   "raw": "7bc445e4a6dac87dc6d9c43ec80d7502b6290238a5918fcfdb52ea05aebf779b",
+   "lf": "c3693e8581099e399e72a81499eacdf76b9c476e1674b607650ecf6b8a419154",
+   "crlf": "7bc445e4a6dac87dc6d9c43ec80d7502b6290238a5918fcfdb52ea05aebf779b"
+  },
+  "workflow/scripts/build_emission_tracking.py": {
+   "text": true,
+   "raw": "56fed320ddeedd543f7f763b48137cf9fc6f9e757680aea3a69d25b4270c1c42",
+   "lf": "230f7c9bffc83a18bd306d186cf9ad7cc0ab4f265b219c030209eb7c3285d75a",
+   "crlf": "56fed320ddeedd543f7f763b48137cf9fc6f9e757680aea3a69d25b4270c1c42"
+  },
+  "workflow/scripts/build_fuel_prices.py": {
+   "text": true,
+   "raw": "8470182fda0ceb006129de894c17b14cbec6a3f9278f46afa8fda99fcfc02802",
+   "lf": "be8ce8f7285550f14ff47c724924597c946630947cd54fe6a919e6a2da96ec99",
+   "crlf": "8470182fda0ceb006129de894c17b14cbec6a3f9278f46afa8fda99fcfc02802"
+  },
+  "workflow/scripts/build_heat.py": {
+   "text": true,
+   "raw": "d3c5b2e12f4bf9b50609516bad4c546e747c1d7903d763a03487a07171045910",
+   "lf": "efa2052d5806c56df1a0fb039acb961391aefc7c62cce3630d44587d38efb70b",
+   "crlf": "d3c5b2e12f4bf9b50609516bad4c546e747c1d7903d763a03487a07171045910"
+  },
+  "workflow/scripts/build_natural_gas.py": {
+   "text": true,
+   "raw": "e6f00f4384b5999b635a376a8b812d78c94988020fd223872e185902ae1805a1",
+   "lf": "3d4bf209874fec7ae4f4c78a58ca0e4513778d3c620668239fe42a304b29f31b",
+   "crlf": "e6f00f4384b5999b635a376a8b812d78c94988020fd223872e185902ae1805a1"
+  },
+  "workflow/scripts/build_population_layouts.py": {
+   "text": true,
+   "raw": "b2943ad581deefae2f659308fbebb5ba28ca890d6630a9967ea16427afc95baf",
+   "lf": "a015da4433f43b0593c670a03f8fbb97b2f331ad650fdb992bbb207b1614d5d9",
+   "crlf": "b2943ad581deefae2f659308fbebb5ba28ca890d6630a9967ea16427afc95baf"
+  },
+  "workflow/scripts/build_powerplants.py": {
+   "text": true,
+   "raw": "e6b92d70cbcc9af7c3ce426ad0f5fa50cc684f01cb4052587f5fcb7b5e378dc7",
+   "lf": "03b7009491a03131ffb2c1e3194a378f0bdf98135a14cc5bfdb8305010fd0115",
+   "crlf": "e6b92d70cbcc9af7c3ce426ad0f5fa50cc684f01cb4052587f5fcb7b5e378dc7"
+  },
+  "workflow/scripts/build_renewable_profiles.py": {
+   "text": true,
+   "raw": "21b2117c23a54c155cd58f6beccfb841864afc325743c7ca60c7c100d55d194c",
+   "lf": "88d0b727b5d8ba3149293af8dfedb43c3be6092cf2aa2a3bb26aae34b6ed70e5",
+   "crlf": "21b2117c23a54c155cd58f6beccfb841864afc325743c7ca60c7c100d55d194c"
+  },
+  "workflow/scripts/build_sector_costs.py": {
+   "text": true,
+   "raw": "e5d299e4e0601e97428cd5695f3c2e449a25e5c22296ba1440b39139045b2cb0",
+   "lf": "9131068ba9758c10ac95d57ecadf2397dd7cb17daf2206bcac158853245f752c",
+   "crlf": "e5d299e4e0601e97428cd5695f3c2e449a25e5c22296ba1440b39139045b2cb0"
+  },
+  "workflow/scripts/build_servm_load_weights.py": {
+   "text": true,
+   "raw": "d603c900ee07c590bb6df7f835f55721581fe4f827fa8bd978c7b59c63ea8391",
+   "lf": "bf5d334e6ac20faf3c28c77e5a09a10e3ec17c9b5a0e4e29e6ac2424f341314d",
+   "crlf": "d603c900ee07c590bb6df7f835f55721581fe4f827fa8bd978c7b59c63ea8391"
+  },
+  "workflow/scripts/build_shapes.py": {
+   "text": true,
+   "raw": "00a6bc5e89271c78c3193fe25778e18079f47590f1bcff444d8c43f1d01dd745",
+   "lf": "2cbec112934e5fcbcebdddd6b423121f9259acca56c20d4aeafda9f39b6b9a64",
+   "crlf": "00a6bc5e89271c78c3193fe25778e18079f47590f1bcff444d8c43f1d01dd745"
+  },
+  "workflow/scripts/build_stock_data.py": {
+   "text": true,
+   "raw": "89bf1b6658300fd3b5b103f6cc8c2557e221b4dbdf7b4e9b70d994745720243b",
+   "lf": "42b4867990659a0fd0176c9e21d30fdb3ab82be3b827349fc248768dd4310ed4",
+   "crlf": "89bf1b6658300fd3b5b103f6cc8c2557e221b4dbdf7b4e9b70d994745720243b"
+  },
+  "workflow/scripts/build_temperature_profiles.py": {
+   "text": true,
+   "raw": "474a1cb660c47415b264d440e0bff55f1d917579886c03ffcc2d0a38ef3cadcf",
+   "lf": "74518fb9ecb73a0b8c99b2335f3cce98f5d4ffb97f08b38df51d6a3be82b2a42",
+   "crlf": "474a1cb660c47415b264d440e0bff55f1d917579886c03ffcc2d0a38ef3cadcf"
+  },
+  "workflow/scripts/build_transportation.py": {
+   "text": true,
+   "raw": "d0e760f5fe401e6dfeae39de81993129d72350b416c3023905f836160e8495a0",
+   "lf": "6fc44237ca67a579a4b24cca912fc1441fb1a717ea43b51f69868dfc85f6ad0c",
+   "crlf": "d0e760f5fe401e6dfeae39de81993129d72350b416c3023905f836160e8495a0"
+  },
+  "workflow/scripts/cluster_network.py": {
+   "text": true,
+   "raw": "a987e820aa74a54899fdb5a4f301e5af1ae2067a7ab244d02e9fd54883ca8e44",
+   "lf": "61b26049dd1eb8be932c7a1f3d1e7d613b96153273e479056699e08707733bd3",
+   "crlf": "a987e820aa74a54899fdb5a4f301e5af1ae2067a7ab244d02e9fd54883ca8e44"
+  },
+  "workflow/scripts/cluster_simpl.py": {
+   "text": true,
+   "raw": "9331b94955806b128ddb419afc642c237317178e6ec205a6d3598cba1576fd68",
+   "lf": "0305e74c4445e4e1334fd4f2935d15c3426161002cb081fa328f03f0df69f7aa",
+   "crlf": "9331b94955806b128ddb419afc642c237317178e6ec205a6d3598cba1576fd68"
+  },
+  "workflow/scripts/constants.py": {
+   "text": true,
+   "raw": "fae16b01e0a4d9c3f808e20c28bc1ee4c7975943930c9e2b60d68c63ddfd15f1",
+   "lf": "27f30e0e9037b70508460737c0ec5e347be4762531999e98b811c4adcd7900b2",
+   "crlf": "fae16b01e0a4d9c3f808e20c28bc1ee4c7975943930c9e2b60d68c63ddfd15f1"
+  },
+  "workflow/scripts/constants_sector.py": {
+   "text": true,
+   "raw": "6a4021463fc71cfac8266a96ab5d70adcbc23c0942d36faf141d04099e92b25e",
+   "lf": "efb6afda8c9658af4b677c712db30258cbd76ce3c8461dbb7ff39008aafe7bbb",
+   "crlf": "6a4021463fc71cfac8266a96ab5d70adcbc23c0942d36faf141d04099e92b25e"
+  },
+  "workflow/scripts/eia.py": {
+   "text": true,
+   "raw": "a881a5e6aaa8de0ca2ebfa375e26749233894ae45bc739a9c716588882a4f59e",
+   "lf": "809d6cc63bca2fdea558eeb06f0e107caebdae88ab8a1441d2061bd47d616d20",
+   "crlf": "a881a5e6aaa8de0ca2ebfa375e26749233894ae45bc739a9c716588882a4f59e"
+  },
+  "workflow/scripts/eulp.py": {
+   "text": true,
+   "raw": "dfe9d9fb52afab3d638fdbfcf2f2f654c979c39f4a43ee1f71e8bce882ea5e34",
+   "lf": "e441f069f9001b7c61d14b72a30672295fbeb121896ef0114d1836d7f0af7f10",
+   "crlf": "dfe9d9fb52afab3d638fdbfcf2f2f654c979c39f4a43ee1f71e8bce882ea5e34"
+  },
+  "workflow/scripts/external_regions.py": {
+   "text": true,
+   "raw": "fa0b6d2d22332f052c5b2756f5746605c2317ec4c87ebb11bccd2fdfef90b730",
+   "lf": "fc299afd2a75ee6d1164172d5d8856f4817a19d9eed9d53bff7cb6a03c3b4a67",
+   "crlf": "fa0b6d2d22332f052c5b2756f5746605c2317ec4c87ebb11bccd2fdfef90b730"
+  },
+  "workflow/scripts/godeeep_cf_registry.py": {
+   "text": true,
+   "raw": "9b9b1537469a140308fe0167eee4d588a0fb753a9adc9a238277df6efc4de598",
+   "lf": "7bd92f3ca0058bd8472d1013430af3857a804d44f5ea467c0686fe645dbb6ad9",
+   "crlf": "9b9b1537469a140308fe0167eee4d588a0fb753a9adc9a238277df6efc4de598"
+  },
+  "workflow/scripts/nrel_exclusion/__init__.py": {
+   "text": true,
+   "raw": "84696f064840aee56ff9becf5e4a240cc593ea2170753946a1a1a0f6c983ccc2",
+   "lf": "432bd9e389135843588d97ce3c83af70db2326700dcce3f41617828d3ad45cef",
+   "crlf": "84696f064840aee56ff9becf5e4a240cc593ea2170753946a1a1a0f6c983ccc2"
+  },
+  "workflow/scripts/nrel_exclusion/aggregate_godeeep_weighted.py": {
+   "text": true,
+   "raw": "25a582be3f5f4aea366d8064174200b4aa88ae9648e6e18b4b6b7a90bd27a3b6",
+   "lf": "b9778ad9e59f48ae12496d8e6755484e665e411b8fd0d24ae79971b61347bb4e",
+   "crlf": "25a582be3f5f4aea366d8064174200b4aa88ae9648e6e18b4b6b7a90bd27a3b6"
+  },
+  "workflow/scripts/nrel_exclusion/build_nrel_artifacts.sh": {
+   "text": true,
+   "raw": "edcdaeafdb4958d8069320f3df99a7ed67db8a08d5ebeb62127d6f5e19af07e3",
+   "lf": "dac136ea106e7c4d574b7001ba8ce312c0c661397c3b2418742f561a779e39c2",
+   "crlf": "edcdaeafdb4958d8069320f3df99a7ed67db8a08d5ebeb62127d6f5e19af07e3"
+  },
+  "workflow/scripts/nrel_exclusion/build_nrel_availability.py": {
+   "text": true,
+   "raw": "7f9e9f9bbe5ed3d1292240f00895ccda1adb16ac52146be2e0f5cbf2b5fdaccb",
+   "lf": "aa2e5b18c9cb07a9513c9ef8b702fb7eb66c43dc452208e4a0f54edc5cac4443",
+   "crlf": "7f9e9f9bbe5ed3d1292240f00895ccda1adb16ac52146be2e0f5cbf2b5fdaccb"
+  },
+  "workflow/scripts/nrel_exclusion/build_nrel_bus_capacities.py": {
+   "text": true,
+   "raw": "e9e43e71810a7bf4f87a369f77876b1cbabe6b400c5b7c3cc7b4eddeed9f17b5",
+   "lf": "4bbf3e9549b94619e24307200c22ab9c56729b7480eaa8e2466d989d8d240b92",
+   "crlf": "e9e43e71810a7bf4f87a369f77876b1cbabe6b400c5b7c3cc7b4eddeed9f17b5"
+  },
+  "workflow/scripts/nrel_exclusion/compare_legacy_vs_nrel.py": {
+   "text": true,
+   "raw": "71ff9b8f96c024e6b4060353b565000b39a7c3382d29cbf8d1233fc37dd4312a",
+   "lf": "cc19aef2ce5d86082c0fd6cc82a9234b64df89269e9022dd85f8156dcd07f854",
+   "crlf": "71ff9b8f96c024e6b4060353b565000b39a7c3382d29cbf8d1233fc37dd4312a"
+  },
+  "workflow/scripts/nrel_exclusion/compress_godeeep.py": {
+   "text": true,
+   "raw": "307734a844d2e520c4a158b446929bee578ea8c95949767b5c03ce7bf2506c5c",
+   "lf": "65578497edc0c9f8b8a79d4891013a5b454adac6624cce8546fd4f0aed0942ef",
+   "crlf": "307734a844d2e520c4a158b446929bee578ea8c95949767b5c03ce7bf2506c5c"
+  },
+  "workflow/scripts/nrel_exclusion/compress_godeeep_task.sh": {
+   "text": true,
+   "raw": "467a7c6952bfc2d6e2c2844882a76807eb5fddd7f91cb6d10eb2d5b0f2637e17",
+   "lf": "11dc6a089932ca67dce2d51cc666adfa5afcf827da17fbf805302b8d098f66af",
+   "crlf": "467a7c6952bfc2d6e2c2844882a76807eb5fddd7f91cb6d10eb2d5b0f2637e17"
+  },
+  "workflow/scripts/nrel_exclusion/make_compress_tasks.py": {
+   "text": true,
+   "raw": "40d22a52833ec562799821853687488dddfec7f4df093d528b7ee71e2fbdd690",
+   "lf": "53412e580759aec109d353a1c4b14a26aa1dd425ee44db4b75ebee7038dfa48b",
+   "crlf": "40d22a52833ec562799821853687488dddfec7f4df093d528b7ee71e2fbdd690"
+  },
+  "workflow/scripts/nrel_exclusion/plot_caps_summary.py": {
+   "text": true,
+   "raw": "e4627f1400d42842c34b180cf373567df8b4dbbd43954d0a161b1a23e6dbcad1",
+   "lf": "a672f19ce956ca6ddb0ba631d4152c061d7a431a832137a17900d011effe0f6d",
+   "crlf": "e4627f1400d42842c34b180cf373567df8b4dbbd43954d0a161b1a23e6dbcad1"
+  },
+  "workflow/scripts/nrel_exclusion/stage_godeeep_member.py": {
+   "text": true,
+   "raw": "17e058ae9a68fe9fa58e0ebd06cfd989028f452f703dca2c6042cc2c1cb7eec3",
+   "lf": "9275972a5e8a6e8c5ac553a2fc7f4fd4a074311e288d74582e1ec98bbd673570",
+   "crlf": "17e058ae9a68fe9fa58e0ebd06cfd989028f452f703dca2c6042cc2c1cb7eec3"
+  },
+  "workflow/scripts/opts/_helpers.py": {
+   "text": true,
+   "raw": "561f3b545c370bbee9dfb42624a4cc1ffca04557b1d6ac74c8cdacb5c48ab39d",
+   "lf": "e7c9968c6c159ac5f095467a20f76733876f789c69e02bea843def390ca92c82",
+   "crlf": "561f3b545c370bbee9dfb42624a4cc1ffca04557b1d6ac74c8cdacb5c48ab39d"
+  },
+  "workflow/scripts/opts/bidirectional_link.py": {
+   "text": true,
+   "raw": "06193270e437c69e2675b9264aefa0697d4dbbd5a10caeb040a86cf7c828358b",
+   "lf": "a9fe11601d01c75022e659b89a55d6bda08b2e66d6d883322b13dd688c1ca7ae",
+   "crlf": "06193270e437c69e2675b9264aefa0697d4dbbd5a10caeb040a86cf7c828358b"
+  },
+  "workflow/scripts/opts/interchange.py": {
+   "text": true,
+   "raw": "6335e5a485df2046e3d7a860d4789625d8c758ee44de7626aec6951bba4e10f6",
+   "lf": "e322ce458d5f847fcdf4d1efb55c3f80b6c93ff9fef701da948d6b98ce24bf5f",
+   "crlf": "6335e5a485df2046e3d7a860d4789625d8c758ee44de7626aec6951bba4e10f6"
+  },
+  "workflow/scripts/opts/interfaces.py": {
+   "text": true,
+   "raw": "5255b5c64f45fec38af7e69fd09ec844723c44acd2db605fcff9047483c6e5bd",
+   "lf": "edc0137021939bd4c4e2209d735196ca25665e50e11fa0a8319d0b9737d01ca2",
+   "crlf": "5255b5c64f45fec38af7e69fd09ec844723c44acd2db605fcff9047483c6e5bd"
+  },
+  "workflow/scripts/opts/land.py": {
+   "text": true,
+   "raw": "4a4b5aa6503d94d5551b2e8e4cd750d1acc921343e69b9f1373c1ea0bcd93388",
+   "lf": "8ffcccb2d4408fa36aa9e5ddf188d5a7a9e8165685233acc1e4f2a9ca2cc505f",
+   "crlf": "4a4b5aa6503d94d5551b2e8e4cd750d1acc921343e69b9f1373c1ea0bcd93388"
+  },
+  "workflow/scripts/opts/policy.py": {
+   "text": true,
+   "raw": "24038610ab59dfcb3cb611e7e568c7ca52d30a3b17610d55129e2cfd52074d54",
+   "lf": "d964a60e9f36873cc8b8de04ba6dac3df6a4ffe32f767d637ff4e2f685a2bcb8",
+   "crlf": "24038610ab59dfcb3cb611e7e568c7ca52d30a3b17610d55129e2cfd52074d54"
+  },
+  "workflow/scripts/opts/reserves.py": {
+   "text": true,
+   "raw": "e95a67b2eb57eee2fd45628ee4ad3dd3c6f6e95a29a667bc3426b5767ac8667c",
+   "lf": "5f6d19f38394d188b556f947157883be77c452cd98247f55e9eacebae553b8af",
+   "crlf": "e95a67b2eb57eee2fd45628ee4ad3dd3c6f6e95a29a667bc3426b5767ac8667c"
+  },
+  "workflow/scripts/opts/sector.py": {
+   "text": true,
+   "raw": "815f115fc3692807166ea3420db619aa3aad0d129ad2507fc75152b8b670065e",
+   "lf": "85396676208fe761eff3393ab65d778845f62e8f7d6d9b8ba4ef918d3fb2fc73",
+   "crlf": "815f115fc3692807166ea3420db619aa3aad0d129ad2507fc75152b8b670065e"
+  },
+  "workflow/scripts/plot_docs_figures.py": {
+   "text": true,
+   "raw": "e3fc17d8430d3ee4ef77671938bf852c0b058f78a484fb0b3e1e99f358639084",
+   "lf": "93e0802e748393883691479969fe7c8a196f00bc6ec872fc0f83494e65d3d180",
+   "crlf": "e3fc17d8430d3ee4ef77671938bf852c0b058f78a484fb0b3e1e99f358639084"
+  },
+  "workflow/scripts/plot_natural_gas.py": {
+   "text": true,
+   "raw": "bd72f35f5603be39bfd61e2056353efa5f622b17b76e9de6897661162996b944",
+   "lf": "082f058b5c135d55d6af4f08bfe90e5281da0e1335bd2b6575ba0e6f4f3fbe00",
+   "crlf": "bd72f35f5603be39bfd61e2056353efa5f622b17b76e9de6897661162996b944"
+  },
+  "workflow/scripts/plot_network_maps.py": {
+   "text": true,
+   "raw": "685529f08bfce0a3f330e6d6c82d3ddc9acf11c7140c27fdbc56d9b97659a817",
+   "lf": "207c560d3cb9c87d65e88168ee5f076f62d7c9e1cd9d322ea51e8dac55e00c60",
+   "crlf": "685529f08bfce0a3f330e6d6c82d3ddc9acf11c7140c27fdbc56d9b97659a817"
+  },
+  "workflow/scripts/plot_rec_trading_zones.py": {
+   "text": true,
+   "raw": "e07bf6c565b18732464288d6c2ebc206311cfc347a4de6780032cfce4521fd27",
+   "lf": "6f5c3cc9d0920d46d6f1cedd28663eec71cfc9d6043eb26955e129d561c1251e",
+   "crlf": "e07bf6c565b18732464288d6c2ebc206311cfc347a4de6780032cfce4521fd27"
+  },
+  "workflow/scripts/plot_sankey_carbon.py": {
+   "text": true,
+   "raw": "f88574f5d98b55690d7cde7bcc999ccf00140c6b7ce838a63beafd36991b7df7",
+   "lf": "03b9b0e67822022430ceee433a9863c0de4b0130f0e9c49ecbd2c3de8fdfc691",
+   "crlf": "f88574f5d98b55690d7cde7bcc999ccf00140c6b7ce838a63beafd36991b7df7"
+  },
+  "workflow/scripts/plot_sankey_energy.py": {
+   "text": true,
+   "raw": "f21b96145686c10e0c8797ea4b76ad5ec8d33ab024a4dc03d7198ef7cb06dc4b",
+   "lf": "df0117063dd1519e371874f443de2bb97d2866d663931d6d744b0d0984030306",
+   "crlf": "f21b96145686c10e0c8797ea4b76ad5ec8d33ab024a4dc03d7198ef7cb06dc4b"
+  },
+  "workflow/scripts/plot_statistics.py": {
+   "text": true,
+   "raw": "dd30394e85baa776d24c6fc8c56d12ab6febe8cdfd3c55668d4f68e37dd14943",
+   "lf": "969da0bc6f86fabe13d136b1d4a0f970fd0fb73bb2adc82d58ac881e78833c69",
+   "crlf": "dd30394e85baa776d24c6fc8c56d12ab6febe8cdfd3c55668d4f68e37dd14943"
+  },
+  "workflow/scripts/plot_statistics_sector.py": {
+   "text": true,
+   "raw": "60a1482ee1b9e2c0e6998c098258a104363aa1ed48765ee06a90ee550927ca0b",
+   "lf": "daddb60936b05f5f59fea4803298a4f33625febde42aa85b523a52818c0ea68d",
+   "crlf": "60a1482ee1b9e2c0e6998c098258a104363aa1ed48765ee06a90ee550927ca0b"
+  },
+  "workflow/scripts/plot_tct_targets.py": {
+   "text": true,
+   "raw": "04256c8cf7b31b8f9944bedf329cd995259841bc159aadfb0970a3befc122cfb",
+   "lf": "f935234994c132d396291fce98e7d20cc94639eefa150a5e394d511ca389d559",
+   "crlf": "04256c8cf7b31b8f9944bedf329cd995259841bc159aadfb0970a3befc122cfb"
+  },
+  "workflow/scripts/plot_validation_production.py": {
+   "text": true,
+   "raw": "6122263c29e8899ffbb01bc294d6f987582a57b86f3d0d2ef973b3021f4d4b6e",
+   "lf": "b86090b075d9ec8d543204e96c27c76715d82cfd55056f8d5880b8c4acc2b64b",
+   "crlf": "6122263c29e8899ffbb01bc294d6f987582a57b86f3d0d2ef973b3021f4d4b6e"
+  },
+  "workflow/scripts/plot_validation_sector.py": {
+   "text": true,
+   "raw": "397b81b80414799b2eea9f6db1fe7b41d3999e8c5e6a4aaca2a1be0dd5c3bd76",
+   "lf": "1d7b41ca623863644c5b21f59beb71e8957df8fad3ebdf467c9a5d1ceeac78f5",
+   "crlf": "397b81b80414799b2eea9f6db1fe7b41d3999e8c5e6a4aaca2a1be0dd5c3bd76"
+  },
+  "workflow/scripts/prepare_network.py": {
+   "text": true,
+   "raw": "4c1173357f139c20c7dc288df2be0196feeff54898fd4c6eb2f165a937d5213c",
+   "lf": "4c1173357f139c20c7dc288df2be0196feeff54898fd4c6eb2f165a937d5213c",
+   "crlf": "766f55825c2f8c054df2e1e76fc204ecb8f8192dda31cf157e923e3827ae4069"
+  },
+  "workflow/scripts/retrieve_caiso_data.py": {
+   "text": true,
+   "raw": "9b96738cf2b3a961065612393b86488fdcb07ffe426dffdb043f1960586e81a6",
+   "lf": "519dcade066041c4ba614925af168d0d37b06fa15a878241c5eacb1ed847d611",
+   "crlf": "9b96738cf2b3a961065612393b86488fdcb07ffe426dffdb043f1960586e81a6"
+  },
+  "workflow/scripts/retrieve_cpuc_data.py": {
+   "text": true,
+   "raw": "4bccf5b079d20c94cc5a6580246b8795718ccec4da95e73bc202e58c87e1df5c",
+   "lf": "7e7de8223220ed33d109b7eae1d3c5830115742be0af0b0c6793418d584699eb",
+   "crlf": "4bccf5b079d20c94cc5a6580246b8795718ccec4da95e73bc202e58c87e1df5c"
+  },
+  "workflow/scripts/retrieve_databundles.py": {
+   "text": true,
+   "raw": "3836a8576458a09185fdfc5fa1c1a4a7a84926ae88cb26e9a2486b08983a0c79",
+   "lf": "988cee5f6244d84bd1053c0d079cbb8c2bfa88d5faf9089cf66cdb7c78f994e2",
+   "crlf": "3836a8576458a09185fdfc5fa1c1a4a7a84926ae88cb26e9a2486b08983a0c79"
+  },
+  "workflow/scripts/retrieve_eer_data.py": {
+   "text": true,
+   "raw": "78135d25dd3e32ad6eb8b49657b87df16d7e5602721179cf4232912095354cbf",
+   "lf": "37fb3307975770ee7c3e363493ee12846535bc417148ee6649e7fb251426d637",
+   "crlf": "78135d25dd3e32ad6eb8b49657b87df16d7e5602721179cf4232912095354cbf"
+  },
+  "workflow/scripts/retrieve_egs.py": {
+   "text": true,
+   "raw": "7ab17c3467b1905487e43228f496a17357f58a9bbdee4fe3685a055daf7aeaae",
+   "lf": "19ae4597cf811918018253b262f6945584a8599db25c8a9e488b62b39dccb040",
+   "crlf": "7ab17c3467b1905487e43228f496a17357f58a9bbdee4fe3685a055daf7aeaae"
+  },
+  "workflow/scripts/retrieve_eulp.py": {
+   "text": true,
+   "raw": "f576a4d33aff30f8327f9899e814a0f0c1a99847f9f168db1e799fe565c9027e",
+   "lf": "1339b759e637b0c1700c7e4200a256a8a3453a061c1f8a15f249f3afc58a71dc",
+   "crlf": "f576a4d33aff30f8327f9899e814a0f0c1a99847f9f168db1e799fe565c9027e"
+  },
+  "workflow/scripts/retrieve_godeeep_cf.py": {
+   "text": true,
+   "raw": "deedf8f2587fa25763969efad542f49248fac2217e0bda01dc623c981f24c7c1",
+   "lf": "389954f99e0d5468506439a39699343edffc4d3de28cbca38e3c95bf39ed82f1",
+   "crlf": "deedf8f2587fa25763969efad542f49248fac2217e0bda01dc623c981f24c7c1"
+  },
+  "workflow/scripts/retrieve_gridemissions_data.py": {
+   "text": true,
+   "raw": "c402deb8d1f76ee729b1ad01c18375c174dc68bf8ebd3b9dbaefab2d602dc55a",
+   "lf": "3e785c532d91046188e91c9b5e4b3dccee83f185daf52c876d55a33ba4a93656",
+   "crlf": "c402deb8d1f76ee729b1ad01c18375c174dc68bf8ebd3b9dbaefab2d602dc55a"
+  },
+  "workflow/scripts/retrieve_nrel_exclusion.py": {
+   "text": true,
+   "raw": "ea7bab119fbcf2318366c31344b887b7993627d1b87744f57584fb46a828eeef",
+   "lf": "52429028363d056061d836ef2464eee6be3dd77a81a95eae3d8a63b79f0c8402",
+   "crlf": "ea7bab119fbcf2318366c31344b887b7993627d1b87744f57584fb46a828eeef"
+  },
+  "workflow/scripts/retrieve_pudl.py": {
+   "text": true,
+   "raw": "7fc92121bf1cd6214457dd97714210d0c09f8c370aadab0a19a89266334aaa20",
+   "lf": "35f630bd24fc9813a6985521169ce37bacf5107d52e3c5fb41a457f3393c94b5",
+   "crlf": "7fc92121bf1cd6214457dd97714210d0c09f8c370aadab0a19a89266334aaa20"
+  },
+  "workflow/scripts/retrieve_seismic_risk_mask.py": {
+   "text": true,
+   "raw": "9ccec7e86dacd28674686c0b1f05c8bcbe6653954b5b2334415ea933d49ef6e8",
+   "lf": "1365e333700d84b2862012c7da03190dc6c3594ccb90b101eb115ad98dfbc909",
+   "crlf": "9ccec7e86dacd28674686c0b1f05c8bcbe6653954b5b2334415ea933d49ef6e8"
+  },
+  "workflow/scripts/scenario_comparison.py": {
+   "text": true,
+   "raw": "30570e5713d70cc6d3177bba78daa0d55f384787b0a0ba00f35d7cefd656db92",
+   "lf": "a1a6ab2196296089a8c8404c1d54d6e702c8f467bda9463819c7f298aa1f92f0",
+   "crlf": "30570e5713d70cc6d3177bba78daa0d55f384787b0a0ba00f35d7cefd656db92"
+  },
+  "workflow/scripts/solve_network.py": {
+   "text": true,
+   "raw": "8f7eea1a1d7d93409c37eb5ccae69eda688d78ed50e1a6e3da933b80049c2b27",
+   "lf": "5e1ca0ee4a45bcdfae1fe87627424514a97ff2a153994099751ba6e1d2a3b49f",
+   "crlf": "8f7eea1a1d7d93409c37eb5ccae69eda688d78ed50e1a6e3da933b80049c2b27"
+  },
+  "workflow/scripts/summary.py": {
+   "text": true,
+   "raw": "cbf754e4691b9b16883e61f72c538542ed9c69588210842a114e13a2ce840e64",
+   "lf": "5260428d73bdab32027460438bb47e9e5019714a95626bbc41afe2d06ac24120",
+   "crlf": "cbf754e4691b9b16883e61f72c538542ed9c69588210842a114e13a2ce840e64"
+  },
+  "workflow/scripts/summary_natural_gas.py": {
+   "text": true,
+   "raw": "bf9650e80de55e60a66de5b08519920d2b47a377ec34c182899122c5781f4d2d",
+   "lf": "dd609f173b8015f867b33ac862f2afd7eb42a57585843509f6614d1e84228938",
+   "crlf": "bf9650e80de55e60a66de5b08519920d2b47a377ec34c182899122c5781f4d2d"
+  },
+  "workflow/scripts/summary_sector.py": {
+   "text": true,
+   "raw": "d3ea94a1ddfc1f9d0ac963c32b0556b8bc8eaa8f20eaca02f48cb360b2006701",
+   "lf": "641bba5623254f9665d6baa4620fe45548adc4696f0a5e97f3b5ab0573905df6",
+   "crlf": "d3ea94a1ddfc1f9d0ac963c32b0556b8bc8eaa8f20eaca02f48cb360b2006701"
+  },
+  "workflow/scripts/test/conftest.py": {
+   "text": true,
+   "raw": "454d3dd1b10f381e15bed5e50817fa0124e717e15e8fdc4117b2ca193a3067db",
+   "lf": "2dca24f4ca021b73245bf52da22cae0be4f899abeeb5e1996ec3b8b57f900e78",
+   "crlf": "454d3dd1b10f381e15bed5e50817fa0124e717e15e8fdc4117b2ca193a3067db"
+  },
+  "workflow/scripts/test/fixtures/build_test_network.py": {
+   "text": true,
+   "raw": "726c97107b5ce5043fa4d5dd98f6c26f4d0c5b0048a8b7621251dda1d49f3345",
+   "lf": "2a2ee3a4ecd7f6d937a8d54eb676cbfb37b7d0ca5ae3cb9cfb3a7c17a20af095",
+   "crlf": "726c97107b5ce5043fa4d5dd98f6c26f4d0c5b0048a8b7621251dda1d49f3345"
+  },
+  "workflow/scripts/test/test_aggregate_godeeep_weighted.py": {
+   "text": true,
+   "raw": "d82e145dc89036297c2e1d77e3d324b92941f9eb98e797c51860f411970e81a4",
+   "lf": "03cdcea729911c7a524563b9684fca16bce6380c6ab8f1b62a8bbe7d77f118c8",
+   "crlf": "d82e145dc89036297c2e1d77e3d324b92941f9eb98e797c51860f411970e81a4"
+  },
+  "workflow/scripts/test/test_assign_missing_regions.py": {
+   "text": true,
+   "raw": "93cf456d4c2a3bfdf985bd21a422dd03d5d94f36c990f8749e0617528513adac",
+   "lf": "1b9e8f68fc5b57a4fb7952f0f0dc2e29a4f92239fe191a372eac44b3fbd05e5f",
+   "crlf": "93cf456d4c2a3bfdf985bd21a422dd03d5d94f36c990f8749e0617528513adac"
+  },
+  "workflow/scripts/test/test_benchmark_cpuc_baseline.py": {
+   "text": true,
+   "raw": "d757f90fff75b43777b520617e83401f5446d940c73e72e23dbfbd66d0918cd6",
+   "lf": "92de53bca964ddc4fecc2a4cbfa464e7d8d50e0fff26362b3e8db421abb791bd",
+   "crlf": "d757f90fff75b43777b520617e83401f5446d940c73e72e23dbfbd66d0918cd6"
+  },
+  "workflow/scripts/test/test_bidirectional_link.py": {
+   "text": true,
+   "raw": "5d8778199c5988e4a6402cbe49c3c31fb012a733a4d1580263d5c04d4218da3d",
+   "lf": "9f4bc8b80f69ab8dbf3a52769e6d3e89f23bc260967d999bdf77171c99b748d8",
+   "crlf": "5d8778199c5988e4a6402cbe49c3c31fb012a733a4d1580263d5c04d4218da3d"
+  },
+  "workflow/scripts/test/test_build_demand_conservation.py": {
+   "text": true,
+   "raw": "ff0d78cc135b2ae6373ccb3ddcf03aba942a3735bc91adf14aa4f738a1b723d1",
+   "lf": "10ea069a35e2901f034d2ed95550587370e607638c8a610ca154b1f9425d3835",
+   "crlf": "ff0d78cc135b2ae6373ccb3ddcf03aba942a3735bc91adf14aa4f738a1b723d1"
+  },
+  "workflow/scripts/test/test_build_demand_eer.py": {
+   "text": true,
+   "raw": "8e38d7d7943dc51fa0e781a6afafdd20dbd58263d1b82c0a2aa497497b4922bb",
+   "lf": "58ca9ea4bd87bb87752a30895e159402174b4fc7088d432c286f69ca89fc36ba",
+   "crlf": "8e38d7d7943dc51fa0e781a6afafdd20dbd58263d1b82c0a2aa497497b4922bb"
+  },
+  "workflow/scripts/test/test_build_demand_servm.py": {
+   "text": true,
+   "raw": "8a3c490e866e5779ea3476e7faddf9e2c7b6e5d6d30dfe2d779be2ffd2333a92",
+   "lf": "691350c7409256450ef4def45d3753d955ce0e39bb3edd994fd345915353b494",
+   "crlf": "8a3c490e866e5779ea3476e7faddf9e2c7b6e5d6d30dfe2d779be2ffd2333a92"
+  },
+  "workflow/scripts/test/test_build_demand_servm_write.py": {
+   "text": true,
+   "raw": "f68aee8fe011be9d0ca61b0e1654b0c12727c0f416ab8ffd841722f877a48323",
+   "lf": "cf60dd00090ea00dd68326fad8e71687755ec1f00e53755a8cc5ad895bee3865",
+   "crlf": "f68aee8fe011be9d0ca61b0e1654b0c12727c0f416ab8ffd841722f877a48323"
+  },
+  "workflow/scripts/test/test_build_fuel_prices.py": {
+   "text": true,
+   "raw": "0c46869a12822a2d5cc3ef23d8711f3e8b31dc81be4de0ccb5d9b6506107feef",
+   "lf": "a4ad21a88ff83789de14ffafa2363848021fd575c3a909bb78767031ef984658",
+   "crlf": "0c46869a12822a2d5cc3ef23d8711f3e8b31dc81be4de0ccb5d9b6506107feef"
+  },
+  "workflow/scripts/test/test_build_servm_load_weights.py": {
+   "text": true,
+   "raw": "ece4d53fbfd50f94609e29c3aad02256fc20934fb3fe0b111b7b3255ac60a677",
+   "lf": "211e8af1f9e4027e0079858541afe2827c362385e0083dadff53394deee8035b",
+   "crlf": "ece4d53fbfd50f94609e29c3aad02256fc20934fb3fe0b111b7b3255ac60a677"
+  },
+  "workflow/scripts/test/test_bus_population.py": {
+   "text": true,
+   "raw": "57d04bdfb4248e545d0d3470e2318ff16b4819c93ba4b07a10028e0708d39082",
+   "lf": "411276380da7d02beb76bf039cc7d917aba98a30a972b02f44a5c8fc16fd89ca",
+   "crlf": "57d04bdfb4248e545d0d3470e2318ff16b4819c93ba4b07a10028e0708d39082"
+  },
+  "workflow/scripts/test/test_cluster_simpl.py": {
+   "text": true,
+   "raw": "0394591eb4b6d293d500172616d78b7f98d4b7e5f7291c9de7641212d8830025",
+   "lf": "5ff4d000d1b9fcf50c5b290b65500c1e8e639fbae77115522208ec946b4bff34",
+   "crlf": "0394591eb4b6d293d500172616d78b7f98d4b7e5f7291c9de7641212d8830025"
+  },
+  "workflow/scripts/test/test_cluster_wildcard.py": {
+   "text": true,
+   "raw": "8d26b210b8006dbff71cb24203d25c139d6bcba8a8a528492d83204aa82ff101",
+   "lf": "a7ff05727a9d57c47117152238294a4c9c0b00bfd65c4b6d9297a99191f0cfe3",
+   "crlf": "8d26b210b8006dbff71cb24203d25c139d6bcba8a8a528492d83204aa82ff101"
+  },
+  "workflow/scripts/test/test_compress_godeeep.py": {
+   "text": true,
+   "raw": "008667a80270a1afa8fca972c13ae9bd0b2eb414e5870569c959887cd5ab2ac6",
+   "lf": "6275e65e89993bfc278bdc7bd79a5ca14166490095bcbeb304525381b581a859",
+   "crlf": "008667a80270a1afa8fca972c13ae9bd0b2eb414e5870569c959887cd5ab2ac6"
+  },
+  "workflow/scripts/test/test_constants.py": {
+   "text": true,
+   "raw": "ac4148104b3c1d656aa951672d241f43ed2c32cfb6c805de75cfbdc0bdc50893",
+   "lf": "803ac0b32cc3895dc541314d7f4b78b23b4bc23c85eb2857c35b37d24f5df75c",
+   "crlf": "ac4148104b3c1d656aa951672d241f43ed2c32cfb6c805de75cfbdc0bdc50893"
+  },
+  "workflow/scripts/test/test_eia_cache.py": {
+   "text": true,
+   "raw": "3e537187321b4d9b5add986951241ddb5a218dca35526d9f8de8d15ce0fb1d31",
+   "lf": "bed4c9881d09afdc29188dbac2f4c27660b72f4f023de9908c898e8e432461a9",
+   "crlf": "3e537187321b4d9b5add986951241ddb5a218dca35526d9f8de8d15ce0fb1d31"
+  },
+  "workflow/scripts/test/test_godeeep_cf_registry.py": {
+   "text": true,
+   "raw": "46ee6ee014976c8562aa5e569d11ba9257984c7a9ef840004ed4d12400cd31c1",
+   "lf": "8fc962eddffa1c3b19d0d0d98beecb6ac5998cba86556e85ed33e64ebc9852c9",
+   "crlf": "46ee6ee014976c8562aa5e569d11ba9257984c7a9ef840004ed4d12400cd31c1"
+  },
+  "workflow/scripts/test/test_helpers_opts.py": {
+   "text": true,
+   "raw": "573ac1c9c96b50d4a40e3ec4c2cb37c7b513af20753eeb279fd1f0705ee40c06",
+   "lf": "1f10e0d850afcc7a6e1f6e17a7e6c101f26e2c7e3e5511145582e2a6e97e1acf",
+   "crlf": "573ac1c9c96b50d4a40e3ec4c2cb37c7b513af20753eeb279fd1f0705ee40c06"
+  },
+  "workflow/scripts/test/test_helpers_schema.py": {
+   "text": true,
+   "raw": "67ee345e6cef5214f8d2b27783d218ca9b0e558ab0f380e6d025f447e2e9a80c",
+   "lf": "2752133e23a36ba50248cabbf4983e819fe42e18fc2f9e38481dcc5cf2630ad3",
+   "crlf": "67ee345e6cef5214f8d2b27783d218ca9b0e558ab0f380e6d025f447e2e9a80c"
+  },
+  "workflow/scripts/test/test_interfaces.py": {
+   "text": true,
+   "raw": "a5dfbdc31a7856a6da5d1cdf8cd64ef278581d42ed5bccc59f115cee0a6b27e0",
+   "lf": "a99a5890a6f62eb304c4cc8739a13ce4cf987bfc1e408e753146645eeeaac3c9",
+   "crlf": "a5dfbdc31a7856a6da5d1cdf8cd64ef278581d42ed5bccc59f115cee0a6b27e0"
+  },
+  "workflow/scripts/test/test_land.py": {
+   "text": true,
+   "raw": "ee55454a344f22881f0a4489c0a4842f9dc030f50caad8efe87c2acde61365a7",
+   "lf": "49a645c8bcaf8c35b46929f8a7d1e058b8a499f92829c9a0cd45ec8b4a7c513a",
+   "crlf": "ee55454a344f22881f0a4489c0a4842f9dc030f50caad8efe87c2acde61365a7"
+  },
+  "workflow/scripts/test/test_load_powerplants_retirement.py": {
+   "text": true,
+   "raw": "b25587bc9cca3d4124c9a3fe56171c274e682ed65abf5c9d10c05e54eb01a81f",
+   "lf": "a1c4b359890545bd208c32c27e74ea50e55c1365098bf46c0204ae31dd255bef",
+   "crlf": "b25587bc9cca3d4124c9a3fe56171c274e682ed65abf5c9d10c05e54eb01a81f"
+  },
+  "workflow/scripts/test/test_match_plant_to_bus.py": {
+   "text": true,
+   "raw": "1cbc9736857c871949d0a9008a607640c3627073ececd8baa8a86cdfc53a5ea7",
+   "lf": "2ca5ee0bc406ef39aeb4261272fab88524ae39b0d8dedee1c06d9753d13a1d7a",
+   "crlf": "1cbc9736857c871949d0a9008a607640c3627073ececd8baa8a86cdfc53a5ea7"
+  },
+  "workflow/scripts/test/test_policy.py": {
+   "text": true,
+   "raw": "72f09c705fda4710680d195e5978814791025dd4ccb0b3ed56b8ae0948b37d2b",
+   "lf": "58e08d35150148af4da44350269728509b62f484b63a557cee2ffd0c0088471a",
+   "crlf": "72f09c705fda4710680d195e5978814791025dd4ccb0b3ed56b8ae0948b37d2b"
+  },
+  "workflow/scripts/test/test_remap_caps.py": {
+   "text": true,
+   "raw": "de314ff4df59056905de08e69f9402044593e1eca0c81272b7974606408b1073",
+   "lf": "5f793df300d292eeb2f13b56bdb51f1f61d0a8a6f088d32459d4da33a4464ff7",
+   "crlf": "de314ff4df59056905de08e69f9402044593e1eca0c81272b7974606408b1073"
+  },
+  "workflow/scripts/test/test_remote_contracted.py": {
+   "text": true,
+   "raw": "4d25fce59d49c934bebd8e521a0371fa6a8c00905ae41cb6283fd6a53e20acda",
+   "lf": "b7b42174a89fa1755c016f83862dcba98ffee5eef700dc81fd8787d34274d3d2",
+   "crlf": "4d25fce59d49c934bebd8e521a0371fa6a8c00905ae41cb6283fd6a53e20acda"
+  },
+  "workflow/scripts/test/test_reserves.py": {
+   "text": true,
+   "raw": "47b5c84e3ff685a789a904bbc8155e044ef817c219744e525792e2ef8ec965ac",
+   "lf": "6d368fe9f64a42b57922c9897844b4d1317a95a1c0e430a58abb392163ab75fb",
+   "crlf": "47b5c84e3ff685a789a904bbc8155e044ef817c219744e525792e2ef8ec965ac"
+  },
+  "workflow/scripts/test/test_seam_plants.py": {
+   "text": true,
+   "raw": "55bd899b820cb4a015ee7c3a3b4694adbdba7947ea760f0d7bc126a1864dc941",
+   "lf": "18ba613dc05f5afdc40fec034562338a8c40644263a4060a53144ced46e305c4",
+   "crlf": "55bd899b820cb4a015ee7c3a3b4694adbdba7947ea760f0d7bc126a1864dc941"
+  },
+  "workflow/scripts/test/test_sector_heat_pumps.py": {
+   "text": true,
+   "raw": "698ac8ef457e7d788cd24d4afbe7e46c4289abbc5c8113cbba38b39d4edd2351",
+   "lf": "80f82470fc7d1f4dd1c975abf0f6488497f9a9a8f790e5dd0d1096c06b6900c7",
+   "crlf": "698ac8ef457e7d788cd24d4afbe7e46c4289abbc5c8113cbba38b39d4edd2351"
+  },
+  "workflow/scripts/test/test_solve_network.py": {
+   "text": true,
+   "raw": "e19fc267ac44ac29c730f08cdd4ebd131fbadd9a7acfc1b8dcf4eb7cdbc91e00",
+   "lf": "337932312191ad1b1b3e5b376c6e0bb4318524ae64fbaf78e8aaff72da46e51d",
+   "crlf": "e19fc267ac44ac29c730f08cdd4ebd131fbadd9a7acfc1b8dcf4eb7cdbc91e00"
+  },
+  "workflow/scripts/test/test_uc_bounds.py": {
+   "text": true,
+   "raw": "055b795fc40dd4f9f29e72548fb07d6e1f74f194518d460b1cce203ea11344f7",
+   "lf": "cb75f770748727ad382075738ba4cfd2e1f7cfa27f439776e4ffe9b4d6264e83",
+   "crlf": "055b795fc40dd4f9f29e72548fb07d6e1f74f194518d460b1cce203ea11344f7"
+  },
+  "workflow/scripts/test/test_zenodo_downloader.py": {
+   "text": true,
+   "raw": "362333af446f324329dbc3419a91b6b0025a3630305aa1c1e98acb9864f4da5b",
+   "lf": "de9d14b620c42586ba31e7c276f5d059c4de76ec3e7d2bef2d8400f06ba2ca53",
+   "crlf": "362333af446f324329dbc3419a91b6b0025a3630305aa1c1e98acb9864f4da5b"
+  },
+  "workflow/scripts/zenodo_downloader.py": {
+   "text": true,
+   "raw": "d64be352fc523ee9800930fff8da0df6d65ee8f13e8aae22bbb411b1053ae8fb",
+   "lf": "30036e5886c073b8902415d2620bc0dd477be81bddd2b02caabc90c8d007b596",
+   "crlf": "d64be352fc523ee9800930fff8da0df6d65ee8f13e8aae22bbb411b1053ae8fb"
+  }
+ },
+ "inputs": {
+  "workflow/byop/inputs/README.md": {
+   "text": true,
+   "raw": "498f14b817c354a10fbdb68a2645d32f9b7fd6997a49bc3cec732227d0ac9128",
+   "lf": "498f14b817c354a10fbdb68a2645d32f9b7fd6997a49bc3cec732227d0ac9128",
+   "crlf": "7e3de60435f4a23ea7c6cbea30e8b6e0f1f8cb7dc73275d5cf1fbee2781a6d88"
+  },
+  "workflow/byop/inputs/anchor2025/CAPACITY_DEFINITION_BRIDGE.csv": {
+   "text": true,
+   "raw": "ce5003236e255addf859f81f5dc229dea9eb10e70633237f09f853b643d24c95",
+   "lf": "ce5003236e255addf859f81f5dc229dea9eb10e70633237f09f853b643d24c95",
+   "crlf": "ed40a306b1332e2e59de5df3b7982d2c9ea9d0d09c37af352425b7e046ee942e"
+  },
+  "workflow/byop/inputs/anchor2025/CAPACITY_TREND_DEC2025_EXTRACT.csv": {
+   "text": true,
+   "raw": "0c213ade48af247922e92b2dba78e370561cb36e8084b5b3dd2b5058cfcf1ca0",
+   "lf": "0c213ade48af247922e92b2dba78e370561cb36e8084b5b3dd2b5058cfcf1ca0",
+   "crlf": "dcf183367483e972eac3247771efc3897cfdae079d2071a4ba1ca365fa6678c7"
+  },
+  "workflow/byop/inputs/anchor2025/CDR_DEC2025_UNIT_REGISTER_AUDIT_ONLY.csv": {
+   "text": true,
+   "raw": "e478d334bc7d07e31302cc2f5d1eac2cb85ad740f864efd16382162d51059ee2",
+   "lf": "e478d334bc7d07e31302cc2f5d1eac2cb85ad740f864efd16382162d51059ee2",
+   "crlf": "25b73b477cef429639b812f0a67fc9e3c7103a9efbd2a9f8e2a64587716b503c"
+  },
+  "workflow/byop/inputs/anchor2025/CDR_UNIT_STATUS_FUEL_SUMMARY.csv": {
+   "text": true,
+   "raw": "99b59a25f47528709fea4013b38111c48202c9bb353b43295a2516694cb6bbd1",
+   "lf": "99b59a25f47528709fea4013b38111c48202c9bb353b43295a2516694cb6bbd1",
+   "crlf": "d613c2d47504e2fddd2923326b779baa8a15b15cff1c1de883a5e52f1ea8738d"
+  },
+  "workflow/byop/inputs/anchor2025/ERCOT_NATIVE_LOAD_2025_1H.csv": {
+   "text": true,
+   "raw": "226bf8bcbc5e67b091cc387be05e18d33320a98a99e27cd10de5fe940a5ae0e5",
+   "lf": "226bf8bcbc5e67b091cc387be05e18d33320a98a99e27cd10de5fe940a5ae0e5",
+   "crlf": "bee1fce2e3b397ec98c17271342d350bedb53fe379bcd2d4a5464fb317c24be5"
+  },
+  "workflow/byop/inputs/anchor2025/ERCOT_NATIVE_LOAD_2025_3H.csv": {
+   "text": true,
+   "raw": "e0badb618c217fc5b6add55f68fec92e8a4e1e328171d7fa89f49fed7ffc5f52",
+   "lf": "e0badb618c217fc5b6add55f68fec92e8a4e1e328171d7fa89f49fed7ffc5f52",
+   "crlf": "2137a8dbc217c1e4a570e03b59d94f8b33e0ad72e3d334a76ac0571404090dbf"
+  },
+  "workflow/byop/inputs/anchor2025/EVIDENCE_REBUILD_CHECK.json": {
+   "text": true,
+   "raw": "11d95302bad863389916e54b512ea5bfde846b11b67dbe59d3e7033fb2a4ee40",
+   "lf": "11d95302bad863389916e54b512ea5bfde846b11b67dbe59d3e7033fb2a4ee40",
+   "crlf": "51348de681a3169fe4cec2458df23dfa34570ca105e8ee6db016fa9ec3922c25"
+  },
+  "workflow/byop/inputs/anchor2025/FUEL_MIX_2025_GWH.csv": {
+   "text": true,
+   "raw": "5e4f95dafe9e7c86646e66e7f1b1909b6ffe15eaef281ad8028c507fd3c5e6fd",
+   "lf": "5e4f95dafe9e7c86646e66e7f1b1909b6ffe15eaef281ad8028c507fd3c5e6fd",
+   "crlf": "c65949131688923c7dbe576109cd0269b941047694a5d29f470946cbe140a5fd"
+  },
+  "workflow/byop/inputs/anchor2025/HISTORICAL_DEMAND_STRESS_DAYS.csv": {
+   "text": true,
+   "raw": "c83557dabefb69521a6a2c9374c81fc6e9a21975e0ac8f9babea555ff9bae9cb",
+   "lf": "c83557dabefb69521a6a2c9374c81fc6e9a21975e0ac8f9babea555ff9bae9cb",
+   "crlf": "750951a293892bb7c29f4b92f0ad93fc007750dc5f14fb82cdc9b3c5603c5885"
+  },
+  "workflow/byop/inputs/anchor2025/LOAD_MONTHLY_TWH.csv": {
+   "text": true,
+   "raw": "90e541d8ee67e41539dd706630ef51940ba398d29090f3dcb295d3855fa7224e",
+   "lf": "90e541d8ee67e41539dd706630ef51940ba398d29090f3dcb295d3855fa7224e",
+   "crlf": "2030c227afc625e0a90e18ae568c0b6cc2a6cf049cc463c9fed18ea3a74f298d"
+  },
+  "workflow/byop/inputs/anchor2025/VERIFIED_METRICS.json": {
+   "text": true,
+   "raw": "8c6ab80e623af89e01f7a1c31a3d00fe0ed3553c24d463ef53a5e95390e1318b",
+   "lf": "8c6ab80e623af89e01f7a1c31a3d00fe0ed3553c24d463ef53a5e95390e1318b",
+   "crlf": "a47925b975b6fbac1d3a18842df19fc36843ddc85f1e00e61573d79e1bd6fa60"
+  },
+  "workflow/byop/inputs/calibration_v16/ASSET_DECISIONS.csv": {
+   "text": true,
+   "raw": "c10164c5a5a020b136e67642e28e396ed5e2c2bc156ec1ab0584ce403e148048",
+   "lf": "c10164c5a5a020b136e67642e28e396ed5e2c2bc156ec1ab0584ce403e148048",
+   "crlf": "a9623e717d85db24b872555c5263d8cb801726ff64f1ecb557795adef4f6b9d4"
+  },
+  "workflow/byop/inputs/calibration_v16/DECISION_POLICY.yaml": {
+   "text": true,
+   "raw": "a82ad526d30ba3413e97e0c36092313e5322f1ebdfc1a515149cc3b56e1c7638",
+   "lf": "a82ad526d30ba3413e97e0c36092313e5322f1ebdfc1a515149cc3b56e1c7638",
+   "crlf": "fc9f6af273e7c3d0c276c3639cc3ac7f4c793eb904aa18274f66bdb3a933bd85"
+  },
+  "workflow/byop/inputs/calibration_v16/SOURCE_MANIFEST.json": {
+   "text": true,
+   "raw": "da0b948ac91a22a5a520bd6ce6e1a8864eb64177b3e5043756260a2cf87faf63",
+   "lf": "da0b948ac91a22a5a520bd6ce6e1a8864eb64177b3e5043756260a2cf87faf63",
+   "crlf": "e56083db51dc350c585a229c5f4135ff9826d79d79f66508d5c927ce8d3a126b"
+  },
+  "workflow/byop/inputs/calibration_v16/evidence/CDR_2025_ELCC_REFERENCE.csv": {
+   "text": true,
+   "raw": "3d07945cfb6ae5a7f0ebcf1af3958a46d28bca88a8ca3120d878bcefc27449f5",
+   "lf": "3d07945cfb6ae5a7f0ebcf1af3958a46d28bca88a8ca3120d878bcefc27449f5",
+   "crlf": "4f82926066ed480d4cdce8fd9b90f0548f091a68e73b366c15235a0564c79d6b"
+  },
+  "workflow/byop/inputs/calibration_v16/evidence/CDR_2025_PRM_REFERENCE.csv": {
+   "text": true,
+   "raw": "7f59bbc2925a12206c78638b4977361c1792f20b56c1bb6fbe512e2f6bcdf1b5",
+   "lf": "7f59bbc2925a12206c78638b4977361c1792f20b56c1bb6fbe512e2f6bcdf1b5",
+   "crlf": "ea00e017438de5bf511254524f2f8a1f8a578facdf1561061839a12c23b8bd01"
+  },
+  "workflow/byop/inputs/calibration_v16/evidence/CDR_2025_RESOURCE_DEMAND_COMPONENTS.csv": {
+   "text": true,
+   "raw": "730bf852a39c5e5b8efa057caf576d101d402c53487358b1bd88a4f61a113595",
+   "lf": "730bf852a39c5e5b8efa057caf576d101d402c53487358b1bd88a4f61a113595",
+   "crlf": "139af9bab8c1f88b066f04f3ddb9a72e1f74da6688eccf24ee36680f22bb663d"
+  },
+  "workflow/byop/inputs/calibration_v16/evidence/EIA860_2025_PRIORITY_PLANTS.csv": {
+   "text": true,
+   "raw": "e0616f77c0afa5f5f3123a563a1a49223c98607b763c188229686d719de0198f",
+   "lf": "e0616f77c0afa5f5f3123a563a1a49223c98607b763c188229686d719de0198f",
+   "crlf": "47e1d781302a07ebb6e2f429dc9fbd3cf42da8ebce3fead26331d109bd7eb99d"
+  },
+  "workflow/byop/inputs/calibration_v16/evidence/EXTRACT_QA.json": {
+   "text": true,
+   "raw": "66d098b87ff1c8ca17b1a42c856c5088551162fbd40fc46e9fca99709c1c7332",
+   "lf": "66d098b87ff1c8ca17b1a42c856c5088551162fbd40fc46e9fca99709c1c7332",
+   "crlf": "8217db808a3187700118f1ed3f5e1be5e57a51e2bfc5f2d94ed5ff8aa3ee2c66"
+  },
+  "workflow/byop/inputs/calibration_v16/evidence/STORAGE_2025_ERCOT_SOURCE_ROWS.csv": {
+   "text": true,
+   "raw": "d038fb8604e2d895ca4c23fa488db025d9b4696d65e8f7a5e98a994f139397a1",
+   "lf": "d038fb8604e2d895ca4c23fa488db025d9b4696d65e8f7a5e98a994f139397a1",
+   "crlf": "7b3bd0a4003d747cd73e9363c53ba2b72249e4f20e1d73ced4394a56dbba8f09"
+  },
+  "workflow/byop/inputs/calibration_v16/evidence/SWITCHABLE_2025_MONTHLY_AVAILABILITY.csv": {
+   "text": true,
+   "raw": "cafe312e829b09c9bdf879e82a0b35a3b9d72ad223f50995aabfa3db49f4f84a",
+   "lf": "cafe312e829b09c9bdf879e82a0b35a3b9d72ad223f50995aabfa3db49f4f84a",
+   "crlf": "bfc1f36edac4459557bb14ccc5d3adf16912e754966e782613beaf4c87b92c69"
+  },
+  "workflow/byop/inputs/calibration_v16/evidence/SWITCHABLE_2025_SOURCE_ROWS.csv": {
+   "text": true,
+   "raw": "ce15e42c4227b08011261c6a43c2c4f5db392a2543b3f24224f82a30f6c7dbee",
+   "lf": "ce15e42c4227b08011261c6a43c2c4f5db392a2543b3f24224f82a30f6c7dbee",
+   "crlf": "11158dcfe242aa2a93869377bb45d20c6af61774378f6e51028c9c20702ee6d9"
+  },
+  "workflow/byop/inputs/calibration_v16/evidence/SWITCHABLE_CDR_2026_2031_SEASONAL.csv": {
+   "text": true,
+   "raw": "46a077acdb118dabf6d2b7b20ede55a510c0390180a29ebbb337af378ab7e8a8",
+   "lf": "46a077acdb118dabf6d2b7b20ede55a510c0390180a29ebbb337af378ab7e8a8",
+   "crlf": "25b1d62157516369010907f5a3e43178cbce1cdfb70576596c85209785b7fcf8"
+  },
+  "workflow/byop/inputs/calibration_v16/evidence/TRANSMISSION_EXTERNAL_CHECKLIST.csv": {
+   "text": true,
+   "raw": "0fdd7bf545264cadbf6f46392b7bd48639cbb313df659bd7a7f41e07135bd019",
+   "lf": "0fdd7bf545264cadbf6f46392b7bd48639cbb313df659bd7a7f41e07135bd019",
+   "crlf": "03301f1fe6e9ebbcdf326b7d89c62ef189dfd1cefd306add25836f9d8c9b42e5"
+  },
+  "workflow/byop/inputs/dc/EPOCH_SITE_SERVICE_TAMU64.csv": {
+   "text": true,
+   "raw": "6f7ea3e757efb1e2f16310bab213dc8bd1b50d98f7fab7139b8e2b5ba315a172",
+   "lf": "6f7ea3e757efb1e2f16310bab213dc8bd1b50d98f7fab7139b8e2b5ba315a172",
+   "crlf": "aa47a099bdc961958c01f0cd7498081e3ee8ddcb08f591a3dbd5df50cebb1f2f"
+  },
+  "workflow/byop/inputs/dc/EPOCH_TAMU64_PROVENANCE.json": {
+   "text": true,
+   "raw": "56e5662bae647ac46a1a0166e53425835a4167d1ff847c5f456e7580b1be12fa",
+   "lf": "56e5662bae647ac46a1a0166e53425835a4167d1ff847c5f456e7580b1be12fa",
+   "crlf": "d574064282a359a68d8eb9c245fc302727cb037f69d04ac9e2e167e06e1c6f3e"
+  },
+  "workflow/byop/inputs/dc/EPOCH_TX_SITES_TAMU64.csv": {
+   "text": true,
+   "raw": "fe72c0bd9558252437547016efc6103e40650924e9e7dad73cad53ece69ff357",
+   "lf": "fe72c0bd9558252437547016efc6103e40650924e9e7dad73cad53ece69ff357",
+   "crlf": "fb93742117973207bd70f652df98a880c761803fcb0a4e0ba062bc52ae8e7f69"
+  },
+  "workflow/byop/inputs/dc/EPOCH_TX_TIMELINE_EVIDENCE.csv": {
+   "text": true,
+   "raw": "9d4b846fccd1b2540a1967284c544a92dcbf7a142890256c9e15c0fe809b33a9",
+   "lf": "9d4b846fccd1b2540a1967284c544a92dcbf7a142890256c9e15c0fe809b33a9",
+   "crlf": "508e7eec0884586841c3dc55d732f7d396b09057f75a5df54631a58c2a87632c"
+  },
+  "workflow/byop/inputs/dc/ERCOT_DC_CAPACITY_ALLOCATION_TAMU64.csv": {
+   "text": true,
+   "raw": "31caf74cb78124256bdae4a88e4312698445401f249b30f38070fa78c03bdb7b",
+   "lf": "31caf74cb78124256bdae4a88e4312698445401f249b30f38070fa78c03bdb7b",
+   "crlf": "b5c2b4d18b263f44a102d414398b1d5dd86be6ad1ad710d29c8530b82279a4cb"
+  },
+  "workflow/byop/inputs/dc/ERCOT_DC_TOTALS_2026_2035.csv": {
+   "text": true,
+   "raw": "b4d877cbe21281d0e7e0366235788e284495fb6f84518046c0e3691386adfd5c",
+   "lf": "b4d877cbe21281d0e7e0366235788e284495fb6f84518046c0e3691386adfd5c",
+   "crlf": "ad9264672f9300f25ce369744b4795aed8cace0ff68caf9ce2c8ccbc6440655c"
+  },
+  "workflow/byop/inputs/dc/MAINLINE_AIDC_RECONCILIATION.csv": {
+   "text": true,
+   "raw": "f6ad3ca91cb75733de6a7ef6f06d45cc3d68934294883f6c128356d5a75302a9",
+   "lf": "f6ad3ca91cb75733de6a7ef6f06d45cc3d68934294883f6c128356d5a75302a9",
+   "crlf": "8856899af649fc715323384b0df45302b60325ec4643b5508032c8b2371d6e2e"
+  },
+  "workflow/byop/inputs/dc/MAINLINE_AIDC_RECONCILIATION_GEO_DYNAMIC_V1.csv": {
+   "text": true,
+   "raw": "0b7224143055204f1968a81ae1fc28837dade4433b15a21f73815d4c17177fab",
+   "lf": "0b7224143055204f1968a81ae1fc28837dade4433b15a21f73815d4c17177fab",
+   "crlf": "1dbab6de1530450d4f4c098bd0b12ee5bfcf7643fdd10aabc743793f0c6011f9"
+  },
+  "workflow/byop/inputs/dc/MAINLINE_BUS_SITE_POI_MAP.csv": {
+   "text": true,
+   "raw": "2cb90fdbcb483a88be0212e95b01aed6e352c41393860797ed3642a46271b410",
+   "lf": "2cb90fdbcb483a88be0212e95b01aed6e352c41393860797ed3642a46271b410",
+   "crlf": "bdb056eed1309dd94e7b09bd69ee338444aa57c0c645380f37dc31b764d44f70"
+  },
+  "workflow/byop/inputs/dc/MAINLINE_CANDIDATE_BUS_ELIGIBILITY_GEO_DYNAMIC_V1.csv": {
+   "text": true,
+   "raw": "11736f707c191ba5a82837568dbc9224f8ee2b0c932dcdb76eed3ad080d99804",
+   "lf": "11736f707c191ba5a82837568dbc9224f8ee2b0c932dcdb76eed3ad080d99804",
+   "crlf": "bc0e31be2eb8856a53c167d3bb343f9c4414e38ac25b2a38d497249c66c221db"
+  },
+  "workflow/byop/inputs/dc/MAINLINE_INHERITED_RAMP_2025.csv": {
+   "text": true,
+   "raw": "15c3501df57835381346ef8eff42b3b2201dbd32393ca46161852076e2682a4e",
+   "lf": "15c3501df57835381346ef8eff42b3b2201dbd32393ca46161852076e2682a4e",
+   "crlf": "f99eb18fb657de4fee37a59a86223cc8ce77045427350342216435c01c51512a"
+  },
+  "workflow/byop/inputs/dc/MAINLINE_NEW_BUS_POI_RISK_GEO_DYNAMIC_V1.csv": {
+   "text": true,
+   "raw": "207b37a0889d6b54df5ba288878c8ac23ca79d2908c74706e2c3dd1e74ee3c0b",
+   "lf": "207b37a0889d6b54df5ba288878c8ac23ca79d2908c74706e2c3dd1e74ee3c0b",
+   "crlf": "702121cdef9eebe0b9f8795130f1c519f5a51f0873159a12b3fdc4b7b6e768b6"
+  },
+  "workflow/byop/inputs/dc/MAINLINE_NEW_RESEARCH_BUS_POI_MAP_GEO_DYNAMIC_V1.csv": {
+   "text": true,
+   "raw": "42728c40379aeca8ab133762d1609cc625b7e7772cfec07753fc1995fdab3591",
+   "lf": "42728c40379aeca8ab133762d1609cc625b7e7772cfec07753fc1995fdab3591",
+   "crlf": "f4f3e6fcdf7964440e5b69e821f7fe013518590bb7c2e67b6dfe1fd2fbc33570"
+  },
+  "workflow/byop/inputs/dc/MAINLINE_RESEARCH_COHORTS_TAMU64.csv": {
+   "text": true,
+   "raw": "5373983ea59e2f7696ffb14e914fdc8d0e3e8186879f6e17b60c78c41ac2e173",
+   "lf": "5373983ea59e2f7696ffb14e914fdc8d0e3e8186879f6e17b60c78c41ac2e173",
+   "crlf": "f2d7e8285a1d74a661448a6378d067c9dbe11312179ef80534a91c565c784f0f"
+  },
+  "workflow/byop/inputs/dc/MAINLINE_RESEARCH_COHORTS_TAMU64_GEO_DYNAMIC_V1.csv": {
+   "text": true,
+   "raw": "0338df13e931081ab5f5d36a46b9eb8c23fee8c87ec7e97472b325952c3cac41",
+   "lf": "0338df13e931081ab5f5d36a46b9eb8c23fee8c87ec7e97472b325952c3cac41",
+   "crlf": "2a4e7ddc25b3c8ee03fa4d53b954db8e3f4d7a1ccd87546e0b070eb7adc15f4b"
+  },
+  "workflow/byop/inputs/dc/MAINLINE_SITE_CLASSIFICATION_GEO_DYNAMIC_V1.csv": {
+   "text": true,
+   "raw": "515fe5e451366d41ad9258d68460194df9857bd387196f8493e79a5b66890dbb",
+   "lf": "515fe5e451366d41ad9258d68460194df9857bd387196f8493e79a5b66890dbb",
+   "crlf": "09b4813b581bf6944e15378344f06e0c4fefec708672235f9e2c7bb671e232f4"
+  },
+  "workflow/byop/inputs/dc/MAINLINE_SITING_BUILD_MANIFEST_GEO_DYNAMIC_V1.json": {
+   "text": true,
+   "raw": "472af722d8d6a52e141f08d77fe0247789e6d21b8e934bfef767e5f90e51686b",
+   "lf": "472af722d8d6a52e141f08d77fe0247789e6d21b8e934bfef767e5f90e51686b",
+   "crlf": "b869572484414e0685b09eebd68ff53f88445fbb56b755fb4271458661217b92"
+  },
+  "workflow/byop/inputs/dc/MAINLINE_SITING_P_VARIANTS_GEO_DYNAMIC_V1.csv": {
+   "text": true,
+   "raw": "b876e7e495c27efbaed7f1143f2b1ca4b3e204f1d506ba9caa87d5ed01231974",
+   "lf": "b876e7e495c27efbaed7f1143f2b1ca4b3e204f1d506ba9caa87d5ed01231974",
+   "crlf": "5350b867b9a5d03db8855ef1b2e5ef98d0d206733248fa832cb094699f101ebd"
+  },
+  "workflow/byop/inputs/dc/MAINLINE_SITING_SCENARIO_DYNAMIC_V1.yaml": {
+   "text": true,
+   "raw": "981483d85d4a829c76f7359f7e5a56bcc89b7d1bf23067271c3254d4704aad67",
+   "lf": "981483d85d4a829c76f7359f7e5a56bcc89b7d1bf23067271c3254d4704aad67",
+   "crlf": "0e942f8cfd2951812c3b1c4b3e67705ce5b8ede188c812887f327ec9ffe6a8ff"
+  },
+  "workflow/byop/inputs/dc/MAINLINE_SITING_WEIGHTS_GEO_DYNAMIC_V1.csv": {
+   "text": true,
+   "raw": "e26bc54db3e30c9823cdcf79c1820c31cfd197b4cd97df740db040f2e6f35948",
+   "lf": "e26bc54db3e30c9823cdcf79c1820c31cfd197b4cd97df740db040f2e6f35948",
+   "crlf": "cc55a09eb0e4e8bf503b9e54b543fdf2c184ac3185cdd9446be837a3c1e0f43e"
+  },
+  "workflow/byop/inputs/dc/PNNL_ATLAS_TX_SITES_TAMU64.csv": {
+   "text": true,
+   "raw": "c862bdcdbf2e7bf9ea0ff31b4552473048e9effa034deda6cfcdbbf619547865",
+   "lf": "c862bdcdbf2e7bf9ea0ff31b4552473048e9effa034deda6cfcdbbf619547865",
+   "crlf": "325fc50a5b2021f362ddbf5e44b7a2d1019044474ebe87aa6ad634995f498915"
+  },
+  "workflow/byop/inputs/dc/PNNL_CANDIDATE_BUS_SUMMARY.csv": {
+   "text": true,
+   "raw": "77d876184e42ee47dc46016f2a3709ecce36c81013598fddb8d3c7eba0a615c3",
+   "lf": "77d876184e42ee47dc46016f2a3709ecce36c81013598fddb8d3c7eba0a615c3",
+   "crlf": "78f3e39bc25ae1300513c8b847d5bb1ef9c6acaa38202571f9decacc415b49bc"
+  },
+  "workflow/byop/inputs/dc/PNNL_PROJECTED_HIGHER_TX_TAMU64.csv": {
+   "text": true,
+   "raw": "297663b4b6c8068b3cfaa1d36c8345f9b98bd7a2642d4e8a3f6b7c9bd8e5aef0",
+   "lf": "297663b4b6c8068b3cfaa1d36c8345f9b98bd7a2642d4e8a3f6b7c9bd8e5aef0",
+   "crlf": "5adfff15751f98b7be142f38397c3220f8774d4cc0651d681a1ccbdb09c40d13"
+  },
+  "workflow/byop/inputs/dc/PNNL_PROVENANCE.json": {
+   "text": true,
+   "raw": "d4a39f83e89f01cafd9dc1524932f88a3cff740c7d7e01495bb67c675e90c51b",
+   "lf": "d4a39f83e89f01cafd9dc1524932f88a3cff740c7d7e01495bb67c675e90c51b",
+   "crlf": "ebccd93730f6b8eafa4722a3c87defd593e911da3fbcce8d9f9c96992c65f14c"
+  },
+  "workflow/byop/inputs/dc/PNNL_SPATIAL_MAPPING_REVIEW.csv": {
+   "text": true,
+   "raw": "c73525eb247bb6255b8ffed031cdbae935f0ab825fea0871badb5e66be0f8346",
+   "lf": "c73525eb247bb6255b8ffed031cdbae935f0ab825fea0871badb5e66be0f8346",
+   "crlf": "4bed02cf5f5606b14729589308a0939eb2651bc16de167d9b8978e83354bc3c4"
+  },
+  "workflow/byop/inputs/dc/ROUNDING_RECONCILIATION_GEO_DYNAMIC_V1.csv": {
+   "text": true,
+   "raw": "b0308cd5875d7020ee78b15e5202669841305beca3c0b7c16806589aa76e30b2",
+   "lf": "b0308cd5875d7020ee78b15e5202669841305beca3c0b7c16806589aa76e30b2",
+   "crlf": "fd2dbaed3307db1311ca804b214e110623ce6bbe0e7631dd774e25cea7b92a17"
+  },
+  "workflow/byop/inputs/dc/ercot_cohorts_2026_2035_tamu64.csv": {
+   "text": true,
+   "raw": "ee7fcac92cd707118022acb1c258911b266dfcc2bc1a32b3610043a068c6af49",
+   "lf": "ee7fcac92cd707118022acb1c258911b266dfcc2bc1a32b3610043a068c6af49",
+   "crlf": "ea43c6eb30e38cc5c9401ae78ebd08266c4a470e1175acb124d698d1cf421e8e"
+  },
+  "workflow/byop/inputs/dc/hourly_inference_trace.csv": {
+   "text": true,
+   "raw": "b282e1a142899f5aa068bfbfcc32b519c6e46e678ca78bba09fb987da11fc903",
+   "lf": "b282e1a142899f5aa068bfbfcc32b519c6e46e678ca78bba09fb987da11fc903",
+   "crlf": "d57ff4517387b09f40a715350892eed1fdb905d88f7046334ca03096c89f9acf"
+  },
+  "workflow/byop/inputs/dc/state_pue_2022_2050.csv": {
+   "text": true,
+   "raw": "2a2c2453b3dfdfbea09e955e7b510d1f47fb5ef36d685966a709b1f9ef4cfa74",
+   "lf": "2a2c2453b3dfdfbea09e955e7b510d1f47fb5ef36d685966a709b1f9ef4cfa74",
+   "crlf": "28c4da910027720547f151777d83225944cb88d78abc60e540f477f35a577c5c"
+  },
+  "workflow/byop/inputs/dc/yearly_task_parameters_2022_2050.csv": {
+   "text": true,
+   "raw": "8a0bdeb02bd32efcbc1d1c6b759e56336d9c8db7be857db9920c2a9a89c1c9d4",
+   "lf": "8a0bdeb02bd32efcbc1d1c6b759e56336d9c8db7be857db9920c2a9a89c1c9d4",
+   "crlf": "1206faa69dd9f46808026e5ab2e548b496a58e0dcf9d4fafe9ab0a54f27f88c7"
+  },
+  "workflow/byop/inputs/grid/COMMITTED_BASE_ASSETS.csv": {
+   "text": true,
+   "raw": "324408cccf42b062bd826135fd126f4e068b69d9017818e77646a818de715056",
+   "lf": "324408cccf42b062bd826135fd126f4e068b69d9017818e77646a818de715056",
+   "crlf": "a9aa717865910c654ebf85cc04db887cc6c326dce89a410c4378071768d6931e"
+  },
+  "workflow/byop/inputs/grid/COMMITTED_PUBLIC_ASSET_COSTS.csv": {
+   "text": true,
+   "raw": "66e192db263b0432ad3c767f7c462a955abbefd09e994e26294c770269ff00d1",
+   "lf": "66e192db263b0432ad3c767f7c462a955abbefd09e994e26294c770269ff00d1",
+   "crlf": "5134cc0d4149fee280699d58fdd73a82e559f1e290aca6f73a8d35fc1a951882"
+  },
+  "workflow/byop/inputs/grid/ERCOT_WIND_SOLAR_POTENTIAL.csv": {
+   "text": true,
+   "raw": "aba7a41e4fbd0a51e22f41231c1d054bf3e260415bd282dd470c83e87f763b56",
+   "lf": "3bcf4395674c627a6fca4dc3cbb34c3d49fdc2742fd18de2e55f21944646d5b8",
+   "crlf": "aba7a41e4fbd0a51e22f41231c1d054bf3e260415bd282dd470c83e87f763b56"
+  },
+  "workflow/byop/inputs/grid/GREAL_BACKGROUND_LOAD_RECONCILIATION.csv": {
+   "text": true,
+   "raw": "e7bb764e2ede7fcc6badd3a70643b1ee97136ee8ce2d0e3d6723249c18b42990",
+   "lf": "e7bb764e2ede7fcc6badd3a70643b1ee97136ee8ce2d0e3d6723249c18b42990",
+   "crlf": "4df30bdfba2bc141c78c1d689b5804346499bda3357f0fa84cee793d968f801d"
+  },
+  "workflow/byop/inputs/grid/GREAL_GRID_PROJECTS.csv": {
+   "text": true,
+   "raw": "120a00fb17e17f130e28257d9bfc1535c6d52a7b9f373537e73dd83f0d2be30d",
+   "lf": "120a00fb17e17f130e28257d9bfc1535c6d52a7b9f373537e73dd83f0d2be30d",
+   "crlf": "119510a5b675b8c789fa98593ffd1d3e71361ac4ce1120aad0203b6df42faf22"
+  },
+  "workflow/byop/inputs/grid/GREAL_NETWORK_EVIDENCE.csv": {
+   "text": true,
+   "raw": "0bfc5984787cdc79cf58a64b3e935243c62d3bfad39852233c6f5532bfddd9cd",
+   "lf": "0bfc5984787cdc79cf58a64b3e935243c62d3bfad39852233c6f5532bfddd9cd",
+   "crlf": "a74b7e9d9f874fcce06aba863fbb4a6cf78d493895da5359f999b3937c6fb948"
+  },
+  "workflow/byop/inputs/grid/GREAL_PHYSICAL_MECHANISM_NOTE.md": {
+   "text": true,
+   "raw": "fcdb831437acae74939a43a2e7f9c1e3600c2f4ff448b22c6219b352a9072075",
+   "lf": "fcdb831437acae74939a43a2e7f9c1e3600c2f4ff448b22c6219b352a9072075",
+   "crlf": "b3bcc3701e31365de629f0d6b54e001f3c0c3fae6f055f0f371cc882e6a0531a"
+  },
+  "workflow/byop/inputs/grid/REEDS2_IMPORT_NOTE.md": {
+   "text": true,
+   "raw": "a3fe5baa5a837c436932cd77da0e5622d3a342cace0a4928523ee7ac20aa19b0",
+   "lf": "a3fe5baa5a837c436932cd77da0e5622d3a342cace0a4928523ee7ac20aa19b0",
+   "crlf": "8cc8229b9d67a1bfb1a4e32eec5bbe1abe164e26cce0490ab79d0728dc830cb3"
+  },
+  "workflow/byop/inputs/grid/REEDS2_SOURCE_INVENTORY.csv": {
+   "text": true,
+   "raw": "70df73d545218003fd6da7726d2bc0a72df911ff7fe28939d76d0e29f118e388",
+   "lf": "70df73d545218003fd6da7726d2bc0a72df911ff7fe28939d76d0e29f118e388",
+   "crlf": "7bd2d7f8de074b137d6e352bc8c44de5aad8044c98b296a6f5f75e54f761097b"
+  },
+  "workflow/byop/inputs/grid/REEDS2_TO_TAMU64.csv": {
+   "text": true,
+   "raw": "c43690f9aa7455a86982e055891f9eec0ced7125b54c7d0394c95ffef6db7755",
+   "lf": "c43690f9aa7455a86982e055891f9eec0ced7125b54c7d0394c95ffef6db7755",
+   "crlf": "2f9f30369b9ee52ab0ac65f2fb796d81355730603f751eb07293da0925cbac6d"
+  },
+  "workflow/byop/inputs/grid/TPIT_2026-07-13_project_register_v250.csv": {
+   "text": true,
+   "raw": "178724febc8dc4d58b65c79b9129a01f300837723f448cb3d2ab80c8f1be0f7b",
+   "lf": "178724febc8dc4d58b65c79b9129a01f300837723f448cb3d2ab80c8f1be0f7b",
+   "crlf": "590c45b63b6c4df7574f052028430f2f2a8444bba885970b5ecfc1746f1d830b"
+  },
+  "workflow/byop/inputs/grid/TPIT_FARWEST_EVIDENCE_LEDGER.csv": {
+   "text": true,
+   "raw": "2675d32f74b26d7889801e71fdcd52e87217e18d7cea9010c2a34ecc76a0b43c",
+   "lf": "2675d32f74b26d7889801e71fdcd52e87217e18d7cea9010c2a34ecc76a0b43c",
+   "crlf": "6122bd56f6198f28483a3606f70836fe23f37efef4a364cd0959138df4a28195"
+  },
+  "workflow/byop/inputs/grid/TPIT_TO_COUNTY_ASSET_MAP.csv": {
+   "text": true,
+   "raw": "ae337018e56f7e28f9c25993ceccedb472658fa3f9b6ccbd4686693bd38414c0",
+   "lf": "ae337018e56f7e28f9c25993ceccedb472658fa3f9b6ccbd4686693bd38414c0",
+   "crlf": "3fd0a742d241479ad7d798e77ea31c3c612f8895be7d5a90f542d51ef79051ec"
+  },
+  "workflow/byop/inputs/load/background_load_growth_states_AEO2023_reference.csv": {
+   "text": true,
+   "raw": "6445c10a0f26e97d23b5edc18d28d46d1ad8139ef15cbc5d48635a05e29b46e6",
+   "lf": "6445c10a0f26e97d23b5edc18d28d46d1ad8139ef15cbc5d48635a05e29b46e6",
+   "crlf": "8fc098183b479520d63175cb9d58523f4a1acf1255f2c645dcc04e6861b60700"
+  },
+  "workflow/byop/inputs/poi/GREAL_POI_ASSUMPTIONS.csv": {
+   "text": true,
+   "raw": "9b7fa75c49ac1d6defd523e708f0670cc3543bceea956503029744a93bb4ed34",
+   "lf": "9b7fa75c49ac1d6defd523e708f0670cc3543bceea956503029744a93bb4ed34",
+   "crlf": "fe5b8f0b644fb74cf63eb5bf8a38683cdbf06c8a8e2914d070f5c002cc62a244"
+  },
+  "workflow/byop/inputs/poi/GREAL_POI_ASSUMPTIONS_GEO_DYNAMIC_V1.csv": {
+   "text": true,
+   "raw": "81f3abcf61726114ffc03f1e7b38df300dccf01c71e0007c81bbf75acbea114a",
+   "lf": "81f3abcf61726114ffc03f1e7b38df300dccf01c71e0007c81bbf75acbea114a",
+   "crlf": "9903dcae7655d4e359bc247e3dc11691773c9da4fc17c64bc83dd67c06321319"
+  },
+  "workflow/byop/inputs/poi/GREAL_POI_E0_SCHEDULE.csv": {
+   "text": true,
+   "raw": "bce7c787b5d71d84a6a5228f99f903f71f936be7b2abc9ffcfed35251347d449",
+   "lf": "bce7c787b5d71d84a6a5228f99f903f71f936be7b2abc9ffcfed35251347d449",
+   "crlf": "8efde2b0d3bb0c3c150c838b6a17be97dc19f41c79c974dc10cda29d2cc7c129"
+  },
+  "workflow/byop/inputs/poi/GREAL_R_ASSET_POOL.csv": {
+   "text": true,
+   "raw": "62d4979eaee408b7beda9c15bdad9a0fbd7518c814a9beeac82cc1214a270340",
+   "lf": "62d4979eaee408b7beda9c15bdad9a0fbd7518c814a9beeac82cc1214a270340",
+   "crlf": "b204344cc9f68cc44326088df80722ef730a3bbed75285b0d716d9ecbd3711bb"
+  },
+  "workflow/byop/inputs/poi/GRID_PROJECTS.csv": {
+   "text": true,
+   "raw": "bb05fdc16768852436e792186067b88e931f9055fd35674b5394e5ba13c5e5d8",
+   "lf": "bb05fdc16768852436e792186067b88e931f9055fd35674b5394e5ba13c5e5d8",
+   "crlf": "3e0bae6732a386072bf713fc09c3f43478ad3340ffc93bab91968c0363aaa123"
+  },
+  "workflow/byop/inputs/poi/MAINLINE_POI_DERIVED_DELTA_GEO_DYNAMIC_V1.csv": {
+   "text": true,
+   "raw": "cdccd9a5a904c3b6746d7e0dcafbe8beea9a6f0816fd5c70b78e231684304513",
+   "lf": "cdccd9a5a904c3b6746d7e0dcafbe8beea9a6f0816fd5c70b78e231684304513",
+   "crlf": "b3b128b364afda1afb453bac5ef931339d47d08fdc1dd4006d9163579a27bb21"
+  },
+  "workflow/byop/inputs/poi/POI_REGISTER.csv": {
+   "text": true,
+   "raw": "d2f37909d559e16526ca47fb0794ecbe0cc1ae4c4ff0913afadb32fbef70a1f3",
+   "lf": "d2f37909d559e16526ca47fb0794ecbe0cc1ae4c4ff0913afadb32fbef70a1f3",
+   "crlf": "81d41d50760e60078b6f055efb078eff6de24344cb3ca934e6939f5e7d3a0912"
+  },
+  "workflow/byop/inputs/poi/POI_REQUESTS.csv": {
+   "text": true,
+   "raw": "737d808551f9220ef0dc5ff4ff1fbffef9731659829a619c2737568688a692dd",
+   "lf": "737d808551f9220ef0dc5ff4ff1fbffef9731659829a619c2737568688a692dd",
+   "crlf": "7e3e6fd38d465ff63f4c24db339e3c02d6b749bb55dcee367fcf913c4abba440"
+  },
+  "workflow/byop/inputs/poi/SOURCE_EVIDENCE_REGISTER.csv": {
+   "text": true,
+   "raw": "bfbc3c626eba98a912ff6a159ab862675fb43d9f1dd4aa955848fa6f0d6dcfc7",
+   "lf": "bfbc3c626eba98a912ff6a159ab862675fb43d9f1dd4aa955848fa6f0d6dcfc7",
+   "crlf": "4283f68cd55aec1030739f2a0ab7af97ff0f19cbf0dec44a8c8ae94e85081579"
+  },
+  "workflow/byop/inputs/post_v16/POST_V16_RESERVE_PARAMETERS.csv": {
+   "text": true,
+   "raw": "04f38697a8cc5b515b02591724c9638f166aee7428edf2100091119ea6cf6361",
+   "lf": "04f38697a8cc5b515b02591724c9638f166aee7428edf2100091119ea6cf6361",
+   "crlf": "1d2f9defdb0db8d19c234f7150ec02addd69519039b2c4b3037f4c1b267c213a"
+  },
+  "workflow/byop/inputs/post_v16/STAGING_SHA_QA.json": {
+   "text": true,
+   "raw": "9d7ba7558fc4c54f53f93ca89eb21dfb0ca5c0d856c9d1f6baf226fa41159175",
+   "lf": "0e176eee872d8dad3d182fd2ceffd94a44397c6d140fbdf2321f81e1da4ee6c6",
+   "crlf": "9d7ba7558fc4c54f53f93ca89eb21dfb0ca5c0d856c9d1f6baf226fa41159175"
+  },
+  "workflow/byop/inputs/post_v16/derived/CDR_FUTURE_ELCC_2026_2031_REFERENCE.csv": {
+   "text": true,
+   "raw": "5da3404131468be88df958bec2c091f06512ccc146b02e27bd1ce337c1e3e8d4",
+   "lf": "5da3404131468be88df958bec2c091f06512ccc146b02e27bd1ce337c1e3e8d4",
+   "crlf": "59624ec76a396b5a1b01d409b9e8a22238e60bae985d3a66f64aa7d6d917635d"
+  },
+  "workflow/byop/inputs/post_v16/derived/DATA_QA.json": {
+   "text": true,
+   "raw": "5df05b30504290de6c78b274272c34726188f45a0fe3981319f6aecd4fd7e88d",
+   "lf": "5df05b30504290de6c78b274272c34726188f45a0fe3981319f6aecd4fd7e88d",
+   "crlf": "d6e854dce539bd94c38b361c247247f78d387405c7ab2bcad0989b840986b40c"
+  },
+  "workflow/byop/inputs/post_v16/derived/ERCOT_2025_OBSERVED_LOAD_WIND_SOLAR_1H.csv": {
+   "text": true,
+   "raw": "265c79aee9caa422075c321f0523657f42320e326a5dd6ad4c4c28e7b4988b4e",
+   "lf": "265c79aee9caa422075c321f0523657f42320e326a5dd6ad4c4c28e7b4988b4e",
+   "crlf": "a45c5e220436fbbc672e5adcdf72747c1519b9a44ee3edfea32f211f0f5a676b"
+  },
+  "workflow/byop/inputs/post_v16/derived/ERCOT_2025_OBSERVED_LOAD_WIND_SOLAR_3H.csv": {
+   "text": true,
+   "raw": "8e7083f2c3d4e341590180a3b45c8165e6f6874197f560bf01a40cbbf1cb4238",
+   "lf": "8e7083f2c3d4e341590180a3b45c8165e6f6874197f560bf01a40cbbf1cb4238",
+   "crlf": "f551369d4820c778d19d7abceeccb61d02437258c84be2c44aefe76446893f5a"
+  },
+  "workflow/byop/inputs/post_v16/derived/ERCOT_OPERATIONAL_WIND_SOLAR_2023_2025.csv.gz": {
+   "text": false,
+   "raw": "66069818a05969bc8a32616e48be6b8a358914f1f750899d57952826434fb347",
+   "lf": "5cf7251ee724b002272471497de61bd2d84ad5a12cf0bf7336c3a310dd86217e",
+   "crlf": "093306318dbcf083a129eede2ae55c0ff264efce358343904b579a21106429fa"
+  },
+  "workflow/byop/inputs/post_v16/derived/FUEL_INTERVAL_DAILY_QA.csv": {
+   "text": true,
+   "raw": "ed6dd734339428239e64393c1023b1a713e4084aab6f17986cd2fa8074ce6c77",
+   "lf": "ed6dd734339428239e64393c1023b1a713e4084aab6f17986cd2fa8074ce6c77",
+   "crlf": "16a6660bba687d123e5d24f19d32cd7ec50dc2da3a15dc8da6b81ee86478897f"
+  },
+  "workflow/byop/inputs/post_v16/derived/MORA_2025_DETERMINISTIC_SOURCE_VALUES.csv": {
+   "text": true,
+   "raw": "bc41a5817f16067d26cf6c799d9a9d4167ac2e372eb0f69ed08cf16d0fee8be4",
+   "lf": "bc41a5817f16067d26cf6c799d9a9d4167ac2e372eb0f69ed08cf16d0fee8be4",
+   "crlf": "c75ee733445b0eec21becf4cf72d5abea44454fa415c261b4a2e9d4c62eb01d2"
+  },
+  "workflow/byop/inputs/post_v16/derived/MORA_2025_HOURLY_PERCENTILE_MARGINALS.csv": {
+   "text": true,
+   "raw": "e03fa290caef5ae7d2094fc3ca866cb5cb570e757a79cd687159cbcd6c9d8421",
+   "lf": "e03fa290caef5ae7d2094fc3ca866cb5cb570e757a79cd687159cbcd6c9d8421",
+   "crlf": "d527b2a19000bc316643fc491237d74c9c2793c4970cc87153c0caebb2c4aaf2"
+  },
+  "workflow/byop/inputs/post_v16/derived/MORA_2025_UNPLANNED_THERMAL_OUTAGE_QUANTILES.csv": {
+   "text": true,
+   "raw": "7b85f6c9f6bf680910d3b8004f7f888a0e1aa14eb9851b601e30a37f8e31e8c9",
+   "lf": "7b85f6c9f6bf680910d3b8004f7f888a0e1aa14eb9851b601e30a37f8e31e8c9",
+   "crlf": "6c519e24be3dd8383530be261884b242b388959941dda1c5913701ae93cd3e14"
+  },
+  "workflow/byop/inputs/post_v16/derived/OPERATIONAL_MONTHLY_INSTALLED_CAPACITY.csv": {
+   "text": true,
+   "raw": "9241566517d17ecc340a17190423b57e0ce74b3d1ea46b3a256907846178d305",
+   "lf": "9241566517d17ecc340a17190423b57e0ce74b3d1ea46b3a256907846178d305",
+   "crlf": "bad4d20813a8e1b98d0dd5c92d0a94722c75c3aa54ddea43fa649e175db5a8cd"
+  },
+  "workflow/byop/inputs/post_v16/derived/OPERATIONAL_MULTIYEAR_SOURCE_SUMMARY.csv": {
+   "text": true,
+   "raw": "85210a2b1a97fc1675d5d7152b0bf3c229ed755676a10b058aead6106abce34b",
+   "lf": "85210a2b1a97fc1675d5d7152b0bf3c229ed755676a10b058aead6106abce34b",
+   "crlf": "68f3d4b825cc9b24da5f86f69b0b039d2e70f1e47706d0f2f992d4cb5a866e22"
+  },
+  "workflow/byop/inputs/post_v16/derived/PRE_REGISTERED_STRESS_EVENTS.csv": {
+   "text": true,
+   "raw": "a850deb87e32e227fdef1273700ab5bcf49128b630b70193141c418a5328f8a4",
+   "lf": "a850deb87e32e227fdef1273700ab5bcf49128b630b70193141c418a5328f8a4",
+   "crlf": "3e3bee795700049afb94007f151db4a1359559d559a559194ab1a972fa9b03bb"
+  },
+  "workflow/byop/inputs/post_v16/derived/SOURCE_VINTAGE_COMPARISON_2025.csv": {
+   "text": true,
+   "raw": "3535b5238ad1927caa918f8f5918c074498e904851fc617b6869ad0d84a3a14a",
+   "lf": "3535b5238ad1927caa918f8f5918c074498e904851fc617b6869ad0d84a3a14a",
+   "crlf": "82ad740272d93a8bd1532cfddd2f31467b584efeda190645b3ee8edaed98746d"
+  },
+  "workflow/byop/inputs/post_v16/derived/WINDOW_SUMMER_LOAD_PEAK_1H.csv": {
+   "text": true,
+   "raw": "c3ae320524955e101bf4600964317458851d3ce3e5b06dab5f92a45c1ed3130b",
+   "lf": "c3ae320524955e101bf4600964317458851d3ce3e5b06dab5f92a45c1ed3130b",
+   "crlf": "ed6cccdb7953e8955afd9359e8fd3817f682404ad3e30fe18388141185e80853"
+  },
+  "workflow/byop/inputs/post_v16/derived/WINDOW_SUMMER_LOW_WIND_HIGH_LOAD_1H.csv": {
+   "text": true,
+   "raw": "c9852c6f5a5c7248816b21a446a4b2250ca57423cc2e6a7696a5f0b50569047e",
+   "lf": "c9852c6f5a5c7248816b21a446a4b2250ca57423cc2e6a7696a5f0b50569047e",
+   "crlf": "40a1267ad05a36842f4d04da00d51667f8738d47e7216c2f8c5067c9ea8f08ca"
+  },
+  "workflow/byop/inputs/post_v16/derived/WINDOW_SUMMER_NET_PEAK_DISJOINT_DAY_1H.csv": {
+   "text": true,
+   "raw": "1ceb07e949c1c180571957afb246ba97aac5aa56d9aafd458bc81411b147593b",
+   "lf": "1ceb07e949c1c180571957afb246ba97aac5aa56d9aafd458bc81411b147593b",
+   "crlf": "74adddb819440003f4ae2bb508186cd21a02e3889cec2a53024aa4e7dac141d7"
+  },
+  "workflow/byop/inputs/post_v16/derived/WINDOW_SUMMER_OBSERVED_NET_PEAK_1H.csv": {
+   "text": true,
+   "raw": "c3ae320524955e101bf4600964317458851d3ce3e5b06dab5f92a45c1ed3130b",
+   "lf": "c3ae320524955e101bf4600964317458851d3ce3e5b06dab5f92a45c1ed3130b",
+   "crlf": "ed6cccdb7953e8955afd9359e8fd3817f682404ad3e30fe18388141185e80853"
+  },
+  "workflow/byop/inputs/post_v16/derived/WINDOW_SUMMER_UPWARD_NET_RAMP_1H.csv": {
+   "text": true,
+   "raw": "480586bd31994241ca82fc6c0f1b8d60685faf4cc8fba05632620e14630cf6de",
+   "lf": "480586bd31994241ca82fc6c0f1b8d60685faf4cc8fba05632620e14630cf6de",
+   "crlf": "d5e1fecebc6077e127f28e4ffc81df315c80370df1c1cccc0b2249207d8076f8"
+  },
+  "workflow/byop/inputs/post_v16/derived/WINDOW_WINTER_LOAD_PEAK_1H.csv": {
+   "text": true,
+   "raw": "35e7742e620a12b2ac8444d19189aa0360e78d7e75b1e990ed2aeedc74359bc0",
+   "lf": "35e7742e620a12b2ac8444d19189aa0360e78d7e75b1e990ed2aeedc74359bc0",
+   "crlf": "c38806ffc05d546d809b4428a58afbfb586d78ac32ab1184e920d4815e184b3e"
+  },
+  "workflow/byop/inputs/tech/MAINLINE_V13_GAS_PRICES_2026_2031.csv": {
+   "text": true,
+   "raw": "d57aafea4808de4789da0c4ff27c4bf3c564ced64927efe050f6d55e839efa9e",
+   "lf": "2c9ee0b5bd1f7ba0dc1b75ad3348fffdc6c23da26855e6b9914ae1a74451418c",
+   "crlf": "d57aafea4808de4789da0c4ff27c4bf3c564ced64927efe050f6d55e839efa9e"
+  },
+  "workflow/byop/inputs/tech/MAINLINE_V13_TECH_DEFAULTS.csv": {
+   "text": true,
+   "raw": "b2fb58e38fcb61f4ab9d3868d195a9de5c9d3c0c2171bdaff09c3465cf691752",
+   "lf": "5a884b23843bd8f533571d8fa8b5acab4bc63995f8b83e3b9151a58a2a1940b9",
+   "crlf": "b2fb58e38fcb61f4ab9d3868d195a9de5c9d3c0c2171bdaff09c3465cf691752"
+  },
+  "workflow/byop/inputs/tech/TECH-01_technologies_DRAFT.csv": {
+   "text": true,
+   "raw": "127e5a97b5177eb4242d4df33c516ddf09d480a4d5d1da4523dd75605ab99eea",
+   "lf": "127e5a97b5177eb4242d4df33c516ddf09d480a4d5d1da4523dd75605ab99eea",
+   "crlf": "5357dec247852d147b710e6653206ec8d511b959b3e8db25fe8e5f4e399f3507"
+  },
+  "workflow/byop/inputs/tech_calibrated_v2/BYOP_COUNTY_OZONE_RULES_2026.csv": {
+   "text": true,
+   "raw": "8bfc4de5dd864e0107b8e1482c3d4193e31c43dad18aab81343910fd667def24",
+   "lf": "b4f84e94db5c9db932f3b20a144da65a785499b1cf9998ce097758c7e96eb26b",
+   "crlf": "8bfc4de5dd864e0107b8e1482c3d4193e31c43dad18aab81343910fd667def24"
+  },
+  "workflow/byop/inputs/tech_calibrated_v2/BYOP_SUPPLY_POOL_PROXY_V2.csv": {
+   "text": true,
+   "raw": "181af58f60dec3a87e2a812ab235debd79b5ca58db23fdbb2f949a5e3c0ce988",
+   "lf": "3e9154f079e6c78a20fe502d569d6d8b738c9da8f5553944a7adca797b4ee59f",
+   "crlf": "181af58f60dec3a87e2a812ab235debd79b5ca58db23fdbb2f949a5e3c0ce988"
+  },
+  "workflow/byop/inputs/tech_calibrated_v2/BYOP_TECH_PARAMETERS_V2.csv": {
+   "text": true,
+   "raw": "3956cdd25f25087dd74f0f6c959cf21bafb6eec1fd61ad295c0b91bbb9dcf26c",
+   "lf": "b2603984a08af4f05c903df7cc6071b0e8a6d37de3be025ccfdd1e8c9664122b",
+   "crlf": "3956cdd25f25087dd74f0f6c959cf21bafb6eec1fd61ad295c0b91bbb9dcf26c"
+  },
+  "workflow/byop/inputs/tech_calibrated_v2/BYOP_TECH_PARAMETER_BASELINE_V2.json": {
+   "text": true,
+   "raw": "10bd868ba50929379be23b63d72626d8d528a1b358ce6b5a63a516e5771327c7",
+   "lf": "10bd868ba50929379be23b63d72626d8d528a1b358ce6b5a63a516e5771327c7",
+   "crlf": "9bbfade9a46fd6326fc5e8f6ebca6ef073f55b6f2e1898720beb31e2a53b2334"
+  },
+  "workflow/byop/inputs/tech_calibrated_v2/PARAMETER_UNIT_CHECKS.json": {
+   "text": true,
+   "raw": "8eb2d6f1aeb406285c5954e91116b89e7503913266e99f017159b3ea19f6e68a",
+   "lf": "8eb2d6f1aeb406285c5954e91116b89e7503913266e99f017159b3ea19f6e68a",
+   "crlf": "119e57fccec310dd4b4c534b3f2636fcb78fcb11ca77d09a91bbc77e2075b34c"
+  },
+  "workflow/byop/inputs/tech_calibrated_v2/RESEARCH_SITE_COUNTY_FIPS_V2.csv": {
+   "text": true,
+   "raw": "52c49d3bbfb3dbc6ec4fb3d6e303d37fc0fe69661e264e39c8007ebe9c7a443f",
+   "lf": "52c49d3bbfb3dbc6ec4fb3d6e303d37fc0fe69661e264e39c8007ebe9c7a443f",
+   "crlf": "44b024e4a81fe38f45f4d4c93f9acc7ba3fffe2ca2033a7b1d89c35980e0a5a9"
+  },
+  "workflow/byop/inputs/tech_calibrated_v2/SOURCE_REGISTER.json": {
+   "text": true,
+   "raw": "415571a3ff431578d14cd0d64f7199ee8656b3faf8eb4508b029c53ad74c815e",
+   "lf": "415571a3ff431578d14cd0d64f7199ee8656b3faf8eb4508b029c53ad74c815e",
+   "crlf": "2fe7be59c74d498eb807963186a5cd67932e45969611513a09b1f4bf6742973e"
+  },
+  "workflow/config/config.byop_ercot_mainline_geo_dynamic_v1_baseline_v16.yaml": {
+   "text": true,
+   "raw": "a4df79acb3cb7035b3f7c3a8bf0f8498f9932c7b06e1178920858adcc604919a",
+   "lf": "a4df79acb3cb7035b3f7c3a8bf0f8498f9932c7b06e1178920858adcc604919a",
+   "crlf": "df4d088b47d81bf8dc9763c9bfb4f0e98e03288eea7bd5a984b8d25dbc479881"
+  }
+ },
+ "head_when_built": "66a44da8b060d62665086168086937e43dc2f922",
+ "built_utc": "2026-10-23T14:23:02+00:00",
+ "note": "verification: post_v16_a2_gate.manifest_mismatches; A1 manifest / gate untouched"
+}

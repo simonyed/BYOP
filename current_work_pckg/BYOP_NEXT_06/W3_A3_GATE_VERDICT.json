@@ -1,0 +1,26 @@
+{
+ "A3_GATE": "LOCKED",
+ "checked": "2026-10-23 ~10:23 EDT on L2 at 66a44da8",
+ "config": "workflow/config/config.byop_post_v16_a3.yaml",
+ "manifest": "current_work_pckg/BYOP_NEXT_06/A3_PRE_RUN_MANIFEST.json (150 code + 110 inputs, 0 mismatches)",
+ "verdicts": {
+  "S0": [
+   "run_authorization=NOT_APPROVED",
+   "approved_by missing",
+   "approved_git_sha missing",
+   "prerequisite S0_SCIENTIFIC_STATUS.json:S0_RELIABILITY_VERDICT = BASELINE_RELIABILITY_UNRESOLVED not allowed"
+  ],
+  "S3": [
+   "(same four)",
+   "S3 needs a PASSED S0 first",
+   "S3 needs a PASSED S1_EARLIEST first"
+  ]
+ },
+ "budgets": {
+  "max_scenario_attempts": 7,
+  "max_top_level_optimizer_calls": 30,
+  "planned_max": 29
+ },
+ "solver_calls": 0,
+ "runtime_wiring": "NOT_DONE (rearch_mech S2 / S3 solves are not yet routed through post_v16_a3_gate; today they are refused by the A2 linopy lock as UNPLANNED)"
+}

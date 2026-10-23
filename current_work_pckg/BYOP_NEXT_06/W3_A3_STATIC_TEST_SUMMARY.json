@@ -1,0 +1,37 @@
+{
+ "run": "L2, mainline 41cdde3d, python -m pytest -q byop/tests",
+ "passed": 256,
+ "failed": 0,
+ "skipped": 0,
+ "solver_calls": 0,
+ "new_files": {
+  "test_next06_a3_gate_py": [
+   "test_real_config_locked_plan_fits_budget_and_blocks_on_s0",
+   "test_approval_from_other_stage_never_carries_over",
+   "test_prerequisite_verdicts",
+   "test_order_duplicate_and_corrupt_ledgers",
+   "test_child_calls_plan_counts_and_budget"
+  ],
+  "test_next06_static_py": [
+   "test_diag_config_is_locked_and_pins_its_run",
+   "test_guard_refuses_run_args_drift",
+   "test_persist_solution_and_soc_audit"
+  ]
+ },
+ "failure_injection_covered": [
+  "missing / foreign-stage approval",
+  "manifest missing",
+  "S0 scientific block (prerequisite)",
+  "stage order",
+  "duplicate STARTED (crash)",
+  "corrupt child ledger",
+  "unplanned kind",
+  "kind beyond plan count (7th lex level)",
+  "total top-level budget",
+  "run_args drift (diag)",
+  "cross-gap SOC transfer exposed by the post-solve audit"
+ ],
+ "not_covered": [
+  "S2 non-convergence marking and missing matched-service at RUNTIME (needs the A3 runtime wiring)"
+ ]
+}
