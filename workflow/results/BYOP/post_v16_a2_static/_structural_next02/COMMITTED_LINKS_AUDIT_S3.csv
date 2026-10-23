@@ -1,0 +1,7 @@
+scenario,name,carrier,bus0,bus1,p_nom_MW,build_year,extendable,capital_cost,max_avail,in_expansion_rows,PASS
+S3,DWB_Stage_2_fwd,AC_base_committed,p620 4,p620 0,1000.0,2026,False,0.0,1.0,False,True
+S3,DWB_Stage_2_rev,AC_base_committed,p620 0,p620 4,1000.0,2026,False,0.0,1.0,False,True
+S3,PBRP-765-A_fwd,AC_committed,p630 5,p620 1,2400.0,2031,False,0.0,1.0,False,True
+S3,PBRP-765-A_rev,AC_committed,p620 1,p630 5,2400.0,2031,False,0.0,1.0,False,True
+S3,PBRP-765-B_fwd,AC_committed,p650 7,p610 4,2400.0,2031,False,0.0,0.5,False,True
+S3,PBRP-765-B_rev,AC_committed,p610 4,p650 7,2400.0,2031,False,0.0,0.5,False,True

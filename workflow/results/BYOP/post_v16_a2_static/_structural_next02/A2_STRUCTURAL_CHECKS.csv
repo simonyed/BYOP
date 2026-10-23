@@ -1,0 +1,67 @@
+qa,check,result,detail
+QA-BASE,v1.6 baseline file and SHA,PASS,
+QA-VERSION,TECH_COMP_2 selected by the post-v1.6 config; siting dynamic_pnnl_v1,PASS,dynamic_pnnl_v1
+QA-SPACE,16 research buses (no hard-coded 8 / 17),PASS,16
+QA-FIPS,"site county FIPS attached (8 known, 8 UNKNOWN_CONSERVATIVE)",PASS,
+QA-NOERM,S0: no legacy ERM row / shadow storage / ERM-02 margin,PASS,[]
+QA-LP,S0: continuous LP (no integer / binary),PASS,
+QA-RES,"S0: 3,000 MW reserve row in every snapshot",PASS,816
+QA-RES,S0: storage reserve energy uses the dispatch SOC (no shadow SOC),PASS,
+QA-RES,S0: reserve-eligible units exclude DC-bus BYOP and load_shed,PASS,239
+QA-RES,S0: extendable public thermal candidates carry reserve via p_nom (online_cap_ext),PASS,
+QA-PUBLIC,S0: no free endogenous public expansion; S0CAL absent; every rev priced via a verified fwd equality,PASS,"{'ENDOGENOUS_PRICED': 1494, 'ENDOGENOUS_PRICED_VIA_FWD_EQUALITY': 324, 'COMMITTED_SUNK_COMMON_ASSET (exogenous source; same in S0-S3)': 6}"
+QA-PAIR,"S0: every AC_exp fwd / rev pair tied by M2-line_sym (rev-only and fwd-only rejected), fwd priced once, corridor cap",PASS,"{'pairs': 324, 'fail': 0}"
+QA-PAIR,"S0: committed DWB / PBRP links fixed, cost-free in the LP, outside every expansion row",PASS,6
+QA-COD,"S0: every public candidate inactive before its build year, priced in the objective, approval <= build",PASS,"{'n': 1818, 'fail': 0}"
+QA-COD,S0: counter-example 2027 order / 2029 COD exists and is unavailable in 2027-28 (same rule in S0 and S1),PASS,"{'n': 62, 'example': 'p600 0 solar pub2029'}"
+QA-SOC,S0: storage SOC advances by the elapsed 3 h (stores weighting) while objective / generators keep the sample weight,PASS,"{'stores': [3.0], 'gen_sum': 52560.0}"
+QA-SOC,"S0: reserve energy also bounded at the START of each snapshot (dispatch SOC + same-snapshot flows, no shadow SOC)",PASS,
+QA-RES,"S0: reserve rows tie thermal r to online capacity - dispatch, ramp and min-load on the same online variable",PASS,
+QA-F5,S0: no RE+BESS firm certificate rows (A2-FIX-05: S0 / S1 do not rely on BYOP RE+BESS firm),PASS,
+QA-PUBLIC,S0: committed TPIT / PBRP links listed as sunk common assets,PASS,6
+QA-NOERM,S1_EARLIEST: no legacy ERM row / shadow storage / ERM-02 margin,PASS,[]
+QA-LP,S1_EARLIEST: continuous LP (no integer / binary),PASS,
+QA-RES,"S1_EARLIEST: 3,000 MW reserve row in every snapshot",PASS,816
+QA-RES,S1_EARLIEST: storage reserve energy uses the dispatch SOC (no shadow SOC),PASS,
+QA-RES,S1_EARLIEST: reserve-eligible units exclude DC-bus BYOP and load_shed,PASS,239
+QA-RES,S1_EARLIEST: extendable public thermal candidates carry reserve via p_nom (online_cap_ext),PASS,
+QA-PUBLIC,S1_EARLIEST: no free endogenous public expansion; S0CAL absent; every rev priced via a verified fwd equality,PASS,"{'ENDOGENOUS_PRICED': 1494, 'ENDOGENOUS_PRICED_VIA_FWD_EQUALITY': 324, 'COMMITTED_SUNK_COMMON_ASSET (exogenous source; same in S0-S3)': 6}"
+QA-PAIR,"S1_EARLIEST: every AC_exp fwd / rev pair tied by M2-line_sym (rev-only and fwd-only rejected), fwd priced once, corridor cap",PASS,"{'pairs': 324, 'fail': 0}"
+QA-PAIR,"S1_EARLIEST: committed DWB / PBRP links fixed, cost-free in the LP, outside every expansion row",PASS,6
+QA-COD,"S1_EARLIEST: every public candidate inactive before its build year, priced in the objective, approval <= build",PASS,"{'n': 1818, 'fail': 0}"
+QA-COD,S1_EARLIEST: counter-example 2027 order / 2029 COD exists and is unavailable in 2027-28 (same rule in S0 and S1),PASS,"{'n': 62, 'example': 'p600 0 solar pub2029'}"
+QA-SOC,S1_EARLIEST: storage SOC advances by the elapsed 3 h (stores weighting) while objective / generators keep the sample weight,PASS,"{'stores': [3.0], 'gen_sum': 52560.0}"
+QA-SOC,"S1_EARLIEST: reserve energy also bounded at the START of each snapshot (dispatch SOC + same-snapshot flows, no shadow SOC)",PASS,
+QA-RES,"S1_EARLIEST: reserve rows tie thermal r to online capacity - dispatch, ramp and min-load on the same online variable",PASS,
+QA-NOHARM,S1_EARLIEST: every existing-customer shed unit (native + inherited ramp) in the D24 no-harm row,PASS,"[{'scenario': 'S1_EARLIEST', 'carrier': 'load_shed', 'units': 68, 'role': 'EXISTING_CUSTOMER_SHED (no-harm protected)', 'inherited_ramp_units': 5, 'native_bus_units': 63, 'in_no_harm_row': 68, 'no_harm_row_present': True, 'no_harm_tolerance_MW': 0.001, 'marginal_cost_min': 35685.0, 'marginal_cost_max': 35685.0}]"
+QA-NOHARM,S1_EARLIEST: no study-AIDC unserved / interruption unit inside the no-harm row,PASS,
+QA-F5,S1_EARLIEST: no RE+BESS firm certificate rows (A2-FIX-05: S0 / S1 do not rely on BYOP RE+BESS firm),PASS,
+QA-PUBLIC,S1_EARLIEST: committed TPIT / PBRP links listed as sunk common assets,PASS,6
+QA-NOERM,S3: no legacy ERM row / shadow storage / ERM-02 margin,PASS,[]
+QA-LP,S3: continuous LP (no integer / binary),PASS,
+QA-RES,"S3: 3,000 MW reserve row in every snapshot",PASS,816
+QA-RES,S3: storage reserve energy uses the dispatch SOC (no shadow SOC),PASS,
+QA-RES,S3: reserve-eligible units exclude DC-bus BYOP and load_shed,PASS,239
+QA-RES,S3: extendable public thermal candidates carry reserve via p_nom (online_cap_ext),PASS,
+QA-PUBLIC,S3: no free endogenous public expansion; S0CAL absent; every rev priced via a verified fwd equality,PASS,"{'ENDOGENOUS_PRICED': 1494, 'ENDOGENOUS_PRICED_VIA_FWD_EQUALITY': 324, 'COMMITTED_SUNK_COMMON_ASSET (exogenous source; same in S0-S3)': 6}"
+QA-PAIR,"S3: every AC_exp fwd / rev pair tied by M2-line_sym (rev-only and fwd-only rejected), fwd priced once, corridor cap",PASS,"{'pairs': 324, 'fail': 0}"
+QA-PAIR,"S3: committed DWB / PBRP links fixed, cost-free in the LP, outside every expansion row",PASS,6
+QA-COD,"S3: every public candidate inactive before its build year, priced in the objective, approval <= build",PASS,"{'n': 1818, 'fail': 0}"
+QA-COD,S3: counter-example 2027 order / 2029 COD exists and is unavailable in 2027-28 (same rule in S0 and S1),PASS,"{'n': 62, 'example': 'p600 0 solar pub2029'}"
+QA-SOC,S3: storage SOC advances by the elapsed 3 h (stores weighting) while objective / generators keep the sample weight,PASS,"{'stores': [3.0], 'gen_sum': 52560.0}"
+QA-SOC,"S3: reserve energy also bounded at the START of each snapshot (dispatch SOC + same-snapshot flows, no shadow SOC)",PASS,
+QA-RES,"S3: reserve rows tie thermal r to online capacity - dispatch, ramp and min-load on the same online variable",PASS,
+QA-PUBLIC,S3: committed TPIT / PBRP links listed as sunk common assets,PASS,6
+QA-S0S1,NEXT-02: S0 / S1_EARLIEST public inputs identical (hash per component table),PASS,[]
+QA-S0S1,S0 and S1 share the same public generators / candidates / costs (only AIDC rows differ),PASS,"(764, 764)"
+QA-S0S1,S0 and S1 share lines and committed links,PASS,
+QA-POI,"S1 POI equipment phased per site and year (some sites > 0 in 2026, others 0)",PASS,"{'p600 0': 800.0, 'p610 2': 955.6, 'p630 10': -0.0, 'p630 2': -0.0, 'p630 3': -0.0, 'p630 4': -0.0, 'p630 5': -0.0, 'p630 6': 79.8, 'p630 8': -0.0, 'p630 9': 225.6, 'p640 1': -0.0, 'p650 0': 69.4, 'p650 7': -0.0, 'p670 0': -0.0, 'p670 1': -0.0, 'p670 4': -0.0}"
+QA-S1,S1_EARLIEST is Grid-Only (no BYOP candidates),PASS,
+QA-TECH2,S3: BYOP candidates built from TECH_COMP_2 with permit / COD audit,PASS,492
+QA-TECH2,S3: CONTROLLED_ENV candidates for RICE / aero only,PASS,
+QA-TECH2,S3: every BYOP candidate has a positive capital cost and a COD-consistent build year,PASS,
+QA-SUPPLY,S3: common supply-pool rows V2-supply_pool_<tech>_<year> present (2026-2031 only),PASS,"['V2-supply_pool_OCGT_aero_2027', 'V2-supply_pool_OCGT_aero_2028', 'V2-supply_pool_OCGT_aero_2029', 'V2-supply_pool_OCGT_aero_2030', 'V2-supply_pool_RICE_2027', 'V2-supply_pool_RICE_2028', 'V2-supply_pool_RICE_2029', 'V2-supply_pool_RICE_2030']"
+QA-REFIRM,S3: RE+BESS firm certificate variables built and entered into serve_cap,PASS,"(96, 96)"
+QA-REFIRM,S3: certificate SOC boundary rows on the dispatch SOC,PASS,
+QA-NOERM,S3: no legacy ERM / shadow SOC,PASS,
+QA-LP,no solver was called (only intercepted model calls),PASS,"['refused', 'refused', 'refused']"

@@ -1,0 +1,184 @@
+{
+ "git": {
+  "head": "b2b2e48e5c3c782e13ccfe5511e652018a92673d",
+  "approvable": "802c9d9414514641fd2b088b45ec7ea945be18a4",
+  "approvable_is_ancestor": true,
+  "changed_since_approvable_gated": [],
+  "changed_since_approvable_all": [
+   ".gitignore",
+   "current_work_pckg/A1_EXECUTION_REPORT.md",
+   "current_work_pckg/A1_PREAPPROVAL_CHECK.md",
+   "current_work_pckg/A1_PREAPPROVAL_GATE.json",
+   "current_work_pckg/A2_READINESS_MATRIX.csv",
+   "current_work_pckg/A2_STATIC_INTEGRATION_REPORT.md",
+   "current_work_pckg/ENVIRONMENT_MECHANISM_LIMITATIONS.md",
+   "current_work_pckg/NEXT_STAGE_EXECUTION_REPORT.md",
+   "current_work_pckg/NEXT_STAGE_RETURN_PACKAGE.zip",
+   "current_work_pckg/PARTIAL_YEAR_DELIVERY_CONSISTENCY_QA.csv",
+   "current_work_pckg/PERMIT_GAS_EVIDENCE_PRIORITY.csv",
+   "current_work_pckg/PERMIT_TO_COD_CAUSAL_AUDIT_VNEXT.csv",
+   "current_work_pckg/README.md",
+   "current_work_pckg/_a1_gate_console.txt",
+   "current_work_pckg/a1_preapproval_check.py",
+   "workflow/results/BYOP/post_v16_a2_static/A2_STRUCTURAL_CONSOLE.log",
+   "workflow/results/BYOP/post_v16_a2_static/BRANCH_TESTS_L2.log",
+   "workflow/results/BYOP/post_v16_a2_static/_structural/A2_STRUCTURAL_CHECKS.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural/A2_STRUCTURAL_REPORT.json",
+   "workflow/results/BYOP/post_v16_a2_static/_structural/PUBLIC_EXPANSION_LEDGER_S0.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural/PUBLIC_EXPANSION_LEDGER_S1_EARLIEST.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural/PUBLIC_EXPANSION_LEDGER_S3.csv",
+   "workflow/results/BYOP/post_v16_a2_static/_structural/poi_cohorts.csv"
+  ],
+  "dirty_code_config_inputs": [],
+  "untracked_code_config_inputs": [],
+  "log": [
+   "b2b2e48e5c3c782e13ccfe5511e652018a92673d NEXT-01 (reports only, 0 solver calls): NEXT_STAGE_EXECUTION_REPORT.md; A1 NOT_RUN (not approved, approvable 802c9d94); A2_STATIC_INTEGRATION_REPORT + A2_READINESS_MATRIX (branch work/a2-postv16-static ba73e600, 40/40 structural); A3 permit/gas/partial-year static outputs; return package",
+   "ac4eeeb8a1eac47caa7fea732466dd5a48adde42 NEXT-01 P0 (report only, 0 solver calls): A1_PREAPPROVAL_CHECK.md + A1_PREAPPROVAL_GATE.json (HEAD 802c9d94 clean, manifest/baseline/tech SHAs match, ledger empty, DRY both LPs 373,249/967,980/0 int, objective -lambda, zero-shed, sum w=1); A1 NOT_APPROVED, NOT_RUN"
+  ]
+ },
+ "authorization": {
+  "run_authorization": "NOT_APPROVED",
+  "approved_git_sha": null,
+  "approved_by": null
+ },
+ "authorization_source": {
+  "path": "current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1/CURRENT_EXECUTION_WORK_PACKAGE_v1.1.md",
+  "ok": true
+ },
+ "manifest": {
+  "path": "current_work_pckg/POST_V16_A1_PRE_RUN_MANIFEST.json",
+  "sha256": "d0f0b7f90568d2ec4b5b275a03cf242dfebf826769ac80eb6d96f9b425f4f5d1",
+  "code_files": 5,
+  "input_files": 10,
+  "mismatches": [],
+  "files": {
+   "workflow/byop/model/post_v16_gate.py": "cd2ce9f08b0e934d8409a0698614bd25a138b963ee9ad25860936cc8514993c1",
+   "workflow/byop/model/post_v16_headroom.py": "f45940f7cf347c2d456194b8a9bb2cb19d5df9dfa0555e1809224ed6b4749e2d",
+   "workflow/byop/model/byop_paths.py": "45ecab7908b7069eff980b26dd347de458101ef07e1b6669f7acbf9c07fe4fbd",
+   "workflow/byop/run/post_v16_a1.py": "1d6dcccc77100435df0032a5c212db08bc667831bc83bb2699a090c8c2187f04",
+   "workflow/byop/run/run_post_v16.sh": "6657632d79624883f3cf99b37d3c2cb00658a94d5190ef5ad741d4dc0941e53a",
+   "workflow/byop/inputs/post_v16/derived/ERCOT_2025_OBSERVED_LOAD_WIND_SOLAR_1H.csv": "265c79aee9caa422075c321f0523657f42320e326a5dd6ad4c4c28e7b4988b4e",
+   "workflow/byop/inputs/post_v16/derived/PRE_REGISTERED_STRESS_EVENTS.csv": "a850deb87e32e227fdef1273700ab5bcf49128b630b70193141c418a5328f8a4",
+   "workflow/byop/inputs/post_v16/POST_V16_RESERVE_PARAMETERS.csv": "04f38697a8cc5b515b02591724c9638f166aee7428edf2100091119ea6cf6361",
+   "workflow/byop/inputs/dc/MAINLINE_RESEARCH_COHORTS_TAMU64_GEO_DYNAMIC_V1.csv": "0338df13e931081ab5f5d36a46b9eb8c23fee8c87ec7e97472b325952c3cac41",
+   "workflow/byop/inputs/poi/GREAL_POI_ASSUMPTIONS_GEO_DYNAMIC_V1.csv": "81f3abcf61726114ffc03f1e7b38df300dccf01c71e0007c81bbf75acbea114a",
+   "workflow/byop/inputs/poi/GREAL_POI_E0_SCHEDULE.csv": "bce7c787b5d71d84a6a5228f99f903f71f936be7b2abc9ffcfed35251347d449",
+   "workflow/byop/inputs/dc/state_pue_2022_2050.csv": "2a2c2453b3dfdfbea09e955e7b510d1f47fb5ef36d685966a709b1f9ef4cfa74",
+   "workflow/byop/inputs/dc/MAINLINE_INHERITED_RAMP_2025.csv": "15c3501df57835381346ef8eff42b3b2201dbd32393ca46161852076e2682a4e",
+   "workflow/results/BYOP/baseline_2025_tamu_v16/COUNTY_TO_BUS_SHARES.csv": "6946ddd4fe03a8858d194ab6fbd18c9dd20bd6d5cda15c79cf454e4354604b2e",
+   "current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1/CURRENT_EXECUTION_WORK_PACKAGE_v1.1.md": "c3c1a0a55d2fab68076314c4ea7a25a0966907ed5cae3d13510523657e55dfad"
+  },
+  "config_normalised_sha": "202c34d3d67f1e7303679fea12965d11359a941b64d9eea88f3a2e9998db9359",
+  "config_normalised_ok": true,
+  "baseline_pin_ok": true
+ },
+ "baseline": {
+  "path": "workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+  "sha256": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16",
+  "ok": true
+ },
+ "ledger": {
+  "path": "workflow/results/BYOP/POST_V16_A1_HEADROOM/HEADROOM_SOLVE_LOG.csv",
+  "exists": false,
+  "rows": 0,
+  "problem": null,
+  "sha256": null
+ },
+ "gate": {
+  "R": {
+   "approved": false,
+   "reasons": [
+    "run_authorization=NOT_APPROVED",
+    "approved_by missing",
+    "approved_git_sha missing"
+   ],
+   "head": "b2b2e48e5c3c782e13ccfe5511e652018a92673d",
+   "approved_git_sha": null,
+   "stage": "LP_R_H_RESOURCE",
+   "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+   "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a1.yaml"
+  },
+  "N": {
+   "approved": false,
+   "reasons": [
+    "run_authorization=NOT_APPROVED",
+    "approved_by missing",
+    "approved_git_sha missing",
+    "LP_N_H_NETWORK needs a PASSED LP_R_H_RESOURCE first: LP_R_H_RESOURCE has no ledger row"
+   ],
+   "head": "b2b2e48e5c3c782e13ccfe5511e652018a92673d",
+   "approved_git_sha": null,
+   "stage": "LP_N_H_NETWORK",
+   "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+   "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a1.yaml"
+  }
+ },
+ "frozen_design": {
+  "resolution_h": 1,
+  "reserve_MW": 3000,
+  "tau_h": 1,
+  "blocks": [
+   "B0_LAMBDA_ZERO",
+   "B_LAMBDA"
+  ],
+  "objective": "A0.1 FIX-01: maximise lambda only (no cost term); the dispatch is a non-unique optimal witness (no congestion / price attribution)",
+  "stages": [
+   "LP_R_H_RESOURCE",
+   "LP_N_H_NETWORK"
+  ],
+  "max_lp_calls": 2,
+  "max_retries": 0,
+  "lambda_upper_MW": 200000,
+  "acceptance": {
+   "termination": "optimal",
+   "h_network_le_h_resource_tol_MW": 0.001,
+   "existing_shed_MWh_max": 0.0,
+   "balance_residual_MW_max": 0.001,
+   "lambda_must_stay_below_upper": true
+  }
+ },
+ "dry": {
+  "R": {
+   "n_vars": 373249,
+   "n_cons": 967980,
+   "integer_vars": 0,
+   "buses": 63,
+   "lines": 162,
+   "snapshots": 432,
+   "objective_only_lambda": true,
+   "zero_shed_rows": 27216,
+   "weights_n": 16,
+   "weights_sum": 1.0,
+   "line_limit_total_MVA": 162000000.0,
+   "reserve_MW": 3000,
+   "windows": [
+    "W_SUMMER_PEAK_20250818",
+    "W_WINTER_PEAK_20250220",
+    "W_SUMMER_DISJOINT_20250730"
+   ]
+  },
+  "N": {
+   "n_vars": 373249,
+   "n_cons": 967980,
+   "integer_vars": 0,
+   "buses": 63,
+   "lines": 162,
+   "snapshots": 432,
+   "objective_only_lambda": true,
+   "zero_shed_rows": 27216,
+   "weights_n": 16,
+   "weights_sum": 1.0,
+   "line_limit_total_MVA": 198015.4325200225,
+   "reserve_MW": 3000,
+   "windows": [
+    "W_SUMMER_PEAK_20250818",
+    "W_WINTER_PEAK_20250220",
+    "W_SUMMER_DISJOINT_20250730"
+   ]
+  },
+  "line_limit_relation_R_ge_N": true,
+  "identical_structure": true
+ },
+ "solver_calls": 0,
+ "status": "PASS_READY_FOR_A1_APPROVAL"
+}

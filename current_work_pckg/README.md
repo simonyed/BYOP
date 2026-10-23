@@ -13,7 +13,31 @@ Storage rules (set by the researcher on 2026-10-20):
 
 Project-level documents that span work packages are in `workflow/byop/docs/`.
 
-## Current work package
+## Current work package: BYOP-POST-V16-NEXT-02 v1.0 (2026-10-22): A1 approval request, A2 static repairs and gate, S0/S1 request
+
+- **Original:** `BYOP_POST_V16_NEXT_02_v1.0/BYOP_POST_V16_NEXT_02_A1_to_Formal_S0_S1_2026-10-22.md` (byte-identical; SHA-256 `a6baf464…`, pinned by the A2 gate). Local copy: `work_pkgs/BYOP_POST_V16_NEXT_02_v1.0/`.
+- **Scope this round:** A1 read-only recheck and approval request; A2-FIX-01..07 static work on branch `work/a2-postv16-static`; A3 handoff. **0 solver calls** (A1, A2 and A3 all NOT_APPROVED).
+- **Archiving of A0.2 / NEXT-01 deferred.** These stay in place until A1 is frozen:
+  - `POST_V16_A1_PRE_RUN_MANIFEST.json`, which the A1 config pins;
+  - `BYOP_A0_2_PreSolve_Integration_v1.1/`, which `test_a0_2_tech_v2.py` reads;
+  - the A1 pre-approval files.
+  Moving them would change what the pending A1 approval refers to.
+
+| File | Status |
+|---|---|
+| `NEXT_02_EXECUTION_REPORT.md` | Status block and summary |
+| `A1_FINAL_APPROVAL_REQUEST.md`, `A1_FINAL_RECHECK.json`, `a1_final_recheck_next02.py` | Recheck PASS_READY_FOR_A1_APPROVAL; A1 NOT_APPROVED, NOT_RUN |
+| `A1_EXECUTION_REPORT.md` | NOT_RUN (NEXT-01 file, unchanged) |
+| `A2_EXPANSION_PAIR_AND_COST_AUDIT.md`, `PUBLIC_EXPANSION_CAPACITY_RIGHTS_QA.csv`, `PUBLIC_EXPANSION_COST_COD_AUDIT.csv`, `COMMITTED_PUBLIC_ASSET_COST_LEDGER.csv` | PASS (static) |
+| `A2_RESERVE_SOC_TIME_QA.md` | PASS (static), plus a stores-weighting fix needing your confirmation |
+| `NATIVE_LOAD_NO_HARM_QA.csv`, `S0_S1_IDENTICAL_PUBLIC_INPUTS.json` | PASS (static) |
+| `A2_EOL_SHA_PORTABILITY_REPORT.md`, `A2_REGRESSION_SUMMARY.json` | See report |
+| `A2_PRE_RUN_MANIFEST.json`, `A2_GATE_VERDICT.json` | Gate LOCKED (NOT_APPROVED) |
+| `A2_PRE_SOLVE_RESEARCHER_DECISION.md` | STOP: A2 approval requested |
+| `A3_READINESS_HANDOFF.md` | Static only; A3 NOT_APPROVED |
+| `NEXT_02_RETURN_PACKAGE.zip` | Reports, SHA list, branch diff, static logs |
+
+## Previous package (archive deferred): BYOP A0.2 v1.1 + NEXT-01
 
 **BYOP A0.2 v1.1: pre-solve model integration (A0.1 repair + TECH_COMP_2 + environment -> permit -> COD), 2026-10-22. Authorised scope: code / inputs / static tests only (zero solver calls).**
 

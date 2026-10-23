@@ -1,0 +1,9 @@
+2026-10-23T00:43:47Z start python byop/build/build_post_v16_a2_manifest.py
+{
+ "manifest": "current_work_pckg/A2_PRE_RUN_MANIFEST.json",
+ "code": 149,
+ "inputs": 110,
+ "head": "a7f195b239a739101c2bb8cd53f495febbf0e789",
+ "mismatches_now": []
+}
+2026-10-23T00:43:48Z end rc=0
