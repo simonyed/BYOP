@@ -1,0 +1,4 @@
+attempt_id,stage,state,started_utc,finished_utc,status,termination,seconds,r_converged,guards_pass,acceptance_pass,note
+LP1_LOSSY_IT1#1,LP1_LOSSY_IT1,DONE,2026-10-23T22:05:48+00:00,2026-10-23T22:44:56+00:00,ok,optimal,2346.9,False,True,,
+LP1_LOSSY_IT2#1,LP1_LOSSY_IT2,DONE,2026-10-23T22:45:18+00:00,2026-10-23T23:23:18+00:00,ok,optimal,2268.1,True,True,,
+LP2_LOSSY_CANDIDATE#1,LP2_LOSSY_CANDIDATE,DONE,2026-10-23T23:23:43+00:00,2026-10-23T23:39:38+00:00,ok,optimal,951.8,,,False,

@@ -1,0 +1,101 @@
+{
+ "stage": "LP1_LOSSY_IT1",
+ "status": "ok",
+ "termination": "optimal",
+ "seconds": 2346.9,
+ "threads": 11,
+ "n_vars": 2093803,
+ "n_cons": 6902966,
+ "objective": 19581552885.188908,
+ "residual_shed": {
+  "eens_MWh": 113.05490013381001,
+  "eens_over_annual_energy": 2.3155904284861738e-07,
+  "max_gap_MW": 27.095983432588625,
+  "max_gap_over_official_peak": 0.00032380863637334776,
+  "shed_steps": 2,
+  "shed_hours": 6.0,
+  "shed_buses": [
+   "p620 1",
+   "p620 2",
+   "p620 6"
+  ],
+  "max_gap_step": "(2030, Timestamp('2030-07-14 09:00:00'))",
+  "max_gap_bus_split": {
+   "p620 1": 27.095983432588625
+  },
+  "events": 3,
+  "thresholds": {
+   "eens_over_annual_energy_max": 1e-05,
+   "max_gap_over_official_peak_max": 0.001
+  },
+  "eens_pass": true,
+  "max_gap_pass": true,
+  "description": "research-proxy tolerance, not an ERCOT standard; below-threshold shed is NOT zero shed"
+ },
+ "r_converged": false,
+ "convergence": {
+  "max_rel_r_gap": 0.221420903599993,
+  "lines_not_converged": 14,
+  "worst": {
+   "TL68": 0.2214,
+   "TL69": 0.2209,
+   "TL13": 0.1564,
+   "TL26": 0.1298,
+   "TL12": 0.1259,
+   "TL73": 0.1068,
+   "TL3": 0.1025,
+   "TL42": 0.101
+  }
+ },
+ "guards": {
+  "total_uplift_MVA": 5930.245011930899,
+  "v16_total_uplift_MVA": 5151.833600032188,
+  "G1_limit_MVA": 7727.750400048282,
+  "G1": true,
+  "lines_at_cap": [],
+  "G2": true,
+  "new_lines_uplift_MVA": 12.917311349640542,
+  "new_lines": {
+   "TL114": 0.5,
+   "TL154": 3.0,
+   "TL67": 9.4
+  },
+  "new_lines_over_50MVA": [],
+  "G3": true,
+  "uplifted_lines": 21,
+  "all_pass": true
+ },
+ "uplift_by_line_MVA": {
+  "TL38": 1179.85,
+  "TL39": 848.24,
+  "TL37": 660.04,
+  "TL35": 575.67,
+  "TL13": 441.61,
+  "TL73": 398.43,
+  "TL15": 328.87,
+  "TL12": 295.15,
+  "TL42": 265.29,
+  "TL40": 175.38,
+  "TL41": 170.2,
+  "TL63": 158.73,
+  "TL36": 118.75,
+  "TL69": 102.39,
+  "TL43": 77.08,
+  "TL68": 56.76,
+  "TL3": 36.42,
+  "TL26": 28.49,
+  "TL67": 9.36,
+  "TL154": 3.02,
+  "TL114": 0.53
+ },
+ "total_loss_MWh": 5814135.070976688,
+ "gate": {
+  "approved": true,
+  "reasons": [],
+  "head": "d5f40f794490ec1024fe184429d82c3779e28423",
+  "approved_git_sha": "5cb7889e7144e488ea346d7bd36e050c17d0d1b2",
+  "stage": "LP1_LOSSY_IT1"
+ },
+ "candidate_written": false,
+ "label": "LOSSY LP1 CALIBRATION (2025 fixed fleet); not a scenario result"
+}

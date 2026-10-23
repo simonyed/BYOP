@@ -1,0 +1,91 @@
+{
+ "stage": "LP1_LOSSY_IT2",
+ "status": "ok",
+ "termination": "optimal",
+ "seconds": 2268.1,
+ "threads": 11,
+ "n_vars": 2093803,
+ "n_cons": 6902966,
+ "objective": 19428105303.051136,
+ "residual_shed": {
+  "eens_MWh": 109.67919052638507,
+  "eens_over_annual_energy": 2.2464491453834494e-07,
+  "max_gap_MW": 27.095983432588632,
+  "max_gap_over_official_peak": 0.00032380863637334787,
+  "shed_steps": 2,
+  "shed_hours": 6.0,
+  "shed_buses": [
+   "p620 1",
+   "p620 2",
+   "p620 6"
+  ],
+  "max_gap_step": "(2030, Timestamp('2030-07-14 09:00:00'))",
+  "max_gap_bus_split": {
+   "p620 1": 27.095983432588632
+  },
+  "events": 3,
+  "thresholds": {
+   "eens_over_annual_energy_max": 1e-05,
+   "max_gap_over_official_peak_max": 0.001
+  },
+  "eens_pass": true,
+  "max_gap_pass": true,
+  "description": "research-proxy tolerance, not an ERCOT standard; below-threshold shed is NOT zero shed"
+ },
+ "r_converged": true,
+ "convergence": {
+  "max_rel_r_gap": 0.024455122611101054,
+  "lines_not_converged": 0,
+  "worst": {}
+ },
+ "guards": {
+  "total_uplift_MVA": 5856.356724182902,
+  "v16_total_uplift_MVA": 5151.833600032188,
+  "G1_limit_MVA": 7727.750400048282,
+  "G1": true,
+  "lines_at_cap": [],
+  "G2": true,
+  "new_lines_uplift_MVA": 11.687836147447754,
+  "new_lines": {
+   "TL154": 3.0,
+   "TL67": 8.7
+  },
+  "new_lines_over_50MVA": [],
+  "G3": true,
+  "uplifted_lines": 20,
+  "all_pass": true
+ },
+ "uplift_by_line_MVA": {
+  "TL38": 1171.94,
+  "TL39": 844.39,
+  "TL37": 656.11,
+  "TL35": 573.63,
+  "TL13": 421.55,
+  "TL73": 388.31,
+  "TL15": 329.39,
+  "TL12": 289.16,
+  "TL42": 261.57,
+  "TL40": 174.65,
+  "TL41": 166.83,
+  "TL63": 158.86,
+  "TL36": 117.92,
+  "TL69": 96.64,
+  "TL43": 76.91,
+  "TL68": 53.47,
+  "TL3": 34.52,
+  "TL26": 28.33,
+  "TL67": 8.7,
+  "TL154": 2.99
+ },
+ "total_loss_MWh": 5674322.195124071,
+ "gate": {
+  "approved": true,
+  "reasons": [],
+  "head": "d5f40f794490ec1024fe184429d82c3779e28423",
+  "approved_git_sha": "5cb7889e7144e488ea346d7bd36e050c17d0d1b2",
+  "stage": "LP1_LOSSY_IT2"
+ },
+ "candidate_written": true,
+ "label": "LOSSY LP1 CALIBRATION (2025 fixed fleet); not a scenario result",
+ "candidate_sha256": "717268802706534365601018547bcf56057ca32488b4a4206b5424bff365f1f4"
+}
