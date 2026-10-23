@@ -1,0 +1,28 @@
+{
+ "case_id": "POST_V16_A2_S0S1",
+ "case_group": "POST_V16_A2_S0S1",
+ "run_id": "rearch_POST_V16_A2_S0S1_20261023T044923Z",
+ "scenario": "S0",
+ "relax": [],
+ "setting": "G-REAL",
+ "solve": {
+  "tag": "S0",
+  "status": "ok",
+  "termination": "optimal",
+  "objective": 52747958559.13093,
+  "seconds": 2342.3,
+  "n_vars": 2660074,
+  "n_cons": 7107166,
+  "integer_vars": 0,
+  "erm_dc_mode": "B",
+  "erm_poi_coeff_snapshot0": null,
+  "F2_load_shed_mc": {
+   "n": 68,
+   "min": 35685.0,
+   "max": 35685.0,
+   "n_inherited": 5,
+   "n_not_at_VOLL": 0
+  }
+ },
+ "timestamp_utc": "2026-10-23T05:29:16.769344+00:00"
+}

@@ -1,0 +1,70 @@
+{
+ "stage": "S0",
+ "parent_attempt_id": "S0#1",
+ "result": {
+  "tag": "S0",
+  "status": "ok",
+  "termination": "optimal",
+  "objective": 52747958559.13093,
+  "seconds": 2342.3,
+  "n_vars": 2660074,
+  "n_cons": 7107166,
+  "integer_vars": 0,
+  "erm_dc_mode": "B",
+  "erm_poi_coeff_snapshot0": null
+ },
+ "acceptance": {
+  "PASS": true,
+  "checks": {
+   "status_ok": true,
+   "termination_optimal": true,
+   "no_integer_vars": true,
+   "balance_residual_ok": true,
+   "reserve_ok": true,
+   "reserve_soc_ok": true,
+   "soc_segment_rows_present": true,
+   "expansion_pairs_equal": true,
+   "no_free_public_expansion": true,
+   "optimizer_calls_complete": true
+  },
+  "values": {
+   "balance_residual_MW_max": 4.504083108258783e-06,
+   "reserve_slack_MW_min": 9.0021558207809e-05,
+   "reserve_soc_slack_MWh_min": -1.944455410358601e-08,
+   "existing_shed_MWh": 54205.77909516401,
+   "expansion_pair_max_abs_diff_MW": 0.0,
+   "free_public_links_built_MW": 0.0,
+   "optimizer_calls": [
+    {
+     "kind": "S0_COST",
+     "state": "DONE",
+     "status": "ok",
+     "termination": "optimal",
+     "n_objectives": "1"
+    }
+   ]
+  },
+  "no_harm_reference": {
+   "file": "S0_NO_HARM_REFERENCE.csv",
+   "sha256": "617da93b6a8336e35bac9f4baa101f13a39c53d9db0164252fe5105a71666d3a",
+   "columns": 68,
+   "rows": 816
+  }
+ },
+ "gate": {
+  "approved": true,
+  "reasons": [],
+  "head": "a5a203fab5efd6dfeb5057d7f660fb0c6fae14e0",
+  "approved_git_sha": "cdfdea06146a6fe73df89cb410d6a88cb5fda306",
+  "stage": "S0",
+  "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+  "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a2.yaml",
+  "ledger": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/post_v16_a2/POST_V16_A2_S0S1/A2_SOLVE_LOG.csv"
+ },
+ "no_harm_reference": {
+  "file": "S0_NO_HARM_REFERENCE.csv",
+  "sha256": "617da93b6a8336e35bac9f4baa101f13a39c53d9db0164252fe5105a71666d3a",
+  "columns": 68,
+  "rows": 816
+ }
+}

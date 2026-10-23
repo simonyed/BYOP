@@ -1,0 +1,1645 @@
+2026-10-23T04:49:20Z start python -W ignore /datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/model/rearch_mech.py --mainline --post-v16 --config config/config.byop_ercot_mainline_geo_dynamic_v1_baseline_v16.yaml --base /datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc --case-id POST_V16_A2_S0S1 --out /datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/post_v16_a2/POST_V16_A2_S0S1 --start 2026 --end 2031 --sample-weeks 26 --threads 10 --scenarios S0 S1_EARLIEST
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:pypsa.optimization.window:Building the multi-period model over a MultiIndex `snapshot`. Opt into the flat representation via `pypsa.options.optimization.model_snapshot_index = 'flat'`.
+INFO:opts.bidirectional_link:Added 324 bidirectional link constraints
+INFO:opts.sector:Demand response not enabled
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver logs written to `/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/post_v16_a2/POST_V16_A2_S0S1/solver_S0.log`.
+INFO:linopy.model:Solver options:
+ - threads: 10
+ - method: 2
+ - crossover: 0
+ - BarHomogeneous: 1
+ - BarConvTol: 1e-05
+ - OptimalityTol: 0.0001
+ - FeasibilityTol: 0.001
+ - ScaleFlag: 1
+ - Seed: 123
+ - AggFill: 0
+ - PreDual: 0
+ - GURO_PAR_BARDENSETHRESH: 200
+INFO:linopy.io:Writing objective.
+Writing constraints.:   0%|[38;2;128;191;255m          [0m| 0/1015 [00:00<?, ?it/s]Writing constraints.:   1%|[38;2;128;191;255m          [0m| 7/1015 [00:00<00:15, 66.56it/s]Writing constraints.:   1%|[38;2;128;191;255m▏         [0m| 14/1015 [00:00<00:35, 28.58it/s]Writing constraints.:   2%|[38;2;128;191;255m▏         [0m| 18/1015 [00:00<00:33, 30.04it/s]Writing constraints.:   2%|[38;2;128;191;255m▏         [0m| 22/1015 [00:00<00:38, 25.69it/s]Writing constraints.:   2%|[38;2;128;191;255m▏         [0m| 25/1015 [00:00<00:43, 22.71it/s]Writing constraints.:   3%|[38;2;128;191;255m▎         [0m| 28/1015 [00:01<00:40, 24.26it/s]Writing constraints.:   3%|[38;2;128;191;255m▎         [0m| 31/1015 [00:01<01:01, 15.90it/s]Writing constraints.:   3%|[38;2;128;191;255m▎         [0m| 34/1015 [00:01<01:27, 11.17it/s]Writing constraints.:   4%|[38;2;128;191;255m▎         [0m| 36/1015 [00:01<01:20, 12.20it/s]Writing constraints.:   4%|[38;2;128;191;255m▎         [0m| 38/1015 [00:02<01:13, 13.33it/s]Writing constraints.:   6%|[38;2;128;191;255m▌         [0m| 56/1015 [00:02<00:22, 43.23it/s]Writing constraints.:   7%|[38;2;128;191;255m▋         [0m| 74/1015 [00:02<00:13, 70.99it/s]Writing constraints.:   9%|[38;2;128;191;255m▉         [0m| 93/1015 [00:02<00:09, 97.38it/s]Writing constraints.:  11%|[38;2;128;191;255m█         [0m| 114/1015 [00:02<00:07, 124.23it/s]Writing constraints.:  13%|[38;2;128;191;255m█▎        [0m| 136/1015 [00:02<00:06, 146.48it/s]Writing constraints.:  16%|[38;2;128;191;255m█▌        [0m| 158/1015 [00:02<00:05, 164.79it/s]Writing constraints.:  18%|[38;2;128;191;255m█▊        [0m| 181/1015 [00:02<00:04, 180.93it/s]Writing constraints.:  20%|[38;2;128;191;255m█▉        [0m| 201/1015 [00:02<00:04, 183.10it/s]Writing constraints.:  22%|[38;2;128;191;255m██▏       [0m| 223/1015 [00:03<00:04, 191.41it/s]Writing constraints.:  24%|[38;2;128;191;255m██▍       [0m| 243/1015 [00:03<00:04, 189.08it/s]Writing constraints.:  26%|[38;2;128;191;255m██▌       [0m| 263/1015 [00:03<00:04, 187.30it/s]Writing constraints.:  28%|[38;2;128;191;255m██▊       [0m| 285/1015 [00:03<00:03, 196.36it/s]Writing constraints.:  30%|[38;2;128;191;255m███       [0m| 305/1015 [00:03<00:03, 195.90it/s]Writing constraints.:  32%|[38;2;128;191;255m███▏      [0m| 325/1015 [00:03<00:03, 190.37it/s]Writing constraints.:  34%|[38;2;128;191;255m███▍      [0m| 347/1015 [00:03<00:03, 197.20it/s]Writing constraints.:  36%|[38;2;128;191;255m███▌      [0m| 367/1015 [00:03<00:03, 195.41it/s]Writing constraints.:  38%|[38;2;128;191;255m███▊      [0m| 388/1015 [00:03<00:03, 188.48it/s]Writing constraints.:  40%|[38;2;128;191;255m████      [0m| 411/1015 [00:03<00:03, 198.87it/s]Writing constraints.:  43%|[38;2;128;191;255m████▎     [0m| 434/1015 [00:04<00:02, 206.43it/s]Writing constraints.:  45%|[38;2;128;191;255m████▍     [0m| 455/1015 [00:04<00:02, 206.84it/s]Writing constraints.:  47%|[38;2;128;191;255m████▋     [0m| 476/1015 [00:04<00:02, 206.58it/s]Writing constraints.:  49%|[38;2;128;191;255m████▉     [0m| 498/1015 [00:04<00:02, 209.92it/s]Writing constraints.:  51%|[38;2;128;191;255m█████     [0m| 520/1015 [00:04<00:02, 207.75it/s]Writing constraints.:  54%|[38;2;128;191;255m█████▎    [0m| 544/1015 [00:04<00:02, 215.11it/s]Writing constraints.:  56%|[38;2;128;191;255m█████▌    [0m| 567/1015 [00:04<00:02, 215.81it/s]Writing constraints.:  58%|[38;2;128;191;255m█████▊    [0m| 589/1015 [00:04<00:02, 201.76it/s]Writing constraints.:  60%|[38;2;128;191;255m██████    [0m| 610/1015 [00:04<00:02, 190.90it/s]Writing constraints.:  62%|[38;2;128;191;255m██████▏   [0m| 631/1015 [00:05<00:01, 195.37it/s]Writing constraints.:  64%|[38;2;128;191;255m██████▍   [0m| 651/1015 [00:05<00:02, 168.25it/s]Writing constraints.:  66%|[38;2;128;191;255m██████▌   [0m| 669/1015 [00:05<00:02, 156.18it/s]Writing constraints.:  68%|[38;2;128;191;255m██████▊   [0m| 686/1015 [00:05<00:02, 158.28it/s]Writing constraints.:  70%|[38;2;128;191;255m██████▉   [0m| 706/1015 [00:05<00:01, 168.06it/s]Writing constraints.:  72%|[38;2;128;191;255m███████▏  [0m| 728/1015 [00:05<00:01, 180.94it/s]Writing constraints.:  74%|[38;2;128;191;255m███████▎  [0m| 747/1015 [00:05<00:01, 182.21it/s]Writing constraints.:  76%|[38;2;128;191;255m███████▌  [0m| 767/1015 [00:05<00:01, 185.33it/s]Writing constraints.:  78%|[38;2;128;191;255m███████▊  [0m| 791/1015 [00:05<00:01, 199.93it/s]Writing constraints.:  80%|[38;2;128;191;255m████████  [0m| 813/1015 [00:06<00:01, 199.83it/s]Writing constraints.:  82%|[38;2;128;191;255m████████▏ [0m| 834/1015 [00:06<00:00, 193.56it/s]Writing constraints.:  84%|[38;2;128;191;255m████████▍ [0m| 855/1015 [00:06<00:00, 190.63it/s]Writing constraints.:  86%|[38;2;128;191;255m████████▋ [0m| 877/1015 [00:06<00:00, 197.06it/s]Writing constraints.:  88%|[38;2;128;191;255m████████▊ [0m| 897/1015 [00:06<00:00, 191.76it/s]Writing constraints.:  91%|[38;2;128;191;255m█████████ [0m| 919/1015 [00:06<00:00, 198.42it/s]Writing constraints.:  93%|[38;2;128;191;255m█████████▎[0m| 940/1015 [00:06<00:00, 199.83it/s]Writing constraints.:  95%|[38;2;128;191;255m█████████▍[0m| 961/1015 [00:06<00:00, 185.75it/s]Writing constraints.:  97%|[38;2;128;191;255m█████████▋[0m| 980/1015 [00:08<00:00, 47.68it/s] Writing constraints.:  98%|[38;2;128;191;255m█████████▊[0m| 996/1015 [00:08<00:00, 57.66it/s]Writing constraints.: 100%|[38;2;128;191;255m█████████▉[0m| 1011/1015 [00:08<00:00, 66.83it/s]Writing constraints.: 100%|[38;2;128;191;255m██████████[0m| 1015/1015 [00:08<00:00, 122.41it/s]
+Writing continuous variables.:   0%|[38;2;128;191;255m          [0m| 0/13 [00:00<?, ?it/s]Writing continuous variables.:  54%|[38;2;128;191;255m█████▍    [0m| 7/13 [00:00<00:00, 66.80it/s]Writing continuous variables.: 100%|[38;2;128;191;255m██████████[0m| 13/13 [00:00<00:00, 58.85it/s]
+INFO:linopy.io: Writing time: 8.66s
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2559322
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+Read LP format model from file /tmp/linopy-problem-9j141m0m.lp
+Reading time = 23.80 seconds
+obj: 7107166 rows, 2660074 columns, 15596931 nonzeros
+Set parameter Threads to value 10
+Set parameter Method to value 2
+Set parameter Crossover to value 0
+Set parameter BarHomogeneous to value 1
+Set parameter BarConvTol to value 1e-05
+Set parameter OptimalityTol to value 0.0001
+Set parameter FeasibilityTol to value 0.001
+Set parameter ScaleFlag to value 1
+Set parameter Seed to value 123
+Set parameter AggFill to value 0
+Set parameter PreDual to value 0
+Set parameter GURO_PAR_BARDENSETHRESH to value 200
+Set parameter LogFile to value "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/post_v16_a2/POST_V16_A2_S0S1/solver_S0.log"
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Ubuntu 20.04.6 LTS")
+
+CPU model: Intel(R) Core(TM) i9-10920X CPU @ 3.50GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 12 physical cores, 24 logical processors, using up to 10 threads
+
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+Optimize a model with 7107166 rows, 2660074 columns and 15596931 nonzeros
+Model fingerprint: 0x7bf455e5
+Coefficient statistics:
+  Matrix range     [3e-03, 2e+03]
+  Objective range  [2e-02, 3e+06]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [2e-02, 2e+06]
+Presolve removed 3463944 rows and 494738 columns (presolve time = 5s) ...
+Presolve removed 3471120 rows and 501590 columns (presolve time = 12s) ...
+Presolve removed 3471120 rows and 501590 columns (presolve time = 15s) ...
+Presolve removed 3478275 rows and 501590 columns
+Presolve time: 18.89s
+Presolved: 3628891 rows, 2165639 columns, 11341863 nonzeros
+Elapsed ordering time = 7s
+Elapsed ordering time = 10s
+Elapsed ordering time = 15s
+Elapsed ordering time = 28s
+Elapsed ordering time = 33s
+Elapsed ordering time = 36s
+Elapsed ordering time = 40s
+Elapsed ordering time = 45s
+Elapsed ordering time = 50s
+Elapsed ordering time = 55s
+Elapsed ordering time = 60s
+Elapsed ordering time = 78s
+Elapsed ordering time = 83s
+Elapsed ordering time = 88s
+Elapsed ordering time = 91s
+Elapsed ordering time = 95s
+Elapsed ordering time = 100s
+Elapsed ordering time = 105s
+Elapsed ordering time = 110s
+Elapsed ordering time = 127s
+Elapsed ordering time = 132s
+Elapsed ordering time = 136s
+Elapsed ordering time = 140s
+Elapsed ordering time = 145s
+Elapsed ordering time = 151s
+Elapsed ordering time = 155s
+Elapsed ordering time = 160s
+Ordering time: 169.06s
+
+Barrier statistics:
+ Dense cols : 1310
+ AA' NZ     : 1.818e+07
+ Factor NZ  : 2.663e+08 (roughly 4.5 GB of memory)
+ Factor Ops : 1.817e+12 (roughly 8 seconds per iteration)
+ Threads    : 10
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   5.69062316e+16 -1.00725991e+16  1.11e+07 7.98e+05  1.28e+12   212s
+   1   4.89200283e+16 -1.10465640e+16  9.35e+06 1.42e+06  8.96e+11   229s
+   2   4.32076574e+16 -1.13375215e+16  8.05e+06 1.22e+06  7.74e+11   244s
+   3   2.28110363e+16 -1.26231187e+16  3.21e+06 6.62e+05  3.74e+11   259s
+   4   4.64203826e+15 -3.62897818e+15  7.41e+05 1.29e+05  3.88e+10   271s
+   5   7.20881351e+14 -1.32191633e+15  1.78e+05 2.75e+04  5.58e+09   284s
+   6   1.53266353e+14 -3.82724473e+14  4.43e+04 7.57e+03  7.57e+08   298s
+   7   5.63350065e+13 -1.57375811e+14  1.67e+04 3.27e+03  2.00e+08   311s
+   8   2.30002557e+13 -4.61230686e+13  5.54e+03 1.05e+03  3.97e+07   325s
+   9   1.24665357e+13 -1.45240468e+13  2.65e+03 3.65e+02  1.12e+07   338s
+  10   7.66232855e+12 -7.64091942e+12  1.53e+03 2.03e+02  5.29e+06   349s
+  11   4.17574838e+12 -4.09439261e+12  7.94e+02 1.13e+02  2.40e+06   359s
+  12   2.56849771e+12 -2.43840981e+12  4.75e+02 6.81e+01  1.29e+06   369s
+  13   1.86903266e+12 -2.06293243e+12  3.39e+02 5.79e+01  9.56e+05   377s
+  14   1.61090929e+12 -1.56161993e+12  2.88e+02 4.45e+01  7.44e+05   385s
+  15   1.14966575e+12 -9.68861317e+11  2.00e+02 2.81e+01  4.67e+05   394s
+  16   8.00745043e+11 -6.94758534e+11  1.35e+02 2.03e+01  3.14e+05   404s
+  17   6.53731131e+11 -4.78933097e+11  1.07e+02 1.42e+01  2.30e+05   416s
+  18   5.21400015e+11 -4.52683483e+11  8.35e+01 1.34e+01  1.94e+05   426s
+  19   4.14108472e+11 -2.55873280e+11  6.36e+01 7.73e+00  1.30e+05   438s
+  20   3.60434159e+11 -1.71675079e+11  5.39e+01 5.27e+00  1.01e+05   452s
+  21   2.95803640e+11 -1.06822618e+11  4.24e+01 3.38e+00  7.53e+04   467s
+  22   2.37167607e+11 -5.35644755e+10  3.20e+01 2.62e+00  5.35e+04   483s
+  23   1.99136093e+11 -3.68799876e+10  2.53e+01 1.54e+00  4.30e+04   497s
+  24   1.70645904e+11 -2.61018938e+10  2.03e+01 1.36e+00  3.56e+04   510s
+  25   1.51218672e+11 -7.91218401e+09  1.69e+01 1.25e+00  2.86e+04   522s
+  26   1.24895625e+11  6.99892946e+09  1.23e+01 1.34e+00  2.10e+04   534s
+  27   1.19880564e+11  1.33547244e+10  1.14e+01 1.34e+00  1.89e+04   545s
+  28   1.08136339e+11  2.28894162e+10  9.42e+00 9.02e-01  1.50e+04   557s
+  29   9.26796000e+10  3.13579618e+10  6.78e+00 5.59e-01  1.08e+04   569s
+  30   8.49994207e+10  3.62251592e+10  5.49e+00 4.13e-01  8.52e+03   580s
+  31   7.91994995e+10  3.94069824e+10  4.52e+00 3.19e-01  6.93e+03   591s
+  32   7.14669018e+10  4.16436171e+10  3.22e+00 2.55e-01  5.18e+03   603s
+  33   6.80259900e+10  4.35748283e+10  2.64e+00 2.02e-01  4.24e+03   615s
+  34   6.60487791e+10  4.51371412e+10  2.31e+00 1.60e-01  3.62e+03   626s
+  35   6.31714276e+10  4.59704970e+10  1.82e+00 1.33e-01  2.97e+03   637s
+  36   6.20858258e+10  4.68621535e+10  1.63e+00 1.12e-01  2.63e+03   649s
+  37   6.02989729e+10  4.74092633e+10  1.33e+00 9.76e-02  2.22e+03   660s
+  38   5.87859250e+10  4.77866572e+10  1.06e+00 8.95e-02  1.90e+03   672s
+  39   5.81417319e+10  4.83448411e+10  9.48e-01 7.95e-02  1.69e+03   683s
+  40   5.78097635e+10  4.88080843e+10  8.89e-01 7.13e-02  1.55e+03   695s
+  41   5.74043442e+10  4.91315470e+10  8.16e-01 6.57e-02  1.43e+03   707s
+  42   5.73581806e+10  4.93719719e+10  8.07e-01 6.15e-02  1.38e+03   719s
+  43   5.68599635e+10  4.97179233e+10  7.16e-01 5.56e-02  1.23e+03   730s
+  44   5.66377383e+10  4.99390090e+10  6.76e-01 5.17e-02  1.15e+03   741s
+  45   5.64210955e+10  5.00319943e+10  6.37e-01 5.01e-02  1.10e+03   752s
+  46   5.63435696e+10  5.00845790e+10  6.23e-01 4.92e-02  1.08e+03   761s
+  47   5.60363875e+10  5.03055503e+10  5.68e-01 4.53e-02  9.86e+02   773s
+  48   5.58595774e+10  5.03757471e+10  5.36e-01 4.40e-02  9.44e+02   783s
+  49   5.55876013e+10  5.05579918e+10  4.88e-01 4.02e-02  8.65e+02   795s
+  50   5.51822992e+10  5.07098247e+10  4.14e-01 3.72e-02  7.69e+02   806s
+  51   5.49862803e+10  5.08785149e+10  3.79e-01 3.37e-02  7.07e+02   818s
+  52   5.48421850e+10  5.11211780e+10  3.53e-01 2.95e-02  6.40e+02   830s
+  53   5.44530981e+10  5.12621722e+10  2.84e-01 2.67e-02  5.49e+02   841s
+  54   5.43087930e+10  5.14492699e+10  2.59e-01 2.29e-02  4.92e+02   853s
+  55   5.40715739e+10  5.15568782e+10  2.18e-01 2.08e-02  4.32e+02   865s
+  56   5.38272150e+10  5.16989228e+10  1.76e-01 1.80e-02  3.66e+02   876s
+  57   5.37391110e+10  5.18873294e+10  1.61e-01 1.49e-02  3.18e+02   888s
+  58   5.36788094e+10  5.19544311e+10  1.51e-01 1.38e-02  2.96e+02   898s
+  59   5.36156403e+10  5.20117231e+10  1.40e-01 1.28e-02  2.76e+02   910s
+  60   5.35544003e+10  5.21278011e+10  1.29e-01 1.09e-02  2.45e+02   922s
+  61   5.34832488e+10  5.21770293e+10  1.17e-01 1.01e-02  2.24e+02   934s
+  62   5.34138509e+10  5.22320559e+10  1.06e-01 9.13e-03  2.03e+02   945s
+  63   5.33633963e+10  5.23211587e+10  9.75e-02 7.61e-03  1.79e+02   957s
+  64   5.33037225e+10  5.23671612e+10  8.78e-02 6.67e-03  1.61e+02   969s
+  65   5.32092438e+10  5.24076430e+10  7.24e-02 5.98e-03  1.38e+02   981s
+  66   5.31717910e+10  5.24575246e+10  6.64e-02 5.12e-03  1.23e+02   992s
+  67   5.30982364e+10  5.24929907e+10  5.47e-02 4.39e-03  1.04e+02  1004s
+  68   5.30691641e+10  5.25267713e+10  5.01e-02 3.82e-03  9.31e+01  1014s
+  69   5.30504510e+10  5.25333411e+10  4.71e-02 3.71e-03  8.88e+01  1024s
+  70   5.30289480e+10  5.25523734e+10  4.37e-02 3.38e-03  8.18e+01  1035s
+  71   5.30099418e+10  5.25606778e+10  4.06e-02 3.22e-03  7.71e+01  1047s
+  72   5.29936149e+10  5.25755655e+10  3.80e-02 2.97e-03  7.18e+01  1058s
+  73   5.29724927e+10  5.26065026e+10  3.46e-02 2.46e-03  6.28e+01  1070s
+  74   5.29472067e+10  5.26215817e+10  3.06e-02 2.20e-03  5.59e+01  1082s
+  75   5.29353452e+10  5.26277831e+10  2.88e-02 2.10e-03  5.28e+01  1091s
+  76   5.29063294e+10  5.26400330e+10  2.42e-02 1.89e-03  4.57e+01  1103s
+  77   5.28902870e+10  5.26626901e+10  2.17e-02 1.50e-03  3.91e+01  1114s
+  78   5.28757029e+10  5.26784350e+10  1.95e-02 1.22e-03  3.39e+01  1125s
+  79   5.28622427e+10  5.26824105e+10  1.74e-02 1.16e-03  3.09e+01  1136s
+  80   5.28493522e+10  5.26924097e+10  1.54e-02 9.80e-04  2.69e+01  1147s
+  81   5.28385659e+10  5.27016235e+10  1.38e-02 8.18e-04  2.35e+01  1159s
+  82   5.28306811e+10  5.27067007e+10  1.26e-02 7.08e-04  2.13e+01  1171s
+  83   5.28246283e+10  5.27106967e+10  1.16e-02 6.39e-04  1.95e+01  1182s
+  84   5.28163527e+10  5.27167889e+10  1.04e-02 5.34e-04  1.71e+01  1194s
+  85   5.28096688e+10  5.27197050e+10  9.35e-03 4.84e-04  1.54e+01  1206s
+  86   5.28065440e+10  5.27218062e+10  8.87e-03 4.48e-04  1.45e+01  1217s
+  87   5.28031825e+10  5.27253231e+10  8.36e-03 3.88e-04  1.34e+01  1229s
+  88   5.27961560e+10  5.27283043e+10  7.30e-03 3.36e-04  1.16e+01  1240s
+  89   5.27927681e+10  5.27294859e+10  6.78e-03 3.10e-04  1.09e+01  1252s
+  90   5.27893420e+10  5.27301877e+10  6.26e-03 2.94e-04  1.01e+01  1263s
+  91   5.27850844e+10  5.27337458e+10  5.62e-03 2.35e-04  8.81e+00  1275s
+  92   5.27822653e+10  5.27346098e+10  5.19e-03 2.20e-04  8.17e+00  1286s
+  93   5.27769756e+10  5.27360743e+10  4.39e-03 1.88e-04  7.02e+00  1297s
+  94   5.27742423e+10  5.27379012e+10  3.98e-03 1.51e-04  6.23e+00  1307s
+  95   5.27692620e+10  5.27390422e+10  3.22e-03 1.28e-04  5.18e+00  1319s
+  96   5.27664029e+10  5.27409381e+10  2.79e-03 1.00e-04  4.37e+00  1330s
+  97   5.27638899e+10  5.27420768e+10  2.41e-03 8.36e-05  3.74e+00  1342s
+  98   5.27613335e+10  5.27430334e+10  2.03e-03 6.72e-05  3.14e+00  1353s
+  99   5.27595550e+10  5.27436961e+10  1.76e-03 5.69e-05  2.72e+00  1364s
+ 100   5.27578261e+10  5.27442724e+10  1.49e-03 1.69e-04  2.32e+00  1374s
+ 101   5.27568098e+10  5.27448176e+10  1.34e-03 1.42e-04  2.06e+00  1386s
+ 102   5.27563678e+10  5.27450070e+10  1.27e-03 1.34e-04  1.95e+00  1396s
+ 103   5.27553113e+10  5.27453931e+10  1.11e-03 1.15e-04  1.70e+00  1408s
+ 104   5.27546476e+10  5.27457939e+10  1.01e-03 1.00e-04  1.52e+00  1419s
+ 105   5.27533110e+10  5.27461564e+10  1.06e-03 1.36e-04  1.23e+00  1431s
+ 106   5.27531915e+10  5.27462799e+10  1.04e-03 1.27e-04  1.19e+00  1442s
+ 107   5.27518001e+10  5.27465202e+10  8.20e-04 2.12e-04  9.06e-01  1454s
+ 108   5.27512894e+10  5.27466584e+10  7.10e-04 7.59e-05  7.94e-01  1467s
+ 109   5.27508373e+10  5.27467753e+10  6.14e-04 3.71e-05  6.97e-01  1481s
+ 110   5.27507457e+10  5.27469739e+10  5.95e-04 3.32e-05  6.47e-01  1496s
+ 111   5.27504560e+10  5.27471254e+10  5.33e-04 3.00e-05  5.71e-01  1510s
+ 112   5.27499139e+10  5.27472656e+10  4.18e-04 2.41e-05  4.54e-01  1523s
+ 113   5.27497336e+10  5.27473472e+10  3.93e-04 2.11e-05  4.09e-01  1541s
+ 114   5.27495960e+10  5.27474340e+10  3.85e-04 2.03e-05  3.71e-01  1554s
+ 115   5.27494008e+10  5.27475447e+10  3.51e-04 1.73e-05  3.18e-01  1569s
+ 116   5.27492010e+10  5.27476068e+10  3.14e-04 2.47e-05  2.73e-01  1585s
+ 117   5.27491035e+10  5.27476635e+10  2.95e-04 2.49e-05  2.47e-01  1601s
+ 118   5.27488872e+10  5.27477051e+10  3.02e-04 6.32e-04  2.03e-01  1615s
+ 119   5.27486896e+10  5.27477588e+10  2.72e-04 6.37e-04  1.60e-01  1630s
+ 120   5.27486099e+10  5.27477845e+10  2.49e-04 5.47e-04  1.42e-01  1646s
+ 121   5.27484898e+10  5.27477947e+10  2.17e-04 5.36e-04  1.19e-01  1666s
+ 122   5.27483832e+10  5.27478014e+10  1.79e-04 5.15e-04  9.98e-02  1687s
+ 123   5.27483279e+10  5.27478384e+10  1.92e-04 2.88e-04  8.39e-02  1714s
+ 124   5.27482473e+10  5.27478614e+10  1.53e-04 1.70e-03  6.62e-02  1729s
+ 125   5.27481944e+10  5.27478784e+10  1.47e-04 1.45e-03  5.42e-02  1747s
+ 126   5.27481442e+10  5.27478879e+10  2.68e-04 3.48e-04  4.40e-02  1768s
+ 127   5.27480961e+10  5.27479047e+10  2.00e-04 1.30e-02  3.28e-02  1789s
+ 128   5.27480710e+10  5.27479152e+10  1.65e-04 9.95e-03  2.67e-02  1808s
+ 129   5.27480468e+10  5.27479245e+10  3.04e-04 1.54e-02  2.10e-02  1836s
+ 130   5.27480265e+10  5.27479282e+10  2.36e-04 1.74e-02  1.69e-02  1867s
+ 131   5.27480191e+10  5.27479305e+10  2.12e-04 1.31e-02  1.52e-02  1890s
+ 132   5.27480061e+10  5.27479364e+10  1.69e-04 1.00e-02  1.20e-02  1922s
+ 133   5.27479935e+10  5.27479401e+10  1.74e-04 7.29e-03  9.17e-03  1953s
+ 134   5.27479888e+10  5.27479422e+10  1.70e-04 1.42e-02  8.02e-03  1979s
+ 135   5.27479855e+10  5.27479438e+10  1.86e-04 1.24e-02  7.18e-03  2008s
+ 136   5.27479782e+10  5.27479481e+10  1.42e-04 6.65e-02  5.19e-03  2032s
+ 137   5.27479721e+10  5.27479494e+10  1.31e-04 6.78e-02  3.90e-03  2046s
+ 138   5.27479656e+10  5.27479506e+10  2.48e-04 5.01e-02  2.60e-03  2065s
+ 139   5.27479634e+10  5.27479513e+10  1.94e-04 1.21e-01  2.08e-03  2088s
+ 140   5.27479618e+10  5.27479519e+10  1.56e-04 1.04e-01  1.70e-03  2104s
+ 141   5.27479610e+10  5.27479522e+10  1.40e-04 1.03e-01  1.52e-03  2117s
+ 142   5.27479608e+10  5.27479523e+10  1.34e-04 1.01e-01  1.47e-03  2129s
+ 143   5.27479603e+10  5.27479526e+10  1.23e-04 8.95e-02  1.33e-03  2144s
+ 144   5.27479593e+10  5.27479532e+10  1.10e-04 6.69e-02  1.06e-03  2159s
+ 145   5.27479586e+10  5.27479537e+10  1.16e-04 5.70e-02  8.49e-04  2177s
+
+Barrier solved model in 145 iterations and 2177.39 seconds (1770.71 work units)
+Optimal objective 5.27479586e+10
+
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 4130778 primals, 11487386 duals
+Objective: 5.27e+10
+Solver: gurobi
+Runtime: 2178.65s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The variable 'PV16M-online_cap' could not be mapped to the network component because the component 'PV16M' does not exist.
+INFO:pypsa.optimization.optimize:The variable 'PV16M-res_thermal' could not be mapped to the network component because the component 'PV16M' does not exist.
+INFO:pypsa.optimization.optimize:The variable 'PV16M-res_su' could not be mapped to the network component because the component 'PV16M' does not exist.
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Kirchhoff-Voltage-Law, bidirectional_link_LTL10_exp2030, bidirectional_link_LTL10_exp2031, bidirectional_link_LTL100_exp2030, bidirectional_link_LTL100_exp2031, bidirectional_link_LTL101_exp2030, bidirectional_link_LTL101_exp2031, bidirectional_link_LTL102_exp2030, bidirectional_link_LTL102_exp2031, bidirectional_link_LTL103_exp2030, bidirectional_link_LTL103_exp2031, bidirectional_link_LTL104_exp2030, bidirectional_link_LTL104_exp2031, bidirectional_link_LTL105_exp2030, bidirectional_link_LTL105_exp2031, bidirectional_link_LTL106_exp2030, bidirectional_link_LTL106_exp2031, bidirectional_link_LTL107_exp2030, bidirectional_link_LTL107_exp2031, bidirectional_link_LTL108_exp2030, bidirectional_link_LTL108_exp2031, bidirectional_link_LTL109_exp2030, bidirectional_link_LTL109_exp2031, bidirectional_link_LTL11_exp2030, bidirectional_link_LTL11_exp2031, bidirectional_link_LTL110_exp2030, bidirectional_link_LTL110_exp2031, bidirectional_link_LTL111_exp2030, bidirectional_link_LTL111_exp2031, bidirectional_link_LTL112_exp2030, bidirectional_link_LTL112_exp2031, bidirectional_link_LTL113_exp2030, bidirectional_link_LTL113_exp2031, bidirectional_link_LTL114_exp2030, bidirectional_link_LTL114_exp2031, bidirectional_link_LTL115_exp2030, bidirectional_link_LTL115_exp2031, bidirectional_link_LTL116_exp2030, bidirectional_link_LTL116_exp2031, bidirectional_link_LTL117_exp2030, bidirectional_link_LTL117_exp2031, bidirectional_link_LTL118_exp2030, bidirectional_link_LTL118_exp2031, bidirectional_link_LTL119_exp2030, bidirectional_link_LTL119_exp2031, bidirectional_link_LTL12_exp2030, bidirectional_link_LTL12_exp2031, bidirectional_link_LTL120_exp2030, bidirectional_link_LTL120_exp2031, bidirectional_link_LTL121_exp2030, bidirectional_link_LTL121_exp2031, bidirectional_link_LTL122_exp2030, bidirectional_link_LTL122_exp2031, bidirectional_link_LTL123_exp2030, bidirectional_link_LTL123_exp2031, bidirectional_link_LTL124_exp2030, bidirectional_link_LTL124_exp2031, bidirectional_link_LTL125_exp2030, bidirectional_link_LTL125_exp2031, bidirectional_link_LTL126_exp2030, bidirectional_link_LTL126_exp2031, bidirectional_link_LTL127_exp2030, bidirectional_link_LTL127_exp2031, bidirectional_link_LTL128_exp2030, bidirectional_link_LTL128_exp2031, bidirectional_link_LTL129_exp2030, bidirectional_link_LTL129_exp2031, bidirectional_link_LTL13_exp2030, bidirectional_link_LTL13_exp2031, bidirectional_link_LTL130_exp2030, bidirectional_link_LTL130_exp2031, bidirectional_link_LTL131_exp2030, bidirectional_link_LTL131_exp2031, bidirectional_link_LTL132_exp2030, bidirectional_link_LTL132_exp2031, bidirectional_link_LTL133_exp2030, bidirectional_link_LTL133_exp2031, bidirectional_link_LTL134_exp2030, bidirectional_link_LTL134_exp2031, bidirectional_link_LTL135_exp2030, bidirectional_link_LTL135_exp2031, bidirectional_link_LTL136_exp2030, bidirectional_link_LTL136_exp2031, bidirectional_link_LTL137_exp2030, bidirectional_link_LTL137_exp2031, bidirectional_link_LTL138_exp2030, bidirectional_link_LTL138_exp2031, bidirectional_link_LTL139_exp2030, bidirectional_link_LTL139_exp2031, bidirectional_link_LTL14_exp2030, bidirectional_link_LTL14_exp2031, bidirectional_link_LTL140_exp2030, bidirectional_link_LTL140_exp2031, bidirectional_link_LTL141_exp2030, bidirectional_link_LTL141_exp2031, bidirectional_link_LTL142_exp2030, bidirectional_link_LTL142_exp2031, bidirectional_link_LTL143_exp2030, bidirectional_link_LTL143_exp2031, bidirectional_link_LTL144_exp2030, bidirectional_link_LTL144_exp2031, bidirectional_link_LTL145_exp2030, bidirectional_link_LTL145_exp2031, bidirectional_link_LTL146_exp2030, bidirectional_link_LTL146_exp2031, bidirectional_link_LTL147_exp2030, bidirectional_link_LTL147_exp2031, bidirectional_link_LTL148_exp2030, bidirectional_link_LTL148_exp2031, bidirectional_link_LTL149_exp2030, bidirectional_link_LTL149_exp2031, bidirectional_link_LTL15_exp2030, bidirectional_link_LTL15_exp2031, bidirectional_link_LTL150_exp2030, bidirectional_link_LTL150_exp2031, bidirectional_link_LTL151_exp2030, bidirectional_link_LTL151_exp2031, bidirectional_link_LTL152_exp2030, bidirectional_link_LTL152_exp2031, bidirectional_link_LTL153_exp2030, bidirectional_link_LTL153_exp2031, bidirectional_link_LTL154_exp2030, bidirectional_link_LTL154_exp2031, bidirectional_link_LTL155_exp2030, bidirectional_link_LTL155_exp2031, bidirectional_link_LTL156_exp2030, bidirectional_link_LTL156_exp2031, bidirectional_link_LTL157_exp2030, bidirectional_link_LTL157_exp2031, bidirectional_link_LTL158_exp2030, bidirectional_link_LTL158_exp2031, bidirectional_link_LTL159_exp2030, bidirectional_link_LTL159_exp2031, bidirectional_link_LTL16_exp2030, bidirectional_link_LTL16_exp2031, bidirectional_link_LTL160_exp2030, bidirectional_link_LTL160_exp2031, bidirectional_link_LTL161_exp2030, bidirectional_link_LTL161_exp2031, bidirectional_link_LTL162_exp2030, bidirectional_link_LTL162_exp2031, bidirectional_link_LTL163_exp2030, bidirectional_link_LTL163_exp2031, bidirectional_link_LTL164_exp2030, bidirectional_link_LTL164_exp2031, bidirectional_link_LTL17_exp2030, bidirectional_link_LTL17_exp2031, bidirectional_link_LTL18_exp2030, bidirectional_link_LTL18_exp2031, bidirectional_link_LTL19_exp2030, bidirectional_link_LTL19_exp2031, bidirectional_link_LTL20_exp2030, bidirectional_link_LTL20_exp2031, bidirectional_link_LTL21_exp2030, bidirectional_link_LTL21_exp2031, bidirectional_link_LTL22_exp2030, bidirectional_link_LTL22_exp2031, bidirectional_link_LTL23_exp2030, bidirectional_link_LTL23_exp2031, bidirectional_link_LTL24_exp2030, bidirectional_link_LTL24_exp2031, bidirectional_link_LTL25_exp2030, bidirectional_link_LTL25_exp2031, bidirectional_link_LTL26_exp2030, bidirectional_link_LTL26_exp2031, bidirectional_link_LTL27_exp2030, bidirectional_link_LTL27_exp2031, bidirectional_link_LTL28_exp2030, bidirectional_link_LTL28_exp2031, bidirectional_link_LTL29_exp2030, bidirectional_link_LTL29_exp2031, bidirectional_link_LTL3_exp2030, bidirectional_link_LTL3_exp2031, bidirectional_link_LTL30_exp2030, bidirectional_link_LTL30_exp2031, bidirectional_link_LTL31_exp2030, bidirectional_link_LTL31_exp2031, bidirectional_link_LTL32_exp2030, bidirectional_link_LTL32_exp2031, bidirectional_link_LTL33_exp2030, bidirectional_link_LTL33_exp2031, bidirectional_link_LTL34_exp2030, bidirectional_link_LTL34_exp2031, bidirectional_link_LTL35_exp2030, bidirectional_link_LTL35_exp2031, bidirectional_link_LTL36_exp2030, bidirectional_link_LTL36_exp2031, bidirectional_link_LTL37_exp2030, bidirectional_link_LTL37_exp2031, bidirectional_link_LTL38_exp2030, bidirectional_link_LTL38_exp2031, bidirectional_link_LTL39_exp2030, bidirectional_link_LTL39_exp2031, bidirectional_link_LTL4_exp2030, bidirectional_link_LTL4_exp2031, bidirectional_link_LTL40_exp2030, bidirectional_link_LTL40_exp2031, bidirectional_link_LTL41_exp2030, bidirectional_link_LTL41_exp2031, bidirectional_link_LTL42_exp2030, bidirectional_link_LTL42_exp2031, bidirectional_link_LTL43_exp2030, bidirectional_link_LTL43_exp2031, bidirectional_link_LTL44_exp2030, bidirectional_link_LTL44_exp2031, bidirectional_link_LTL45_exp2030, bidirectional_link_LTL45_exp2031, bidirectional_link_LTL46_exp2030, bidirectional_link_LTL46_exp2031, bidirectional_link_LTL47_exp2030, bidirectional_link_LTL47_exp2031, bidirectional_link_LTL48_exp2030, bidirectional_link_LTL48_exp2031, bidirectional_link_LTL49_exp2030, bidirectional_link_LTL49_exp2031, bidirectional_link_LTL5_exp2030, bidirectional_link_LTL5_exp2031, bidirectional_link_LTL50_exp2030, bidirectional_link_LTL50_exp2031, bidirectional_link_LTL51_exp2030, bidirectional_link_LTL51_exp2031, bidirectional_link_LTL52_exp2030, bidirectional_link_LTL52_exp2031, bidirectional_link_LTL53_exp2030, bidirectional_link_LTL53_exp2031, bidirectional_link_LTL54_exp2030, bidirectional_link_LTL54_exp2031, bidirectional_link_LTL55_exp2030, bidirectional_link_LTL55_exp2031, bidirectional_link_LTL56_exp2030, bidirectional_link_LTL56_exp2031, bidirectional_link_LTL57_exp2030, bidirectional_link_LTL57_exp2031, bidirectional_link_LTL58_exp2030, bidirectional_link_LTL58_exp2031, bidirectional_link_LTL59_exp2030, bidirectional_link_LTL59_exp2031, bidirectional_link_LTL6_exp2030, bidirectional_link_LTL6_exp2031, bidirectional_link_LTL60_exp2030, bidirectional_link_LTL60_exp2031, bidirectional_link_LTL61_exp2030, bidirectional_link_LTL61_exp2031, bidirectional_link_LTL62_exp2030, bidirectional_link_LTL62_exp2031, bidirectional_link_LTL63_exp2030, bidirectional_link_LTL63_exp2031, bidirectional_link_LTL64_exp2030, bidirectional_link_LTL64_exp2031, bidirectional_link_LTL65_exp2030, bidirectional_link_LTL65_exp2031, bidirectional_link_LTL66_exp2030, bidirectional_link_LTL66_exp2031, bidirectional_link_LTL67_exp2030, bidirectional_link_LTL67_exp2031, bidirectional_link_LTL68_exp2030, bidirectional_link_LTL68_exp2031, bidirectional_link_LTL69_exp2030, bidirectional_link_LTL69_exp2031, bidirectional_link_LTL7_exp2030, bidirectional_link_LTL7_exp2031, bidirectional_link_LTL70_exp2030, bidirectional_link_LTL70_exp2031, bidirectional_link_LTL71_exp2030, bidirectional_link_LTL71_exp2031, bidirectional_link_LTL72_exp2030, bidirectional_link_LTL72_exp2031, bidirectional_link_LTL73_exp2030, bidirectional_link_LTL73_exp2031, bidirectional_link_LTL74_exp2030, bidirectional_link_LTL74_exp2031, bidirectional_link_LTL75_exp2030, bidirectional_link_LTL75_exp2031, bidirectional_link_LTL76_exp2030, bidirectional_link_LTL76_exp2031, bidirectional_link_LTL77_exp2030, bidirectional_link_LTL77_exp2031, bidirectional_link_LTL78_exp2030, bidirectional_link_LTL78_exp2031, bidirectional_link_LTL79_exp2030, bidirectional_link_LTL79_exp2031, bidirectional_link_LTL8_exp2030, bidirectional_link_LTL8_exp2031, bidirectional_link_LTL80_exp2030, bidirectional_link_LTL80_exp2031, bidirectional_link_LTL81_exp2030, bidirectional_link_LTL81_exp2031, bidirectional_link_LTL82_exp2030, bidirectional_link_LTL82_exp2031, bidirectional_link_LTL83_exp2030, bidirectional_link_LTL83_exp2031, bidirectional_link_LTL84_exp2030, bidirectional_link_LTL84_exp2031, bidirectional_link_LTL85_exp2030, bidirectional_link_LTL85_exp2031, bidirectional_link_LTL86_exp2030, bidirectional_link_LTL86_exp2031, bidirectional_link_LTL87_exp2030, bidirectional_link_LTL87_exp2031, bidirectional_link_LTL88_exp2030, bidirectional_link_LTL88_exp2031, bidirectional_link_LTL89_exp2030, bidirectional_link_LTL89_exp2031, bidirectional_link_LTL9_exp2030, bidirectional_link_LTL9_exp2031, bidirectional_link_LTL90_exp2030, bidirectional_link_LTL90_exp2031, bidirectional_link_LTL91_exp2030, bidirectional_link_LTL91_exp2031, bidirectional_link_LTL92_exp2030, bidirectional_link_LTL92_exp2031, bidirectional_link_LTL93_exp2030, bidirectional_link_LTL93_exp2031, bidirectional_link_LTL94_exp2030, bidirectional_link_LTL94_exp2031, bidirectional_link_LTL95_exp2030, bidirectional_link_LTL95_exp2031, bidirectional_link_LTL96_exp2030, bidirectional_link_LTL96_exp2031, bidirectional_link_LTL97_exp2030, bidirectional_link_LTL97_exp2031, bidirectional_link_LTL98_exp2030, bidirectional_link_LTL98_exp2031, bidirectional_link_LTL99_exp2030, bidirectional_link_LTL99_exp2031, M2-line_sym_LTL10_exp2030_fwd, M2-line_sym_LTL10_exp2031_fwd, M2-line_cap_LTL10, M2-line_sym_LTL100_exp2030_fwd, M2-line_sym_LTL100_exp2031_fwd, M2-line_cap_LTL100, M2-line_sym_LTL101_exp2030_fwd, M2-line_sym_LTL101_exp2031_fwd, M2-line_cap_LTL101, M2-line_sym_LTL102_exp2030_fwd, M2-line_sym_LTL102_exp2031_fwd, M2-line_cap_LTL102, M2-line_sym_LTL103_exp2030_fwd, M2-line_sym_LTL103_exp2031_fwd, M2-line_cap_LTL103, M2-line_sym_LTL104_exp2030_fwd, M2-line_sym_LTL104_exp2031_fwd, M2-line_cap_LTL104, M2-line_sym_LTL105_exp2030_fwd, M2-line_sym_LTL105_exp2031_fwd, M2-line_cap_LTL105, M2-line_sym_LTL106_exp2030_fwd, M2-line_sym_LTL106_exp2031_fwd, M2-line_cap_LTL106, M2-line_sym_LTL107_exp2030_fwd, M2-line_sym_LTL107_exp2031_fwd, M2-line_cap_LTL107, M2-line_sym_LTL108_exp2030_fwd, M2-line_sym_LTL108_exp2031_fwd, M2-line_cap_LTL108, M2-line_sym_LTL109_exp2030_fwd, M2-line_sym_LTL109_exp2031_fwd, M2-line_cap_LTL109, M2-line_sym_LTL11_exp2030_fwd, M2-line_sym_LTL11_exp2031_fwd, M2-line_cap_LTL11, M2-line_sym_LTL110_exp2030_fwd, M2-line_sym_LTL110_exp2031_fwd, M2-line_cap_LTL110, M2-line_sym_LTL111_exp2030_fwd, M2-line_sym_LTL111_exp2031_fwd, M2-line_cap_LTL111, M2-line_sym_LTL112_exp2030_fwd, M2-line_sym_LTL112_exp2031_fwd, M2-line_cap_LTL112, M2-line_sym_LTL113_exp2030_fwd, M2-line_sym_LTL113_exp2031_fwd, M2-line_cap_LTL113, M2-line_sym_LTL114_exp2030_fwd, M2-line_sym_LTL114_exp2031_fwd, M2-line_cap_LTL114, M2-line_sym_LTL115_exp2030_fwd, M2-line_sym_LTL115_exp2031_fwd, M2-line_cap_LTL115, M2-line_sym_LTL116_exp2030_fwd, M2-line_sym_LTL116_exp2031_fwd, M2-line_cap_LTL116, M2-line_sym_LTL117_exp2030_fwd, M2-line_sym_LTL117_exp2031_fwd, M2-line_cap_LTL117, M2-line_sym_LTL118_exp2030_fwd, M2-line_sym_LTL118_exp2031_fwd, M2-line_cap_LTL118, M2-line_sym_LTL119_exp2030_fwd, M2-line_sym_LTL119_exp2031_fwd, M2-line_cap_LTL119, M2-line_sym_LTL12_exp2030_fwd, M2-line_sym_LTL12_exp2031_fwd, M2-line_cap_LTL12, M2-line_sym_LTL120_exp2030_fwd, M2-line_sym_LTL120_exp2031_fwd, M2-line_cap_LTL120, M2-line_sym_LTL121_exp2030_fwd, M2-line_sym_LTL121_exp2031_fwd, M2-line_cap_LTL121, M2-line_sym_LTL122_exp2030_fwd, M2-line_sym_LTL122_exp2031_fwd, M2-line_cap_LTL122, M2-line_sym_LTL123_exp2030_fwd, M2-line_sym_LTL123_exp2031_fwd, M2-line_cap_LTL123, M2-line_sym_LTL124_exp2030_fwd, M2-line_sym_LTL124_exp2031_fwd, M2-line_cap_LTL124, M2-line_sym_LTL125_exp2030_fwd, M2-line_sym_LTL125_exp2031_fwd, M2-line_cap_LTL125, M2-line_sym_LTL126_exp2030_fwd, M2-line_sym_LTL126_exp2031_fwd, M2-line_cap_LTL126, M2-line_sym_LTL127_exp2030_fwd, M2-line_sym_LTL127_exp2031_fwd, M2-line_cap_LTL127, M2-line_sym_LTL128_exp2030_fwd, M2-line_sym_LTL128_exp2031_fwd, M2-line_cap_LTL128, M2-line_sym_LTL129_exp2030_fwd, M2-line_sym_LTL129_exp2031_fwd, M2-line_cap_LTL129, M2-line_sym_LTL13_exp2030_fwd, M2-line_sym_LTL13_exp2031_fwd, M2-line_cap_LTL13, M2-line_sym_LTL130_exp2030_fwd, M2-line_sym_LTL130_exp2031_fwd, M2-line_cap_LTL130, M2-line_sym_LTL131_exp2030_fwd, M2-line_sym_LTL131_exp2031_fwd, M2-line_cap_LTL131, M2-line_sym_LTL132_exp2030_fwd, M2-line_sym_LTL132_exp2031_fwd, M2-line_cap_LTL132, M2-line_sym_LTL133_exp2030_fwd, M2-line_sym_LTL133_exp2031_fwd, M2-line_cap_LTL133, M2-line_sym_LTL134_exp2030_fwd, M2-line_sym_LTL134_exp2031_fwd, M2-line_cap_LTL134, M2-line_sym_LTL135_exp2030_fwd, M2-line_sym_LTL135_exp2031_fwd, M2-line_cap_LTL135, M2-line_sym_LTL136_exp2030_fwd, M2-line_sym_LTL136_exp2031_fwd, M2-line_cap_LTL136, M2-line_sym_LTL137_exp2030_fwd, M2-line_sym_LTL137_exp2031_fwd, M2-line_cap_LTL137, M2-line_sym_LTL138_exp2030_fwd, M2-line_sym_LTL138_exp2031_fwd, M2-line_cap_LTL138, M2-line_sym_LTL139_exp2030_fwd, M2-line_sym_LTL139_exp2031_fwd, M2-line_cap_LTL139, M2-line_sym_LTL14_exp2030_fwd, M2-line_sym_LTL14_exp2031_fwd, M2-line_cap_LTL14, M2-line_sym_LTL140_exp2030_fwd, M2-line_sym_LTL140_exp2031_fwd, M2-line_cap_LTL140, M2-line_sym_LTL141_exp2030_fwd, M2-line_sym_LTL141_exp2031_fwd, M2-line_cap_LTL141, M2-line_sym_LTL142_exp2030_fwd, M2-line_sym_LTL142_exp2031_fwd, M2-line_cap_LTL142, M2-line_sym_LTL143_exp2030_fwd, M2-line_sym_LTL143_exp2031_fwd, M2-line_cap_LTL143, M2-line_sym_LTL144_exp2030_fwd, M2-line_sym_LTL144_exp2031_fwd, M2-line_cap_LTL144, M2-line_sym_LTL145_exp2030_fwd, M2-line_sym_LTL145_exp2031_fwd, M2-line_cap_LTL145, M2-line_sym_LTL146_exp2030_fwd, M2-line_sym_LTL146_exp2031_fwd, M2-line_cap_LTL146, M2-line_sym_LTL147_exp2030_fwd, M2-line_sym_LTL147_exp2031_fwd, M2-line_cap_LTL147, M2-line_sym_LTL148_exp2030_fwd, M2-line_sym_LTL148_exp2031_fwd, M2-line_cap_LTL148, M2-line_sym_LTL149_exp2030_fwd, M2-line_sym_LTL149_exp2031_fwd, M2-line_cap_LTL149, M2-line_sym_LTL15_exp2030_fwd, M2-line_sym_LTL15_exp2031_fwd, M2-line_cap_LTL15, M2-line_sym_LTL150_exp2030_fwd, M2-line_sym_LTL150_exp2031_fwd, M2-line_cap_LTL150, M2-line_sym_LTL151_exp2030_fwd, M2-line_sym_LTL151_exp2031_fwd, M2-line_cap_LTL151, M2-line_sym_LTL152_exp2030_fwd, M2-line_sym_LTL152_exp2031_fwd, M2-line_cap_LTL152, M2-line_sym_LTL153_exp2030_fwd, M2-line_sym_LTL153_exp2031_fwd, M2-line_cap_LTL153, M2-line_sym_LTL154_exp2030_fwd, M2-line_sym_LTL154_exp2031_fwd, M2-line_cap_LTL154, M2-line_sym_LTL155_exp2030_fwd, M2-line_sym_LTL155_exp2031_fwd, M2-line_cap_LTL155, M2-line_sym_LTL156_exp2030_fwd, M2-line_sym_LTL156_exp2031_fwd, M2-line_cap_LTL156, M2-line_sym_LTL157_exp2030_fwd, M2-line_sym_LTL157_exp2031_fwd, M2-line_cap_LTL157, M2-line_sym_LTL158_exp2030_fwd, M2-line_sym_LTL158_exp2031_fwd, M2-line_cap_LTL158, M2-line_sym_LTL159_exp2030_fwd, M2-line_sym_LTL159_exp2031_fwd, M2-line_cap_LTL159, M2-line_sym_LTL16_exp2030_fwd, M2-line_sym_LTL16_exp2031_fwd, M2-line_cap_LTL16, M2-line_sym_LTL160_exp2030_fwd, M2-line_sym_LTL160_exp2031_fwd, M2-line_cap_LTL160, M2-line_sym_LTL161_exp2030_fwd, M2-line_sym_LTL161_exp2031_fwd, M2-line_cap_LTL161, M2-line_sym_LTL162_exp2030_fwd, M2-line_sym_LTL162_exp2031_fwd, M2-line_cap_LTL162, M2-line_sym_LTL163_exp2030_fwd, M2-line_sym_LTL163_exp2031_fwd, M2-line_cap_LTL163, M2-line_sym_LTL164_exp2030_fwd, M2-line_sym_LTL164_exp2031_fwd, M2-line_cap_LTL164, M2-line_sym_LTL17_exp2030_fwd, M2-line_sym_LTL17_exp2031_fwd, M2-line_cap_LTL17, M2-line_sym_LTL18_exp2030_fwd, M2-line_sym_LTL18_exp2031_fwd, M2-line_cap_LTL18, M2-line_sym_LTL19_exp2030_fwd, M2-line_sym_LTL19_exp2031_fwd, M2-line_cap_LTL19, M2-line_sym_LTL20_exp2030_fwd, M2-line_sym_LTL20_exp2031_fwd, M2-line_cap_LTL20, M2-line_sym_LTL21_exp2030_fwd, M2-line_sym_LTL21_exp2031_fwd, M2-line_cap_LTL21, M2-line_sym_LTL22_exp2030_fwd, M2-line_sym_LTL22_exp2031_fwd, M2-line_cap_LTL22, M2-line_sym_LTL23_exp2030_fwd, M2-line_sym_LTL23_exp2031_fwd, M2-line_cap_LTL23, M2-line_sym_LTL24_exp2030_fwd, M2-line_sym_LTL24_exp2031_fwd, M2-line_cap_LTL24, M2-line_sym_LTL25_exp2030_fwd, M2-line_sym_LTL25_exp2031_fwd, M2-line_cap_LTL25, M2-line_sym_LTL26_exp2030_fwd, M2-line_sym_LTL26_exp2031_fwd, M2-line_cap_LTL26, M2-line_sym_LTL27_exp2030_fwd, M2-line_sym_LTL27_exp2031_fwd, M2-line_cap_LTL27, M2-line_sym_LTL28_exp2030_fwd, M2-line_sym_LTL28_exp2031_fwd, M2-line_cap_LTL28, M2-line_sym_LTL29_exp2030_fwd, M2-line_sym_LTL29_exp2031_fwd, M2-line_cap_LTL29, M2-line_sym_LTL3_exp2030_fwd, M2-line_sym_LTL3_exp2031_fwd, M2-line_cap_LTL3, M2-line_sym_LTL30_exp2030_fwd, M2-line_sym_LTL30_exp2031_fwd, M2-line_cap_LTL30, M2-line_sym_LTL31_exp2030_fwd, M2-line_sym_LTL31_exp2031_fwd, M2-line_cap_LTL31, M2-line_sym_LTL32_exp2030_fwd, M2-line_sym_LTL32_exp2031_fwd, M2-line_cap_LTL32, M2-line_sym_LTL33_exp2030_fwd, M2-line_sym_LTL33_exp2031_fwd, M2-line_cap_LTL33, M2-line_sym_LTL34_exp2030_fwd, M2-line_sym_LTL34_exp2031_fwd, M2-line_cap_LTL34, M2-line_sym_LTL35_exp2030_fwd, M2-line_sym_LTL35_exp2031_fwd, M2-line_cap_LTL35, M2-line_sym_LTL36_exp2030_fwd, M2-line_sym_LTL36_exp2031_fwd, M2-line_cap_LTL36, M2-line_sym_LTL37_exp2030_fwd, M2-line_sym_LTL37_exp2031_fwd, M2-line_cap_LTL37, M2-line_sym_LTL38_exp2030_fwd, M2-line_sym_LTL38_exp2031_fwd, M2-line_cap_LTL38, M2-line_sym_LTL39_exp2030_fwd, M2-line_sym_LTL39_exp2031_fwd, M2-line_cap_LTL39, M2-line_sym_LTL4_exp2030_fwd, M2-line_sym_LTL4_exp2031_fwd, M2-line_cap_LTL4, M2-line_sym_LTL40_exp2030_fwd, M2-line_sym_LTL40_exp2031_fwd, M2-line_cap_LTL40, M2-line_sym_LTL41_exp2030_fwd, M2-line_sym_LTL41_exp2031_fwd, M2-line_cap_LTL41, M2-line_sym_LTL42_exp2030_fwd, M2-line_sym_LTL42_exp2031_fwd, M2-line_cap_LTL42, M2-line_sym_LTL43_exp2030_fwd, M2-line_sym_LTL43_exp2031_fwd, M2-line_cap_LTL43, M2-line_sym_LTL44_exp2030_fwd, M2-line_sym_LTL44_exp2031_fwd, M2-line_cap_LTL44, M2-line_sym_LTL45_exp2030_fwd, M2-line_sym_LTL45_exp2031_fwd, M2-line_cap_LTL45, M2-line_sym_LTL46_exp2030_fwd, M2-line_sym_LTL46_exp2031_fwd, M2-line_cap_LTL46, M2-line_sym_LTL47_exp2030_fwd, M2-line_sym_LTL47_exp2031_fwd, M2-line_cap_LTL47, M2-line_sym_LTL48_exp2030_fwd, M2-line_sym_LTL48_exp2031_fwd, M2-line_cap_LTL48, M2-line_sym_LTL49_exp2030_fwd, M2-line_sym_LTL49_exp2031_fwd, M2-line_cap_LTL49, M2-line_sym_LTL5_exp2030_fwd, M2-line_sym_LTL5_exp2031_fwd, M2-line_cap_LTL5, M2-line_sym_LTL50_exp2030_fwd, M2-line_sym_LTL50_exp2031_fwd, M2-line_cap_LTL50, M2-line_sym_LTL51_exp2030_fwd, M2-line_sym_LTL51_exp2031_fwd, M2-line_cap_LTL51, M2-line_sym_LTL52_exp2030_fwd, M2-line_sym_LTL52_exp2031_fwd, M2-line_cap_LTL52, M2-line_sym_LTL53_exp2030_fwd, M2-line_sym_LTL53_exp2031_fwd, M2-line_cap_LTL53, M2-line_sym_LTL54_exp2030_fwd, M2-line_sym_LTL54_exp2031_fwd, M2-line_cap_LTL54, M2-line_sym_LTL55_exp2030_fwd, M2-line_sym_LTL55_exp2031_fwd, M2-line_cap_LTL55, M2-line_sym_LTL56_exp2030_fwd, M2-line_sym_LTL56_exp2031_fwd, M2-line_cap_LTL56, M2-line_sym_LTL57_exp2030_fwd, M2-line_sym_LTL57_exp2031_fwd, M2-line_cap_LTL57, M2-line_sym_LTL58_exp2030_fwd, M2-line_sym_LTL58_exp2031_fwd, M2-line_cap_LTL58, M2-line_sym_LTL59_exp2030_fwd, M2-line_sym_LTL59_exp2031_fwd, M2-line_cap_LTL59, M2-line_sym_LTL6_exp2030_fwd, M2-line_sym_LTL6_exp2031_fwd, M2-line_cap_LTL6, M2-line_sym_LTL60_exp2030_fwd, M2-line_sym_LTL60_exp2031_fwd, M2-line_cap_LTL60, M2-line_sym_LTL61_exp2030_fwd, M2-line_sym_LTL61_exp2031_fwd, M2-line_cap_LTL61, M2-line_sym_LTL62_exp2030_fwd, M2-line_sym_LTL62_exp2031_fwd, M2-line_cap_LTL62, M2-line_sym_LTL63_exp2030_fwd, M2-line_sym_LTL63_exp2031_fwd, M2-line_cap_LTL63, M2-line_sym_LTL64_exp2030_fwd, M2-line_sym_LTL64_exp2031_fwd, M2-line_cap_LTL64, M2-line_sym_LTL65_exp2030_fwd, M2-line_sym_LTL65_exp2031_fwd, M2-line_cap_LTL65, M2-line_sym_LTL66_exp2030_fwd, M2-line_sym_LTL66_exp2031_fwd, M2-line_cap_LTL66, M2-line_sym_LTL67_exp2030_fwd, M2-line_sym_LTL67_exp2031_fwd, M2-line_cap_LTL67, M2-line_sym_LTL68_exp2030_fwd, M2-line_sym_LTL68_exp2031_fwd, M2-line_cap_LTL68, M2-line_sym_LTL69_exp2030_fwd, M2-line_sym_LTL69_exp2031_fwd, M2-line_cap_LTL69, M2-line_sym_LTL7_exp2030_fwd, M2-line_sym_LTL7_exp2031_fwd, M2-line_cap_LTL7, M2-line_sym_LTL70_exp2030_fwd, M2-line_sym_LTL70_exp2031_fwd, M2-line_cap_LTL70, M2-line_sym_LTL71_exp2030_fwd, M2-line_sym_LTL71_exp2031_fwd, M2-line_cap_LTL71, M2-line_sym_LTL72_exp2030_fwd, M2-line_sym_LTL72_exp2031_fwd, M2-line_cap_LTL72, M2-line_sym_LTL73_exp2030_fwd, M2-line_sym_LTL73_exp2031_fwd, M2-line_cap_LTL73, M2-line_sym_LTL74_exp2030_fwd, M2-line_sym_LTL74_exp2031_fwd, M2-line_cap_LTL74, M2-line_sym_LTL75_exp2030_fwd, M2-line_sym_LTL75_exp2031_fwd, M2-line_cap_LTL75, M2-line_sym_LTL76_exp2030_fwd, M2-line_sym_LTL76_exp2031_fwd, M2-line_cap_LTL76, M2-line_sym_LTL77_exp2030_fwd, M2-line_sym_LTL77_exp2031_fwd, M2-line_cap_LTL77, M2-line_sym_LTL78_exp2030_fwd, M2-line_sym_LTL78_exp2031_fwd, M2-line_cap_LTL78, M2-line_sym_LTL79_exp2030_fwd, M2-line_sym_LTL79_exp2031_fwd, M2-line_cap_LTL79, M2-line_sym_LTL8_exp2030_fwd, M2-line_sym_LTL8_exp2031_fwd, M2-line_cap_LTL8, M2-line_sym_LTL80_exp2030_fwd, M2-line_sym_LTL80_exp2031_fwd, M2-line_cap_LTL80, M2-line_sym_LTL81_exp2030_fwd, M2-line_sym_LTL81_exp2031_fwd, M2-line_cap_LTL81, M2-line_sym_LTL82_exp2030_fwd, M2-line_sym_LTL82_exp2031_fwd, M2-line_cap_LTL82, M2-line_sym_LTL83_exp2030_fwd, M2-line_sym_LTL83_exp2031_fwd, M2-line_cap_LTL83, M2-line_sym_LTL84_exp2030_fwd, M2-line_sym_LTL84_exp2031_fwd, M2-line_cap_LTL84, M2-line_sym_LTL85_exp2030_fwd, M2-line_sym_LTL85_exp2031_fwd, M2-line_cap_LTL85, M2-line_sym_LTL86_exp2030_fwd, M2-line_sym_LTL86_exp2031_fwd, M2-line_cap_LTL86, M2-line_sym_LTL87_exp2030_fwd, M2-line_sym_LTL87_exp2031_fwd, M2-line_cap_LTL87, M2-line_sym_LTL88_exp2030_fwd, M2-line_sym_LTL88_exp2031_fwd, M2-line_cap_LTL88, M2-line_sym_LTL89_exp2030_fwd, M2-line_sym_LTL89_exp2031_fwd, M2-line_cap_LTL89, M2-line_sym_LTL9_exp2030_fwd, M2-line_sym_LTL9_exp2031_fwd, M2-line_cap_LTL9, M2-line_sym_LTL90_exp2030_fwd, M2-line_sym_LTL90_exp2031_fwd, M2-line_cap_LTL90, M2-line_sym_LTL91_exp2030_fwd, M2-line_sym_LTL91_exp2031_fwd, M2-line_cap_LTL91, M2-line_sym_LTL92_exp2030_fwd, M2-line_sym_LTL92_exp2031_fwd, M2-line_cap_LTL92, M2-line_sym_LTL93_exp2030_fwd, M2-line_sym_LTL93_exp2031_fwd, M2-line_cap_LTL93, M2-line_sym_LTL94_exp2030_fwd, M2-line_sym_LTL94_exp2031_fwd, M2-line_cap_LTL94, M2-line_sym_LTL95_exp2030_fwd, M2-line_sym_LTL95_exp2031_fwd, M2-line_cap_LTL95, M2-line_sym_LTL96_exp2030_fwd, M2-line_sym_LTL96_exp2031_fwd, M2-line_cap_LTL96, M2-line_sym_LTL97_exp2030_fwd, M2-line_sym_LTL97_exp2031_fwd, M2-line_cap_LTL97, M2-line_sym_LTL98_exp2030_fwd, M2-line_sym_LTL98_exp2031_fwd, M2-line_cap_LTL98, M2-line_sym_LTL99_exp2030_fwd, M2-line_sym_LTL99_exp2031_fwd, M2-line_cap_LTL99, ML-potential_onwind_p600 0, ML-potential_onwind_p600 1, ML-potential_onwind_p600 2, ML-potential_onwind_p600 3, ML-potential_onwind_p600 4, ML-potential_onwind_p610 0, ML-potential_onwind_p610 1, ML-potential_onwind_p610 2, ML-potential_onwind_p610 3, ML-potential_onwind_p610 4, ML-potential_onwind_p620 0, ML-potential_onwind_p620 1, ML-potential_onwind_p620 2, ML-potential_onwind_p620 3, ML-potential_onwind_p620 4, ML-potential_onwind_p620 5, ML-potential_onwind_p620 6, ML-potential_onwind_p620 7, ML-potential_onwind_p630 0, ML-potential_onwind_p630 1, ML-potential_onwind_p630 10, ML-potential_onwind_p630 11, ML-potential_onwind_p630 12, ML-potential_onwind_p630 13, ML-potential_onwind_p630 14, ML-potential_onwind_p630 15, ML-potential_onwind_p630 2, ML-potential_onwind_p630 3, ML-potential_onwind_p630 4, ML-potential_onwind_p630 5, ML-potential_onwind_p630 6, ML-potential_onwind_p630 7, ML-potential_onwind_p630 8, ML-potential_onwind_p630 9, ML-potential_onwind_p640 0, ML-potential_onwind_p640 1, ML-potential_onwind_p640 2, ML-potential_onwind_p640 3, ML-potential_onwind_p640 4, ML-potential_onwind_p640 5, ML-potential_onwind_p640 6, ML-potential_onwind_p640 7, ML-potential_onwind_p650 0, ML-potential_onwind_p650 1, ML-potential_onwind_p650 2, ML-potential_onwind_p650 3, ML-potential_onwind_p650 4, ML-potential_onwind_p650 5, ML-potential_onwind_p650 6, ML-potential_onwind_p650 8, ML-potential_onwind_p650 9, ML-potential_onwind_p670 0, ML-potential_onwind_p670 1, ML-potential_onwind_p670 10, ML-potential_onwind_p670 2, ML-potential_onwind_p670 3, ML-potential_onwind_p670 4, ML-potential_onwind_p670 8, ML-potential_onwind_p670 9, ML-potential_solar_p600 0, ML-potential_solar_p600 1, ML-potential_solar_p600 2, ML-potential_solar_p600 3, ML-potential_solar_p600 4, ML-potential_solar_p610 0, ML-potential_solar_p610 1, ML-potential_solar_p610 2, ML-potential_solar_p610 3, ML-potential_solar_p610 4, ML-potential_solar_p620 0, ML-potential_solar_p620 1, ML-potential_solar_p620 2, ML-potential_solar_p620 3, ML-potential_solar_p620 4, ML-potential_solar_p620 5, ML-potential_solar_p620 6, ML-potential_solar_p620 7, ML-potential_solar_p630 0, ML-potential_solar_p630 1, ML-potential_solar_p630 10, ML-potential_solar_p630 11, ML-potential_solar_p630 12, ML-potential_solar_p630 13, ML-potential_solar_p630 14, ML-potential_solar_p630 15, ML-potential_solar_p630 2, ML-potential_solar_p630 3, ML-potential_solar_p630 4, ML-potential_solar_p630 5, ML-potential_solar_p630 6, ML-potential_solar_p630 7, ML-potential_solar_p630 8, ML-potential_solar_p630 9, ML-potential_solar_p640 0, ML-potential_solar_p640 1, ML-potential_solar_p640 2, ML-potential_solar_p640 3, ML-potential_solar_p640 4, ML-potential_solar_p640 5, ML-potential_solar_p640 6, ML-potential_solar_p640 7, ML-potential_solar_p650 0, ML-potential_solar_p650 1, ML-potential_solar_p650 2, ML-potential_solar_p650 3, ML-potential_solar_p650 4, ML-potential_solar_p650 5, ML-potential_solar_p650 6, ML-potential_solar_p650 7, ML-potential_solar_p650 8, ML-potential_solar_p650 9, ML-potential_solar_p670 0, ML-potential_solar_p670 1, ML-potential_solar_p670 10, ML-potential_solar_p670 2, ML-potential_solar_p670 3, ML-potential_solar_p670 4, ML-potential_solar_p670 5, ML-potential_solar_p670 6, ML-potential_solar_p670 8, ML-potential_solar_p670 9, PV16M-online_cap_fixed, PV16M-online_cap_ext, PV16M-online_max_p, PV16M-online_min, PV16M-res_thermal_head, PV16M-res_ramp, PV16M-res_su_power_fixed, PV16M-res_su_power_ext, PV16M-res_su_energy, PV16M-res_su_energy_start, PV16M-reserve_req, A2F08-seg_soc_0_815, A2F08-seg_soc_1_55, A2F08-seg_soc_2_63, A2F08-seg_soc_3_119, A2F08-seg_soc_4_127, A2F08-seg_soc_5_135, A2F08-seg_soc_5_815, A2F08-seg_soc_6_191, A2F08-seg_soc_7_199, A2F08-seg_soc_8_255, A2F08-seg_soc_9_263, A2F08-seg_soc_10_271, A2F08-seg_soc_10_815, A2F08-seg_soc_11_327, A2F08-seg_soc_12_335, A2F08-seg_soc_13_391, A2F08-seg_soc_14_399, A2F08-seg_soc_15_407, A2F08-seg_soc_15_815, A2F08-seg_soc_16_463, A2F08-seg_soc_17_471, A2F08-seg_soc_18_527, A2F08-seg_soc_19_535, A2F08-seg_soc_20_543, A2F08-seg_soc_20_815, A2F08-seg_soc_21_599, A2F08-seg_soc_22_607, A2F08-seg_soc_23_663, A2F08-seg_soc_24_671, A2F08-seg_soc_25_679, A2F08-seg_soc_25_815, A2F08-seg_soc_26_735, A2F08-seg_soc_27_743, A2F08-seg_soc_28_799, A2F08-seg_soc_29_807 were not assigned to the network.
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:opts.bidirectional_link:Added 324 bidirectional link constraints
+INFO:opts.sector:Demand response not enabled
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2559322
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+Set parameter Method to value 2
+Set parameter Crossover to value 0
+Set parameter BarConvTol to value 1e-05
+Set parameter FeasibilityTol to value 0.001
+Set parameter OptimalityTol to value 0.0001
+Set parameter BarHomogeneous to value 1
+Set parameter Threads to value 10
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Ubuntu 20.04.6 LTS")
+
+CPU model: Intel(R) Core(TM) i9-10920X CPU @ 3.50GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 12 physical cores, 24 logical processors, using up to 10 threads
+
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+Optimize a model with 7296111 rows, 2712544 columns and 15916229 nonzeros
+Model fingerprint: 0x856179ab
+Variable types: 2712544 continuous, 0 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [3e-03, 2e+03]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-03, 2e+06]
+
+---------------------------------------------------------------------------
+Multi-objectives: starting optimization with 12 objectives ... 
+---------------------------------------------------------------------------
+---------------------------------------------------------------------------
+
+Multi-objectives: optimize objective 1 (A1_2026) ...
+---------------------------------------------------------------------------
+
+Optimize a model with 7296111 rows, 2712544 columns and 15916229 nonzeros
+Model fingerprint: 0x0d27e9d2
+Coefficient statistics:
+  Matrix range     [3e-03, 2e+03]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-03, 2e+06]
+Presolve removed 516199 rows and 3959856 columns (presolve time = 5s) ...
+Presolve removed 822071 rows and 4265728 columns (presolve time = 10s) ...
+Presolve removed 822071 rows and 4265728 columns (presolve time = 15s) ...
+Presolve removed 822232 rows and 4304661 columns (presolve time = 21s) ...
+Presolve removed 822232 rows and 4304661 columns
+Presolve time: 22.85s
+Presolved: 1890312 rows, 2991456 columns, 10148925 nonzeros
+Elapsed ordering time = 5s
+Elapsed ordering time = 10s
+Elapsed ordering time = 26s
+Ordering time: 45.74s
+
+Barrier statistics:
+ Dense cols : 408
+ Free vars  : 114220
+ AA' NZ     : 4.289e+07
+ Factor NZ  : 9.422e+08 (roughly 10.0 GB of memory)
+ Factor Ops : 2.126e+12 (roughly 10 seconds per iteration)
+ Threads    : 10
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -4.64165931e+07  4.89660602e+03  5.98e+01 1.61e+03  6.34e+03   142s
+   1  -4.76762905e+07 -9.98908256e+04  4.69e+01 2.35e+04  5.10e+03   157s
+   2  -5.10044004e+07 -6.80780838e+03  3.49e+01 2.08e+04  4.29e+03   166s
+   3  -6.47364713e+07 -7.38406572e+04  1.29e+01 1.46e+04  2.84e+03   176s
+   4  -5.84324550e+06 -9.19060659e+04  1.19e+00 5.73e+02  1.43e+01   188s
+   5  -2.48693673e+06 -5.82580076e+04  4.94e-01 2.65e+02  3.97e+00   200s
+   6  -7.01975243e+05 -2.08822636e+04  1.38e-01 7.48e+01  6.25e-01   215s
+   7  -1.84660061e+05 -6.53773969e+03  3.58e-02 2.27e+01  1.17e-01   227s
+   8  -4.61703489e+04 -2.89109703e+03  8.88e-03 9.12e+00  2.55e-02   239s
+   9  -2.89561903e+04 -1.53788848e+03  5.55e-03 4.55e+00  1.35e-02   251s
+  10  -1.87778995e+04 -1.18323323e+03  3.58e-03 3.40e+00  8.53e-03   262s
+  11  -1.00889878e+04 -6.53862648e+02  1.91e-03 1.71e+00  4.14e-03   271s
+  12  -6.19070062e+03 -4.65892656e+02  1.17e-03 1.13e+00  2.44e-03   281s
+  13  -3.99060839e+03 -3.44417161e+02  7.45e-04 7.55e-01  1.52e-03   291s
+  14  -2.66511822e+03 -2.82289968e+02  4.91e-04 5.64e-01  9.98e-04   302s
+  15  -1.62005097e+03 -2.15444693e+02  2.91e-04 3.59e-01  5.83e-04   315s
+  16  -9.06229393e+02 -1.83088521e+02  1.55e-04 2.60e-01  3.18e-04   328s
+  17  -6.07650589e+02 -1.66051812e+02  9.75e-05 2.08e-01  2.06e-04   339s
+  18  -4.42655554e+02 -1.46559115e+02  6.60e-05 1.49e-01  1.40e-04   350s
+  19  -3.55488986e+02 -1.37803581e+02  7.24e-05 1.23e-01  1.06e-04   360s
+  20  -2.93133997e+02 -1.30952506e+02  6.60e-05 1.02e-01  8.08e-05   371s
+  21  -2.64327978e+02 -1.28495571e+02  6.41e-05 9.47e-02  6.94e-05   383s
+  22  -2.47620508e+02 -1.24549892e+02  8.25e-05 8.28e-02  6.19e-05   395s
+  23  -2.42294753e+02 -1.23818619e+02  9.36e-05 8.06e-02  5.99e-05   408s
+  24  -2.37108736e+02 -1.22957990e+02  1.03e-04 7.81e-02  5.79e-05   419s
+  25  -2.31198127e+02 -1.22315002e+02  1.20e-04 7.62e-02  5.59e-05   430s
+  26  -2.30298359e+02 -1.22187265e+02  1.28e-04 7.58e-02  5.56e-05   445s
+  27  -2.26047609e+02 -1.21276301e+02  1.60e-04 7.32e-02  5.41e-05   456s
+  28  -2.24606262e+02 -1.20948206e+02  1.58e-04 7.23e-02  4.85e-05   466s
+  29  -2.24041146e+02 -1.20875583e+02  1.58e-04 7.21e-02  4.85e-05   476s
+  30  -2.23466350e+02 -1.20795372e+02  1.57e-04 7.18e-02  4.84e-05   487s
+  31  -2.23202509e+02 -1.20732847e+02  1.57e-04 7.17e-02  4.82e-05   498s
+  32  -2.21409897e+02 -1.20672618e+02  1.54e-04 7.15e-02  4.80e-05   515s
+  33  -2.10383090e+11  4.89660149e+03  2.71e+05 1.61e+03  2.87e+07   536s
+  34  -1.32364391e+11  2.96172021e+03  1.70e+05 7.42e+02  1.10e+06   546s
+  35  -1.48946822e+10  2.07321423e+03  1.90e+04 2.30e+02  2.95e+04   561s
+  36  -2.30505980e+09  4.78362631e+03  2.94e+03 4.90e+01  2.35e+03   575s
+  37  -6.40808867e+08  6.28416626e+03  8.18e+02 1.47e+01  4.51e+02   589s
+  38  -2.61849672e+08  6.78214896e+03  3.34e+02 7.30e+00  1.63e+02   602s
+  39  -1.27030737e+08  7.06021905e+03  1.62e+02 3.67e+00  7.00e+01   612s
+  40  -5.08209245e+07  7.18905496e+03  6.48e+01 2.05e+00  2.68e+01   622s
+  41  -3.13536866e+07  7.24082887e+03  4.00e+01 1.37e+00  1.58e+01   632s
+  42  -2.31518050e+07  7.27295986e+03  2.95e+01 9.58e-01  1.11e+01   641s
+  43  -1.88371879e+07  7.28310577e+03  2.40e+01 7.78e-01  8.84e+00   650s
+  44  -1.38629851e+07  7.28717347e+03  1.77e+01 6.14e-01  6.40e+00   660s
+  45  -1.06656437e+07  7.27589674e+03  1.36e+01 4.25e-01  4.74e+00   670s
+  46  -7.23345088e+06  7.23521066e+03  9.23e+00 3.31e-01  3.20e+00   680s
+  47  -4.54277261e+06  7.13450718e+03  5.80e+00 2.21e-01  1.98e+00   692s
+  48  -3.00718041e+06  6.98903972e+03  3.84e+00 1.72e-01  1.31e+00   704s
+  49  -1.62778270e+06  6.77512130e+03  2.08e+00 1.21e-01  7.14e-01   716s
+  50  -7.85342404e+05  6.02276843e+03  1.01e+00 8.15e-02  3.51e-01   727s
+  51  -4.42212469e+05  4.56368939e+03  5.69e-01 4.94e-02  1.95e-01   738s
+  52  -3.16221131e+05  3.96351451e+03  4.07e-01 4.04e-02  1.41e-01   748s
+  53  -2.04437488e+05  2.69263902e+03  2.63e-01 2.59e-02  9.01e-02   758s
+  54  -1.34053232e+05  1.90718039e+03  1.73e-01 1.75e-02  5.90e-02   767s
+  55  -8.79436502e+04  1.06004006e+03  1.13e-01 9.17e-03  3.76e-02   776s
+  56  -4.80986827e+04  5.57954800e+02  6.20e-02 4.51e-03  2.03e-02   786s
+  57  -2.63513738e+04  2.43278037e+02  3.40e-02 2.08e-03  1.09e-02   795s
+  58  -1.52053378e+04  1.78150200e+02  1.96e-02 1.53e-03  6.34e-03   805s
+  59  -4.56182565e+03  4.73959563e+01  5.88e-03 4.29e-04  1.86e-03   814s
+  60  -1.03741509e+03  9.74431362e+00  1.33e-03 1.28e-04  4.17e-04   826s
+  61  -3.18757945e+02 -6.24778159e+00  4.02e-04 1.98e-06  1.22e-04   838s
+  62  -1.56478594e+02 -6.76685655e+00  1.92e-04 7.61e-07  5.94e-05   869s
+  63  -4.90696735e+01 -7.31654923e+00  5.44e-05 1.45e-07  1.69e-05   896s
+  64  -3.51106099e+01 -7.54814533e+00  4.54e-05 8.05e-08  1.13e-05   914s
+  65  -3.02626287e+01 -7.57853186e+00  3.99e-05 7.24e-08  9.27e-06   929s
+  66  -2.76855106e+01 -7.69670300e+00  3.57e-05 4.20e-08  8.19e-06   943s
+  67  -2.23727401e+01 -7.74346563e+00  2.60e-05 2.89e-08  6.06e-06   956s
+  68  -1.20217387e+01 -7.82524957e+00  2.28e-05 1.02e-08  1.82e-06   974s
+  69  -8.96236715e+00 -7.85854681e+00  5.98e-06 3.02e-09  4.85e-07  1000s
+  70  -8.75179979e+00 -7.86091383e+00  4.81e-06 2.58e-09  3.91e-07  1014s
+  71  -8.75009082e+00 -7.86092621e+00  4.80e-06 2.58e-09  3.91e-07  1026s
+  72  -8.57620944e+00 -7.86259962e+00  2.05e-05 2.22e-09  3.18e-07  1038s
+  73  -8.57555650e+00 -7.86264993e+00  1.99e-05 2.21e-09  3.17e-07  1050s
+  74  -8.28918871e+00 -7.86433414e+00  2.12e-05 1.83e-09  2.00e-07  1065s
+  75  -8.22969439e+00 -7.86453037e+00  1.38e-05 1.80e-09  1.72e-07  1079s
+  76  -8.01611340e+00 -7.87143301e+00  4.40e-05 2.33e-09  7.20e-08  1095s
+  77  -8.01609785e+00 -7.87144265e+00  4.40e-05 2.33e-09  7.20e-08  1108s
+  78  -8.01059556e+00 -7.87151237e+00  4.25e-05 2.32e-09  6.92e-08  1122s
+  79  -7.97600076e+00 -7.87183182e+00  3.18e-05 2.23e-09  5.17e-08  1136s
+  80  -7.95853896e+00 -7.87225205e+00  2.62e-05 1.96e-09  4.29e-08  1152s
+  81  -7.95419538e+00 -7.87248114e+00  2.47e-05 1.81e-09  4.06e-08  1168s
+  82  -7.95338539e+00 -7.87253565e+00  2.45e-05 1.78e-09  4.02e-08  1183s
+  83  -7.95261556e+00 -7.87262681e+00  2.46e-05 1.74e-09  3.98e-08  1196s
+  84  -7.93150819e+00 -7.87326945e+00  1.79e-05 1.32e-09  2.92e-08  1212s
+  85  -7.93150771e+00 -7.87326949e+00  1.79e-05 1.32e-09  2.92e-08  1225s
+  86  -7.93148997e+00 -7.87327022e+00  1.79e-05 1.32e-09  2.92e-08  1239s
+  87  -7.92397754e+00 -7.87331376e+00  1.55e-05 1.30e-09  2.54e-08  1253s
+  88  -7.92336879e+00 -7.87335319e+00  1.53e-05 1.28e-09  2.51e-08  1266s
+  89  -7.92336807e+00 -7.87335320e+00  1.54e-05 1.28e-09  2.51e-08  1281s
+  90  -7.92332450e+00 -7.87335643e+00  1.54e-05 1.28e-09  2.51e-08  1295s
+  91  -7.92311751e+00 -7.87337650e+00  1.38e-05 1.27e-09  2.50e-08  1308s
+  92  -7.90943135e+00 -7.87425747e+00  9.79e-06 1.74e-09  1.77e-08  1324s
+  93  -7.90935481e+00 -7.87426030e+00  9.76e-06 1.74e-09  1.77e-08  1338s
+  94  -7.90934822e+00 -7.87426235e+00  9.77e-06 1.74e-09  1.77e-08  1351s
+  95  -7.90791359e+00 -7.87437126e+00  9.36e-06 1.60e-09  1.69e-08  1366s
+  96  -7.90791295e+00 -7.87437129e+00  9.36e-06 1.60e-09  1.69e-08  1380s
+  97  -7.90585312e+00 -7.87448062e+00  8.76e-06 1.46e-09  1.59e-08  1395s
+  98  -7.90584857e+00 -7.87448089e+00  8.76e-06 1.46e-09  1.59e-08  1409s
+  99  -7.90564847e+00 -7.87452722e+00  8.70e-06 1.38e-09  1.58e-08  1424s
+ 100  -7.90512403e+00 -7.87454467e+00  8.55e-06 1.37e-09  1.55e-08  1438s
+ 101  -7.90159980e+00 -7.87454612e+00  1.01e-05 1.33e-09  1.37e-08  1459s
+ 102  -7.90158505e+00 -7.87454671e+00  1.01e-05 1.33e-09  1.37e-08  1473s
+ 103  -7.90157268e+00 -7.87454676e+00  1.01e-05 1.33e-09  1.36e-08  1488s
+ 104  -7.89705726e+00 -7.87466817e+00  1.05e-05 1.43e-09  1.14e-08  1504s
+ 105  -7.89293463e+00 -7.87476144e+00  9.43e-06 1.27e-09  9.22e-09  1523s
+ 106  -7.89286652e+00 -7.87476197e+00  9.37e-06 1.27e-09  9.18e-09  1537s
+ 107  -7.89286634e+00 -7.87476198e+00  9.37e-06 1.27e-09  9.18e-09  1552s
+ 108  -7.89106780e+00 -7.87494077e+00  8.90e-06 1.59e-09  8.31e-09  1568s
+ 109  -7.89100833e+00 -7.87494386e+00  8.91e-06 1.60e-09  8.28e-09  1582s
+ 110  -7.89099804e+00 -7.87494415e+00  8.93e-06 1.60e-09  8.27e-09  1597s
+ 111  -7.88899280e+00 -7.87498918e+00  9.39e-06 1.29e-09  7.23e-09  1614s
+ 112  -7.88899280e+00 -7.87498918e+00  9.39e-06 1.29e-09  7.23e-09  1627s
+ 113  -7.88888473e+00 -7.87499093e+00  9.32e-06 1.28e-09  7.17e-09  1642s
+ 114  -7.88886887e+00 -7.87499143e+00  9.31e-06 1.28e-09  7.16e-09  1656s
+ 115  -7.88764355e+00 -7.87501970e+00  7.86e-06 1.46e-09  6.58e-09  1670s
+ 116  -7.88764271e+00 -7.87501962e+00  7.79e-06 1.46e-09  6.58e-09  1683s
+ 117  -7.88710677e+00 -7.87504160e+00  7.75e-06 1.32e-09  6.29e-09  1697s
+ 118  -7.88710381e+00 -7.87504160e+00  7.75e-06 1.32e-09  6.29e-09  1713s
+ 119  -7.88694223e+00 -7.87509474e+00  7.76e-06 9.56e-10  6.19e-09  1727s
+ 120  -7.88694220e+00 -7.87509473e+00  7.75e-06 9.56e-10  6.19e-09  1741s
+ 121  -7.88503525e+00 -7.87513088e+00  1.25e-05 1.31e-09  5.23e-09  1756s
+ 122  -7.88503340e+00 -7.87513096e+00  1.25e-05 1.30e-09  5.23e-09  1770s
+ 123  -7.88502121e+00 -7.87513389e+00  1.25e-05 1.27e-09  5.22e-09  1785s
+ 124  -7.88385877e+00 -7.87515180e+00  1.15e-05 1.42e-09  4.60e-09  1803s
+ 125  -7.88231229e+00 -7.87518210e+00  1.25e-05 1.56e-09  3.77e-09  1817s
+ 126  -7.88231219e+00 -7.87518212e+00  1.25e-05 1.56e-09  3.77e-09  1831s
+ 127  -7.88224338e+00 -7.87518341e+00  1.25e-05 1.55e-09  3.73e-09  1845s
+ 128  -7.88224031e+00 -7.87518377e+00  1.25e-05 1.55e-09  3.73e-09  1861s
+ 129  -7.88222530e+00 -7.87518429e+00  1.24e-05 1.55e-09  3.72e-09  1875s
+ 130  -7.88220052e+00 -7.87518493e+00  1.24e-05 1.54e-09  3.71e-09  1890s
+ 131  -7.87912046e+00 -7.87521240e+00  1.00e-05 9.07e-10  2.09e-09  1915s
+ 132  -7.87911988e+00 -7.87521244e+00  9.98e-06 9.07e-10  2.09e-09  1929s
+ 133  -7.87893997e+00 -7.87521345e+00  8.96e-06 9.01e-10  1.99e-09  1943s
+ 134  -7.87893991e+00 -7.87521345e+00  8.96e-06 9.01e-10  1.99e-09  1957s
+ 135  -7.87893778e+00 -7.87521492e+00  8.94e-06 9.00e-10  1.99e-09  1970s
+ 136  -7.87889273e+00 -7.87521564e+00  8.89e-06 8.85e-10  1.96e-09  1985s
+ 137  -7.87863193e+00 -7.87521731e+00  8.47e-06 8.72e-10  1.82e-09  2000s
+ 138  -7.87853087e+00 -7.87521765e+00  8.06e-06 8.70e-10  1.77e-09  2014s
+ 139  -7.87825605e+00 -7.87522442e+00  6.99e-06 7.80e-10  1.62e-09  2034s
+ 140  -7.87809815e+00 -7.87522993e+00  6.58e-06 7.34e-10  1.53e-09  2049s
+ 141  -7.87807522e+00 -7.87521303e+00  6.58e-06 7.33e-10  1.53e-09  2066s
+ 142  -7.87809437e+00 -7.87525282e+00  6.45e-06 7.32e-10  1.52e-09  2080s
+ 143  -7.87765527e+00 -7.87525383e+00  5.37e-06 7.17e-10  1.28e-09  2095s
+ 144  -7.87765527e+00 -7.87525383e+00  5.37e-06 7.17e-10  1.28e-09  2109s
+ 145  -7.87765496e+00 -7.87524492e+00  5.48e-06 7.16e-10  1.28e-09  2123s
+ 146  -7.87707420e+00 -7.87524939e+00  5.39e-06 6.47e-10  9.74e-10  2142s
+ 147  -7.87696511e+00 -7.87525557e+00  4.21e-06 6.28e-10  9.13e-10  2159s
+ 148  -7.87692295e+00 -7.87525745e+00  4.09e-06 6.00e-10  8.90e-10  2172s
+ 149  -7.87669320e+00 -7.87525777e+00  3.60e-06 4.85e-10  7.66e-10  2191s
+ 150  -7.87669169e+00 -7.87525775e+00  3.61e-06 4.84e-10  7.66e-10  2205s
+ 151  -7.87669072e+00 -7.87525754e+00  3.62e-06 4.83e-10  7.65e-10  2219s
+ 152  -7.87661862e+00 -7.87525812e+00  4.56e-06 4.76e-10  7.26e-10  2234s
+ 153  -7.87661693e+00 -7.87525812e+00  4.56e-06 4.75e-10  7.25e-10  2249s
+ 154  -7.87661640e+00 -7.87525813e+00  4.55e-06 4.75e-10  7.25e-10  2263s
+ 155  -7.87661638e+00 -7.87525814e+00  4.55e-06 4.75e-10  7.25e-10  2278s
+ 156  -7.87660960e+00 -7.87525810e+00  4.71e-06 4.74e-10  7.21e-10  2292s
+ 157  -7.87660231e+00 -7.87525799e+00  4.68e-06 4.70e-10  7.17e-10  2306s
+ 158  -7.87648467e+00 -7.87525811e+00  4.49e-06 4.69e-10  6.54e-10  2320s
+ 159  -7.87628283e+00 -7.87526034e+00  4.39e-06 4.18e-10  5.45e-10  2338s
+ 160  -7.87628280e+00 -7.87526033e+00  4.39e-06 4.18e-10  5.45e-10  2352s
+ 161  -7.87626086e+00 -7.87525908e+00  5.28e-06 4.12e-10  5.34e-10  2366s
+ 162  -7.87625944e+00 -7.87525904e+00  5.27e-06 4.11e-10  5.33e-10  2380s
+ 163  -7.87624122e+00 -7.87525703e+00  5.51e-06 4.07e-10  5.25e-10  2394s
+ 164  -7.87624122e+00 -7.87525703e+00  5.51e-06 4.07e-10  5.25e-10  2408s
+ 165  -7.87624115e+00 -7.87525706e+00  5.51e-06 4.07e-10  5.25e-10  2422s
+ 166  -7.87624115e+00 -7.87525707e+00  5.51e-06 4.07e-10  5.25e-10  2436s
+ 167  -7.87624081e+00 -7.87525703e+00  5.52e-06 4.07e-10  5.25e-10  2450s
+ 168  -7.87624077e+00 -7.87525700e+00  5.52e-06 4.07e-10  5.25e-10  2464s
+ 169  -7.87613222e+00 -7.87525645e+00  5.95e-06 3.70e-10  4.73e-10  2480s
+
+Barrier solved model in 169 iterations and 2480.12 seconds (3625.73 work units)
+Optimal objective -7.87613222e+00
+
+---------------------------------------------------------------------------
+
+Multi-objectives: optimize objective 2 (A2_2026) ...
+---------------------------------------------------------------------------
+
+Optimize a model with 7296111 rows, 2712544 columns and 15916229 nonzeros
+Model fingerprint: 0x2a8081d0
+Coefficient statistics:
+  Matrix range     [3e-03, 2e+03]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-03, 2e+06]
+Presolve removed 836780 rows and 4285244 columns (presolve time = 5s) ...
+Presolve removed 837003 rows and 4308233 columns (presolve time = 10s) ...
+Presolve removed 837008 rows and 4327161 columns
+Presolve time: 2495.09s
+Presolved: 1875536 rows, 2969542 columns, 10101948 nonzeros
+Elapsed ordering time = 5s
+Elapsed ordering time = 19s
+Elapsed ordering time = 20s
+Ordering time: 38.84s
+
+Barrier statistics:
+ Dense cols : 408
+ Free vars  : 112919
+ AA' NZ     : 4.279e+07
+ Factor NZ  : 8.024e+08 (roughly 8.0 GB of memory)
+ Factor Ops : 1.378e+12 (roughly 4 seconds per iteration)
+ Threads    : 10
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -2.09278146e+07  4.88577365e+03  2.71e+01 1.62e+03  2.87e+03  2579s
+   1  -2.14850197e+07 -5.06461441e+04  2.14e+01 2.35e+04  2.31e+03  2590s
+   2  -2.29405208e+07  6.39743832e+04  1.61e+01 2.10e+04  1.96e+03  2597s
+   3  -2.90223000e+07  7.76279458e+03  6.26e+00 1.48e+04  1.31e+03  2605s
+   4  -2.64849224e+06 -1.89990592e+05  5.58e-01 1.22e+03  1.27e+01  2615s
+   5  -2.12825338e+06 -1.90732578e+05  4.37e-01 1.03e+03  9.12e+00  2624s
+   6  -1.03110292e+06 -1.05084805e+05  2.10e-01 3.84e+02  2.15e+00  2636s
+   7  -2.01067650e+05 -2.23737203e+04  3.97e-02 7.60e+01  1.81e-01  2646s
+   8  -6.06647804e+04 -6.64714617e+03  1.20e-02 2.13e+01  3.63e-02  2656s
+   9  -1.76396866e+04 -3.01490040e+03  3.42e-03 9.49e+00  9.83e-03  2665s
+  10  -1.65551828e+04 -2.14134391e+03  3.21e-03 6.67e+00  8.20e-03  2673s
+  11  -1.02941662e+04 -1.50884315e+03  1.99e-03 4.67e+00  4.91e-03  2680s
+  12  -6.78339053e+03 -9.14346316e+02  1.31e-03 2.80e+00  2.98e-03  2687s
+  13  -4.27387439e+03 -5.37126642e+02  8.21e-04 1.63e+00  1.76e-03  2695s
+  14  -2.10632027e+03 -3.50240320e+02  4.04e-04 1.06e+00  8.65e-04  2703s
+  15  -1.22940437e+03 -2.07381901e+02  2.35e-04 6.20e-01  4.91e-04  2712s
+  16  -8.76177138e+02 -1.34542537e+02  1.68e-04 4.00e-01  3.41e-04  2720s
+  17  -5.03515421e+02 -1.11037351e+02  9.62e-05 3.29e-01  2.03e-04  2730s
+  18  -3.81122345e+02 -9.78575836e+01  7.40e-05 2.90e-01  1.56e-04  2739s
+  19  -1.73282941e+02 -7.41248189e+01  8.90e-05 2.18e-01  7.63e-05  2749s
+  20  -1.24429132e+02 -4.83262293e+01  9.54e-05 1.42e-01  5.37e-05  2759s
+  21  -8.56683104e+01 -3.67963868e+01  1.02e-04 1.07e-01  3.74e-05  2768s
+  22  -5.05513144e+01 -2.29120820e+01  1.17e-04 6.58e-02  2.18e-05  2778s
+  23  -2.64680625e+01 -1.57115399e+01  8.94e-05 4.49e-02  1.19e-05  2787s
+  24  -2.06230780e+01 -1.26256001e+01  6.96e-05 3.60e-02  9.28e-06  2795s
+  25  -1.72318987e+01 -1.00212484e+01  5.83e-05 2.86e-02  7.75e-06  2802s
+  26  -1.28468683e+01 -7.91947574e+00  4.34e-05 2.26e-02  5.83e-06  2809s
+  27  -7.91414367e+00 -5.89857845e+00  2.73e-05 1.68e-02  3.67e-06  2817s
+  28  -5.96400256e+00 -4.12345796e+00  2.16e-05 1.17e-02  2.76e-06  2826s
+  29  -4.05952697e+00 -3.05713867e+00  1.89e-05 8.63e-03  1.86e-06  2836s
+  30  -2.66664412e+00 -2.43180665e+00  1.41e-05 6.85e-03  1.25e-06  2846s
+  31  -1.26957876e+00 -1.46356030e+00  8.81e-06 4.12e-03  6.31e-07  2855s
+  32  -6.98495460e-01 -9.92242954e-01  5.90e-06 2.79e-03  3.57e-07  2864s
+  33  -4.01696084e-01 -7.08772816e-01  5.11e-06 1.99e-03  2.17e-07  2872s
+  34  -3.26534063e-01 -6.75526195e-01  4.26e-06 1.90e-03  1.84e-07  2880s
+  35  -2.22762324e-01 -5.39143583e-01  3.32e-06 1.52e-03  1.32e-07  2888s
+  36  -2.18007394e-01 -5.32425768e-01  3.26e-06 1.50e-03  1.29e-07  2896s
+  37  -1.61767040e-01 -2.43300061e-01  2.47e-06 6.85e-04  8.82e-08  2904s
+  38  -1.25685007e-01 -1.64503638e-01  2.00e-06 4.63e-04  6.74e-08  2912s
+  39  -1.03837520e-01 -1.20933874e-01  1.74e-06 3.40e-04  5.51e-08  2920s
+  40  -8.94634759e-02 -1.01282025e-01  1.56e-06 2.85e-04  4.74e-08  2928s
+  41  -4.10946053e-02 -3.88315442e-02  8.94e-07 1.09e-04  2.20e-08  2936s
+  42  -2.58256130e-02 -2.05360227e-02  5.96e-07 5.78e-05  1.38e-08  2944s
+  43  -3.71381413e-03 -1.31995492e-05  1.14e-07 4.20e-08  1.98e-09  2953s
+  44  -5.18899763e-06  3.19234444e-09  1.60e-10 8.71e-10  2.77e-12  2962s
+
+Barrier solved model in 44 iterations and 2961.89 seconds (4180.86 work units)
+Optimal objective -5.18899763e-06
+
+---------------------------------------------------------------------------
+
+Multi-objectives: optimize objective 3 (A1_2027) ...
+---------------------------------------------------------------------------
+
+Optimize a model with 7296111 rows, 2712544 columns and 15916229 nonzeros
+Model fingerprint: 0x5449e58c
+Coefficient statistics:
+  Matrix range     [3e-03, 2e+03]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-03, 2e+06]
+Presolve removed 836769 rows and 4285234 columns (presolve time = 5s) ...
+Presolve removed 837003 rows and 4308233 columns (presolve time = 11s) ...
+Presolve removed 837008 rows and 4327161 columns
+Presolve time: 2977.30s
+Presolved: 1875536 rows, 2969542 columns, 10101948 nonzeros
+Elapsed ordering time = 5s
+Elapsed ordering time = 16s
+Ordering time: 37.31s
+
+Barrier statistics:
+ Dense cols : 408
+ Free vars  : 112919
+ AA' NZ     : 4.279e+07
+ Factor NZ  : 8.024e+08 (roughly 8.0 GB of memory)
+ Factor Ops : 1.378e+12 (roughly 4 seconds per iteration)
+ Threads    : 10
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -1.17093405e+08  4.83920363e+03  1.52e+02 1.62e+03  1.61e+04  3060s
+   1  -1.20263495e+08 -7.72139207e+04  1.19e+02 2.35e+04  1.29e+04  3071s
+   2  -1.28263381e+08  1.64465832e+04  9.00e+01 2.10e+04  1.10e+04  3079s
+   3  -1.58880641e+08 -4.65423492e+04  3.77e+01 1.49e+04  7.37e+03  3088s
+   4  -1.52411263e+07 -3.38046241e+04  3.73e+00 6.43e+02  4.12e+01  3099s
+   5  -1.88519819e+06 -1.37601187e+04  4.54e-01 1.12e+02  2.10e+00  3110s
+   6  -9.47415089e+05 -9.25360056e+03  2.26e-01 5.12e+01  7.60e-01  3119s
+   7  -2.36960477e+05 -5.29857828e+03  5.59e-02 2.87e+01  1.88e-01  3128s
+   8  -7.62743707e+04 -2.66996496e+03  1.77e-02 1.04e+01  4.57e-02  3137s
+   9  -7.14698974e+04 -1.91866021e+03  1.66e-02 5.99e+00  3.48e-02  3144s
+  10  -4.85836622e+04 -1.71726637e+03  1.12e-02 5.00e+00  2.36e-02  3151s
+  11  -2.20177025e+04 -1.34047346e+03  4.97e-03 3.05e+00  1.03e-02  3158s
+  12  -1.02092482e+04 -9.44874335e+02  2.22e-03 1.34e+00  4.11e-03  3167s
+  13  -6.61874893e+03 -8.06739203e+02  1.38e-03 6.98e-01  2.36e-03  3177s
+  14  -4.64622254e+03 -7.56217794e+02  9.26e-04 4.79e-01  1.54e-03  3185s
+  15  -3.31410485e+03 -7.29982505e+02  6.18e-04 3.66e-01  1.03e-03  3193s
+  16  -2.73099777e+03 -7.05852685e+02  4.83e-04 2.62e-01  7.84e-04  3202s
+  17  -1.96488972e+03 -6.90175053e+02  3.06e-04 1.99e-01  5.01e-04  3210s
+  18  -1.71837955e+03 -6.71598391e+02  2.49e-04 1.26e-01  3.95e-04  3219s
+  19  -1.03472429e+03 -6.60803424e+02  9.12e-05 8.36e-02  1.53e-04  3228s
+  20  -8.84608486e+02 -6.50361291e+02  5.65e-05 4.26e-02  9.39e-05  3238s
+  21  -7.55231386e+02 -6.45884268e+02  3.95e-05 2.56e-02  4.60e-05  3247s
+  22  -7.04238545e+02 -6.44428928e+02  2.92e-05 1.99e-02  2.72e-05  3255s
+  23  -6.81493823e+02 -6.42051802e+02  1.88e-05 1.11e-02  1.76e-05  3263s
+  24  -6.79338188e+02 -6.41513433e+02  1.79e-05 9.14e-03  1.66e-05  3270s
+  25  -6.59136889e+02 -6.40728860e+02  8.91e-06 6.15e-03  8.51e-06  3278s
+  26  -6.50713109e+02 -6.39858939e+02  6.65e-06 2.98e-03  4.98e-06  3287s
+  27  -6.42750843e+02 -6.39227411e+02  4.00e-06 6.73e-04  1.68e-06  3296s
+  28  -6.39936266e+02 -6.39050249e+02  1.38e-06 1.40e-05  4.04e-07  3306s
+  29  -6.39733065e+02 -6.39049543e+02  1.07e-06 1.13e-05  3.12e-07  3315s
+  30  -6.39111397e+02 -6.39046600e+02  1.78e-07 1.74e-08  2.98e-08  3325s
+  31  -6.39047241e+02 -6.39046615e+02  4.50e-09 5.28e-11  2.88e-10  3336s
+
+Barrier solved model in 31 iterations and 3335.69 seconds (4591.18 work units)
+Optimal objective -6.39047241e+02
+
+---------------------------------------------------------------------------
+
+Multi-objectives: optimize objective 4 (A2_2027) ...
+---------------------------------------------------------------------------
+
+Optimize a model with 7296111 rows, 2712544 columns and 15916229 nonzeros
+Model fingerprint: 0x4d101e10
+Coefficient statistics:
+  Matrix range     [3e-03, 2e+03]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-03, 2e+06]
+Presolve removed 521374 rows and 3970000 columns (presolve time = 5s) ...
+Presolve removed 839507 rows and 4287973 columns (presolve time = 11s) ...
+Presolve removed 839733 rows and 4330024 columns
+Presolve time: 3353.06s
+Presolved: 1872811 rows, 2966679 columns, 10094778 nonzeros
+Elapsed ordering time = 5s
+Elapsed ordering time = 16s
+Ordering time: 35.52s
+
+Barrier statistics:
+ Dense cols : 408
+ Free vars  : 111151
+ AA' NZ     : 4.288e+07
+ Factor NZ  : 8.112e+08 (roughly 8.0 GB of memory)
+ Factor Ops : 1.411e+12 (roughly 4 seconds per iteration)
+ Threads    : 10
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -2.09684782e+07  4.81974750e+03  2.71e+01 1.62e+03  2.87e+03  3431s
+   1  -2.15246695e+07 -3.23303221e+04  2.14e+01 2.35e+04  2.31e+03  3442s
+   2  -2.29496687e+07  9.08519509e+04  1.61e+01 2.10e+04  1.96e+03  3450s
+   3  -2.91347752e+07  2.56192038e+04  6.10e+00 1.49e+04  1.31e+03  3459s
+   4  -2.72225354e+06 -1.90843679e+05  5.56e-01 1.23e+03  1.30e+01  3470s
+   5  -2.16052808e+06 -1.91365422e+05  4.32e-01 1.04e+03  9.24e+00  3479s
+   6  -1.00203869e+06 -1.01624710e+05  1.98e-01 3.77e+02  2.06e+00  3492s
+   7  -1.49470180e+05 -2.06160108e+04  2.79e-02 7.20e+01  1.39e-01  3503s
+   8  -4.58963735e+04 -7.39589358e+03  8.41e-03 2.37e+01  3.03e-02  3514s
+   9  -1.40034300e+04 -3.01940101e+03  2.52e-03 9.31e+00  7.77e-03  3524s
+  10  -1.20101296e+04 -1.61417401e+03  2.16e-03 4.88e+00  5.47e-03  3532s
+  11  -7.08834005e+03 -1.12293277e+03  1.27e-03 3.40e+00  3.14e-03  3539s
+  12  -3.99099130e+03 -6.93560406e+02  7.15e-04 2.08e+00  1.69e-03  3547s
+  13  -2.15366708e+03 -4.37297874e+02  3.85e-04 1.30e+00  8.91e-04  3555s
+  14  -1.45587338e+03 -2.50993537e+02  2.60e-04 7.39e-01  5.71e-04  3563s
+  15  -9.94786274e+02 -2.03871860e+02  1.78e-04 5.99e-01  3.93e-04  3571s
+  16  -6.99239581e+02 -1.32922574e+02  1.25e-04 3.88e-01  2.71e-04  3580s
+  17  -4.25218576e+02 -1.07686314e+02  8.17e-05 3.13e-01  1.69e-04  3589s
+  18  -2.92936903e+02 -8.53423664e+01  7.34e-05 2.47e-01  1.18e-04  3598s
+  19  -1.60699151e+02 -6.37449936e+01  8.15e-05 1.84e-01  6.69e-05  3608s
+  20  -1.21049234e+02 -3.74101186e+01  1.01e-04 1.06e-01  4.88e-05  3618s
+  21  -8.11610802e+01 -2.66995833e+01  1.19e-04 7.47e-02  3.28e-05  3628s
+  22  -4.65321170e+01 -2.30400412e+01  9.76e-05 6.40e-02  1.93e-05  3638s
+  23  -3.37831187e+01 -1.42991187e+01  8.42e-05 3.85e-02  1.37e-05  3647s
+  24  -2.32848204e+01 -1.04613075e+01  6.10e-05 2.72e-02  9.28e-06  3658s
+  25  -1.14714527e+01 -6.49972133e+00  2.84e-05 1.57e-02  4.51e-06  3668s
+  26  -9.77632845e+00 -5.52436522e+00  2.37e-05 1.29e-02  3.79e-06  3677s
+  27  -6.44590894e+00 -4.31699758e+00  1.47e-05 9.44e-03  2.42e-06  3686s
+  28  -3.98476287e+00 -3.93973536e+00  1.13e-05 8.37e-03  1.41e-06  3695s
+  29  -3.69851679e+00 -3.38912877e+00  1.09e-05 6.80e-03  1.26e-06  3702s
+  30  -2.84027782e+00 -2.48846078e+00  8.57e-06 4.23e-03  8.72e-07  3711s
+  31  -2.04207175e+00 -1.89315187e+00  7.94e-06 2.52e-03  5.01e-07  3720s
+  32  -1.41355287e+00 -1.54822614e+00  4.86e-06 1.54e-03  2.17e-07  3730s
+  33  -1.35121181e+00 -1.37616977e+00  4.38e-06 1.05e-03  1.80e-07  3739s
+  34  -1.35075620e+00 -1.37422891e+00  4.38e-06 1.05e-03  1.80e-07  3748s
+  35  -1.34685294e+00 -1.35115383e+00  4.34e-06 9.84e-04  1.77e-07  3756s
+  36  -1.18510570e+00 -1.18109233e+00  2.54e-06 5.08e-04  8.62e-08  3764s
+  37  -1.07005315e+00 -1.04610046e+00  1.15e-06 1.29e-04  3.33e-08  3773s
+  38  -1.03945932e+00 -1.00005883e+00  6.69e-07 1.91e-07  1.87e-08  3781s
+  39  -1.00006018e+00 -9.99999998e-01  1.03e-09 9.49e-10  2.86e-11  3790s
+  40  -9.99999973e-01 -1.00000000e+00  4.28e-11 6.07e-11  3.06e-14  3799s
+
+Barrier solved model in 40 iterations and 3799.09 seconds (5115.84 work units)
+Optimal objective -9.99999973e-01
+
+---------------------------------------------------------------------------
+
+Multi-objectives: optimize objective 5 (A1_2028) ...
+---------------------------------------------------------------------------
+
+Optimize a model with 7296111 rows, 2712544 columns and 15916229 nonzeros
+Model fingerprint: 0xebcc6413
+Coefficient statistics:
+  Matrix range     [3e-03, 2e+03]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-03, 2e+06]
+Presolve removed 839505 rows and 4287971 columns (presolve time = 5s) ...
+Presolve removed 839728 rows and 4310960 columns (presolve time = 10s) ...
+Presolve removed 839733 rows and 4330024 columns
+Presolve time: 3814.00s
+Presolved: 1872811 rows, 2966679 columns, 10094778 nonzeros
+Elapsed ordering time = 5s
+Elapsed ordering time = 16s
+Ordering time: 37.00s
+
+Barrier statistics:
+ Dense cols : 408
+ Free vars  : 111151
+ AA' NZ     : 4.288e+07
+ Factor NZ  : 8.016e+08 (roughly 8.0 GB of memory)
+ Factor Ops : 1.389e+12 (roughly 4 seconds per iteration)
+ Threads    : 10
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -1.89138123e+08  4.80483604e+03  2.44e+02 1.62e+03  2.59e+04  3893s
+   1  -1.94244764e+08 -1.53038538e+05  1.91e+02 2.35e+04  2.08e+04  3903s
+   2  -2.06818280e+08 -8.31690538e+04  1.45e+02 2.10e+04  1.77e+04  3910s
+   3  -2.55877398e+08 -1.98338325e+05  6.08e+01 1.49e+04  1.19e+04  3918s
+   4  -1.57097817e+07 -7.50706166e+04  3.92e+00 2.23e+03  1.44e+02  3928s
+   5  -2.43417020e+06 -4.05973178e+04  5.79e-01 2.63e+02  4.39e+00  3939s
+   6  -1.20063719e+06 -2.69528386e+04  2.85e-01 1.09e+02  1.29e+00  3949s
+   7  -3.73402844e+05 -1.74439289e+04  8.72e-02 6.41e+01  3.78e-01  3958s
+   8  -1.17620019e+05 -5.48109834e+03  2.71e-02 1.55e+01  6.96e-02  3968s
+   9  -3.84105305e+04 -3.52609407e+03  8.54e-03 7.59e+00  2.09e-02  3978s
+  10  -2.33189080e+04 -2.72156948e+03  5.04e-03 4.73e+00  1.13e-02  3986s
+  11  -1.84618376e+04 -2.37388915e+03  3.93e-03 3.55e+00  8.32e-03  3993s
+  12  -1.05185965e+04 -2.05014335e+03  2.11e-03 2.49e+00  4.38e-03  4001s
+  13  -6.90039882e+03 -1.76185239e+03  1.28e-03 1.52e+00  2.47e-03  4008s
+  14  -4.74579952e+03 -1.54906232e+03  7.89e-04 8.41e-01  1.42e-03  4016s
+  15  -3.77916555e+03 -1.42278827e+03  5.69e-04 4.46e-01  9.50e-04  4025s
+  16  -2.47868518e+03 -1.38722782e+03  2.73e-04 3.38e-01  4.72e-04  4035s
+  17  -2.11827223e+03 -1.34977815e+03  1.92e-04 2.26e-01  3.24e-04  4044s
+  18  -1.80130609e+03 -1.33012874e+03  1.20e-04 1.67e-01  2.05e-04  4052s
+  19  -1.57717421e+03 -1.31306711e+03  8.53e-05 1.17e-01  1.21e-04  4062s
+  20  -1.44851399e+03 -1.30200998e+03  7.03e-05 8.53e-02  7.20e-05  4071s
+  21  -1.42689698e+03 -1.28708248e+03  6.22e-05 4.20e-02  5.93e-05  4080s
+  22  -1.39358489e+03 -1.28462778e+03  4.92e-05 3.49e-02  4.67e-05  4088s
+  23  -1.36320892e+03 -1.27939638e+03  3.72e-05 1.98e-02  3.44e-05  4096s
+  24  -1.32797153e+03 -1.27805056e+03  2.87e-05 1.59e-02  2.14e-05  4105s
+  25  -1.30830784e+03 -1.27678614e+03  2.65e-05 1.22e-02  1.40e-05  4115s
+  26  -1.28916642e+03 -1.27567990e+03  2.07e-05 8.99e-03  6.90e-06  4125s
+  27  -1.28274265e+03 -1.27482284e+03  1.47e-05 6.44e-03  4.26e-06  4135s
+  28  -1.27922687e+03 -1.27339543e+03  1.11e-05 2.43e-03  2.73e-06  4144s
+  29  -1.27623750e+03 -1.27315856e+03  7.42e-06 1.75e-03  1.55e-06  4152s
+  30  -1.27623696e+03 -1.27315689e+03  7.42e-06 1.75e-03  1.55e-06  4160s
+  31  -1.27623568e+03 -1.27315353e+03  7.42e-06 1.74e-03  1.54e-06  4168s
+  32  -1.27493699e+03 -1.27286523e+03  5.23e-06 9.41e-04  9.82e-07  4177s
+  33  -1.27302028e+03 -1.27265235e+03  1.31e-06 3.36e-04  2.22e-07  4186s
+  34  -1.27263933e+03 -1.27253495e+03  3.67e-07 2.49e-06  5.31e-08  4195s
+  35  -1.27253814e+03 -1.27253420e+03  1.47e-08 7.82e-09  2.26e-09  4204s
+
+Barrier solved model in 35 iterations and 4203.99 seconds (5574.98 work units)
+Optimal objective -1.27253814e+03
+
+---------------------------------------------------------------------------
+
+Multi-objectives: optimize objective 6 (A2_2028) ...
+---------------------------------------------------------------------------
+
+Optimize a model with 7296111 rows, 2712544 columns and 15916229 nonzeros
+Model fingerprint: 0x57e6931f
+Coefficient statistics:
+  Matrix range     [3e-03, 2e+03]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-03, 2e+06]
+Presolve removed 711368 rows and 4160000 columns (presolve time = 5s) ...
+Presolve removed 840603 rows and 4289075 columns (presolve time = 10s) ...
+Presolve removed 840829 rows and 4331262 columns (presolve time = 15s) ...
+Presolve removed 840829 rows and 4331262 columns
+Presolve time: 4221.46s
+Presolved: 1871715 rows, 2965441 columns, 10090132 nonzeros
+Elapsed ordering time = 5s
+Elapsed ordering time = 16s
+Ordering time: 35.71s
+
+Barrier statistics:
+ Dense cols : 408
+ Free vars  : 110606
+ AA' NZ     : 4.290e+07
+ Factor NZ  : 8.051e+08 (roughly 8.0 GB of memory)
+ Factor Ops : 1.378e+12 (roughly 4 seconds per iteration)
+ Threads    : 10
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -2.09540080e+07  4.81825969e+03  2.71e+01 1.62e+03  2.87e+03  4302s
+   1  -2.15128384e+07 -2.91242605e+04  2.14e+01 2.35e+04  2.32e+03  4314s
+   2  -2.29398202e+07  9.54840173e+04  1.61e+01 2.10e+04  1.96e+03  4321s
+   3  -2.89535307e+07  2.82096869e+04  6.43e+00 1.49e+04  1.32e+03  4329s
+   4  -2.59378342e+06 -1.88497354e+05  5.62e-01 1.21e+03  1.25e+01  4339s
+   5  -2.08276066e+06 -1.89368713e+05  4.40e-01 1.03e+03  8.93e+00  4347s
+   6  -9.10663465e+05 -1.14743131e+05  1.88e-01 3.78e+02  1.94e+00  4358s
+   7  -2.07342427e+05 -2.96740408e+04  4.13e-02 9.62e+01  2.21e-01  4369s
+   8  -8.40290566e+04 -9.49284023e+03  1.67e-02 2.99e+01  5.55e-02  4379s
+   9  -2.33215021e+04 -3.88414373e+03  4.55e-03 1.19e+01  1.30e-02  4388s
+  10  -1.24703820e+04 -2.19970545e+03  2.42e-03 6.64e+00  6.25e-03  4397s
+  11  -9.26298151e+03 -1.46083887e+03  1.80e-03 4.38e+00  4.27e-03  4404s
+  12  -6.52857539e+03 -7.96381156e+02  1.26e-03 2.36e+00  2.73e-03  4411s
+  13  -3.87086778e+03 -4.68937194e+02  7.48e-04 1.39e+00  1.55e-03  4419s
+  14  -3.03193905e+03 -3.91081872e+02  5.86e-04 1.15e+00  1.20e-03  4427s
+  15  -1.96911094e+03 -2.50827581e+02  3.80e-04 7.40e-01  7.63e-04  4435s
+  16  -1.42444975e+03 -1.58638003e+02  2.75e-04 4.65e-01  5.37e-04  4444s
+  17  -9.32337430e+02 -1.15286832e+02  1.80e-04 3.37e-01  3.51e-04  4454s
+  18  -5.90804007e+02 -7.12223162e+01  1.14e-04 2.06e-01  2.20e-04  4465s
+  19  -3.99224493e+02 -5.74679242e+01  7.68e-05 1.66e-01  1.50e-04  4475s
+  20  -1.48289674e+02 -3.71131832e+01  1.02e-04 1.06e-01  5.90e-05  4483s
+  21  -8.94900400e+01 -2.89912788e+01  1.02e-04 8.21e-02  3.65e-05  4493s
+  22  -4.60405470e+01 -1.88113195e+01  8.44e-05 5.22e-02  1.94e-05  4502s
+  23  -3.02386904e+01 -1.35239098e+01  6.02e-05 3.67e-02  1.29e-05  4509s
+  24  -2.84174575e+01 -1.21418707e+01  5.64e-05 3.26e-02  1.20e-05  4517s
+  25  -2.64103731e+01 -1.00946503e+01  5.22e-05 2.66e-02  1.10e-05  4525s
+  26  -2.00446627e+01 -8.59275196e+00  3.89e-05 2.22e-02  8.33e-06  4533s
+  27  -1.51052034e+01 -5.39821974e+00  2.87e-05 1.27e-02  6.08e-06  4543s
+  28  -8.26818049e+00 -4.39434157e+00  1.48e-05 9.82e-03  3.29e-06  4552s
+  29  -6.65071751e+00 -3.52583787e+00  1.27e-05 7.31e-03  2.57e-06  4560s
+  30  -3.83515872e+00 -2.51396147e+00  9.36e-06 4.29e-03  1.28e-06  4571s
+  31  -2.60129319e+00 -2.25939553e+00  7.51e-06 3.57e-03  7.65e-07  4579s
+  32  -2.60003541e+00 -2.25784411e+00  7.51e-06 3.56e-03  7.65e-07  4589s
+  33  -2.28210430e+00 -1.68943295e+00  6.84e-06 1.95e-03  6.36e-07  4598s
+  34  -1.69418444e+00 -1.41746185e+00  4.37e-06 1.18e-03  3.32e-07  4607s
+  35  -1.30079683e+00 -1.11981478e+00  2.12e-06 3.38e-04  1.48e-07  4616s
+  36  -1.23804836e+00 -1.09673981e+00  1.69e-06 2.73e-04  1.17e-07  4624s
+  37  -1.13324012e+00 -1.07225460e+00  9.70e-07 2.04e-04  6.65e-08  4632s
+  38  -1.12938581e+00 -1.06961146e+00  9.43e-07 1.96e-04  6.46e-08  4641s
+  39  -1.03051831e+00 -1.00004951e+00  2.93e-07 2.31e-07  1.57e-08  4648s
+  40  -1.00002911e+00 -9.99999962e-01  3.38e-10 9.40e-10  1.50e-11  4657s
+  41  -1.00000000e+00 -1.00000000e+00  1.03e-11 1.18e-10  5.06e-15  4666s
+
+Barrier solved model in 41 iterations and 4666.43 seconds (6098.36 work units)
+Optimal objective -1.00000000e+00
+
+---------------------------------------------------------------------------
+
+Multi-objectives: optimize objective 7 (A1_2029) ...
+---------------------------------------------------------------------------
+
+Optimize a model with 7296111 rows, 2712544 columns and 15916229 nonzeros
+Model fingerprint: 0x8332a547
+Coefficient statistics:
+  Matrix range     [3e-03, 2e+03]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-03, 2e+06]
+Presolve removed 840601 rows and 4289073 columns (presolve time = 5s) ...
+Presolve removed 840824 rows and 4312062 columns (presolve time = 11s) ...
+Presolve removed 840829 rows and 4331262 columns
+Presolve time: 4682.08s
+Presolved: 1871715 rows, 2965441 columns, 10090132 nonzeros
+Elapsed ordering time = 5s
+Elapsed ordering time = 19s
+Elapsed ordering time = 20s
+Ordering time: 40.09s
+
+Barrier statistics:
+ Dense cols : 408
+ Free vars  : 110606
+ AA' NZ     : 4.290e+07
+ Factor NZ  : 8.139e+08 (roughly 8.0 GB of memory)
+ Factor Ops : 1.427e+12 (roughly 5 seconds per iteration)
+ Threads    : 10
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -2.12141226e+08  4.65966177e+03  2.74e+02 1.62e+03  2.91e+04  4765s
+   1  -2.17901448e+08 -4.30065285e+05  2.15e+02 2.34e+04  2.34e+04  4776s
+   2  -2.31951874e+08 -4.22569233e+05  1.63e+02 2.11e+04  2.00e+04  4783s
+   3  -2.78576887e+08 -5.98007087e+05  7.51e+01 1.48e+04  1.33e+04  4792s
+   4  -2.10470110e+07 -3.48305342e+04  5.86e+00 3.80e+02  3.97e+01  4802s
+   5  -3.39121544e+06 -8.00182859e+03  9.32e-01 7.34e+01  3.09e+00  4812s
+   6  -8.75323944e+05 -3.94751477e+03  2.39e-01 2.71e+01  6.23e-01  4822s
+   7  -2.05820981e+05 -2.90581425e+03  5.53e-02 9.96e+00  1.24e-01  4832s
+   8  -1.86455614e+05 -2.77928739e+03  5.00e-02 5.98e+00  9.34e-02  4840s
+   9  -8.73341236e+04 -2.66691431e+03  2.30e-02 4.22e+00  4.35e-02  4848s
+  10  -5.38381641e+04 -2.60042659e+03  1.39e-02 2.58e+00  2.42e-02  4856s
+  11  -2.74478665e+04 -2.50313702e+03  6.77e-03 1.22e+00  1.07e-02  4865s
+  12  -1.82857385e+04 -2.45402798e+03  4.29e-03 7.01e-01  6.35e-03  4874s
+  13  -1.28792154e+04 -2.42897981e+03  2.83e-03 4.77e-01  4.09e-03  4885s
+  14  -8.48516963e+03 -2.41048480e+03  1.65e-03 3.23e-01  2.36e-03  4896s
+  15  -5.39378136e+03 -2.39965295e+03  8.14e-04 2.31e-01  1.19e-03  4907s
+  16  -4.56474788e+03 -2.39215539e+03  5.90e-04 1.67e-01  8.50e-04  4916s
+  17  -3.58308913e+03 -2.38165848e+03  3.27e-04 9.61e-02  4.66e-04  4924s
+  18  -3.13592159e+03 -2.37793134e+03  2.07e-04 7.29e-02  2.99e-04  4932s
+  19  -2.84634957e+03 -2.37453886e+03  1.29e-04 5.19e-02  1.89e-04  4939s
+  20  -2.67240131e+03 -2.37181867e+03  8.22e-05 3.55e-02  1.22e-04  4947s
+  21  -2.60503939e+03 -2.36991536e+03  6.41e-05 2.37e-02  9.37e-05  4955s
+  22  -2.50545955e+03 -2.36791982e+03  3.74e-05 1.22e-02  5.51e-05  4965s
+  23  -2.39663277e+03 -2.36628065e+03  8.27e-06 2.84e-03  1.28e-05  4975s
+  24  -2.37659127e+03 -2.36578966e+03  3.25e-06 5.21e-05  4.37e-06  4985s
+  25  -2.36858756e+03 -2.36579003e+03  8.52e-07 2.80e-05  1.14e-06  4995s
+  26  -2.36644539e+03 -2.36579011e+03  2.40e-07 4.89e-08  2.77e-07  5004s
+  27  -2.36579250e+03 -2.36579050e+03  7.39e-10 2.23e-08  8.46e-10  5012s
+
+Barrier solved model in 27 iterations and 5012.49 seconds (6469.24 work units)
+Optimal objective -2.36579250e+03
+
+---------------------------------------------------------------------------
+
+Multi-objectives: optimize objective 8 (A2_2029) ...
+---------------------------------------------------------------------------
+
+Optimize a model with 7296111 rows, 2712544 columns and 15916229 nonzeros
+Model fingerprint: 0x38f2f60c
+Coefficient statistics:
+  Matrix range     [3e-03, 2e+03]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-03, 2e+06]
+Presolve removed 844276 rows and 4292755 columns (presolve time = 5s) ...
+Presolve removed 844290 rows and 4292768 columns (presolve time = 10s) ...
+Presolve removed 844516 rows and 4334955 columns
+Presolve time: 5029.14s
+Presolved: 1868028 rows, 2961748 columns, 10078417 nonzeros
+Elapsed ordering time = 5s
+Elapsed ordering time = 18s
+Elapsed ordering time = 20s
+Ordering time: 42.26s
+
+Barrier statistics:
+ Dense cols : 408
+ Free vars  : 109110
+ AA' NZ     : 4.300e+07
+ Factor NZ  : 8.146e+08 (roughly 8.0 GB of memory)
+ Factor Ops : 1.458e+12 (roughly 4 seconds per iteration)
+ Threads    : 10
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -2.09696935e+07  4.81599768e+03  2.71e+01 1.62e+03  2.87e+03  5118s
+   1  -2.15344526e+07  4.24731598e+03  2.13e+01 2.35e+04  2.32e+03  5129s
+   2  -2.29251051e+07  1.15400422e+05  1.61e+01 2.14e+04  1.99e+03  5136s
+   3  -2.82341837e+07  1.61511964e+04  6.20e+00 1.45e+04  1.26e+03  5145s
+   4  -2.57284649e+06 -1.76907472e+05  5.48e-01 1.15e+03  1.18e+01  5155s
+   5  -1.98217329e+06 -1.77684725e+05  4.15e-01 9.87e+02  8.29e+00  5165s
+   6  -6.70897168e+05 -9.18612059e+04  1.43e-01 3.27e+02  1.36e+00  5176s
+   7  -1.76703104e+05 -2.13969282e+04  3.73e-02 7.18e+01  1.60e-01  5188s
+   8  -4.60726182e+04 -7.44126660e+03  9.64e-03 2.35e+01  3.05e-02  5199s
+   9  -1.37490806e+04 -3.09870495e+03  2.83e-03 9.60e+00  7.89e-03  5209s
+  10  -1.30292409e+04 -2.37863179e+03  2.68e-03 7.33e+00  6.80e-03  5218s
+  11  -7.74196962e+03 -1.58031841e+03  1.58e-03 4.83e+00  3.84e-03  5226s
+  12  -5.30720845e+03 -8.35754251e+02  1.08e-03 2.52e+00  2.32e-03  5234s
+  13  -3.45869889e+03 -5.87123847e+02  7.05e-04 1.76e+00  1.47e-03  5241s
+  14  -2.05740378e+03 -4.12944568e+02  4.19e-04 1.24e+00  8.58e-04  5250s
+  15  -1.41167681e+03 -2.36409469e+02  2.87e-04 7.04e-01  5.58e-04  5259s
+  16  -8.21502707e+02 -1.64018901e+02  1.67e-04 4.86e-01  3.25e-04  5269s
+  17  -5.98891380e+02 -1.16845961e+02  1.79e-04 3.44e-01  2.34e-04  5278s
+  18  -4.11019882e+02 -8.28647930e+01  1.65e-04 2.43e-01  1.60e-04  5287s
+  19  -3.31764444e+02 -7.30132511e+01  1.44e-04 2.13e-01  1.30e-04  5294s
+  20  -2.10706534e+02 -5.79007608e+01  1.10e-04 1.69e-01  8.38e-05  5302s
+  21  -1.81576626e+02 -4.30393976e+01  9.32e-05 1.24e-01  7.11e-05  5311s
+  22  -1.25448263e+02 -3.25770297e+01  9.24e-05 9.34e-02  4.95e-05  5321s
+  23  -7.50866781e+01 -2.06381453e+01  1.03e-04 5.80e-02  2.98e-05  5332s
+  24  -3.84199443e+01 -1.27906724e+01  5.67e-05 3.48e-02  1.56e-05  5341s
+  25  -2.99413167e+01 -8.65779654e+00  4.36e-05 2.26e-02  1.20e-05  5351s
+  26  -2.04600735e+01 -6.57413697e+00  2.94e-05 1.64e-02  8.20e-06  5360s
+  27  -1.89023645e+01 -5.88391309e+00  2.71e-05 1.44e-02  7.52e-06  5368s
+  28  -1.09535659e+01 -4.84737690e+00  1.57e-05 1.13e-02  4.37e-06  5376s
+  29  -9.38122996e+00 -3.53803591e+00  1.50e-05 7.48e-03  3.66e-06  5384s
+  30  -4.40642285e+00 -2.68320551e+00  1.08e-05 4.93e-03  1.54e-06  5393s
+  31  -2.67131766e+00 -2.29179278e+00  8.94e-06 3.77e-03  7.95e-07  5402s
+  32  -2.18230153e+00 -1.69585060e+00  8.11e-06 2.02e-03  5.45e-07  5412s
+  33  -1.75156551e+00 -1.51811538e+00  5.68e-06 1.50e-03  3.64e-07  5420s
+  34  -1.53636385e+00 -1.45137582e+00  3.77e-06 1.31e-03  2.69e-07  5428s
+  35  -1.24026274e+00 -1.09634896e+00  2.39e-06 2.78e-04  1.17e-07  5436s
+  36  -1.18798880e+00 -1.08548893e+00  1.94e-06 2.47e-04  9.18e-08  5445s
+  37  -1.09150790e+00 -1.01886905e+00  1.06e-06 5.45e-05  4.41e-08  5454s
+  38  -1.06660863e+00 -1.01635965e+00  7.73e-07 4.73e-05  3.22e-08  5462s
+  39  -1.05719479e+00 -1.01374140e+00  8.15e-07 3.97e-05  2.76e-08  5472s
+  40  -1.05497998e+00 -1.01334493e+00  7.85e-07 3.86e-05  2.66e-08  5481s
+  41  -1.00503728e+00 -1.00009615e+00  7.56e-08 2.82e-07  2.46e-09  5489s
+  42  -1.00014995e+00 -9.99999991e-01  2.25e-09 8.05e-10  7.33e-11  5499s
+  43  -1.00013656e+00 -9.99999992e-01  1.51e-08 7.23e-10  6.67e-11  5510s
+  44  -1.00000014e+00 -1.00000000e+00  1.64e-11 5.43e-11  7.26e-14  5522s
+
+Barrier solved model in 44 iterations and 5521.66 seconds (7046.85 work units)
+Optimal objective -1.00000014e+00
+
+---------------------------------------------------------------------------
+
+Multi-objectives: optimize objective 9 (A1_2030) ...
+---------------------------------------------------------------------------
+
+Optimize a model with 7296111 rows, 2712544 columns and 15916229 nonzeros
+Model fingerprint: 0xbc4632fe
+Coefficient statistics:
+  Matrix range     [3e-03, 2e+03]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-03, 2e+06]
+Presolve removed 844277 rows and 4292756 columns (presolve time = 5s) ...
+Presolve removed 844511 rows and 4315755 columns (presolve time = 11s) ...
+Presolve removed 844516 rows and 4334955 columns
+Presolve time: 5537.67s
+Presolved: 1868028 rows, 2961748 columns, 10078417 nonzeros
+Elapsed ordering time = 5s
+Elapsed ordering time = 15s
+Ordering time: 32.41s
+
+Barrier statistics:
+ Dense cols : 408
+ Free vars  : 109111
+ AA' NZ     : 4.300e+07
+ Factor NZ  : 8.083e+08 (roughly 8.0 GB of memory)
+ Factor Ops : 1.418e+12 (roughly 4 seconds per iteration)
+ Threads    : 10
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -2.06514857e+08  5.12543994e+03  2.67e+02 1.62e+03  2.83e+04  5610s
+   1  -2.12179160e+08 -9.22430935e+05  2.09e+02 2.35e+04  2.28e+04  5619s
+   2  -2.25474554e+08 -1.10992153e+06  1.59e+02 2.13e+04  1.95e+04  5627s
+   3  -2.78427247e+08 -5.00662057e+05  6.56e+01 1.46e+04  1.27e+04  5636s
+   4  -3.03779596e+07 -4.41135973e+04  7.35e+00 3.39e+02  4.90e+01  5648s
+   5  -4.45042830e+06 -1.02160140e+04  1.06e+00 7.60e+01  4.05e+00  5660s
+   6  -1.03031286e+06 -4.13432840e+03  2.45e-01 2.48e+01  7.00e-01  5671s
+   7  -2.22786957e+05 -3.32766433e+03  5.21e-02 9.40e+00  1.33e-01  5681s
+   8  -2.04802105e+05 -3.32084871e+03  4.78e-02 5.33e+00  9.94e-02  5690s
+   9  -1.04038749e+05 -3.24620407e+03  2.39e-02 3.78e+00  4.96e-02  5698s
+  10  -6.03876338e+04 -3.20570449e+03  1.35e-02 2.29e+00  2.60e-02  5707s
+  11  -2.59743429e+04 -3.14573804e+03  5.40e-03 1.20e+00  9.97e-03  5716s
+  12  -1.99730599e+04 -3.11005394e+03  3.99e-03 7.41e-01  6.85e-03  5726s
+  13  -1.65808748e+04 -3.09381751e+03  3.19e-03 5.84e-01  5.36e-03  5735s
+  14  -1.20821194e+04 -3.07676261e+03  2.13e-03 4.17e-01  3.51e-03  5747s
+  15  -8.83611401e+03 -3.05682461e+03  1.37e-03 2.35e-01  2.16e-03  5759s
+  16  -6.26655629e+03 -3.04935755e+03  7.62e-04 1.86e-01  1.23e-03  5769s
+  17  -6.06333782e+03 -3.04579059e+03  7.14e-04 1.64e-01  1.14e-03  5780s
+  18  -4.77163964e+03 -3.03680588e+03  4.11e-04 1.06e-01  6.58e-04  5790s
+  19  -4.01467237e+03 -3.02998287e+03  2.33e-04 6.53e-02  3.73e-04  5802s
+  20  -3.40247567e+03 -3.02462898e+03  8.99e-05 3.33e-02  1.49e-04  5813s
+  21  -3.25898139e+03 -3.02152288e+03  5.63e-05 1.67e-02  9.18e-05  5823s
+  22  -3.20136214e+03 -3.02080735e+03  4.28e-05 1.30e-02  7.04e-05  5832s
+  23  -3.15674210e+03 -3.01984067e+03  3.24e-05 7.97e-03  5.24e-05  5840s
+  24  -3.07518265e+03 -3.01911885e+03  1.33e-05 4.21e-03  2.24e-05  5849s
+  25  -3.04190442e+03 -3.01861282e+03  5.89e-06 1.58e-03  9.51e-06  5857s
+  26  -3.02560313e+03 -3.01833255e+03  2.46e-06 1.13e-04  2.86e-06  5865s
+  27  -3.01883084e+03 -3.01831321e+03  3.15e-07 1.18e-07  2.11e-07  5875s
+  28  -3.01839788e+03 -3.01831328e+03  5.14e-08 6.74e-08  3.45e-08  5885s
+  29  -3.01831355e+03 -3.01831328e+03  2.42e-09 5.02e-11  1.24e-10  5896s
+
+Barrier solved model in 29 iterations and 5896.21 seconds (7437.24 work units)
+Optimal objective -3.01831355e+03
+
+---------------------------------------------------------------------------
+
+Multi-objectives: optimize objective 10 (A2_2030) ...
+---------------------------------------------------------------------------
+
+Optimize a model with 7296111 rows, 2712544 columns and 15916229 nonzeros
+Model fingerprint: 0x7d4e1eb5
+Coefficient statistics:
+  Matrix range     [3e-03, 2e+03]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-03, 2e+06]
+Presolve removed 519408 rows and 3968063 columns (presolve time = 5s) ...
+Presolve removed 844307 rows and 4292802 columns (presolve time = 10s) ...
+Presolve removed 844307 rows and 4292802 columns (presolve time = 15s) ...
+Presolve removed 844533 rows and 4334989 columns (presolve time = 21s) ...
+Presolve removed 844533 rows and 4334989 columns
+Presolve time: 5920.56s
+Presolved: 1868011 rows, 2961714 columns, 10073454 nonzeros
+Elapsed ordering time = 5s
+Elapsed ordering time = 10s
+Elapsed ordering time = 22s
+Ordering time: 43.35s
+
+Barrier statistics:
+ Dense cols : 408
+ Free vars  : 109110
+ AA' NZ     : 4.288e+07
+ Factor NZ  : 8.022e+08 (roughly 8.0 GB of memory)
+ Factor Ops : 1.381e+12 (roughly 7 seconds per iteration)
+ Threads    : 10
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -2.09668912e+07  5.05993177e+03  2.71e+01 1.62e+03  2.87e+03  6017s
+   1  -2.15333667e+07 -4.67728804e+04  2.13e+01 2.35e+04  2.31e+03  6029s
+   2  -2.29513845e+07  3.06597543e+04  1.61e+01 2.18e+04  2.03e+03  6037s
+   3  -2.80110193e+07 -6.55062119e+04  6.39e+00 1.49e+04  1.29e+03  6046s
+   4  -2.49271553e+06 -1.82776597e+05  5.52e-01 1.16e+03  1.16e+01  6057s
+   5  -1.96274703e+06 -1.83443984e+05  4.26e-01 9.98e+02  8.30e+00  6067s
+   6  -6.76427868e+05 -7.40457441e+04  1.44e-01 2.73e+02  1.18e+00  6080s
+   7  -9.58145416e+04 -1.28057640e+04  1.99e-02 4.20e+01  7.32e-02  6092s
+   8  -2.49126193e+04 -4.81723672e+03  5.12e-03 1.52e+01  1.51e-02  6103s
+   9  -1.25189706e+04 -2.08882559e+03  2.56e-03 6.46e+00  6.12e-03  6113s
+  10  -7.47873778e+03 -1.01337427e+03  1.53e-03 3.08e+00  3.20e-03  6122s
+  11  -4.95916456e+03 -6.54803994e+02  1.01e-03 1.97e+00  2.02e-03  6130s
+  12  -2.89475842e+03 -4.33165319e+02  5.90e-04 1.30e+00  1.16e-03  6138s
+  13  -1.88768479e+03 -2.89161838e+02  3.84e-04 8.63e-01  7.38e-04  6146s
+  14  -1.31808712e+03 -2.28174111e+02  2.68e-04 6.79e-01  5.16e-04  6154s
+  15  -7.68464425e+02 -1.46815383e+02  1.56e-04 4.34e-01  3.00e-04  6163s
+  16  -5.06048432e+02 -1.07167745e+02  1.03e-04 3.15e-01  1.98e-04  6173s
+  17  -2.31938514e+02 -7.03878075e+01  6.64e-05 2.05e-01  9.47e-05  6184s
+  18  -1.73157454e+02 -4.47252567e+01  8.11e-05 1.29e-01  6.93e-05  6195s
+  19  -1.23330309e+02 -3.42969710e+01  9.14e-05 9.79e-02  4.97e-05  6205s
+  20  -7.76398346e+01 -2.18329520e+01  1.11e-04 6.11e-02  3.14e-05  6214s
+  21  -4.78363030e+01 -1.58945188e+01  6.81e-05 4.37e-02  1.97e-05  6222s
+  22  -2.67204759e+01 -1.24971960e+01  3.74e-05 3.37e-02  1.14e-05  6231s
+  23  -1.69207423e+01 -8.12551450e+00  2.34e-05 2.08e-02  7.16e-06  6240s
+  24  -1.42648519e+01 -6.19485191e+00  1.94e-05 1.52e-02  5.93e-06  6249s
+  25  -9.26589449e+00 -5.35065706e+00  1.31e-05 1.27e-02  3.81e-06  6259s
+  26  -5.06859099e+00 -3.63150978e+00  1.19e-05 7.65e-03  1.92e-06  6269s
+  27  -4.09474080e+00 -2.67892577e+00  1.04e-05 4.85e-03  1.42e-06  6279s
+  28  -3.15417252e+00 -2.26478695e+00  8.60e-06 3.64e-03  1.00e-06  6289s
+  29  -1.97350356e+00 -1.81269062e+00  6.42e-06 2.34e-03  4.89e-07  6297s
+  30  -1.55239032e+00 -1.56607980e+00  4.59e-06 1.63e-03  2.94e-07  6305s
+  31  -1.32031066e+00 -1.34007159e+00  3.03e-06 9.77e-04  1.74e-07  6314s
+  32  -1.29778788e+00 -1.25365228e+00  2.86e-06 7.29e-04  1.58e-07  6323s
+  33  -1.27746040e+00 -1.21281996e+00  2.72e-06 6.12e-04  1.46e-07  6332s
+  34  -1.16294814e+00 -1.13139499e+00  1.85e-06 3.78e-04  8.65e-08  6342s
+  35  -1.13165879e+00 -1.08956379e+00  1.57e-06 2.57e-04  6.92e-08  6351s
+  36  -1.11483342e+00 -1.07343789e+00  1.40e-06 2.11e-04  6.01e-08  6360s
+  37  -1.10311916e+00 -1.06399848e+00  1.28e-06 1.84e-04  5.39e-08  6369s
+  38  -1.04179905e+00 -1.00017436e+00  5.94e-07 5.22e-07  2.13e-08  6379s
+  39  -1.00029181e+00 -9.99999976e-01  8.72e-09 9.87e-10  1.57e-10  6390s
+  40  -1.00000028e+00 -1.00000000e+00  9.20e-12 5.61e-11  1.66e-13  6401s
+
+Barrier solved model in 40 iterations and 6400.88 seconds (7942.30 work units)
+Optimal objective -1.00000028e+00
+
+---------------------------------------------------------------------------
+
+Multi-objectives: optimize objective 11 (A1_2031) ...
+---------------------------------------------------------------------------
+
+Optimize a model with 7296111 rows, 2712544 columns and 15916229 nonzeros
+Model fingerprint: 0xc0627081
+Coefficient statistics:
+  Matrix range     [3e-03, 2e+03]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-03, 2e+06]
+Presolve removed 519409 rows and 3968064 columns (presolve time = 5s) ...
+Presolve removed 844308 rows and 4292803 columns (presolve time = 10s) ...
+Presolve removed 844308 rows and 4292803 columns (presolve time = 15s) ...
+Presolve removed 844533 rows and 4334989 columns (presolve time = 21s) ...
+Presolve removed 844533 rows and 4334989 columns
+Presolve time: 6425.19s
+Presolved: 1868011 rows, 2961714 columns, 10073454 nonzeros
+Elapsed ordering time = 5s
+Elapsed ordering time = 10s
+Elapsed ordering time = 22s
+Ordering time: 43.80s
+
+Barrier statistics:
+ Dense cols : 408
+ Free vars  : 109110
+ AA' NZ     : 4.288e+07
+ Factor NZ  : 8.120e+08 (roughly 8.0 GB of memory)
+ Factor Ops : 1.422e+12 (roughly 8 seconds per iteration)
+ Threads    : 10
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -2.13525153e+08  4.42723961e+03  2.76e+02 1.62e+03  2.92e+04  6525s
+   1  -2.19398782e+08 -1.02429901e+06  2.16e+02 2.35e+04  2.35e+04  6537s
+   2  -2.33426708e+08 -1.13113857e+06  1.64e+02 2.18e+04  2.06e+04  6545s
+   3  -2.84219204e+08 -9.56023765e+05  6.55e+01 1.38e+04  1.24e+04  6554s
+   4  -3.70587048e+07 -5.41558072e+04  8.79e+00 4.25e+02  7.32e+01  6565s
+   5  -6.40677217e+06 -1.17958724e+04  1.50e+00 8.55e+01  6.03e+00  6578s
+   6  -1.36436084e+06 -4.72519110e+03  3.18e-01 2.99e+01  1.00e+00  6588s
+   7  -3.38194207e+05 -3.54276744e+03  7.80e-02 1.03e+01  1.99e-01  6598s
+   8  -1.36262901e+05 -3.62413784e+03  3.08e-02 4.86e+00  7.03e-02  6607s
+   9  -1.01453983e+05 -3.64387264e+03  2.27e-02 3.47e+00  4.80e-02  6616s
+  10  -5.66513376e+04 -3.64642704e+03  1.23e-02 2.15e+00  2.44e-02  6624s
+  11  -3.14662687e+04 -3.63335250e+03  6.45e-03 1.24e+00  1.21e-02  6633s
+  12  -2.35248441e+04 -3.60511949e+03  4.62e-03 7.22e-01  8.00e-03  6643s
+  13  -1.59076785e+04 -3.58620312e+03  2.85e-03 4.88e-01  4.85e-03  6654s
+  14  -1.02670759e+04 -3.57349152e+03  1.55e-03 3.33e-01  2.63e-03  6665s
+  15  -8.84475651e+03 -3.56501218e+03  1.22e-03 2.47e-01  2.03e-03  6675s
+  16  -7.10993419e+03 -3.55813884e+03  8.24e-04 1.90e-01  1.37e-03  6684s
+  17  -6.33781542e+03 -3.54892937e+03  6.46e-04 1.18e-01  1.04e-03  6693s
+  18  -4.46520709e+03 -3.54306662e+03  2.14e-04 7.36e-02  3.64e-04  6703s
+  19  -3.77205567e+03 -3.53766310e+03  5.51e-05 3.60e-02  1.04e-04  6714s
+  20  -3.68192877e+03 -3.53517035e+03  3.44e-05 2.07e-02  6.42e-05  6724s
+  21  -3.61603755e+03 -3.53443182e+03  1.93e-05 1.62e-02  3.81e-05  6733s
+  22  -3.57986408e+03 -3.53388461e+03  1.63e-05 1.30e-02  2.39e-05  6741s
+  23  -3.56334476e+03 -3.53308601e+03  1.48e-05 8.20e-03  1.56e-05  6749s
+  24  -3.54138016e+03 -3.53256003e+03  8.64e-06 4.59e-03  5.83e-06  6758s
+  25  -3.54085715e+03 -3.53206167e+03  8.27e-06 1.93e-03  4.54e-06  6767s
+  26  -3.53535949e+03 -3.53194642e+03  3.41e-06 1.25e-03  2.01e-06  6778s
+  27  -3.53521781e+03 -3.53181872e+03  3.28e-06 6.13e-04  1.73e-06  6787s
+  28  -3.53232046e+03 -3.53178806e+03  7.97e-07 4.60e-04  4.13e-07  6796s
+  29  -3.53232021e+03 -3.53178790e+03  7.97e-07 4.59e-04  4.13e-07  6807s
+  30  -3.53223069e+03 -3.53174891e+03  7.54e-07 2.69e-04  3.41e-07  6818s
+  31  -3.53175537e+03 -3.53169585e+03  9.43e-08 3.90e-08  3.25e-08  6827s
+  32  -3.53169779e+03 -3.53169589e+03  4.63e-09 7.12e-11  1.04e-09  6840s
+
+Barrier solved model in 32 iterations and 6839.62 seconds (8369.48 work units)
+Optimal objective -3.53169779e+03
+
+---------------------------------------------------------------------------
+
+Multi-objectives: optimize objective 12 (A2_2031) ...
+---------------------------------------------------------------------------
+
+Optimize a model with 7296111 rows, 2712544 columns and 15916229 nonzeros
+Model fingerprint: 0x9c5e78cf
+Coefficient statistics:
+  Matrix range     [3e-03, 2e+03]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e-03, 2e+06]
+Presolve removed 519438 rows and 3968108 columns (presolve time = 5s) ...
+Presolve removed 844322 rows and 4292832 columns (presolve time = 10s) ...
+Presolve removed 844322 rows and 4292832 columns (presolve time = 15s) ...
+Presolve removed 844548 rows and 4335019 columns (presolve time = 21s) ...
+Presolve removed 844548 rows and 4335019 columns
+Presolve time: 6864.04s
+Presolved: 1867996 rows, 2961684 columns, 10069089 nonzeros
+Elapsed ordering time = 5s
+Elapsed ordering time = 10s
+Elapsed ordering time = 22s
+Elapsed ordering time = 25s
+Ordering time: 42.42s
+
+Barrier statistics:
+ Dense cols : 408
+ Free vars  : 109110
+ AA' NZ     : 4.275e+07
+ Factor NZ  : 7.976e+08 (roughly 8.0 GB of memory)
+ Factor Ops : 1.372e+12 (roughly 7 seconds per iteration)
+ Threads    : 10
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0  -2.09648929e+07  5.25819840e+03  2.71e+01 1.62e+03  2.87e+03  6962s
+   1  -2.15312576e+07 -9.72731055e+04  2.14e+01 2.35e+04  2.31e+03  6973s
+   2  -2.29878262e+07 -6.85567910e+03  1.61e+01 2.10e+04  1.96e+03  6981s
+   3  -2.93717636e+07 -1.02226329e+05  5.88e+00 1.12e+04  1.04e+03  6991s
+   4  -2.74166015e+06 -1.55855347e+05  5.35e-01 9.95e+02  1.17e+01  7002s
+   5  -1.57430651e+06 -1.16632796e+05  2.96e-01 4.72e+02  3.88e+00  7014s
+   6  -3.08642395e+05 -2.54661350e+04  5.80e-02 9.11e+01  3.22e-01  7025s
+   7  -8.50752477e+04 -1.01359136e+04  1.57e-02 3.37e+01  6.58e-02  7034s
+   8  -3.47918379e+04 -3.84977957e+03  6.38e-03 1.27e+01  1.99e-02  7043s
+   9  -2.16063288e+04 -2.55308785e+03  3.95e-03 8.27e+00  1.13e-02  7051s
+  10  -1.58527607e+04 -1.55443806e+03  2.89e-03 4.98e+00  7.36e-03  7059s
+  11  -8.66357502e+03 -1.16512879e+03  1.58e-03 3.71e+00  4.05e-03  7068s
+  12  -3.95586970e+03 -5.27070594e+02  7.18e-04 1.66e+00  1.70e-03  7078s
+  13  -1.80697079e+03 -3.03733743e+02  3.27e-04 9.46e-01  7.62e-04  7089s
+  14  -1.17308811e+03 -2.16320158e+02  2.12e-04 6.60e-01  4.89e-04  7099s
+  15  -8.34885705e+02 -1.46622889e+02  1.61e-04 4.42e-01  3.39e-04  7107s
+  16  -5.92162169e+02 -1.21160894e+02  1.73e-04 3.62e-01  2.42e-04  7117s
+  17  -4.62629703e+02 -1.01055263e+02  1.66e-04 3.01e-01  1.89e-04  7126s
+  18  -2.80248297e+02 -7.37270738e+01  1.47e-04 2.18e-01  1.17e-04  7136s
+  19  -1.87894707e+02 -5.70544660e+01  1.29e-04 1.67e-01  7.93e-05  7146s
+  20  -1.24064052e+02 -3.75079808e+01  1.08e-04 1.08e-01  5.16e-05  7157s
+  21  -8.39101135e+01 -2.91330934e+01  1.28e-04 8.30e-02  3.52e-05  7168s
+  22  -4.06567329e+01 -1.71339782e+01  1.30e-04 4.74e-02  1.75e-05  7179s
+  23  -2.68942263e+01 -1.12627690e+01  9.95e-05 3.01e-02  1.14e-05  7190s
+  24  -1.83272512e+01 -9.36299028e+00  6.69e-05 2.43e-02  7.81e-06  7199s
+  25  -1.11594849e+01 -8.39752366e+00  3.90e-05 2.15e-02  4.78e-06  7208s
+  26  -9.86252860e+00 -7.07531175e+00  3.46e-05 1.77e-02  4.15e-06  7217s
+  27  -4.98045648e+00 -5.53186419e+00  2.22e-05 1.31e-02  2.10e-06  7225s
+  28  -4.50782147e+00 -5.31660876e+00  2.22e-05 1.25e-02  1.88e-06  7234s
+  29  -3.00307086e+00 -3.42330940e+00  2.05e-05 6.99e-03  1.08e-06  7245s
+  30  -2.21660820e+00 -3.10647013e+00  1.42e-05 6.08e-03  7.20e-07  7255s
+  31  -1.75047309e+00 -2.21666578e+00  1.03e-05 3.49e-03  4.41e-07  7264s
+  32  -1.36654508e+00 -1.94460361e+00  5.83e-06 2.71e-03  2.46e-07  7273s
+  33  -1.20306918e+00 -1.71291991e+00  4.82e-06 2.04e-03  1.51e-07  7283s
+  34  -1.15500123e+00 -1.63742372e+00  4.09e-06 1.82e-03  1.23e-07  7292s
+  35  -1.15441791e+00 -1.59305269e+00  4.09e-06 1.70e-03  1.19e-07  7300s
+  36  -1.10131780e+00 -1.53269228e+00  3.24e-06 1.52e-03  8.90e-08  7309s
+  37  -1.08086563e+00 -1.24795834e+00  2.92e-06 7.22e-04  5.88e-08  7319s
+  38  -1.02374557e+00 -1.08738049e+00  1.41e-06 2.54e-04  2.02e-08  7329s
+  39  -1.02025127e+00 -1.07894356e+00  1.24e-06 2.30e-04  1.75e-08  7338s
+  40  -1.01722029e+00 -1.06640849e+00  1.09e-06 1.93e-04  1.48e-08  7347s
+  41  -1.01178072e+00 -1.05089381e+00  8.03e-07 1.48e-04  1.04e-08  7356s
+  42  -1.00719045e+00 -1.02205053e+00  5.32e-07 6.37e-05  5.99e-09  7364s
+  43  -1.00647620e+00 -1.01987098e+00  4.85e-07 5.73e-05  5.40e-09  7373s
+  44  -1.00400275e+00 -1.00990495e+00  3.09e-07 2.83e-05  3.25e-09  7382s
+  45  -1.00388658e+00 -1.00962039e+00  3.01e-07 2.75e-05  3.16e-09  7391s
+  46  -1.00377311e+00 -1.00933023e+00  2.92e-07 2.67e-05  3.06e-09  7400s
+  47  -1.00089209e+00 -1.00006876e+00  7.36e-08 1.99e-07  6.90e-10  7409s
+  48  -1.00001074e+00 -1.00000000e+00  9.59e-10 7.76e-10  9.44e-12  7419s
+  49  -1.00000000e+00 -1.00000000e+00  1.20e-12 6.52e-11  1.19e-14  7430s
+
+Barrier solved model in 49 iterations and 7429.65 seconds (8974.15 work units)
+Optimal objective -1.00000000e+00
+
+
+---------------------------------------------------------------------------
+Multi-objectives: solved in 7432.46 seconds (8980.41 work units), solution count 10
+
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver logs written to `/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/post_v16_a2/POST_V16_A2_S0S1/solver_S1_EARLIEST.log`.
+INFO:linopy.model:Solver options:
+ - threads: 10
+ - method: 2
+ - crossover: 0
+ - BarHomogeneous: 1
+ - BarConvTol: 1e-05
+ - OptimalityTol: 0.0001
+ - FeasibilityTol: 0.001
+ - ScaleFlag: 1
+ - Seed: 123
+ - AggFill: 0
+ - PreDual: 0
+ - GURO_PAR_BARDENSETHRESH: 200
+INFO:linopy.io:Writing objective.
+Writing constraints.:   0%|[38;2;128;191;255m          [0m| 0/1546 [00:00<?, ?it/s]Writing constraints.:   0%|[38;2;128;191;255m          [0m| 7/1546 [00:00<00:28, 54.45it/s]Writing constraints.:   1%|[38;2;128;191;255m          [0m| 13/1546 [00:00<01:01, 24.82it/s]Writing constraints.:   1%|[38;2;128;191;255m          [0m| 17/1546 [00:00<00:57, 26.65it/s]Writing constraints.:   1%|[38;2;128;191;255m▏         [0m| 21/1546 [00:00<01:03, 24.03it/s]Writing constraints.:   2%|[38;2;128;191;255m▏         [0m| 25/1546 [00:00<01:04, 23.57it/s]Writing constraints.:   2%|[38;2;128;191;255m▏         [0m| 28/1546 [00:01<01:02, 24.41it/s]Writing constraints.:   2%|[38;2;128;191;255m▏         [0m| 31/1546 [00:01<01:38, 15.44it/s]Writing constraints.:   2%|[38;2;128;191;255m▏         [0m| 34/1546 [00:01<02:21, 10.67it/s]Writing constraints.:   2%|[38;2;128;191;255m▏         [0m| 36/1546 [00:02<02:09, 11.70it/s]Writing constraints.:   2%|[38;2;128;191;255m▏         [0m| 38/1546 [00:02<01:58, 12.78it/s]Writing constraints.:   3%|[38;2;128;191;255m▎         [0m| 49/1546 [00:02<00:51, 29.22it/s]Writing constraints.:   4%|[38;2;128;191;255m▍         [0m| 64/1546 [00:02<00:28, 52.45it/s]Writing constraints.:   5%|[38;2;128;191;255m▍         [0m| 75/1546 [00:02<00:22, 64.51it/s]Writing constraints.:   6%|[38;2;128;191;255m▌         [0m| 91/1546 [00:02<00:16, 86.90it/s]Writing constraints.:   7%|[38;2;128;191;255m▋         [0m| 111/1546 [00:02<00:12, 113.97it/s]Writing constraints.:   8%|[38;2;128;191;255m▊         [0m| 130/1546 [00:02<00:10, 132.83it/s]Writing constraints.:   9%|[38;2;128;191;255m▉         [0m| 146/1546 [00:02<00:09, 140.18it/s]Writing constraints.:  11%|[38;2;128;191;255m█         [0m| 163/1546 [00:03<00:09, 146.61it/s]Writing constraints.:  12%|[38;2;128;191;255m█▏        [0m| 182/1546 [00:03<00:08, 155.33it/s]Writing constraints.:  13%|[38;2;128;191;255m█▎        [0m| 199/1546 [00:03<00:08, 157.77it/s]Writing constraints.:  14%|[38;2;128;191;255m█▍        [0m| 219/1546 [00:03<00:07, 167.98it/s]Writing constraints.:  15%|[38;2;128;191;255m█▌        [0m| 237/1546 [00:03<00:07, 166.57it/s]Writing constraints.:  16%|[38;2;128;191;255m█▋        [0m| 255/1546 [00:03<00:07, 169.15it/s]Writing constraints.:  18%|[38;2;128;191;255m█▊        [0m| 273/1546 [00:03<00:07, 162.69it/s]Writing constraints.:  19%|[38;2;128;191;255m█▉        [0m| 290/1546 [00:03<00:07, 163.20it/s]Writing constraints.:  20%|[38;2;128;191;255m█▉        [0m| 307/1546 [00:03<00:08, 145.22it/s]Writing constraints.:  21%|[38;2;128;191;255m██        [0m| 326/1546 [00:04<00:07, 156.05it/s]Writing constraints.:  22%|[38;2;128;191;255m██▏       [0m| 346/1546 [00:04<00:07, 165.92it/s]Writing constraints.:  24%|[38;2;128;191;255m██▎       [0m| 366/1546 [00:04<00:06, 173.40it/s]Writing constraints.:  25%|[38;2;128;191;255m██▍       [0m| 384/1546 [00:04<00:07, 159.54it/s]Writing constraints.:  26%|[38;2;128;191;255m██▌       [0m| 401/1546 [00:04<00:07, 157.22it/s]Writing constraints.:  27%|[38;2;128;191;255m██▋       [0m| 417/1546 [00:04<00:07, 157.15it/s]Writing constraints.:  28%|[38;2;128;191;255m██▊       [0m| 433/1546 [00:04<00:07, 148.83it/s]Writing constraints.:  29%|[38;2;128;191;255m██▉       [0m| 449/1546 [00:04<00:07, 142.53it/s]Writing constraints.:  30%|[38;2;128;191;255m███       [0m| 464/1546 [00:04<00:07, 141.46it/s]Writing constraints.:  31%|[38;2;128;191;255m███       [0m| 479/1546 [00:05<00:07, 143.70it/s]Writing constraints.:  32%|[38;2;128;191;255m███▏      [0m| 496/1546 [00:05<00:07, 149.16it/s]Writing constraints.:  33%|[38;2;128;191;255m███▎      [0m| 514/1546 [00:05<00:06, 154.70it/s]Writing constraints.:  34%|[38;2;128;191;255m███▍      [0m| 530/1546 [00:05<00:06, 151.95it/s]Writing constraints.:  35%|[38;2;128;191;255m███▌      [0m| 546/1546 [00:05<00:06, 148.41it/s]Writing constraints.:  36%|[38;2;128;191;255m███▋      [0m| 562/1546 [00:05<00:06, 151.24it/s]Writing constraints.:  38%|[38;2;128;191;255m███▊      [0m| 580/1546 [00:05<00:06, 159.31it/s]Writing constraints.:  39%|[38;2;128;191;255m███▊      [0m| 597/1546 [00:05<00:06, 157.57it/s]Writing constraints.:  40%|[38;2;128;191;255m███▉      [0m| 614/1546 [00:05<00:05, 157.42it/s]Writing constraints.:  41%|[38;2;128;191;255m████      [0m| 630/1546 [00:06<00:05, 155.86it/s]Writing constraints.:  42%|[38;2;128;191;255m████▏     [0m| 646/1546 [00:06<00:05, 155.07it/s]Writing constraints.:  43%|[38;2;128;191;255m████▎     [0m| 666/1546 [00:06<00:05, 166.63it/s]Writing constraints.:  44%|[38;2;128;191;255m████▍     [0m| 684/1546 [00:06<00:05, 170.35it/s]Writing constraints.:  45%|[38;2;128;191;255m████▌     [0m| 702/1546 [00:06<00:05, 167.03it/s]Writing constraints.:  47%|[38;2;128;191;255m████▋     [0m| 719/1546 [00:06<00:05, 164.36it/s]Writing constraints.:  48%|[38;2;128;191;255m████▊     [0m| 736/1546 [00:06<00:05, 154.84it/s]Writing constraints.:  49%|[38;2;128;191;255m████▊     [0m| 752/1546 [00:06<00:05, 155.53it/s]Writing constraints.:  50%|[38;2;128;191;255m████▉     [0m| 770/1546 [00:06<00:04, 155.26it/s]Writing constraints.:  51%|[38;2;128;191;255m█████     [0m| 788/1546 [00:06<00:04, 159.90it/s]Writing constraints.:  52%|[38;2;128;191;255m█████▏    [0m| 805/1546 [00:07<00:04, 158.66it/s]Writing constraints.:  53%|[38;2;128;191;255m█████▎    [0m| 821/1546 [00:07<00:04, 157.73it/s]Writing constraints.:  54%|[38;2;128;191;255m█████▍    [0m| 838/1546 [00:07<00:04, 159.66it/s]Writing constraints.:  55%|[38;2;128;191;255m█████▌    [0m| 854/1546 [00:07<00:04, 153.84it/s]Writing constraints.:  56%|[38;2;128;191;255m█████▋    [0m| 870/1546 [00:07<00:04, 154.84it/s]Writing constraints.:  57%|[38;2;128;191;255m█████▋    [0m| 888/1546 [00:07<00:04, 161.96it/s]Writing constraints.:  59%|[38;2;128;191;255m█████▊    [0m| 905/1546 [00:07<00:04, 158.51it/s]Writing constraints.:  60%|[38;2;128;191;255m█████▉    [0m| 922/1546 [00:07<00:03, 160.25it/s]Writing constraints.:  61%|[38;2;128;191;255m██████    [0m| 940/1546 [00:07<00:03, 165.56it/s]Writing constraints.:  62%|[38;2;128;191;255m██████▏   [0m| 957/1546 [00:08<00:03, 165.77it/s]Writing constraints.:  63%|[38;2;128;191;255m██████▎   [0m| 974/1546 [00:08<00:03, 166.87it/s]Writing constraints.:  64%|[38;2;128;191;255m██████▍   [0m| 992/1546 [00:08<00:03, 168.11it/s]Writing constraints.:  65%|[38;2;128;191;255m██████▌   [0m| 1010/1546 [00:08<00:03, 171.39it/s]Writing constraints.:  66%|[38;2;128;191;255m██████▋   [0m| 1028/1546 [00:08<00:03, 164.00it/s]Writing constraints.:  68%|[38;2;128;191;255m██████▊   [0m| 1048/1546 [00:08<00:02, 173.02it/s]Writing constraints.:  69%|[38;2;128;191;255m██████▉   [0m| 1066/1546 [00:08<00:03, 159.46it/s]Writing constraints.:  70%|[38;2;128;191;255m███████   [0m| 1083/1546 [00:08<00:03, 153.54it/s]Writing constraints.:  71%|[38;2;128;191;255m███████   [0m| 1100/1546 [00:08<00:02, 155.73it/s]Writing constraints.:  72%|[38;2;128;191;255m███████▏  [0m| 1116/1546 [00:09<00:02, 153.95it/s]Writing constraints.:  73%|[38;2;128;191;255m███████▎  [0m| 1133/1546 [00:09<00:02, 155.56it/s]Writing constraints.:  74%|[38;2;128;191;255m███████▍  [0m| 1151/1546 [00:09<00:02, 161.57it/s]Writing constraints.:  76%|[38;2;128;191;255m███████▌  [0m| 1168/1546 [00:09<00:02, 152.73it/s]Writing constraints.:  77%|[38;2;128;191;255m███████▋  [0m| 1184/1546 [00:09<00:02, 145.82it/s]Writing constraints.:  78%|[38;2;128;191;255m███████▊  [0m| 1200/1546 [00:09<00:02, 149.02it/s]Writing constraints.:  79%|[38;2;128;191;255m███████▊  [0m| 1216/1546 [00:09<00:02, 149.46it/s]Writing constraints.:  80%|[38;2;128;191;255m███████▉  [0m| 1232/1546 [00:09<00:02, 147.26it/s]Writing constraints.:  81%|[38;2;128;191;255m████████  [0m| 1248/1546 [00:09<00:01, 149.11it/s]Writing constraints.:  82%|[38;2;128;191;255m████████▏ [0m| 1263/1546 [00:10<00:02, 137.59it/s]Writing constraints.:  83%|[38;2;128;191;255m████████▎ [0m| 1280/1546 [00:10<00:01, 145.91it/s]Writing constraints.:  84%|[38;2;128;191;255m████████▍ [0m| 1295/1546 [00:10<00:01, 146.79it/s]Writing constraints.:  85%|[38;2;128;191;255m████████▍ [0m| 1313/1546 [00:10<00:01, 148.58it/s]Writing constraints.:  86%|[38;2;128;191;255m████████▌ [0m| 1330/1546 [00:10<00:01, 153.35it/s]Writing constraints.:  87%|[38;2;128;191;255m████████▋ [0m| 1348/1546 [00:10<00:01, 159.35it/s]Writing constraints.:  88%|[38;2;128;191;255m████████▊ [0m| 1366/1546 [00:10<00:01, 164.42it/s]Writing constraints.:  89%|[38;2;128;191;255m████████▉ [0m| 1383/1546 [00:10<00:00, 164.39it/s]Writing constraints.:  91%|[38;2;128;191;255m█████████ [0m| 1403/1546 [00:10<00:00, 171.61it/s]Writing constraints.:  92%|[38;2;128;191;255m█████████▏[0m| 1421/1546 [00:10<00:00, 170.42it/s]Writing constraints.:  93%|[38;2;128;191;255m█████████▎[0m| 1439/1546 [00:11<00:01, 102.56it/s]Writing constraints.:  94%|[38;2;128;191;255m█████████▍[0m| 1453/1546 [00:12<00:02, 42.52it/s] Writing constraints.:  95%|[38;2;128;191;255m█████████▍[0m| 1463/1546 [00:12<00:01, 48.08it/s]Writing constraints.:  95%|[38;2;128;191;255m█████████▌[0m| 1474/1546 [00:12<00:01, 55.39it/s]Writing constraints.:  96%|[38;2;128;191;255m█████████▋[0m| 1491/1546 [00:12<00:00, 72.04it/s]Writing constraints.:  98%|[38;2;128;191;255m█████████▊[0m| 1516/1546 [00:12<00:00, 102.23it/s]Writing constraints.: 100%|[38;2;128;191;255m█████████▉[0m| 1540/1546 [00:12<00:00, 128.75it/s]Writing constraints.: 100%|[38;2;128;191;255m██████████[0m| 1546/1546 [00:12<00:00, 121.00it/s]
+Writing continuous variables.:   0%|[38;2;128;191;255m          [0m| 0/13 [00:00<?, ?it/s]Writing continuous variables.:  62%|[38;2;128;191;255m██████▏   [0m| 8/13 [00:00<00:00, 76.05it/s]Writing continuous variables.: 100%|[38;2;128;191;255m██████████[0m| 13/13 [00:00<00:00, 66.94it/s]
+INFO:linopy.io: Writing time: 13.11s
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2559322
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+Read LP format model from file /tmp/linopy-problem-346q0n_v.lp
+Reading time = 22.69 seconds
+obj: 7295568 rows, 2712538 columns, 15916255 nonzeros
+Set parameter Threads to value 10
+Set parameter Method to value 2
+Set parameter Crossover to value 0
+Set parameter BarHomogeneous to value 1
+Set parameter BarConvTol to value 1e-05
+Set parameter OptimalityTol to value 0.0001
+Set parameter FeasibilityTol to value 0.001
+Set parameter ScaleFlag to value 1
+Set parameter Seed to value 123
+Set parameter AggFill to value 0
+Set parameter PreDual to value 0
+Set parameter GURO_PAR_BARDENSETHRESH to value 200
+Set parameter LogFile to value "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/post_v16_a2/POST_V16_A2_S0S1/solver_S1_EARLIEST.log"
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Ubuntu 20.04.6 LTS")
+
+CPU model: Intel(R) Core(TM) i9-10920X CPU @ 3.50GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 12 physical cores, 24 logical processors, using up to 10 threads
+
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+Optimize a model with 7295568 rows, 2712538 columns and 15916255 nonzeros
+Model fingerprint: 0x8d6f694f
+Coefficient statistics:
+  Matrix range     [3e-03, 2e+03]
+  Objective range  [2e-02, 3e+06]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [1e-03, 2e+06]
+Presolve removed 3627581 rows and 520507 columns (presolve time = 6s) ...
+Presolve removed 3643730 rows and 536656 columns (presolve time = 11s) ...
+Presolve removed 3643761 rows and 536908 columns (presolve time = 15s) ...
+Presolve removed 3651895 rows and 536914 columns
+Presolve time: 18.55s
+Presolved: 3643673 rows, 2182779 columns, 11401726 nonzeros
+Elapsed ordering time = 6s
+Elapsed ordering time = 10s
+Elapsed ordering time = 15s
+Elapsed ordering time = 26s
+Elapsed ordering time = 31s
+Elapsed ordering time = 37s
+Elapsed ordering time = 41s
+Elapsed ordering time = 45s
+Elapsed ordering time = 50s
+Elapsed ordering time = 55s
+Elapsed ordering time = 60s
+Elapsed ordering time = 74s
+Elapsed ordering time = 79s
+Elapsed ordering time = 80s
+Elapsed ordering time = 86s
+Elapsed ordering time = 90s
+Elapsed ordering time = 95s
+Elapsed ordering time = 100s
+Elapsed ordering time = 105s
+Elapsed ordering time = 125s
+Elapsed ordering time = 128s
+Elapsed ordering time = 130s
+Elapsed ordering time = 136s
+Elapsed ordering time = 140s
+Elapsed ordering time = 145s
+Elapsed ordering time = 150s
+Elapsed ordering time = 155s
+Ordering time: 168.91s
+
+Barrier statistics:
+ Dense cols : 1401
+ AA' NZ     : 1.831e+07
+ Factor NZ  : 2.857e+08 (roughly 5.0 GB of memory)
+ Factor Ops : 2.103e+12 (roughly 9 seconds per iteration)
+ Threads    : 10
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   2.42380136e+16 -1.71442744e+16  4.49e+06 7.02e+06  1.44e+13   233s
+   1   2.12319131e+16 -3.98554930e+16  3.88e+06 3.99e+07  1.02e+13   273s
+   2   1.84333934e+16 -4.68859999e+16  3.32e+06 3.44e+07  8.79e+12   311s
+   3   1.05070952e+16 -6.85360692e+16  1.73e+06 2.02e+07  4.89e+12   348s
+   4   7.62450662e+14 -1.05542454e+16  1.36e+05 3.15e+06  7.91e+10   377s
+   5   9.97527263e+13 -2.00892410e+15  2.26e+04 5.92e+05  4.25e+09   405s
+   6   2.78875571e+13 -7.70529637e+14  7.36e+03 2.25e+05  8.95e+08   426s
+   7   1.31571834e+13 -3.74061701e+14  3.87e+03 1.08e+05  3.45e+08   449s
+   8   6.16758109e+12 -1.61435864e+14  1.99e+03 4.66e+04  1.23e+08   472s
+   9   2.55754428e+12 -5.11076125e+13  7.07e+02 1.48e+04  2.88e+07   500s
+  10   1.43622507e+12 -2.30637952e+13  3.13e+02 6.73e+03  1.10e+07   524s
+  11   9.62320050e+11 -6.87065718e+12  1.45e+02 2.11e+03  3.10e+06   541s
+  12   7.43808571e+11 -4.16535663e+12  8.49e+01 1.33e+03  1.75e+06   553s
+  13   5.70136325e+11 -2.12898418e+12  4.46e+01 7.25e+02  8.69e+05   567s
+  14   4.46825908e+11 -1.23580656e+12  2.76e+01 4.52e+02  5.03e+05   579s
+  15   3.35343621e+11 -7.66667449e+11  1.66e+01 3.04e+02  3.09e+05   591s
+  16   2.66942487e+11 -5.72373378e+11  1.09e+01 2.36e+02  2.24e+05   601s
+  17   2.34854240e+11 -4.42752765e+11  8.95e+00 1.91e+02  1.76e+05   610s
+  18   2.20952925e+11 -3.43741735e+11  8.08e+00 1.56e+02  1.45e+05   621s
+  19   1.84383757e+11 -2.36435541e+11  6.11e+00 1.15e+02  1.04e+05   632s
+  20   1.61962323e+11 -1.71312272e+11  5.00e+00 9.04e+01  8.06e+04   643s
+  21   1.34365845e+11 -8.99828906e+10  3.73e+00 5.76e+01  5.21e+04   657s
+  22   1.16244094e+11 -4.41944040e+10  2.99e+00 3.76e+01  3.58e+04   670s
+  23   8.73879139e+10 -2.10495720e+10  1.88e+00 2.68e+01  2.36e+04   682s
+  24   7.55115721e+10 -4.58029117e+09  1.47e+00 1.84e+01  1.69e+04   695s
+  25   6.33756534e+10  9.58249593e+09  1.09e+00 1.06e+01  1.09e+04   708s
+  26   5.17894444e+10  1.46410918e+10  7.35e-01 7.47e+00  7.44e+03   720s
+  27   4.57290017e+10  1.65026874e+10  5.57e-01 6.36e+00  5.84e+03   733s
+  28   4.23971120e+10  1.87945352e+10  4.61e-01 4.84e+00  4.66e+03   745s
+  29   3.95253902e+10  2.01571881e+10  3.79e-01 3.93e+00  3.81e+03   758s
+  30   3.72294476e+10  2.13971237e+10  3.13e-01 3.10e+00  3.09e+03   770s
+  31   3.56008255e+10  2.20885158e+10  2.66e-01 2.71e+00  2.63e+03   783s
+  32   3.50423125e+10  2.24553029e+10  2.50e-01 2.43e+00  2.44e+03   794s
+  33   3.46260459e+10  2.27381914e+10  2.38e-01 2.25e+00  2.30e+03   805s
+  34   3.37500235e+10  2.32101339e+10  2.13e-01 1.95e+00  2.03e+03   817s
+  35   3.26334081e+10  2.33624171e+10  1.81e-01 1.85e+00  1.80e+03   830s
+  36   3.17255669e+10  2.40422159e+10  1.55e-01 1.43e+00  1.48e+03   842s
+  37   3.13188257e+10  2.42845732e+10  1.43e-01 1.27e+00  1.35e+03   855s
+  38   3.10476235e+10  2.45610826e+10  1.35e-01 1.09e+00  1.24e+03   867s
+  39   3.06482964e+10  2.47321119e+10  1.24e-01 1.01e+00  1.12e+03   879s
+  40   3.00221696e+10  2.49014979e+10  1.06e-01 8.76e-01  9.74e+02   892s
+  41   2.94993698e+10  2.50337233e+10  9.11e-02 7.92e-01  8.51e+02   904s
+  42   2.92088894e+10  2.51888953e+10  8.30e-02 6.89e-01  7.64e+02   917s
+  43   2.88198495e+10  2.52655554e+10  7.20e-02 6.40e-01  6.77e+02   929s
+  44   2.84441656e+10  2.54455310e+10  6.14e-02 5.23e-01  5.69e+02   942s
+  45   2.81481540e+10  2.55496811e+10  5.30e-02 4.58e-01  4.93e+02   954s
+  46   2.79810256e+10  2.56888394e+10  4.82e-02 3.71e-01  4.31e+02   967s
+  47   2.77793872e+10  2.57594747e+10  4.25e-02 3.26e-01  3.80e+02   980s
+  48   2.76826828e+10  2.58305096e+10  3.98e-02 2.80e-01  3.46e+02   992s
+  49   2.75783703e+10  2.58646689e+10  3.69e-02 2.58e-01  3.20e+02  1004s
+  50   2.74509941e+10  2.59045723e+10  3.34e-02 2.31e-01  2.89e+02  1016s
+  51   2.73422649e+10  2.59433262e+10  3.03e-02 2.08e-01  2.61e+02  1029s
+  52   2.72560529e+10  2.59733217e+10  2.78e-02 1.90e-01  2.39e+02  1041s
+  53   2.71186457e+10  2.59958959e+10  2.38e-02 1.75e-01  2.10e+02  1054s
+  54   2.70128622e+10  2.60349240e+10  2.09e-02 1.49e-01  1.82e+02  1067s
+  55   2.69455929e+10  2.60620298e+10  1.90e-02 1.31e-01  1.64e+02  1079s
+  56   2.68405718e+10  2.60956553e+10  1.61e-02 1.09e-01  1.38e+02  1092s
+  57   2.67672980e+10  2.61150687e+10  1.41e-02 9.57e-02  1.21e+02  1104s
+  58   2.67256455e+10  2.61324293e+10  1.29e-02 8.41e-02  1.10e+02  1117s
+  59   2.66454636e+10  2.61453357e+10  1.07e-02 7.51e-02  9.28e+01  1130s
+  60   2.66392184e+10  2.61485138e+10  1.05e-02 7.30e-02  9.09e+01  1142s
+  61   2.65968810e+10  2.61609696e+10  9.35e-03 6.47e-02  8.07e+01  1155s
+  62   2.65720350e+10  2.61623202e+10  8.66e-03 6.38e-02  7.61e+01  1166s
+  63   2.65200827e+10  2.61725706e+10  7.22e-03 5.70e-02  6.48e+01  1179s
+  64   2.64928994e+10  2.61919427e+10  6.49e-03 4.36e-02  5.55e+01  1191s
+  65   2.64795372e+10  2.61976409e+10  6.12e-03 3.96e-02  5.19e+01  1202s
+  66   2.64560780e+10  2.62037395e+10  5.48e-03 3.53e-02  4.64e+01  1214s
+  67   2.64388241e+10  2.62076080e+10  5.01e-03 3.26e-02  4.25e+01  1227s
+  68   2.64169884e+10  2.62137624e+10  4.42e-03 2.82e-02  3.73e+01  1239s
+  69   2.63940060e+10  2.62200288e+10  3.80e-03 2.37e-02  3.19e+01  1252s
+  70   2.63830691e+10  2.62214502e+10  3.51e-03 2.27e-02  2.97e+01  1264s
+  71   2.63680594e+10  2.62283304e+10  3.10e-03 1.78e-02  2.55e+01  1276s
+  72   2.63630041e+10  2.62288935e+10  2.97e-03 1.74e-02  2.45e+01  1287s
+  73   2.63600275e+10  2.62304174e+10  2.88e-03 1.64e-02  2.36e+01  1299s
+  74   2.63503448e+10  2.62324733e+10  2.62e-03 1.49e-02  2.15e+01  1312s
+  75   2.63406413e+10  2.62355463e+10  2.36e-03 1.27e-02  1.91e+01  1324s
+  76   2.63324711e+10  2.62392006e+10  2.64e-03 1.02e-02  1.68e+01  1337s
+  77   2.63285431e+10  2.62397050e+10  2.50e-03 9.80e-03  1.60e+01  1350s
+  78   2.63199567e+10  2.62406520e+10  2.16e-03 9.13e-03  1.43e+01  1363s
+  79   2.63115341e+10  2.62423665e+10  3.36e-03 7.90e-03  1.25e+01  1377s
+  80   2.63097743e+10  2.62433329e+10  3.75e-03 7.20e-03  1.20e+01  1388s
+  81   2.63051171e+10  2.62452791e+10  4.43e-03 5.80e-03  1.07e+01  1401s
+  82   2.62976547e+10  2.62460547e+10  5.49e-03 5.23e-03  9.26e+00  1414s
+  83   2.62922669e+10  2.62466349e+10  4.82e-03 4.81e-03  8.21e+00  1432s
+  84   2.62885180e+10  2.62475452e+10  4.35e-03 4.18e-03  7.36e+00  1446s
+  85   2.62845851e+10  2.62480095e+10  4.45e-03 3.85e-03  6.58e+00  1463s
+  86   2.62803745e+10  2.62488719e+10  3.84e-03 3.24e-03  5.66e+00  1478s
+  87   2.62765252e+10  2.62492176e+10  3.59e-03 3.00e-03  4.92e+00  1494s
+  88   2.62747773e+10  2.62493490e+10  3.50e-03 2.91e-03  4.60e+00  1506s
+  89   2.62732073e+10  2.62498955e+10  3.40e-03 2.53e-03  4.20e+00  1521s
+  90   2.62709484e+10  2.62506949e+10  3.25e-03 1.96e-03  3.63e+00  1539s
+  91   2.62690050e+10  2.62509261e+10  2.89e-03 2.14e-03  3.24e+00  1556s
+  92   2.62666840e+10  2.62512753e+10  2.46e-03 4.68e-03  2.76e+00  1575s
+  93   2.62654683e+10  2.62513558e+10  2.38e-03 4.55e-03  2.54e+00  1594s
+  94   2.62643526e+10  2.62517033e+10  2.28e-03 3.81e-03  2.27e+00  1617s
+  95   2.62626098e+10  2.62520269e+10  2.00e-03 5.26e-03  1.90e+00  1646s
+  96   2.62617564e+10  2.62520793e+10  1.81e-03 4.95e-03  1.74e+00  1669s
+  97   2.62602641e+10  2.62523030e+10  1.48e-03 4.09e-03  1.43e+00  1691s
+  98   2.62594568e+10  2.62526416e+10  1.30e-03 6.65e-03  1.21e+00  1712s
+  99   2.62585203e+10  2.62527404e+10  1.10e-03 5.89e-03  1.03e+00  1730s
+ 100   2.62577063e+10  2.62528626e+10  9.22e-04 5.05e-03  8.64e-01  1751s
+ 101   2.62570885e+10  2.62529356e+10  7.87e-04 4.53e-03  7.42e-01  1773s
+ 102   2.62563862e+10  2.62530489e+10  6.35e-04 3.40e-03  5.97e-01  1797s
+ 103   2.62558146e+10  2.62531126e+10  6.02e-04 6.15e-03  4.86e-01  1820s
+ 104   2.62555492e+10  2.62532018e+10  1.08e-03 4.40e-03  4.20e-01  1848s
+ 105   2.62553442e+10  2.62532338e+10  1.19e-03 1.37e-02  3.78e-01  1876s
+ 106   2.62550557e+10  2.62532837e+10  1.32e-03 1.13e-02  3.19e-01  1907s
+ 107   2.62548387e+10  2.62532985e+10  2.00e-03 2.25e-02  2.77e-01  1938s
+ 108   2.62545782e+10  2.62533284e+10  1.94e-03 2.81e-02  2.25e-01  1960s
+ 109   2.62544018e+10  2.62533678e+10  1.63e-03 1.76e-02  1.86e-01  1986s
+ 110   2.62542667e+10  2.62533964e+10  1.28e-03 1.29e-02  1.57e-01  2008s
+ 111   2.62541583e+10  2.62534123e+10  8.48e-04 1.04e-02  1.35e-01  2036s
+ 112   2.62540484e+10  2.62534281e+10  7.89e-04 7.16e-03  1.12e-01  2067s
+ 113   2.62539747e+10  2.62534396e+10  6.88e-04 5.15e-02  9.64e-02  2100s
+ 114   2.62539135e+10  2.62534420e+10  6.04e-04 4.85e-02  8.51e-02  2123s
+ 115   2.62539050e+10  2.62534447e+10  6.23e-04 4.41e-02  8.30e-02  2153s
+ 116   2.62537805e+10  2.62534515e+10  5.47e-04 3.55e-02  5.99e-02  2184s
+ 117   2.62537267e+10  2.62534570e+10  4.58e-04 2.79e-02  4.93e-02  2215s
+ 118   2.62536752e+10  2.62534651e+10  4.30e-04 1.69e-02  3.84e-02  2241s
+ 119   2.62536420e+10  2.62534683e+10  4.10e-02 1.91e-02  3.18e-02  2272s
+ 120   2.62536204e+10  2.62534706e+10  3.56e-02 1.43e-02  2.74e-02  2301s
+ 121   2.62535972e+10  2.62534725e+10  2.98e-02 1.03e-02  2.28e-02  2330s
+ 122   2.62535546e+10  2.62534740e+10  1.94e-02 6.65e-03  1.50e-02  2353s
+ 123   2.62535332e+10  2.62534748e+10  1.40e-02 4.85e-03  1.09e-02  2380s
+ 124   2.62535235e+10  2.62534753e+10  1.16e-02 3.95e-03  9.02e-03  2409s
+ 125   2.62535100e+10  2.62534758e+10  8.17e-03 2.76e-03  6.45e-03  2437s
+ 126   2.62535067e+10  2.62534766e+10  7.34e-03 1.56e-03  5.69e-03  2467s
+ 127   2.62535010e+10  2.62534769e+10  5.90e-03 7.53e-02  4.60e-03  2499s
+ 128   2.62534932e+10  2.62534770e+10  3.95e-03 8.33e-02  3.10e-03  2516s
+ 129   2.62534871e+10  2.62534771e+10  2.39e-03 7.50e-02  1.91e-03  2537s
+ 130   2.62534862e+10  2.62534771e+10  2.16e-03 7.05e-02  1.73e-03  2552s
+ 131   2.62534859e+10  2.62534772e+10  2.10e-03 5.64e-02  1.67e-03  2575s
+ 132   2.62534841e+10  2.62534772e+10  1.62e-03 5.39e-02  1.30e-03  2595s
+ 133   2.62534835e+10  2.62534773e+10  1.49e-03 4.47e-02  1.19e-03  2613s
+ 134   2.62534830e+10  2.62534773e+10  1.29e-03 4.12e-02  1.03e-03  2634s
+ 135   2.62534817e+10  2.62534774e+10  9.94e-04 3.62e-02  7.99e-04  2651s
+ 136   2.62534812e+10  2.62534774e+10  8.69e-04 3.11e-02  6.98e-04  2670s
+ 137   2.62534807e+10  2.62534775e+10  7.34e-04 2.04e-02  5.82e-04  2691s
+ 138   2.62534802e+10  2.62534776e+10  6.19e-04 9.86e-03  4.82e-04  2711s
+ 139   2.62534783e+10  2.62534776e+10  2.79e-04 1.53e-03  1.46e-04  2727s
+ 140   2.62534780e+10  2.62534777e+10  1.44e-04 9.44e-03  7.47e-05  2744s
+
+Barrier solved model in 140 iterations and 2744.29 seconds (2111.13 work units)
+Optimal objective 2.62534780e+10
+
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 4405194 primals, 12433228 duals
+Objective: 2.63e+10
+Solver: gurobi
+Runtime: 2745.44s
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The variable 'PV16M-online_cap' could not be mapped to the network component because the component 'PV16M' does not exist.
+INFO:pypsa.optimization.optimize:The variable 'PV16M-res_thermal' could not be mapped to the network component because the component 'PV16M' does not exist.
+INFO:pypsa.optimization.optimize:The variable 'PV16M-res_su' could not be mapped to the network component because the component 'PV16M' does not exist.
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Kirchhoff-Voltage-Law, bidirectional_link_LTL10_exp2030, bidirectional_link_LTL10_exp2031, bidirectional_link_LTL100_exp2030, bidirectional_link_LTL100_exp2031, bidirectional_link_LTL101_exp2030, bidirectional_link_LTL101_exp2031, bidirectional_link_LTL102_exp2030, bidirectional_link_LTL102_exp2031, bidirectional_link_LTL103_exp2030, bidirectional_link_LTL103_exp2031, bidirectional_link_LTL104_exp2030, bidirectional_link_LTL104_exp2031, bidirectional_link_LTL105_exp2030, bidirectional_link_LTL105_exp2031, bidirectional_link_LTL106_exp2030, bidirectional_link_LTL106_exp2031, bidirectional_link_LTL107_exp2030, bidirectional_link_LTL107_exp2031, bidirectional_link_LTL108_exp2030, bidirectional_link_LTL108_exp2031, bidirectional_link_LTL109_exp2030, bidirectional_link_LTL109_exp2031, bidirectional_link_LTL11_exp2030, bidirectional_link_LTL11_exp2031, bidirectional_link_LTL110_exp2030, bidirectional_link_LTL110_exp2031, bidirectional_link_LTL111_exp2030, bidirectional_link_LTL111_exp2031, bidirectional_link_LTL112_exp2030, bidirectional_link_LTL112_exp2031, bidirectional_link_LTL113_exp2030, bidirectional_link_LTL113_exp2031, bidirectional_link_LTL114_exp2030, bidirectional_link_LTL114_exp2031, bidirectional_link_LTL115_exp2030, bidirectional_link_LTL115_exp2031, bidirectional_link_LTL116_exp2030, bidirectional_link_LTL116_exp2031, bidirectional_link_LTL117_exp2030, bidirectional_link_LTL117_exp2031, bidirectional_link_LTL118_exp2030, bidirectional_link_LTL118_exp2031, bidirectional_link_LTL119_exp2030, bidirectional_link_LTL119_exp2031, bidirectional_link_LTL12_exp2030, bidirectional_link_LTL12_exp2031, bidirectional_link_LTL120_exp2030, bidirectional_link_LTL120_exp2031, bidirectional_link_LTL121_exp2030, bidirectional_link_LTL121_exp2031, bidirectional_link_LTL122_exp2030, bidirectional_link_LTL122_exp2031, bidirectional_link_LTL123_exp2030, bidirectional_link_LTL123_exp2031, bidirectional_link_LTL124_exp2030, bidirectional_link_LTL124_exp2031, bidirectional_link_LTL125_exp2030, bidirectional_link_LTL125_exp2031, bidirectional_link_LTL126_exp2030, bidirectional_link_LTL126_exp2031, bidirectional_link_LTL127_exp2030, bidirectional_link_LTL127_exp2031, bidirectional_link_LTL128_exp2030, bidirectional_link_LTL128_exp2031, bidirectional_link_LTL129_exp2030, bidirectional_link_LTL129_exp2031, bidirectional_link_LTL13_exp2030, bidirectional_link_LTL13_exp2031, bidirectional_link_LTL130_exp2030, bidirectional_link_LTL130_exp2031, bidirectional_link_LTL131_exp2030, bidirectional_link_LTL131_exp2031, bidirectional_link_LTL132_exp2030, bidirectional_link_LTL132_exp2031, bidirectional_link_LTL133_exp2030, bidirectional_link_LTL133_exp2031, bidirectional_link_LTL134_exp2030, bidirectional_link_LTL134_exp2031, bidirectional_link_LTL135_exp2030, bidirectional_link_LTL135_exp2031, bidirectional_link_LTL136_exp2030, bidirectional_link_LTL136_exp2031, bidirectional_link_LTL137_exp2030, bidirectional_link_LTL137_exp2031, bidirectional_link_LTL138_exp2030, bidirectional_link_LTL138_exp2031, bidirectional_link_LTL139_exp2030, bidirectional_link_LTL139_exp2031, bidirectional_link_LTL14_exp2030, bidirectional_link_LTL14_exp2031, bidirectional_link_LTL140_exp2030, bidirectional_link_LTL140_exp2031, bidirectional_link_LTL141_exp2030, bidirectional_link_LTL141_exp2031, bidirectional_link_LTL142_exp2030, bidirectional_link_LTL142_exp2031, bidirectional_link_LTL143_exp2030, bidirectional_link_LTL143_exp2031, bidirectional_link_LTL144_exp2030, bidirectional_link_LTL144_exp2031, bidirectional_link_LTL145_exp2030, bidirectional_link_LTL145_exp2031, bidirectional_link_LTL146_exp2030, bidirectional_link_LTL146_exp2031, bidirectional_link_LTL147_exp2030, bidirectional_link_LTL147_exp2031, bidirectional_link_LTL148_exp2030, bidirectional_link_LTL148_exp2031, bidirectional_link_LTL149_exp2030, bidirectional_link_LTL149_exp2031, bidirectional_link_LTL15_exp2030, bidirectional_link_LTL15_exp2031, bidirectional_link_LTL150_exp2030, bidirectional_link_LTL150_exp2031, bidirectional_link_LTL151_exp2030, bidirectional_link_LTL151_exp2031, bidirectional_link_LTL152_exp2030, bidirectional_link_LTL152_exp2031, bidirectional_link_LTL153_exp2030, bidirectional_link_LTL153_exp2031, bidirectional_link_LTL154_exp2030, bidirectional_link_LTL154_exp2031, bidirectional_link_LTL155_exp2030, bidirectional_link_LTL155_exp2031, bidirectional_link_LTL156_exp2030, bidirectional_link_LTL156_exp2031, bidirectional_link_LTL157_exp2030, bidirectional_link_LTL157_exp2031, bidirectional_link_LTL158_exp2030, bidirectional_link_LTL158_exp2031, bidirectional_link_LTL159_exp2030, bidirectional_link_LTL159_exp2031, bidirectional_link_LTL16_exp2030, bidirectional_link_LTL16_exp2031, bidirectional_link_LTL160_exp2030, bidirectional_link_LTL160_exp2031, bidirectional_link_LTL161_exp2030, bidirectional_link_LTL161_exp2031, bidirectional_link_LTL162_exp2030, bidirectional_link_LTL162_exp2031, bidirectional_link_LTL163_exp2030, bidirectional_link_LTL163_exp2031, bidirectional_link_LTL164_exp2030, bidirectional_link_LTL164_exp2031, bidirectional_link_LTL17_exp2030, bidirectional_link_LTL17_exp2031, bidirectional_link_LTL18_exp2030, bidirectional_link_LTL18_exp2031, bidirectional_link_LTL19_exp2030, bidirectional_link_LTL19_exp2031, bidirectional_link_LTL20_exp2030, bidirectional_link_LTL20_exp2031, bidirectional_link_LTL21_exp2030, bidirectional_link_LTL21_exp2031, bidirectional_link_LTL22_exp2030, bidirectional_link_LTL22_exp2031, bidirectional_link_LTL23_exp2030, bidirectional_link_LTL23_exp2031, bidirectional_link_LTL24_exp2030, bidirectional_link_LTL24_exp2031, bidirectional_link_LTL25_exp2030, bidirectional_link_LTL25_exp2031, bidirectional_link_LTL26_exp2030, bidirectional_link_LTL26_exp2031, bidirectional_link_LTL27_exp2030, bidirectional_link_LTL27_exp2031, bidirectional_link_LTL28_exp2030, bidirectional_link_LTL28_exp2031, bidirectional_link_LTL29_exp2030, bidirectional_link_LTL29_exp2031, bidirectional_link_LTL3_exp2030, bidirectional_link_LTL3_exp2031, bidirectional_link_LTL30_exp2030, bidirectional_link_LTL30_exp2031, bidirectional_link_LTL31_exp2030, bidirectional_link_LTL31_exp2031, bidirectional_link_LTL32_exp2030, bidirectional_link_LTL32_exp2031, bidirectional_link_LTL33_exp2030, bidirectional_link_LTL33_exp2031, bidirectional_link_LTL34_exp2030, bidirectional_link_LTL34_exp2031, bidirectional_link_LTL35_exp2030, bidirectional_link_LTL35_exp2031, bidirectional_link_LTL36_exp2030, bidirectional_link_LTL36_exp2031, bidirectional_link_LTL37_exp2030, bidirectional_link_LTL37_exp2031, bidirectional_link_LTL38_exp2030, bidirectional_link_LTL38_exp2031, bidirectional_link_LTL39_exp2030, bidirectional_link_LTL39_exp2031, bidirectional_link_LTL4_exp2030, bidirectional_link_LTL4_exp2031, bidirectional_link_LTL40_exp2030, bidirectional_link_LTL40_exp2031, bidirectional_link_LTL41_exp2030, bidirectional_link_LTL41_exp2031, bidirectional_link_LTL42_exp2030, bidirectional_link_LTL42_exp2031, bidirectional_link_LTL43_exp2030, bidirectional_link_LTL43_exp2031, bidirectional_link_LTL44_exp2030, bidirectional_link_LTL44_exp2031, bidirectional_link_LTL45_exp2030, bidirectional_link_LTL45_exp2031, bidirectional_link_LTL46_exp2030, bidirectional_link_LTL46_exp2031, bidirectional_link_LTL47_exp2030, bidirectional_link_LTL47_exp2031, bidirectional_link_LTL48_exp2030, bidirectional_link_LTL48_exp2031, bidirectional_link_LTL49_exp2030, bidirectional_link_LTL49_exp2031, bidirectional_link_LTL5_exp2030, bidirectional_link_LTL5_exp2031, bidirectional_link_LTL50_exp2030, bidirectional_link_LTL50_exp2031, bidirectional_link_LTL51_exp2030, bidirectional_link_LTL51_exp2031, bidirectional_link_LTL52_exp2030, bidirectional_link_LTL52_exp2031, bidirectional_link_LTL53_exp2030, bidirectional_link_LTL53_exp2031, bidirectional_link_LTL54_exp2030, bidirectional_link_LTL54_exp2031, bidirectional_link_LTL55_exp2030, bidirectional_link_LTL55_exp2031, bidirectional_link_LTL56_exp2030, bidirectional_link_LTL56_exp2031, bidirectional_link_LTL57_exp2030, bidirectional_link_LTL57_exp2031, bidirectional_link_LTL58_exp2030, bidirectional_link_LTL58_exp2031, bidirectional_link_LTL59_exp2030, bidirectional_link_LTL59_exp2031, bidirectional_link_LTL6_exp2030, bidirectional_link_LTL6_exp2031, bidirectional_link_LTL60_exp2030, bidirectional_link_LTL60_exp2031, bidirectional_link_LTL61_exp2030, bidirectional_link_LTL61_exp2031, bidirectional_link_LTL62_exp2030, bidirectional_link_LTL62_exp2031, bidirectional_link_LTL63_exp2030, bidirectional_link_LTL63_exp2031, bidirectional_link_LTL64_exp2030, bidirectional_link_LTL64_exp2031, bidirectional_link_LTL65_exp2030, bidirectional_link_LTL65_exp2031, bidirectional_link_LTL66_exp2030, bidirectional_link_LTL66_exp2031, bidirectional_link_LTL67_exp2030, bidirectional_link_LTL67_exp2031, bidirectional_link_LTL68_exp2030, bidirectional_link_LTL68_exp2031, bidirectional_link_LTL69_exp2030, bidirectional_link_LTL69_exp2031, bidirectional_link_LTL7_exp2030, bidirectional_link_LTL7_exp2031, bidirectional_link_LTL70_exp2030, bidirectional_link_LTL70_exp2031, bidirectional_link_LTL71_exp2030, bidirectional_link_LTL71_exp2031, bidirectional_link_LTL72_exp2030, bidirectional_link_LTL72_exp2031, bidirectional_link_LTL73_exp2030, bidirectional_link_LTL73_exp2031, bidirectional_link_LTL74_exp2030, bidirectional_link_LTL74_exp2031, bidirectional_link_LTL75_exp2030, bidirectional_link_LTL75_exp2031, bidirectional_link_LTL76_exp2030, bidirectional_link_LTL76_exp2031, bidirectional_link_LTL77_exp2030, bidirectional_link_LTL77_exp2031, bidirectional_link_LTL78_exp2030, bidirectional_link_LTL78_exp2031, bidirectional_link_LTL79_exp2030, bidirectional_link_LTL79_exp2031, bidirectional_link_LTL8_exp2030, bidirectional_link_LTL8_exp2031, bidirectional_link_LTL80_exp2030, bidirectional_link_LTL80_exp2031, bidirectional_link_LTL81_exp2030, bidirectional_link_LTL81_exp2031, bidirectional_link_LTL82_exp2030, bidirectional_link_LTL82_exp2031, bidirectional_link_LTL83_exp2030, bidirectional_link_LTL83_exp2031, bidirectional_link_LTL84_exp2030, bidirectional_link_LTL84_exp2031, bidirectional_link_LTL85_exp2030, bidirectional_link_LTL85_exp2031, bidirectional_link_LTL86_exp2030, bidirectional_link_LTL86_exp2031, bidirectional_link_LTL87_exp2030, bidirectional_link_LTL87_exp2031, bidirectional_link_LTL88_exp2030, bidirectional_link_LTL88_exp2031, bidirectional_link_LTL89_exp2030, bidirectional_link_LTL89_exp2031, bidirectional_link_LTL9_exp2030, bidirectional_link_LTL9_exp2031, bidirectional_link_LTL90_exp2030, bidirectional_link_LTL90_exp2031, bidirectional_link_LTL91_exp2030, bidirectional_link_LTL91_exp2031, bidirectional_link_LTL92_exp2030, bidirectional_link_LTL92_exp2031, bidirectional_link_LTL93_exp2030, bidirectional_link_LTL93_exp2031, bidirectional_link_LTL94_exp2030, bidirectional_link_LTL94_exp2031, bidirectional_link_LTL95_exp2030, bidirectional_link_LTL95_exp2031, bidirectional_link_LTL96_exp2030, bidirectional_link_LTL96_exp2031, bidirectional_link_LTL97_exp2030, bidirectional_link_LTL97_exp2031, bidirectional_link_LTL98_exp2030, bidirectional_link_LTL98_exp2031, bidirectional_link_LTL99_exp2030, bidirectional_link_LTL99_exp2031, M2-train_cap_DC_p600 0 train2026, M2-train_daily_DC_p600 0 train2026, M2-train_cap_DC_p600 0 train2027, M2-train_daily_DC_p600 0 train2027, M2-train_cap_DC_p600 0 train2028, M2-train_daily_DC_p600 0 train2028, M2-train_cap_DC_p600 0 train2029, M2-train_daily_DC_p600 0 train2029, M2-train_cap_DC_p600 0 train2030, M2-train_daily_DC_p600 0 train2030, M2-train_cap_DC_p600 0 train2031, M2-train_daily_DC_p600 0 train2031, M2-train_cap_DC_p610 2 train2026, M2-train_daily_DC_p610 2 train2026, M2-train_cap_DC_p610 2 train2027, M2-train_daily_DC_p610 2 train2027, M2-train_cap_DC_p610 2 train2028, M2-train_daily_DC_p610 2 train2028, M2-train_cap_DC_p610 2 train2029, M2-train_daily_DC_p610 2 train2029, M2-train_cap_DC_p610 2 train2030, M2-train_daily_DC_p610 2 train2030, M2-train_cap_DC_p610 2 train2031, M2-train_daily_DC_p610 2 train2031, M2-train_cap_DC_p630 10 train2026, M2-train_daily_DC_p630 10 train2026, M2-train_cap_DC_p630 10 train2027, M2-train_daily_DC_p630 10 train2027, M2-train_cap_DC_p630 10 train2028, M2-train_daily_DC_p630 10 train2028, M2-train_cap_DC_p630 10 train2029, M2-train_daily_DC_p630 10 train2029, M2-train_cap_DC_p630 10 train2030, M2-train_daily_DC_p630 10 train2030, M2-train_cap_DC_p630 10 train2031, M2-train_daily_DC_p630 10 train2031, M2-train_cap_DC_p630 2 train2026, M2-train_daily_DC_p630 2 train2026, M2-train_cap_DC_p630 2 train2027, M2-train_daily_DC_p630 2 train2027, M2-train_cap_DC_p630 2 train2028, M2-train_daily_DC_p630 2 train2028, M2-train_cap_DC_p630 2 train2029, M2-train_daily_DC_p630 2 train2029, M2-train_cap_DC_p630 2 train2030, M2-train_daily_DC_p630 2 train2030, M2-train_cap_DC_p630 2 train2031, M2-train_daily_DC_p630 2 train2031, M2-train_cap_DC_p630 3 train2026, M2-train_daily_DC_p630 3 train2026, M2-train_cap_DC_p630 3 train2027, M2-train_daily_DC_p630 3 train2027, M2-train_cap_DC_p630 3 train2028, M2-train_daily_DC_p630 3 train2028, M2-train_cap_DC_p630 3 train2029, M2-train_daily_DC_p630 3 train2029, M2-train_cap_DC_p630 3 train2030, M2-train_daily_DC_p630 3 train2030, M2-train_cap_DC_p630 3 train2031, M2-train_daily_DC_p630 3 train2031, M2-train_cap_DC_p630 4 train2026, M2-train_daily_DC_p630 4 train2026, M2-train_cap_DC_p630 4 train2027, M2-train_daily_DC_p630 4 train2027, M2-train_cap_DC_p630 4 train2028, M2-train_daily_DC_p630 4 train2028, M2-train_cap_DC_p630 4 train2029, M2-train_daily_DC_p630 4 train2029, M2-train_cap_DC_p630 4 train2030, M2-train_daily_DC_p630 4 train2030, M2-train_cap_DC_p630 4 train2031, M2-train_daily_DC_p630 4 train2031, M2-train_cap_DC_p630 5 train2026, M2-train_daily_DC_p630 5 train2026, M2-train_cap_DC_p630 5 train2027, M2-train_daily_DC_p630 5 train2027, M2-train_cap_DC_p630 5 train2028, M2-train_daily_DC_p630 5 train2028, M2-train_cap_DC_p630 5 train2029, M2-train_daily_DC_p630 5 train2029, M2-train_cap_DC_p630 5 train2030, M2-train_daily_DC_p630 5 train2030, M2-train_cap_DC_p630 5 train2031, M2-train_daily_DC_p630 5 train2031, M2-train_cap_DC_p630 6 train2026, M2-train_daily_DC_p630 6 train2026, M2-train_cap_DC_p630 6 train2027, M2-train_daily_DC_p630 6 train2027, M2-train_cap_DC_p630 6 train2028, M2-train_daily_DC_p630 6 train2028, M2-train_cap_DC_p630 6 train2029, M2-train_daily_DC_p630 6 train2029, M2-train_cap_DC_p630 6 train2030, M2-train_daily_DC_p630 6 train2030, M2-train_cap_DC_p630 6 train2031, M2-train_daily_DC_p630 6 train2031, M2-train_cap_DC_p630 8 train2026, M2-train_daily_DC_p630 8 train2026, M2-train_cap_DC_p630 8 train2027, M2-train_daily_DC_p630 8 train2027, M2-train_cap_DC_p630 8 train2028, M2-train_daily_DC_p630 8 train2028, M2-train_cap_DC_p630 8 train2029, M2-train_daily_DC_p630 8 train2029, M2-train_cap_DC_p630 8 train2030, M2-train_daily_DC_p630 8 train2030, M2-train_cap_DC_p630 8 train2031, M2-train_daily_DC_p630 8 train2031, M2-train_cap_DC_p630 9 train2026, M2-train_daily_DC_p630 9 train2026, M2-train_cap_DC_p630 9 train2027, M2-train_daily_DC_p630 9 train2027, M2-train_cap_DC_p630 9 train2028, M2-train_daily_DC_p630 9 train2028, M2-train_cap_DC_p630 9 train2029, M2-train_daily_DC_p630 9 train2029, M2-train_cap_DC_p630 9 train2030, M2-train_daily_DC_p630 9 train2030, M2-train_cap_DC_p630 9 train2031, M2-train_daily_DC_p630 9 train2031, M2-train_cap_DC_p640 1 train2026, M2-train_daily_DC_p640 1 train2026, M2-train_cap_DC_p640 1 train2027, M2-train_daily_DC_p640 1 train2027, M2-train_cap_DC_p640 1 train2028, M2-train_daily_DC_p640 1 train2028, M2-train_cap_DC_p640 1 train2029, M2-train_daily_DC_p640 1 train2029, M2-train_cap_DC_p640 1 train2030, M2-train_daily_DC_p640 1 train2030, M2-train_cap_DC_p640 1 train2031, M2-train_daily_DC_p640 1 train2031, M2-train_cap_DC_p650 0 train2026, M2-train_daily_DC_p650 0 train2026, M2-train_cap_DC_p650 0 train2027, M2-train_daily_DC_p650 0 train2027, M2-train_cap_DC_p650 0 train2028, M2-train_daily_DC_p650 0 train2028, M2-train_cap_DC_p650 0 train2029, M2-train_daily_DC_p650 0 train2029, M2-train_cap_DC_p650 0 train2030, M2-train_daily_DC_p650 0 train2030, M2-train_cap_DC_p650 0 train2031, M2-train_daily_DC_p650 0 train2031, M2-train_cap_DC_p650 7 train2026, M2-train_daily_DC_p650 7 train2026, M2-train_cap_DC_p650 7 train2027, M2-train_daily_DC_p650 7 train2027, M2-train_cap_DC_p650 7 train2028, M2-train_daily_DC_p650 7 train2028, M2-train_cap_DC_p650 7 train2029, M2-train_daily_DC_p650 7 train2029, M2-train_cap_DC_p650 7 train2030, M2-train_daily_DC_p650 7 train2030, M2-train_cap_DC_p650 7 train2031, M2-train_daily_DC_p650 7 train2031, M2-train_cap_DC_p670 0 train2026, M2-train_daily_DC_p670 0 train2026, M2-train_cap_DC_p670 0 train2027, M2-train_daily_DC_p670 0 train2027, M2-train_cap_DC_p670 0 train2028, M2-train_daily_DC_p670 0 train2028, M2-train_cap_DC_p670 0 train2029, M2-train_daily_DC_p670 0 train2029, M2-train_cap_DC_p670 0 train2030, M2-train_daily_DC_p670 0 train2030, M2-train_cap_DC_p670 0 train2031, M2-train_daily_DC_p670 0 train2031, M2-train_cap_DC_p670 1 train2026, M2-train_daily_DC_p670 1 train2026, M2-train_cap_DC_p670 1 train2027, M2-train_daily_DC_p670 1 train2027, M2-train_cap_DC_p670 1 train2028, M2-train_daily_DC_p670 1 train2028, M2-train_cap_DC_p670 1 train2029, M2-train_daily_DC_p670 1 train2029, M2-train_cap_DC_p670 1 train2030, M2-train_daily_DC_p670 1 train2030, M2-train_cap_DC_p670 1 train2031, M2-train_daily_DC_p670 1 train2031, M2-train_cap_DC_p670 4 train2026, M2-train_daily_DC_p670 4 train2026, M2-train_cap_DC_p670 4 train2027, M2-train_daily_DC_p670 4 train2027, M2-train_cap_DC_p670 4 train2028, M2-train_daily_DC_p670 4 train2028, M2-train_cap_DC_p670 4 train2029, M2-train_daily_DC_p670 4 train2029, M2-train_cap_DC_p670 4 train2030, M2-train_daily_DC_p670 4 train2030, M2-train_cap_DC_p670 4 train2031, M2-train_daily_DC_p670 4 train2031, M2-line_sym_LTL10_exp2030_fwd, M2-line_sym_LTL10_exp2031_fwd, M2-line_cap_LTL10, M2-line_sym_LTL100_exp2030_fwd, M2-line_sym_LTL100_exp2031_fwd, M2-line_cap_LTL100, M2-line_sym_LTL101_exp2030_fwd, M2-line_sym_LTL101_exp2031_fwd, M2-line_cap_LTL101, M2-line_sym_LTL102_exp2030_fwd, M2-line_sym_LTL102_exp2031_fwd, M2-line_cap_LTL102, M2-line_sym_LTL103_exp2030_fwd, M2-line_sym_LTL103_exp2031_fwd, M2-line_cap_LTL103, M2-line_sym_LTL104_exp2030_fwd, M2-line_sym_LTL104_exp2031_fwd, M2-line_cap_LTL104, M2-line_sym_LTL105_exp2030_fwd, M2-line_sym_LTL105_exp2031_fwd, M2-line_cap_LTL105, M2-line_sym_LTL106_exp2030_fwd, M2-line_sym_LTL106_exp2031_fwd, M2-line_cap_LTL106, M2-line_sym_LTL107_exp2030_fwd, M2-line_sym_LTL107_exp2031_fwd, M2-line_cap_LTL107, M2-line_sym_LTL108_exp2030_fwd, M2-line_sym_LTL108_exp2031_fwd, M2-line_cap_LTL108, M2-line_sym_LTL109_exp2030_fwd, M2-line_sym_LTL109_exp2031_fwd, M2-line_cap_LTL109, M2-line_sym_LTL11_exp2030_fwd, M2-line_sym_LTL11_exp2031_fwd, M2-line_cap_LTL11, M2-line_sym_LTL110_exp2030_fwd, M2-line_sym_LTL110_exp2031_fwd, M2-line_cap_LTL110, M2-line_sym_LTL111_exp2030_fwd, M2-line_sym_LTL111_exp2031_fwd, M2-line_cap_LTL111, M2-line_sym_LTL112_exp2030_fwd, M2-line_sym_LTL112_exp2031_fwd, M2-line_cap_LTL112, M2-line_sym_LTL113_exp2030_fwd, M2-line_sym_LTL113_exp2031_fwd, M2-line_cap_LTL113, M2-line_sym_LTL114_exp2030_fwd, M2-line_sym_LTL114_exp2031_fwd, M2-line_cap_LTL114, M2-line_sym_LTL115_exp2030_fwd, M2-line_sym_LTL115_exp2031_fwd, M2-line_cap_LTL115, M2-line_sym_LTL116_exp2030_fwd, M2-line_sym_LTL116_exp2031_fwd, M2-line_cap_LTL116, M2-line_sym_LTL117_exp2030_fwd, M2-line_sym_LTL117_exp2031_fwd, M2-line_cap_LTL117, M2-line_sym_LTL118_exp2030_fwd, M2-line_sym_LTL118_exp2031_fwd, M2-line_cap_LTL118, M2-line_sym_LTL119_exp2030_fwd, M2-line_sym_LTL119_exp2031_fwd, M2-line_cap_LTL119, M2-line_sym_LTL12_exp2030_fwd, M2-line_sym_LTL12_exp2031_fwd, M2-line_cap_LTL12, M2-line_sym_LTL120_exp2030_fwd, M2-line_sym_LTL120_exp2031_fwd, M2-line_cap_LTL120, M2-line_sym_LTL121_exp2030_fwd, M2-line_sym_LTL121_exp2031_fwd, M2-line_cap_LTL121, M2-line_sym_LTL122_exp2030_fwd, M2-line_sym_LTL122_exp2031_fwd, M2-line_cap_LTL122, M2-line_sym_LTL123_exp2030_fwd, M2-line_sym_LTL123_exp2031_fwd, M2-line_cap_LTL123, M2-line_sym_LTL124_exp2030_fwd, M2-line_sym_LTL124_exp2031_fwd, M2-line_cap_LTL124, M2-line_sym_LTL125_exp2030_fwd, M2-line_sym_LTL125_exp2031_fwd, M2-line_cap_LTL125, M2-line_sym_LTL126_exp2030_fwd, M2-line_sym_LTL126_exp2031_fwd, M2-line_cap_LTL126, M2-line_sym_LTL127_exp2030_fwd, M2-line_sym_LTL127_exp2031_fwd, M2-line_cap_LTL127, M2-line_sym_LTL128_exp2030_fwd, M2-line_sym_LTL128_exp2031_fwd, M2-line_cap_LTL128, M2-line_sym_LTL129_exp2030_fwd, M2-line_sym_LTL129_exp2031_fwd, M2-line_cap_LTL129, M2-line_sym_LTL13_exp2030_fwd, M2-line_sym_LTL13_exp2031_fwd, M2-line_cap_LTL13, M2-line_sym_LTL130_exp2030_fwd, M2-line_sym_LTL130_exp2031_fwd, M2-line_cap_LTL130, M2-line_sym_LTL131_exp2030_fwd, M2-line_sym_LTL131_exp2031_fwd, M2-line_cap_LTL131, M2-line_sym_LTL132_exp2030_fwd, M2-line_sym_LTL132_exp2031_fwd, M2-line_cap_LTL132, M2-line_sym_LTL133_exp2030_fwd, M2-line_sym_LTL133_exp2031_fwd, M2-line_cap_LTL133, M2-line_sym_LTL134_exp2030_fwd, M2-line_sym_LTL134_exp2031_fwd, M2-line_cap_LTL134, M2-line_sym_LTL135_exp2030_fwd, M2-line_sym_LTL135_exp2031_fwd, M2-line_cap_LTL135, M2-line_sym_LTL136_exp2030_fwd, M2-line_sym_LTL136_exp2031_fwd, M2-line_cap_LTL136, M2-line_sym_LTL137_exp2030_fwd, M2-line_sym_LTL137_exp2031_fwd, M2-line_cap_LTL137, M2-line_sym_LTL138_exp2030_fwd, M2-line_sym_LTL138_exp2031_fwd, M2-line_cap_LTL138, M2-line_sym_LTL139_exp2030_fwd, M2-line_sym_LTL139_exp2031_fwd, M2-line_cap_LTL139, M2-line_sym_LTL14_exp2030_fwd, M2-line_sym_LTL14_exp2031_fwd, M2-line_cap_LTL14, M2-line_sym_LTL140_exp2030_fwd, M2-line_sym_LTL140_exp2031_fwd, M2-line_cap_LTL140, M2-line_sym_LTL141_exp2030_fwd, M2-line_sym_LTL141_exp2031_fwd, M2-line_cap_LTL141, M2-line_sym_LTL142_exp2030_fwd, M2-line_sym_LTL142_exp2031_fwd, M2-line_cap_LTL142, M2-line_sym_LTL143_exp2030_fwd, M2-line_sym_LTL143_exp2031_fwd, M2-line_cap_LTL143, M2-line_sym_LTL144_exp2030_fwd, M2-line_sym_LTL144_exp2031_fwd, M2-line_cap_LTL144, M2-line_sym_LTL145_exp2030_fwd, M2-line_sym_LTL145_exp2031_fwd, M2-line_cap_LTL145, M2-line_sym_LTL146_exp2030_fwd, M2-line_sym_LTL146_exp2031_fwd, M2-line_cap_LTL146, M2-line_sym_LTL147_exp2030_fwd, M2-line_sym_LTL147_exp2031_fwd, M2-line_cap_LTL147, M2-line_sym_LTL148_exp2030_fwd, M2-line_sym_LTL148_exp2031_fwd, M2-line_cap_LTL148, M2-line_sym_LTL149_exp2030_fwd, M2-line_sym_LTL149_exp2031_fwd, M2-line_cap_LTL149, M2-line_sym_LTL15_exp2030_fwd, M2-line_sym_LTL15_exp2031_fwd, M2-line_cap_LTL15, M2-line_sym_LTL150_exp2030_fwd, M2-line_sym_LTL150_exp2031_fwd, M2-line_cap_LTL150, M2-line_sym_LTL151_exp2030_fwd, M2-line_sym_LTL151_exp2031_fwd, M2-line_cap_LTL151, M2-line_sym_LTL152_exp2030_fwd, M2-line_sym_LTL152_exp2031_fwd, M2-line_cap_LTL152, M2-line_sym_LTL153_exp2030_fwd, M2-line_sym_LTL153_exp2031_fwd, M2-line_cap_LTL153, M2-line_sym_LTL154_exp2030_fwd, M2-line_sym_LTL154_exp2031_fwd, M2-line_cap_LTL154, M2-line_sym_LTL155_exp2030_fwd, M2-line_sym_LTL155_exp2031_fwd, M2-line_cap_LTL155, M2-line_sym_LTL156_exp2030_fwd, M2-line_sym_LTL156_exp2031_fwd, M2-line_cap_LTL156, M2-line_sym_LTL157_exp2030_fwd, M2-line_sym_LTL157_exp2031_fwd, M2-line_cap_LTL157, M2-line_sym_LTL158_exp2030_fwd, M2-line_sym_LTL158_exp2031_fwd, M2-line_cap_LTL158, M2-line_sym_LTL159_exp2030_fwd, M2-line_sym_LTL159_exp2031_fwd, M2-line_cap_LTL159, M2-line_sym_LTL16_exp2030_fwd, M2-line_sym_LTL16_exp2031_fwd, M2-line_cap_LTL16, M2-line_sym_LTL160_exp2030_fwd, M2-line_sym_LTL160_exp2031_fwd, M2-line_cap_LTL160, M2-line_sym_LTL161_exp2030_fwd, M2-line_sym_LTL161_exp2031_fwd, M2-line_cap_LTL161, M2-line_sym_LTL162_exp2030_fwd, M2-line_sym_LTL162_exp2031_fwd, M2-line_cap_LTL162, M2-line_sym_LTL163_exp2030_fwd, M2-line_sym_LTL163_exp2031_fwd, M2-line_cap_LTL163, M2-line_sym_LTL164_exp2030_fwd, M2-line_sym_LTL164_exp2031_fwd, M2-line_cap_LTL164, M2-line_sym_LTL17_exp2030_fwd, M2-line_sym_LTL17_exp2031_fwd, M2-line_cap_LTL17, M2-line_sym_LTL18_exp2030_fwd, M2-line_sym_LTL18_exp2031_fwd, M2-line_cap_LTL18, M2-line_sym_LTL19_exp2030_fwd, M2-line_sym_LTL19_exp2031_fwd, M2-line_cap_LTL19, M2-line_sym_LTL20_exp2030_fwd, M2-line_sym_LTL20_exp2031_fwd, M2-line_cap_LTL20, M2-line_sym_LTL21_exp2030_fwd, M2-line_sym_LTL21_exp2031_fwd, M2-line_cap_LTL21, M2-line_sym_LTL22_exp2030_fwd, M2-line_sym_LTL22_exp2031_fwd, M2-line_cap_LTL22, M2-line_sym_LTL23_exp2030_fwd, M2-line_sym_LTL23_exp2031_fwd, M2-line_cap_LTL23, M2-line_sym_LTL24_exp2030_fwd, M2-line_sym_LTL24_exp2031_fwd, M2-line_cap_LTL24, M2-line_sym_LTL25_exp2030_fwd, M2-line_sym_LTL25_exp2031_fwd, M2-line_cap_LTL25, M2-line_sym_LTL26_exp2030_fwd, M2-line_sym_LTL26_exp2031_fwd, M2-line_cap_LTL26, M2-line_sym_LTL27_exp2030_fwd, M2-line_sym_LTL27_exp2031_fwd, M2-line_cap_LTL27, M2-line_sym_LTL28_exp2030_fwd, M2-line_sym_LTL28_exp2031_fwd, M2-line_cap_LTL28, M2-line_sym_LTL29_exp2030_fwd, M2-line_sym_LTL29_exp2031_fwd, M2-line_cap_LTL29, M2-line_sym_LTL3_exp2030_fwd, M2-line_sym_LTL3_exp2031_fwd, M2-line_cap_LTL3, M2-line_sym_LTL30_exp2030_fwd, M2-line_sym_LTL30_exp2031_fwd, M2-line_cap_LTL30, M2-line_sym_LTL31_exp2030_fwd, M2-line_sym_LTL31_exp2031_fwd, M2-line_cap_LTL31, M2-line_sym_LTL32_exp2030_fwd, M2-line_sym_LTL32_exp2031_fwd, M2-line_cap_LTL32, M2-line_sym_LTL33_exp2030_fwd, M2-line_sym_LTL33_exp2031_fwd, M2-line_cap_LTL33, M2-line_sym_LTL34_exp2030_fwd, M2-line_sym_LTL34_exp2031_fwd, M2-line_cap_LTL34, M2-line_sym_LTL35_exp2030_fwd, M2-line_sym_LTL35_exp2031_fwd, M2-line_cap_LTL35, M2-line_sym_LTL36_exp2030_fwd, M2-line_sym_LTL36_exp2031_fwd, M2-line_cap_LTL36, M2-line_sym_LTL37_exp2030_fwd, M2-line_sym_LTL37_exp2031_fwd, M2-line_cap_LTL37, M2-line_sym_LTL38_exp2030_fwd, M2-line_sym_LTL38_exp2031_fwd, M2-line_cap_LTL38, M2-line_sym_LTL39_exp2030_fwd, M2-line_sym_LTL39_exp2031_fwd, M2-line_cap_LTL39, M2-line_sym_LTL4_exp2030_fwd, M2-line_sym_LTL4_exp2031_fwd, M2-line_cap_LTL4, M2-line_sym_LTL40_exp2030_fwd, M2-line_sym_LTL40_exp2031_fwd, M2-line_cap_LTL40, M2-line_sym_LTL41_exp2030_fwd, M2-line_sym_LTL41_exp2031_fwd, M2-line_cap_LTL41, M2-line_sym_LTL42_exp2030_fwd, M2-line_sym_LTL42_exp2031_fwd, M2-line_cap_LTL42, M2-line_sym_LTL43_exp2030_fwd, M2-line_sym_LTL43_exp2031_fwd, M2-line_cap_LTL43, M2-line_sym_LTL44_exp2030_fwd, M2-line_sym_LTL44_exp2031_fwd, M2-line_cap_LTL44, M2-line_sym_LTL45_exp2030_fwd, M2-line_sym_LTL45_exp2031_fwd, M2-line_cap_LTL45, M2-line_sym_LTL46_exp2030_fwd, M2-line_sym_LTL46_exp2031_fwd, M2-line_cap_LTL46, M2-line_sym_LTL47_exp2030_fwd, M2-line_sym_LTL47_exp2031_fwd, M2-line_cap_LTL47, M2-line_sym_LTL48_exp2030_fwd, M2-line_sym_LTL48_exp2031_fwd, M2-line_cap_LTL48, M2-line_sym_LTL49_exp2030_fwd, M2-line_sym_LTL49_exp2031_fwd, M2-line_cap_LTL49, M2-line_sym_LTL5_exp2030_fwd, M2-line_sym_LTL5_exp2031_fwd, M2-line_cap_LTL5, M2-line_sym_LTL50_exp2030_fwd, M2-line_sym_LTL50_exp2031_fwd, M2-line_cap_LTL50, M2-line_sym_LTL51_exp2030_fwd, M2-line_sym_LTL51_exp2031_fwd, M2-line_cap_LTL51, M2-line_sym_LTL52_exp2030_fwd, M2-line_sym_LTL52_exp2031_fwd, M2-line_cap_LTL52, M2-line_sym_LTL53_exp2030_fwd, M2-line_sym_LTL53_exp2031_fwd, M2-line_cap_LTL53, M2-line_sym_LTL54_exp2030_fwd, M2-line_sym_LTL54_exp2031_fwd, M2-line_cap_LTL54, M2-line_sym_LTL55_exp2030_fwd, M2-line_sym_LTL55_exp2031_fwd, M2-line_cap_LTL55, M2-line_sym_LTL56_exp2030_fwd, M2-line_sym_LTL56_exp2031_fwd, M2-line_cap_LTL56, M2-line_sym_LTL57_exp2030_fwd, M2-line_sym_LTL57_exp2031_fwd, M2-line_cap_LTL57, M2-line_sym_LTL58_exp2030_fwd, M2-line_sym_LTL58_exp2031_fwd, M2-line_cap_LTL58, M2-line_sym_LTL59_exp2030_fwd, M2-line_sym_LTL59_exp2031_fwd, M2-line_cap_LTL59, M2-line_sym_LTL6_exp2030_fwd, M2-line_sym_LTL6_exp2031_fwd, M2-line_cap_LTL6, M2-line_sym_LTL60_exp2030_fwd, M2-line_sym_LTL60_exp2031_fwd, M2-line_cap_LTL60, M2-line_sym_LTL61_exp2030_fwd, M2-line_sym_LTL61_exp2031_fwd, M2-line_cap_LTL61, M2-line_sym_LTL62_exp2030_fwd, M2-line_sym_LTL62_exp2031_fwd, M2-line_cap_LTL62, M2-line_sym_LTL63_exp2030_fwd, M2-line_sym_LTL63_exp2031_fwd, M2-line_cap_LTL63, M2-line_sym_LTL64_exp2030_fwd, M2-line_sym_LTL64_exp2031_fwd, M2-line_cap_LTL64, M2-line_sym_LTL65_exp2030_fwd, M2-line_sym_LTL65_exp2031_fwd, M2-line_cap_LTL65, M2-line_sym_LTL66_exp2030_fwd, M2-line_sym_LTL66_exp2031_fwd, M2-line_cap_LTL66, M2-line_sym_LTL67_exp2030_fwd, M2-line_sym_LTL67_exp2031_fwd, M2-line_cap_LTL67, M2-line_sym_LTL68_exp2030_fwd, M2-line_sym_LTL68_exp2031_fwd, M2-line_cap_LTL68, M2-line_sym_LTL69_exp2030_fwd, M2-line_sym_LTL69_exp2031_fwd, M2-line_cap_LTL69, M2-line_sym_LTL7_exp2030_fwd, M2-line_sym_LTL7_exp2031_fwd, M2-line_cap_LTL7, M2-line_sym_LTL70_exp2030_fwd, M2-line_sym_LTL70_exp2031_fwd, M2-line_cap_LTL70, M2-line_sym_LTL71_exp2030_fwd, M2-line_sym_LTL71_exp2031_fwd, M2-line_cap_LTL71, M2-line_sym_LTL72_exp2030_fwd, M2-line_sym_LTL72_exp2031_fwd, M2-line_cap_LTL72, M2-line_sym_LTL73_exp2030_fwd, M2-line_sym_LTL73_exp2031_fwd, M2-line_cap_LTL73, M2-line_sym_LTL74_exp2030_fwd, M2-line_sym_LTL74_exp2031_fwd, M2-line_cap_LTL74, M2-line_sym_LTL75_exp2030_fwd, M2-line_sym_LTL75_exp2031_fwd, M2-line_cap_LTL75, M2-line_sym_LTL76_exp2030_fwd, M2-line_sym_LTL76_exp2031_fwd, M2-line_cap_LTL76, M2-line_sym_LTL77_exp2030_fwd, M2-line_sym_LTL77_exp2031_fwd, M2-line_cap_LTL77, M2-line_sym_LTL78_exp2030_fwd, M2-line_sym_LTL78_exp2031_fwd, M2-line_cap_LTL78, M2-line_sym_LTL79_exp2030_fwd, M2-line_sym_LTL79_exp2031_fwd, M2-line_cap_LTL79, M2-line_sym_LTL8_exp2030_fwd, M2-line_sym_LTL8_exp2031_fwd, M2-line_cap_LTL8, M2-line_sym_LTL80_exp2030_fwd, M2-line_sym_LTL80_exp2031_fwd, M2-line_cap_LTL80, M2-line_sym_LTL81_exp2030_fwd, M2-line_sym_LTL81_exp2031_fwd, M2-line_cap_LTL81, M2-line_sym_LTL82_exp2030_fwd, M2-line_sym_LTL82_exp2031_fwd, M2-line_cap_LTL82, M2-line_sym_LTL83_exp2030_fwd, M2-line_sym_LTL83_exp2031_fwd, M2-line_cap_LTL83, M2-line_sym_LTL84_exp2030_fwd, M2-line_sym_LTL84_exp2031_fwd, M2-line_cap_LTL84, M2-line_sym_LTL85_exp2030_fwd, M2-line_sym_LTL85_exp2031_fwd, M2-line_cap_LTL85, M2-line_sym_LTL86_exp2030_fwd, M2-line_sym_LTL86_exp2031_fwd, M2-line_cap_LTL86, M2-line_sym_LTL87_exp2030_fwd, M2-line_sym_LTL87_exp2031_fwd, M2-line_cap_LTL87, M2-line_sym_LTL88_exp2030_fwd, M2-line_sym_LTL88_exp2031_fwd, M2-line_cap_LTL88, M2-line_sym_LTL89_exp2030_fwd, M2-line_sym_LTL89_exp2031_fwd, M2-line_cap_LTL89, M2-line_sym_LTL9_exp2030_fwd, M2-line_sym_LTL9_exp2031_fwd, M2-line_cap_LTL9, M2-line_sym_LTL90_exp2030_fwd, M2-line_sym_LTL90_exp2031_fwd, M2-line_cap_LTL90, M2-line_sym_LTL91_exp2030_fwd, M2-line_sym_LTL91_exp2031_fwd, M2-line_cap_LTL91, M2-line_sym_LTL92_exp2030_fwd, M2-line_sym_LTL92_exp2031_fwd, M2-line_cap_LTL92, M2-line_sym_LTL93_exp2030_fwd, M2-line_sym_LTL93_exp2031_fwd, M2-line_cap_LTL93, M2-line_sym_LTL94_exp2030_fwd, M2-line_sym_LTL94_exp2031_fwd, M2-line_cap_LTL94, M2-line_sym_LTL95_exp2030_fwd, M2-line_sym_LTL95_exp2031_fwd, M2-line_cap_LTL95, M2-line_sym_LTL96_exp2030_fwd, M2-line_sym_LTL96_exp2031_fwd, M2-line_cap_LTL96, M2-line_sym_LTL97_exp2030_fwd, M2-line_sym_LTL97_exp2031_fwd, M2-line_cap_LTL97, M2-line_sym_LTL98_exp2030_fwd, M2-line_sym_LTL98_exp2031_fwd, M2-line_cap_LTL98, M2-line_sym_LTL99_exp2030_fwd, M2-line_sym_LTL99_exp2031_fwd, M2-line_cap_LTL99, POI-eq_DC_p600 0 S2026, M2-serve_cap_DC_p600 0 S2026, POI-eq_DC_p600 0 S2027, M2-serve_cap_DC_p600 0 S2027, POI-eq_DC_p600 0 S2028, M2-serve_cap_DC_p600 0 S2028, POI-eq_DC_p600 0 S2029, M2-serve_cap_DC_p600 0 S2029, POI-eq_DC_p600 0 S2030, M2-serve_cap_DC_p600 0 S2030, POI-eq_DC_p600 0 S2031, M2-serve_cap_DC_p600 0 S2031, POI-eq_DC_p610 2 S2026, M2-serve_cap_DC_p610 2 S2026, POI-eq_DC_p610 2 S2027, M2-serve_cap_DC_p610 2 S2027, POI-eq_DC_p610 2 S2028, M2-serve_cap_DC_p610 2 S2028, POI-eq_DC_p610 2 S2029, M2-serve_cap_DC_p610 2 S2029, POI-eq_DC_p610 2 S2030, M2-serve_cap_DC_p610 2 S2030, POI-eq_DC_p610 2 S2031, M2-serve_cap_DC_p610 2 S2031, POI-eq_DC_p630 10 S2026, M2-serve_cap_DC_p630 10 S2026, POI-eq_DC_p630 10 S2027, M2-serve_cap_DC_p630 10 S2027, POI-eq_DC_p630 10 S2028, M2-serve_cap_DC_p630 10 S2028, POI-eq_DC_p630 10 S2029, M2-serve_cap_DC_p630 10 S2029, POI-eq_DC_p630 10 S2030, M2-serve_cap_DC_p630 10 S2030, POI-eq_DC_p630 10 S2031, M2-serve_cap_DC_p630 10 S2031, POI-eq_DC_p630 2 S2026, M2-serve_cap_DC_p630 2 S2026, POI-eq_DC_p630 2 S2027, M2-serve_cap_DC_p630 2 S2027, POI-eq_DC_p630 2 S2028, M2-serve_cap_DC_p630 2 S2028, POI-eq_DC_p630 2 S2029, M2-serve_cap_DC_p630 2 S2029, POI-eq_DC_p630 2 S2030, M2-serve_cap_DC_p630 2 S2030, POI-eq_DC_p630 2 S2031, M2-serve_cap_DC_p630 2 S2031, POI-eq_DC_p630 3 S2026, M2-serve_cap_DC_p630 3 S2026, POI-eq_DC_p630 3 S2027, M2-serve_cap_DC_p630 3 S2027, POI-eq_DC_p630 3 S2028, M2-serve_cap_DC_p630 3 S2028, POI-eq_DC_p630 3 S2029, M2-serve_cap_DC_p630 3 S2029, POI-eq_DC_p630 3 S2030, M2-serve_cap_DC_p630 3 S2030, POI-eq_DC_p630 3 S2031, M2-serve_cap_DC_p630 3 S2031, POI-eq_DC_p630 4 S2026, M2-serve_cap_DC_p630 4 S2026, POI-eq_DC_p630 4 S2027, M2-serve_cap_DC_p630 4 S2027, POI-eq_DC_p630 4 S2028, M2-serve_cap_DC_p630 4 S2028, POI-eq_DC_p630 4 S2029, M2-serve_cap_DC_p630 4 S2029, POI-eq_DC_p630 4 S2030, M2-serve_cap_DC_p630 4 S2030, POI-eq_DC_p630 4 S2031, M2-serve_cap_DC_p630 4 S2031, POI-eq_DC_p630 5 S2026, M2-serve_cap_DC_p630 5 S2026, POI-eq_DC_p630 5 S2027, M2-serve_cap_DC_p630 5 S2027, POI-eq_DC_p630 5 S2028, M2-serve_cap_DC_p630 5 S2028, POI-eq_DC_p630 5 S2029, M2-serve_cap_DC_p630 5 S2029, POI-eq_DC_p630 5 S2030, M2-serve_cap_DC_p630 5 S2030, POI-eq_DC_p630 5 S2031, M2-serve_cap_DC_p630 5 S2031, POI-eq_DC_p630 6 S2026, M2-serve_cap_DC_p630 6 S2026, POI-eq_DC_p630 6 S2027, M2-serve_cap_DC_p630 6 S2027, POI-eq_DC_p630 6 S2028, M2-serve_cap_DC_p630 6 S2028, POI-eq_DC_p630 6 S2029, M2-serve_cap_DC_p630 6 S2029, POI-eq_DC_p630 6 S2030, M2-serve_cap_DC_p630 6 S2030, POI-eq_DC_p630 6 S2031, M2-serve_cap_DC_p630 6 S2031, POI-eq_DC_p630 8 S2026, M2-serve_cap_DC_p630 8 S2026, POI-eq_DC_p630 8 S2027, M2-serve_cap_DC_p630 8 S2027, POI-eq_DC_p630 8 S2028, M2-serve_cap_DC_p630 8 S2028, POI-eq_DC_p630 8 S2029, M2-serve_cap_DC_p630 8 S2029, POI-eq_DC_p630 8 S2030, M2-serve_cap_DC_p630 8 S2030, POI-eq_DC_p630 8 S2031, M2-serve_cap_DC_p630 8 S2031, POI-eq_DC_p630 9 S2026, M2-serve_cap_DC_p630 9 S2026, POI-eq_DC_p630 9 S2027, M2-serve_cap_DC_p630 9 S2027, POI-eq_DC_p630 9 S2028, M2-serve_cap_DC_p630 9 S2028, POI-eq_DC_p630 9 S2029, M2-serve_cap_DC_p630 9 S2029, POI-eq_DC_p630 9 S2030, M2-serve_cap_DC_p630 9 S2030, POI-eq_DC_p630 9 S2031, M2-serve_cap_DC_p630 9 S2031, POI-eq_DC_p640 1 S2026, M2-serve_cap_DC_p640 1 S2026, POI-eq_DC_p640 1 S2027, M2-serve_cap_DC_p640 1 S2027, POI-eq_DC_p640 1 S2028, M2-serve_cap_DC_p640 1 S2028, POI-eq_DC_p640 1 S2029, M2-serve_cap_DC_p640 1 S2029, POI-eq_DC_p640 1 S2030, M2-serve_cap_DC_p640 1 S2030, POI-eq_DC_p640 1 S2031, M2-serve_cap_DC_p640 1 S2031, POI-eq_DC_p650 0 S2026, M2-serve_cap_DC_p650 0 S2026, POI-eq_DC_p650 0 S2027, M2-serve_cap_DC_p650 0 S2027, POI-eq_DC_p650 0 S2028, M2-serve_cap_DC_p650 0 S2028, POI-eq_DC_p650 0 S2029, M2-serve_cap_DC_p650 0 S2029, POI-eq_DC_p650 0 S2030, M2-serve_cap_DC_p650 0 S2030, POI-eq_DC_p650 0 S2031, M2-serve_cap_DC_p650 0 S2031, POI-eq_DC_p650 7 S2026, M2-serve_cap_DC_p650 7 S2026, POI-eq_DC_p650 7 S2027, M2-serve_cap_DC_p650 7 S2027, POI-eq_DC_p650 7 S2028, M2-serve_cap_DC_p650 7 S2028, POI-eq_DC_p650 7 S2029, M2-serve_cap_DC_p650 7 S2029, POI-eq_DC_p650 7 S2030, M2-serve_cap_DC_p650 7 S2030, POI-eq_DC_p650 7 S2031, M2-serve_cap_DC_p650 7 S2031, POI-eq_DC_p670 0 S2026, M2-serve_cap_DC_p670 0 S2026, POI-eq_DC_p670 0 S2027, M2-serve_cap_DC_p670 0 S2027, POI-eq_DC_p670 0 S2028, M2-serve_cap_DC_p670 0 S2028, POI-eq_DC_p670 0 S2029, M2-serve_cap_DC_p670 0 S2029, POI-eq_DC_p670 0 S2030, M2-serve_cap_DC_p670 0 S2030, POI-eq_DC_p670 0 S2031, M2-serve_cap_DC_p670 0 S2031, POI-eq_DC_p670 1 S2026, M2-serve_cap_DC_p670 1 S2026, POI-eq_DC_p670 1 S2027, M2-serve_cap_DC_p670 1 S2027, POI-eq_DC_p670 1 S2028, M2-serve_cap_DC_p670 1 S2028, POI-eq_DC_p670 1 S2029, M2-serve_cap_DC_p670 1 S2029, POI-eq_DC_p670 1 S2030, M2-serve_cap_DC_p670 1 S2030, POI-eq_DC_p670 1 S2031, M2-serve_cap_DC_p670 1 S2031, POI-eq_DC_p670 4 S2026, M2-serve_cap_DC_p670 4 S2026, POI-eq_DC_p670 4 S2027, M2-serve_cap_DC_p670 4 S2027, POI-eq_DC_p670 4 S2028, M2-serve_cap_DC_p670 4 S2028, POI-eq_DC_p670 4 S2029, M2-serve_cap_DC_p670 4 S2029, POI-eq_DC_p670 4 S2030, M2-serve_cap_DC_p670 4 S2030, POI-eq_DC_p670 4 S2031, M2-serve_cap_DC_p670 4 S2031, P01-online_monotone_DC_p600 0 S2027, P01-online_monotone_DC_p600 0 S2028, P01-online_monotone_DC_p600 0 S2029, P01-online_monotone_DC_p600 0 S2030, P01-online_monotone_DC_p600 0 S2031, P01-online_monotone_DC_p610 2 S2027, P01-online_monotone_DC_p610 2 S2028, P01-online_monotone_DC_p610 2 S2029, P01-online_monotone_DC_p610 2 S2030, P01-online_monotone_DC_p610 2 S2031, P01-online_monotone_DC_p630 10 S2027, P01-online_monotone_DC_p630 10 S2028, P01-online_monotone_DC_p630 10 S2029, P01-online_monotone_DC_p630 10 S2030, P01-online_monotone_DC_p630 10 S2031, P01-online_monotone_DC_p630 2 S2027, P01-online_monotone_DC_p630 2 S2028, P01-online_monotone_DC_p630 2 S2029, P01-online_monotone_DC_p630 2 S2030, P01-online_monotone_DC_p630 2 S2031, P01-online_monotone_DC_p630 3 S2027, P01-online_monotone_DC_p630 3 S2028, P01-online_monotone_DC_p630 3 S2029, P01-online_monotone_DC_p630 3 S2030, P01-online_monotone_DC_p630 3 S2031, P01-online_monotone_DC_p630 4 S2027, P01-online_monotone_DC_p630 4 S2028, P01-online_monotone_DC_p630 4 S2029, P01-online_monotone_DC_p630 4 S2030, P01-online_monotone_DC_p630 4 S2031, P01-online_monotone_DC_p630 5 S2027, P01-online_monotone_DC_p630 5 S2028, P01-online_monotone_DC_p630 5 S2029, P01-online_monotone_DC_p630 5 S2030, P01-online_monotone_DC_p630 5 S2031, P01-online_monotone_DC_p630 6 S2027, P01-online_monotone_DC_p630 6 S2028, P01-online_monotone_DC_p630 6 S2029, P01-online_monotone_DC_p630 6 S2030, P01-online_monotone_DC_p630 6 S2031, P01-online_monotone_DC_p630 8 S2027, P01-online_monotone_DC_p630 8 S2028, P01-online_monotone_DC_p630 8 S2029, P01-online_monotone_DC_p630 8 S2030, P01-online_monotone_DC_p630 8 S2031, P01-online_monotone_DC_p630 9 S2027, P01-online_monotone_DC_p630 9 S2028, P01-online_monotone_DC_p630 9 S2029, P01-online_monotone_DC_p630 9 S2030, P01-online_monotone_DC_p630 9 S2031, P01-online_monotone_DC_p640 1 S2027, P01-online_monotone_DC_p640 1 S2028, P01-online_monotone_DC_p640 1 S2029, P01-online_monotone_DC_p640 1 S2030, P01-online_monotone_DC_p640 1 S2031, P01-online_monotone_DC_p650 0 S2027, P01-online_monotone_DC_p650 0 S2028, P01-online_monotone_DC_p650 0 S2029, P01-online_monotone_DC_p650 0 S2030, P01-online_monotone_DC_p650 0 S2031, P01-online_monotone_DC_p650 7 S2027, P01-online_monotone_DC_p650 7 S2028, P01-online_monotone_DC_p650 7 S2029, P01-online_monotone_DC_p650 7 S2030, P01-online_monotone_DC_p650 7 S2031, P01-online_monotone_DC_p670 0 S2027, P01-online_monotone_DC_p670 0 S2028, P01-online_monotone_DC_p670 0 S2029, P01-online_monotone_DC_p670 0 S2030, P01-online_monotone_DC_p670 0 S2031, P01-online_monotone_DC_p670 1 S2027, P01-online_monotone_DC_p670 1 S2028, P01-online_monotone_DC_p670 1 S2029, P01-online_monotone_DC_p670 1 S2030, P01-online_monotone_DC_p670 1 S2031, P01-online_monotone_DC_p670 4 S2027, P01-online_monotone_DC_p670 4 S2028, P01-online_monotone_DC_p670 4 S2029, P01-online_monotone_DC_p670 4 S2030, P01-online_monotone_DC_p670 4 S2031, D24-no_harm_existing_customers, ML-potential_onwind_p600 0, ML-potential_onwind_p600 1, ML-potential_onwind_p600 2, ML-potential_onwind_p600 3, ML-potential_onwind_p600 4, ML-potential_onwind_p610 0, ML-potential_onwind_p610 1, ML-potential_onwind_p610 2, ML-potential_onwind_p610 3, ML-potential_onwind_p610 4, ML-potential_onwind_p620 0, ML-potential_onwind_p620 1, ML-potential_onwind_p620 2, ML-potential_onwind_p620 3, ML-potential_onwind_p620 4, ML-potential_onwind_p620 5, ML-potential_onwind_p620 6, ML-potential_onwind_p620 7, ML-potential_onwind_p630 0, ML-potential_onwind_p630 1, ML-potential_onwind_p630 10, ML-potential_onwind_p630 11, ML-potential_onwind_p630 12, ML-potential_onwind_p630 13, ML-potential_onwind_p630 14, ML-potential_onwind_p630 15, ML-potential_onwind_p630 2, ML-potential_onwind_p630 3, ML-potential_onwind_p630 4, ML-potential_onwind_p630 5, ML-potential_onwind_p630 6, ML-potential_onwind_p630 7, ML-potential_onwind_p630 8, ML-potential_onwind_p630 9, ML-potential_onwind_p640 0, ML-potential_onwind_p640 1, ML-potential_onwind_p640 2, ML-potential_onwind_p640 3, ML-potential_onwind_p640 4, ML-potential_onwind_p640 5, ML-potential_onwind_p640 6, ML-potential_onwind_p640 7, ML-potential_onwind_p650 0, ML-potential_onwind_p650 1, ML-potential_onwind_p650 2, ML-potential_onwind_p650 3, ML-potential_onwind_p650 4, ML-potential_onwind_p650 5, ML-potential_onwind_p650 6, ML-potential_onwind_p650 8, ML-potential_onwind_p650 9, ML-potential_onwind_p670 0, ML-potential_onwind_p670 1, ML-potential_onwind_p670 10, ML-potential_onwind_p670 2, ML-potential_onwind_p670 3, ML-potential_onwind_p670 4, ML-potential_onwind_p670 8, ML-potential_onwind_p670 9, ML-potential_solar_p600 0, ML-potential_solar_p600 1, ML-potential_solar_p600 2, ML-potential_solar_p600 3, ML-potential_solar_p600 4, ML-potential_solar_p610 0, ML-potential_solar_p610 1, ML-potential_solar_p610 2, ML-potential_solar_p610 3, ML-potential_solar_p610 4, ML-potential_solar_p620 0, ML-potential_solar_p620 1, ML-potential_solar_p620 2, ML-potential_solar_p620 3, ML-potential_solar_p620 4, ML-potential_solar_p620 5, ML-potential_solar_p620 6, ML-potential_solar_p620 7, ML-potential_solar_p630 0, ML-potential_solar_p630 1, ML-potential_solar_p630 10, ML-potential_solar_p630 11, ML-potential_solar_p630 12, ML-potential_solar_p630 13, ML-potential_solar_p630 14, ML-potential_solar_p630 15, ML-potential_solar_p630 2, ML-potential_solar_p630 3, ML-potential_solar_p630 4, ML-potential_solar_p630 5, ML-potential_solar_p630 6, ML-potential_solar_p630 7, ML-potential_solar_p630 8, ML-potential_solar_p630 9, ML-potential_solar_p640 0, ML-potential_solar_p640 1, ML-potential_solar_p640 2, ML-potential_solar_p640 3, ML-potential_solar_p640 4, ML-potential_solar_p640 5, ML-potential_solar_p640 6, ML-potential_solar_p640 7, ML-potential_solar_p650 0, ML-potential_solar_p650 1, ML-potential_solar_p650 2, ML-potential_solar_p650 3, ML-potential_solar_p650 4, ML-potential_solar_p650 5, ML-potential_solar_p650 6, ML-potential_solar_p650 7, ML-potential_solar_p650 8, ML-potential_solar_p650 9, ML-potential_solar_p670 0, ML-potential_solar_p670 1, ML-potential_solar_p670 10, ML-potential_solar_p670 2, ML-potential_solar_p670 3, ML-potential_solar_p670 4, ML-potential_solar_p670 5, ML-potential_solar_p670 6, ML-potential_solar_p670 8, ML-potential_solar_p670 9, PV16M-online_cap_fixed, PV16M-online_cap_ext, PV16M-online_max_p, PV16M-online_min, PV16M-res_thermal_head, PV16M-res_ramp, PV16M-res_su_power_fixed, PV16M-res_su_power_ext, PV16M-res_su_energy, PV16M-res_su_energy_start, PV16M-reserve_req, A2F08-seg_soc_0_815, A2F08-seg_soc_1_55, A2F08-seg_soc_2_63, A2F08-seg_soc_3_119, A2F08-seg_soc_4_127, A2F08-seg_soc_5_135, A2F08-seg_soc_5_815, A2F08-seg_soc_6_191, A2F08-seg_soc_7_199, A2F08-seg_soc_8_255, A2F08-seg_soc_9_263, A2F08-seg_soc_10_271, A2F08-seg_soc_10_815, A2F08-seg_soc_11_327, A2F08-seg_soc_12_335, A2F08-seg_soc_13_391, A2F08-seg_soc_14_399, A2F08-seg_soc_15_407, A2F08-seg_soc_15_815, A2F08-seg_soc_16_463, A2F08-seg_soc_17_471, A2F08-seg_soc_18_527, A2F08-seg_soc_19_535, A2F08-seg_soc_20_543, A2F08-seg_soc_20_815, A2F08-seg_soc_21_599, A2F08-seg_soc_22_607, A2F08-seg_soc_23_663, A2F08-seg_soc_24_671, A2F08-seg_soc_25_679, A2F08-seg_soc_25_815, A2F08-seg_soc_26_735, A2F08-seg_soc_27_743, A2F08-seg_soc_28_799, A2F08-seg_soc_29_807, P02-A1_2026, P02-A1_2027, P02-A2_p600 0_2027, P02-A2_p610 2_2027, P02-A2_p630 6_2027, P02-A2_p630 9_2027, P02-A2_p650 0_2027, P02-A1_2028, P02-A2_p600 0_2028, P02-A2_p610 2_2028, P02-A2_p630 2_2028, P02-A2_p630 5_2028, P02-A2_p630 6_2028, P02-A2_p630 9_2028, P02-A2_p650 0_2028, P02-A1_2029, P02-A2_p600 0_2029, P02-A2_p610 2_2029, P02-A2_p630 10_2029, P02-A2_p630 2_2029, P02-A2_p630 3_2029, P02-A2_p630 4_2029, P02-A2_p630 5_2029, P02-A2_p630 6_2029, P02-A2_p630 8_2029, P02-A2_p630 9_2029, P02-A2_p640 1_2029, P02-A2_p650 0_2029, P02-A2_p650 7_2029, P02-A2_p670 0_2029, P02-A2_p670 1_2029, P02-A2_p670 4_2029, P02-A1_2030, P02-A2_p600 0_2030, P02-A2_p610 2_2030, P02-A2_p630 10_2030, P02-A2_p630 2_2030, P02-A2_p630 3_2030, P02-A2_p630 4_2030, P02-A2_p630 5_2030, P02-A2_p630 6_2030, P02-A2_p630 8_2030, P02-A2_p630 9_2030, P02-A2_p640 1_2030, P02-A2_p650 0_2030, P02-A2_p650 7_2030, P02-A2_p670 0_2030, P02-A2_p670 1_2030, P02-A2_p670 4_2030, P02-A1_2031, P02-A2_p600 0_2031, P02-A2_p610 2_2031, P02-A2_p630 10_2031, P02-A2_p630 2_2031, P02-A2_p630 3_2031, P02-A2_p630 4_2031, P02-A2_p630 5_2031, P02-A2_p630 6_2031, P02-A2_p630 8_2031, P02-A2_p630 9_2031, P02-A2_p640 1_2031, P02-A2_p650 0_2031, P02-A2_p650 7_2031, P02-A2_p670 0_2031, P02-A2_p670 1_2031, P02-A2_p670 4_2031 were not assigned to the network.
+{
+ "case": "POST_V16_A2_S0S1",
+ "status": "CASE_CHECK_FAIL",
+ "checks": {
+  "true_LP": true,
+  "all_optimal": true,
+  "S1_zero_equals_S0": null,
+  "no_load_shed": false,
+  "served_le_requested": true,
+  "dc_energy_balance": true,
+  "S2_off_equals_S1": null,
+  "online_IT_monotone": true,
+  "no_harm_existing_customers": true,
+  "interruption_within_cap": true,
+  "lex_presolve_optimal": true,
+  "poi_flow_le_equipment": true,
+  "no_service_before_grid_or_byop": true,
+  "s2_consistent": true,
+  "s2_converged": null,
+  "private_stage_LP": null
+ }
+}
+Traceback (most recent call last):
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/model/rearch_mech.py", line 2308, in <module>
+    main()
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/model/rearch_mech.py", line 2300, in main
+    cm.collect(out)
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/post/collect_mainline.py", line 324, in collect
+    w(pd.concat([pd.read_csv(f) for f in fl_parts], ignore_index=True), 'STAGE_B3_S0CAL_LINE_FLOW_UTILISATION.csv')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/post/collect_mainline.py", line 324, in <listcomp>
+    w(pd.concat([pd.read_csv(f) for f in fl_parts], ignore_index=True), 'STAGE_B3_S0CAL_LINE_FLOW_UTILISATION.csv')
+                 ^^^^^^^^^^^^^^
+  File "/datasets/prgm/pypsa-usa/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 873, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/datasets/prgm/pypsa-usa/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 300, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/datasets/prgm/pypsa-usa/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1645, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/datasets/prgm/pypsa-usa/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1922, in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/datasets/prgm/pypsa-usa/.venv/lib/python3.11/site-packages/pandas/io/parsers/c_parser_wrapper.py", line 95, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/parsers.pyx", line 575, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+2026-10-23T08:31:40Z end rc=1

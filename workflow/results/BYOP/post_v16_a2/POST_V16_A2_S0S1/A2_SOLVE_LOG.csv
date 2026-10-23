@@ -1,0 +1,3 @@
+attempt_id,stage,attempt,state,started_utc,finished_utc,status,termination,failure_class,pass,seconds,manifest_sha256,base_sha256,note
+S0#1,S0,1,DONE,2026-10-23T04:50:00+00:00,2026-10-23T05:29:16+00:00,ok,optimal,,True,2355.2,a6359563d433bddffa75e806862e73db9d52e7c43531ca06cd5aa0c0da1c99d9,a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16,
+S1_EARLIEST#1,S1_EARLIEST,1,DONE,2026-10-23T05:29:53+00:00,2026-10-23T08:24:03+00:00,ok,optimal,,True,10449.9,a6359563d433bddffa75e806862e73db9d52e7c43531ca06cd5aa0c0da1c99d9,a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16,

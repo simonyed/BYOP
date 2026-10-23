@@ -1,0 +1,115 @@
+{
+ "stage": "S1_EARLIEST",
+ "parent_attempt_id": "S1_EARLIEST#1",
+ "result": {
+  "tag": "S1_EARLIEST",
+  "status": "ok",
+  "termination": "optimal",
+  "objective": 26253477989.173965,
+  "seconds": 10436.3,
+  "n_vars": 2712538,
+  "n_cons": 7295568,
+  "integer_vars": 0,
+  "erm_dc_mode": "B",
+  "erm_poi_coeff_snapshot0": null
+ },
+ "acceptance": {
+  "PASS": true,
+  "checks": {
+   "status_ok": true,
+   "termination_optimal": true,
+   "no_integer_vars": true,
+   "balance_residual_ok": true,
+   "reserve_ok": true,
+   "reserve_soc_ok": true,
+   "no_harm_reference_sha_ok": true,
+   "no_harm_units_match": true,
+   "no_harm_snapshots_match": true,
+   "no_harm_ok": true,
+   "no_harm_row_built_from_reference": true,
+   "soc_segment_rows_present": true,
+   "expansion_pairs_equal": true,
+   "no_free_public_expansion": true,
+   "optimizer_calls_complete": true,
+   "lex_presolve_optimal": true,
+   "speed_levels_hold_in_cost_stage": true,
+   "no_harm_row_present": true
+  },
+  "values": {
+   "balance_residual_MW_max": 8.175618404493434e-07,
+   "reserve_slack_MW_min": 3.6313322198111564e-06,
+   "reserve_soc_slack_MWh_min": -5.8875230024568737e-08,
+   "existing_shed_MWh": 54007.76967791457,
+   "no_harm_max_excess_MW": 0.0010000049174578862,
+   "no_harm_row_vs_reference_max_abs": 3.3279860645052395e-08,
+   "expansion_pair_max_abs_diff_MW": 0.0,
+   "free_public_links_built_MW": 0.0,
+   "optimizer_calls": [
+    {
+     "kind": "S1_SPEED_HIERARCHY",
+     "state": "DONE",
+     "status": "ok",
+     "termination": "optimal",
+     "n_objectives": "12"
+    },
+    {
+     "kind": "S1_COST",
+     "state": "DONE",
+     "status": "ok",
+     "termination": "optimal",
+     "n_objectives": "1"
+    }
+   ],
+   "lex_status": "OPTIMAL",
+   "gurobi_hierarchy_objectives": 12,
+   "speed_levels": [
+    {
+     "year": 2026,
+     "level": 6.970035068894784,
+     "served": 7.847984683385679,
+     "ok": true
+    },
+    {
+     "year": 2027,
+     "level": 639.04661534258,
+     "served": 639.0466153464516,
+     "ok": true
+    },
+    {
+     "year": 2028,
+     "level": 1272.534203537714,
+     "served": 1272.5342035431254,
+     "ok": true
+    },
+    {
+     "year": 2029,
+     "level": 2365.790498212,
+     "served": 2365.790498223484,
+     "ok": true
+    },
+    {
+     "year": 2030,
+     "level": 3018.313284543,
+     "served": 3018.3132845540417,
+     "ok": true
+    },
+    {
+     "year": 2031,
+     "level": 3531.695886844,
+     "served": 3531.695886854304,
+     "ok": true
+    }
+   ]
+  }
+ },
+ "gate": {
+  "approved": true,
+  "reasons": [],
+  "head": "a5a203fab5efd6dfeb5057d7f660fb0c6fae14e0",
+  "approved_git_sha": "cdfdea06146a6fe73df89cb410d6a88cb5fda306",
+  "stage": "S1_EARLIEST",
+  "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+  "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a2.yaml",
+  "ledger": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/post_v16_a2/POST_V16_A2_S0S1/A2_SOLVE_LOG.csv"
+ }
+}

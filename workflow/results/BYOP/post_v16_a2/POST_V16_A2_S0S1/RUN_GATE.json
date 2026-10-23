@@ -1,0 +1,10 @@
+{
+ "approved": true,
+ "reasons": [],
+ "head": "a5a203fab5efd6dfeb5057d7f660fb0c6fae14e0",
+ "approved_git_sha": "cdfdea06146a6fe73df89cb410d6a88cb5fda306",
+ "stage": "S0",
+ "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+ "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a2.yaml",
+ "ledger": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/post_v16_a2/POST_V16_A2_S0S1/A2_SOLVE_LOG.csv"
+}
