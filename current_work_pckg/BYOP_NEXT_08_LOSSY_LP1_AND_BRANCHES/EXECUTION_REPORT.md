@@ -4,11 +4,11 @@
 WORK_PACKAGE: BYOP_NEXT_08 (prompt: NEXT_08_PROMPT.md)
 START_HEAD: 327b46eaa0095dc80e0c0893f538f6396c259c6a (main = mainline-v13-stageA)
 APPROVABLE_SHA: 219bf3e9b7f08c9bc65f69276a2635a37fe8c47c (lossy LP1 chain, NOT_APPROVED)
-OPTIMIZER_CALLS: 0
+OPTIMIZER_CALLS: 3 (approved later the same day at 219bf3e9 via 1adf3116: IT1 not converged, IT2 converged + G1-G3 PASS, LP2 candidate EENS 1,657 MWh PASS / max gap 132.4 MW FAIL; see LOSSY_LP1_RESULTS.md)
 TASK_A_STATIC: PASS (design, runner, real-model build, zero-solver chain PASS, 11 new unit tests, suite 319/0)
 TASK_B_BRANCHES: GitHub = main only; 11 tags; 3 local/L2 worktree-bound branches kept (worktree removal refused by the permission classifier - needs your OK)
 FROZEN_FILES_CHANGED: none (v1.6 NetCDFs, ledgers, approvals, results, inputs untouched)
-NEXT_DECISION_REQUIRED: approve (or not) the lossy LP1 chain at 219bf3e9 (<= 3 calls); allow the 3 worktree removals
+NEXT_DECISION_REQUIRED: candidate not adopted (LP2 gap 132.4 MW > 83.7); decide on the LP1 loss-approximation fix (4 tangent segments in LP1 only, <= 3 calls) and allow the 3 worktree removals
 ```
 
 ## Work done
@@ -76,3 +76,20 @@ Approve the lossy LP1 chain at `219bf3e9`. If LP2 passes:
 5. S2/S3, for the BYOP speed-to-power, public-investment-feedback and social-efficiency results.
 
 No new sensitivity batches are proposed.
+
+## Update: the approved lossy LP1 chain (see `LOSSY_LP1_RESULTS.md`)
+
+**Calls:** 3 of 3, 0 retries, 21 threads.
+
+| Stage | Result |
+|---|---|
+| IT1 | optimal, not r-converged |
+| IT2 | optimal, converged; uplift 5,816.6 MVA = v1.6 + 664.8 MVA on 20 lines; G1–G3 pass; candidate written as a new file |
+| LP2 on the candidate | EENS 1,657 MWh (pass); **largest gap 132.4 MW (fail)** at p610 1, 28 Aug 09:00 |
+
+- **Far West pocket:** now served.
+- **Candidate:** not adopted; the frozen files are unchanged.
+
+**Cause.** LP1's loss tangents sit at 1× and 2× the v1.6 rating because of the 2× cap, while LP2 and S0–S3 place them at ½ and 1× the actual rating. LP1 therefore under-counts losses (3.90 vs 5.32 TWh).
+
+**Proposed fix (needs your approval).** Use 4 tangent segments in LP1 only. These contain LP2's tangent points, so LP1 losses are at least LP2's. Budget: ≤ 3 calls.

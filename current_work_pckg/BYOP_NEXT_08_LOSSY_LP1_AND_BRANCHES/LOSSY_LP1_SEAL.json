@@ -1,0 +1,38 @@
+{
+ "work_package": "BYOP_NEXT_08",
+ "step": "lossy LP1 chain seal",
+ "solved_code_sha": "219bf3e9b7f08c9bc65f69276a2635a37fe8c47c",
+ "approval_commit": "1adf31164c0182a8d68acb913da91654f8ff40c3",
+ "approved_by": "sw2434@cornell.edu",
+ "optimizer_calls": 3,
+ "retries": 0,
+ "threads": 21,
+ "stages": {
+  "LP1_LOSSY_IT1": "optimal, not r-converged",
+  "LP1_LOSSY_IT2": "optimal, r-converged, G1-G3 PASS, candidate written",
+  "LP2_LOSSY_CANDIDATE": "optimal, acceptance FAIL (EENS pass, max gap 132.4 MW > 83.7)"
+ },
+ "candidate_nc": "results/BYOP/next08_lossy_lp1/baseline_2025_tamu_lossy_candidate.nc (L2 only; .nc not in git)",
+ "candidate_sha256_from_qa": "4720185461d3204a3d40f46dc58ecd5ae760dd2f771943c8fb8bb5b0a96dc491",
+ "candidate_status": "NOT ADOPTED (researcher: no formal baseline adoption)",
+ "files": {
+  "LP1_LOSSY_IT1\\line_loss.csv.gz": "9131719f4062ce8d507284b27afc5f25f93244bd8378faa1742a2d3b0278585c",
+  "LP1_LOSSY_IT1\\LOSSY_LP1_QA.json": "179825ea22f87a247ddcf3b2b44320191431caa1f2ac52bf21eca241d6441340",
+  "LP1_LOSSY_IT1\\LP1_LINE_SOLUTION.csv": "386f278dec049c9f520a4399f6494449462977be1febb5ae19b3471e819eb712",
+  "LP1_LOSSY_IT1\\shed_by_bus.csv.gz": "53b13274e4f6091dc737007e4f450f1caf687a4a901ac7b7f6cd3a5e26795cd2",
+  "LP1_LOSSY_IT1\\shedding_events.csv": "841838c0d27b6c7d2ddf56f09716b30d1896c25d06c356ef19879eb26298f7e6",
+  "LP1_LOSSY_IT2\\line_loss.csv.gz": "bc97e3e6722cf08a5460e9b6635cf5fd4c0b87dbc9c77df855e11b3aaf5d7e71",
+  "LP1_LOSSY_IT2\\LOSSY_LP1_QA.json": "2a26f6f25313d4eea0712bee97582b506b9b90ba8b2c2439c3476068c363fb72",
+  "LP1_LOSSY_IT2\\LP1_LINE_SOLUTION.csv": "c9736adb415692d32dd7746f9aa86169c99c3e8e004ad2a4045ef54704b9d4d8",
+  "LP1_LOSSY_IT2\\shed_by_bus.csv.gz": "24700de681650865b4f014b57cacc4d79e28ef7845778bcf3a014d4a979a6203",
+  "LP1_LOSSY_IT2\\shedding_events.csv": "5a8b0f6380d2b08677a7c075b31e15850eb71ac93640df69f46d0801e316fbad",
+  "LP2_LOSSY_CANDIDATE\\generation_by_carrier.csv": "ae2de9caa7b9c797768a375cd39576c388ae696e6732173abb38ca3de2b4fd7f",
+  "LP2_LOSSY_CANDIDATE\\line_flow_p0.csv.gz": "f168ae5794bf46c5bd735f8e9d58b38782f52a9f74a13935ddc516dfee45e22a",
+  "LP2_LOSSY_CANDIDATE\\line_loss.csv.gz": "28ad8513cae678977a7a594079b0b2bfef40413d7402c16ecc1e3ef7786e8705",
+  "LP2_LOSSY_CANDIDATE\\lines.csv": "17ab4e5a460ac253fc737f990c20cb705f5a82c26167f64dac3d610c846a3d0a",
+  "LP2_LOSSY_CANDIDATE\\LOSS_BASIS_LP2_QA.json": "5c68b3d49600ada8eab8f3cac0296cd655709a07c47da7df7b3efb3d9c2fc48b",
+  "LP2_LOSSY_CANDIDATE\\shed_by_bus.csv.gz": "20f0a03b6ae89b11916987b07a642827f6c19a9e907dd34fb61fc121ce84c74d",
+  "LP2_LOSSY_CANDIDATE\\shedding_events.csv": "c1a46dc00c4a8c51f6f169480f1a01b26fdcf76e613e228243b148c3d36b4380",
+  "LOSSY_LP1_SOLVE_LOG.csv": "8775055cb5c341bd6922bf780372954c18e65257a06c80a3a55541cfbdfb2f04"
+ }
+}
