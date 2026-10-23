@@ -1,34 +1,34 @@
 {
  "work_package": "BYOP_NEXT_07",
- "report_commit_parent": "f58a4e31b0962313c0931e034f546f880a790e0e",
- "branch": "mainline-v13-stageA",
- "w2_approvable_code_sha": "5df4dda75efc4efb1796393c1131f93a8d801599",
- "w4_branch": "work/next07-a3-static",
- "w4_branch_sha": "79134c9fc3499e923240e1ed537ef2d8b87dc5da",
- "solved_code_sha_this_package": null,
- "original_s0_s1_code_sha": "cdfdea06146a6fe73df89cb410d6a88cb5fda306",
- "optimizer_calls_total": 0,
+ "report_commit_parent": "b904957c5b9a6de38ca54f33354f27b43071aa7f",
+ "branch": "mainline-v13-stageA (= GitHub main after fast-forward)",
+ "solved_code_sha": "5df4dda75efc4efb1796393c1131f93a8d801599",
+ "approval_commit": "6181ff5f56d21b75e769f7b1515065c1000e7aad",
+ "w4_merge": "1d05a03e",
+ "a3_manifest_head": "4edf7bace43677e7c73c3c4d057945e95e66779f",
+ "optimizer_calls_total": 1,
+ "a3_calls": 0,
  "tests": {
-  "main_l2": "272 passed / 0 failed (5df4dda7 code)",
-  "w4_branch_l2_clone": "289 passed / 0 failed"
+  "solved_code": "272/0",
+  "merged": "290/0",
+  "a3_e2e": "13/13, 0 solver executions"
  },
  "statuses": {
-  "W0_DATA_QA": "PASS",
-  "W1_RESERVE_RHS_ONLY_STATIC": "PASS",
-  "W2": "NOT_RUN (NOT_APPROVED)",
-  "W2_RHS_CHANGED_ONLY": "YES",
-  "W3_S0_RELIABILITY_VERDICT": "BASELINE_RELIABILITY_UNRESOLVED",
-  "W3_FULL_YEAR_DIAGNOSTIC": "NOT_AUTHORIZED",
-  "W4_A3_RUNTIME_STATIC": "PARTIAL"
+  "W0": "PASS",
+  "W1": "PASS",
+  "W2": "PASS - RESERVE_REQUIREMENT_NOT_PRIMARY_IN_THIS_COUNTERFACTUAL",
+  "W3": "BASELINE_RELIABILITY_UNRESOLVED (proposal)",
+  "full_year": "NOT_AUTHORIZED (not runnable as prepared)",
+  "W4": "PASS (static), A3 LOCKED"
  },
- "l2_only": {
-  "note": "large / per-run files stay on L2",
-  "paths": [
-   "/tmp/byop_n07/clone (W4 test clone)",
-   "/tmp/byop_n07/W4_TESTS.log"
-  ]
- },
+ "l2_only": "full solution/S0 frames > 3 MB stay on L2 (SHA in S0_RESULT.json saved_solution)",
  "files": [
+  {
+   "path": "current_work_pckg/BYOP_NEXT_07/A3_PRE_RUN_MANIFEST.json",
+   "sha256": "2d39213b1a16765ce355f1c2a8c9d69690cee764de45e123ea6bcc2e79245596",
+   "academic_use": "DIAGNOSTIC_EVIDENCE",
+   "solver_calls": 0
+  },
   {
    "path": "current_work_pckg/BYOP_NEXT_07/BYOP_NEXT_07_S0_Reserve_Causal_Diagnostic_and_A3_Readiness_2026-10-23.md",
    "sha256": "dec9259865f687c0a13ebbc4fb4c125dc06a69a94dc7afbfaed3ac18d1f3d3c5",
@@ -43,7 +43,7 @@
   },
   {
    "path": "current_work_pckg/BYOP_NEXT_07/NEXT_07_EXECUTION_REPORT.md",
-   "sha256": "74db8b7795fb8a18d2db8efa08f0bb6e32205d7210d0fa3ce4b4cf1a358729d7",
+   "sha256": "3610ce36123f97ce8c396e5931fef3ea1cfb0c508e35d1bfb128f2b90c1ef953",
    "academic_use": "DIAGNOSTIC_EVIDENCE",
    "solver_calls": 0
   },
@@ -74,127 +74,571 @@
   {
    "path": "current_work_pckg/BYOP_NEXT_07/W2_APPROVAL_REQUEST.md",
    "sha256": "3949eb38faf728becd575fd8c9090d78809f02c9f026fbfa67acc0e1adbefc95",
-   "academic_use": "DIAGNOSTIC_EVIDENCE",
+   "academic_use": "DIAGNOSTIC_RESULT (not a reliability baseline)",
+   "solver_calls": 0
+  },
+  {
+   "path": "current_work_pckg/BYOP_NEXT_07/W2_PUBLIC_INVESTMENT_BY_CARRIER_YEAR.csv",
+   "sha256": "7c29c206d6aea0e1a3138bb712cbed1b6c0f31c35c85eb161af088b5ed5e3366",
+   "academic_use": "DIAGNOSTIC_RESULT (not a reliability baseline)",
    "solver_calls": 0
   },
   {
    "path": "current_work_pckg/BYOP_NEXT_07/W2_RESERVE_CAUSAL_COMPARISON.csv",
-   "sha256": "eb71dfbcdd5a68c2b9ada59c513d4dd593d72cf12282b0076866dab873d62f96",
-   "academic_use": "NOT_RUN_PLACEHOLDER",
-   "solver_calls": 0
+   "sha256": "06a9d74f76aebe59e6ed1aa21b352a14f1a22379c4fc80bc78b8eb4d15db79d6",
+   "academic_use": "DIAGNOSTIC_RESULT (not a reliability baseline)",
+   "solver_calls": 1
+  },
+  {
+   "path": "current_work_pckg/BYOP_NEXT_07/W2_RESERVE_CAUSAL_SUMMARY.json",
+   "sha256": "a63afee5559dd3f955d0e3c46da836ce3a944181003befdd7cd73269e8d0ac64",
+   "academic_use": "DIAGNOSTIC_RESULT (not a reliability baseline)",
+   "solver_calls": 1
   },
   {
    "path": "current_work_pckg/BYOP_NEXT_07/W2_RESERVE_CAUSAL_VERDICT.md",
-   "sha256": "b55ab0d77480844f988ff172ebaec54c5d690b0186022ff9a08d74c7dbb910b8",
-   "academic_use": "NOT_RUN_PLACEHOLDER",
+   "sha256": "47c92e1d94ac2a3139b2f790ad9c187fc69d40e15c93e4c2b7b584bc27381531",
+   "academic_use": "DIAGNOSTIC_RESULT (not a reliability baseline)",
+   "solver_calls": 1
+  },
+  {
+   "path": "current_work_pckg/BYOP_NEXT_07/W2_SEAL.json",
+   "sha256": "afc058ecd3d16471902bdac34ac5091b95732fd578afee599008b9c88c5e2d9b",
+   "academic_use": "DIAGNOSTIC_RESULT (not a reliability baseline)",
    "solver_calls": 0
   },
   {
    "path": "current_work_pckg/BYOP_NEXT_07/W3_FULLYEAR_DECISION_TABLE.csv",
-   "sha256": "b28eb64f81429e98068ea0fa2826d62842781242b55eee0b8699e9ac8181c7c0",
+   "sha256": "e4f6dd0736463a469d59a21da070627d379d1828e67990dbc7ef20d805e3b13f",
    "academic_use": "DIAGNOSTIC_EVIDENCE",
    "solver_calls": 0
   },
   {
    "path": "current_work_pckg/BYOP_NEXT_07/W3_S0_RELIABILITY_VERDICT_PROPOSAL.json",
-   "sha256": "ea50a1ed56f7febd01448f512e6974774ec21f2f4b840f0d69cf1181c55a740b",
+   "sha256": "c099aa3be33a89de46242865a58cfaba8718e59e8ac2926b21f984b07b939e8c",
    "academic_use": "DIAGNOSTIC_EVIDENCE",
    "solver_calls": 0
   },
   {
    "path": "current_work_pckg/BYOP_NEXT_07/W3_S0_SCIENTIFIC_DECISION.md",
-   "sha256": "ce5bd2b9c67633edca28f9db08eae3f595a8a0deafc949e7bc3baddbc9ac6848",
+   "sha256": "0114b89158b93011c5b434b68840780975dfa29aecffeb982788793a762ac3fb",
    "academic_use": "DIAGNOSTIC_EVIDENCE",
    "solver_calls": 0
   },
   {
    "path": "current_work_pckg/BYOP_NEXT_07/W4_A3_STATIC_READINESS.md",
-   "sha256": "d63c24920ce5c878b77fd855bdca87d7d14f64912dabd3a14b632eeecd7d4ac9",
+   "sha256": "11b1b802c8af85c2452abde50de1ab0df2cfec72562053b873a820b3693d924b",
    "academic_use": "DIAGNOSTIC_EVIDENCE",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/_a3_e2e/config.byop_post_v16_a3.E2E.yaml",
+   "sha256": "e31fa233eefd2d9cfe456c55fe212292f6b42c9c7ce459ce7d1dd1f9e4695380",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/_a3_e2e/E2E_A3_CHECKS.csv",
+   "sha256": "5f5c6d0657dd29ee8a5d7c705c1f0128dff0bf226146eb923f30624813ed5e1d",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/_a3_e2e/E2E_A3_OPTIMIZER_CALL_LOG.csv",
+   "sha256": "f919a676d4be14a0204527a46326b0322d1face1116622eec3ff9795d4c8251d",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/_a3_e2e/E2E_A3_REPORT.json",
+   "sha256": "b6693354c3e5c75b8ae5414a2a61bc9e1d91da99c065c5583c9117f1b7e4bd24",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/_a3_e2e/E2E_A3_SOLVE_LOG.csv",
+   "sha256": "82da728b926451bf706b6c9a4db6f51b3fec729f5aafcb5e7ff508b32e7f0403",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/_a3_e2e/ledgers/A3_OPTIMIZER_CALL_LOG.csv",
+   "sha256": "f919a676d4be14a0204527a46326b0322d1face1116622eec3ff9795d4c8251d",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/_a3_e2e/ledgers/A3_SOLVE_LOG.csv",
+   "sha256": "82da728b926451bf706b6c9a4db6f51b3fec729f5aafcb5e7ff508b32e7f0403",
+   "academic_use": "DIAGNOSTIC",
    "solver_calls": 0
   },
   {
    "path": "workflow/results/BYOP/next07_s0_reserve_probe/_fullyear_size/SIZE.log",
    "sha256": "b23d5528fc6a56493681fb5d0bd161d4bdaa4ad60b1872977d2bb13999da9dc9",
-   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "academic_use": "DIAGNOSTIC",
    "solver_calls": 0
   },
   {
    "path": "workflow/results/BYOP/next07_s0_reserve_probe/_fullyear_size/SIZE_BUILD_FAILURE.excerpt.log",
    "sha256": "02672ad4dc4575b494c337b36a3495ff1ef35e1a3c5956d3524369dabe09707a",
-   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "academic_use": "DIAGNOSTIC",
    "solver_calls": 0
   },
   {
    "path": "workflow/results/BYOP/next07_s0_reserve_probe/_static_w1/N07_STATIC.log",
    "sha256": "4867f228d78676596a1ae41193071e4058dcdab77dfd3673db34d82c6e37368d",
-   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "academic_use": "DIAGNOSTIC",
    "solver_calls": 0
   },
   {
    "path": "workflow/results/BYOP/next07_s0_reserve_probe/_static_w1/W1_CONSTRAINT_DIFF.csv",
    "sha256": "29349e1a32b0f08c30bbeadfd2b27d0395c813c32907a4663ec9cf566da1cbb4",
-   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "academic_use": "DIAGNOSTIC",
    "solver_calls": 0
   },
   {
    "path": "workflow/results/BYOP/next07_s0_reserve_probe/_static_w1/W1_MODEL_EQUALS_EXCEPT_RESERVE_RHS.json",
    "sha256": "c3d2910a0db3cea5593644cc0f60505664d2449714ad7ea3757c614664b56c0d",
-   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/_w4_merged/A3_E2E.excerpt.log",
+   "sha256": "0a61cae180aedf5abda5cf7d4ade63ab25010a6a998bb414d3b988bd183f7876",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/_w4_merged/A3_E2E.log",
+   "sha256": "48e5a1d7860c2f02ee2976abe3b309208fdeb834227d32ecad41eb4883ede394",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/_w4_merged/A3_GATE.log",
+   "sha256": "b7fb344d0e22672af6ad10ae28886f9c2fdb06efd36df0f2401fb23db2065136",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/_w4_merged/A3_MANIFEST.log",
+   "sha256": "335a25ed81166a1b1a6cdb36e6ee87f23ebd7c863227ca53ee64b524a682cb2d",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/_w4_merged/TESTS.excerpt.log",
+   "sha256": "98d383aab3a0bbfcccc862239cc92ad99936897deda24eb73b77930517e40271",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/_w4_merged/TESTS.log",
+   "sha256": "4364043e515458c72f277e9e7720d572dd038a221cee90ba487ac736726af97f",
+   "academic_use": "DIAGNOSTIC",
    "solver_calls": 0
   },
   {
    "path": "workflow/results/BYOP/next07_s0_reserve_probe/_w4_static/A3_CLI_REFUSAL.log",
    "sha256": "b107e16e9e09b8251ed462e9f33ad6b9718510cc4f1dc595e7d66902d6c01da8",
-   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "academic_use": "DIAGNOSTIC",
    "solver_calls": 0
   },
   {
    "path": "workflow/results/BYOP/next07_s0_reserve_probe/_w4_static/README.txt",
    "sha256": "dab266e3c4fa24365e8a74f3845aaf7b42675242a03147dfdbb611d89dd3e7c2",
-   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "academic_use": "DIAGNOSTIC",
    "solver_calls": 0
   },
   {
    "path": "workflow/results/BYOP/next07_s0_reserve_probe/_w4_static/W4_TESTS.excerpt.log",
    "sha256": "157acbb3f808d6f6e6b882338041781d72873297967ca11d4f084b782ae5d724",
-   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/A2_OPTIMIZER_CALL_LOG.csv",
+   "sha256": "f41b9bdc7b3b49cc0cab0017bfeb4e052c1813229204983e8eb48640733a72dd",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/A2_SOLVE_LOG.csv",
+   "sha256": "080dcb59a017dc315f8e636402d80ceb484364049d46f5060a4d3ed053882a90",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/byop_cod.csv",
+   "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/case_manifest.json",
+   "sha256": "1bcd5f7fc4bdb91249d06655689260a5057d10c09eaa0ed71a95c253fef04db1",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/corridors.csv",
+   "sha256": "60351661c965e2f803b33cc85f9b2ccd9e587a1908724eb2cc6f37f771ed5d89",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/duals.csv",
+   "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/events.jsonl",
+   "sha256": "c4ce7d0546371f5775ab925259d0056c487d31e3b111b84b0ac73df2dc205745",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/grid_projects.csv",
+   "sha256": "b79b6ab0d859dba8282624f581611c22240409b265ec9f5efedef30b1bafadbf",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/ledger.csv",
+   "sha256": "bd79f433505486a6470b990bb25d7698dbce167b05b6e1cc747da726d30f0735",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/MAINLINE_ASSET_COMMITMENT_LEDGER.csv",
+   "sha256": "e76402494c1c581d774bd57c4352aaedd08056a3d4c90a0d9bfcfc899a911e51",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/MAINLINE_CASE_MANIFEST.json",
+   "sha256": "761c4602d6866fb4f86edf3383fc921763caaf9eefe5bf3ba9f8b761f3486b99",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/MAINLINE_COST_BOOK_DECOMPOSITION.csv",
+   "sha256": "aa9d7d4f962e51ef5d1faee3859f4341cc1694b2599dbcef3f2ddf656f98ae53",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/MAINLINE_GATE_CHECKS.csv",
+   "sha256": "d4ad9dc6f3d4f2a818b08c9afea4d23c2fef353bcf4479e69a9d9dab4856d67b",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/MAINLINE_PUBLIC_INVESTMENT_DELTA.csv",
+   "sha256": "ca7c4f8bf53db1246bfe1571c701bae9b83f51b36906379a9c2628517a8f431b",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/MAINLINE_SCENARIO_SUMMARY.csv",
+   "sha256": "251aef59eb651229875ee2861e17c24b8159a354b133a6bc26e8217295396753",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/N07_PROBE_RUN.log",
+   "sha256": "ebc864420d9311ff5b8ffecc67cb7a2a1e560f7eb9af81982cef80647c4405fa",
+   "academic_use": "DIAGNOSTIC",
    "solver_calls": 0
   },
   {
    "path": "workflow/results/BYOP/next07_s0_reserve_probe/N07_TESTS.log",
    "sha256": "3bc280d43c830c844ea3cf27276502e86b6246081d8bec1a76990e947bb0c648",
-   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/poi_ledger.csv",
+   "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/poi_upgrade_ledger.csv",
+   "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/prices_S0.csv.gz",
+   "sha256": "1e9f20dc38d328a81de3a8a86f69a55600c98a51d087f1dd8abd637810b4ef9d",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/public_grid_investment_feedback.png",
+   "sha256": "1f860c9f12e18cc6b9e98848831b57be80776ee5adc704e3a9683d55014468ae",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/rearch_solver.log",
+   "sha256": "0695afdb97ab15e3790698e677d8de786550bd2e35a7100cf15475021ad7ade4",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/RUN_GATE.json",
+   "sha256": "75e95586330bc16a695b8b06bdef8923ab5eec0adf957b25ab42d9a4f3eb0eb3",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/S0_RESULT.json",
+   "sha256": "0197d9a6c3fc18814a9eaa8a93524b8a6788f429d903bea47f7a1a732a746155",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 1
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/S0_shed_by_snapshot_frozen.csv.gz",
+   "sha256": "e792fdffa151e8bfa3e3ce4117dfbf1b0b125183c142d178b77b69916df4cb1a",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/S2_consistency.csv",
+   "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/S2_developer_modes.csv",
+   "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/scenario_summary.csv",
+   "sha256": "ed044bb4a4a74ab30fdd4e22774bdbe2bdc4e549f522d6b55ee9a1ec8beec454",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/scenarios/S0/duals.csv",
+   "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/scenarios/S0/ledger.csv",
+   "sha256": "bd79f433505486a6470b990bb25d7698dbce167b05b6e1cc747da726d30f0735",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/scenarios/S0/line_flows_2028_dfw.csv.gz",
+   "sha256": "340d8319f886c94483b91cadc50526f0e02275dbab97525e98211115a93a90a9",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/scenarios/S0/line_flows_2028_dfw_ratings.csv",
+   "sha256": "8be302c0b91ad64aa373661d142cc6778f6db67b1a02780a75a09988a8ce1497",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/scenarios/S0/poi_ledger.csv",
+   "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/scenarios/S0/poi_upgrade_ledger.csv",
+   "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/scenarios/S0/s0cal_line_flows.csv",
+   "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/scenarios/S0/scenario_summary.csv",
+   "sha256": "ed044bb4a4a74ab30fdd4e22774bdbe2bdc4e549f522d6b55ee9a1ec8beec454",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/scenarios/S0/service.csv",
+   "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/scenarios/S0/solve.json",
+   "sha256": "51476a5f875851e003d72b89882f56cdeb186d06124002a0051854808014eb19",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/service.csv",
+   "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/shed_by_bus_S0.csv",
+   "sha256": "c2dd27547ddbc5974755bf0e165f75add3fe17c8d491280dc35f8e98a6a78ed8",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/solution/S0/bess_reserve.csv.gz",
+   "sha256": "c6229ee59aa7aa66efdeefcd7eaf2a716fcda1dac2d3e5bd5c73000e0e46b56e",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 1
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/solution/S0/bus_marginal_price.csv.gz",
+   "sha256": "71f583042d8f2b03f447f50d477b339510bbed9c66035b95377a692448a9a0be",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 1
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/solution/S0/generator_p.csv.gz",
+   "sha256": "26f878bd5d4636751111bfd6d10c9843633e8bd0099e62141106a32068a09909",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 1
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/solution/S0/line_p0.csv.gz",
+   "sha256": "879784d18779d2884cfd7d37d7bfa292dac446c20cd27f578042c96ac0d7f6af",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 1
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/solution/S0/link_p0.csv.gz",
+   "sha256": "e292088eba027bb507dfbb8d25bafb6be2904723479f3ec4d2c0cb8d660da306",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 1
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/solution/S0/reserve_by_snapshot.csv.gz",
+   "sha256": "a59d273c1bd30df6d0d2de69404348eb722cdcaf2c2ac99aee308620995c2e8a",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 1
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/solution/S0/snapshot_weightings.csv.gz",
+   "sha256": "3fb3e72242fc5699c99b7b5574f7489989ad0d2f2c572e9c95459c41b3e155ca",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 1
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/solution/S0/storage_p_dispatch.csv.gz",
+   "sha256": "dc0892fbef17a17838ca99c75748858afc4c8ec9df9e063d48570b61d9ea7ef7",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 1
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/solution/S0/storage_p_store.csv.gz",
+   "sha256": "207ce89f3043f884874cc33d9e2d067d8668402f23d77a8fa6fad91595861752",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 1
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/solution/S0/storage_soc.csv.gz",
+   "sha256": "431e225f417673519028dd4ed00cc5ddb8d14b9f08b98aa36036215c13f686a6",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 1
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/solution/S0/thermal_available_cap.csv.gz",
+   "sha256": "b2a2975a9aa895edd7ec27297f2f83951c68863326188ca503e8bf17b691dabd",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 1
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/solution/S0/thermal_online_cap.csv.gz",
+   "sha256": "280c908cdf0152279295e541516c5fc193e0760de83c13ba696bbb3a75d4ee6d",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 1
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/solution/S0/thermal_reserve.csv.gz",
+   "sha256": "11090e510b4bd9d2561e5e2017ed576947c5ec573454f069970b081a5ad37ea9",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 1
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/solver_S0.log",
+   "sha256": "1d01ae32ee35614d897603308853480aa47cebbddcb7ee1337a187c31ef3515d",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/W2_FAR_WEST_2026_SNAPSHOTS.csv",
+   "sha256": "24b16bda5949a36c915829a5ce7ee8d10f92b3712ad8039fe5054f5d110610e6",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/W2_PUBLIC_INVESTMENT_BY_CARRIER_YEAR.csv",
+   "sha256": "7c29c206d6aea0e1a3138bb712cbed1b6c0f31c35c85eb161af088b5ed5e3366",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/W2_RESERVE_CAUSAL_COMPARISON.csv",
+   "sha256": "06a9d74f76aebe59e6ed1aa21b352a14f1a22379c4fc80bc78b8eb4d15db79d6",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/W2_RESERVE_CAUSAL_SUMMARY.json",
+   "sha256": "a63afee5559dd3f955d0e3c46da836ce3a944181003befdd7cd73269e8d0ac64",
+   "academic_use": "DIAGNOSTIC",
+   "solver_calls": 0
+  },
+  {
+   "path": "workflow/results/BYOP/next07_s0_reserve_probe/W2_SHED_BY_BUS_YEAR_KIND.csv",
+   "sha256": "ca876f1163d255a5e0914c1cb51228862aa3cc4edcc5b51a1534314d4e7a1422",
+   "academic_use": "DIAGNOSTIC",
    "solver_calls": 0
   },
   {
    "path": "workflow/results/BYOP/next07_s0_reserve_probe/W3_POCKET_LOAD_FULL_YEAR_3H.csv.gz",
    "sha256": "a63618293cab3d0acc980eb9baf4ab77cddb4cf768c1516a23ff7d8a64df55c2",
-   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "academic_use": "DIAGNOSTIC",
    "solver_calls": 0
   },
   {
    "path": "workflow/results/BYOP/next07_s0_reserve_probe/W3_REPRESENTATIVENESS.json",
    "sha256": "4f7e314f2c0e15a939ec1a1a7c72ffd8f008689f70e663f0d7a59bb1e5156d37",
-   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "academic_use": "DIAGNOSTIC",
    "solver_calls": 0
   },
   {
    "path": "workflow/results/BYOP/next07_s0_reserve_probe/W3_REPRESENTATIVENESS_BOUNDS.csv",
    "sha256": "2d8427e66bf9f6b756ca28dff24ecd0b72171735f5c1b35d9eaae11b863d69c9",
-   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "academic_use": "DIAGNOSTIC",
    "solver_calls": 0
   },
   {
    "path": "workflow/results/BYOP/next07_s0_reserve_probe/W3_REPRESENTATIVENESS_DISTRIBUTION.csv",
    "sha256": "3fd7fde3c59f0c1deff4dbb1ace2f6b009f4fca8bfeeb3d0b6f01a6f427f631f",
-   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "academic_use": "DIAGNOSTIC",
    "solver_calls": 0
   },
   {
    "path": "workflow/results/BYOP/next07_s0_reserve_probe/W3_REPRESENTATIVENESS_S0_POCKET_SNAPSHOTS.csv",
    "sha256": "77752d3ab4313fa931b57ad4910e00b5f8dd8eceb33df64008b47e747d61af24",
-   "academic_use": "DIAGNOSTIC_EVIDENCE (zero-solver)",
+   "academic_use": "DIAGNOSTIC",
    "solver_calls": 0
   }
  ]
