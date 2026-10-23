@@ -1,0 +1,211 @@
+{
+ "stage": "LP2_LOSSY_CANDIDATE",
+ "status": "ok",
+ "termination": "optimal",
+ "seconds": 737.1,
+ "threads": 21,
+ "transmission_losses": 2,
+ "prepare": {
+  "removed_global_constraints": [
+   "lv_limit"
+  ],
+  "generators": 264,
+  "storage_units": 43,
+  "lines": 162,
+  "storage_MW": 13068.4,
+  "fleet_MW_by_carrier": {
+   "CCGT": 35914.3,
+   "OCGT": 8815.7,
+   "biomass": 123.0,
+   "coal": 10774.0,
+   "gas_steam": 11848.3,
+   "hydro": 535.4,
+   "nuclear": 4980.0,
+   "onwind": 40277.8,
+   "solar": 29110.0
+  }
+ },
+ "n_vars": 2093640,
+ "n_cons": 6902642,
+ "linopy_variables": [
+  "Generator-p",
+  "Line-s",
+  "StorageUnit-p_dispatch",
+  "StorageUnit-p_store",
+  "StorageUnit-state_of_charge",
+  "Line-loss"
+ ],
+ "metrics": {
+  "case": "LP2_RELOADED_FIXED_ASSET",
+  "kind": "ANNUAL_3H",
+  "snapshots": 2920,
+  "evaluated_snapshots": 2920,
+  "weight_h": 3.0,
+  "objective_USD": 7672659746.182726,
+  "shed_MWh": 1657.1364089370986,
+  "shed_max_MW": 132.37955419961136,
+  "shed_steps": 20,
+  "shed_hours": 60.0,
+  "shed_buses": 14,
+  "longest_shed_event_h": 9.0,
+  "binding_lines": 0,
+  "line_binding_hours_total": 0.0,
+  "curtailment_wind_MWh": 10079409.670907082,
+  "curtailment_solar_MWh": 4528761.380249346,
+  "storage_dispatch_MWh": 6062024.858415776,
+  "storage_charge_MWh": 7162127.668260603,
+  "storage_simultaneous_steps": 2684,
+  "storage_simultaneous_MWh": 3535839.285613978,
+  "soc_total_first_MWh": 10181.853419567964,
+  "soc_total_last_MWh": 10904.446485153541,
+  "balance_residual_max_abs_MW": 1.4097167877480388e-10,
+  "load_MWh": 488233578.54151
+ },
+ "acceptance": {
+  "eens_MWh": 1657.1364089370986,
+  "eens_over_annual_energy": 3.394146739936958e-06,
+  "max_gap_MW": 132.37955419961136,
+  "max_gap_over_official_peak": 0.001581992513234743,
+  "shed_steps": 20,
+  "shed_hours": 60.0,
+  "shed_buses": [
+   "p600 2",
+   "p610 1",
+   "p620 1",
+   "p620 2",
+   "p620 3",
+   "p620 4",
+   "p620 5",
+   "p620 6",
+   "p620 7",
+   "p630 13",
+   "p630 14",
+   "p630 2",
+   "p640 7",
+   "p670 8"
+  ],
+  "max_gap_step": "(2030, Timestamp('2030-08-28 09:00:00'))",
+  "max_gap_bus_split": {
+   "p610 1": 117.20660978834593,
+   "p620 2": 5.7515537634612235,
+   "p620 3": 0.11737948138453813,
+   "p620 6": 8.2335727115996,
+   "p620 7": 1.0704384548200707
+  },
+  "events": 28,
+  "thresholds": {
+   "eens_over_annual_energy_max": 1e-05,
+   "max_gap_over_official_peak_max": 0.001
+  },
+  "eens_pass": true,
+  "max_gap_pass": false,
+  "description": "research-proxy tolerance, not an ERCOT standard; below-threshold shed is NOT zero shed"
+ },
+ "losses": {
+  "total_loss_MWh": 5320756.153614204,
+  "loss_share_of_2025_energy": 0.01089797258414751,
+  "peak_loss_MW": 1397.3354421655422,
+  "top_lines_MWh": {
+   "TL133": 467431.9276587359,
+   "TL13": 320788.3572734428,
+   "TL84": 311352.7169313878,
+   "TL99": 224070.1119555857,
+   "TL38": 184532.3072872199,
+   "TL8": 171511.06430666475,
+   "TL21": 162199.37242729997,
+   "TL12": 159730.87721546867,
+   "TL93": 138739.08242467628,
+   "TL37": 121215.47520470216,
+   "TL134": 117197.09088933299,
+   "TL83": 105993.82637528714,
+   "TL4": 103804.98514311227,
+   "TL46": 90474.02648259845,
+   "TL117": 89486.3235455253
+  }
+ },
+ "key_lines": {
+  "TL35": {
+   "rating_MW": 483.27723071173324,
+   "r_ohm": 2.654124795412391,
+   "max_abs_p0_MW": 466.5130065054184,
+   "hours_at_or_above_0p99": 0.0,
+   "loss_MWh": 38417.48169324116
+  },
+  "TL43": {
+   "rating_MW": 122.92588308915708,
+   "r_ohm": 8.620000052875016,
+   "max_abs_p0_MW": 121.74216211752479,
+   "hours_at_or_above_0p99": 4416.0,
+   "loss_MWh": 13644.610964311367
+  },
+  "TL36": {
+   "rating_MW": 145.34640299591476,
+   "r_ohm": 4.124635186306262,
+   "max_abs_p0_MW": 144.5410711524138,
+   "hours_at_or_above_0p99": 1542.0,
+   "loss_MWh": 7163.97666001839
+  },
+  "TL44": {
+   "rating_MW": 68.6,
+   "r_ohm": 12.535184000000001,
+   "max_abs_p0_MW": 66.97998184526692,
+   "hours_at_or_above_0p99": 0.0,
+   "loss_MWh": 2606.892216401088
+  },
+  "TL12": {
+   "rating_MW": 278.8221955503962,
+   "r_ohm": 19.300091289539612,
+   "max_abs_p0_MW": 267.03800474702825,
+   "hours_at_or_above_0p99": 0.0,
+   "loss_MWh": 159730.87721546867
+  },
+  "TL13": {
+   "rating_MW": 722.8278275851658,
+   "r_ohm": 7.326077394856808,
+   "max_abs_p0_MW": 632.3961843013443,
+   "hours_at_or_above_0p99": 0.0,
+   "loss_MWh": 320788.3572734428
+  },
+  "TL15": {
+   "rating_MW": 306.93875567440745,
+   "r_ohm": 1.7556472607509903,
+   "max_abs_p0_MW": 305.4066245777047,
+   "hours_at_or_above_0p99": 1866.0,
+   "loss_MWh": 13474.699073122156
+  },
+  "TL21": {
+   "rating_MW": 1376.7964434473413,
+   "r_ohm": 1.2359217232098851,
+   "max_abs_p0_MW": 1355.99146993086,
+   "hours_at_or_above_0p99": 0.0,
+   "loss_MWh": 162199.37242729997
+  }
+ },
+ "shed_by_bus_MWh": {
+  "p610 1": 869.3405656547968,
+  "p630 14": 320.4077044653319,
+  "p620 2": 122.93190700464929,
+  "p630 2": 101.23826851599793,
+  "p620 1": 81.97135606959647,
+  "p620 7": 67.67900632571045,
+  "p630 13": 45.276202581227906,
+  "p620 6": 24.700718134798798,
+  "p640 7": 7.2660617579590605,
+  "p620 5": 6.84672657538401,
+  "p670 8": 4.545167025670612,
+  "p600 2": 3.3667345822953942,
+  "p620 4": 1.213851799526198,
+  "p620 3": 0.3521384441536144
+ },
+ "acceptance_pass": false,
+ "r_parallel_changes": null,
+ "baseline_sha256": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16",
+ "gate": {
+  "approved": true,
+  "reasons": [],
+  "head": "1adf31164c0182a8d68acb913da91654f8ff40c3",
+  "approved_git_sha": "219bf3e9b7f08c9bc65f69276a2635a37fe8c47c",
+  "stage": "LP2_LOSSY_CANDIDATE"
+ },
+ "label": "LOSS_BASIS_REVALIDATION (2025 fixed assets); not a scenario result"
+}

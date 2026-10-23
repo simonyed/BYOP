@@ -1,0 +1,1637 @@
+2026-10-23T19:55:13Z start bash -c set +e; for s in LP1_LOSSY_IT1 LP1_LOSSY_IT2 LP2_LOSSY_CANDIDATE; do python -W ignore byop/run/loss_basis_lp1.py --stage $s --threads ${THREADS:-20}; echo "$s rc=$?"; done
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.optimization.window:Building the multi-period model over a MultiIndex `snapshot`. Opt into the flat representation via `pypsa.options.optimization.model_snapshot_index = 'flat'`.
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 1
+ - BarConvTol: 1e-08
+ - NumericFocus: 2
+ - BarHomogeneous: 1
+ - Threads: 21
+INFO:linopy.io:Writing objective.
+Writing constraints.:   0%|[38;2;128;191;255m          [0m| 0/22 [00:00<?, ?it/s]Writing constraints.:  14%|[38;2;128;191;255m█▎        [0m| 3/22 [00:00<00:01, 18.89it/s]Writing constraints.:  23%|[38;2;128;191;255m██▎       [0m| 5/22 [00:00<00:01, 11.00it/s]Writing constraints.:  32%|[38;2;128;191;255m███▏      [0m| 7/22 [00:00<00:01,  8.43it/s]Writing constraints.:  36%|[38;2;128;191;255m███▋      [0m| 8/22 [00:00<00:01,  7.38it/s]Writing constraints.:  50%|[38;2;128;191;255m█████     [0m| 11/22 [00:01<00:00, 11.64it/s]Writing constraints.:  64%|[38;2;128;191;255m██████▎   [0m| 14/22 [00:01<00:00, 14.68it/s]Writing constraints.:  73%|[38;2;128;191;255m███████▎  [0m| 16/22 [00:02<00:01,  3.90it/s]Writing constraints.:  82%|[38;2;128;191;255m████████▏ [0m| 18/22 [00:02<00:00,  4.77it/s]Writing constraints.:  91%|[38;2;128;191;255m█████████ [0m| 20/22 [00:03<00:00,  5.02it/s]Writing constraints.: 100%|[38;2;128;191;255m██████████[0m| 22/22 [00:03<00:00,  5.31it/s]Writing constraints.: 100%|[38;2;128;191;255m██████████[0m| 22/22 [00:03<00:00,  6.30it/s]
+Writing continuous variables.:   0%|[38;2;128;191;255m          [0m| 0/8 [00:00<?, ?it/s]Writing continuous variables.:  62%|[38;2;128;191;255m██████▎   [0m| 5/8 [00:00<00:00, 44.60it/s]Writing continuous variables.: 100%|[38;2;128;191;255m██████████[0m| 8/8 [00:00<00:00, 46.62it/s]
+INFO:linopy.io: Writing time: 3.74s
+Set parameter WLSAccessID
+INFO:gurobipy:Set parameter WLSAccessID
+Set parameter WLSSecret
+INFO:gurobipy:Set parameter WLSSecret
+Set parameter LicenseID to value 2559322
+INFO:gurobipy:Set parameter LicenseID to value 2559322
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+INFO:gurobipy:Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+Read LP format model from file /tmp/linopy-problem-ac4l32i4.lp
+INFO:gurobipy:Read LP format model from file /tmp/linopy-problem-ac4l32i4.lp
+Reading time = 11.54 seconds
+INFO:gurobipy:Reading time = 11.54 seconds
+obj: 6902966 rows, 2093803 columns, 15417448 nonzeros
+INFO:gurobipy:obj: 6902966 rows, 2093803 columns, 15417448 nonzeros
+Set parameter Method to value 2
+INFO:gurobipy:Set parameter Method to value 2
+Set parameter Crossover to value 1
+INFO:gurobipy:Set parameter Crossover to value 1
+Set parameter NumericFocus to value 2
+INFO:gurobipy:Set parameter NumericFocus to value 2
+Set parameter BarHomogeneous to value 1
+INFO:gurobipy:Set parameter BarHomogeneous to value 1
+Set parameter Threads to value 21
+INFO:gurobipy:Set parameter Threads to value 21
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Ubuntu 20.04.6 LTS")
+INFO:gurobipy:Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Ubuntu 20.04.6 LTS")
+
+INFO:gurobipy:
+CPU model: Intel(R) Core(TM) i9-10920X CPU @ 3.50GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+INFO:gurobipy:CPU model: Intel(R) Core(TM) i9-10920X CPU @ 3.50GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 12 physical cores, 24 logical processors, using up to 21 threads
+INFO:gurobipy:Thread count: 12 physical cores, 24 logical processors, using up to 21 threads
+
+INFO:gurobipy:
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+INFO:gurobipy:Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+Optimize a model with 6902966 rows, 2093803 columns and 15417448 nonzeros
+INFO:gurobipy:Optimize a model with 6902966 rows, 2093803 columns and 15417448 nonzeros
+Model fingerprint: 0xc33695f0
+INFO:gurobipy:Model fingerprint: 0xc33695f0
+Coefficient statistics:
+INFO:gurobipy:Coefficient statistics:
+  Matrix range     [6e-03, 2e+03]
+INFO:gurobipy:  Matrix range     [6e-03, 2e+03]
+  Objective range  [1e+00, 3e+06]
+INFO:gurobipy:  Objective range  [1e+00, 3e+06]
+  Bounds range     [6e+11, 6e+11]
+INFO:gurobipy:  Bounds range     [6e+11, 6e+11]
+  RHS range        [7e-05, 1e+05]
+INFO:gurobipy:  RHS range        [7e-05, 1e+05]
+Warning: Model contains large bounds
+INFO:gurobipy:Warning: Model contains large bounds
+Presolve removed 3623436 rows and 318559 columns (presolve time = 5s) ...
+INFO:gurobipy:Presolve removed 3623436 rows and 318559 columns (presolve time = 5s) ...
+Presolve removed 3623436 rows and 318559 columns (presolve time = 10s) ...
+INFO:gurobipy:Presolve removed 3623436 rows and 318559 columns (presolve time = 10s) ...
+Presolve removed 3649707 rows and 318559 columns
+INFO:gurobipy:Presolve removed 3649707 rows and 318559 columns
+Presolve time: 13.13s
+INFO:gurobipy:Presolve time: 13.13s
+Presolved: 3253259 rows, 1801515 columns, 11644725 nonzeros
+INFO:gurobipy:Presolved: 3253259 rows, 1801515 columns, 11644725 nonzeros
+
+INFO:gurobipy:
+Elapsed ordering time = 5s
+INFO:gurobipy:Elapsed ordering time = 5s
+Elapsed ordering time = 24s
+INFO:gurobipy:Elapsed ordering time = 24s
+Elapsed ordering time = 25s
+INFO:gurobipy:Elapsed ordering time = 25s
+Ordering time: 38.31s
+INFO:gurobipy:Ordering time: 38.31s
+
+INFO:gurobipy:
+Barrier statistics:
+INFO:gurobipy:Barrier statistics:
+ Dense cols : 162
+INFO:gurobipy: Dense cols : 162
+ AA' NZ     : 5.169e+07
+INFO:gurobipy: AA' NZ     : 5.169e+07
+ Factor NZ  : 1.451e+08 (roughly 3.0 GB of memory)
+INFO:gurobipy: Factor NZ  : 1.451e+08 (roughly 3.0 GB of memory)
+ Factor Ops : 3.683e+10 (less than 1 second per iteration)
+INFO:gurobipy: Factor Ops : 3.683e+10 (less than 1 second per iteration)
+ Threads    : 21
+INFO:gurobipy: Threads    : 21
+
+INFO:gurobipy:
+                  Objective                Residual
+INFO:gurobipy:                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+INFO:gurobipy:Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   1.05022386e+17 -4.26979421e+17  1.05e+06 4.28e+05  2.71e+12    60s
+INFO:gurobipy:   0   1.05022386e+17 -4.26979421e+17  1.05e+06 4.28e+05  2.71e+12    60s
+   1   8.66261690e+16 -2.41174502e+17  8.32e+05 1.20e+06  1.87e+12    65s
+INFO:gurobipy:   1   8.66261690e+16 -2.41174502e+17  8.32e+05 1.20e+06  1.87e+12    65s
+   2   6.82939390e+16 -1.26327568e+17  6.33e+05 1.60e-04  1.50e+12    72s
+INFO:gurobipy:   2   6.82939390e+16 -1.26327568e+17  6.33e+05 1.60e-04  1.50e+12    72s
+   3   1.36377481e+16 -7.15899714e+16  1.00e+05 9.35e-05  2.46e+11    80s
+INFO:gurobipy:   3   1.36377481e+16 -7.15899714e+16  1.00e+05 9.35e-05  2.46e+11    80s
+   4   2.92102807e+15 -1.57492519e+16  2.45e+04 1.89e-04  2.31e+10    89s
+INFO:gurobipy:   4   2.92102807e+15 -1.57492519e+16  2.45e+04 1.89e-04  2.31e+10    89s
+   5   7.65152048e+14 -7.35601162e+15  7.82e+03 8.70e-05  5.16e+09    95s
+INFO:gurobipy:   5   7.65152048e+14 -7.35601162e+15  7.82e+03 8.70e-05  5.16e+09    95s
+   6   2.93651425e+14 -3.73071080e+15  3.13e+03 4.24e-05  1.63e+09   102s
+INFO:gurobipy:   6   2.93651425e+14 -3.73071080e+15  3.13e+03 4.24e-05  1.63e+09   102s
+   7   7.13850521e+13 -9.40852901e+14  9.61e+02 6.62e-05  2.82e+08   110s
+INFO:gurobipy:   7   7.13850521e+13 -9.40852901e+14  9.61e+02 6.62e-05  2.82e+08   110s
+   8   2.69062824e+13 -2.28573297e+14  3.94e+02 1.53e-05  6.09e+07   121s
+INFO:gurobipy:   8   2.69062824e+13 -2.28573297e+14  3.94e+02 1.53e-05  6.09e+07   121s
+   9   1.03361259e+13 -1.04627296e+14  1.62e+02 6.95e-06  2.34e+07   129s
+INFO:gurobipy:   9   1.03361259e+13 -1.04627296e+14  1.62e+02 6.95e-06  2.34e+07   129s
+  10   6.11319085e+12 -4.58376531e+13  1.02e+02 1.55e-05  1.02e+07   136s
+INFO:gurobipy:  10   6.11319085e+12 -4.58376531e+13  1.02e+02 1.55e-05  1.02e+07   136s
+  11   4.24568047e+12 -2.02956261e+13  7.42e+01 6.47e-06  4.72e+06   146s
+INFO:gurobipy:  11   4.24568047e+12 -2.02956261e+13  7.42e+01 6.47e-06  4.72e+06   146s
+  12   3.24645126e+12 -1.53302013e+13  5.83e+01 5.01e-06  3.51e+06   154s
+INFO:gurobipy:  12   3.24645126e+12 -1.53302013e+13  5.83e+01 5.01e-06  3.51e+06   154s
+  13   2.61796917e+12 -9.61350960e+12  4.91e+01 3.09e-06  2.30e+06   163s
+INFO:gurobipy:  13   2.61796917e+12 -9.61350960e+12  4.91e+01 3.09e-06  2.30e+06   163s
+  14   2.08996854e+12 -5.83759297e+12  4.12e+01 1.71e-06  1.47e+06   175s
+INFO:gurobipy:  14   2.08996854e+12 -5.83759297e+12  4.12e+01 1.71e-06  1.47e+06   175s
+  15   1.51442222e+12 -3.73240535e+12  3.17e+01 1.11e-06  9.61e+05   190s
+INFO:gurobipy:  15   1.51442222e+12 -3.73240535e+12  3.17e+01 1.11e-06  9.61e+05   190s
+  16   1.15137643e+12 -2.35225574e+12  2.51e+01 5.74e-07  6.35e+05   205s
+INFO:gurobipy:  16   1.15137643e+12 -2.35225574e+12  2.51e+01 5.74e-07  6.35e+05   205s
+  17   8.91865282e+11 -1.45790669e+12  2.03e+01 3.59e-07  4.22e+05   220s
+INFO:gurobipy:  17   8.91865282e+11 -1.45790669e+12  2.03e+01 3.59e-07  4.22e+05   220s
+  18   7.07818722e+11 -8.89604877e+11  1.64e+01 2.13e-07  2.84e+05   232s
+INFO:gurobipy:  18   7.07818722e+11 -8.89604877e+11  1.64e+01 2.13e-07  2.84e+05   232s
+  19   5.12428457e+11 -6.34912834e+11  1.23e+01 1.56e-07  2.02e+05   247s
+INFO:gurobipy:  19   5.12428457e+11 -6.34912834e+11  1.23e+01 1.56e-07  2.02e+05   247s
+  20   3.83398543e+11 -4.31165187e+11  9.48e+00 9.02e-08  1.42e+05   262s
+INFO:gurobipy:  20   3.83398543e+11 -4.31165187e+11  9.48e+00 9.02e-08  1.42e+05   262s
+  21   3.02477119e+11 -2.78697012e+11  7.57e+00 6.24e-08  1.00e+05   277s
+INFO:gurobipy:  21   3.02477119e+11 -2.78697012e+11  7.57e+00 6.24e-08  1.00e+05   277s
+  22   2.47835188e+11 -1.91604621e+11  6.21e+00 4.28e-08  7.55e+04   292s
+INFO:gurobipy:  22   2.47835188e+11 -1.91604621e+11  6.21e+00 4.28e-08  7.55e+04   292s
+  23   1.89063173e+11 -1.34922833e+11  4.71e+00 2.53e-08  5.53e+04   306s
+INFO:gurobipy:  23   1.89063173e+11 -1.34922833e+11  4.71e+00 2.53e-08  5.53e+04   306s
+  24   1.67361275e+11 -8.95320757e+10  4.13e+00 2.81e-08  4.36e+04   321s
+INFO:gurobipy:  24   1.67361275e+11 -8.95320757e+10  4.13e+00 2.81e-08  4.36e+04   321s
+  25   1.33456589e+11 -6.46142699e+10  3.23e+00 1.83e-08  3.34e+04   336s
+INFO:gurobipy:  25   1.33456589e+11 -6.46142699e+10  3.23e+00 1.83e-08  3.34e+04   336s
+  26   1.16081307e+11 -3.99156944e+10  2.75e+00 1.47e-08  2.62e+04   351s
+INFO:gurobipy:  26   1.16081307e+11 -3.99156944e+10  2.75e+00 1.47e-08  2.62e+04   351s
+  27   8.82582340e+10 -2.36120857e+10  1.98e+00 8.76e-09  1.87e+04   365s
+INFO:gurobipy:  27   8.82582340e+10 -2.36120857e+10  1.98e+00 8.76e-09  1.87e+04   365s
+  28   6.83254732e+10 -1.19957170e+10  1.42e+00 1.47e-08  1.34e+04   381s
+INFO:gurobipy:  28   6.83254732e+10 -1.19957170e+10  1.42e+00 1.47e-08  1.34e+04   381s
+  29   5.63708730e+10 -3.38818128e+09  1.08e+00 2.52e-08  9.95e+03   395s
+INFO:gurobipy:  29   5.63708730e+10 -3.38818128e+09  1.08e+00 2.52e-08  9.95e+03   395s
+  30   4.96960902e+10  2.35228110e+09  8.89e-01 3.10e-08  7.86e+03   410s
+INFO:gurobipy:  30   4.96960902e+10  2.35228110e+09  8.89e-01 3.10e-08  7.86e+03   410s
+  31   4.22495113e+10  5.39972684e+09  6.75e-01 8.13e-09  6.11e+03   425s
+INFO:gurobipy:  31   4.22495113e+10  5.39972684e+09  6.75e-01 8.13e-09  6.11e+03   425s
+  32   3.55285574e+10  1.04296077e+10  4.85e-01 2.61e-08  4.15e+03   440s
+INFO:gurobipy:  32   3.55285574e+10  1.04296077e+10  4.85e-01 2.61e-08  4.15e+03   440s
+  33   3.28802006e+10  1.27786326e+10  4.05e-01 2.85e-08  3.32e+03   452s
+INFO:gurobipy:  33   3.28802006e+10  1.27786326e+10  4.05e-01 2.85e-08  3.32e+03   452s
+  34   2.96828102e+10  1.46314063e+10  3.11e-01 1.52e-07  2.49e+03   467s
+INFO:gurobipy:  34   2.96828102e+10  1.46314063e+10  3.11e-01 1.52e-07  2.49e+03   467s
+  35   2.55991878e+10  1.57649148e+10  1.87e-01 9.78e-08  1.62e+03   485s
+INFO:gurobipy:  35   2.55991878e+10  1.57649148e+10  1.87e-01 9.78e-08  1.62e+03   485s
+  36   2.40898034e+10  1.67222023e+10  1.41e-01 1.03e-07  1.21e+03   503s
+INFO:gurobipy:  36   2.40898034e+10  1.67222023e+10  1.41e-01 1.03e-07  1.21e+03   503s
+  37   2.29749712e+10  1.73854924e+10  1.08e-01 3.20e-07  9.21e+02   525s
+INFO:gurobipy:  37   2.29749712e+10  1.73854924e+10  1.08e-01 3.20e-07  9.21e+02   525s
+  38   2.21734858e+10  1.80086110e+10  8.40e-02 8.26e-07  6.86e+02   543s
+INFO:gurobipy:  38   2.21734858e+10  1.80086110e+10  8.40e-02 8.26e-07  6.86e+02   543s
+  39   2.13691479e+10  1.84163132e+10  5.94e-02 4.34e-07  4.86e+02   562s
+INFO:gurobipy:  39   2.13691479e+10  1.84163132e+10  5.94e-02 4.34e-07  4.86e+02   562s
+  40   2.08540309e+10  1.85768421e+10  4.35e-02 5.97e-07  3.75e+02   583s
+INFO:gurobipy:  40   2.08540309e+10  1.85768421e+10  4.35e-02 5.97e-07  3.75e+02   583s
+  41   2.04310651e+10  1.86959336e+10  3.06e-02 3.57e-07  2.86e+02   601s
+INFO:gurobipy:  41   2.04310651e+10  1.86959336e+10  3.06e-02 3.57e-07  2.86e+02   601s
+  42   2.03052877e+10  1.88847592e+10  2.67e-02 6.65e-07  2.34e+02   616s
+INFO:gurobipy:  42   2.03052877e+10  1.88847592e+10  2.67e-02 6.65e-07  2.34e+02   616s
+  43   2.00929868e+10  1.89725954e+10  2.01e-02 9.13e-07  1.84e+02   631s
+INFO:gurobipy:  43   2.00929868e+10  1.89725954e+10  2.01e-02 9.13e-07  1.84e+02   631s
+  44   2.00287316e+10  1.90226815e+10  1.81e-02 9.80e-07  1.66e+02   646s
+INFO:gurobipy:  44   2.00287316e+10  1.90226815e+10  1.81e-02 9.80e-07  1.66e+02   646s
+  45   1.99161766e+10  1.90963156e+10  1.46e-02 1.11e-06  1.35e+02   661s
+INFO:gurobipy:  45   1.99161766e+10  1.90963156e+10  1.46e-02 1.11e-06  1.35e+02   661s
+  46   1.98361606e+10  1.91588315e+10  1.21e-02 1.43e-06  1.11e+02   677s
+INFO:gurobipy:  46   1.98361606e+10  1.91588315e+10  1.21e-02 1.43e-06  1.11e+02   677s
+  47   1.97703466e+10  1.91932747e+10  1.01e-02 1.53e-06  9.49e+01   693s
+INFO:gurobipy:  47   1.97703466e+10  1.91932747e+10  1.01e-02 1.53e-06  9.49e+01   693s
+  48   1.97119281e+10  1.92450642e+10  8.27e-03 1.75e-06  7.68e+01   709s
+INFO:gurobipy:  48   1.97119281e+10  1.92450642e+10  8.27e-03 1.75e-06  7.68e+01   709s
+  49   1.96737106e+10  1.92795549e+10  7.10e-03 1.45e-06  6.48e+01   727s
+INFO:gurobipy:  49   1.96737106e+10  1.92795549e+10  7.10e-03 1.45e-06  6.48e+01   727s
+  50   1.96608066e+10  1.92959140e+10  6.70e-03 1.92e-06  6.00e+01   744s
+INFO:gurobipy:  50   1.96608066e+10  1.92959140e+10  6.70e-03 1.92e-06  6.00e+01   744s
+  51   1.96183565e+10  1.93208294e+10  5.42e-03 4.36e-06  4.89e+01   768s
+INFO:gurobipy:  51   1.96183565e+10  1.93208294e+10  5.42e-03 4.36e-06  4.89e+01   768s
+  52   1.95883817e+10  1.93432958e+10  4.51e-03 4.78e-06  4.03e+01   797s
+INFO:gurobipy:  52   1.95883817e+10  1.93432958e+10  4.51e-03 4.78e-06  4.03e+01   797s
+  53   1.95391455e+10  1.93729206e+10  3.02e-03 2.12e-06  2.73e+01   831s
+INFO:gurobipy:  53   1.95391455e+10  1.93729206e+10  3.02e-03 2.12e-06  2.73e+01   831s
+  54   1.95159473e+10  1.93902802e+10  2.33e-03 4.49e-06  2.07e+01   863s
+INFO:gurobipy:  54   1.95159473e+10  1.93902802e+10  2.33e-03 4.49e-06  2.07e+01   863s
+  55   1.94979770e+10  1.93975053e+10  5.13e-03 1.19e-05  1.65e+01   889s
+INFO:gurobipy:  55   1.94979770e+10  1.93975053e+10  5.13e-03 1.19e-05  1.65e+01   889s
+  56   1.94892200e+10  1.94092914e+10  3.90e-03 1.01e-05  1.31e+01   911s
+INFO:gurobipy:  56   1.94892200e+10  1.94092914e+10  3.90e-03 1.01e-05  1.31e+01   911s
+  57   1.94787278e+10  1.94174936e+10  3.60e-03 1.04e-05  1.01e+01   925s
+INFO:gurobipy:  57   1.94787278e+10  1.94174936e+10  3.60e-03 1.04e-05  1.01e+01   925s
+  58   1.94705832e+10  1.94240757e+10  9.19e-03 1.30e-05  7.67e+00   941s
+INFO:gurobipy:  58   1.94705832e+10  1.94240757e+10  9.19e-03 1.30e-05  7.67e+00   941s
+  59   1.94652458e+10  1.94279060e+10  7.60e-03 1.59e-05  6.16e+00   959s
+INFO:gurobipy:  59   1.94652458e+10  1.94279060e+10  7.60e-03 1.59e-05  6.16e+00   959s
+  60   1.94597808e+10  1.94307327e+10  6.03e-03 3.31e-05  4.79e+00   979s
+INFO:gurobipy:  60   1.94597808e+10  1.94307327e+10  6.03e-03 3.31e-05  4.79e+00   979s
+  61   1.94518793e+10  1.94331232e+10  3.69e-03 3.82e-05  3.09e+00  1003s
+INFO:gurobipy:  61   1.94518793e+10  1.94331232e+10  3.69e-03 3.82e-05  3.09e+00  1003s
+  62   1.94462212e+10  1.94367128e+10  2.03e-03 1.45e-04  1.57e+00  1032s
+INFO:gurobipy:  62   1.94462212e+10  1.94367128e+10  2.03e-03 1.45e-04  1.57e+00  1032s
+  63   1.94429453e+10  1.94380420e+10  1.02e-03 9.56e-05  8.09e-01  1061s
+INFO:gurobipy:  63   1.94429453e+10  1.94380420e+10  1.02e-03 9.56e-05  8.09e-01  1061s
+  64   1.94418653e+10  1.94386589e+10  8.22e-04 3.24e-04  5.29e-01  1082s
+INFO:gurobipy:  64   1.94418653e+10  1.94386589e+10  8.22e-04 3.24e-04  5.29e-01  1082s
+  65   1.94411045e+10  1.94390697e+10  6.91e-04 5.91e-04  3.36e-01  1099s
+INFO:gurobipy:  65   1.94411045e+10  1.94390697e+10  6.91e-04 5.91e-04  3.36e-01  1099s
+  66   1.94407211e+10  1.94392059e+10  7.10e-04 5.10e-04  2.51e-01  1113s
+INFO:gurobipy:  66   1.94407211e+10  1.94392059e+10  7.10e-04 5.10e-04  2.51e-01  1113s
+  67   1.94405043e+10  1.94393612e+10  6.79e-04 1.28e-03  1.89e-01  1126s
+INFO:gurobipy:  67   1.94405043e+10  1.94393612e+10  6.79e-04 1.28e-03  1.89e-01  1126s
+  68   1.94403125e+10  1.94394264e+10  6.47e-04 1.22e-03  1.47e-01  1140s
+INFO:gurobipy:  68   1.94403125e+10  1.94394264e+10  6.47e-04 1.22e-03  1.47e-01  1140s
+  69   1.94402367e+10  1.94394670e+10  6.27e-04 1.71e-03  1.28e-01  1152s
+INFO:gurobipy:  69   1.94402367e+10  1.94394670e+10  6.27e-04 1.71e-03  1.28e-01  1152s
+  70   1.94400823e+10  1.94395635e+10  5.43e-04 6.42e-03  8.62e-02  1169s
+INFO:gurobipy:  70   1.94400823e+10  1.94395635e+10  5.43e-04 6.42e-03  8.62e-02  1169s
+  71   1.94399065e+10  1.94396457e+10  4.80e-04 4.26e-03  4.36e-02  1188s
+INFO:gurobipy:  71   1.94399065e+10  1.94396457e+10  4.80e-04 4.26e-03  4.36e-02  1188s
+  72   1.94398389e+10  1.94396935e+10  3.92e-04 4.75e-03  2.45e-02  1210s
+INFO:gurobipy:  72   1.94398389e+10  1.94396935e+10  3.92e-04 4.75e-03  2.45e-02  1210s
+  73   1.94397841e+10  1.94397113e+10  2.44e-04 7.87e-03  1.23e-02  1229s
+INFO:gurobipy:  73   1.94397841e+10  1.94397113e+10  2.44e-04 7.87e-03  1.23e-02  1229s
+  74   1.94397600e+10  1.94397203e+10  1.36e-04 3.89e-02  6.72e-03  1245s
+INFO:gurobipy:  74   1.94397600e+10  1.94397203e+10  1.36e-04 3.89e-02  6.72e-03  1245s
+  75   1.94397491e+10  1.94397244e+10  2.57e-04 2.21e-02  4.31e-03  1260s
+INFO:gurobipy:  75   1.94397491e+10  1.94397244e+10  2.57e-04 2.21e-02  4.31e-03  1260s
+  76   1.94397412e+10  1.94397265e+10  3.73e-03 1.69e-02  2.66e-03  1273s
+INFO:gurobipy:  76   1.94397412e+10  1.94397265e+10  3.73e-03 1.69e-02  2.66e-03  1273s
+  77   1.94397375e+10  1.94397301e+10  1.79e-03 6.07e-02  1.37e-03  1286s
+INFO:gurobipy:  77   1.94397375e+10  1.94397301e+10  1.79e-03 6.07e-02  1.37e-03  1286s
+  78   1.94397360e+10  1.94397320e+10  1.52e-03 3.57e-02  7.92e-04  1299s
+INFO:gurobipy:  78   1.94397360e+10  1.94397320e+10  1.52e-03 3.57e-02  7.92e-04  1299s
+  79   1.94397354e+10  1.94397324e+10  1.09e-03 2.93e-02  5.04e-04  1314s
+INFO:gurobipy:  79   1.94397354e+10  1.94397324e+10  1.09e-03 2.93e-02  5.04e-04  1314s
+  80   1.94397345e+10  1.94397332e+10  4.39e-04 1.18e-02  2.21e-04  1327s
+INFO:gurobipy:  80   1.94397345e+10  1.94397332e+10  4.39e-04 1.18e-02  2.21e-04  1327s
+  81   1.94397341e+10  1.94397335e+10  1.68e-04 8.22e-03  1.01e-04  1341s
+INFO:gurobipy:  81   1.94397341e+10  1.94397335e+10  1.68e-04 8.22e-03  1.01e-04  1341s
+  82   1.94397339e+10  1.94397337e+10  4.06e-05 2.11e-03  2.77e-05  1354s
+INFO:gurobipy:  82   1.94397339e+10  1.94397337e+10  4.06e-05 2.11e-03  2.77e-05  1354s
+  83   1.94397338e+10  1.94397338e+10  8.24e-06 4.73e-04  6.20e-06  1370s
+INFO:gurobipy:  83   1.94397338e+10  1.94397338e+10  8.24e-06 4.73e-04  6.20e-06  1370s
+  84   1.94397338e+10  1.94397338e+10  1.49e-06 8.90e-05  1.21e-06  1381s
+INFO:gurobipy:  84   1.94397338e+10  1.94397338e+10  1.49e-06 8.90e-05  1.21e-06  1381s
+  85   1.94397338e+10  1.94397338e+10  3.92e-07 2.13e-05  2.81e-07  1398s
+INFO:gurobipy:  85   1.94397338e+10  1.94397338e+10  3.92e-07 2.13e-05  2.81e-07  1398s
+  86   1.94397338e+10  1.94397338e+10  7.11e-08 9.92e-06  4.63e-08  1412s
+INFO:gurobipy:  86   1.94397338e+10  1.94397338e+10  7.11e-08 9.92e-06  4.63e-08  1412s
+  87   1.94397338e+10  1.94397338e+10  7.76e-09 2.23e-05  7.67e-09  1428s
+INFO:gurobipy:  87   1.94397338e+10  1.94397338e+10  7.76e-09 2.23e-05  7.67e-09  1428s
+
+INFO:gurobipy:
+Barrier solved model in 87 iterations and 1427.77 seconds (883.51 work units)
+INFO:gurobipy:Barrier solved model in 87 iterations and 1427.77 seconds (883.51 work units)
+Optimal objective 1.94397338e+10
+INFO:gurobipy:Optimal objective 1.94397338e+10
+
+INFO:gurobipy:
+Crossover log...
+INFO:gurobipy:Crossover log...
+
+INFO:gurobipy:
+ 3088829 variables added to crossover basis                     1430s
+INFO:gurobipy: 3088829 variables added to crossover basis                     1430s
+
+INFO:gurobipy:
+   39252 DPushes remaining with DInf 0.0000000e+00              1432s
+INFO:gurobipy:   39252 DPushes remaining with DInf 0.0000000e+00              1432s
+   10959 DPushes remaining with DInf 0.0000000e+00              1438s
+INFO:gurobipy:   10959 DPushes remaining with DInf 0.0000000e+00              1438s
+    8347 DPushes remaining with DInf 0.0000000e+00              1441s
+INFO:gurobipy:    8347 DPushes remaining with DInf 0.0000000e+00              1441s
+    7976 DPushes remaining with DInf 0.0000000e+00              1447s
+INFO:gurobipy:    7976 DPushes remaining with DInf 0.0000000e+00              1447s
+    7874 DPushes remaining with DInf 0.0000000e+00              1450s
+INFO:gurobipy:    7874 DPushes remaining with DInf 0.0000000e+00              1450s
+    7672 DPushes remaining with DInf 0.0000000e+00              1456s
+INFO:gurobipy:    7672 DPushes remaining with DInf 0.0000000e+00              1456s
+    7469 DPushes remaining with DInf 0.0000000e+00              1462s
+INFO:gurobipy:    7469 DPushes remaining with DInf 0.0000000e+00              1462s
+    7266 DPushes remaining with DInf 0.0000000e+00              1467s
+INFO:gurobipy:    7266 DPushes remaining with DInf 0.0000000e+00              1467s
+    7165 DPushes remaining with DInf 0.0000000e+00              1470s
+INFO:gurobipy:    7165 DPushes remaining with DInf 0.0000000e+00              1470s
+    6963 DPushes remaining with DInf 0.0000000e+00              1476s
+INFO:gurobipy:    6963 DPushes remaining with DInf 0.0000000e+00              1476s
+    6761 DPushes remaining with DInf 0.0000000e+00              1482s
+INFO:gurobipy:    6761 DPushes remaining with DInf 0.0000000e+00              1482s
+    6660 DPushes remaining with DInf 0.0000000e+00              1485s
+INFO:gurobipy:    6660 DPushes remaining with DInf 0.0000000e+00              1485s
+    6458 DPushes remaining with DInf 0.0000000e+00              1490s
+INFO:gurobipy:    6458 DPushes remaining with DInf 0.0000000e+00              1490s
+    6255 DPushes remaining with DInf 0.0000000e+00              1496s
+INFO:gurobipy:    6255 DPushes remaining with DInf 0.0000000e+00              1496s
+    6053 DPushes remaining with DInf 0.0000000e+00              1502s
+INFO:gurobipy:    6053 DPushes remaining with DInf 0.0000000e+00              1502s
+    5952 DPushes remaining with DInf 0.0000000e+00              1505s
+INFO:gurobipy:    5952 DPushes remaining with DInf 0.0000000e+00              1505s
+    5749 DPushes remaining with DInf 0.0000000e+00              1511s
+INFO:gurobipy:    5749 DPushes remaining with DInf 0.0000000e+00              1511s
+    5546 DPushes remaining with DInf 0.0000000e+00              1517s
+INFO:gurobipy:    5546 DPushes remaining with DInf 0.0000000e+00              1517s
+    5445 DPushes remaining with DInf 0.0000000e+00              1520s
+INFO:gurobipy:    5445 DPushes remaining with DInf 0.0000000e+00              1520s
+    5243 DPushes remaining with DInf 0.0000000e+00              1526s
+INFO:gurobipy:    5243 DPushes remaining with DInf 0.0000000e+00              1526s
+    5041 DPushes remaining with DInf 0.0000000e+00              1532s
+INFO:gurobipy:    5041 DPushes remaining with DInf 0.0000000e+00              1532s
+    4839 DPushes remaining with DInf 0.0000000e+00              1537s
+INFO:gurobipy:    4839 DPushes remaining with DInf 0.0000000e+00              1537s
+    4738 DPushes remaining with DInf 0.0000000e+00              1540s
+INFO:gurobipy:    4738 DPushes remaining with DInf 0.0000000e+00              1540s
+    4536 DPushes remaining with DInf 0.0000000e+00              1546s
+INFO:gurobipy:    4536 DPushes remaining with DInf 0.0000000e+00              1546s
+    4334 DPushes remaining with DInf 0.0000000e+00              1551s
+INFO:gurobipy:    4334 DPushes remaining with DInf 0.0000000e+00              1551s
+    4132 DPushes remaining with DInf 0.0000000e+00              1556s
+INFO:gurobipy:    4132 DPushes remaining with DInf 0.0000000e+00              1556s
+    3929 DPushes remaining with DInf 0.0000000e+00              1562s
+INFO:gurobipy:    3929 DPushes remaining with DInf 0.0000000e+00              1562s
+    3727 DPushes remaining with DInf 0.0000000e+00              1567s
+INFO:gurobipy:    3727 DPushes remaining with DInf 0.0000000e+00              1567s
+    3626 DPushes remaining with DInf 0.0000000e+00              1571s
+INFO:gurobipy:    3626 DPushes remaining with DInf 0.0000000e+00              1571s
+    3424 DPushes remaining with DInf 0.0000000e+00              1576s
+INFO:gurobipy:    3424 DPushes remaining with DInf 0.0000000e+00              1576s
+    3222 DPushes remaining with DInf 0.0000000e+00              1582s
+INFO:gurobipy:    3222 DPushes remaining with DInf 0.0000000e+00              1582s
+    3121 DPushes remaining with DInf 0.0000000e+00              1585s
+INFO:gurobipy:    3121 DPushes remaining with DInf 0.0000000e+00              1585s
+    2919 DPushes remaining with DInf 0.0000000e+00              1591s
+INFO:gurobipy:    2919 DPushes remaining with DInf 0.0000000e+00              1591s
+    2717 DPushes remaining with DInf 0.0000000e+00              1597s
+INFO:gurobipy:    2717 DPushes remaining with DInf 0.0000000e+00              1597s
+    2616 DPushes remaining with DInf 0.0000000e+00              1600s
+INFO:gurobipy:    2616 DPushes remaining with DInf 0.0000000e+00              1600s
+    2414 DPushes remaining with DInf 0.0000000e+00              1607s
+INFO:gurobipy:    2414 DPushes remaining with DInf 0.0000000e+00              1607s
+    2313 DPushes remaining with DInf 0.0000000e+00              1611s
+INFO:gurobipy:    2313 DPushes remaining with DInf 0.0000000e+00              1611s
+    2111 DPushes remaining with DInf 0.0000000e+00              1618s
+INFO:gurobipy:    2111 DPushes remaining with DInf 0.0000000e+00              1618s
+    2010 DPushes remaining with DInf 0.0000000e+00              1621s
+INFO:gurobipy:    2010 DPushes remaining with DInf 0.0000000e+00              1621s
+    1808 DPushes remaining with DInf 0.0000000e+00              1628s
+INFO:gurobipy:    1808 DPushes remaining with DInf 0.0000000e+00              1628s
+    1707 DPushes remaining with DInf 0.0000000e+00              1631s
+INFO:gurobipy:    1707 DPushes remaining with DInf 0.0000000e+00              1631s
+    1505 DPushes remaining with DInf 0.0000000e+00              1637s
+INFO:gurobipy:    1505 DPushes remaining with DInf 0.0000000e+00              1637s
+    1404 DPushes remaining with DInf 0.0000000e+00              1640s
+INFO:gurobipy:    1404 DPushes remaining with DInf 0.0000000e+00              1640s
+    1201 DPushes remaining with DInf 0.0000000e+00              1648s
+INFO:gurobipy:    1201 DPushes remaining with DInf 0.0000000e+00              1648s
+    1100 DPushes remaining with DInf 0.0000000e+00              1651s
+INFO:gurobipy:    1100 DPushes remaining with DInf 0.0000000e+00              1651s
+     898 DPushes remaining with DInf 0.0000000e+00              1657s
+INFO:gurobipy:     898 DPushes remaining with DInf 0.0000000e+00              1657s
+     797 DPushes remaining with DInf 0.0000000e+00              1661s
+INFO:gurobipy:     797 DPushes remaining with DInf 0.0000000e+00              1661s
+     696 DPushes remaining with DInf 0.0000000e+00              1665s
+INFO:gurobipy:     696 DPushes remaining with DInf 0.0000000e+00              1665s
+     494 DPushes remaining with DInf 0.0000000e+00              1672s
+INFO:gurobipy:     494 DPushes remaining with DInf 0.0000000e+00              1672s
+     393 DPushes remaining with DInf 0.0000000e+00              1676s
+INFO:gurobipy:     393 DPushes remaining with DInf 0.0000000e+00              1676s
+     292 DPushes remaining with DInf 0.0000000e+00              1680s
+INFO:gurobipy:     292 DPushes remaining with DInf 0.0000000e+00              1680s
+      90 DPushes remaining with DInf 0.0000000e+00              1689s
+INFO:gurobipy:      90 DPushes remaining with DInf 0.0000000e+00              1689s
+       0 DPushes remaining with DInf 0.0000000e+00              1694s
+INFO:gurobipy:       0 DPushes remaining with DInf 0.0000000e+00              1694s
+
+INFO:gurobipy:
+   17420 PPushes remaining with PInf 7.0305570e-05              1695s
+INFO:gurobipy:   17420 PPushes remaining with PInf 7.0305570e-05              1695s
+     996 PPushes remaining with PInf 2.7577288e-01              1702s
+INFO:gurobipy:     996 PPushes remaining with PInf 2.7577288e-01              1702s
+     461 PPushes remaining with PInf 2.7532437e-01              1705s
+INFO:gurobipy:     461 PPushes remaining with PInf 2.7532437e-01              1705s
+     194 PPushes remaining with PInf 2.7531906e-01              1711s
+INFO:gurobipy:     194 PPushes remaining with PInf 2.7531906e-01              1711s
+       0 PPushes remaining with PInf 2.7498965e-01              1717s
+INFO:gurobipy:       0 PPushes remaining with PInf 2.7498965e-01              1717s
+
+INFO:gurobipy:
+  Push phase complete: Pinf 2.7498965e-01, Dinf 1.3916745e-01   1717s
+INFO:gurobipy:  Push phase complete: Pinf 2.7498965e-01, Dinf 1.3916745e-01   1717s
+
+INFO:gurobipy:
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+INFO:gurobipy:Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   56609    1.9439734e+10   0.000000e+00   1.391673e-01   1719s
+INFO:gurobipy:   56609    1.9439734e+10   0.000000e+00   1.391673e-01   1719s
+   56617    1.9439734e+10   0.000000e+00   0.000000e+00   1730s
+INFO:gurobipy:   56617    1.9439734e+10   0.000000e+00   0.000000e+00   1730s
+
+INFO:gurobipy:
+Solved in 56617 iterations and 1730.37 seconds (996.25 work units)
+INFO:gurobipy:Solved in 56617 iterations and 1730.37 seconds (996.25 work units)
+Optimal objective  1.943973380e+10
+INFO:gurobipy:Optimal objective  1.943973380e+10
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 2093803 primals, 7750004 duals
+Objective: 1.94e+10
+Solver: gurobi
+Runtime: 1730.43s
+Dual bound: 1.94e+10
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Generator-p-ramp_limit_up, Generator-p-ramp_limit_down, Line-ext-s-lower, Line-ext-s-upper, StorageUnit-fix-p_dispatch-lower, StorageUnit-fix-p_dispatch-upper, StorageUnit-fix-p_store-lower, StorageUnit-fix-p_store-upper, StorageUnit-fix-state_of_charge-lower, StorageUnit-fix-state_of_charge-upper, Kirchhoff-Voltage-Law, StorageUnit-energy_balance, Line-loss_upper, Line-loss_tangents-1--1, Line-loss_tangents-1-1, Line-loss_tangents-2--1, Line-loss_tangents-2-1 were not assigned to the network.
+{
+ "stage": "LP1_LOSSY_IT1",
+ "status": "ok",
+ "termination": "optimal",
+ "seconds": 1774.8,
+ "threads": 21,
+ "n_vars": 2093803,
+ "n_cons": 6902966,
+ "objective": 19439733799.821877,
+ "residual_shed": {
+  "eens_MWh": 112.79630073812001,
+  "eens_over_annual_energy": 2.3102937957461216e-07,
+  "max_gap_MW": 27.095983432588337,
+  "max_gap_over_official_peak": 0.00032380863637334435,
+  "shed_steps": 2,
+  "shed_hours": 6.0,
+  "shed_buses": [
+   "p620 1",
+   "p620 2",
+   "p620 6"
+  ],
+  "max_gap_step": "(2030, Timestamp('2030-07-14 09:00:00'))",
+  "max_gap_bus_split": {
+   "p620 1": 27.095983432588337
+  },
+  "events": 3,
+  "thresholds": {
+   "eens_over_annual_energy_max": 1e-05,
+   "max_gap_over_official_peak_max": 0.001
+  },
+  "eens_pass": true,
+  "max_gap_pass": true,
+  "description": "research-proxy tolerance, not an ERCOT standard; below-threshold shed is NOT zero shed"
+ },
+ "r_converged": false,
+ "convergence": {
+  "max_rel_r_gap": 0.18431982902413213,
+  "lines_not_converged": 13,
+  "worst": {
+   "TL69": 0.1843,
+   "TL68": 0.1833,
+   "TL26": 0.1559,
+   "TL13": 0.1558,
+   "TL12": 0.1256,
+   "TL42": 0.0983,
+   "TL3": 0.0959,
+   "TL73": 0.0884
+  }
+ },
+ "guards": {
+  "total_uplift_MVA": 5883.87911235861,
+  "v16_total_uplift_MVA": 5151.833600032188,
+  "G1_limit_MVA": 7727.750400048282,
+  "G1": true,
+  "lines_at_cap": [],
+  "G2": true,
+  "new_lines_uplift_MVA": 10.47382467245626,
+  "new_lines": {
+   "TL154": 3.0,
+   "TL67": 7.5
+  },
+  "new_lines_over_50MVA": [],
+  "G3": true,
+  "uplifted_lines": 20,
+  "all_pass": true
+ },
+ "uplift_by_line_MVA": {
+  "TL38": 1178.32,
+  "TL39": 847.3,
+  "TL37": 659.96,
+  "TL35": 575.08,
+  "TL13": 441.05,
+  "TL73": 375.32,
+  "TL15": 329.21,
+  "TL12": 295.05,
+  "TL42": 264.25,
+  "TL40": 175.46,
+  "TL41": 168.75,
+  "TL63": 162.28,
+  "TL36": 118.2,
+  "TL69": 95.34,
+  "TL43": 77.13,
+  "TL68": 50.85,
+  "TL3": 35.08,
+  "TL26": 24.69,
+  "TL67": 7.51,
+  "TL154": 2.96
+ },
+ "total_loss_MWh": 3995980.327119766,
+ "candidate_written": false,
+ "label": "LOSSY LP1 CALIBRATION (2025 fixed fleet); not a scenario result"
+}
+LP1_LOSSY_IT1 rc=0
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.optimization.window:Building the multi-period model over a MultiIndex `snapshot`. Opt into the flat representation via `pypsa.options.optimization.model_snapshot_index = 'flat'`.
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 1
+ - BarConvTol: 1e-08
+ - NumericFocus: 2
+ - BarHomogeneous: 1
+ - Threads: 21
+INFO:linopy.io:Writing objective.
+Writing constraints.:   0%|[38;2;128;191;255m          [0m| 0/22 [00:00<?, ?it/s]Writing constraints.:  14%|[38;2;128;191;255m█▎        [0m| 3/22 [00:00<00:01, 17.80it/s]Writing constraints.:  23%|[38;2;128;191;255m██▎       [0m| 5/22 [00:00<00:01, 10.74it/s]Writing constraints.:  32%|[38;2;128;191;255m███▏      [0m| 7/22 [00:00<00:01,  8.16it/s]Writing constraints.:  36%|[38;2;128;191;255m███▋      [0m| 8/22 [00:00<00:01,  7.19it/s]Writing constraints.:  55%|[38;2;128;191;255m█████▍    [0m| 12/22 [00:01<00:00, 12.44it/s]Writing constraints.:  68%|[38;2;128;191;255m██████▊   [0m| 15/22 [00:01<00:00,  8.53it/s]Writing constraints.:  77%|[38;2;128;191;255m███████▋  [0m| 17/22 [00:02<00:01,  4.29it/s]Writing constraints.:  82%|[38;2;128;191;255m████████▏ [0m| 18/22 [00:02<00:00,  4.68it/s]Writing constraints.:  86%|[38;2;128;191;255m████████▋ [0m| 19/22 [00:03<00:00,  4.88it/s]Writing constraints.:  91%|[38;2;128;191;255m█████████ [0m| 20/22 [00:03<00:00,  5.07it/s]Writing constraints.:  95%|[38;2;128;191;255m█████████▌[0m| 21/22 [00:03<00:00,  5.20it/s]Writing constraints.: 100%|[38;2;128;191;255m██████████[0m| 22/22 [00:03<00:00,  5.23it/s]Writing constraints.: 100%|[38;2;128;191;255m██████████[0m| 22/22 [00:03<00:00,  6.19it/s]
+Writing continuous variables.:   0%|[38;2;128;191;255m          [0m| 0/8 [00:00<?, ?it/s]Writing continuous variables.:  62%|[38;2;128;191;255m██████▎   [0m| 5/8 [00:00<00:00, 43.91it/s]Writing continuous variables.: 100%|[38;2;128;191;255m██████████[0m| 8/8 [00:00<00:00, 45.59it/s]
+INFO:linopy.io: Writing time: 3.81s
+Set parameter WLSAccessID
+INFO:gurobipy:Set parameter WLSAccessID
+Set parameter WLSSecret
+INFO:gurobipy:Set parameter WLSSecret
+Set parameter LicenseID to value 2559322
+INFO:gurobipy:Set parameter LicenseID to value 2559322
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+INFO:gurobipy:Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+Read LP format model from file /tmp/linopy-problem-gdul3fl5.lp
+INFO:gurobipy:Read LP format model from file /tmp/linopy-problem-gdul3fl5.lp
+Reading time = 11.39 seconds
+INFO:gurobipy:Reading time = 11.39 seconds
+obj: 6902966 rows, 2093803 columns, 15297728 nonzeros
+INFO:gurobipy:obj: 6902966 rows, 2093803 columns, 15297728 nonzeros
+Set parameter Method to value 2
+INFO:gurobipy:Set parameter Method to value 2
+Set parameter Crossover to value 1
+INFO:gurobipy:Set parameter Crossover to value 1
+Set parameter NumericFocus to value 2
+INFO:gurobipy:Set parameter NumericFocus to value 2
+Set parameter BarHomogeneous to value 1
+INFO:gurobipy:Set parameter BarHomogeneous to value 1
+Set parameter Threads to value 21
+INFO:gurobipy:Set parameter Threads to value 21
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Ubuntu 20.04.6 LTS")
+INFO:gurobipy:Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Ubuntu 20.04.6 LTS")
+
+INFO:gurobipy:
+CPU model: Intel(R) Core(TM) i9-10920X CPU @ 3.50GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+INFO:gurobipy:CPU model: Intel(R) Core(TM) i9-10920X CPU @ 3.50GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 12 physical cores, 24 logical processors, using up to 21 threads
+INFO:gurobipy:Thread count: 12 physical cores, 24 logical processors, using up to 21 threads
+
+INFO:gurobipy:
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+INFO:gurobipy:Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+Optimize a model with 6902966 rows, 2093803 columns and 15297728 nonzeros
+INFO:gurobipy:Optimize a model with 6902966 rows, 2093803 columns and 15297728 nonzeros
+Model fingerprint: 0xdf4ee6fa
+INFO:gurobipy:Model fingerprint: 0xdf4ee6fa
+Coefficient statistics:
+INFO:gurobipy:Coefficient statistics:
+  Matrix range     [6e-03, 2e+03]
+INFO:gurobipy:  Matrix range     [6e-03, 2e+03]
+  Objective range  [1e+00, 3e+06]
+INFO:gurobipy:  Objective range  [1e+00, 3e+06]
+  Bounds range     [6e+11, 6e+11]
+INFO:gurobipy:  Bounds range     [6e+11, 6e+11]
+  RHS range        [7e-05, 1e+05]
+INFO:gurobipy:  RHS range        [7e-05, 1e+05]
+Warning: Model contains large bounds
+INFO:gurobipy:Warning: Model contains large bounds
+Presolve removed 3626356 rows and 321479 columns (presolve time = 6s) ...
+INFO:gurobipy:Presolve removed 3626356 rows and 321479 columns (presolve time = 6s) ...
+Presolve removed 3626356 rows and 321479 columns (presolve time = 10s) ...
+INFO:gurobipy:Presolve removed 3626356 rows and 321479 columns (presolve time = 10s) ...
+Presolve removed 3652627 rows and 321479 columns
+INFO:gurobipy:Presolve removed 3652627 rows and 321479 columns
+Presolve time: 13.19s
+INFO:gurobipy:Presolve time: 13.19s
+Presolved: 3250339 rows, 1798595 columns, 11536685 nonzeros
+INFO:gurobipy:Presolved: 3250339 rows, 1798595 columns, 11536685 nonzeros
+
+INFO:gurobipy:
+Elapsed ordering time = 5s
+INFO:gurobipy:Elapsed ordering time = 5s
+Elapsed ordering time = 23s
+INFO:gurobipy:Elapsed ordering time = 23s
+Elapsed ordering time = 25s
+INFO:gurobipy:Elapsed ordering time = 25s
+Ordering time: 37.30s
+INFO:gurobipy:Ordering time: 37.30s
+
+INFO:gurobipy:
+Barrier statistics:
+INFO:gurobipy:Barrier statistics:
+ Dense cols : 162
+INFO:gurobipy: Dense cols : 162
+ AA' NZ     : 5.077e+07
+INFO:gurobipy: AA' NZ     : 5.077e+07
+ Factor NZ  : 1.401e+08 (roughly 3.0 GB of memory)
+INFO:gurobipy: Factor NZ  : 1.401e+08 (roughly 3.0 GB of memory)
+ Factor Ops : 3.439e+10 (less than 1 second per iteration)
+INFO:gurobipy: Factor Ops : 3.439e+10 (less than 1 second per iteration)
+ Threads    : 21
+INFO:gurobipy: Threads    : 21
+
+INFO:gurobipy:
+                  Objective                Residual
+INFO:gurobipy:                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+INFO:gurobipy:Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   9.24167932e+16 -3.69782204e+17  7.95e+05 3.54e+05  2.05e+12    59s
+INFO:gurobipy:   0   9.24167932e+16 -3.69782204e+17  7.95e+05 3.54e+05  2.05e+12    59s
+   1   7.64415154e+16 -2.08249199e+17  6.31e+05 2.08e+06  1.44e+12    63s
+INFO:gurobipy:   1   7.64415154e+16 -2.08249199e+17  6.31e+05 2.08e+06  1.44e+12    63s
+   2   6.20917697e+16 -1.00909314e+17  4.96e+05 1.66e-04  1.20e+12    70s
+INFO:gurobipy:   2   6.20917697e+16 -1.00909314e+17  4.96e+05 1.66e-04  1.20e+12    70s
+   3   9.63130249e+15 -5.97919121e+16  6.34e+04 1.37e-04  1.63e+11    79s
+INFO:gurobipy:   3   9.63130249e+15 -5.97919121e+16  6.34e+04 1.37e-04  1.63e+11    79s
+   4   2.31272217e+15 -1.34672100e+16  1.79e+04 2.17e-04  1.68e+10    87s
+INFO:gurobipy:   4   2.31272217e+15 -1.34672100e+16  1.79e+04 2.17e-04  1.68e+10    87s
+   5   7.13855900e+14 -4.73651977e+15  6.81e+03 1.11e-04  3.43e+09    93s
+INFO:gurobipy:   5   7.13855900e+14 -4.73651977e+15  6.81e+03 1.11e-04  3.43e+09    93s
+   6   3.00618429e+14 -1.85640262e+15  3.56e+03 3.20e-05  1.04e+09   100s
+INFO:gurobipy:   6   3.00618429e+14 -1.85640262e+15  3.56e+03 3.20e-05  1.04e+09   100s
+   7   8.28171176e+13 -5.62989729e+14  1.29e+03 2.53e-05  2.16e+08   108s
+INFO:gurobipy:   7   8.28171176e+13 -5.62989729e+14  1.29e+03 2.53e-05  2.16e+08   108s
+   8   2.03327672e+13 -1.43683859e+14  3.59e+02 6.34e-06  3.94e+07   119s
+INFO:gurobipy:   8   2.03327672e+13 -1.43683859e+14  3.59e+02 6.34e-06  3.94e+07   119s
+   9   1.48264734e+13 -6.55073871e+13  2.79e+02 2.81e-06  1.89e+07   128s
+INFO:gurobipy:   9   1.48264734e+13 -6.55073871e+13  2.79e+02 2.81e-06  1.89e+07   128s
+  10   1.05943497e+13 -5.76256919e+13  2.08e+02 2.42e-06  1.51e+07   135s
+INFO:gurobipy:  10   1.05943497e+13 -5.76256919e+13  2.08e+02 2.42e-06  1.51e+07   135s
+  11   9.12011033e+12 -2.95556710e+13  1.84e+02 2.22e-06  8.50e+06   143s
+INFO:gurobipy:  11   9.12011033e+12 -2.95556710e+13  1.84e+02 2.22e-06  8.50e+06   143s
+  12   6.44262807e+12 -1.17403042e+13  1.40e+02 7.64e-07  3.88e+06   154s
+INFO:gurobipy:  12   6.44262807e+12 -1.17403042e+13  1.40e+02 7.64e-07  3.88e+06   154s
+  13   3.60468995e+12 -6.51985497e+12  8.85e+01 3.77e-07  2.06e+06   169s
+INFO:gurobipy:  13   3.60468995e+12 -6.51985497e+12  8.85e+01 3.77e-07  2.06e+06   169s
+  14   2.71214860e+12 -3.75470915e+12  7.08e+01 2.18e-07  1.29e+06   183s
+INFO:gurobipy:  14   2.71214860e+12 -3.75470915e+12  7.08e+01 2.18e-07  1.29e+06   183s
+  15   2.19807161e+12 -2.13394432e+12  5.90e+01 2.75e-07  8.45e+05   194s
+INFO:gurobipy:  15   2.19807161e+12 -2.13394432e+12  5.90e+01 2.75e-07  8.45e+05   194s
+  16   1.82796082e+12 -1.47895195e+12  4.99e+01 7.23e-08  6.34e+05   204s
+INFO:gurobipy:  16   1.82796082e+12 -1.47895195e+12  4.99e+01 7.23e-08  6.34e+05   204s
+  17   1.51107778e+12 -1.18670169e+12  4.18e+01 5.66e-08  5.10e+05   211s
+INFO:gurobipy:  17   1.51107778e+12 -1.18670169e+12  4.18e+01 5.66e-08  5.10e+05   211s
+  18   1.15531751e+12 -8.25046894e+11  3.26e+01 4.57e-08  3.69e+05   221s
+INFO:gurobipy:  18   1.15531751e+12 -8.25046894e+11  3.26e+01 4.57e-08  3.69e+05   221s
+  19   9.48568465e+11 -6.39443702e+11  2.72e+01 2.80e-08  2.92e+05   233s
+INFO:gurobipy:  19   9.48568465e+11 -6.39443702e+11  2.72e+01 2.80e-08  2.92e+05   233s
+  20   7.46925953e+11 -3.23637377e+11  2.19e+01 3.18e-08  1.93e+05   248s
+INFO:gurobipy:  20   7.46925953e+11 -3.23637377e+11  2.19e+01 3.18e-08  1.93e+05   248s
+  21   6.13900249e+11 -2.19768029e+11  1.82e+01 1.29e-08  1.48e+05   262s
+INFO:gurobipy:  21   6.13900249e+11 -2.19768029e+11  1.82e+01 1.29e-08  1.48e+05   262s
+  22   4.85425496e+11 -1.50437904e+11  1.45e+01 1.42e-08  1.12e+05   277s
+INFO:gurobipy:  22   4.85425496e+11 -1.50437904e+11  1.45e+01 1.42e-08  1.12e+05   277s
+  23   3.91503559e+11 -1.00330965e+11  1.17e+01 7.73e-09  8.54e+04   289s
+INFO:gurobipy:  23   3.91503559e+11 -1.00330965e+11  1.17e+01 7.73e-09  8.54e+04   289s
+  24   3.17186850e+11 -8.74619661e+10  9.42e+00 5.96e-09  6.99e+04   299s
+INFO:gurobipy:  24   3.17186850e+11 -8.74619661e+10  9.42e+00 5.96e-09  6.99e+04   299s
+  25   2.95003753e+11 -7.51649030e+10  8.74e+00 6.30e-09  6.37e+04   306s
+INFO:gurobipy:  25   2.95003753e+11 -7.51649030e+10  8.74e+00 6.30e-09  6.37e+04   306s
+  26   2.65287658e+11 -6.68225850e+10  7.84e+00 4.88e-09  5.70e+04   316s
+INFO:gurobipy:  26   2.65287658e+11 -6.68225850e+10  7.84e+00 4.88e-09  5.70e+04   316s
+  27   2.31286363e+11 -5.15202918e+10  6.79e+00 6.92e-09  4.83e+04   328s
+INFO:gurobipy:  27   2.31286363e+11 -5.15202918e+10  6.79e+00 6.92e-09  4.83e+04   328s
+  28   1.91698733e+11 -3.52080268e+10  5.58e+00 4.59e-09  3.85e+04   342s
+INFO:gurobipy:  28   1.91698733e+11 -3.52080268e+10  5.58e+00 4.59e-09  3.85e+04   342s
+  29   1.43068495e+11 -2.03348927e+10  4.04e+00 3.69e-09  2.76e+04   357s
+INFO:gurobipy:  29   1.43068495e+11 -2.03348927e+10  4.04e+00 3.69e-09  2.76e+04   357s
+  30   1.15848351e+11 -1.26005918e+10  3.18e+00 5.53e-09  2.16e+04   372s
+INFO:gurobipy:  30   1.15848351e+11 -1.26005918e+10  3.18e+00 5.53e-09  2.16e+04   372s
+  31   9.04291520e+10 -3.92833414e+09  2.36e+00 5.51e-09  1.58e+04   386s
+INFO:gurobipy:  31   9.04291520e+10 -3.92833414e+09  2.36e+00 5.51e-09  1.58e+04   386s
+  32   7.73990648e+10  8.33093273e+08  1.94e+00 7.39e-09  1.28e+04   401s
+INFO:gurobipy:  32   7.73990648e+10  8.33093273e+08  1.94e+00 7.39e-09  1.28e+04   401s
+  33   6.68173813e+10  4.03331989e+09  1.60e+00 1.08e-08  1.05e+04   416s
+INFO:gurobipy:  33   6.68173813e+10  4.03331989e+09  1.60e+00 1.08e-08  1.05e+04   416s
+  34   6.04414952e+10  6.69289674e+09  1.39e+00 1.11e-08  8.93e+03   430s
+INFO:gurobipy:  34   6.04414952e+10  6.69289674e+09  1.39e+00 1.11e-08  8.93e+03   430s
+  35   4.79723765e+10  8.82721022e+09  9.73e-01 1.51e-08  6.49e+03   445s
+INFO:gurobipy:  35   4.79723765e+10  8.82721022e+09  9.73e-01 1.51e-08  6.49e+03   445s
+  36   3.96679736e+10  1.13202642e+10  6.99e-01 1.25e-08  4.69e+03   459s
+INFO:gurobipy:  36   3.96679736e+10  1.13202642e+10  6.99e-01 1.25e-08  4.69e+03   459s
+  37   3.38463483e+10  1.31486171e+10  5.00e-01 1.34e-08  3.42e+03   472s
+INFO:gurobipy:  37   3.38463483e+10  1.31486171e+10  5.00e-01 1.34e-08  3.42e+03   472s
+  38   3.16104786e+10  1.44960729e+10  4.24e-01 5.64e-08  2.82e+03   487s
+INFO:gurobipy:  38   3.16104786e+10  1.44960729e+10  4.24e-01 5.64e-08  2.82e+03   487s
+  39   2.80884116e+10  1.56116393e+10  3.03e-01 7.93e-08  2.06e+03   505s
+INFO:gurobipy:  39   2.80884116e+10  1.56116393e+10  3.03e-01 7.93e-08  2.06e+03   505s
+  40   2.58383300e+10  1.67102144e+10  2.26e-01 8.12e-08  1.50e+03   527s
+INFO:gurobipy:  40   2.58383300e+10  1.67102144e+10  2.26e-01 8.12e-08  1.50e+03   527s
+  41   2.43544534e+10  1.74804979e+10  1.75e-01 1.61e-07  1.13e+03   549s
+INFO:gurobipy:  41   2.43544534e+10  1.74804979e+10  1.75e-01 1.61e-07  1.13e+03   549s
+  42   2.22824381e+10  1.81070245e+10  1.04e-01 1.01e-07  6.86e+02   574s
+INFO:gurobipy:  42   2.22824381e+10  1.81070245e+10  1.04e-01 1.01e-07  6.86e+02   574s
+  43   2.16371424e+10  1.84596945e+10  8.17e-02 1.54e-07  5.22e+02   595s
+INFO:gurobipy:  43   2.16371424e+10  1.84596945e+10  8.17e-02 1.54e-07  5.22e+02   595s
+  44   2.09404795e+10  1.86363240e+10  5.74e-02 2.02e-07  3.79e+02   613s
+INFO:gurobipy:  44   2.09404795e+10  1.86363240e+10  5.74e-02 2.02e-07  3.79e+02   613s
+  45   2.06510280e+10  1.87855992e+10  4.72e-02 3.41e-07  3.06e+02   628s
+INFO:gurobipy:  45   2.06510280e+10  1.87855992e+10  4.72e-02 3.41e-07  3.06e+02   628s
+  46   2.05015324e+10  1.88797133e+10  4.19e-02 1.96e-07  2.66e+02   643s
+INFO:gurobipy:  46   2.05015324e+10  1.88797133e+10  4.19e-02 1.96e-07  2.66e+02   643s
+  47   2.03163975e+10  1.89503272e+10  3.54e-02 5.62e-07  2.24e+02   659s
+INFO:gurobipy:  47   2.03163975e+10  1.89503272e+10  3.54e-02 5.62e-07  2.24e+02   659s
+  48   2.02228950e+10  1.89718908e+10  3.21e-02 5.62e-07  2.05e+02   675s
+INFO:gurobipy:  48   2.02228950e+10  1.89718908e+10  3.21e-02 5.62e-07  2.05e+02   675s
+  49   2.01385266e+10  1.89956293e+10  2.91e-02 5.65e-07  1.88e+02   691s
+INFO:gurobipy:  49   2.01385266e+10  1.89956293e+10  2.91e-02 5.65e-07  1.88e+02   691s
+  50   2.00272865e+10  1.90243264e+10  2.52e-02 5.28e-07  1.65e+02   708s
+INFO:gurobipy:  50   2.00272865e+10  1.90243264e+10  2.52e-02 5.28e-07  1.65e+02   708s
+  51   1.99085364e+10  1.90910958e+10  2.11e-02 1.47e-06  1.34e+02   725s
+INFO:gurobipy:  51   1.99085364e+10  1.90910958e+10  2.11e-02 1.47e-06  1.34e+02   725s
+  52   1.97841472e+10  1.91284320e+10  1.67e-02 1.11e-06  1.08e+02   748s
+INFO:gurobipy:  52   1.97841472e+10  1.91284320e+10  1.67e-02 1.11e-06  1.08e+02   748s
+  53   1.97272815e+10  1.91600969e+10  1.48e-02 1.96e-06  9.31e+01   776s
+INFO:gurobipy:  53   1.97272815e+10  1.91600969e+10  1.48e-02 1.96e-06  9.31e+01   776s
+  54   1.96387142e+10  1.92058016e+10  1.18e-02 2.95e-06  7.11e+01   809s
+INFO:gurobipy:  54   1.96387142e+10  1.92058016e+10  1.18e-02 2.95e-06  7.11e+01   809s
+  55   1.95250772e+10  1.92389418e+10  7.87e-03 6.00e-06  4.70e+01   842s
+INFO:gurobipy:  55   1.95250772e+10  1.92389418e+10  7.87e-03 6.00e-06  4.70e+01   842s
+  56   1.94958202e+10  1.92609942e+10  6.86e-03 5.39e-06  3.86e+01   876s
+INFO:gurobipy:  56   1.94958202e+10  1.92609942e+10  6.86e-03 5.39e-06  3.86e+01   876s
+  57   1.94339775e+10  1.92698983e+10  5.72e-03 5.13e-06  2.69e+01   899s
+INFO:gurobipy:  57   1.94339775e+10  1.92698983e+10  5.72e-03 5.13e-06  2.69e+01   899s
+  58   1.94109783e+10  1.92759159e+10  6.97e-03 1.69e-05  2.22e+01   919s
+INFO:gurobipy:  58   1.94109783e+10  1.92759159e+10  6.97e-03 1.69e-05  2.22e+01   919s
+  59   1.93945722e+10  1.92820928e+10  5.98e-03 1.85e-05  1.85e+01   936s
+INFO:gurobipy:  59   1.93945722e+10  1.92820928e+10  5.98e-03 1.85e-05  1.85e+01   936s
+  60   1.93719120e+10  1.92858924e+10  4.53e-03 1.55e-05  1.41e+01   954s
+INFO:gurobipy:  60   1.93719120e+10  1.92858924e+10  4.53e-03 1.55e-05  1.41e+01   954s
+  61   1.93596452e+10  1.92885169e+10  3.77e-03 1.27e-05  1.17e+01   971s
+INFO:gurobipy:  61   1.93596452e+10  1.92885169e+10  3.77e-03 1.27e-05  1.17e+01   971s
+  62   1.93518905e+10  1.92918239e+10  3.27e-03 9.09e-06  9.86e+00   991s
+INFO:gurobipy:  62   1.93518905e+10  1.92918239e+10  3.27e-03 9.09e-06  9.86e+00   991s
+  63   1.93424688e+10  1.92937036e+10  2.68e-03 1.39e-05  8.00e+00  1014s
+INFO:gurobipy:  63   1.93424688e+10  1.92937036e+10  2.68e-03 1.39e-05  8.00e+00  1014s
+  64   1.93272641e+10  1.92963280e+10  1.72e-03 1.66e-05  5.08e+00  1046s
+INFO:gurobipy:  64   1.93272641e+10  1.92963280e+10  1.72e-03 1.66e-05  5.08e+00  1046s
+  65   1.93138678e+10  1.92981440e+10  8.39e-04 5.16e-05  2.58e+00  1079s
+INFO:gurobipy:  65   1.93138678e+10  1.92981440e+10  8.39e-04 5.16e-05  2.58e+00  1079s
+  66   1.93082816e+10  1.92995074e+10  4.03e-04 8.26e-05  1.44e+00  1097s
+INFO:gurobipy:  66   1.93082816e+10  1.92995074e+10  4.03e-04 8.26e-05  1.44e+00  1097s
+  67   1.93061948e+10  1.93000451e+10  1.90e-04 1.41e-04  1.01e+00  1113s
+INFO:gurobipy:  67   1.93061948e+10  1.93000451e+10  1.90e-04 1.41e-04  1.01e+00  1113s
+  68   1.93051801e+10  1.93002938e+10  1.52e-04 2.75e-04  8.02e-01  1128s
+INFO:gurobipy:  68   1.93051801e+10  1.93002938e+10  1.52e-04 2.75e-04  8.02e-01  1128s
+  69   1.93038816e+10  1.93005360e+10  8.59e-04 1.03e-03  5.51e-01  1141s
+INFO:gurobipy:  69   1.93038816e+10  1.93005360e+10  8.59e-04 1.03e-03  5.51e-01  1141s
+  70   1.93029344e+10  1.93006663e+10  9.79e-04 7.91e-04  3.74e-01  1154s
+INFO:gurobipy:  70   1.93029344e+10  1.93006663e+10  9.79e-04 7.91e-04  3.74e-01  1154s
+  71   1.93024289e+10  1.93008070e+10  4.39e-04 1.74e-03  2.66e-01  1167s
+INFO:gurobipy:  71   1.93024289e+10  1.93008070e+10  4.39e-04 1.74e-03  2.66e-01  1167s
+  72   1.93019878e+10  1.93009061e+10  5.55e-04 1.28e-03  1.77e-01  1182s
+INFO:gurobipy:  72   1.93019878e+10  1.93009061e+10  5.55e-04 1.28e-03  1.77e-01  1182s
+  73   1.93017908e+10  1.93009703e+10  1.22e-03 2.99e-03  1.34e-01  1195s
+INFO:gurobipy:  73   1.93017908e+10  1.93009703e+10  1.22e-03 2.99e-03  1.34e-01  1195s
+  74   1.93015993e+10  1.93010321e+10  6.25e-04 2.48e-03  9.27e-02  1207s
+INFO:gurobipy:  74   1.93015993e+10  1.93010321e+10  6.25e-04 2.48e-03  9.27e-02  1207s
+  75   1.93014262e+10  1.93010726e+10  2.86e-04 8.39e-03  5.82e-02  1219s
+INFO:gurobipy:  75   1.93014262e+10  1.93010726e+10  2.86e-04 8.39e-03  5.82e-02  1219s
+  76   1.93013382e+10  1.93010948e+10  5.13e-04 3.63e-03  4.03e-02  1233s
+INFO:gurobipy:  76   1.93013382e+10  1.93010948e+10  5.13e-04 3.63e-03  4.03e-02  1233s
+  77   1.93012850e+10  1.93011171e+10  3.63e-04 7.90e-03  2.78e-02  1248s
+INFO:gurobipy:  77   1.93012850e+10  1.93011171e+10  3.63e-04 7.90e-03  2.78e-02  1248s
+  78   1.93012575e+10  1.93011262e+10  9.24e-04 1.16e-02  2.16e-02  1262s
+INFO:gurobipy:  78   1.93012575e+10  1.93011262e+10  9.24e-04 1.16e-02  2.16e-02  1262s
+  79   1.93012193e+10  1.93011403e+10  5.61e-03 6.44e-02  1.28e-02  1276s
+INFO:gurobipy:  79   1.93012193e+10  1.93011403e+10  5.61e-03 6.44e-02  1.28e-02  1276s
+  80   1.93011850e+10  1.93011498e+10  3.46e-03 3.12e-02  5.87e-03  1291s
+INFO:gurobipy:  80   1.93011850e+10  1.93011498e+10  3.46e-03 3.12e-02  5.87e-03  1291s
+  81   1.93011786e+10  1.93011540e+10  3.23e-03 1.57e-02  4.16e-03  1303s
+INFO:gurobipy:  81   1.93011786e+10  1.93011540e+10  3.23e-03 1.57e-02  4.16e-03  1303s
+  82   1.93011684e+10  1.93011564e+10  1.97e-03 1.10e-02  2.09e-03  1315s
+INFO:gurobipy:  82   1.93011684e+10  1.93011564e+10  1.97e-03 1.10e-02  2.09e-03  1315s
+  83   1.93011650e+10  1.93011584e+10  8.21e-04 5.30e-03  1.20e-03  1327s
+INFO:gurobipy:  83   1.93011650e+10  1.93011584e+10  8.21e-04 5.30e-03  1.20e-03  1327s
+  84   1.93011630e+10  1.93011596e+10  6.54e-04 2.59e-03  6.34e-04  1341s
+INFO:gurobipy:  84   1.93011630e+10  1.93011596e+10  6.54e-04 2.59e-03  6.34e-04  1341s
+  85   1.93011616e+10  1.93011600e+10  4.81e-04 8.71e-03  2.48e-04  1353s
+INFO:gurobipy:  85   1.93011616e+10  1.93011600e+10  4.81e-04 8.71e-03  2.48e-04  1353s
+  86   1.93011610e+10  1.93011603e+10  2.36e-04 1.23e-02  1.18e-04  1366s
+INFO:gurobipy:  86   1.93011610e+10  1.93011603e+10  2.36e-04 1.23e-02  1.18e-04  1366s
+  87   1.93011607e+10  1.93011604e+10  8.61e-05 3.75e-03  4.21e-05  1379s
+INFO:gurobipy:  87   1.93011607e+10  1.93011604e+10  8.61e-05 3.75e-03  4.21e-05  1379s
+  88   1.93011605e+10  1.93011604e+10  3.14e-05 1.07e-03  1.54e-05  1393s
+INFO:gurobipy:  88   1.93011605e+10  1.93011604e+10  3.14e-05 1.07e-03  1.54e-05  1393s
+  89   1.93011605e+10  1.93011605e+10  3.85e-06 9.08e-04  2.46e-06  1409s
+INFO:gurobipy:  89   1.93011605e+10  1.93011605e+10  3.85e-06 9.08e-04  2.46e-06  1409s
+  90   1.93011605e+10  1.93011605e+10  6.15e-07 4.01e-04  4.65e-07  1421s
+INFO:gurobipy:  90   1.93011605e+10  1.93011605e+10  6.15e-07 4.01e-04  4.65e-07  1421s
+  91   1.93011605e+10  1.93011605e+10  1.90e-06 1.41e-03  8.68e-08  1433s
+INFO:gurobipy:  91   1.93011605e+10  1.93011605e+10  1.90e-06 1.41e-03  8.68e-08  1433s
+  92   1.93011605e+10  1.93011605e+10  2.39e-07 2.74e-04  1.47e-08  1448s
+INFO:gurobipy:  92   1.93011605e+10  1.93011605e+10  2.39e-07 2.74e-04  1.47e-08  1448s
+  93   1.93011605e+10  1.93011605e+10  3.34e-08 4.08e-04  2.42e-09  1460s
+INFO:gurobipy:  93   1.93011605e+10  1.93011605e+10  3.34e-08 4.08e-04  2.42e-09  1460s
+
+INFO:gurobipy:
+Barrier solved model in 93 iterations and 1459.95 seconds (900.47 work units)
+INFO:gurobipy:Barrier solved model in 93 iterations and 1459.95 seconds (900.47 work units)
+Optimal objective 1.93011605e+10
+INFO:gurobipy:Optimal objective 1.93011605e+10
+
+INFO:gurobipy:
+Crossover log...
+INFO:gurobipy:Crossover log...
+
+INFO:gurobipy:
+   41512 DPushes remaining with DInf 0.0000000e+00              1464s
+INFO:gurobipy:   41512 DPushes remaining with DInf 0.0000000e+00              1464s
+   11841 DPushes remaining with DInf 0.0000000e+00              1468s
+INFO:gurobipy:   11841 DPushes remaining with DInf 0.0000000e+00              1468s
+    9302 DPushes remaining with DInf 0.0000000e+00              1471s
+INFO:gurobipy:    9302 DPushes remaining with DInf 0.0000000e+00              1471s
+    8497 DPushes remaining with DInf 0.0000000e+00              1476s
+INFO:gurobipy:    8497 DPushes remaining with DInf 0.0000000e+00              1476s
+    8295 DPushes remaining with DInf 0.0000000e+00              1482s
+INFO:gurobipy:    8295 DPushes remaining with DInf 0.0000000e+00              1482s
+    8093 DPushes remaining with DInf 0.0000000e+00              1487s
+INFO:gurobipy:    8093 DPushes remaining with DInf 0.0000000e+00              1487s
+    7891 DPushes remaining with DInf 0.0000000e+00              1492s
+INFO:gurobipy:    7891 DPushes remaining with DInf 0.0000000e+00              1492s
+    7689 DPushes remaining with DInf 0.0000000e+00              1497s
+INFO:gurobipy:    7689 DPushes remaining with DInf 0.0000000e+00              1497s
+    7487 DPushes remaining with DInf 0.0000000e+00              1502s
+INFO:gurobipy:    7487 DPushes remaining with DInf 0.0000000e+00              1502s
+    7283 DPushes remaining with DInf 0.0000000e+00              1507s
+INFO:gurobipy:    7283 DPushes remaining with DInf 0.0000000e+00              1507s
+    7078 DPushes remaining with DInf 0.0000000e+00              1513s
+INFO:gurobipy:    7078 DPushes remaining with DInf 0.0000000e+00              1513s
+    6977 DPushes remaining with DInf 0.0000000e+00              1515s
+INFO:gurobipy:    6977 DPushes remaining with DInf 0.0000000e+00              1515s
+    6774 DPushes remaining with DInf 0.0000000e+00              1521s
+INFO:gurobipy:    6774 DPushes remaining with DInf 0.0000000e+00              1521s
+    6572 DPushes remaining with DInf 0.0000000e+00              1526s
+INFO:gurobipy:    6572 DPushes remaining with DInf 0.0000000e+00              1526s
+    6370 DPushes remaining with DInf 0.0000000e+00              1532s
+INFO:gurobipy:    6370 DPushes remaining with DInf 0.0000000e+00              1532s
+    6167 DPushes remaining with DInf 0.0000000e+00              1537s
+INFO:gurobipy:    6167 DPushes remaining with DInf 0.0000000e+00              1537s
+    5965 DPushes remaining with DInf 0.0000000e+00              1542s
+INFO:gurobipy:    5965 DPushes remaining with DInf 0.0000000e+00              1542s
+    5763 DPushes remaining with DInf 0.0000000e+00              1547s
+INFO:gurobipy:    5763 DPushes remaining with DInf 0.0000000e+00              1547s
+    5558 DPushes remaining with DInf 0.0000000e+00              1552s
+INFO:gurobipy:    5558 DPushes remaining with DInf 0.0000000e+00              1552s
+    5456 DPushes remaining with DInf 0.0000000e+00              1555s
+INFO:gurobipy:    5456 DPushes remaining with DInf 0.0000000e+00              1555s
+    5254 DPushes remaining with DInf 0.0000000e+00              1561s
+INFO:gurobipy:    5254 DPushes remaining with DInf 0.0000000e+00              1561s
+    5051 DPushes remaining with DInf 0.0000000e+00              1567s
+INFO:gurobipy:    5051 DPushes remaining with DInf 0.0000000e+00              1567s
+    4950 DPushes remaining with DInf 0.0000000e+00              1570s
+INFO:gurobipy:    4950 DPushes remaining with DInf 0.0000000e+00              1570s
+    4748 DPushes remaining with DInf 0.0000000e+00              1576s
+INFO:gurobipy:    4748 DPushes remaining with DInf 0.0000000e+00              1576s
+    4546 DPushes remaining with DInf 0.0000000e+00              1582s
+INFO:gurobipy:    4546 DPushes remaining with DInf 0.0000000e+00              1582s
+    4344 DPushes remaining with DInf 0.0000000e+00              1587s
+INFO:gurobipy:    4344 DPushes remaining with DInf 0.0000000e+00              1587s
+    4243 DPushes remaining with DInf 0.0000000e+00              1592s
+INFO:gurobipy:    4243 DPushes remaining with DInf 0.0000000e+00              1592s
+    4142 DPushes remaining with DInf 0.0000000e+00              1597s
+INFO:gurobipy:    4142 DPushes remaining with DInf 0.0000000e+00              1597s
+    4041 DPushes remaining with DInf 0.0000000e+00              1600s
+INFO:gurobipy:    4041 DPushes remaining with DInf 0.0000000e+00              1600s
+    3940 DPushes remaining with DInf 0.0000000e+00              1605s
+INFO:gurobipy:    3940 DPushes remaining with DInf 0.0000000e+00              1605s
+    3738 DPushes remaining with DInf 0.0000000e+00              1614s
+INFO:gurobipy:    3738 DPushes remaining with DInf 0.0000000e+00              1614s
+    3637 DPushes remaining with DInf 0.0000000e+00              1619s
+INFO:gurobipy:    3637 DPushes remaining with DInf 0.0000000e+00              1619s
+    3536 DPushes remaining with DInf 0.0000000e+00              1625s
+INFO:gurobipy:    3536 DPushes remaining with DInf 0.0000000e+00              1625s
+    3435 DPushes remaining with DInf 0.0000000e+00              1632s
+INFO:gurobipy:    3435 DPushes remaining with DInf 0.0000000e+00              1632s
+    3334 DPushes remaining with DInf 0.0000000e+00              1637s
+INFO:gurobipy:    3334 DPushes remaining with DInf 0.0000000e+00              1637s
+    3233 DPushes remaining with DInf 0.0000000e+00              1643s
+INFO:gurobipy:    3233 DPushes remaining with DInf 0.0000000e+00              1643s
+    3132 DPushes remaining with DInf 0.0000000e+00              1649s
+INFO:gurobipy:    3132 DPushes remaining with DInf 0.0000000e+00              1649s
+    3031 DPushes remaining with DInf 0.0000000e+00              1654s
+INFO:gurobipy:    3031 DPushes remaining with DInf 0.0000000e+00              1654s
+    2930 DPushes remaining with DInf 0.0000000e+00              1659s
+INFO:gurobipy:    2930 DPushes remaining with DInf 0.0000000e+00              1659s
+    2829 DPushes remaining with DInf 0.0000000e+00              1665s
+INFO:gurobipy:    2829 DPushes remaining with DInf 0.0000000e+00              1665s
+    2728 DPushes remaining with DInf 0.0000000e+00              1671s
+INFO:gurobipy:    2728 DPushes remaining with DInf 0.0000000e+00              1671s
+    2627 DPushes remaining with DInf 0.0000000e+00              1675s
+INFO:gurobipy:    2627 DPushes remaining with DInf 0.0000000e+00              1675s
+    2526 DPushes remaining with DInf 0.0000000e+00              1680s
+INFO:gurobipy:    2526 DPushes remaining with DInf 0.0000000e+00              1680s
+    2324 DPushes remaining with DInf 0.0000000e+00              1690s
+INFO:gurobipy:    2324 DPushes remaining with DInf 0.0000000e+00              1690s
+    2223 DPushes remaining with DInf 0.0000000e+00              1693s
+INFO:gurobipy:    2223 DPushes remaining with DInf 0.0000000e+00              1693s
+    2122 DPushes remaining with DInf 0.0000000e+00              1697s
+INFO:gurobipy:    2122 DPushes remaining with DInf 0.0000000e+00              1697s
+    2021 DPushes remaining with DInf 0.0000000e+00              1700s
+INFO:gurobipy:    2021 DPushes remaining with DInf 0.0000000e+00              1700s
+    1819 DPushes remaining with DInf 0.0000000e+00              1706s
+INFO:gurobipy:    1819 DPushes remaining with DInf 0.0000000e+00              1706s
+    1617 DPushes remaining with DInf 0.0000000e+00              1712s
+INFO:gurobipy:    1617 DPushes remaining with DInf 0.0000000e+00              1712s
+    1516 DPushes remaining with DInf 0.0000000e+00              1716s
+INFO:gurobipy:    1516 DPushes remaining with DInf 0.0000000e+00              1716s
+    1314 DPushes remaining with DInf 0.0000000e+00              1723s
+INFO:gurobipy:    1314 DPushes remaining with DInf 0.0000000e+00              1723s
+    1213 DPushes remaining with DInf 0.0000000e+00              1727s
+INFO:gurobipy:    1213 DPushes remaining with DInf 0.0000000e+00              1727s
+    1112 DPushes remaining with DInf 0.0000000e+00              1730s
+INFO:gurobipy:    1112 DPushes remaining with DInf 0.0000000e+00              1730s
+     910 DPushes remaining with DInf 0.0000000e+00              1737s
+INFO:gurobipy:     910 DPushes remaining with DInf 0.0000000e+00              1737s
+     809 DPushes remaining with DInf 0.0000000e+00              1741s
+INFO:gurobipy:     809 DPushes remaining with DInf 0.0000000e+00              1741s
+     607 DPushes remaining with DInf 0.0000000e+00              1748s
+INFO:gurobipy:     607 DPushes remaining with DInf 0.0000000e+00              1748s
+     506 DPushes remaining with DInf 0.0000000e+00              1752s
+INFO:gurobipy:     506 DPushes remaining with DInf 0.0000000e+00              1752s
+     304 DPushes remaining with DInf 0.0000000e+00              1759s
+INFO:gurobipy:     304 DPushes remaining with DInf 0.0000000e+00              1759s
+     203 DPushes remaining with DInf 0.0000000e+00              1762s
+INFO:gurobipy:     203 DPushes remaining with DInf 0.0000000e+00              1762s
+     102 DPushes remaining with DInf 0.0000000e+00              1767s
+INFO:gurobipy:     102 DPushes remaining with DInf 0.0000000e+00              1767s
+       1 DPushes remaining with DInf 0.0000000e+00              1772s
+INFO:gurobipy:       1 DPushes remaining with DInf 0.0000000e+00              1772s
+
+INFO:gurobipy:
+   16637 PPushes remaining with PInf 4.3756876e-05              1776s
+INFO:gurobipy:   16637 PPushes remaining with PInf 4.3756876e-05              1776s
+    1000 PPushes remaining with PInf 1.0632806e-03              1782s
+INFO:gurobipy:    1000 PPushes remaining with PInf 1.0632806e-03              1782s
+     483 PPushes remaining with PInf 0.0000000e+00              1785s
+INFO:gurobipy:     483 PPushes remaining with PInf 0.0000000e+00              1785s
+     211 PPushes remaining with PInf 0.0000000e+00              1791s
+INFO:gurobipy:     211 PPushes remaining with PInf 0.0000000e+00              1791s
+       3 PPushes remaining with PInf 0.0000000e+00              1796s
+INFO:gurobipy:       3 PPushes remaining with PInf 0.0000000e+00              1796s
+       0 PPushes remaining with PInf 0.0000000e+00              1799s
+INFO:gurobipy:       0 PPushes remaining with PInf 0.0000000e+00              1799s
+
+INFO:gurobipy:
+  Push phase complete: Pinf 0.0000000e+00, Dinf 2.4372162e-04   1799s
+INFO:gurobipy:  Push phase complete: Pinf 0.0000000e+00, Dinf 2.4372162e-04   1799s
+
+INFO:gurobipy:
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+INFO:gurobipy:Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   58117    1.9301160e+10   0.000000e+00   2.434075e-04   1801s
+INFO:gurobipy:   58117    1.9301160e+10   0.000000e+00   2.434075e-04   1801s
+   58118    1.9301160e+10   0.000000e+00   0.000000e+00   1809s
+INFO:gurobipy:   58118    1.9301160e+10   0.000000e+00   0.000000e+00   1809s
+
+INFO:gurobipy:
+Solved in 58118 iterations and 1809.04 seconds (1028.05 work units)
+INFO:gurobipy:Solved in 58118 iterations and 1809.04 seconds (1028.05 work units)
+Optimal objective  1.930116047e+10
+INFO:gurobipy:Optimal objective  1.930116047e+10
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 2093803 primals, 7750004 duals
+Objective: 1.93e+10
+Solver: gurobi
+Runtime: 1809.11s
+Dual bound: 1.93e+10
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Generator-p-ramp_limit_up, Generator-p-ramp_limit_down, Line-ext-s-lower, Line-ext-s-upper, StorageUnit-fix-p_dispatch-lower, StorageUnit-fix-p_dispatch-upper, StorageUnit-fix-p_store-lower, StorageUnit-fix-p_store-upper, StorageUnit-fix-state_of_charge-lower, StorageUnit-fix-state_of_charge-upper, Kirchhoff-Voltage-Law, StorageUnit-energy_balance, Line-loss_upper, Line-loss_tangents-1--1, Line-loss_tangents-1-1, Line-loss_tangents-2--1, Line-loss_tangents-2-1 were not assigned to the network.
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:Exported network 'Unnamed Network' saved to '/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/next08_lossy_lp1/baseline_2025_tamu_lossy_candidate.nc contains: generators, lines, buses, sub_networks, storage_units, loads, global_constraints, carriers
+{
+ "stage": "LP1_LOSSY_IT2",
+ "status": "ok",
+ "termination": "optimal",
+ "seconds": 1853.1,
+ "threads": 21,
+ "n_vars": 2093803,
+ "n_cons": 6902966,
+ "objective": 19301160471.4914,
+ "residual_shed": {
+  "eens_MWh": 110.89310329735667,
+  "eens_over_annual_energy": 2.2713125063713588e-07,
+  "max_gap_MW": 27.09598343258848,
+  "max_gap_over_official_peak": 0.00032380863637334603,
+  "shed_steps": 2,
+  "shed_hours": 6.0,
+  "shed_buses": [
+   "p620 1",
+   "p620 2",
+   "p620 6"
+  ],
+  "max_gap_step": "(2030, Timestamp('2030-07-14 09:00:00'))",
+  "max_gap_bus_split": {
+   "p620 1": 27.09598343258848
+  },
+  "events": 3,
+  "thresholds": {
+   "eens_over_annual_energy_max": 1e-05,
+   "max_gap_over_official_peak_max": 0.001
+  },
+  "eens_pass": true,
+  "max_gap_pass": true,
+  "description": "research-proxy tolerance, not an ERCOT standard; below-threshold shed is NOT zero shed"
+ },
+ "r_converged": true,
+ "convergence": {
+  "max_rel_r_gap": 0.02058215069906033,
+  "lines_not_converged": 0,
+  "worst": {}
+ },
+ "guards": {
+  "total_uplift_MVA": 5816.595670039928,
+  "v16_total_uplift_MVA": 5151.833600032188,
+  "G1_limit_MVA": 7727.750400048282,
+  "G1": true,
+  "lines_at_cap": [],
+  "G2": true,
+  "new_lines_uplift_MVA": 9.87881786803132,
+  "new_lines": {
+   "TL154": 2.9,
+   "TL67": 7.0
+  },
+  "new_lines_over_50MVA": [],
+  "G3": true,
+  "uplifted_lines": 20,
+  "all_pass": true
+ },
+ "uplift_by_line_MVA": {
+  "TL38": 1170.5,
+  "TL39": 843.54,
+  "TL37": 656.11,
+  "TL35": 573.14,
+  "TL13": 422.09,
+  "TL73": 367.29,
+  "TL15": 329.72,
+  "TL12": 289.56,
+  "TL42": 260.58,
+  "TL40": 174.74,
+  "TL41": 165.4,
+  "TL63": 162.28,
+  "TL36": 117.44,
+  "TL69": 90.65,
+  "TL43": 77.61,
+  "TL68": 47.89,
+  "TL3": 33.3,
+  "TL26": 24.8,
+  "TL67": 6.95,
+  "TL154": 2.93
+ },
+ "total_loss_MWh": 3896328.7952164793,
+ "candidate_written": true,
+ "label": "LOSSY LP1 CALIBRATION (2025 fixed fleet); not a scenario result",
+ "candidate_sha256": "4720185461d3204a3d40f46dc58ecd5ae760dd2f771943c8fb8bb5b0a96dc491"
+}
+LP1_LOSSY_IT2 rc=0
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.optimization.window:Building the multi-period model over a MultiIndex `snapshot`. Opt into the flat representation via `pypsa.options.optimization.model_snapshot_index = 'flat'`.
+INFO:linopy.model: Solve problem using Gurobi solver
+INFO:linopy.model:Solver options:
+ - Method: 2
+ - Crossover: 1
+ - BarConvTol: 1e-08
+ - NumericFocus: 2
+ - BarHomogeneous: 1
+ - Threads: 21
+INFO:linopy.io:Writing objective.
+Writing constraints.:   0%|[38;2;128;191;255m          [0m| 0/20 [00:00<?, ?it/s]Writing constraints.:   5%|[38;2;128;191;255m▌         [0m| 1/20 [00:00<00:02,  6.66it/s]Writing constraints.:  10%|[38;2;128;191;255m█         [0m| 2/20 [00:00<00:02,  7.00it/s]Writing constraints.:  15%|[38;2;128;191;255m█▌        [0m| 3/20 [00:00<00:02,  6.97it/s]Writing constraints.:  20%|[38;2;128;191;255m██        [0m| 4/20 [00:00<00:02,  7.44it/s]Writing constraints.:  25%|[38;2;128;191;255m██▌       [0m| 5/20 [00:00<00:02,  6.70it/s]Writing constraints.:  30%|[38;2;128;191;255m███       [0m| 6/20 [00:00<00:02,  6.66it/s]Writing constraints.:  45%|[38;2;128;191;255m████▌     [0m| 9/20 [00:00<00:00, 12.09it/s]Writing constraints.:  60%|[38;2;128;191;255m██████    [0m| 12/20 [00:01<00:00, 15.73it/s]Writing constraints.:  70%|[38;2;128;191;255m███████   [0m| 14/20 [00:02<00:01,  3.69it/s]Writing constraints.:  80%|[38;2;128;191;255m████████  [0m| 16/20 [00:02<00:00,  4.54it/s]Writing constraints.:  90%|[38;2;128;191;255m█████████ [0m| 18/20 [00:03<00:00,  4.78it/s]Writing constraints.:  95%|[38;2;128;191;255m█████████▌[0m| 19/20 [00:03<00:00,  4.99it/s]Writing constraints.: 100%|[38;2;128;191;255m██████████[0m| 20/20 [00:03<00:00,  5.18it/s]Writing constraints.: 100%|[38;2;128;191;255m██████████[0m| 20/20 [00:03<00:00,  5.71it/s]
+Writing continuous variables.:   0%|[38;2;128;191;255m          [0m| 0/6 [00:00<?, ?it/s]Writing continuous variables.:  67%|[38;2;128;191;255m██████▋   [0m| 4/6 [00:00<00:00, 34.48it/s]Writing continuous variables.: 100%|[38;2;128;191;255m██████████[0m| 6/6 [00:00<00:00, 33.67it/s]
+INFO:linopy.io: Writing time: 3.76s
+Set parameter WLSAccessID
+INFO:gurobipy:Set parameter WLSAccessID
+Set parameter WLSSecret
+INFO:gurobipy:Set parameter WLSSecret
+Set parameter LicenseID to value 2559322
+INFO:gurobipy:Set parameter LicenseID to value 2559322
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+INFO:gurobipy:Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+Read LP format model from file /tmp/linopy-problem-6ti_kmcj.lp
+INFO:gurobipy:Read LP format model from file /tmp/linopy-problem-6ti_kmcj.lp
+Reading time = 11.26 seconds
+INFO:gurobipy:Reading time = 11.26 seconds
+obj: 6902642 rows, 2093640 columns, 14363004 nonzeros
+INFO:gurobipy:obj: 6902642 rows, 2093640 columns, 14363004 nonzeros
+Set parameter Method to value 2
+INFO:gurobipy:Set parameter Method to value 2
+Set parameter Crossover to value 1
+INFO:gurobipy:Set parameter Crossover to value 1
+Set parameter NumericFocus to value 2
+INFO:gurobipy:Set parameter NumericFocus to value 2
+Set parameter BarHomogeneous to value 1
+INFO:gurobipy:Set parameter BarHomogeneous to value 1
+Set parameter Threads to value 21
+INFO:gurobipy:Set parameter Threads to value 21
+Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Ubuntu 20.04.6 LTS")
+INFO:gurobipy:Gurobi Optimizer version 11.0.3 build v11.0.3rc0 (linux64 - "Ubuntu 20.04.6 LTS")
+
+INFO:gurobipy:
+CPU model: Intel(R) Core(TM) i9-10920X CPU @ 3.50GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+INFO:gurobipy:CPU model: Intel(R) Core(TM) i9-10920X CPU @ 3.50GHz, instruction set [SSE2|AVX|AVX2|AVX512]
+Thread count: 12 physical cores, 24 logical processors, using up to 21 threads
+INFO:gurobipy:Thread count: 12 physical cores, 24 logical processors, using up to 21 threads
+
+INFO:gurobipy:
+Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+INFO:gurobipy:Academic license 2559322 - for non-commercial use only - registered to sw___@cornell.edu
+Optimize a model with 6902642 rows, 2093640 columns and 14363004 nonzeros
+INFO:gurobipy:Optimize a model with 6902642 rows, 2093640 columns and 14363004 nonzeros
+Model fingerprint: 0xcdbd9c30
+INFO:gurobipy:Model fingerprint: 0xcdbd9c30
+Coefficient statistics:
+INFO:gurobipy:Coefficient statistics:
+  Matrix range     [3e-03, 2e+03]
+INFO:gurobipy:  Matrix range     [3e-03, 2e+03]
+  Objective range  [4e+01, 1e+05]
+INFO:gurobipy:  Objective range  [4e+01, 1e+05]
+  Bounds range     [0e+00, 0e+00]
+INFO:gurobipy:  Bounds range     [0e+00, 0e+00]
+  RHS range        [7e-05, 1e+05]
+INFO:gurobipy:  RHS range        [7e-05, 1e+05]
+Presolve removed 3693956 rows and 321382 columns (presolve time = 5s) ...
+INFO:gurobipy:Presolve removed 3693956 rows and 321382 columns (presolve time = 5s) ...
+Presolve removed 3702014 rows and 321382 columns (presolve time = 10s) ...
+INFO:gurobipy:Presolve removed 3702014 rows and 321382 columns (presolve time = 10s) ...
+Presolve removed 3728285 rows and 321382 columns
+INFO:gurobipy:Presolve removed 3728285 rows and 321382 columns
+Presolve time: 13.27s
+INFO:gurobipy:Presolve time: 13.27s
+Presolved: 3174357 rows, 1798529 columns, 10481453 nonzeros
+INFO:gurobipy:Presolved: 3174357 rows, 1798529 columns, 10481453 nonzeros
+
+INFO:gurobipy:
+Elapsed ordering time = 5s
+INFO:gurobipy:Elapsed ordering time = 5s
+Elapsed ordering time = 22s
+INFO:gurobipy:Elapsed ordering time = 22s
+Ordering time: 35.37s
+INFO:gurobipy:Ordering time: 35.37s
+
+INFO:gurobipy:
+Barrier statistics:
+INFO:gurobipy:Barrier statistics:
+ AA' NZ     : 4.870e+07
+INFO:gurobipy: AA' NZ     : 4.870e+07
+ Factor NZ  : 1.041e+08 (roughly 3.0 GB of memory)
+INFO:gurobipy: Factor NZ  : 1.041e+08 (roughly 3.0 GB of memory)
+ Factor Ops : 1.786e+10 (less than 1 second per iteration)
+INFO:gurobipy: Factor Ops : 1.786e+10 (less than 1 second per iteration)
+ Threads    : 21
+INFO:gurobipy: Threads    : 21
+
+INFO:gurobipy:
+                  Objective                Residual
+INFO:gurobipy:                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+INFO:gurobipy:Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   2.73240436e+15 -1.24387356e+16  8.18e+05 1.48e+04  6.37e+10    56s
+INFO:gurobipy:   0   2.73240436e+15 -1.24387356e+16  8.18e+05 1.48e+04  6.37e+10    56s
+   1   1.00499903e+15 -6.21300292e+15  2.21e+05 5.82e-10  1.69e+10    58s
+INFO:gurobipy:   1   1.00499903e+15 -6.21300292e+15  2.21e+05 5.82e-10  1.69e+10    58s
+   2   1.83904724e+14 -2.22132702e+15  3.37e+04 8.15e-10  2.74e+09    62s
+INFO:gurobipy:   2   1.83904724e+14 -2.22132702e+15  3.37e+04 8.15e-10  2.74e+09    62s
+   3   3.81547577e+13 -8.87390638e+14  5.18e+03 1.05e-09  4.67e+08    68s
+INFO:gurobipy:   3   3.81547577e+13 -8.87390638e+14  5.18e+03 1.05e-09  4.67e+08    68s
+   4   1.17301957e+13 -2.02274536e+14  7.14e+02 5.54e-10  5.31e+07    73s
+INFO:gurobipy:   4   1.17301957e+13 -2.02274536e+14  7.14e+02 5.54e-10  5.31e+07    73s
+   5   5.91513019e+12 -7.12642397e+13  2.04e+02 4.16e-10  1.53e+07    77s
+INFO:gurobipy:   5   5.91513019e+12 -7.12642397e+13  2.04e+02 4.16e-10  1.53e+07    77s
+   6   2.59675005e+12 -2.58167929e+13  8.71e+01 3.01e-10  5.25e+06    81s
+INFO:gurobipy:   6   2.59675005e+12 -2.58167929e+13  8.71e+01 3.01e-10  5.25e+06    81s
+   7   9.48268480e+11 -9.00393705e+12  3.54e+01 3.25e-10  1.76e+06    86s
+INFO:gurobipy:   7   9.48268480e+11 -9.00393705e+12  3.54e+01 3.25e-10  1.76e+06    86s
+   8   5.13338639e+11 -5.22378859e+12  2.08e+01 2.37e-10  9.98e+05    90s
+INFO:gurobipy:   8   5.13338639e+11 -5.22378859e+12  2.08e+01 2.37e-10  9.98e+05    90s
+   9   2.95719884e+11 -2.52390647e+12  1.27e+01 3.07e-10  4.85e+05    95s
+INFO:gurobipy:   9   2.95719884e+11 -2.52390647e+12  1.27e+01 3.07e-10  4.85e+05    95s
+  10   1.60064385e+11 -1.45262814e+12  7.01e+00 1.50e-10  2.74e+05   102s
+INFO:gurobipy:  10   1.60064385e+11 -1.45262814e+12  7.01e+00 1.50e-10  2.74e+05   102s
+  11   1.02175149e+11 -7.75433740e+11  4.41e+00 2.22e-10  1.48e+05   107s
+INFO:gurobipy:  11   1.02175149e+11 -7.75433740e+11  4.41e+00 2.22e-10  1.48e+05   107s
+  12   7.46299996e+10 -5.23737018e+11  3.13e+00 2.21e-10  1.01e+05   111s
+INFO:gurobipy:  12   7.46299996e+10 -5.23737018e+11  3.13e+00 2.21e-10  1.01e+05   111s
+  13   5.64603017e+10 -3.60794163e+11  2.25e+00 2.08e-10  7.00e+04   115s
+INFO:gurobipy:  13   5.64603017e+10 -3.60794163e+11  2.25e+00 2.08e-10  7.00e+04   115s
+  14   3.26154311e+10 -2.46413498e+11  1.07e+00 1.09e-10  4.66e+04   120s
+INFO:gurobipy:  14   3.26154311e+10 -2.46413498e+11  1.07e+00 1.09e-10  4.66e+04   120s
+  15   2.49566215e+10 -1.56946268e+11  7.01e-01 1.46e-10  3.03e+04   126s
+INFO:gurobipy:  15   2.49566215e+10 -1.56946268e+11  7.01e-01 1.46e-10  3.03e+04   126s
+  16   1.93095051e+10 -1.15832334e+11  4.26e-01 2.40e-10  2.25e+04   132s
+INFO:gurobipy:  16   1.93095051e+10 -1.15832334e+11  4.26e-01 2.40e-10  2.25e+04   132s
+  17   1.80158145e+10 -8.36163965e+10  3.66e-01 4.73e-10  1.69e+04   137s
+INFO:gurobipy:  17   1.80158145e+10 -8.36163965e+10  3.66e-01 4.73e-10  1.69e+04   137s
+  18   1.64753409e+10 -6.36833092e+10  2.97e-01 2.48e-10  1.33e+04   142s
+INFO:gurobipy:  18   1.64753409e+10 -6.36833092e+10  2.97e-01 2.48e-10  1.33e+04   142s
+  19   1.46887192e+10 -4.03777989e+10  2.24e-01 2.15e-10  9.16e+03   148s
+INFO:gurobipy:  19   1.46887192e+10 -4.03777989e+10  2.24e-01 2.15e-10  9.16e+03   148s
+  20   1.34797063e+10 -2.70089046e+10  1.75e-01 4.25e-10  6.73e+03   157s
+INFO:gurobipy:  20   1.34797063e+10 -2.70089046e+10  1.75e-01 4.25e-10  6.73e+03   157s
+  21   1.19248476e+10 -1.29564845e+10  1.12e-01 9.54e-10  4.14e+03   167s
+INFO:gurobipy:  21   1.19248476e+10 -1.29564845e+10  1.12e-01 9.54e-10  4.14e+03   167s
+  22   1.09187232e+10 -4.41270205e+09  7.83e-02 6.96e-10  2.55e+03   178s
+INFO:gurobipy:  22   1.09187232e+10 -4.41270205e+09  7.83e-02 6.96e-10  2.55e+03   178s
+  23   1.03477935e+10 -3.21350159e+08  6.23e-02 9.23e-10  1.77e+03   186s
+INFO:gurobipy:  23   1.03477935e+10 -3.21350159e+08  6.23e-02 9.23e-10  1.77e+03   186s
+  24   9.84041652e+09  1.35923624e+09  4.76e-02 3.17e-09  1.41e+03   193s
+INFO:gurobipy:  24   9.84041652e+09  1.35923624e+09  4.76e-02 3.17e-09  1.41e+03   193s
+  25   9.52963525e+09  2.36439152e+09  3.93e-02 2.70e-09  1.19e+03   198s
+INFO:gurobipy:  25   9.52963525e+09  2.36439152e+09  3.93e-02 2.70e-09  1.19e+03   198s
+  26   9.14506141e+09  3.10359640e+09  3.02e-02 2.12e-09  1.00e+03   205s
+INFO:gurobipy:  26   9.14506141e+09  3.10359640e+09  3.02e-02 2.12e-09  1.00e+03   205s
+  27   8.77632171e+09  4.85437557e+09  2.21e-02 7.23e-09  6.51e+02   213s
+INFO:gurobipy:  27   8.77632171e+09  4.85437557e+09  2.21e-02 7.23e-09  6.51e+02   213s
+  28   8.49302418e+09  5.95063984e+09  1.60e-02 1.01e-08  4.22e+02   224s
+INFO:gurobipy:  28   8.49302418e+09  5.95063984e+09  1.60e-02 1.01e-08  4.22e+02   224s
+  29   8.22442516e+09  6.50532959e+09  1.07e-02 3.86e-08  2.86e+02   234s
+INFO:gurobipy:  29   8.22442516e+09  6.50532959e+09  1.07e-02 3.86e-08  2.86e+02   234s
+  30   8.01466015e+09  6.87677348e+09  6.48e-03 3.72e-08  1.89e+02   244s
+INFO:gurobipy:  30   8.01466015e+09  6.87677348e+09  6.48e-03 3.72e-08  1.89e+02   244s
+  31   7.87953890e+09  7.03911333e+09  3.89e-03 3.97e-08  1.40e+02   253s
+INFO:gurobipy:  31   7.87953890e+09  7.03911333e+09  3.89e-03 3.97e-08  1.40e+02   253s
+  32   7.85032819e+09  7.18618175e+09  3.34e-03 5.09e-08  1.10e+02   260s
+INFO:gurobipy:  32   7.85032819e+09  7.18618175e+09  3.34e-03 5.09e-08  1.10e+02   260s
+  33   7.81539884e+09  7.27885616e+09  2.67e-03 7.88e-08  8.91e+01   265s
+INFO:gurobipy:  33   7.81539884e+09  7.27885616e+09  2.67e-03 7.88e-08  8.91e+01   265s
+  34   7.78882639e+09  7.38789267e+09  2.17e-03 1.83e-07  6.66e+01   272s
+INFO:gurobipy:  34   7.78882639e+09  7.38789267e+09  2.17e-03 1.83e-07  6.66e+01   272s
+  35   7.75247680e+09  7.49370353e+09  1.50e-03 1.38e-07  4.30e+01   280s
+INFO:gurobipy:  35   7.75247680e+09  7.49370353e+09  1.50e-03 1.38e-07  4.30e+01   280s
+  36   7.72843103e+09  7.54048516e+09  1.05e-03 1.43e-07  3.12e+01   289s
+INFO:gurobipy:  36   7.72843103e+09  7.54048516e+09  1.05e-03 1.43e-07  3.12e+01   289s
+  37   7.70514796e+09  7.59720372e+09  6.26e-04 4.81e-07  1.79e+01   300s
+INFO:gurobipy:  37   7.70514796e+09  7.59720372e+09  6.26e-04 4.81e-07  1.79e+01   300s
+  38   7.69188748e+09  7.63829740e+09  3.75e-04 1.22e-06  8.90e+00   311s
+INFO:gurobipy:  38   7.69188748e+09  7.63829740e+09  3.75e-04 1.22e-06  8.90e+00   311s
+  39   7.68630559e+09  7.64924637e+09  2.70e-04 6.73e-07  6.15e+00   320s
+INFO:gurobipy:  39   7.68630559e+09  7.64924637e+09  2.70e-04 6.73e-07  6.15e+00   320s
+  40   7.68171977e+09  7.65581460e+09  1.81e-04 1.39e-06  4.30e+00   328s
+INFO:gurobipy:  40   7.68171977e+09  7.65581460e+09  1.81e-04 1.39e-06  4.30e+00   328s
+  41   7.67882360e+09  7.66018812e+09  1.24e-04 8.62e-07  3.09e+00   334s
+INFO:gurobipy:  41   7.67882360e+09  7.66018812e+09  1.24e-04 8.62e-07  3.09e+00   334s
+  42   7.67711860e+09  7.66290074e+09  9.01e-05 1.85e-06  2.36e+00   341s
+INFO:gurobipy:  42   7.67711860e+09  7.66290074e+09  9.01e-05 1.85e-06  2.36e+00   341s
+  43   7.67589332e+09  7.66610665e+09  6.56e-05 3.38e-06  1.63e+00   346s
+INFO:gurobipy:  43   7.67589332e+09  7.66610665e+09  6.56e-05 3.38e-06  1.63e+00   346s
+  44   7.67468384e+09  7.66878293e+09  4.13e-05 5.30e-06  9.80e-01   355s
+INFO:gurobipy:  44   7.67468384e+09  7.66878293e+09  4.13e-05 5.30e-06  9.80e-01   355s
+  45   7.67404510e+09  7.67010130e+09  2.84e-05 4.80e-06  6.55e-01   366s
+INFO:gurobipy:  45   7.67404510e+09  7.67010130e+09  2.84e-05 4.80e-06  6.55e-01   366s
+  46   7.67356621e+09  7.67104193e+09  1.87e-05 1.74e-05  4.19e-01   374s
+INFO:gurobipy:  46   7.67356621e+09  7.67104193e+09  1.87e-05 1.74e-05  4.19e-01   374s
+  47   7.67331482e+09  7.67141756e+09  1.36e-05 1.26e-05  3.15e-01   381s
+INFO:gurobipy:  47   7.67331482e+09  7.67141756e+09  1.36e-05 1.26e-05  3.15e-01   381s
+  48   7.67313284e+09  7.67175675e+09  9.83e-06 8.19e-06  2.28e-01   387s
+INFO:gurobipy:  48   7.67313284e+09  7.67175675e+09  9.83e-06 8.19e-06  2.28e-01   387s
+  49   7.67300535e+09  7.67208095e+09  7.21e-06 1.09e-04  1.53e-01   394s
+INFO:gurobipy:  49   7.67300535e+09  7.67208095e+09  7.21e-06 1.09e-04  1.53e-01   394s
+  50   7.67290208e+09  7.67224836e+09  5.08e-06 7.71e-05  1.09e-01   401s
+INFO:gurobipy:  50   7.67290208e+09  7.67224836e+09  5.08e-06 7.71e-05  1.09e-01   401s
+  51   7.67284478e+09  7.67234734e+09  3.90e-06 3.15e-05  8.26e-02   410s
+INFO:gurobipy:  51   7.67284478e+09  7.67234734e+09  3.90e-06 3.15e-05  8.26e-02   410s
+  52   7.67278388e+09  7.67243800e+09  2.63e-06 5.67e-05  5.74e-02   416s
+INFO:gurobipy:  52   7.67278388e+09  7.67243800e+09  2.63e-06 5.67e-05  5.74e-02   416s
+  53   7.67273884e+09  7.67250539e+09  1.69e-06 1.61e-04  3.88e-02   425s
+INFO:gurobipy:  53   7.67273884e+09  7.67250539e+09  1.69e-06 1.61e-04  3.88e-02   425s
+  54   7.67270960e+09  7.67257973e+09  1.07e-06 1.78e-04  2.16e-02   436s
+INFO:gurobipy:  54   7.67270960e+09  7.67257973e+09  1.07e-06 1.78e-04  2.16e-02   436s
+  55   7.67268226e+09  7.67260955e+09  6.44e-07 6.35e-04  1.21e-02   445s
+INFO:gurobipy:  55   7.67268226e+09  7.67260955e+09  6.44e-07 6.35e-04  1.21e-02   445s
+  56   7.67267413e+09  7.67263002e+09  4.13e-07 9.68e-04  7.32e-03   453s
+INFO:gurobipy:  56   7.67267413e+09  7.67263002e+09  4.13e-07 9.68e-04  7.32e-03   453s
+  57   7.67266944e+09  7.67263764e+09  6.75e-05 1.88e-03  5.28e-03   462s
+INFO:gurobipy:  57   7.67266944e+09  7.67263764e+09  6.75e-05 1.88e-03  5.28e-03   462s
+  58   7.67266551e+09  7.67264501e+09  4.03e-05 1.70e-03  3.40e-03   472s
+INFO:gurobipy:  58   7.67266551e+09  7.67264501e+09  4.03e-05 1.70e-03  3.40e-03   472s
+  59   7.67266410e+09  7.67265173e+09  3.04e-05 3.66e-03  2.05e-03   480s
+INFO:gurobipy:  59   7.67266410e+09  7.67265173e+09  3.04e-05 3.66e-03  2.05e-03   480s
+  60   7.67266176e+09  7.67265331e+09  1.43e-05 3.01e-03  1.41e-03   489s
+INFO:gurobipy:  60   7.67266176e+09  7.67265331e+09  1.43e-05 3.01e-03  1.41e-03   489s
+  61   7.67266077e+09  7.67265662e+09  7.32e-06 1.72e-02  6.95e-04   498s
+INFO:gurobipy:  61   7.67266077e+09  7.67265662e+09  7.32e-06 1.72e-02  6.95e-04   498s
+  62   7.67266005e+09  7.67265831e+09  2.18e-06 8.55e-03  2.93e-04   507s
+INFO:gurobipy:  62   7.67266005e+09  7.67265831e+09  2.18e-06 8.55e-03  2.93e-04   507s
+  63   7.67265991e+09  7.67265890e+09  1.13e-06 6.15e-03  1.70e-04   516s
+INFO:gurobipy:  63   7.67265991e+09  7.67265890e+09  1.13e-06 6.15e-03  1.70e-04   516s
+  64   7.67265987e+09  7.67265939e+09  7.96e-07 6.49e-03  8.42e-05   526s
+INFO:gurobipy:  64   7.67265987e+09  7.67265939e+09  7.96e-07 6.49e-03  8.42e-05   526s
+  65   7.67265978e+09  7.67265949e+09  1.87e-07 4.46e-03  5.09e-05   535s
+INFO:gurobipy:  65   7.67265978e+09  7.67265949e+09  1.87e-07 4.46e-03  5.09e-05   535s
+  66   7.67265976e+09  7.67265970e+09  5.22e-06 1.97e-03  1.24e-05   543s
+INFO:gurobipy:  66   7.67265976e+09  7.67265970e+09  5.22e-06 1.97e-03  1.24e-05   543s
+  67   7.67265975e+09  7.67265974e+09  2.39e-06 4.97e-04  3.28e-06   553s
+INFO:gurobipy:  67   7.67265975e+09  7.67265974e+09  2.39e-06 4.97e-04  3.28e-06   553s
+  68   7.67265975e+09  7.67265974e+09  8.60e-07 1.66e-03  8.69e-07   563s
+INFO:gurobipy:  68   7.67265975e+09  7.67265974e+09  8.60e-07 1.66e-03  8.69e-07   563s
+  69   7.67265975e+09  7.67265974e+09  1.05e-07 8.89e-04  2.94e-07   573s
+INFO:gurobipy:  69   7.67265975e+09  7.67265974e+09  1.05e-07 8.89e-04  2.94e-07   573s
+  70   7.67265975e+09  7.67265975e+09  4.98e-08 1.11e-04  6.19e-08   583s
+INFO:gurobipy:  70   7.67265975e+09  7.67265975e+09  4.98e-08 1.11e-04  6.19e-08   583s
+  71   7.67265975e+09  7.67265975e+09  4.05e-08 3.76e-05  7.10e-09   598s
+INFO:gurobipy:  71   7.67265975e+09  7.67265975e+09  4.05e-08 3.76e-05  7.10e-09   598s
+
+INFO:gurobipy:
+Barrier solved model in 71 iterations and 597.56 seconds (423.54 work units)
+INFO:gurobipy:Barrier solved model in 71 iterations and 597.56 seconds (423.54 work units)
+Optimal objective 7.67265975e+09
+INFO:gurobipy:Optimal objective 7.67265975e+09
+
+INFO:gurobipy:
+Crossover log...
+INFO:gurobipy:Crossover log...
+
+INFO:gurobipy:
+   36487 DPushes remaining with DInf 0.0000000e+00               602s
+INFO:gurobipy:   36487 DPushes remaining with DInf 0.0000000e+00               602s
+    7458 DPushes remaining with DInf 0.0000000e+00               605s
+INFO:gurobipy:    7458 DPushes remaining with DInf 0.0000000e+00               605s
+    1977 DPushes remaining with DInf 0.0000000e+00               611s
+INFO:gurobipy:    1977 DPushes remaining with DInf 0.0000000e+00               611s
+    1773 DPushes remaining with DInf 0.0000000e+00               617s
+INFO:gurobipy:    1773 DPushes remaining with DInf 0.0000000e+00               617s
+    1570 DPushes remaining with DInf 0.0000000e+00               622s
+INFO:gurobipy:    1570 DPushes remaining with DInf 0.0000000e+00               622s
+    1368 DPushes remaining with DInf 0.0000000e+00               627s
+INFO:gurobipy:    1368 DPushes remaining with DInf 0.0000000e+00               627s
+    1165 DPushes remaining with DInf 0.0000000e+00               632s
+INFO:gurobipy:    1165 DPushes remaining with DInf 0.0000000e+00               632s
+     962 DPushes remaining with DInf 0.0000000e+00               637s
+INFO:gurobipy:     962 DPushes remaining with DInf 0.0000000e+00               637s
+     759 DPushes remaining with DInf 0.0000000e+00               642s
+INFO:gurobipy:     759 DPushes remaining with DInf 0.0000000e+00               642s
+     658 DPushes remaining with DInf 0.0000000e+00               645s
+INFO:gurobipy:     658 DPushes remaining with DInf 0.0000000e+00               645s
+     456 DPushes remaining with DInf 0.0000000e+00               650s
+INFO:gurobipy:     456 DPushes remaining with DInf 0.0000000e+00               650s
+     254 DPushes remaining with DInf 0.0000000e+00               656s
+INFO:gurobipy:     254 DPushes remaining with DInf 0.0000000e+00               656s
+      52 DPushes remaining with DInf 0.0000000e+00               661s
+INFO:gurobipy:      52 DPushes remaining with DInf 0.0000000e+00               661s
+       0 DPushes remaining with DInf 0.0000000e+00               664s
+INFO:gurobipy:       0 DPushes remaining with DInf 0.0000000e+00               664s
+
+INFO:gurobipy:
+   16973 PPushes remaining with PInf 6.4245167e-05               664s
+INFO:gurobipy:   16973 PPushes remaining with PInf 6.4245167e-05               664s
+    2635 PPushes remaining with PInf 8.0884711e-03               668s
+INFO:gurobipy:    2635 PPushes remaining with PInf 8.0884711e-03               668s
+     789 PPushes remaining with PInf 7.9983324e-03               671s
+INFO:gurobipy:     789 PPushes remaining with PInf 7.9983324e-03               671s
+     194 PPushes remaining with PInf 1.8024443e-04               676s
+INFO:gurobipy:     194 PPushes remaining with PInf 1.8024443e-04               676s
+       0 PPushes remaining with PInf 1.8503175e-04               681s
+INFO:gurobipy:       0 PPushes remaining with PInf 1.8503175e-04               681s
+
+INFO:gurobipy:
+  Push phase complete: Pinf 1.8503175e-04, Dinf 2.3257113e-02    682s
+INFO:gurobipy:  Push phase complete: Pinf 1.8503175e-04, Dinf 2.3257113e-02    682s
+
+INFO:gurobipy:
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+INFO:gurobipy:Iteration    Objective       Primal Inf.    Dual Inf.      Time
+   53313    7.6726597e+09   0.000000e+00   2.325710e-02    684s
+INFO:gurobipy:   53313    7.6726597e+09   0.000000e+00   2.325710e-02    684s
+   53318    7.6726597e+09   0.000000e+00   0.000000e+00    694s
+INFO:gurobipy:   53318    7.6726597e+09   0.000000e+00   0.000000e+00    694s
+
+INFO:gurobipy:
+Solved in 53318 iterations and 693.83 seconds (458.41 work units)
+INFO:gurobipy:Solved in 53318 iterations and 693.83 seconds (458.41 work units)
+Optimal objective  7.672659746e+09
+INFO:gurobipy:Optimal objective  7.672659746e+09
+INFO:linopy.constants: Optimization successful: 
+Status: ok
+Termination condition: optimal
+Solution: 2093640 primals, 7749680 duals
+Objective: 7.67e+09
+Solver: gurobi
+Runtime: 693.87s
+Dual bound: 7.67e+09
+Solver model: available
+Solver message: 2
+
+INFO:pypsa.optimization.optimize:The shadow-prices of the constraints Generator-fix-p-lower, Generator-fix-p-upper, Generator-p-ramp_limit_up, Generator-p-ramp_limit_down, Line-fix-s-lower, Line-fix-s-upper, StorageUnit-fix-p_dispatch-lower, StorageUnit-fix-p_dispatch-upper, StorageUnit-fix-p_store-lower, StorageUnit-fix-p_store-upper, StorageUnit-fix-state_of_charge-lower, StorageUnit-fix-state_of_charge-upper, Kirchhoff-Voltage-Law, StorageUnit-energy_balance, Line-loss_upper, Line-loss_tangents-1--1, Line-loss_tangents-1-1, Line-loss_tangents-2--1, Line-loss_tangents-2-1 were not assigned to the network.
+{
+ "stage": "LP2_LOSSY_CANDIDATE",
+ "status": "ok",
+ "termination": "optimal",
+ "seconds": 737.1,
+ "threads": 21,
+ "transmission_losses": 2,
+ "prepare": {
+  "removed_global_constraints": [
+   "lv_limit"
+  ],
+  "generators": 264,
+  "storage_units": 43,
+  "lines": 162,
+  "storage_MW": 13068.4,
+  "fleet_MW_by_carrier": {
+   "CCGT": 35914.3,
+   "OCGT": 8815.7,
+   "biomass": 123.0,
+   "coal": 10774.0,
+   "gas_steam": 11848.3,
+   "hydro": 535.4,
+   "nuclear": 4980.0,
+   "onwind": 40277.8,
+   "solar": 29110.0
+  }
+ },
+ "n_vars": 2093640,
+ "n_cons": 6902642,
+ "metrics": {
+  "case": "LP2_RELOADED_FIXED_ASSET",
+  "kind": "ANNUAL_3H",
+  "snapshots": 2920,
+  "evaluated_snapshots": 2920,
+  "weight_h": 3.0,
+  "objective_USD": 7672659746.182726,
+  "shed_MWh": 1657.1364089370986,
+  "shed_max_MW": 132.37955419961136,
+  "shed_steps": 20,
+  "shed_hours": 60.0,
+  "shed_buses": 14,
+  "longest_shed_event_h": 9.0,
+  "binding_lines": 0,
+  "line_binding_hours_total": 0.0,
+  "curtailment_wind_MWh": 10079409.670907082,
+  "curtailment_solar_MWh": 4528761.380249346,
+  "storage_dispatch_MWh": 6062024.858415776,
+  "storage_charge_MWh": 7162127.668260603,
+  "storage_simultaneous_steps": 2684,
+  "storage_simultaneous_MWh": 3535839.285613978,
+  "soc_total_first_MWh": 10181.853419567964,
+  "soc_total_last_MWh": 10904.446485153541,
+  "balance_residual_max_abs_MW": 1.4097167877480388e-10,
+  "load_MWh": 488233578.54151
+ },
+ "acceptance": {
+  "eens_MWh": 1657.1364089370986,
+  "eens_over_annual_energy": 3.394146739936958e-06,
+  "max_gap_MW": 132.37955419961136,
+  "max_gap_over_official_peak": 0.001581992513234743,
+  "shed_steps": 20,
+  "shed_hours": 60.0,
+  "shed_buses": [
+   "p600 2",
+   "p610 1",
+   "p620 1",
+   "p620 2",
+   "p620 3",
+   "p620 4",
+   "p620 5",
+   "p620 6",
+   "p620 7",
+   "p630 13",
+   "p630 14",
+   "p630 2",
+   "p640 7",
+   "p670 8"
+  ],
+  "max_gap_step": "(2030, Timestamp('2030-08-28 09:00:00'))",
+  "max_gap_bus_split": {
+   "p610 1": 117.20660978834593,
+   "p620 2": 5.7515537634612235,
+   "p620 3": 0.11737948138453813,
+   "p620 6": 8.2335727115996,
+   "p620 7": 1.0704384548200707
+  },
+  "events": 28,
+  "thresholds": {
+   "eens_over_annual_energy_max": 1e-05,
+   "max_gap_over_official_peak_max": 0.001
+  },
+  "eens_pass": true,
+  "max_gap_pass": false,
+  "description": "research-proxy tolerance, not an ERCOT standard; below-threshold shed is NOT zero shed"
+ },
+ "losses": {
+  "total_loss_MWh": 5320756.153614204,
+  "loss_share_of_2025_energy": 0.01089797258414751,
+  "peak_loss_MW": 1397.3354421655422,
+  "top_lines_MWh": {
+   "TL133": 467431.9276587359,
+   "TL13": 320788.3572734428,
+   "TL84": 311352.7169313878,
+   "TL99": 224070.1119555857,
+   "TL38": 184532.3072872199,
+   "TL8": 171511.06430666475,
+   "TL21": 162199.37242729997,
+   "TL12": 159730.87721546867,
+   "TL93": 138739.08242467628,
+   "TL37": 121215.47520470216,
+   "TL134": 117197.09088933299,
+   "TL83": 105993.82637528714,
+   "TL4": 103804.98514311227,
+   "TL46": 90474.02648259845,
+   "TL117": 89486.3235455253
+  }
+ },
+ "key_lines": {
+  "TL35": {
+   "rating_MW": 483.27723071173324,
+   "r_ohm": 2.654124795412391,
+   "max_abs_p0_MW": 466.5130065054184,
+   "hours_at_or_above_0p99": 0.0,
+   "loss_MWh": 38417.48169324116
+  },
+  "TL43": {
+   "rating_MW": 122.92588308915708,
+   "r_ohm": 8.620000052875016,
+   "max_abs_p0_MW": 121.74216211752479,
+   "hours_at_or_above_0p99": 4416.0,
+   "loss_MWh": 13644.610964311367
+  },
+  "TL36": {
+   "rating_MW": 145.34640299591476,
+   "r_ohm": 4.124635186306262,
+   "max_abs_p0_MW": 144.5410711524138,
+   "hours_at_or_above_0p99": 1542.0,
+   "loss_MWh": 7163.97666001839
+  },
+  "TL44": {
+   "rating_MW": 68.6,
+   "r_ohm": 12.535184000000001,
+   "max_abs_p0_MW": 66.97998184526692,
+   "hours_at_or_above_0p99": 0.0,
+   "loss_MWh": 2606.892216401088
+  },
+  "TL12": {
+   "rating_MW": 278.8221955503962,
+   "r_ohm": 19.300091289539612,
+   "max_abs_p0_MW": 267.03800474702825,
+   "hours_at_or_above_0p99": 0.0,
+   "loss_MWh": 159730.87721546867
+  },
+  "TL13": {
+   "rating_MW": 722.8278275851658,
+   "r_ohm": 7.326077394856808,
+   "max_abs_p0_MW": 632.3961843013443,
+   "hours_at_or_above_0p99": 0.0,
+   "loss_MWh": 320788.3572734428
+  },
+  "TL15": {
+   "rating_MW": 306.93875567440745,
+   "r_ohm": 1.7556472607509903,
+   "max_abs_p0_MW": 305.4066245777047,
+   "hours_at_or_above_0p99": 1866.0,
+   "loss_MWh": 13474.699073122156
+  },
+  "TL21": {
+   "rating_MW": 1376.7964434473413,
+   "r_ohm": 1.2359217232098851,
+   "max_abs_p0_MW": 1355.99146993086,
+   "hours_at_or_above_0p99": 0.0,
+   "loss_MWh": 162199.37242729997
+  }
+ },
+ "shed_by_bus_MWh": {
+  "p610 1": 869.3405656547968,
+  "p630 14": 320.4077044653319,
+  "p620 2": 122.93190700464929,
+  "p630 2": 101.23826851599793,
+  "p620 1": 81.97135606959647,
+  "p620 7": 67.67900632571045,
+  "p630 13": 45.276202581227906,
+  "p620 6": 24.700718134798798,
+  "p640 7": 7.2660617579590605,
+  "p620 5": 6.84672657538401,
+  "p670 8": 4.545167025670612,
+  "p600 2": 3.3667345822953942,
+  "p620 4": 1.213851799526198,
+  "p620 3": 0.3521384441536144
+ },
+ "acceptance_pass": false,
+ "baseline_sha256": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16",
+ "gate": {
+  "approved": true,
+  "reasons": [],
+  "head": "1adf31164c0182a8d68acb913da91654f8ff40c3",
+  "approved_git_sha": "219bf3e9b7f08c9bc65f69276a2635a37fe8c47c",
+  "stage": "LP2_LOSSY_CANDIDATE"
+ },
+ "label": "LOSS_BASIS_REVALIDATION (2025 fixed assets); not a scenario result"
+}
+LP2_LOSSY_CANDIDATE rc=0
+2026-10-23T21:09:07Z end rc=0

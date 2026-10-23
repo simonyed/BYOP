@@ -1,0 +1,99 @@
+{
+ "stage": "LP1_LOSSY_IT1",
+ "status": "ok",
+ "termination": "optimal",
+ "seconds": 1774.8,
+ "threads": 21,
+ "n_vars": 2093803,
+ "n_cons": 6902966,
+ "objective": 19439733799.821877,
+ "residual_shed": {
+  "eens_MWh": 112.79630073812001,
+  "eens_over_annual_energy": 2.3102937957461216e-07,
+  "max_gap_MW": 27.095983432588337,
+  "max_gap_over_official_peak": 0.00032380863637334435,
+  "shed_steps": 2,
+  "shed_hours": 6.0,
+  "shed_buses": [
+   "p620 1",
+   "p620 2",
+   "p620 6"
+  ],
+  "max_gap_step": "(2030, Timestamp('2030-07-14 09:00:00'))",
+  "max_gap_bus_split": {
+   "p620 1": 27.095983432588337
+  },
+  "events": 3,
+  "thresholds": {
+   "eens_over_annual_energy_max": 1e-05,
+   "max_gap_over_official_peak_max": 0.001
+  },
+  "eens_pass": true,
+  "max_gap_pass": true,
+  "description": "research-proxy tolerance, not an ERCOT standard; below-threshold shed is NOT zero shed"
+ },
+ "r_converged": false,
+ "convergence": {
+  "max_rel_r_gap": 0.18431982902413213,
+  "lines_not_converged": 13,
+  "worst": {
+   "TL69": 0.1843,
+   "TL68": 0.1833,
+   "TL26": 0.1559,
+   "TL13": 0.1558,
+   "TL12": 0.1256,
+   "TL42": 0.0983,
+   "TL3": 0.0959,
+   "TL73": 0.0884
+  }
+ },
+ "guards": {
+  "total_uplift_MVA": 5883.87911235861,
+  "v16_total_uplift_MVA": 5151.833600032188,
+  "G1_limit_MVA": 7727.750400048282,
+  "G1": true,
+  "lines_at_cap": [],
+  "G2": true,
+  "new_lines_uplift_MVA": 10.47382467245626,
+  "new_lines": {
+   "TL154": 3.0,
+   "TL67": 7.5
+  },
+  "new_lines_over_50MVA": [],
+  "G3": true,
+  "uplifted_lines": 20,
+  "all_pass": true
+ },
+ "uplift_by_line_MVA": {
+  "TL38": 1178.32,
+  "TL39": 847.3,
+  "TL37": 659.96,
+  "TL35": 575.08,
+  "TL13": 441.05,
+  "TL73": 375.32,
+  "TL15": 329.21,
+  "TL12": 295.05,
+  "TL42": 264.25,
+  "TL40": 175.46,
+  "TL41": 168.75,
+  "TL63": 162.28,
+  "TL36": 118.2,
+  "TL69": 95.34,
+  "TL43": 77.13,
+  "TL68": 50.85,
+  "TL3": 35.08,
+  "TL26": 24.69,
+  "TL67": 7.51,
+  "TL154": 2.96
+ },
+ "total_loss_MWh": 3995980.327119766,
+ "gate": {
+  "approved": true,
+  "reasons": [],
+  "head": "1adf31164c0182a8d68acb913da91654f8ff40c3",
+  "approved_git_sha": "219bf3e9b7f08c9bc65f69276a2635a37fe8c47c",
+  "stage": "LP1_LOSSY_IT1"
+ },
+ "candidate_written": false,
+ "label": "LOSSY LP1 CALIBRATION (2025 fixed fleet); not a scenario result"
+}
