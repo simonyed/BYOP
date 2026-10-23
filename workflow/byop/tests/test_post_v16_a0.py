@@ -469,9 +469,17 @@ def test_rearch_post_v16_refuses_legacy_flags(tmp_path):
         r = subprocess.run([sys.executable, '-W', 'ignore', str(BY / 'model/rearch_mech.py'), '--post-v16', '--case-id', 't', '--out', str(tmp_path),
                             '--base', base, *extra], cwd=str(WF), capture_output=True, text=True)
         assert r.returncode == 3, r.stderr[-500:]
-        assert 'POST_V16_GUARD' in r.stdout and 'POST_V16_MAINLINE_NOT_READY' in r.stdout
+        assert '"POST_V16_GUARD": "REFUSED"' in r.stdout       # NEXT-02: the A2 gate replaced the unconditional NOT_READY refusal
         if extra:
             assert f'legacy flag {extra[0]}' in r.stdout
+    # NEXT-02 A2-FIX-07: a well-formed A2 command is still refused (fail-closed) while config.byop_post_v16_a2.yaml is NOT_APPROVED
+    import post_v16_a2_gate as A2G
+    c = A2G.load()
+    r = subprocess.run([sys.executable, '-W', 'ignore', str(BY / 'model/rearch_mech.py'), '--mainline', '--post-v16', '--case-id', 't',
+                        '--config', c['mainline_config'], '--out', str(WF / c['out_dir']), '--base', base, '--scenarios', 'S0', 'S1_EARLIEST'],
+                       cwd=str(WF), capture_output=True, text=True)
+    assert r.returncode == 3 and 'run_authorization=NOT_APPROVED' in r.stdout and 'approved_by missing' in r.stdout
+    assert not (WF / c['out_dir'] / 'A2_SOLVE_LOG.csv').exists()          # refused before any ledger row / build
     r = subprocess.run([sys.executable, '-W', 'ignore', str(BY / 'model/rearch_mech.py'), '--post-v16', '--case-id', 't', '--out', str(tmp_path),
                         '--base', str(BP.BASE_TAMU_DIR / 'baseline_2025_tamu_prepared.nc')], cwd=str(WF), capture_output=True, text=True)
     assert r.returncode == 3 and 'is not the v1.6 baseline' in r.stdout
