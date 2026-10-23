@@ -1,0 +1,41 @@
+line,kind,project_id,title,kv,status,category,in_service,bus_from,bus_to,new_miles,rebuild_miles,owner
+TL3,E2_touch_completed,77122,Mulberry Creek: Construct New 345 kV Terminal,345.0,Planned,Completed,2025.0,p600 0,p600 0,2.25,0.0,AEP TNC
+TL3,E3_pair_later,110595,Add dbl ckt between CTT Red Rock and Edith Clark,345.0,Conceptual,Future,2028.0,p600 1,p600 0,60.0,0.0,CTT
+TL3,E3_pair_later,110622,Ad Hoc TPIT: Build approximately 60-mile 345 kV double circuit from WETT's Buck Canyon to Nova Prime,345.0,Conceptual,Future,2029.0,p600 1,p600 0,60.0,0.0,WETT
+TL3,E3_pair_later,110851,Build approximately 94.5-mile 345 kV double circuit line from Buck Canyon to Pitchfork substation,345.0,Conceptual,Future,2029.0,p600 1,p600 0,94.5,0.0,WETT
+TL13,E2_touch_completed,81060,Riverton-Border-Quarry Field 138 kV Second Circuit,138.0,In-Service,Completed,2025.0,p610 0,p620 1,29.7,0.0,ONCOR
+TL13,E2_touch_completed,87905,Hartring – Upland 138 kV Double Circuit Line,138.0,Planned,Completed,2025.0,p620 0,p610 0,18.0,0.0,ONCOR
+TL13,E3_pair_later,99126,Drill Hole - Longshore 765 kV Line,765.0,Planned,Future,2028.0,p610 0,p600 2,184.8,0.0,ONCOR
+TL15,E2_touch_completed,76686,Hog Mountain 138 kV POD,138.0,Planned,Completed,2025.0,p620 4,p620 4,5.4,0.0,ONCOR
+TL15,E2_touch_completed,76705,Prairieland 345/138 kV Switch and 138 kV Line,345.0,Planned,Completed,2025.0,p620 4,p620 4,6.0,0.0,ONCOR
+TL15,E3_pair_later,98878,Chalk 69 kV Substation Conversion to 138 kV,138.0,Planned,Future,2027.0,p600 2,p620 4,1.0,0.0,ONCOR
+TL35,E2_touch_completed,45155,Ollin: Build 138 kV station,138.0,In-Service,Completed,2025.0,p610 4,p610 4,0.1,0.0,AEP TNC
+TL35,E2_touch_completed,45174,"Ollin to LCRA Crane: Partial Build, Partial Rebuild, and Conversion",138.0,In-Service,Completed,2025.0,p610 4,p610 4,0.52,0.0,AEP TNC
+TL35,E2_touch_completed,87905,Hartring – Upland 138 kV Double Circuit Line,138.0,Planned,Completed,2025.0,p620 0,p610 0,18.0,0.0,ONCOR
+TL36,E2_touch_completed,45155,Ollin: Build 138 kV station,138.0,In-Service,Completed,2025.0,p610 4,p610 4,0.1,0.0,AEP TNC
+TL36,E2_touch_completed,45174,"Ollin to LCRA Crane: Partial Build, Partial Rebuild, and Conversion",138.0,In-Service,Completed,2025.0,p610 4,p610 4,0.52,0.0,AEP TNC
+TL37,E2_touch_completed,81060,Riverton-Border-Quarry Field 138 kV Second Circuit,138.0,In-Service,Completed,2025.0,p610 0,p620 1,29.7,0.0,ONCOR
+TL37,E2_touch_completed,81175, Salt Flat Road 138 kV Switch and Salt Flat Road - Barr Ranch - Reiter 138 kV Second Circuit,138.0,Planned,Completed,2025.0,p620 1,p620 3,44.0,4.4,ONCOR
+TL37,E2_touch_completed,76690,Add Atchison POD ,138.0,In-Service,Completed,2025.0,p620 1,p620 1,7.0,0.0,ONCOR
+TL37,E2_touch_completed,87905,Hartring – Upland 138 kV Double Circuit Line,138.0,Planned,Completed,2025.0,p620 0,p610 0,18.0,0.0,ONCOR
+TL38,E2_touch_completed,73368,Grey Well Draw - Buffalo 138 kV Second Circuit,138.0,In-Service,Completed,2025.0,p620 3,p620 3,6.0,26.2,ONCOR
+TL38,E2_touch_completed,81175, Salt Flat Road 138 kV Switch and Salt Flat Road - Barr Ranch - Reiter 138 kV Second Circuit,138.0,Planned,Completed,2025.0,p620 1,p620 3,44.0,4.4,ONCOR
+TL38,E2_touch_completed,87905,Hartring – Upland 138 kV Double Circuit Line,138.0,Planned,Completed,2025.0,p620 0,p610 0,18.0,0.0,ONCOR
+TL39,E2_touch_completed,87905,Hartring – Upland 138 kV Double Circuit Line,138.0,Planned,Completed,2025.0,p620 0,p610 0,18.0,0.0,ONCOR
+TL40,E2_touch_completed,81060,Riverton-Border-Quarry Field 138 kV Second Circuit,138.0,In-Service,Completed,2025.0,p610 0,p620 1,29.7,0.0,ONCOR
+TL40,E2_touch_completed,81175, Salt Flat Road 138 kV Switch and Salt Flat Road - Barr Ranch - Reiter 138 kV Second Circuit,138.0,Planned,Completed,2025.0,p620 1,p620 3,44.0,4.4,ONCOR
+TL40,E2_touch_completed,76690,Add Atchison POD ,138.0,In-Service,Completed,2025.0,p620 1,p620 1,7.0,0.0,ONCOR
+TL41,E2_touch_completed,73368,Grey Well Draw - Buffalo 138 kV Second Circuit,138.0,In-Service,Completed,2025.0,p620 3,p620 3,6.0,26.2,ONCOR
+TL41,E2_touch_completed,81175, Salt Flat Road 138 kV Switch and Salt Flat Road - Barr Ranch - Reiter 138 kV Second Circuit,138.0,Planned,Completed,2025.0,p620 1,p620 3,44.0,4.4,ONCOR
+TL41,E3_pair_later,73436,Rockhound - Connell 345 kV Double-Circuit Line,345.0,Planned,Future,2027.0,p620 2,p620 3,10.0,0.0,ONCOR
+TL43,E2_touch_completed,76686,Hog Mountain 138 kV POD,138.0,Planned,Completed,2025.0,p620 4,p620 4,5.4,0.0,ONCOR
+TL43,E2_touch_completed,76705,Prairieland 345/138 kV Switch and 138 kV Line,345.0,Planned,Completed,2025.0,p620 4,p620 4,6.0,0.0,ONCOR
+TL48,E3_pair_later,110232,LST_Liberty_To_Navarro_New_345kV_Line_BZ_LLI,345.0,Conceptual,Future,2030.0,p630 2,p630 0,31.0,0.0,LST
+TL48,E3_pair_later,110223,LST_Liberty_Area_Transmission_Projects_BZ_LLI,345.0,Conceptual,Future,2031.0,p630 2,p630 0,90.0,0.0,LST
+TL68,E2_touch_completed,67093,New 138 kV station cut-in between Garfield and Hi-Cross,138.0,In-Service,Completed,2026.0,p640 1,p640 1,0.43,0.0,AEN
+TL69,E2_touch_completed,72500,Rio Lago - New 138kV Substation,138.0,Planned,Completed,2025.0,p640 2,p640 2,0.1,0.0,BEC
+TL71,E2_touch_completed,105583,,138.0,Planned,Completed,2026.0,p630 3,p630 3,0.83,0.0,DME
+TL73,E2_touch_completed,78365,Fryers Creek 138/69 kV Switch,138.0,Planned,Completed,2025.0,p630 5,p630 5,5.0,0.0,ONCOR
+TL74,E2_touch_completed,52247,Marrs - Handley 69 kV Line Conversion to 138 kV,138.0,Under Construction,Completed,2025.0,p630 6,p630 6,2.2,13.0,ONCOR
+TL74,E2_touch_completed,70900C,Roanoke Area Upgrades,138.0,In-Service,Completed,2025.0,p630 6,p630 6,3.4,0.0,ONCOR
+TL75,E3_pair_later,105744,Desoto Switch – Sam Switch Switch (Lonestar) 345 kV Double-Circuit Line,345.0,Planned,Future,2032.0,p630 2,p630 7,56.0,0.0,ONCOR

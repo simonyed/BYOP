@@ -1,0 +1,60 @@
+2026-10-23T19:34:29Z start python -W ignore byop/run/loss_basis_lp1.py --build
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.optimization.window:Building the multi-period model over a MultiIndex `snapshot`. Opt into the flat representation via `pypsa.options.optimization.model_snapshot_index = 'flat'`.
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+{
+ "step": "NEXT-08 lossy LP1 static build",
+ "solver_calls": 0,
+ "LP1_LOSSY_IT1": {
+  "n_vars": 2093803,
+  "n_cons": 6902966,
+  "has_line_loss": true,
+  "has_line_s_nom": true,
+  "loss_rows": [
+   "Line-loss_tangents-1--1",
+   "Line-loss_tangents-1-1",
+   "Line-loss_tangents-2--1",
+   "Line-loss_tangents-2-1",
+   "Line-loss_upper"
+  ],
+  "lines": 162,
+  "all_lines_extendable": true,
+  "s_nom_max_finite": true,
+  "cap_over_v16_prepared": 2.0,
+  "s_nom_min_equals_raw": true,
+  "capital_cost_unique": [
+   2000000.0
+  ],
+  "x_equals_raw": true,
+  "r_scaled_lines": 18,
+  "r_sum_ohm": 1680.474292335671,
+  "generators": 264,
+  "shed_units": 63,
+  "storage_units": 43,
+  "snapshots": 2920,
+  "committable": 0
+ },
+ "candidate_from_v16_capacities": {
+  "r_sum_ohm": 1680.474292335671,
+  "s_nom_sum": 282879.1893143179,
+  "x_equals_raw": true
+ },
+ "checks": {
+  "loss_terms": true,
+  "capacity_variables": true,
+  "finite_caps": true,
+  "cap_factor_respected": true,
+  "lp1_like_v16": true,
+  "x_unchanged": true,
+  "r_scaled_on_v16_uplifted_lines": true,
+  "no_committable": true,
+  "no_solver_called": true
+ }
+}
+2026-10-23T19:35:00Z end rc=0

@@ -1,0 +1,44 @@
+{
+ "step": "NEXT-08 A3 transmission evidence (read-only)",
+ "optimizer_calls": 0,
+ "source": "ERCOT TPIT 2026-07-13 workbook (byop/inputs/grid)",
+ "county_to_bus": "v1.6 COUNTY_TO_BUS_SHARES (dominant cluster bus per county)",
+ "lines_in_scope": 29,
+ "uplifted_lines_by_class": {
+  "E2": 14,
+  "E0": 4
+ },
+ "uplift_MVA_by_class": {
+  "E0": 679.3833880261859,
+  "E2": 4472.4502120060015
+ },
+ "research_proxy_lines": [
+  "TL12",
+  "TL26",
+  "TL42",
+  "TL63"
+ ],
+ "pocket_lines": [
+  {
+   "line": "TL35",
+   "evidence_class": "E2",
+   "examples": "45155 Ollin: Build 138 kV station (138 kV, Completed); 45174 Ollin to LCRA Crane: Partial Build, Partial Rebuild, and Con (138 kV, Completed)"
+  },
+  {
+   "line": "TL36",
+   "evidence_class": "E2",
+   "examples": "45155 Ollin: Build 138 kV station (138 kV, Completed); 45174 Ollin to LCRA Crane: Partial Build, Partial Rebuild, and Con (138 kV, Completed)"
+  },
+  {
+   "line": "TL43",
+   "evidence_class": "E2",
+   "examples": "76686 Hog Mountain 138 kV POD (138 kV, Completed); 76705 Prairieland 345/138 kV Switch and 138 kV Line (345 kV, Completed)"
+  },
+  {
+   "line": "TL44",
+   "evidence_class": "E0",
+   "examples": ""
+  }
+ ],
+ "caveat": "Synthetic TAMU-64 lines aggregate many real circuits; a class is plausibility support for a capacity increment in that corridor, not a statement that the synthetic line equals a real line or that the uplifted MVA was built."
+}

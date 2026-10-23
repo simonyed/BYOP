@@ -1,0 +1,23 @@
+## before (local)
+  byop                   be2c6904 [byop/main: behind 118] BYOP: RA-DC-SPATIAL-06 - all Epoch sites kept as gri
++ integrate/next05       8e4ad312 (D:/BYOP_impact/pypsa-usa/.worktrees/merge) H2: merge work/a2-postv16-static
+* mainline-v13-stageA    327b46ea NEXT-07 W6 sealed: lossy LP2 results report (both FAIL v1.6), approval close
+  master                 20b71907 [origin/master] docs: move California page under Model Configuration as 'Exa
++ work/a2-postv16-static 39a74ff5 (D:/BYOP_impact/pypsa-usa/.worktrees/a2) NEXT-03 A2 (report only, 0 solver c
+  work/next07-a3-static  caa428ab NEXT-07 W4 fix found by the zero-solver A3 E2E: the S2 developer LP (private
+## before (GitHub byop)
+327b46eaa0095dc80e0c0893f538f6396c259c6a	refs/heads/main
+327b46eaa0095dc80e0c0893f538f6396c259c6a	refs/heads/mainline-v13-stageA
+39a74ff5f96acafc356d40978e33048768fce6a7	refs/heads/work/a2-postv16-static
+79134c9fc3499e923240e1ed537ef2d8b87dc5da	refs/heads/work/next07-a3-static
+## before (L2)
+  byop                   be2c6904c BYOP: RA-DC-SPATIAL-06 - all Epoch sites kept as grid load; off-grid treatm
+* mainline-v13-stageA    327b46eaa NEXT-07 W6 sealed: lossy LP2 results report (both FAIL v1.6), approval clos
+  master                 20b71907c docs: move California page under Model Configuration as 'Example California
++ work/a2-postv16-static 39a74ff5f NEXT-03 A2 (report only, 0 solver calls): A2_PRE_RUN_MANIFEST rebuilt on L2
+/datasets/prgm/BYOP_impact/pypsa-usa                327b46eaa [mainline-v13-stageA]
+/datasets/prgm/BYOP_impact/pypsa-usa/.worktrees/a2  39a74ff5f [work/a2-postv16-static]
+## worktrees (local)
+D:/BYOP_impact/pypsa-usa                   327b46ea [mainline-v13-stageA]
+D:/BYOP_impact/pypsa-usa/.worktrees/a2     39a74ff5 [work/a2-postv16-static]
+D:/BYOP_impact/pypsa-usa/.worktrees/merge  8e4ad312 [integrate/next05]

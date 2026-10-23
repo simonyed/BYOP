@@ -1,0 +1,30 @@
+line,bus0,bus1,v16_uplift_MVA,final_s_nom_MVA,uplifted_in_v16,pocket_line,touches_lossy_lp2_shed_bus,evidence_class,e1_completed_pair_projects,e1_kv,e1_new_circuit_miles,e1_rebuild_miles,e2_completed_touching_projects,e3_later_pair_projects,later_pair_years,examples
+TL3,p600 0,p600 1,15.651160401535291,202.6511604015353,True,False,True,E2,0,[],0.0,0.0,1,3,"[2028, 2029]","77122 Mulberry Creek: Construct New 345 kV Terminal (345 kV, Completed); 110595 Add dbl ckt between CTT Red Rock and Edith Clark (345 kV, Future); 110622 Ad Hoc TPIT: Build approximately 60-mile 345 kV double circu (345 kV, Future)"
+TL11,p600 1,p600 3,0.0,966.0,False,False,True,E0,0,[],0.0,0.0,0,0,[],
+TL12,p600 1,p620 2,249.9902977719092,358.7493354932333,True,False,True,E0,0,[],0.0,0.0,0,0,[],
+TL13,p600 2,p610 0,299.30842061555575,909.8314080028084,True,False,True,E2,0,[],0.0,0.0,2,1,[2028],"81060 Riverton-Border-Quarry Field 138 kV Second Circuit (138 kV, Completed); 87905 Hartring – Upland 138 kV Double Circuit Line (138 kV, Completed); 99126 Drill Hole - Longshore 765 kV Line (765 kV, Future)"
+TL14,p600 2,p620 2,0.0,443.9144396788739,False,False,True,E0,0,[],0.0,0.0,0,0,[],
+TL15,p600 2,p620 4,329.08150661205985,437.840544333384,True,False,True,E2,0,[],0.0,0.0,2,1,[2027],"76686 Hog Mountain 138 kV POD (138 kV, Completed); 76705 Prairieland 345/138 kV Switch and 138 kV Line (345 kV, Completed); 98878 Chalk 69 kV Substation Conversion to 138 kV (138 kV, Future)"
+TL26,p610 1,p610 2,47.358124457203616,145.35812445720362,True,False,False,E0,0,[],0.0,0.0,0,0,[],
+TL29,p610 2,p630 2,0.0,820.3368559025821,False,False,True,E0,0,[],0.0,0.0,0,0,[],
+TL35,p610 4,p620 0,542.6060836261088,659.8624957493732,True,True,True,E2,0,[],0.0,0.0,3,0,[],"45155 Ollin: Build 138 kV station (138 kV, Completed); 45174 Ollin to LCRA Crane: Partial Build, Partial Rebuild, and Con (138 kV, Completed)"
+TL36,p610 4,p620 7,106.22061677019512,196.41785686501396,True,True,True,E2,0,[],0.0,0.0,2,0,[],"45155 Ollin: Build 138 kV station (138 kV, Completed); 45174 Ollin to LCRA Crane: Partial Build, Partial Rebuild, and Con (138 kV, Completed)"
+TL37,p620 0,p620 1,595.9413238868046,1063.9413238868046,True,False,True,E2,0,[],0.0,0.0,4,0,[],"81060 Riverton-Border-Quarry Field 138 kV Second Circuit (138 kV, Completed); 81175  Salt Flat Road 138 kV Switch and Salt Flat Road - Barr Ranc (138 kV, Completed)"
+TL38,p620 0,p620 3,1068.1848879310758,1797.4848879310755,True,False,True,E2,0,[],0.0,0.0,3,0,[],"73368 Grey Well Draw - Buffalo 138 kV Second Circuit (138 kV, Completed); 81175  Salt Flat Road 138 kV Switch and Salt Flat Road - Barr Ranc (138 kV, Completed)"
+TL39,p620 0,p620 5,797.9240005602974,1247.9240005602974,True,False,False,E2,0,[],0.0,0.0,1,0,[],"87905 Hartring – Upland 138 kV Double Circuit Line (138 kV, Completed)"
+TL40,p620 1,p620 5,160.97801071098428,258.9780107109843,True,False,True,E2,0,[],0.0,0.0,3,0,[],"81060 Riverton-Border-Quarry Field 138 kV Second Circuit (138 kV, Completed); 81175  Salt Flat Road 138 kV Switch and Salt Flat Road - Barr Ranc (138 kV, Completed)"
+TL41,p620 2,p620 3,138.63117008836457,359.63117008836457,True,False,True,E2,0,[],0.0,0.0,2,1,[2027],"73368 Grey Well Draw - Buffalo 138 kV Second Circuit (138 kV, Completed); 81175  Salt Flat Road 138 kV Switch and Salt Flat Road - Barr Ranc (138 kV, Completed); 73436 Rockhound - Connell 345 kV Double-Circuit Line (345 kV, Future)"
+TL42,p620 2,p620 5,225.92363580723983,389.82363580723984,True,False,True,E0,0,[],0.0,0.0,0,0,[],
+TL43,p620 4,p620 6,71.96996304637841,169.9699630463784,True,True,True,E2,0,[],0.0,0.0,2,0,[],"76686 Hog Mountain 138 kV POD (138 kV, Completed); 76705 Prairieland 345/138 kV Switch and 138 kV Line (345 kV, Completed)"
+TL44,p620 6,p620 7,0.0,98.0,False,True,True,E0,0,[],0.0,0.0,0,0,[],
+TL48,p630 0,p630 2,0.0,1373.0,False,False,True,E3,0,[],0.0,0.0,0,2,"[2030, 2031]","110232 LST_Liberty_To_Navarro_New_345kV_Line_BZ_LLI (345 kV, Future); 110223 LST_Liberty_Area_Transmission_Projects_BZ_LLI (345 kV, Future)"
+TL57,p630 10,p630 2,0.0,187.0,False,False,True,E0,0,[],0.0,0.0,0,0,[],
+TL63,p630 12,p630 2,156.11132998983328,530.1113299898333,True,False,True,E0,0,[],0.0,0.0,0,0,[],
+TL68,p630 13,p640 1,22.43995432458155,154.98562728491413,True,False,False,E2,0,[],0.0,0.0,1,0,[],"67093 New 138 kV station cut-in between Garfield and Hi-Cross (138 kV, Completed)"
+TL69,p630 13,p640 2,59.874343105555,192.4200160658876,True,False,False,E2,0,[],0.0,0.0,1,0,[],"72500 Rio Lago - New 138kV Substation (138 kV, Completed)"
+TL71,p630 2,p630 3,0.0,748.0,False,False,True,E2,0,[],0.0,0.0,1,0,[],"105583 nan (138 kV, Completed)"
+TL72,p630 2,p630 4,0.0,524.0,False,False,True,E0,0,[],0.0,0.0,0,0,[],
+TL73,p630 2,p630 5,263.638770326505,1262.638770326505,True,False,True,E2,0,[],0.0,0.0,1,0,[],"78365 Fryers Creek 138/69 kV Switch (138 kV, Completed)"
+TL74,p630 2,p630 6,0.0,497.0,False,False,True,E2,0,[],0.0,0.0,2,0,[],"52247 Marrs - Handley 69 kV Line Conversion to 138 kV (138 kV, Completed); 70900C Roanoke Area Upgrades (138 kV, Completed)"
+TL75,p630 2,p630 7,0.0,1688.0,False,False,True,E3,0,[],0.0,0.0,0,1,[2032],"105744 Desoto Switch – Sam Switch Switch (Lonestar) 345 kV Double-C (345 kV, Future)"
+TL76,p630 2,p630 8,0.0,935.0,False,False,True,E0,0,[],0.0,0.0,0,0,[],

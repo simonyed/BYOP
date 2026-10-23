@@ -1,0 +1,37 @@
+# BYOP NEXT-08 A (2026-10-23): lossy 2025 LP1 calibration -> candidate baseline -> fixed-asset lossy LP2 check
+# (byop/run/loss_basis_lp1.py). transmission_losses 2 = the researcher-chosen S0-S3 basis. Same raw network, fleet, load,
+# objective and prices as the v1.6 LP1; changes: losses, finite s_nom_max (cap_factor x v1.6 capacity), parallel-circuit r proxy
+# fixed inside each LP (x raw, X1). Optimizer order: LP1_LOSSY_IT1 -> [LP1_LOSSY_IT2 only if IT1 not r-converged] ->
+# LP2_LOSSY_CANDIDATE only if the last LP1 is optimal, r-converged and passes every expansion guard. <= 3 calls, 0 retries.
+# The candidate NetCDF is a NEW file in out_dir; the frozen v1.6 NetCDFs are never written. This file is a REQUEST: only the
+# researcher authorises it (three fields below, config-only commit).
+post_v16:                                       # key shared with the A2-type manifest builder; gate = loss_basis_lp1.check
+  run_authorization: NOT_APPROVED
+  approved_git_sha: null
+  approved_by: null
+  authorization_source: current_work_pckg/BYOP_NEXT_08_LOSSY_LP1_AND_BRANCHES/NEXT_08_PROMPT.md
+  authorization_source_sha256: 0d5b277d0b0fe15d937fb6bb29b575c339ce3299d791943e04d7ea862cd7de6e   # LF content SHA
+  manifest: current_work_pckg/BYOP_NEXT_08_LOSSY_LP1_AND_BRANCHES/LOSSY_LP1_PRE_RUN_MANIFEST.json
+  stage: A2                                     # manifest-builder compatibility only
+  stages: [LP1_LOSSY_IT1, LP1_LOSSY_IT2, LP2_LOSSY_CANDIDATE]
+  max_lp_calls: 3
+  max_scenario_attempts: 3
+  max_top_level_optimizer_calls: 3
+  optimizer_call_plan: {LP1_LOSSY_IT1: [LP1_COST], LP1_LOSSY_IT2: [LP1_COST], LP2_LOSSY_CANDIDATE: [LP2_COST]}
+  max_retries: 0
+  transmission_losses: 2
+  cap_factor: 2.0                               # s_nom_max = 2 x v1.6 prepared s_nom: tangents at 1/2 and 1 x cap -> exact at the v1.6 rating
+  r_tol: 0.05                                   # |r_used / r_implied - 1| per line
+  s_tol_MVA: 10.0                               # or |s_opt - s_ref| per line
+  guards:                                       # pre-registered, checked on the converged LP1 BEFORE any LP2
+    G1_factor: 1.5                              # total uplift over raw <= 1.5 x v1.6 total (5,151.8 -> <= 7,727.8 MVA)
+    G3_max_MVA: 1000.0                          # uplift on lines NOT uplifted in v1.6, in total
+  mainline_config: config/config.byop_baseline_v16_calibration.yaml   # pinned as input (v1.6 C1 rules, solver options, acceptance)
+  out_dir: results/BYOP/next08_lossy_lp1
+  baseline:                                     # the v1.6 prepared baseline (capacities used for s_ref / caps; never written)
+    path: workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc
+    sha256: a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16
+  raw_baseline:                                 # the v1.6 pre-calibration network LP1 starts from (never written)
+    path: workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_raw_uncalibrated.nc
+    sha256: eb659f9b1ba06b5e37a162b7173c36d07a6a19a92ae016d3cf3568905077a97f
+  acceptance: "LP2: v1.6 tolerances unchanged (EENS <= 4,882 MWh, max gap <= 83.7 MW)"

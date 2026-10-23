@@ -51,9 +51,9 @@ def git(*a):
     return subprocess.run(['git', '-C', str(ROOT), *a], capture_output=True, text=True)
 
 
-def check(stage, cfg_path=CFG, git_fn=git):
-    """fail-closed gate; never touches a solver"""
-    c = load(cfg_path)
+def common_checks(c, cfg_path=CFG, git_fn=git):
+    """approval fields, approved SHA (HEAD or ancestor with only this config changed since), clean tree, pinned authorisation
+    source, manifest, v1.6 baseline SHA - shared by the W6 lossy LP2 and the NEXT-08 lossy LP1 chains; returns (reasons, head, sha)"""
     r = []
     if str(c.get('run_authorization')) != 'APPROVED':
         r.append(f"run_authorization={c.get('run_authorization')}")
@@ -67,7 +67,8 @@ def check(stage, cfg_path=CFG, git_fn=git):
         if git_fn('merge-base', '--is-ancestor', asha, 'HEAD').returncode != 0:
             r.append(f'approved_git_sha {asha} is not HEAD or an ancestor of it')
         else:
-            since = set(git_fn('diff', '--name-only', asha, 'HEAD', '--', *G.CLEAN_PATHS).stdout.split()) - {'workflow/config/config.byop_loss_basis_lp2.yaml'}
+            cfg_rel = Path(cfg_path).resolve().relative_to(ROOT.resolve()).as_posix() if Path(cfg_path).resolve().is_relative_to(ROOT.resolve()) else None
+            since = set(git_fn('diff', '--name-only', asha, 'HEAD', '--', *G.CLEAN_PATHS).stdout.split()) - {cfg_rel}
             if since:
                 r.append(f'code / config / inputs changed since the approved commit: {sorted(since)[:5]}')
     dirty = git_fn('diff', '--ignore-cr-at-eol', '--name-only', 'HEAD', '--', *G.CLEAN_PATHS).stdout.split() + \
@@ -88,6 +89,13 @@ def check(stage, cfg_path=CFG, git_fn=git):
     base = ROOT / c['baseline']['path']
     if not base.exists() or A2G.file_shas(base)['raw'] != c['baseline']['sha256']:
         r.append('v1.6 prepared baseline missing or SHA differs')
+    return r, head, asha
+
+
+def check(stage, cfg_path=CFG, git_fn=git):
+    """fail-closed gate; never touches a solver"""
+    c = load(cfg_path)
+    r, head, asha = common_checks(c, cfg_path, git_fn)
     if stage not in STAGES or stage not in c['stages']:
         r.append(f'stage {stage} not in {c["stages"]}')
     _, lg = ledger(c)
@@ -174,7 +182,7 @@ def postprocess(n, v, c, stage, st, term, sec, rtab, g, info, var_names, threads
     return qa
 
 
-def run(stage, threads, cfg_path=CFG, gate_fn=None, build_fn=None):
+def run(stage, threads, cfg_path=CFG, gate_fn=None, build_fn=None, ledger_fn=None, log_cols=None):
     """gate -> build -> STARTED row -> solve -> postprocess -> DONE / ERROR row. gate_fn / build_fn / cfg_path are injectable only
     for the zero-solver tests (scratch ledger); the CLI always uses the real gate and build."""
     c = load(cfg_path)
@@ -184,18 +192,20 @@ def run(stage, threads, cfg_path=CFG, gate_fn=None, build_fn=None):
     n, info, rtab, v = (build_fn or build)(stage, c)
     from c1_fixed_asset_diagnostics import assert_no_build_variables
     var_names = assert_no_build_variables(n)
-    p, lg = ledger(c)
+    ledger_fn = ledger_fn or ledger
+    cols = log_cols or LOG_COLS
+    p, lg = ledger_fn(c)
     aid = f'{stage}#1'
-    row = {k: '' for k in LOG_COLS}; row.update(attempt_id=aid, stage=stage, state='STARTED', started_utc=datetime.now(timezone.utc).isoformat(timespec='seconds'))
-    A2G._atomic_write(pd.concat([lg, pd.DataFrame([row])], ignore_index=True)[LOG_COLS], p)
+    row = {k: '' for k in cols}; row.update(attempt_id=aid, stage=stage, state='STARTED', started_utc=datetime.now(timezone.utc).isoformat(timespec='seconds'))
+    A2G._atomic_write(pd.concat([lg, pd.DataFrame([row])], ignore_index=True)[cols], p)
 
     def finish(**kw):
-        _, lg_ = ledger(c)
+        _, lg_ = ledger_fn(c)
         i = lg_.index[lg_.attempt_id == aid][0]
         kw.setdefault('finished_utc', datetime.now(timezone.utc).isoformat(timespec='seconds'))
         for k, val in kw.items():
             lg_.loc[i, k] = str(val)
-        A2G._atomic_write(lg_[LOG_COLS], p)
+        A2G._atomic_write(lg_[cols], p)
     opts = dict(v['solver_options'], Threads=int(threads))
     t = time.time()
     try:

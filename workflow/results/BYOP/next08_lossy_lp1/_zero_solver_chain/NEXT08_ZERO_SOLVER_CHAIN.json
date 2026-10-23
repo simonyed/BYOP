@@ -1,0 +1,126 @@
+{
+ "step": "NEXT-08 zero-solver lossy LP1 chain on the real v1.6 networks",
+ "real_solver_calls": 0,
+ "stages": {
+  "LP1_LOSSY_IT1": {
+   "status": "ok",
+   "termination": "optimal",
+   "n_vars": 2093803,
+   "n_cons": 6902966,
+   "r_converged": false,
+   "candidate_written": false,
+   "acceptance_pass": null,
+   "files": [
+    "LOSSY_LP1_QA.json",
+    "LP1_LINE_SOLUTION.csv",
+    "line_loss.csv.gz",
+    "shed_by_bus.csv.gz",
+    "shedding_events.csv"
+   ],
+   "convergence": {
+    "max_rel_r_gap": 0.8223017478965793,
+    "lines_not_converged": 18,
+    "worst": {
+     "TL35": 0.8223,
+     "TL15": 0.7516,
+     "TL12": 0.6968,
+     "TL39": 0.6394,
+     "TL40": 0.6216,
+     "TL38": 0.5943,
+     "TL42": 0.5796,
+     "TL37": 0.5601
+    }
+   },
+   "guards": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "all_pass": true,
+    "total_uplift_MVA": 0.0
+   }
+  },
+  "LP1_LOSSY_IT2": {
+   "status": "ok",
+   "termination": "optimal",
+   "n_vars": 2093803,
+   "n_cons": 6902966,
+   "r_converged": true,
+   "candidate_written": true,
+   "acceptance_pass": null,
+   "files": [
+    "LOSSY_LP1_QA.json",
+    "LP1_LINE_SOLUTION.csv",
+    "line_loss.csv.gz",
+    "shed_by_bus.csv.gz",
+    "shedding_events.csv"
+   ],
+   "convergence": {
+    "max_rel_r_gap": 2.220446049250313e-16,
+    "lines_not_converged": 0,
+    "worst": {}
+   },
+   "guards": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "all_pass": true,
+    "total_uplift_MVA": 0.0
+   }
+  },
+  "LP2_LOSSY_CANDIDATE": {
+   "status": "ok",
+   "termination": "optimal",
+   "n_vars": 2093640,
+   "n_cons": 6902642,
+   "r_converged": null,
+   "candidate_written": null,
+   "acceptance_pass": false,
+   "files": [
+    "LOSS_BASIS_LP2_QA.json",
+    "generation_by_carrier.csv",
+    "line_flow_p0.csv.gz",
+    "line_loss.csv.gz",
+    "lines.csv",
+    "shed_by_bus.csv.gz",
+    "shedding_events.csv"
+   ]
+  }
+ },
+ "gate_before": {
+  "LP1_LOSSY_IT1": [],
+  "LP1_LOSSY_IT2": [
+   "LP1_LOSSY_IT2 only after an optimal LP1_LOSSY_IT1 that is NOT r-converged"
+  ],
+  "LP2_LOSSY_CANDIDATE": [
+   "LP2_LOSSY_CANDIDATE only after an optimal, r-converged LP1 whose expansion guards all pass",
+   "candidate network baseline_2025_tamu_lossy_candidate.nc missing"
+  ]
+ },
+ "checks": {
+  "fake_solve_three_calls": true,
+  "it1_not_converged": true,
+  "it2_converged_and_candidate": true,
+  "candidate_file": true,
+  "lp2_outputs": true,
+  "lp1_outputs": true,
+  "ledger": true,
+  "zero_retries": true,
+  "frozen_v16_files_unchanged": true,
+  "real_ledger_untouched": true
+ },
+ "verdict": "ZERO_SOLVER_CHAIN_PASS",
+ "fake_solve_calls": [
+  {
+   "nvars": 2093803,
+   "ncons": 6902966
+  },
+  {
+   "nvars": 2093803,
+   "ncons": 6902966
+  },
+  {
+   "nvars": 2093640,
+   "ncons": 6902642
+  }
+ ]
+}

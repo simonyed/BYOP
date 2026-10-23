@@ -1,0 +1,29 @@
+## after (local)
+* byop                   525d3539 [byop/main] NEXT-08 C1-C3: package folder; BYOP branch policy in CLAUDE.md (
++ integrate/next05       8e4ad312 (D:/BYOP_impact/pypsa-usa/.worktrees/merge) H2: merge work/a2-postv16-static
+  master                 20b71907 [origin/master] docs: move California page under Model Configuration as 'Exa
++ work/a2-postv16-static 39a74ff5 (D:/BYOP_impact/pypsa-usa/.worktrees/a2) NEXT-03 A2 (report only, 0 solver c
+## after (GitHub byop heads)
+525d3539f396980708dc8e8d843ec629b00ffe94	refs/heads/main
+## after (GitHub byop tags: byop/* and archive/*)
+bf8a6d9425120509919495937a8d72a5cf8f7f29	refs/tags/archive/branch-integrate-next05
+633957b1bf3f46a87d812590447890080a26da9f	refs/tags/archive/branch-mainline-v13-stageA
+74e93a26a5e70d5c767229293e42aa8444705fdc	refs/tags/archive/branch-work-a2-postv16-static
+1350a6e4f0ff096a337d1f34ba99cb6b3c9421b8	refs/tags/archive/branch-work-next07-a3-static
+78cb582221fa68df09ecb455f6c7b663ff120c25	refs/tags/archive/branch-work-next07-a3-static-local
+19fe50ecca3caab212d66e37a32591ab041c69d5	refs/tags/byop/a1-rerun1-solved-code
+58f9115bd2d4967957eb424ad4cd2d686151b8c0	refs/tags/byop/a2-s0s1-solved-code
+6bcf17683a5c7489e56bfa83581784e0a66bfb86	refs/tags/byop/next07-end
+c4c38fe37d83dc33e51c63274acd50d7394dd7c6	refs/tags/byop/next07-lossless-probe-solved-code
+c20e468dd75a1a0c4d5454e19983b95463adc85d	refs/tags/byop/next07-lossy-lp2-solved-code
+efb1a00c0cafae64dcef1d50be71e458069ea3a6	refs/tags/byop/next07-reserve-probe-solved-code
+## after (L2)
+* byop                   525d3539f NEXT-08 C1-C3: package folder; BYOP branch policy in CLAUDE.md (main is the
+  master                 20b71907c docs: move California page under Model Configuration as 'Example California
++ work/a2-postv16-static 39a74ff5f NEXT-03 A2 (report only, 0 solver calls): A2_PRE_RUN_MANIFEST rebuilt on L2
+/datasets/prgm/BYOP_impact/pypsa-usa                525d3539f [byop]
+/datasets/prgm/BYOP_impact/pypsa-usa/.worktrees/a2  39a74ff5f [work/a2-postv16-static]
+## worktrees (local)
+D:/BYOP_impact/pypsa-usa                   525d3539 [byop]
+D:/BYOP_impact/pypsa-usa/.worktrees/a2     39a74ff5 [work/a2-postv16-static]
+D:/BYOP_impact/pypsa-usa/.worktrees/merge  8e4ad312 [integrate/next05]
