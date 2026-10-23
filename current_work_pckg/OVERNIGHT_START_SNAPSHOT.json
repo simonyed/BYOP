@@ -1,0 +1,37 @@
+{
+ "work_package": "BYOP_NEXT_05_OVERNIGHT_v2",
+ "taken": "2026-10-22 23:57 EDT (L2 time)",
+ "github": {
+  "main": "be2c6904cb203822c9f5a36e57bf10ebaf6d159e",
+  "mainline_v13_stageA": "5380f0f5bba18db4c69c6cc46ca6500967f236ef",
+  "work_a2_postv16_static": "39a74ff5f96acafc356d40978e33048768fce6a7"
+ },
+ "l2": {
+  "head": "5380f0f5bba18db4c69c6cc46ca6500967f236ef",
+  "gated_dirty": 0,
+  "gated_untracked": 0,
+  "gated_changes_since_07c881a4": 0,
+  "a2_worktree": "39a74ff5f96acafc356d40978e33048768fce6a7",
+  "load": "13.26 / 24 logical",
+  "mem_available_GB": 244,
+  "disk_free": "496G of 3.6T",
+  "gurobi": "11.0.3 license OK",
+  "our_running_processes": "none"
+ },
+ "a1_config": {
+  "run_authorization": "NOT_APPROVED",
+  "approved_git_sha": null,
+  "approved_by": null,
+  "run_dir": "rerun1"
+ },
+ "sha256": {
+  "POST_V16_A1_HEADROOM/HEADROOM_SOLVE_LOG.csv (prior, immutable)": "05bd03c2fa629f7af0f1f767d9d9758bd5b156856c00f5d75ce06a5e7142e28d",
+  "POST_V16_A1_HEADROOM/LP_R_H_RESOURCE_RESULT.json (prior, immutable)": "d80d6f9e11b3765699ddc052021c06742f26e0a2d288daeafc81ad8d0162bd27",
+  "post_v16_headroom.py (LP builder)": "f45940f7cf347c2d456194b8a9bb2cb19d5df9dfa0555e1809224ed6b4749e2d",
+  "baseline_2025_tamu_prepared.nc": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16",
+  "POST_V16_A1_PRE_RUN_MANIFEST.json": "d3c8b668e508dacc40f2d9ad3016ba9cd8c1506fe1f597da1c66d321777ba010"
+ },
+ "rerun1_ledger": "absent (no call consumed)",
+ "a2_ledgers": "absent",
+ "historical_a1_calls": 1
+}
