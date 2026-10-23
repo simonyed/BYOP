@@ -67,6 +67,8 @@ def check(stage, base_path, cfg_path=CFG, root=ROOT, git_fn=G.git):
         reasons.append('approved_by missing')
     if c.get('stage') != 'A3':
         reasons.append(f"config stage {c.get('stage')} is not A3 (A1 / A2 approvals never carry over)")
+    if 'diagnostic' in c:                    # NEXT-07: diagnostic options (e.g. the reserve-RHS probe) never reach A3
+        reasons.append('A3 config carries a diagnostic block - refused (formal rules only)')
     head = git_fn('rev-parse', 'HEAD').stdout.strip()
     asha = str(c.get('approved_git_sha') or '')
     if not asha:

@@ -1,0 +1,249 @@
+{
+ "work_package": "BYOP_NEXT_07",
+ "step": "W0",
+ "solver_calls": 0,
+ "inputs": {
+  "shed_file": "workflow\\results\\BYOP\\post_v16_a2\\POST_V16_A2_S0S1\\S0_shed_by_snapshot_frozen.csv.gz",
+  "shed_file_sha256": "fa55df7c259117295877a0a967d57823f10c9bf436e518aa4345988f5ed1c1ec",
+  "s0_result": "workflow\\results\\BYOP\\post_v16_a2\\POST_V16_A2_S0S1\\S0_RESULT.json",
+  "s0_result_sha256": "d42b841c35a152a220baf41009e7d78892677c910fb26e8bfe21361cf2f1dbd5",
+  "segment_map": "workflow\\results\\BYOP\\post_v16_a2_static\\_structural_merged\\A2_SOC_SEGMENT_MAP_S0.csv",
+  "segment_map_sha256": "dd7c08eb33e4e66ce71b4690118fb792aadafcdb0b7d558230a7d3f1586c2ffe",
+  "shed_by_bus_S0": "workflow\\results\\BYOP\\post_v16_a2\\POST_V16_A2_S0S1\\shed_by_bus_S0.csv",
+  "shed_by_bus_S0_sha256": "fe2406d9a8746a410749eb7b1250a5a7f758e721fddb9cc04b73c0ec6fa5e8d4",
+  "n06_w1_table_sha256": "64ca6e2d647be06db50a6102502ed0bc052a6e8e6cca527f87c6a03f2a8b9f22"
+ },
+ "snapshots": {
+  "rows": 816,
+  "per_period": 136,
+  "units": 68,
+  "sampled_week_weight_h": 77.57142857142857,
+  "sampled_week_weight_ratio_to_3h": 25.857142857142858,
+  "b7_weight_h": 3.0
+ },
+ "totals_MWh": {
+  "all_years_weighted": 54205.77881882964,
+  "by_year_weighted": {
+   "2026": 51049.85507882563,
+   "2027": 2065.4848582692716,
+   "2028": 1022.9098140036774,
+   "2029": 67.5285521025549,
+   "2030": 0.00025456792487092846,
+   "2031": 0.0002610605834513565
+  },
+  "by_category_all_years": {
+   "inherited_ramp": 1.3410231466101865,
+   "native": 54204.437795683036
+  },
+  "by_segment_kind_all_years": {
+   "B7_STRESS_ONLY": 7334.002128388623,
+   "SAMPLED_WEEK": 46871.77669044102
+  },
+  "y2026_weighted_all": 51049.855078825625,
+  "y2026_weighted_native": 51049.27769977988,
+  "y2026_weighted_inherited_ramp": 0.5773790457460564,
+  "y2026_raw_3h_all": 5990.8002275458175,
+  "y2026_raw_3h_sampled_week": 1812.7205974652798,
+  "y2026_raw_3h_b7": 4178.079630080537,
+  "y2026_far_west_weighted": 47449.95311477414,
+  "y2026_far_west_sampled_week_weighted": 46186.86200467215,
+  "y2026_far_west_b7_weighted": 1263.0911101020001
+ },
+ "shares": {
+  "y2026_native_of_all_years": {
+   "value": 0.9417681806657618,
+   "numerator_MWh": 51049.27769977988,
+   "denominator_MWh": 54205.77881882964,
+   "numerator": "2026 native weighted",
+   "denominator": "2026-2031 weighted sum (all categories)",
+   "unit": "MWh / MWh"
+  },
+  "sampled_week_of_all_years": {
+   "value": 0.8647007332391472,
+   "numerator_MWh": 46871.776690441024,
+   "denominator_MWh": 54205.77881882964,
+   "numerator": "SAMPLED_WEEK weighted, all years",
+   "denominator": "2026-2031 weighted sum",
+   "unit": "MWh / MWh"
+  },
+  "b7_of_all_years": {
+   "value": 0.13529926676085294,
+   "numerator_MWh": 7334.002128388623,
+   "denominator_MWh": 54205.77881882964,
+   "numerator": "B7_STRESS_ONLY weighted, all years",
+   "denominator": "2026-2031 weighted sum",
+   "unit": "MWh / MWh"
+  },
+  "far_west_2026_of_all_years": {
+   "value": 0.8753670576962783,
+   "numerator_MWh": 47449.95311477414,
+   "denominator_MWh": 54205.77881882964,
+   "numerator": "Far West pocket 2026 weighted (both kinds)",
+   "denominator": "2026-2031 weighted sum",
+   "unit": "MWh / MWh"
+  },
+  "far_west_2026_sampled_week_of_all_years": {
+   "value": 0.8520652781143708,
+   "numerator_MWh": 46186.86200467215,
+   "denominator_MWh": 54205.77881882964,
+   "numerator": "Far West pocket 2026 SAMPLED_WEEK weighted",
+   "denominator": "2026-2031 weighted sum",
+   "unit": "MWh / MWh"
+  },
+  "far_west_2026_of_2026": {
+   "value": 0.9294826212828047,
+   "numerator_MWh": 47449.95311477414,
+   "denominator_MWh": 51049.855078825625,
+   "numerator": "Far West pocket 2026 weighted",
+   "denominator": "2026 weighted (native + inherited)",
+   "unit": "MWh / MWh"
+  },
+  "y2026_sampled_week_of_2026": {
+   "value": 0.91815687579075,
+   "numerator_MWh": 46871.77544874509,
+   "denominator_MWh": 51049.855078825625,
+   "numerator": "2026 SAMPLED_WEEK weighted",
+   "denominator": "2026 weighted",
+   "unit": "MWh / MWh"
+  }
+ },
+ "far_west_and_key_buses_2026": {
+  "p620 6": {
+   "SAMPLED_WEEK": {
+    "weighted_MWh": 30046.269098458488,
+    "raw_3h_MWh": 1162.010407122704,
+    "shed_snapshots": 32,
+    "night_shed_snapshots": 32
+   },
+   "B7_STRESS_ONLY": {
+    "weighted_MWh": 1153.6475745399016,
+    "raw_3h_MWh": 1153.6475745399016,
+    "shed_snapshots": 10,
+    "night_shed_snapshots": 8
+   },
+   "stress_day_share_of_bus_2026_weighted": 0.03697598255248908
+  },
+  "p620 7": {
+   "SAMPLED_WEEK": {
+    "weighted_MWh": 16140.592868669853,
+    "raw_3h_MWh": 624.2218236502154,
+    "shed_snapshots": 15,
+    "night_shed_snapshots": 15
+   },
+   "B7_STRESS_ONLY": {
+    "weighted_MWh": 109.44353221067097,
+    "raw_3h_MWh": 109.44353221067097,
+    "shed_snapshots": 4,
+    "night_shed_snapshots": 4
+   },
+   "stress_day_share_of_bus_2026_weighted": 0.006734971510878625
+  },
+  "p610 4": {
+   "SAMPLED_WEEK": {
+    "weighted_MWh": 3.75438056721229e-05,
+    "raw_3h_MWh": 1.4519703851097254e-06,
+    "shed_snapshots": 0,
+    "night_shed_snapshots": 0
+   },
+   "B7_STRESS_ONLY": {
+    "weighted_MWh": 3.351427468451544e-06,
+    "raw_3h_MWh": 3.351427468451544e-06,
+    "shed_snapshots": 0,
+    "night_shed_snapshots": 0
+   },
+   "stress_day_share_of_bus_2026_weighted": 0.08195154327476876
+  },
+  "p620 3": {
+   "SAMPLED_WEEK": {
+    "weighted_MWh": 401.76773086360487,
+    "raw_3h_MWh": 15.537978541686378,
+    "shed_snapshots": 1,
+    "night_shed_snapshots": 0
+   },
+   "B7_STRESS_ONLY": {
+    "weighted_MWh": 626.7618075358816,
+    "raw_3h_MWh": 626.7618075358816,
+    "shed_snapshots": 5,
+    "night_shed_snapshots": 4
+   },
+   "stress_day_share_of_bus_2026_weighted": 0.6093765751357973
+  },
+  "p630 2": {
+   "SAMPLED_WEEK": {
+    "weighted_MWh": 3.713127929982285e-06,
+    "raw_3h_MWh": 1.4360163265124862e-07,
+    "shed_snapshots": 0,
+    "night_shed_snapshots": 0
+   },
+   "B7_STRESS_ONLY": {
+    "weighted_MWh": 845.1938123634687,
+    "raw_3h_MWh": 845.1938123634687,
+    "shed_snapshots": 2,
+    "night_shed_snapshots": 0
+   },
+   "stress_day_share_of_bus_2026_weighted": 0.9999999956067734
+  }
+ },
+ "corrections_to_next06": [
+  {
+   "statement": "\"94 % of all S0 shed is the Far West pocket\" (W1 section (a))",
+   "correct": "94.2 % is ALL 2026 native shed / 2026-2031 sum. The Far West pocket ['p610 4', 'p620 6', 'p620 7'] in 2026 is 87.5% of the 2026-2031 sum (its SAMPLED_WEEK part 85.2%); SAMPLED_WEEK snapshots of all buses and years are 86.5%."
+  },
+  {
+   "statement": "\"94 % of the total is two sampled weeks nightly shed x25.86\" (W1 root-cause table, row T)",
+   "correct": "The SAMPLED_WEEK share of the 2026-2031 total is 86.5% (not 94 %); the x25.857 ratio applies only to SAMPLED_WEEK snapshots (weight 77.571 h vs 3 h); B7 stress-day snapshots carry weight 3 h (ratio 1)."
+  },
+  {
+   "statement": "\"5,991 MWh raw x 25.86 = 51 GWh\"",
+   "correct": "2026 raw 3 h shed 5990.8 MWh = SAMPLED_WEEK 1812.7 + B7 4178.1; only the SAMPLED_WEEK part is multiplied by 25.8571 (46871.8 MWh); the B7 part keeps weight 3 h."
+  },
+  {
+   "statement": "54,205.78 MWh read as an annual EENS",
+   "correct": "It is the sum of six model-year weighted values (2026-2031), not a single-year EENS."
+  }
+ ],
+ "w0_2_pins": {
+  "original_s0_s1_code_sha": "cdfdea06146a6fe73df89cb410d6a88cb5fda306",
+  "baseline_sha256_pinned": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16",
+  "files": {
+   "workflow\\results\\BYOP\\post_v16_a2\\POST_V16_A2_S0S1\\S0_RESULT.json": "d42b841c35a152a220baf41009e7d78892677c910fb26e8bfe21361cf2f1dbd5",
+   "workflow\\results\\BYOP\\post_v16_a2\\POST_V16_A2_S0S1\\S1_EARLIEST_RESULT.json": "548e95d67af14fd368b0493155b3c6550eb3f045346a14a6e3d6e1798e5e4252",
+   "workflow\\results\\BYOP\\post_v16_a2\\POST_V16_A2_S0S1\\A2_SOLVE_LOG.csv": "9e521a494ed5d21899322838f4890a18da391cff5ecb3da0711daab25116b4a1",
+   "workflow\\results\\BYOP\\post_v16_a2\\POST_V16_A2_S0S1\\A2_OPTIMIZER_CALL_LOG.csv": "4971d9d85a49fb0e31d7f42b59db6a491d8136901e60b30cca165d8fb9e30011",
+   "workflow\\results\\BYOP\\post_v16_a2\\POST_V16_A2_S0S1\\S0_NO_HARM_REFERENCE.csv": "617da93b6a8336e35bac9f4baa101f13a39c53d9db0164252fe5105a71666d3a",
+   "workflow\\results\\BYOP\\post_v16_a2\\POST_V16_A2_S0S1\\S0_shed_by_snapshot_frozen.csv.gz": "fa55df7c259117295877a0a967d57823f10c9bf436e518aa4345988f5ed1c1ec"
+  },
+  "weight_classes_h": {
+   "SAMPLED_WEEK": 77.57142857142857,
+   "B7_STRESS_ONLY": 3.0
+  },
+  "lp2_2025_vs_s0_2026_known_differences": [
+   "background load growth factor 1.009327 (AEO 2026 vs 2025)",
+   "3 GW non-locational operating reserve with online-capacity / min-load rows (S0 only)",
+   "segment-neutral SOC (A2F08) on two sampled weeks + B7 days vs full-year chronology in LP2",
+   "committed-asset COD (DWB uniform 0.51 derate in 2026, PBRP) and paid COD-lagged public expansion",
+   "multi-year 2026-2031 joint investment",
+   "time sampling: 2 weeks (77.571 h) + 3 B7 days (3 h) vs 2,920 x 3 h"
+  ],
+  "attribution_note": "No single added constraint is credited with the LP2 (no shed) vs S0 (shed) difference here; weights follow the method and are not an error by themselves."
+ },
+ "checks": {
+  "total_vs_S0_RESULT_abs_MWh": 0.00027633437275653705,
+  "total_vs_reported_54205_7791_abs_MWh": 0.0002811703598126769,
+  "native_2026_vs_reported_51049_2775_abs_MWh": 0.00019977988267783076,
+  "sampled_plus_b7_minus_total_abs_MWh": 7.275957614183426e-12,
+  "native_plus_inherited_minus_total_abs_MWh": 7.275957614183426e-12,
+  "n06_w1_table_total_abs_MWh": 0.0017182427327497862,
+  "weights_sum_h_by_period": {
+   "2026": 8760.0,
+   "2027": 8760.0,
+   "2028": 8760.0,
+   "2029": 8760.0,
+   "2030": 8760.0,
+   "2031": 8760.0
+  },
+  "negative_noise_clipped_MW_sum": 0.0
+ },
+ "W0_DATA_QA": "PASS",
+ "note": "NEXT-06 signed reports are not rewritten; this verdict and NEXT_07 reports carry the erratum."
+}

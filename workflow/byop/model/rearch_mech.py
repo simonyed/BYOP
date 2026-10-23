@@ -1111,7 +1111,7 @@ def extra_rearch(n, snapshots):
         ml_space(n, m)
     import post_v16_mainline as PM
     if PM.POST_V16['on']:                       # NEXT-01 A2-static: 3 GW operating reserve + RE/BESS firm certificate (build only)
-        STATE['pv16m_reserve'] = PM.add_operating_reserve(n, snapshots)
+        STATE['pv16m_reserve'] = PM.add_operating_reserve(n, snapshots, reserve_MW=STATE.get('pv16_reserve_rhs_MW'))
         if PM.POST_V16['soc_segments']:         # NEXT-03 A2-FIX-08: no net SOC transfer across sampled-segment gaps / periods
             STATE['pv16m_soc_segments'] = PM.add_segment_soc_neutrality(n, snapshots)
         if PM.POST_V16['re_firm'] and STATE.get('dc'):
@@ -1698,10 +1698,17 @@ def post_v16_guard(a):
             reasons.append(f'--{k.replace("_", "-")} {got} differs from the config run_args {v}')
     g = A2G.check(sc[0] if sc else 'S0', a.base, cfg_path=cfgp) if not reasons else dict(approved=False, reasons=[])
     reasons += g['reasons']
+    import post_v16_mainline as PM
+    try:                                                      # NEXT-07: only the exact reserve-probe config may change the RHS
+        rdiag = PM.diagnostic_reserve_rhs(c, cfgp)
+    except ValueError as e:
+        rdiag = None
+        if not any(str(e) in r for r in reasons):
+            reasons.append(f'diagnostic config refused: {e}')
     if reasons:
         print(json.dumps(dict(POST_V16_GUARD='REFUSED', reasons=reasons), indent=1))
         raise SystemExit(3)
-    return g
+    return dict(g, diagnostic_reserve_MW=rdiag)
 
 
 PV16_LOCK = dict(inside=False, armed=False)
@@ -1792,7 +1799,12 @@ def post_v16_solve_wrapper(solve0, a, out, cfg_path=None, gate_fn=None, state=No
                 acc['values']['speed_levels'] = rows
                 acc['checks']['no_harm_row_present'] = 'D24-no_harm_existing_customers' in n.model.constraints
             acc['PASS'] = all(v is True for v in acc['checks'].values())
-            if tag == 'S0' and acc['PASS']:
+            diag = state.get('pv16_reserve_rhs_MW')
+            if diag is not None:                               # NEXT-07 probe: checked against its own RHS, never a formal 3 GW result
+                acc['values']['reserve_req_rhs_MW'] = diag
+                acc['diagnostic'] = dict(kind=PM.RESERVE_PROBE['kind'], reserve_requirement_MW=diag, label=PM.RESERVE_PROBE['label'],
+                                         formal_requirement_MW=PM.POST_V16['reserve_MW'])
+            if tag == 'S0' and acc['PASS'] and diag is None:
                 acc['no_harm_reference'] = A2G.write_no_harm_reference(n, out_dir)
         except Exception as e:
             acc = dict(PASS=False, checks=dict(acceptance_computed=False), values=dict(error=repr(e)))
@@ -2010,6 +2022,8 @@ def main():
         PM.POST_V16['on'] = True
         w2.POST_V16_NO_ERM['on'] = True
         GCFG.update(s0_calibrate=False, s0_cal_file=None, no_harm=True)
+        # NEXT-07: per-build reserve RHS from the validated gate (None = formal 3,000 MW); POST_V16 itself is never changed
+        STATE['pv16_reserve_rhs_MW'] = (pv16_gate or {}).get('diagnostic_reserve_MW')
         M.solve = post_v16_solve_wrapper(M.solve, a, out, cfg_path=Path(a.a2_config).resolve() if a.a2_config else None)
         _arm_post_v16_optimizer_lock()
         if a.scenarios == ['S1_EARLIEST']:      # S0 solved in an earlier process: the SHA-pinned no-harm reference comes from disk

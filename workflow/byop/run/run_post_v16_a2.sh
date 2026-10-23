@@ -5,6 +5,11 @@
 #   bash byop/run/run_post_v16_a2.sh manifest     (re)write current_work_pckg/A2_PRE_RUN_MANIFEST.json (no solver)
 #   bash byop/run/run_post_v16_a2.sh gate         print the A2 gate verdict for S0 and S1_EARLIEST (no build, no solver)
 #   bash byop/run/run_post_v16_a2.sh n06_diag     NEXT-06 W2: ONE diagnostic S0 LP, 2026 full year - GATED by config.byop_post_v16_n06_diag.yaml
+#   bash byop/run/run_post_v16_a2.sh n07_tests    NEXT-07 static tests (no solver)
+#   bash byop/run/run_post_v16_a2.sh n07_static   NEXT-07 W1: build REF (3 GW) and PROBE (RHS 0) S0, constraint-by-constraint diff (no solver)
+#   bash byop/run/run_post_v16_a2.sh n07_manifest / n07_gate
+#   bash byop/run/run_post_v16_a2.sh n07_reserve_probe  NEXT-07 W2: ONE S0 LP with PV16M-reserve_req RHS 0 MW, 2026-2031, 26 weeks -
+#                                                 GATED by config.byop_post_v16_n07_reserve_probe.yaml (1 call, 0 retries)
 #   bash byop/run/run_post_v16_a2.sh s0s1         S0 then S1_EARLIEST - GATED (separate researcher approval of
 #                                                 config/config.byop_post_v16_a2.yaml; 2 calls, 0 retries, STOP on any failure)
 # DRY=1 prints the commands and runs nothing.
@@ -28,5 +33,10 @@ case "${1:-}" in
   n06_manifest) run python byop/build/build_post_v16_a2_manifest.py config/config.byop_post_v16_n06_diag.yaml ;;
   n06_gate)   run python -c "import sys, json; sys.path.insert(0, 'byop/model'); import post_v16_a2_gate as G; print(json.dumps(G.check('S0', '$BASE', cfg_path='config/config.byop_post_v16_n06_diag.yaml'), indent=1))" ;;
   n06_diag)   run python -W ignore $W/byop/model/rearch_mech.py --mainline --post-v16 --a2-config config/config.byop_post_v16_n06_diag.yaml --config $CFG --base $BASE --case-id NEXT06_S0_DIAG_FULLYEAR_2026 --out $W/results/BYOP/next06_s0_diag_fullyear_2026 --start 2026 --end 2026 --sample-weeks 0 --threads ${THREADS:-16} --scenarios S0 ;;
-  *)          echo "usage: $0 tests|structural|manifest|gate|s0s1|n06_manifest|n06_gate|n06_diag"; exit 2 ;;
+  n07_tests)  run python -m pytest -q byop/tests/test_next07_reserve_probe.py ;;
+  n07_static) run python -W ignore byop/tests/structural_n07_reserve_probe.py --out results/BYOP/next07_s0_reserve_probe/_static_w1 ;;
+  n07_manifest) run python byop/build/build_post_v16_a2_manifest.py config/config.byop_post_v16_n07_reserve_probe.yaml ;;
+  n07_gate)   run python -c "import sys, json; sys.path.insert(0, 'byop/model'); import post_v16_a2_gate as G; print(json.dumps(G.check('S0', '$BASE', cfg_path='config/config.byop_post_v16_n07_reserve_probe.yaml'), indent=1))" ;;
+  n07_reserve_probe) run python -W ignore $W/byop/model/rearch_mech.py --mainline --post-v16 --a2-config config/config.byop_post_v16_n07_reserve_probe.yaml --config $CFG --base $BASE --case-id NEXT07_S0_RESERVE_PROBE --out $W/results/BYOP/next07_s0_reserve_probe --start 2026 --end 2031 --sample-weeks 26 --threads ${THREADS:-16} --scenarios S0 ;;
+  *)          echo "usage: $0 tests|structural|manifest|gate|s0s1|n06_manifest|n06_gate|n06_diag|n07_tests|n07_static|n07_manifest|n07_gate|n07_reserve_probe"; exit 2 ;;
 esac

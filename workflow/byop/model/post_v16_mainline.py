@@ -55,8 +55,43 @@ def _grid(index, bus):
     return [x for x in index if not str(bus[x]).startswith('DC_')]
 
 
-def add_operating_reserve(n, snapshots):
+# NEXT-07 W1: the ONLY admissible diagnostic of the reserve rule - the RHS of PV16M-reserve_req set to 0 MW in one SHA-pinned
+# config (own out_dir / ledger / manifest / run_args, 1 S0_COST call); every other row of add_operating_reserve is kept.
+# The value is passed per model build (never written into POST_V16), so the formal A2 / NEXT-06 / A3 paths stay at 3,000 MW.
+RESERVE_PROBE = dict(config_name='config.byop_post_v16_n07_reserve_probe.yaml', kind='S0_RESERVE_REQ_RHS_ONLY', reserve_requirement_MW=0.0,
+                     stages=['S0'], out_dir='results/BYOP/next07_s0_reserve_probe',
+                     run_args={'start': 2026, 'end': 2031, 'sample_weeks': 26, 'scenarios': ['S0']},
+                     label='DIAGNOSTIC_NONCOMPLIANT_WITH_FORMAL_3GW_REQUIREMENT')
+
+
+def diagnostic_reserve_rhs(c, cfg_path):
+    """reserve RHS (MW) a gate config asks for: None (formal 3,000 MW) when it has no `diagnostic` block; 0.0 only for the exact
+    NEXT-07 probe config (name, kind, value, S0 only, own out_dir, pinned run_args, budget 1 / 1); anything else -> ValueError"""
+    d = c.get('diagnostic')
+    if d is None:
+        return None
+    from pathlib import Path as _P
+    rp, bad = RESERVE_PROBE, []
+    if _P(cfg_path).name != rp['config_name']:
+        bad.append(f"diagnostic block only allowed in {rp['config_name']}")
+    if not isinstance(d, dict) or set(d) != {'kind', 'reserve_requirement_MW'} or d.get('kind') != rp['kind']:
+        bad.append(f'diagnostic must be exactly kind={rp["kind"]} + reserve_requirement_MW')
+    elif float(d['reserve_requirement_MW']) != rp['reserve_requirement_MW']:
+        bad.append(f"diagnostic reserve_requirement_MW {d['reserve_requirement_MW']} != {rp['reserve_requirement_MW']}")
+    if list(c.get('stages') or []) != rp['stages'] or c.get('out_dir') != rp['out_dir'] or (c.get('run_args') or {}) != rp['run_args']:
+        bad.append('diagnostic config must pin stages [S0], its own out_dir and run_args 2026-2031 / 26 weeks / [S0]')
+    if int(c.get('max_scenario_attempts', 0)) != 1 or int(c.get('max_top_level_optimizer_calls', 0)) != 1 or c.get('optimizer_call_plan') != {'S0': ['S0_COST']}:
+        bad.append('diagnostic config budget must be 1 attempt / 1 S0_COST call')
+    if bad:
+        raise ValueError('; '.join(bad))
+    return float(d['reserve_requirement_MW'])
+
+
+def add_operating_reserve(n, snapshots, reserve_MW=None):
+    """reserve_MW: RHS of PV16M-reserve_req; None = the formal POST_V16['reserve_MW'] (3,000 MW). Only the NEXT-07 probe passes 0.0
+    (see diagnostic_reserve_rhs); all other rows are identical for any value."""
     import xarray as xr
+    rhs = float(POST_V16['reserve_MW'] if reserve_MW is None else reserve_MW)
     m = n.model
     g = n.generators
     rp = reserve_params()
@@ -104,8 +139,9 @@ def add_operating_reserve(n, snapshots):
         soc_start, info_start = interval_start_soc(n, snapshots, S)
         m.add_constraints(rs * (POST_V16['tau_h'] / effd) - soc_start <= 0, name='PV16M-res_su_energy_start')
         total = total + rs.sum('name')
-    m.add_constraints(total >= POST_V16['reserve_MW'], name='PV16M-reserve_req')
-    return dict(eligible_thermal=len(E), eligible_thermal_ext=len(ext), storage=len(S), soc_interval_start=info_start if S else None)
+    m.add_constraints(total >= rhs, name='PV16M-reserve_req')
+    return dict(eligible_thermal=len(E), eligible_thermal_ext=len(ext), storage=len(S), soc_interval_start=info_start if S else None,
+                reserve_req_rhs_MW=rhs)
 
 
 def interval_start_soc(n, snapshots, S):
@@ -554,4 +590,50 @@ def persist_solution(n, d):
         f = d / 'SOC_SEGMENT_POSTSOLVE_AUDIT.csv'
         a.to_csv(f, index=False)
         out[f.name] = hashlib.sha256(f.read_bytes()).hexdigest()
+    for k, df in reserve_solution_frames(n).items():       # NEXT-07 W2.2: reserve state straight from the linopy solution
+        if isinstance(df, str):
+            out[f'{k}.error'] = df
+            continue
+        f = d / f'{k}.csv.gz'
+        df.to_csv(f, float_format='%.6g')
+        out[f.name] = hashlib.sha256(f.read_bytes()).hexdigest()
+    return out
+
+
+def reserve_solution_frames(n, formal_MW=None):
+    """NEXT-07 W2.2: per snapshot reserve total / RHS / dual / thermal and BESS reserve / thermal online capacity / shortfall versus the
+    formal 3,000 MW, and per unit online capacity, thermal reserve, BESS reserve and available thermal capacity (p_max_pu x p_nom_opt x
+    activity). Read from the linopy variables' .solution (never from merged coordinate tables); a frame that cannot be read is
+    returned as an error string. Reads only - the LP is not touched."""
+    formal = float(POST_V16['reserve_MW'] if formal_MW is None else formal_MW)
+    m = getattr(n, 'model', None)
+    out = {}
+    if m is None or 'PV16M-reserve_req' not in m.constraints:
+        return out
+    tab = lambda v: v.solution.transpose('snapshot', 'name').to_pandas()
+    try:
+        req = m.constraints['PV16M-reserve_req']
+        idx = n.snapshots
+        tot = pd.Series(np.asarray(req.lhs.solution.values, dtype=float).ravel(), index=idx)
+        rhs = pd.Series(np.asarray(req.rhs.values, dtype=float).ravel(), index=idx)
+        try:
+            dual = pd.Series(np.asarray(req.dual.values, dtype=float).ravel(), index=idx)
+        except Exception:
+            dual = pd.Series(np.nan, index=idx)
+        rt = tab(m['PV16M-res_thermal']); oc = tab(m['PV16M-online_cap'])
+        rs = tab(m['PV16M-res_su']) if 'PV16M-res_su' in m.variables else pd.DataFrame(index=idx)
+        E = list(oc.columns)
+        gp = n.generators_t.p.reindex(columns=E).reindex(idx)
+        act = n.components['Generator'].get_activity_mask(idx)[E].astype(float)
+        avail = n.get_switchable_as_dense('Generator', 'p_max_pu', idx, inds=E) * act * n.generators.p_nom_opt.reindex(E)
+        out['reserve_by_snapshot'] = pd.DataFrame(dict(
+            reserve_total_MW=tot, reserve_req_rhs_MW=rhs, reserve_req_dual=dual, thermal_reserve_MW=rt.sum(axis=1).values,
+            bess_reserve_MW=rs.sum(axis=1).values if rs.shape[1] else 0.0, thermal_online_cap_MW=oc.sum(axis=1).values,
+            thermal_p_MW=gp.sum(axis=1).values, thermal_available_MW=avail.sum(axis=1).values,
+            shortfall_vs_formal_MW=(formal - tot).clip(lower=0.0), formal_requirement_MW=formal), index=idx)
+        out.update(thermal_online_cap=oc, thermal_reserve=rt, thermal_available_cap=avail)
+        if rs.shape[1]:
+            out['bess_reserve'] = rs
+    except Exception as e:
+        out['reserve_by_snapshot'] = f'{e.__class__.__name__}: {e}'[:300]
     return out

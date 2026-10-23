@@ -1,0 +1,34 @@
+# BYOP NEXT-07 W1 / W2 (2026-10-23): ONE causal diagnostic LP - the original multi-year S0 with ONLY the RHS of PV16M-reserve_req changed
+# from 3,000 MW to 0 MW. Every other row (online capacity, thermal min-load, reserve headroom / ramp, storage reserve power / energy,
+# segment-neutral SOC, no-harm, COD-lagged paid expansion, committed DWB / PBRP) is kept. Same period (2026-2031), same 26-week
+# sampling (2 weeks + B7 stress days), same inputs. Identifies the total equilibrium response to the reserve RHS only; it is NOT a
+# formal S0, does not replace POST_V16_A2_S0S1 and does not claim 0 MW is an adequate reserve.
+# This file is a REQUEST: only the researcher authorises it (run_authorization / approved_git_sha / approved_by, config-only commit).
+post_v16:
+  run_authorization: NOT_APPROVED
+  approved_git_sha: null
+  approved_by: null
+  authorization_source: current_work_pckg/BYOP_NEXT_07/BYOP_NEXT_07_S0_Reserve_Causal_Diagnostic_and_A3_Readiness_2026-10-23.md
+  authorization_source_sha256: dec9259865f687c0a13ebbc4fb4c125dc06a69a94dc7afbfaed3ac18d1f3d3c5   # LF content SHA
+  manifest: current_work_pckg/BYOP_NEXT_07/N07_RESERVE_PROBE_PRE_RUN_MANIFEST.json
+  stage: A2
+  stages: [S0]
+  max_scenario_attempts: 1
+  max_top_level_optimizer_calls: 1
+  optimizer_call_plan: {S0: [S0_COST]}
+  max_retries: 0
+  mainline_config: config/config.byop_ercot_mainline_geo_dynamic_v1_baseline_v16.yaml
+  out_dir: results/BYOP/next07_s0_reserve_probe
+  run_args: {start: 2026, end: 2031, sample_weeks: 26, scenarios: [S0]}
+  diagnostic:
+    kind: S0_RESERVE_REQ_RHS_ONLY
+    reserve_requirement_MW: 0.0
+  baseline:
+    path: workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc   # L2 only, no fallback
+    sha256: a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16
+  design:
+    purpose: "NEXT-07 W2 mechanism attribution only (label DIAGNOSTIC_NONCOMPLIANT_WITH_FORMAL_3GW_REQUIREMENT)"
+    compare_with: "workflow/results/BYOP/post_v16_a2/POST_V16_A2_S0S1 (S0, 3,000 MW), same snapshot index"
+    persists: "solution/S0/{storage_soc,storage_p_store,storage_p_dispatch,line_p0,link_p0,generator_p,bus_marginal_price,reserve_by_snapshot,thermal_online_cap,thermal_reserve,thermal_available_cap,bess_reserve}.csv.gz + SOC_SEGMENT_POSTSOLVE_AUDIT.csv"
+  solver: gurobi
+  acceptance: {termination: optimal, balance_residual_MW_max: 1.0e-3, reserve_slack_MW_min: -1.0e-3}
