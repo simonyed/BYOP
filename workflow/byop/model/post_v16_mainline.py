@@ -25,7 +25,7 @@ import pandas as pd
 
 import byop_paths as BP
 
-POST_V16 = dict(on=False, reserve_MW=3000.0, tau_h=1.0, window_min=10.0, re_firm=True, stores_elapsed_h=True)
+POST_V16 = dict(on=False, reserve_MW=3000.0, tau_h=1.0, window_min=10.0, re_firm=True, stores_elapsed_h=True, soc_segments=True)
 THERMAL = ['CCGT', 'OCGT', 'gas_steam', 'coal', 'biomass']
 
 
@@ -411,3 +411,86 @@ def no_harm_qa(n, m, tag):
                              marginal_cost_min=float(g.marginal_cost[idx].min()) if len(idx) else None,
                              marginal_cost_max=float(g.marginal_cost[idx].max()) if len(idx) else None))
     return pd.DataFrame(rows)
+
+
+# ------------------------------------------------------------------------------------------------ NEXT-03 A2-FIX-08: SOC segments
+def soc_segments(snapshots, step_h=3.0):
+    """contiguous segments of the retained snapshots: a new segment starts at every period start and at every time gap
+    != step_h (sampled weeks and stress days are separate segments; a multi-day contiguous stress event stays ONE segment)"""
+    per = np.asarray(snapshots.get_level_values(0)) if isinstance(snapshots, pd.MultiIndex) else np.zeros(len(snapshots), dtype=int)
+    ts = pd.DatetimeIndex(snapshots.get_level_values(-1) if isinstance(snapshots, pd.MultiIndex) else snapshots)
+    rows, seg = [], -1
+    for i in range(len(snapshots)):
+        gap = None if i == 0 or per[i] != per[i - 1] else (ts[i] - ts[i - 1]) / pd.Timedelta(hours=1)
+        if gap is None or abs(gap - step_h) > 1e-9:
+            seg += 1
+        rows.append(dict(pos=i, period=int(per[i]), timestep=ts[i], gap_h_before=gap, segment=seg))
+    df = pd.DataFrame(rows)
+    df['segment_in_period'] = df.groupby('period').segment.rank(method='dense').astype(int)
+    return df
+
+
+def segment_map(n, snapshots=None, stress_ts=None):
+    """A2_SOC_SEGMENT_MAP rows: one per (period, segment)"""
+    sns = n.snapshots if snapshots is None else snapshots
+    d = soc_segments(sns)
+    w = n.snapshot_weightings.loc[sns]
+    d['w_generators_h'] = w.generators.values; d['w_stores_h'] = w.stores.values; d['w_objective_h'] = w.objective.values
+    st = set(pd.Timestamp(x) for x in (stress_ts or []))
+    d['stress'] = d.timestep.map(lambda t: pd.Timestamp(t) in st)
+    g = d.groupby(['period', 'segment', 'segment_in_period'])
+    out = g.agg(start=('timestep', 'min'), end=('timestep', 'max'), snapshots=('pos', 'size'), gap_h_before=('gap_h_before', 'first'),
+                w_generators_h=('w_generators_h', 'mean'), w_stores_h=('w_stores_h', 'mean'), stress_snapshots=('stress', 'sum')).reset_index()
+    out['kind'] = np.where(out.stress_snapshots == out.snapshots, 'B7_STRESS_ONLY',
+                           np.where(out.stress_snapshots > 0, 'SAMPLED_WEEK_WITH_STRESS', 'SAMPLED_WEEK'))
+    return out
+
+
+def add_segment_soc_neutrality(n, snapshots):
+    """NEXT-03 A2-FIX-08: PyPSA chains the state of charge through the retained snapshots in order, so separate sampled weeks /
+    stress days (and, for horizon-cyclic units, investment periods) are linked as if adjacent. For every StorageUnit and every
+    contiguous segment k:   SOC(last snapshot of k)  >=  SOC_prev(k)
+    where SOC_prev(k) is the state PyPSA's own energy balance uses at the first snapshot of k (read from the
+    StorageUnit-energy_balance row: the other SOC variable in that row; the initial-SOC constant when there is none). With the
+    cyclic chain every segment is then energy neutral (sum of non-negative increments around the cycle = 0): no net energy is
+    carried across a time gap or a period, while the 3 h dynamics inside a segment (incl. a multi-day stress event) are kept.
+    Linear, no binaries, no new variables."""
+    m = n.model
+    su = n.storage_units
+    if su.empty or 'StorageUnit-energy_balance' not in m.constraints:
+        return dict(storage=0, segments=0, rows=0)
+    seg = soc_segments(snapshots)
+    soc = m['StorageUnit-state_of_charge']
+    soc_lab = soc.labels.sel(snapshot=snapshots)
+    names = list(soc_lab.coords['name'].values)
+    lab = soc_lab.transpose('snapshot', 'name').values                        # snapshot x name
+    own = {int(v): (i, j) for i, row in enumerate(lab) for j, v in enumerate(row) if v != -1}
+    eb = m.constraints['StorageUnit-energy_balance'].lhs
+    ebv = eb.vars.transpose('snapshot', 'name', '_term').sel(snapshot=snapshots, name=names).values
+    rows = 0
+    made = []
+    for k, d in seg.groupby('segment'):
+        first, last = int(d.pos.iloc[0]), int(d.pos.iloc[-1])
+        groups = {}
+        for j, nm in enumerate(names):
+            if lab[first, j] == -1 or lab[last, j] == -1:
+                continue                                                      # inactive unit in this period
+            prev = [own[int(v)] for v in ebv[first, j] if v != -1 and int(v) in own and int(v) != lab[first, j]]
+            key = prev[0][0] if prev else None                                 # snapshot position of the predecessor SOC
+            groups.setdefault(key, []).append(nm)
+        for key, nms in groups.items():
+            last_soc = soc.sel(name=nms, snapshot=snapshots[last])
+            if key is None:
+                init = xr_const(nms, [float(su.state_of_charge_initial[x]) for x in nms])      # PyPSA: absolute MWh
+                m.add_constraints(last_soc >= init, name=f'A2F08-seg_soc_{k}_init')
+            else:
+                m.add_constraints(last_soc - soc.sel(name=nms, snapshot=snapshots[key]) >= 0, name=f'A2F08-seg_soc_{k}_{key}')
+            rows += len(nms)
+            made.append(dict(segment=int(k), period=int(d.period.iloc[0]), first=str(snapshots[first]), last=str(snapshots[last]),
+                             predecessor=str(snapshots[key]) if key is not None else 'INITIAL_CONSTANT', units=len(nms)))
+    return dict(storage=len(names), segments=int(seg.segment.nunique()), rows=rows, groups=made)
+
+
+def xr_const(names, vals):
+    import xarray as xr
+    return xr.DataArray(np.asarray(vals, dtype=float), coords={'name': names}, dims='name')

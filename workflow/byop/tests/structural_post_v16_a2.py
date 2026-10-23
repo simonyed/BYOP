@@ -91,6 +91,32 @@ def next02_audits(tag, n, m):
     check('QA-SOC', f'{tag}: reserve energy also bounded at the START of each snapshot (dispatch SOC + same-snapshot flows, no shadow SOC)', ok_start)
     check('QA-RES', f'{tag}: reserve rows tie thermal r to online capacity - dispatch, ramp and min-load on the same online variable',
           {'PV16M-res_thermal_head', 'PV16M-res_ramp', 'PV16M-online_min', 'PV16M-online_max_p'} <= cons)
+    # NEXT-03 A2-FIX-08: sampled segments, PyPSA's SOC chain across the gaps, and the segment-neutrality rows that cut it
+    sm = PM.segment_map(n, stress_ts=sorted(STATE.get('stress_ts') or []))
+    sm.insert(0, 'scenario', tag); sm.to_csv(OUT / f'A2_SOC_SEGMENT_MAP_{tag}.csv', index=False)
+    info = STATE.get('pv16m_soc_segments') or {}
+    sns = n.snapshots
+    seg = PM.soc_segments(sns)
+    b = seg[seg.segment != seg.segment.shift()].iloc[1:]                       # first snapshot of every segment after the first
+    b = b[[int(seg.period.iloc[int(q) - 1]) == int(pr) for q, pr in zip(b.pos, b.period)]] if len(b) else b   # within-period gaps only
+    linked = 0
+    if len(b) and len(n.storage_units):
+        x = n.storage_units.index[0]
+        soc_l = m['StorageUnit-state_of_charge']
+        eb = m.constraints['StorageUnit-energy_balance'].lhs
+        for _, r in b.iterrows():
+            prev_lab = int(soc_l.sel(name=x, snapshot=sns[int(r.pos) - 1]).labels.values)
+            linked += int(prev_lab in set(np.asarray(eb.sel(name=x, snapshot=sns[int(r.pos)]).vars.values).ravel()))
+    check('QA-SOCSEG', f'{tag}: PyPSA chains SOC across every within-period time gap (risk confirmed on the real model)',
+          len(b) > 0 and linked == len(b), dict(gaps=len(b), linked=linked))
+    act = n.components['StorageUnit'].get_activity_mask(sns)
+    expected = int(sum(int((act.loc[sns[d.pos.iloc[0]]] & act.loc[sns[d.pos.iloc[-1]]]).sum()) for _, d in seg.groupby('segment')))
+    check('QA-SOCSEG', f'{tag}: one segment-neutrality row per active StorageUnit x segment (no binaries)',
+          info.get('rows') == expected and info.get('segments') == seg.segment.nunique() and int(len(m.binaries) + len(m.integers)) == 0,
+          dict(rows=info.get('rows'), expected=expected, segments=info.get('segments')))
+    check('QA-SOCSEG', f'{tag}: segments never span a time gap or a period; stress events kept contiguous',
+          bool((seg.groupby('segment').period.nunique() == 1).all()) and bool((seg.groupby('segment').timestep.apply(
+              lambda t: (t.diff().dropna() == pd.Timedelta(hours=3)).all())).all()))
     nh = PM.no_harm_qa(n, m, tag)
     nh.to_csv(OUT / f'NATIVE_LOAD_NO_HARM_QA_{tag}.csv', index=False)
     if tag == 'S1_EARLIEST':

@@ -39,7 +39,7 @@ def main():
     head = subprocess.run(['git', '-C', str(ROOT), 'rev-parse', 'HEAD'], capture_output=True, text=True).stdout.strip()
     base = ROOT / c['baseline']['path']
     man = dict(status='A2_PRE_RUN_MANIFEST (NOT an approval)', work_package=c['authorization_source'],
-               work_package_lf_sha256=c['authorization_source_sha256'], stage='A2', stages=c['stages'], max_lp_calls=c['max_lp_calls'],
+               work_package_lf_sha256=c['authorization_source_sha256'], stage='A2', stages=c['stages'], max_scenario_attempts=A2G.budgets(c)[0], max_top_level_optimizer_calls=A2G.budgets(c)[1], optimizer_call_plan=c.get('optimizer_call_plan'),
                max_retries=c['max_retries'], config='workflow/config/config.byop_post_v16_a2.yaml',
                config_sha256_normalised=G.config_sha(A2G.CFG),
                baseline=dict(path=c['baseline']['path'], sha256=A2G.file_shas(base)['raw'] if base.exists() else None),
