@@ -17,13 +17,16 @@ import pandas as pd
 
 WF = Path(os.environ.get('BYOP_WF') or Path(__file__).resolve().parents[2])
 ORIG = WF / 'results/BYOP/post_v16_a2/POST_V16_A2_S0S1'
-PROBE = WF / 'results/BYOP/next07_s0_reserve_probe'
+PROBE = WF / os.environ.get('BYOP_PROBE_DIR', 'results/BYOP/next07_s0_reserve_probe')     # W5: the lossless probe reuses this script
 SEG = WF / 'results/BYOP/post_v16_a2_static/_structural_merged/A2_SOC_SEGMENT_MAP_S0.csv'
 BASE = WF / 'results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc'
 POCKET = ['p610 4', 'p620 6', 'p620 7']
 KEY_BUSES = ['p620 6', 'p620 7', 'p620 3', 'p610 4', 'p630 2']
 NIGHT_H = set(range(0, 10))
-CLASSES = [(0.8, 'RESERVE_REQUIREMENT_LARGE_CONTRIBUTOR'), (0.2, 'MIXED_CAUSES'), (-np.inf, 'RESERVE_REQUIREMENT_NOT_PRIMARY_IN_THIS_COUNTERFACTUAL')]
+PFX = os.environ.get('BYOP_OUT_PREFIX', 'W2')
+CLASSES = {'reserve': [(0.8, 'RESERVE_REQUIREMENT_LARGE_CONTRIBUTOR'), (0.2, 'MIXED_CAUSES'), (-np.inf, 'RESERVE_REQUIREMENT_NOT_PRIMARY_IN_THIS_COUNTERFACTUAL')],
+           'lossless': [(0.8, 'LOSS_BASIS_CONFIRMED_MAIN_CAUSE'), (0.2, 'LOSSES_MAJOR_NOT_ONLY_CAUSE'), (-np.inf, 'LOSSES_NOT_MAIN_CAUSE')]
+           }[os.environ.get('BYOP_PROBE_KIND', 'reserve')]
 
 
 def rd(p, **kw):
@@ -94,7 +97,7 @@ def main():
         add('A_shed_bus', 'night shed snapshots', f'2026 {b}', float(ns.original), float(ns.probe), 'count')
     bys = L.groupby(['run', 'period', 'bus', 'segment_kind', 'category'])[['weighted_MWh', 'raw_3h_MWh']].sum().reset_index()
     bys = bys[bys.weighted_MWh > 1e-6]
-    bys.to_csv(PROBE / 'W2_SHED_BY_BUS_YEAR_KIND.csv', index=False)
+    bys.to_csv(PROBE / f'{PFX}_SHED_BY_BUS_YEAR_KIND.csv', index=False)
     # B prices
     po = rd(ORIG / 'prices_S0.csv.gz', index_col=[0, 1], parse_dates=[1])
     pp = rd(sol / 'bus_marginal_price.csv.gz', index_col=[0, 1], parse_dates=[1])
@@ -155,7 +158,7 @@ def main():
     soc = rd(sol / 'storage_soc.csv.gz', index_col=[0, 1], parse_dates=[1]) if (sol / 'storage_soc.csv.gz').exists() else None
     if soc is not None:
         add('E_storage', 'total grid storage SOC - probe (original not persisted)', '2026 original pocket shed snapshots', None, float(soc.loc[sel].sum(axis=1).mean()), 'MWh')
-    SN.to_csv(PROBE / 'W2_FAR_WEST_2026_SNAPSHOTS.csv', index=False)
+    SN.to_csv(PROBE / f'{PFX}_FAR_WEST_2026_SNAPSHOTS.csv', index=False)
     # F investment, 2026-active fleet first (immediate vs feedback)
     lo = rd(ORIG / 'MAINLINE_ASSET_COMMITMENT_LEDGER.csv'); lo = lo[lo.scenario == 'S0']
     lpp = rd(PROBE / 'MAINLINE_ASSET_COMMITMENT_LEDGER.csv'); lpp = lpp[lpp.scenario == 'S0']
@@ -175,7 +178,7 @@ def main():
             if f'{c}_{r}' not in piv:
                 piv[f'{c}_{r}'] = 0.0
         piv[f'{c}_delta'] = piv[f'{c}_probe'] - piv[f'{c}_original']
-    piv.to_csv(PROBE / 'W2_PUBLIC_INVESTMENT_BY_CARRIER_YEAR.csv', index=False)
+    piv.to_csv(PROBE / f'{PFX}_PUBLIC_INVESTMENT_BY_CARRIER_YEAR.csv', index=False)
     a26 = piv[piv.build_period <= 2026]
     active26_same = bool(a26.empty or (a26.new_MW_delta.abs() < 1e-3).all())
     add('F_investment', 'public new MW active in 2026 (build <= 2026)', 'system', float(a26.new_MW_original.sum()), float(a26.new_MW_probe.sum()), 'MW',
@@ -194,7 +197,7 @@ def main():
         add('G_cost', c, 'PV 2026-2031', float(so[c]), float(sp[c]) if sp is not None and c in sp else None, 'USD')
     add('G_cost', 'LP objective', 'PV', float(json.loads((ORIG / 'S0_RESULT.json').read_text())['result']['objective']), float(res['result']['objective']), 'USD')
     C = pd.DataFrame(rows)
-    C.to_csv(PROBE / 'W2_RESERVE_CAUSAL_COMPARISON.csv', index=False)
+    C.to_csv(PROBE / f'{PFX}_RESERVE_CAUSAL_COMPARISON.csv', index=False)
     o_m, p_m = float(v_fw_night.original), float(v_fw_night.probe)
     red = (o_m - p_m) / o_m if o_m > 0 else None
     cls = 'DIAGNOSTIC_BLOCKED' if not acc.get('PASS') else next(c for th, c in CLASSES if red is not None and red >= th)
@@ -205,7 +208,7 @@ def main():
                 pocket_raw_3h_MWh=dict(original=float(raw.original), probe=float(raw.probe)),
                 fleet_2026_identical=active26_same, solve=dict(status=res['result'].get('status'), termination=res['result'].get('termination'),
                                                              seconds=res['result'].get('seconds'), objective=res['result'].get('objective')))
-    (PROBE / 'W2_RESERVE_CAUSAL_SUMMARY.json').write_text(json.dumps(summ, indent=1, default=str), encoding='utf-8')
+    (PROBE / f'{PFX}_RESERVE_CAUSAL_SUMMARY.json').write_text(json.dumps(summ, indent=1, default=str), encoding='utf-8')
     print(json.dumps(summ, indent=1, default=str))
     pd.set_option('display.width', 250); pd.set_option('display.max_colwidth', 70)
     print(C.to_string())

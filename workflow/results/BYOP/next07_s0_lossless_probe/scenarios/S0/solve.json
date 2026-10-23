@@ -1,0 +1,28 @@
+{
+ "case_id": "NEXT07_S0_LOSSLESS_PROBE",
+ "case_group": "NEXT07_S0_LOSSLESS_PROBE",
+ "run_id": "rearch_NEXT07_S0_LOSSLESS_PROBE_20261023T172631Z",
+ "scenario": "S0",
+ "relax": [],
+ "setting": "G-REAL",
+ "solve": {
+  "tag": "S0",
+  "status": "ok",
+  "termination": "optimal",
+  "objective": 48809146046.73134,
+  "seconds": 1492.0,
+  "n_vars": 2527882,
+  "n_cons": 6446206,
+  "integer_vars": 0,
+  "erm_dc_mode": "B",
+  "erm_poi_coeff_snapshot0": null,
+  "F2_load_shed_mc": {
+   "n": 68,
+   "min": 35685.0,
+   "max": 35685.0,
+   "n_inherited": 5,
+   "n_not_at_VOLL": 0
+  }
+ },
+ "timestamp_utc": "2026-10-23T17:52:31.395484+00:00"
+}

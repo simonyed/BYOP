@@ -1,0 +1,17 @@
+{
+ "approved": true,
+ "reasons": [],
+ "head": "9dce6b5d2f6ad50a0d0433f00c90aff74e162723",
+ "approved_git_sha": "bf61d873b1e2e1d0df9befd70d3b41896df967d6",
+ "stage": "S0",
+ "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+ "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_n07_lossless_probe.yaml",
+ "ledger": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/next07_s0_lossless_probe/A2_SOLVE_LOG.csv",
+ "diagnostic_reserve_MW": null,
+ "diagnostic": {
+  "kind": "S0_TRANSMISSION_LOSSLESS",
+  "key": "transmission_losses",
+  "value": 0,
+  "label": "DIAGNOSTIC_LOSSLESS_NOT_THE_FORMAL_LOSS_BASIS"
+ }
+}

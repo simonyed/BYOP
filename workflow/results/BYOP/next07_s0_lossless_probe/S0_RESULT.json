@@ -1,0 +1,81 @@
+{
+ "stage": "S0",
+ "parent_attempt_id": "S0#1",
+ "result": {
+  "tag": "S0",
+  "status": "ok",
+  "termination": "optimal",
+  "objective": 48809146046.73134,
+  "seconds": 1492.0,
+  "n_vars": 2527882,
+  "n_cons": 6446206,
+  "integer_vars": 0,
+  "erm_dc_mode": "B",
+  "erm_poi_coeff_snapshot0": null
+ },
+ "acceptance": {
+  "PASS": true,
+  "checks": {
+   "status_ok": true,
+   "termination_optimal": true,
+   "no_integer_vars": true,
+   "balance_residual_ok": true,
+   "reserve_ok": true,
+   "reserve_soc_ok": true,
+   "soc_segment_rows_present": true,
+   "expansion_pairs_equal": true,
+   "no_free_public_expansion": true,
+   "optimizer_calls_complete": true
+  },
+  "values": {
+   "balance_residual_MW_max": 1.8804499859470525e-06,
+   "reserve_slack_MW_min": 1.8276177797815762e-05,
+   "reserve_soc_slack_MWh_min": -2.3240234201700155e-07,
+   "existing_shed_MWh": 646.8065608161882,
+   "expansion_pair_max_abs_diff_MW": 0.0,
+   "free_public_links_built_MW": 0.0,
+   "optimizer_calls": [
+    {
+     "kind": "S0_COST",
+     "state": "DONE",
+     "status": "ok",
+     "termination": "optimal",
+     "n_objectives": "1"
+    }
+   ]
+  },
+  "diagnostic": {
+   "kind": "S0_TRANSMISSION_LOSSLESS",
+   "key": "transmission_losses",
+   "value": 0,
+   "label": "DIAGNOSTIC_LOSSLESS_NOT_THE_FORMAL_LOSS_BASIS",
+   "formal_requirement_MW": 3000.0
+  }
+ },
+ "gate": {
+  "approved": true,
+  "reasons": [],
+  "head": "9dce6b5d2f6ad50a0d0433f00c90aff74e162723",
+  "approved_git_sha": "bf61d873b1e2e1d0df9befd70d3b41896df967d6",
+  "stage": "S0",
+  "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+  "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_n07_lossless_probe.yaml",
+  "ledger": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/next07_s0_lossless_probe/A2_SOLVE_LOG.csv"
+ },
+ "saved_solution": {
+  "storage_soc.csv.gz": "ddb8ccd0f9799a7d2f3fba2cc0a2c4a01edc41de3f6f5965e498187b4c14a62a",
+  "storage_p_store.csv.gz": "0d1b8c9ef9228bbe420c8b6c7c90ef9baf5b00ad8dbfed476600950b2df30823",
+  "storage_p_dispatch.csv.gz": "71f4aafffd28bb2e02fb4f4fc50bab76cd20284925c3b73dc0f73d1e60fabcd4",
+  "line_p0.csv.gz": "3dc127584d3f242f83e3ba118e2dee268d4859a283d02dad519a1d4aab31e09c",
+  "link_p0.csv.gz": "f214732588575df41fa61b50f35bb88bc6ae10ecd3e838ec37d4d66242467246",
+  "generator_p.csv.gz": "127d1273e2ffe15156d66467bd3c22da96d7f798ad4e149319495e2fb99dcb69",
+  "bus_marginal_price.csv.gz": "4b2b55120d8b6cdbcf7870d4b2fbd0a2c750d3c8db90a2cfcb957fff35b400bc",
+  "snapshot_weightings.csv.gz": "2a867fe007d34ed722d4280ddb1c565f12757ce0db02bdd2e7d1190e2c3dab82",
+  "SOC_SEGMENT_POSTSOLVE_AUDIT.csv": "27fc4aa517f498b2a983fdfad2b038ac42409b97f512a89488ee1627976956ec",
+  "reserve_by_snapshot.csv.gz": "4760ddf2a287864054e791e3b1f5a11bd3c84445428d3ecf02c22eca381c1e34",
+  "thermal_online_cap.csv.gz": "2c1457d3bf96de458fd752585f5e84d3a1d79878dc1cff93715f323258960a05",
+  "thermal_reserve.csv.gz": "6c9530ea59c756b54d5e87d354e6599bab4a330877e726dec2b793185b15115c",
+  "thermal_available_cap.csv.gz": "3ac83555e7e4797c0e3a1eb76897fba7693af54ce5363c2fd2f564ced60cecd0",
+  "bess_reserve.csv.gz": "81a38dc296336013fb1ed3526962bc3301322980328f726bcd977701bbb1e76e"
+ }
+}
