@@ -5,3 +5,13 @@
 workflow/byop/** text eol=lf
 workflow/config/config.byop_*.yaml text eol=lf
 workflow/config/byop_*.csv text eol=lf
+
+# NEXT-02 A2-FIX-06: binaries are never text. The rule workflow/byop/** text eol=lf above had LF-converted a staged .csv.gz
+# (derived/ERCOT_OPERATIONAL_WIND_SOLAR_2023_2025.csv.gz, blob since 453e846f fails gzip CRC); later rules win.
+*.gz -text
+*.zip -text
+*.xlsx -text
+*.png -text
+*.pdf -text
+*.parquet -text
+*.nc -text

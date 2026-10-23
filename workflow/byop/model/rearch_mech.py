@@ -254,6 +254,11 @@ def ml_base_build(config):
     for j, i in enumerate(keep):
         w.iloc[j] = M.SNAP_HOURS if i in ex else (hours - M.SNAP_HOURS * len(ex)) / len(base) / 1.0
     n.snapshot_weightings = pd.DataFrame({c: w.values for c in sw0.columns}, index=n.snapshots)
+    import post_v16_mainline as PM
+    if PM.POST_V16['on'] and PM.POST_V16['stores_elapsed_h']:
+        # NEXT-02 A2-FIX-03: the SOC balance must advance by the elapsed snapshot duration (3 h), not by the ~77 h a sampled
+        # base snapshot represents in the annual energy / cost sums (objective and generators weightings keep that weight)
+        n.snapshot_weightings['stores'] = M.SNAP_HOURS
     STATE['stress_ts'] = {ts[i] for i in sidx}
     STATE['stress_sample'] = dict(days=STATE.get('stress_days'), snapshots=len(sidx), added_outside_sample=len(extra),
                                   weight_total_h=float(w.sum()))
@@ -1104,6 +1109,13 @@ def extra_rearch(n, snapshots):
                 m.add_constraints(lp_.sel(name=f'{b}_fwd') - lp_.sel(name=f'{b}_rev') == 0, name=f'S0CAL-sym_{b}')
     if ML['on']:
         ml_space(n, m)
+    import post_v16_mainline as PM
+    if PM.POST_V16['on']:                       # NEXT-01 A2-static: 3 GW operating reserve + RE/BESS firm certificate (build only)
+        STATE['pv16m_reserve'] = PM.add_operating_reserve(n, snapshots)
+        if PM.POST_V16['soc_segments']:         # NEXT-03 A2-FIX-08: no net SOC transfer across sampled-segment gaps / periods
+            STATE['pv16m_soc_segments'] = PM.add_segment_soc_neutrality(n, snapshots)
+        if PM.POST_V16['re_firm'] and STATE.get('dc'):
+            STATE['pv16m_re_firm'] = PM.add_re_bess_firm_certificate(n, snapshots, STATE['dc'], stress_mask)
     if M.CFG.get('tech_version') == 'TECH_COMP_2' and STATE.get('v2_pool_candidates') and 'Generator-p_nom' in m.variables:
         import byop_supply_pools as SP          # A0.2 P3c: common delivery pool per technology and delivery year (all sites / paths)
         STATE['v2_pool_rows'] = SP.add_pool_constraints(n, m, STATE['v2_pool_candidates'])
@@ -1173,8 +1185,21 @@ def lex_presolve(n, m):
         gm.setObjectiveN(expr, index=i, priority=10 * len(objs) - i, weight=-1.0, reltol=1e-6, abstol=1e-3, name=f'{kind}_{y}')
     gm.ModelSense = 1
     t0 = time.time()
-    gm.optimize()
+    import post_v16_a2_gate as A2G
+    cid = None
+    if A2G.ACCT['armed']:          # NEXT-03 A2-FIX-09: explicit child row BEFORE the hierarchical Gurobi call (refused outside a parent)
+        gm.update()
+        cid = A2G.child_start('S1_SPEED_HIERARCHY', n_vars=int(gm.NumVars), n_cons=int(gm.NumConstrs), n_objectives=len(objs))
+    try:
+        gm.optimize()
+    except BaseException as e:
+        if cid:
+            A2G.child_finish(cid, state='ERROR', status='exception', seconds=round(time.time() - t0, 1), note=f'{e.__class__.__name__}: {e}'[:300])
+        raise
     ok = gm.Status == gp.GRB.OPTIMAL
+    if cid:
+        A2G.child_finish(cid, state='DONE', status='ok' if ok else 'warning', termination='optimal' if ok else f'gurobi_status_{int(gm.Status)}',
+                         seconds=round(time.time() - t0, 1))
     res = []
     for i, (kind, y, expr, R) in enumerate(objs):
         # level values read from the final hierarchical solution (every level is kept within its tolerance there)
@@ -1641,8 +1666,11 @@ POST_V16_LEGACY_FLAGS = ('calibrate', 'erm_cal', 's0_calibrate', 's0_cal_file')
 
 
 def post_v16_guard(a):
-    """post-v1.6 package v1.1 (A0): the new main line uses only the SHA-pinned v1.6 baseline, never ERM-02 B or free S0CAL,
-    and stays refused until the A2 reserve-rule implementation and approval exist. Returns only through SystemExit."""
+    """post-v1.6 main line (NEXT-02 A2-FIX-07): only the SHA-pinned v1.6 baseline, never ERM-02 B / free S0CAL / legacy ERM, and
+    only through the independent A2 gate (byop/model/post_v16_a2_gate.py: own config, manifest, ledger, 2-call budget, S0 before
+    S1_EARLIEST). Fail-closed: any reason -> SystemExit(3). Returns the approved gate dict otherwise."""
+    import post_v16_a2_gate as A2G
+    c = A2G.load()
     reasons = [f'legacy flag --{f.replace("_", "-")} not allowed' for f in POST_V16_LEGACY_FLAGS if getattr(a, f, None)]
     if not a.base:
         reasons.append('--base missing (no fallback to the pre-v1.6 baseline)')
@@ -1650,10 +1678,125 @@ def post_v16_guard(a):
         reasons.append(f'--base {a.base} is not the v1.6 baseline')
     elif not Path(a.base).exists() or M.sha(a.base) != BP.BASE_TAMU_V16_SHA256:
         reasons.append('v1.6 baseline missing or SHA differs from the pinned v1.6 SHA')
-    reasons.append('POST_V16_MAINLINE_NOT_READY: the 3,000 MW / 1 h reserve rule (INV-N1) replacing the 15 % ERM is not yet '
-                   'in the multi-period mainline (A2 implementation item; A2 needs a separate approval)')
-    print(json.dumps(dict(POST_V16_GUARD='REFUSED', reasons=reasons), indent=1))
-    raise SystemExit(3)
+    if not a.mainline:
+        reasons.append('--post-v16 needs --mainline')
+    if a.config is None or Path(a.config).as_posix() != c['mainline_config']:
+        reasons.append(f"--config must be {c['mainline_config']}")
+    if a.out is None or Path(a.out).resolve() != (A2G.WF / c['out_dir']).resolve():
+        reasons.append(f"--out must be {c['out_dir']} (the A2 ledger directory)")
+    if a.no_harm != 'on':
+        reasons.append('--no-harm off is not allowed on the post-v1.6 line')
+    if a.attribution or a.relax:
+        reasons.append('--attribution / --relax are not part of A2 (no extra solves)')
+    sc = list(a.scenarios)
+    if sc not in (['S0'], ['S0', 'S1_EARLIEST'], ['S1_EARLIEST']):
+        reasons.append(f'--scenarios {sc}: A2 runs only S0, then S1_EARLIEST (S2 / S3 / attribution need a separate A3 approval)')
+    g = A2G.check(sc[0] if sc else 'S0', a.base) if not reasons else dict(approved=False, reasons=[])
+    reasons += g['reasons']
+    if reasons:
+        print(json.dumps(dict(POST_V16_GUARD='REFUSED', reasons=reasons), indent=1))
+        raise SystemExit(3)
+    return g
+
+
+PV16_LOCK = dict(inside=False, armed=False)
+
+
+def _arm_post_v16_optimizer_lock():
+    """A2: every linopy solve (PyPSA's cost stage) must run inside post_v16_solve_wrapper and is written to the optimizer-call
+    ledger as a child of the running parent attempt (NEXT-03 A2-FIX-09). linopy.Model.solve is a plain Python method, so this
+    controlled entry is reliable. gurobipy.Model is a C extension type and cannot be patched: the only direct gurobipy call on
+    this path (lex_presolve) is instrumented explicitly in its own code instead (A2G.child_start / child_finish)."""
+    import linopy
+    import post_v16_a2_gate as A2G
+    if PV16_LOCK['armed']:
+        return
+    s0 = linopy.Model.solve
+
+    def _solve(self, *a_, **k_):
+        if not PV16_LOCK['inside']:
+            raise SystemExit('POST_V16_A2: optimizer call outside a ledgered A2 solve refused (linopy.Model.solve)')
+        kind = {'S0': 'S0_COST', 'S1_EARLIEST': 'S1_COST'}.get(A2G.ACCT.get('stage'), 'UNPLANNED_LINOPY_SOLVE')
+        cid = A2G.child_start(kind, n_vars=int(self.nvars), n_cons=int(self.ncons), n_objectives=1)
+        t0 = time.time()
+        try:
+            r = s0(self, *a_, **k_)
+        except BaseException as e:
+            A2G.child_finish(cid, state='ERROR', status='exception', seconds=round(time.time() - t0, 1), note=f'{e.__class__.__name__}: {e}'[:300])
+            raise
+        st, tc = r if isinstance(r, tuple) and len(r) == 2 else (getattr(self, 'status', ''), getattr(self, 'termination_condition', ''))
+        A2G.child_finish(cid, state='DONE', status=st, termination=tc, seconds=round(time.time() - t0, 1))
+        return r
+    linopy.Model.solve = _solve
+    PV16_LOCK['armed'] = True
+    PV16_LOCK['gurobipy_locked'] = False     # by design: explicit instrumentation in lex_presolve, not a monkey patch
+
+
+def post_v16_solve_wrapper(solve0, a, out, cfg_path=None, gate_fn=None, state=None):
+    """every A2 scenario attempt: gate re-check -> parent STARTED row (persisted) -> solve (each top-level optimizer call is a
+    child row, STARTED before the call) -> acceptance (incl. child-call completeness, strict no-harm reference, S1 speed levels)
+    -> <stage>_RESULT.json -> parent DONE / ERROR. Any exception, missing / failed child or failed acceptance stops the run
+    (no retry, no parameter change, no row deleted)."""
+    import post_v16_a2_gate as A2G
+    cfg_path = cfg_path or A2G.CFG
+    gate_fn = gate_fn or (lambda tag: A2G.check(tag, a.base, cfg_path=cfg_path))
+    state = STATE if state is None else state
+    c, out_dir, log = A2G.paths(cfg_path)
+    A2G.arm_accounting(cfg_path)
+
+    def _solve(config, tag, out_, n, *args_, **kw_):
+        g = gate_fn(tag)
+        if not g['approved']:
+            raise SystemExit('POST_V16_A2_GATE REFUSED: ' + json.dumps(g['reasons']))
+        man_p = A2G.ROOT / c['manifest'] if not Path(c['manifest']).is_absolute() else Path(c['manifest'])
+        man_sha = A2G.file_shas(man_p)['raw'] if man_p.exists() else ''
+        aid = A2G.start_attempt(log, tag, man_sha, c['baseline']['sha256'])
+        A2G.ACCT.update(parent=aid, stage=tag)
+        t0 = time.time()
+        try:
+            PV16_LOCK['inside'] = True
+            res = solve0(config, tag, out_, n, *args_, **kw_)
+        except BaseException as e:
+            PV16_LOCK['inside'] = False
+            A2G.close_open_children(aid, f'parent failed: {e.__class__.__name__}: {e}')
+            A2G.finish_attempt(log, aid, state='ERROR', status='exception', failure_class=e.__class__.__name__, seconds=round(time.time() - t0, 1),
+                               **{'pass': False}, note=str(e)[:300])
+            A2G.ACCT.update(parent=None, stage=None)
+            raise
+        PV16_LOCK['inside'] = False
+        try:
+            acc = A2G.acceptance(n, tag, res, out_dir=out_dir if tag != 'S0' else None)
+            ok_c, calls = A2G.children_complete(aid, tag)
+            acc['checks']['optimizer_calls_complete'] = ok_c
+            acc['values']['optimizer_calls'] = calls
+            if tag == 'S1_EARLIEST':
+                lx = state.get('lex_log') or {}
+                acc['checks']['lex_presolve_optimal'] = bool(lx.get('optimal'))
+                acc['values']['lex_status'] = lx.get('status_name')
+                acc['values']['gurobi_hierarchy_objectives'] = lx.get('n_objectives')
+                served = {}
+                for d in state.get('dc', []):
+                    served[int(d['period'])] = served.get(int(d['period']), 0.0) + float(n.generators.p_nom_opt[d['S']])
+                ok_s, rows = A2G.speed_levels_hold(lx.get('levels'), served)
+                acc['checks']['speed_levels_hold_in_cost_stage'] = ok_s
+                acc['values']['speed_levels'] = rows
+                acc['checks']['no_harm_row_present'] = 'D24-no_harm_existing_customers' in n.model.constraints
+            acc['PASS'] = all(v is True for v in acc['checks'].values())
+            if tag == 'S0' and acc['PASS']:
+                acc['no_harm_reference'] = A2G.write_no_harm_reference(n, out_dir)
+        except Exception as e:
+            acc = dict(PASS=False, checks=dict(acceptance_computed=False), values=dict(error=repr(e)))
+        rec = dict(stage=tag, parent_attempt_id=aid, result=res, acceptance=acc, gate=g)
+        if acc.get('no_harm_reference'):
+            rec['no_harm_reference'] = acc['no_harm_reference']
+        (out_dir / f'{tag}_RESULT.json').write_text(json.dumps(rec, indent=1, default=str), encoding='utf-8')
+        A2G.finish_attempt(log, aid, state='DONE', status=res.get('status'), termination=res.get('termination'),
+                           failure_class='' if acc['PASS'] else 'ACCEPTANCE_FAILED', seconds=round(time.time() - t0, 1), **{'pass': acc['PASS']})
+        A2G.ACCT.update(parent=None, stage=None)
+        if not acc['PASS']:
+            raise SystemExit(f'POST_V16_A2 {tag} acceptance FAILED (STOP, no retry): ' + json.dumps(acc['checks'], default=str))
+        return res
+    return _solve
 
 
 def extra_rights(n, snapshots):
@@ -1806,12 +1949,13 @@ def main():
     ap.add_argument('--post-v16', action='store_true', help='post-v1.6 main line (execution package v1.1): v1.6 base only, no ERM-02 B / S0CAL')
     a = ap.parse_args()
     a.case_group = a.case_group or a.case_id
-    if a.post_v16:      # post-v1.6 guard BEFORE the legacy gate: wrong base or legacy calibration flags are refused, and the
-        post_v16_guard(a)   # mainline itself is not yet post-v1.6 ready (reserve rule INV-N1 is an A2 item) -> exit 3
+    pv16_gate = None
+    if a.post_v16:      # NEXT-02 A2 gate BEFORE anything is built or solved (fail-closed, exit 3); replaces the legacy E1 gate
+        pv16_gate = post_v16_guard(a)
     if a.mainline:      # E1 run gate BEFORE anything is built or solved
         ML.update(on=True, stress_days=a.stress_days, stress_line_derate=a.stress_line_derate)
         ml_select_siting(a.config)                       # siting variant inputs fixed before the gate hashes them
-        ML['gate'] = mainline_gate(a.config)
+        ML['gate'] = pv16_gate if pv16_gate is not None else mainline_gate(a.config)
         Path(a.out).mkdir(parents=True, exist_ok=True)
         (Path(a.out) / 'RUN_GATE.json').write_text(json.dumps(ML['gate'], indent=1))
         if not ML['gate']['approved']:
@@ -1820,7 +1964,7 @@ def main():
         a.setting, a.competing, a.regional_dc = 'G-REAL', 0.0, 'off'
         if a.byop_techs == ['RICE', 'SOFC_NG']:
             a.byop_techs = list(ML_TECHS)
-        if a.scenarios == ['S0', 'S1_EARLIEST', 'S1_ECON', 'S1_zero', 'S3', 'S3_mS1', 'S2', 'S2_off', 'S3_mS2']:
+        if a.scenarios == ['S0', 'S1_EARLIEST', 'S1_ECON', 'S1_zero', 'S3', 'S3_mS1', 'S2', 'S2_off', 'S3_mS2'] and not a.post_v16:
             a.scenarios = ml_config_scenarios(a.config)      # audit P0-2: the config list (incl. S3_mS2) is the run list
     global BASE_TAMU
     if a.base:
@@ -1849,6 +1993,16 @@ def main():
             _require_gate('M.solve')
             return _solve0(*args_, **kw_)
         M.solve = _gated_solve
+    if a.post_v16:          # NEXT-02 A2: post-v1.6 rules on, ledgered / accepted solves, and no optimizer call outside them
+        import post_v16_mainline as PM
+        PM.POST_V16['on'] = True
+        w2.POST_V16_NO_ERM['on'] = True
+        GCFG.update(s0_calibrate=False, s0_cal_file=None, no_harm=True)
+        M.solve = post_v16_solve_wrapper(M.solve, a, out)
+        _arm_post_v16_optimizer_lock()
+        if a.scenarios == ['S1_EARLIEST']:      # S0 solved in an earlier process: the SHA-pinned no-harm reference comes from disk
+            import post_v16_a2_gate as A2G
+            STATE['shed_S0'] = A2G.read_no_harm_reference(out)
     M.extra = extra_rearch
     w2.store_ERM_duals = V.store_erm_duals_tx
     V.GCFG.update(erm_scope='tx')

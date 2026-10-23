@@ -127,3 +127,21 @@ def cod(tech, order_year, county_fips=None, permit_path='DEFAULT_ENV', gas_lead_
 def firm_full_year(cod_real, year):
     """full-year Firm credit only for years entirely after COD (2027.25 -> no Firm in 2027)"""
     return float(year) >= cod_real - 1e-9
+
+
+def delivery_timeline(cod_real, years=range(2026, 2032), facility_MW=1.0, pue=1.0, availability=1.0):
+    """A3-static (NEXT-01 4.5): COD_real is NOT the first full Firm year. Per calendar year y:
+        energizable_fraction = clip(y + 1 - COD_real, 0, 1)        (same rule as v240_mech.avail_frac with fractional COD)
+        partial_year_service_MWh = energizable_fraction x 8760 x availability x facility_MW (energy only, may be > 0 in the COD year)
+        full_firm = energizable_fraction == 1                          (same rule as v240_mech.firm_frac with firm_full_year)
+        delivered_IT_MW_year_firm = facility_MW / pue if full_firm else 0   (reliable service is booked only for full years)
+        delivered_IT_MW_year_energy_equiv = energizable_fraction x facility_MW / pue
+    first_energizable_time = COD_real; first_full_firm_year = ceil(COD_real)"""
+    rows = []
+    for y in years:
+        f = float(min(max(y + 1 - cod_real, 0.0), 1.0))
+        full = f >= 1.0 - 1e-9
+        rows.append(dict(year=int(y), COD_real=float(cod_real), first_energizable_time=float(cod_real), first_full_firm_year=int(math.ceil(cod_real - 1e-9)),
+                         energizable_fraction=f, partial_year_service_MWh=f * 8760.0 * availability * facility_MW, full_firm=full,
+                         delivered_IT_MW_year_firm=(facility_MW / pue) if full else 0.0, delivered_IT_MW_year_energy_equiv=f * facility_MW / pue))
+    return rows

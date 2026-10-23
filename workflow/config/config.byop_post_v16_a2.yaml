@@ -1,0 +1,37 @@
+# BYOP-POST-V16-NEXT-02 (2026-10-22), stage A2: the first formal post-v1.6 multi-period LPs, S0 (No New AIDC) then S1_EARLIEST
+# (Grid-Only), ERCOT 16 research buses, 2026-2031, mid demand, single frozen weather year, LP only.
+# This file is the A2 REQUEST, not an approval: only the researcher sets run_authorization: APPROVED, approved_git_sha and
+# approved_by (config-only commit). byop/model/post_v16_a2_gate.py refuses every A2 optimizer call otherwise. It is independent of
+# config.byop_post_v16_a1.yaml: an A1 approval never carries over to A2 (and A2 never to S2 / S3).
+post_v16:
+  run_authorization: NOT_APPROVED
+  approved_git_sha: null
+  approved_by: null
+  authorization_source: current_work_pckg/BYOP_POST_V16_NEXT_03_v1.0/BYOP_POST_V16_NEXT_03_A1_A2_Formal_S0_S1_Execution_2026-10-22.md   # NEXT-03 (NEXT-02 text kept in place)
+  authorization_source_sha256: f1b1a2499182dd4000c4048834fe589f08d240a41cb4d4f2518d90431113c46b   # LF content SHA
+  manifest: current_work_pckg/A2_PRE_RUN_MANIFEST.json
+  stage: A2
+  stages: [S0, S1_EARLIEST]        # order fixed: S1_EARLIEST only after S0 PASSED (ledger DONE / ok / optimal / pass + S0_RESULT.json)
+  # NEXT-03 A2-FIX-09: two separate budgets (the NEXT-02 'max_lp_calls: 2' counted scenario attempts, not optimizer calls)
+  max_scenario_attempts: 2           # parent rows in A2_SOLVE_LOG.csv: S0, S1_EARLIEST
+  max_top_level_optimizer_calls: 3   # child rows in A2_OPTIMIZER_CALL_LOG.csv: S0_COST, S1_SPEED_HIERARCHY (one Gurobi hierarchical
+                                     # multi-objective call; its internal objective passes are audit metadata), S1_COST
+  optimizer_call_plan: {S0: [S0_COST], S1_EARLIEST: [S1_SPEED_HIERARCHY, S1_COST]}
+  max_retries: 0
+  mainline_config: config/config.byop_ercot_mainline_geo_dynamic_v1_baseline_v16.yaml
+  out_dir: results/BYOP/post_v16_a2/POST_V16_A2_S0S1
+  baseline:
+    path: workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc   # L2 only, no fallback
+    sha256: a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16
+  design:
+    snapshots: "3 h; sample_weeks 26 (weeks 0 and 26) + B7 stress days; stores weighting = elapsed 3 h (NEXT-02 A2-FIX-03)"
+    reserve: {requirement_MW: 3000, tau_h: 1, response_window_min: 10, storage_energy: "end AND start of every snapshot on the dispatch SOC"}
+    soc_segments: "NEXT-03 A2-FIX-08: every contiguous segment (sampled week / stress event) ends at >= the SOC PyPSA carries into it -> no net energy across time gaps or periods"
+    no_harm: "S1 existing-customer shed <= frozen S0 shed per load_shed unit x snapshot + 0.001 MW (D24)"
+    public_expansion: "AC_exp fwd / rev equal capacity (M2-line_sym), fwd priced once, corridor cumulative cap (M2-line_cap)"
+    committed_assets: "DWB Stage 2 + PBRP-765-A/B fixed in S0-S3; absolute cost ledger outside the objective (inputs/grid/COMMITTED_PUBLIC_ASSET_COSTS.csv)"
+    legacy_off: [ERM-02 B, 15 % snapshot ERM, shadow SOC, S0CAL]
+  solver: gurobi
+  solver_options: "as rearch_mech / v240 M.solve (Method 2 barrier; Crossover per the existing mainline path); threads from THREADS"
+  acceptance: {termination: optimal, balance_residual_MW_max: 1.0e-3, reserve_slack_MW_min: -1.0e-3, no_harm_excess_MW_max: 2.0e-3, no_harm_reference: 'S0_NO_HARM_REFERENCE.csv (SHA in S0_RESULT.json, no fill)',
+               expansion_pair_max_abs_diff_MW: 1.0e-3, free_public_links_built_MW_max: 1.0e-3}
