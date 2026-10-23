@@ -373,6 +373,7 @@ current_work_pckg/**/*.zip
 !current_work_pckg/NEXT_02_RETURN_PACKAGE.zip
 !current_work_pckg/NEXT_03_RETURN_PACKAGE.zip
 !current_work_pckg/OVERNIGHT_RETURN_PACKAGE.zip
+!current_work_pckg/BYOP_NEXT_06/NEXT_06_RETURN_PACKAGE.zip
 !current_work_pckg/_completed/*/NEXT_02_RETURN_PACKAGE.zip
 !current_work_pckg/_completed/*/NEXT_03_RETURN_PACKAGE.zip
 !current_work_pckg/_completed/*/A0_RETURN_PACKAGE.zip
