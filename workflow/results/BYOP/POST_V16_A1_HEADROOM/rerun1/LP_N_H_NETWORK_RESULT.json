@@ -1,0 +1,60 @@
+{
+ "stage": "LP_N_H_NETWORK",
+ "attempt_id": "LP_N_H_NETWORK#1",
+ "solver_options": {
+  "Method": 2,
+  "Crossover": 1,
+  "BarConvTol": 1e-08,
+  "NumericFocus": 2,
+  "BarHomogeneous": 1,
+  "Threads": 10
+ },
+ "gate": {
+  "approved": true,
+  "reasons": [],
+  "head": "4fc1bd7cfe7f1747cc1d8fa74a92df7ef7e8190d",
+  "approved_git_sha": "07c881a4c643a800dfc55257716671e2791a48ab",
+  "stage": "LP_N_H_NETWORK",
+  "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+  "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a1.yaml"
+ },
+ "outputs_written": false,
+ "structure": {
+  "n_vars": 373249,
+  "n_cons": 967980,
+  "components": 1,
+  "buses": 63,
+  "lines": 162,
+  "generators": 280,
+  "storage_units": 43,
+  "snapshots": 432,
+  "lambda_coefficients": 16,
+  "integer_vars": 0
+ },
+ "headroom": {
+  "eligible_thermal": 125,
+  "eligible_thermal_MW": 68010.7,
+  "storage": 43,
+  "storage_MW": 13068.4
+ },
+ "status": "warning",
+ "termination": "infeasible",
+ "seconds": 1155.2,
+ "acceptance": {
+  "checks": {
+   "status_ok": false,
+   "termination_optimal": false,
+   "outputs_present": false,
+   "lambda_finite_nonneg": false,
+   "lambda_below_artificial_upper": false,
+   "existing_shed_zero_B0": false,
+   "existing_shed_zero_BL": false,
+   "reserve_met": false,
+   "balance_residual_ok": false
+  },
+  "PASS": false,
+  "lambda_upper_MW": 200000.0,
+  "balance_tolerance_MW": 0.001
+ },
+ "failure_class": "baseline_pressure_infeasible_network_side"
+}

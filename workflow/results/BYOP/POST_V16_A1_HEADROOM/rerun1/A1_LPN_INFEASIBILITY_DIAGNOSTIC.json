@@ -1,0 +1,76 @@
+{
+ "solver_calls": 0,
+ "witness": "LP-R rerun1 optimal dispatch (non-unique)",
+ "limits": "v1.6 s_nom x s_max_pu (LP-N)",
+ "note": "static ratings",
+ "B0_lines_over": 57,
+ "BL_lines_over": 58,
+ "B0_hours_with_overload": 216,
+ "B0_hours": 216,
+ "top_B0": [
+  {
+   "line": "TL11",
+   "bus0": "p600 1",
+   "bus1": "p600 3",
+   "limit_MW": 676.1999999999999,
+   "hours_over_limit": 121,
+   "max_ratio": 3.7719447732301377
+  },
+  {
+   "line": "TL4",
+   "bus0": "p600 0",
+   "bus1": "p600 3",
+   "limit_MW": 1148.0,
+   "hours_over_limit": 66,
+   "max_ratio": 2.122174464886377
+  },
+  {
+   "line": "TL83",
+   "bus0": "p630 4",
+   "bus1": "p630 9",
+   "limit_MW": 2958.8999999999996,
+   "hours_over_limit": 33,
+   "max_ratio": 1.4258792735292414
+  },
+  {
+   "line": "TL129",
+   "bus0": "p650 4",
+   "bus1": "p650 6",
+   "limit_MW": 693.0,
+   "hours_over_limit": 121,
+   "max_ratio": 2.726558157775688
+  },
+  {
+   "line": "TL133",
+   "bus0": "p650 5",
+   "bus1": "p670 4",
+   "limit_MW": 3243.5003791469194,
+   "hours_over_limit": 31,
+   "max_ratio": 1.3634666871297552
+  },
+  {
+   "line": "TL117",
+   "bus0": "p650 0",
+   "bus1": "p650 4",
+   "limit_MW": 1414.0,
+   "hours_over_limit": 39,
+   "max_ratio": 1.7202497603532834
+  },
+  {
+   "line": "TL120",
+   "bus0": "p650 1",
+   "bus1": "p650 2",
+   "limit_MW": 482.99999999999994,
+   "hours_over_limit": 100,
+   "max_ratio": 2.6521628555349244
+  },
+  {
+   "line": "TL104",
+   "bus0": "p640 1",
+   "bus1": "p640 4",
+   "limit_MW": 907.9,
+   "hours_over_limit": 49,
+   "max_ratio": 1.838933218512365
+  }
+ ]
+}

@@ -1,0 +1,73 @@
+{
+ "stage": "LP_R_H_RESOURCE",
+ "attempt_id": "LP_R_H_RESOURCE#1",
+ "solver_options": {
+  "Method": 2,
+  "Crossover": 1,
+  "BarConvTol": 1e-08,
+  "NumericFocus": 2,
+  "BarHomogeneous": 1,
+  "Threads": 10
+ },
+ "gate": {
+  "approved": true,
+  "reasons": [],
+  "head": "4fc1bd7cfe7f1747cc1d8fa74a92df7ef7e8190d",
+  "approved_git_sha": "07c881a4c643a800dfc55257716671e2791a48ab",
+  "stage": "LP_R_H_RESOURCE",
+  "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+  "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a1.yaml"
+ },
+ "outputs_written": true,
+ "structure": {
+  "n_vars": 373249,
+  "n_cons": 967980,
+  "components": 1,
+  "buses": 63,
+  "lines": 162,
+  "generators": 280,
+  "storage_units": 43,
+  "snapshots": 432,
+  "lambda_coefficients": 16,
+  "integer_vars": 0
+ },
+ "headroom": {
+  "eligible_thermal": 125,
+  "eligible_thermal_MW": 68010.7,
+  "storage": 43,
+  "storage_MW": 13068.4
+ },
+ "status": "ok",
+ "termination": "optimal",
+ "seconds": 93.0,
+ "saved_solution": {
+  "pv16_variables_dir": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/POST_V16_A1_HEADROOM/rerun1/LP_R_H_RESOURCE_SOLUTION",
+  "network": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/POST_V16_A1_HEADROOM/rerun1/LP_R_H_RESOURCE_SOLVED_NETWORK.nc",
+  "network_sha256": "1f535d974badd4bc8139ce4bafdf9a56f72bf4a476be586aa424f77e7004a93a"
+ },
+ "lambda_facility_MW": 2587.7721847264374,
+ "lambda_IT_MW": 2253.3718083650624,
+ "existing_shed_MWh_B0": 0.0,
+ "existing_shed_MWh_BL": 0.0,
+ "reserve_min_slack_MW": -9.094947017729282e-13,
+ "reserve_storage_simultaneous_MW_max": 3000.0000000000005,
+ "lines_near_limit_BL": 0,
+ "balance_residual_max_abs_MW": 1.1823431123048067e-11,
+ "acceptance": {
+  "checks": {
+   "status_ok": true,
+   "termination_optimal": true,
+   "outputs_present": true,
+   "lambda_finite_nonneg": true,
+   "lambda_below_artificial_upper": true,
+   "existing_shed_zero_B0": true,
+   "existing_shed_zero_BL": true,
+   "reserve_met": true,
+   "balance_residual_ok": true
+  },
+  "PASS": true,
+  "lambda_upper_MW": 200000.0,
+  "balance_tolerance_MW": 0.001
+ },
+ "failure_class": ""
+}

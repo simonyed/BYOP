@@ -1,0 +1,3 @@
+attempt_id,stage,attempt,state,started_utc,finished_utc,status,termination,failure_class,pass,seconds,manifest_sha256,base_sha256,note
+LP_R_H_RESOURCE#1,LP_R_H_RESOURCE,1,DONE,2026-10-23T04:04:26+00:00,2026-10-23T04:06:00+00:00,ok,optimal,,True,93.0,d3c8b668e508dacc40f2d9ad3016ba9cd8c1506fe1f597da1c66d321777ba010,a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16,
+LP_N_H_NETWORK#1,LP_N_H_NETWORK,1,DONE,2026-10-23T04:06:21+00:00,2026-10-23T04:25:37+00:00,warning,infeasible,baseline_pressure_infeasible_network_side,False,1155.2,d3c8b668e508dacc40f2d9ad3016ba9cd8c1506fe1f597da1c66d321777ba010,a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16,
