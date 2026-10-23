@@ -1,0 +1,42 @@
+item,bus,S0_2026,v16_baseline_2025,S0_components,note,name,x_S0,x_v16,carrier,extendable,build_year
+load_MW_mean_at_shed,p610 4,300.7881962245241,298.0086758384012,p610 4 load 2025,,,,,,,
+load_MW_mean_at_shed,p620 4,201.2308623286551,199.37133030186618,p620 4 load 2025,,,,,,,
+load_MW_mean_at_shed,p620 6,109.84973459814725,108.83463633113342,p620 6 load 2025,,,,,,,
+load_MW_mean_at_shed,p620 7,109.84973459814725,108.83463633113342,p620 7 load 2025,,,,,,,
+fixed_generation_available_MW_mean_at_shed,p610 4,4.613493525556156,4.666474604358275,p610 4 solar 2025fleet r2100:solar:561,extendable candidates active in 2026 at this bus: 0,,,,,,
+storage_MW,p610 4,125.0,125.0,p610 4 battery committed 2028;p610 4 4hr_battery_storage pub2027;p610 4 4hr_battery_storage pub2028;p610 4 4hr_battery_storage pub2029;p610 4 4hr_battery_storage pub2030;p610 4 4hr_battery_storage pub,,,,,,,
+fixed_generation_available_MW_mean_at_shed,p620 4,352.87343350222994,353.24344080626406,p620 4 onwind 2025fleet r2100:onwind:795;p620 4 onwind committed 2026:onwind:162,extendable candidates active in 2026 at this bus: 0,,,,,,
+storage_MW,p620 4,9.9,9.9,p620 4 battery 2025fleet r2100;p620 4 4hr_battery_storage pub2027;p620 4 4hr_battery_storage pub2028;p620 4 4hr_battery_storage pub2029;p620 4 4hr_battery_storage pub2030;p620 4 4hr_battery_storage pu,,,,,,,
+fixed_generation_available_MW_mean_at_shed,p620 6,0.0,0.0,,extendable candidates active in 2026 at this bus: 0,,,,,,
+storage_MW,p620 6,0.0,0.0,p620 6 4hr_battery_storage pub2027;p620 6 4hr_battery_storage pub2028;p620 6 4hr_battery_storage pub2029;p620 6 4hr_battery_storage pub2030;p620 6 4hr_battery_storage pub2031;p620 6 8hr_battery_storag,,,,,,,
+fixed_generation_available_MW_mean_at_shed,p620 7,0.975912306457758,0.975912306457758,p620 7 solar 2025fleet r2100:solar:108,extendable candidates active in 2026 at this bus: 0,,,,,,
+storage_MW,p620 7,0.0,0.0,p620 7 4hr_battery_storage pub2027;p620 7 4hr_battery_storage pub2028;p620 7 4hr_battery_storage pub2029;p620 7 4hr_battery_storage pub2030;p620 7 4hr_battery_storage pub2031;p620 7 8hr_battery_storag,,,,,,,
+line_rating_MW,p600 2-p620 4,306.48838103336874,306.48838103336874,,,TL15,42.47837385871794,42.47837385871794,,,
+line_rating_MW,p610 4-p620 0,461.90374702456126,461.90374702456126,,,TL35,93.84349595124252,93.84349595124252,,,
+line_rating_MW,p610 4-p620 7,137.49249980550974,137.49249980550974,,,TL36,54.22540249411634,54.22540249411634,,,
+line_rating_MW,p620 4-p620 6,118.97897413246488,118.97897413246488,,,TL43,88.2164418518175,88.2164418518175,,,
+line_rating_MW,p620 6-p620 7,68.6,68.6,,,TL44,71.609672,71.609672,,,
+link,p600 2->p620 4,0.0,,,,LTL15_exp2030_fwd,,,AC_exp,True,2030.0
+link,p620 4->p600 2,0.0,,,,LTL15_exp2030_rev,,,AC_exp,True,2030.0
+link,p600 2->p620 4,0.0,,,,LTL15_exp2031_fwd,,,AC_exp,True,2031.0
+link,p620 4->p600 2,0.0,,,,LTL15_exp2031_rev,,,AC_exp,True,2031.0
+link,p610 4->p620 0,0.0,,,,LTL35_exp2030_fwd,,,AC_exp,True,2030.0
+link,p620 0->p610 4,0.0,,,,LTL35_exp2030_rev,,,AC_exp,True,2030.0
+link,p610 4->p620 0,0.0,,,,LTL35_exp2031_fwd,,,AC_exp,True,2031.0
+link,p620 0->p610 4,0.0,,,,LTL35_exp2031_rev,,,AC_exp,True,2031.0
+link,p610 4->p620 7,0.0,,,,LTL36_exp2030_fwd,,,AC_exp,True,2030.0
+link,p620 7->p610 4,0.0,,,,LTL36_exp2030_rev,,,AC_exp,True,2030.0
+link,p610 4->p620 7,0.0,,,,LTL36_exp2031_fwd,,,AC_exp,True,2031.0
+link,p620 7->p610 4,0.0,,,,LTL36_exp2031_rev,,,AC_exp,True,2031.0
+link,p620 4->p620 6,0.0,,,,LTL43_exp2030_fwd,,,AC_exp,True,2030.0
+link,p620 6->p620 4,0.0,,,,LTL43_exp2030_rev,,,AC_exp,True,2030.0
+link,p620 4->p620 6,0.0,,,,LTL43_exp2031_fwd,,,AC_exp,True,2031.0
+link,p620 6->p620 4,0.0,,,,LTL43_exp2031_rev,,,AC_exp,True,2031.0
+link,p620 6->p620 7,0.0,,,,LTL44_exp2030_fwd,,,AC_exp,True,2030.0
+link,p620 7->p620 6,0.0,,,,LTL44_exp2030_rev,,,AC_exp,True,2030.0
+link,p620 6->p620 7,0.0,,,,LTL44_exp2031_fwd,,,AC_exp,True,2031.0
+link,p620 7->p620 6,0.0,,,,LTL44_exp2031_rev,,,AC_exp,True,2031.0
+link,p620 4->p620 0,509.9999999999909,,,,DWB_Stage_2_fwd,,,AC_base_committed,False,2026.0
+link,p620 0->p620 4,509.9999999999909,,,,DWB_Stage_2_rev,,,AC_base_committed,False,2026.0
+link,p650 7->p610 4,0.0,,,,PBRP-765-B_fwd,,,AC_committed,False,2031.0
+link,p610 4->p650 7,0.0,,,,PBRP-765-B_rev,,,AC_committed,False,2031.0

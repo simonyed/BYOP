@@ -1670,7 +1670,8 @@ def post_v16_guard(a):
     only through the independent A2 gate (byop/model/post_v16_a2_gate.py: own config, manifest, ledger, 2-call budget, S0 before
     S1_EARLIEST). Fail-closed: any reason -> SystemExit(3). Returns the approved gate dict otherwise."""
     import post_v16_a2_gate as A2G
-    c = A2G.load()
+    cfgp = Path(a.a2_config).resolve() if getattr(a, 'a2_config', None) else A2G.CFG   # NEXT-06: an independent A2-type config
+    c = A2G.load(cfgp)
     reasons = [f'legacy flag --{f.replace("_", "-")} not allowed' for f in POST_V16_LEGACY_FLAGS if getattr(a, f, None)]
     if not a.base:
         reasons.append('--base missing (no fallback to the pre-v1.6 baseline)')
@@ -1691,7 +1692,11 @@ def post_v16_guard(a):
     sc = list(a.scenarios)
     if sc not in (['S0'], ['S0', 'S1_EARLIEST'], ['S1_EARLIEST']):
         reasons.append(f'--scenarios {sc}: A2 runs only S0, then S1_EARLIEST (S2 / S3 / attribution need a separate A3 approval)')
-    g = A2G.check(sc[0] if sc else 'S0', a.base) if not reasons else dict(approved=False, reasons=[])
+    for k, v in (c.get('run_args') or {}).items():          # NEXT-06: a diagnostic config pins its exact run arguments
+        got = list(a.scenarios) if k == 'scenarios' else getattr(a, k, None)
+        if (got or None) != (v or None):
+            reasons.append(f'--{k.replace("_", "-")} {got} differs from the config run_args {v}')
+    g = A2G.check(sc[0] if sc else 'S0', a.base, cfg_path=cfgp) if not reasons else dict(approved=False, reasons=[])
     reasons += g['reasons']
     if reasons:
         print(json.dumps(dict(POST_V16_GUARD='REFUSED', reasons=reasons), indent=1))
@@ -1764,6 +1769,11 @@ def post_v16_solve_wrapper(solve0, a, out, cfg_path=None, gate_fn=None, state=No
             A2G.ACCT.update(parent=None, stage=None)
             raise
         PV16_LOCK['inside'] = False
+        try:                                                   # NEXT-06: persist the solved state BEFORE acceptance / collection
+            import post_v16_mainline as PM
+            saved = PM.persist_solution(n, out_dir / 'solution' / tag)
+        except Exception as e:
+            saved = dict(error=repr(e)[:300])
         try:
             acc = A2G.acceptance(n, tag, res, out_dir=out_dir if tag != 'S0' else None)
             ok_c, calls = A2G.children_complete(aid, tag)
@@ -1786,7 +1796,7 @@ def post_v16_solve_wrapper(solve0, a, out, cfg_path=None, gate_fn=None, state=No
                 acc['no_harm_reference'] = A2G.write_no_harm_reference(n, out_dir)
         except Exception as e:
             acc = dict(PASS=False, checks=dict(acceptance_computed=False), values=dict(error=repr(e)))
-        rec = dict(stage=tag, parent_attempt_id=aid, result=res, acceptance=acc, gate=g)
+        rec = dict(stage=tag, parent_attempt_id=aid, result=res, acceptance=acc, gate=g, saved_solution=saved)
         if acc.get('no_harm_reference'):
             rec['no_harm_reference'] = acc['no_harm_reference']
         (out_dir / f'{tag}_RESULT.json').write_text(json.dumps(rec, indent=1, default=str), encoding='utf-8')
@@ -1947,6 +1957,8 @@ def main():
     ap.add_argument('--interrupt-cap', type=float, default=0.005, help='D2.3 unplanned interruption cap (share of planned annual facility MWh)')
     ap.add_argument('--no-harm', default='on', choices=['on', 'off'], help='D2.4 existing-customer shed <= frozen S0 per bus x snapshot')
     ap.add_argument('--post-v16', action='store_true', help='post-v1.6 main line (execution package v1.1): v1.6 base only, no ERM-02 B / S0CAL')
+    ap.add_argument('--a2-config', default=None, help='NEXT-06: an independent A2-type gate config (own manifest / ledger / budget / run_args); '
+                    'default config/config.byop_post_v16_a2.yaml')
     a = ap.parse_args()
     a.case_group = a.case_group or a.case_id
     pv16_gate = None
@@ -1998,7 +2010,7 @@ def main():
         PM.POST_V16['on'] = True
         w2.POST_V16_NO_ERM['on'] = True
         GCFG.update(s0_calibrate=False, s0_cal_file=None, no_harm=True)
-        M.solve = post_v16_solve_wrapper(M.solve, a, out)
+        M.solve = post_v16_solve_wrapper(M.solve, a, out, cfg_path=Path(a.a2_config).resolve() if a.a2_config else None)
         _arm_post_v16_optimizer_lock()
         if a.scenarios == ['S1_EARLIEST']:      # S0 solved in an earlier process: the SHA-pinned no-harm reference comes from disk
             import post_v16_a2_gate as A2G

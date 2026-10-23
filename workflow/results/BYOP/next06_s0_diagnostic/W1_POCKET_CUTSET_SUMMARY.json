@@ -1,0 +1,18 @@
+{
+ "cut_MW": 580.8827211570261,
+ "shed_snapshots": 42,
+ "S0_shed_MW_sum": 1016.4411101485855,
+ "static_deficit_2026_MW_sum": 0.0,
+ "static_deficit_2025_MW_sum": 0.0,
+ "corr": null,
+ "pocket_load_2025_range_at_shed": [
+  494.8910814668008,
+  552.5230445683528
+ ],
+ "full_year_hours_static_deficit_2025": 0,
+ "full_year_static_deficit_MWh_2025": 0.0,
+ "full_year_hours_static_deficit_2026": 9,
+ "full_year_static_deficit_MWh_2026": 23.71537829503677,
+ "pocket_load_2025_max": 587.2046566778394,
+ "pocket_load_2025_mean": 502.7040586848882
+}

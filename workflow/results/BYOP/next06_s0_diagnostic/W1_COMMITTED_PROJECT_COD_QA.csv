@@ -1,0 +1,5 @@
+asset,source_ISD,model_build_period,model_avail_2026,model_avail_2027_plus,physical_note,on_pocket_cut,evidence_class
+DWB_Stage_2 (links p620 4 <-> p620 0),2026.49,2026,0.51 x 1000 MW = 510 MW in EVERY 2026 snapshot (uniform avail_frac derate),1000 MW,ISD about end of June 2026: realistically 0 MW in the Jan sampled week and 1000 MW in the Jul week; the uniform derate understates Jan and overstates Jul in the same way in all S0-S3,NO (pocket fed by TL35 p620 0-p610 4 and TL43 p620 4-p620 6; DWB is upstream between p620 4 and p620 0),MODEL_DIRECT (S0 build) / SOURCED ISD
+PBRP-765-A,2031.0,2031,0,2031: 2400 MW,cannot help 2026 (correct),NO,PROXY ISD
+PBRP-765-B (p650 7 <-> p610 4),2031.5,2031,0,2031: 0.5 x 2400 MW,"terminates at p610 4 (inside the pocket), from 2031 only",YES from 2031,PROXY ISD
+"Public candidates at p620 6 / p620 7 / p610 4 (BESS, wind, solar, CCGT)",lead-time based,first 2027 (BESS),0 (no candidate reaches COD in 2026),S0 builds local BESS from 2027; sampled-week shed disappears,"consistent with procurement leads; not an activity-mask error (COD audit 1,818 / 1,818 PASS)",inside pocket,MODEL_DIRECT

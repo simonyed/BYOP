@@ -1,0 +1,31 @@
+{
+ "solver_calls": 0,
+ "focus": [
+  "p620 6",
+  "p620 7"
+ ],
+ "ring_buses": [
+  "p610 4",
+  "p620 4",
+  "p620 6",
+  "p620 7"
+ ],
+ "ring_lines": [
+  "TL15",
+  "TL35",
+  "TL36",
+  "TL43",
+  "TL44"
+ ],
+ "lines_changed_vs_pre": 18,
+ "lines_impedance_review": 0,
+ "shed_snapshots_2026_focus": 42,
+ "voll_bus_sets": {
+  "p620 6": 22,
+  "p620 6;p620 7": 14,
+  "p620 3;p620 6": 2,
+  "p600 1;p620 1;p620 6": 1,
+  "p600 1;p620 1;p620 3;p620 6;p620 7;p630 13;p630 14": 1
+ },
+ "lmp_max_outside_far_west_at_shed": 35684.999997400286
+}

@@ -1,0 +1,57 @@
+{
+ "solver_calls": 0,
+ "source_dir": "workflow/results/BYOP/post_v16_a2/POST_V16_A2_S0S1",
+ "shed_file": "S0_shed_by_snapshot_frozen.csv.gz",
+ "shed_file_sha256": "fa55df7c259117295877a0a967d57823f10c9bf436e518aa4345988f5ed1c1ec",
+ "shed_shape": [
+  816,
+  68
+ ],
+ "s0_result_sha256": "d42b841c35a152a220baf41009e7d78892677c910fb26e8bfe21361cf2f1dbd5",
+ "s0_result_existing_shed_MWh": 54205.77909516401,
+ "segment_map": "workflow/results/BYOP/post_v16_a2_static/_structural_merged/A2_SOC_SEGMENT_MAP_S0.csv",
+ "segment_map_sha256": "dd7c08eb33e4e66ce71b4690118fb792aadafcdb0b7d558230a7d3f1586c2ffe",
+ "baseline_sha256": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16",
+ "weights_sum_h_by_period": {
+  "2026": 8760.0,
+  "2027": 8760.0,
+  "2028": 8760.0,
+  "2029": 8760.0,
+  "2030": 8760.0,
+  "2031": 8760.0
+ },
+ "weight_values_h": [
+  3.0,
+  77.5714
+ ],
+ "reconstructed_total_MWh": 54205.77710058691,
+ "reported_total_MWh": 54205.7791,
+ "reconstructed_2026_MWh": 51049.85466590708,
+ "reported_2026_MWh": 51049.2775,
+ "by_year_weighted_MWh": {
+  "2026": 51049.85466590707,
+  "2027": 2065.4846026815185,
+  "2028": 1022.9095559330912,
+  "2029": 67.52827606521959
+ },
+ "by_year_raw_3h_MWh": {
+  "2026": 5990.800197305894,
+  "2027": 2065.4846026815185,
+  "2028": 1022.9095559330912,
+  "2029": 67.52827606521959
+ },
+ "by_category_weighted_MWh": {
+  "inherited_ramp": 1.3409641697488563,
+  "native": 54204.43613641716
+ },
+ "top10_snapshot_share": 0.39619755947554564,
+ "weighted_by_segment_kind_MWh": {
+  "B7_STRESS_ONLY": 7334.00204991556,
+  "SAMPLED_WEEK": 46871.77505067134
+ },
+ "snapshots_with_shed": 66,
+ "max_shed_MW_2026": 390.94823669873585,
+ "reconstructed_2026_native_only_MWh": 51049.27729657218,
+ "note_2026": "the reported 2026 figure (shed_by_bus_S0.csv) counts only \"<bus> load_shed\" units (native) and drops columns <= 1e-3 MWh; the reconstruction includes the inherited-ramp unit as well",
+ "RECONCILIATION": "PASS"
+}

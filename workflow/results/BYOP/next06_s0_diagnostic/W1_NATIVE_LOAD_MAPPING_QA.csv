@@ -1,0 +1,5 @@
+bus,native_load_components,native_load_names,annual_energy_TWh,peak_MW,min_MW,inherited_ramp_IT_MW,note
+p610 4,1,p610 4 load 2025,2.544877283608755,339.3437370969513,237.8642308064162,0.0,"baseline p_set (3 h, 2030 calendar = model weather year); S0 has no study AIDC"
+p620 4,1,p620 4 load 2025,1.7025530148095673,227.02497537794125,159.13398492069803,0.0,"baseline p_set (3 h, 2030 calendar = model weather year); S0 has no study AIDC"
+p620 6,1,p620 6 load 2025,0.9294051352354328,123.930459790444,86.86950802076346,0.0,"baseline p_set (3 h, 2030 calendar = model weather year); S0 has no study AIDC"
+p620 7,1,p620 7 load 2025,0.9294051352354328,123.930459790444,86.86950802076346,0.0,"baseline p_set (3 h, 2030 calendar = model weather year); S0 has no study AIDC"

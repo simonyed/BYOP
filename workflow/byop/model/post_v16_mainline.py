@@ -494,3 +494,64 @@ def add_segment_soc_neutrality(n, snapshots):
 def xr_const(names, vals):
     import xarray as xr
     return xr.DataArray(np.asarray(vals, dtype=float), coords={'name': names}, dims='name')
+
+
+# ------------------------------------------------------------------------------------------------ NEXT-06: persist the solved state
+def soc_segment_postsolve_audit(n):
+    """per StorageUnit x period x contiguous segment: SOC carried in (exact from PyPSA's balance at the first snapshot, standing
+    loss as in the model), SOC at the end, end - start, charge / discharge energy (w = stores weighting), and the cyclic flags.
+    Energy neutrality is reported from the numbers, not from the constraint count."""
+    su = n.storage_units
+    if su.empty or n.storage_units_t.state_of_charge.empty:
+        return pd.DataFrame()
+    seg = soc_segments(n.snapshots)
+    soc = n.storage_units_t.state_of_charge
+    ps = n.storage_units_t.p_store.reindex(columns=soc.columns).fillna(0.0)
+    pdp = n.storage_units_t.p_dispatch.reindex(columns=soc.columns).fillna(0.0)
+    w = n.snapshot_weightings.stores
+    act = n.components['StorageUnit'].get_activity_mask(n.snapshots)
+    rows = []
+    for k, d in seg.groupby('segment'):
+        sns = n.snapshots[d.pos.values]
+        f, l = sns[0], sns[-1]
+        for u in soc.columns:
+            if not (bool(act.at[f, u]) and bool(act.at[l, u])):
+                continue
+            effs, effd = float(su.efficiency_store[u]), float(su.efficiency_dispatch[u])
+            ws = w.loc[sns]
+            ch = float((ps.loc[sns, u] * ws).sum()); dis = float((pdp.loc[sns, u] * ws).sum())
+            start = float(soc.at[f, u] - w.at[f] * (effs * ps.at[f, u] - pdp.at[f, u] / effd))     # decayed carried-in SOC (loss 0 here)
+            end = float(soc.at[l, u])
+            rows.append(dict(unit=u, bus=su.bus[u], carrier=su.carrier[u], period=int(d.period.iloc[0]), segment=int(k), first=str(f[1]), last=str(l[1]),
+                             snapshots=len(sns), SOC_start_MWh=start, SOC_end_MWh=end, SOC_end_minus_start_MWh=end - start,
+                             charge_MWh_in=ch, discharge_MWh_out=dis, p_nom_opt=float(su.p_nom_opt[u]) if 'p_nom_opt' in su else float(su.p_nom[u]),
+                             cyclic=bool(su.cyclic_state_of_charge[u]), cyclic_per_period=bool(su.cyclic_state_of_charge_per_period[u]),
+                             extendable=bool(su.p_nom_extendable[u]), build_year=int(su.build_year[u])))
+    a = pd.DataFrame(rows)
+    if len(a):
+        a['neutral_within_1e-3_MWh'] = a.SOC_end_minus_start_MWh.abs() <= 1e-3
+        a['end_ge_start'] = a.SOC_end_minus_start_MWh >= -1e-3
+    return a
+
+
+def persist_solution(n, d):
+    """write the solved state needed for post-solve audits (before any acceptance / collection step). Returns file -> SHA-256."""
+    import hashlib
+    from pathlib import Path
+    d = Path(d); d.mkdir(parents=True, exist_ok=True)
+    out = {}
+    frames = dict(storage_soc=n.storage_units_t.state_of_charge, storage_p_store=n.storage_units_t.p_store,
+                  storage_p_dispatch=n.storage_units_t.p_dispatch, line_p0=n.lines_t.p0, link_p0=n.links_t.p0,
+                  generator_p=n.generators_t.p, bus_marginal_price=n.buses_t.marginal_price, snapshot_weightings=n.snapshot_weightings)
+    for k, df in frames.items():
+        if df is None or df.empty:
+            continue
+        f = d / f'{k}.csv.gz'
+        df.to_csv(f, float_format='%.6g')
+        out[f.name] = hashlib.sha256(f.read_bytes()).hexdigest()
+    a = soc_segment_postsolve_audit(n)
+    if len(a):
+        f = d / 'SOC_SEGMENT_POSTSOLVE_AUDIT.csv'
+        a.to_csv(f, index=False)
+        out[f.name] = hashlib.sha256(f.read_bytes()).hexdigest()
+    return out

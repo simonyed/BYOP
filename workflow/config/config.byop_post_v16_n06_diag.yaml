@@ -1,0 +1,31 @@
+# BYOP NEXT-06 W2 (2026-10-23): ONE diagnostic LP, independent of the A2 S0/S1 approval (own manifest, ledger, budget, run_args).
+# Question: is the S0 2026 Far West shed (5,991 MWh raw in two sampled weeks, x 25.86 -> 51,049 MWh) real over the WHOLE 2026 weather
+# year under the same post-v1.6 rules? -> S0, model year 2026 only, every 3 h snapshot of the year (no sampling, weight 3 h),
+# identical code / inputs / rules otherwise; the solved state (flows, SOC, dispatch, prices) is persisted before acceptance.
+# This file is a REQUEST: only the researcher authorises it (run_authorization / approved_git_sha / approved_by, config-only commit).
+post_v16:
+  run_authorization: NOT_APPROVED
+  approved_git_sha: null
+  approved_by: null
+  authorization_source: current_work_pckg/BYOP_NEXT_06/BYOP_NEXT_06_S0_RELIABILITY_CALIBRATION_AND_A3_READINESS_2026-10-23.md
+  authorization_source_sha256: 5f13a171a5a1074d4abc8fb2446260ab0c574c6df796409f41b599959a5dfb54   # LF content SHA
+  manifest: current_work_pckg/BYOP_NEXT_06/N06_DIAG_PRE_RUN_MANIFEST.json
+  stage: A2
+  stages: [S0]
+  max_scenario_attempts: 1
+  max_top_level_optimizer_calls: 1
+  optimizer_call_plan: {S0: [S0_COST]}
+  max_retries: 0
+  mainline_config: config/config.byop_ercot_mainline_geo_dynamic_v1_baseline_v16.yaml
+  out_dir: results/BYOP/next06_s0_diag_fullyear_2026
+  run_args: {start: 2026, end: 2026, sample_weeks: 0, scenarios: [S0]}
+  baseline:
+    path: workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc   # L2 only, no fallback
+    sha256: a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16
+  design:
+    purpose: "W2 diagnostic only (not a formal S0 / S1 result; does not replace POST_V16_A2_S0S1)"
+    snapshots: "2026 full weather year: 2,920 x 3 h, weight 3 h each (sum 8,760 h); stores 3 h; one SOC segment per year"
+    rules: "identical to the A2 S0 run: 3 GW reserve with start / end SOC energy, segment-neutral SOC, paid COD-lagged expansion (none reachable in 2026 at the pocket), DWB / PBRP committed, no S0CAL / ERM"
+    persists: "solution/S0/{storage_soc,storage_p_store,storage_p_dispatch,line_p0,link_p0,generator_p,bus_marginal_price}.csv.gz + SOC_SEGMENT_POSTSOLVE_AUDIT.csv"
+  solver: gurobi
+  acceptance: {termination: optimal, balance_residual_MW_max: 1.0e-3, reserve_slack_MW_min: -1.0e-3}

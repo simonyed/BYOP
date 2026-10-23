@@ -33,15 +33,16 @@ def rec(rel):
 
 
 def main():
-    c = A2G.load()
+    cfgp = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else A2G.CFG      # NEXT-06: any A2-type config (e.g. the W2 diagnostic)
+    c = A2G.load(cfgp)
     code = [p for p in tracked('workflow/byop/model', 'workflow/byop/run', 'workflow/scripts') if p.endswith(('.py', '.sh'))]
     inputs = tracked('workflow/byop/inputs') + [f"workflow/{c['mainline_config']}"]
     head = subprocess.run(['git', '-C', str(ROOT), 'rev-parse', 'HEAD'], capture_output=True, text=True).stdout.strip()
     base = ROOT / c['baseline']['path']
     man = dict(status='A2_PRE_RUN_MANIFEST (NOT an approval)', work_package=c['authorization_source'],
                work_package_lf_sha256=c['authorization_source_sha256'], stage='A2', stages=c['stages'], max_scenario_attempts=A2G.budgets(c)[0], max_top_level_optimizer_calls=A2G.budgets(c)[1], optimizer_call_plan=c.get('optimizer_call_plan'),
-               max_retries=c['max_retries'], config='workflow/config/config.byop_post_v16_a2.yaml',
-               config_sha256_normalised=G.config_sha(A2G.CFG),
+               max_retries=c['max_retries'], config=Path(cfgp).resolve().relative_to(ROOT.resolve()).as_posix(),
+               config_sha256_normalised=G.config_sha(cfgp),
                baseline=dict(path=c['baseline']['path'], sha256=A2G.file_shas(base)['raw'] if base.exists() else None),
                code={p: rec(p) for p in code}, inputs={p: rec(p) for p in inputs},
                head_when_built=head, built_utc=datetime.now(timezone.utc).isoformat(timespec='seconds'),
