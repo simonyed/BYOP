@@ -1,80 +1,7 @@
-fee8bdf0df1ca85ddbe0c234416e3047372aa4f6
+7865fc5d230cbb3541ea8f3d8981b6f4e6364dc7
 ........................................................................ [ 33%]
 ........................................................................ [ 67%]
-................................F.............FF..F...................   [100%]
-=================================== FAILURES ===================================
-___________________________ test_manifest_is_current ___________________________
-
-    def test_manifest_is_current():
-        import build_post_v16_manifest as BM
-        m = json.loads((ROOT / 'current_work_pckg/POST_V16_A1_PRE_RUN_MANIFEST.json').read_text())
-        now = BM.build()
-        for k in ('code_sha256', 'inputs_sha256', 'config_sha256_normalised', 'baseline', 'stages'):
->           assert m[k] == now[k], k
-E           AssertionError: code_sha256
-E           assert {'workflow/by...2187f04', ...} == {'workflow/by...62e82f1', ...}
-E             
-E             Omitting 3 identical items, use -vv to show
-E             Differing items:
-E             {'workflow/byop/run/post_v16_a1.py': '1d6dcccc77100435df0032a5c212db08bc667831bc83bb2699a090c8c2187f04'} != {'workflow/byop/run/post_v16_a1.py': 'ff0c7181288561d4e4ff8b2395a2a711804e1602f2279872a68d839ac62e82f1'}
-E             {'workflow/byop/model/post_v16_gate.py': 'cd2ce9f08b0e934d8409a0698614bd25a138b963ee9ad25860936cc8514993c1'} != {'workflow/byop/model/post_v16_gate.py': '4e8ec5d7a4e889cc05876a8ccf1af859bc67813accdcff59a4ec662191f1a800'}
-E             Use -v to get more diff
-
-byop/tests/test_post_v16_a0.py:76: AssertionError
-________________ test_gate_passes_only_when_everything_matches _________________
-
-tmp_path = PosixPath('/tmp/pytest-of-wsy/pytest-81/test_gate_passes_only_when_eve0')
-
-    def test_gate_passes_only_when_everything_matches(tmp_path):
-        root, cfg, base = gate_env(tmp_path)
-        g = G.check(cfg, 'LP_R_H_RESOURCE', base, tmp_path / 'log.csv', root=root, git_fn=FakeGit())
->       assert g['approved'], g['reasons']
-E       AssertionError: ['prior ledger workflow/results/BYOP/POST_V16_A1_HEADROOM/HEADROOM_SOLVE_LOG.csv missing or changed (pinned 05bd03c2fa...edger workflow/results/BYOP/POST_V16_A1_HEADROOM/LP_R_H_RESOURCE_RESULT.json missing or changed (pinned d80d6f9e11b3)']
-E       assert False
-
-byop/tests/test_post_v16_a0.py:324: AssertionError
-___________ test_gate_refuses_wrong_head_dirty_tree_and_changed_code ___________
-
-tmp_path = PosixPath('/tmp/pytest-of-wsy/pytest-81/test_gate_refuses_wrong_head_d0')
-
-    def test_gate_refuses_wrong_head_dirty_tree_and_changed_code(tmp_path):
-        root, cfg, base = gate_env(tmp_path)
-        chk = lambda gf: G.check(cfg, 'LP_R_H_RESOURCE', base, tmp_path / 'l.csv', root=root, git_fn=gf)['reasons']
-        assert any('not HEAD' in r for r in chk(FakeGit(head='b' * 40, ancestor=False)))
->       assert chk(FakeGit(head='b' * 40, since='workflow/config/config.byop_post_v16_a1.yaml')) == []     # approval commit of the config only
-E       AssertionError: assert ['prior ledge...80d6f9e11b3)'] == []
-E         
-E         Left contains 2 more items, first extra item: 'prior ledger workflow/results/BYOP/POST_V16_A1_HEADROOM/HEADROOM_SOLVE_LOG.csv missing or changed (pinned 05bd03c2fa62)'
-E         Use -v to get more diff
-
-byop/tests/test_post_v16_a0.py:331: AssertionError
-______________ test_gate_lp_n_needs_lp_r_result_pass_not_only_log ______________
-
-tmp_path = PosixPath('/tmp/pytest-of-wsy/pytest-81/test_gate_lp_n_needs_lp_r_resu0')
-
-    def test_gate_lp_n_needs_lp_r_result_pass_not_only_log(tmp_path):
-        """FIX-02 counter-examples: optimal + positive shed, optimal + missing result, optimal + no PASS, non-optimal"""
-        root, cfg, base = gate_env(tmp_path)
-        log = tmp_path / 'log.csv'
-        chk = lambda: G.check(cfg, 'LP_N_H_NETWORK', base, log, root=root, git_fn=FakeGit())['reasons']
-        pd.DataFrame([ledger_row('LP_R_H_RESOURCE')]).to_csv(log, index=False)
-        assert any('RESULT.json missing' in r for r in chk())                                         # optimal + missing result
-        result_json(tmp_path, 'LP_R_H_RESOURCE', PASS=False, checks=dict(status_ok=True, existing_shed_zero_BL=False))
-        assert any('acceptance is not PASS' in r for r in chk())                                      # optimal + positive shed
-        result_json(tmp_path, 'LP_R_H_RESOURCE', PASS=True, checks=dict(status_ok=True, existing_shed_zero_BL=False))
-        assert any('acceptance is not PASS' in r for r in chk())                                      # PASS flag inconsistent with checks
-        pd.DataFrame([ledger_row('LP_R_H_RESOURCE', ok='False')]).to_csv(log, index=False); result_json(tmp_path, 'LP_R_H_RESOURCE')
-        assert any('not DONE / ok / optimal / pass' in r for r in chk())                              # optimal + no PASS
-        pd.DataFrame([ledger_row('LP_R_H_RESOURCE', status='warning', term='suboptimal')]).to_csv(log, index=False)
-        assert any('not DONE / ok / optimal / pass' in r for r in chk())                              # non-optimal
-        pd.DataFrame([ledger_row('LP_R_H_RESOURCE')]).to_csv(log, index=False); result_json(tmp_path, 'LP_R_H_RESOURCE')
->       assert chk() == []                                                                            # only a real PASS opens LP-N
-E       AssertionError: assert ['prior ledge...80d6f9e11b3)'] == []
-E         
-E         Left contains 2 more items, first extra item: 'prior ledger workflow/results/BYOP/POST_V16_A1_HEADROOM/HEADROOM_SOLVE_LOG.csv missing or changed (pinned 05bd03c2fa62)'
-E         Use -v to get more diff
-
-byop/tests/test_post_v16_a0.py:388: AssertionError
+......................................................................   [100%]
 =============================== warnings summary ===============================
 workflow/byop/tests/test_a0_2_tech_v2.py: 1 warning
 workflow/byop/tests/test_baseline_v16.py: 1 warning
@@ -109,10 +36,5 @@ workflow/byop/tests/test_p0_units.py::test_ineligible_site_does_not_lock_maxmin
   The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-=========================== short test summary info ============================
-FAILED byop/tests/test_post_v16_a0.py::test_manifest_is_current - AssertionEr...
-FAILED byop/tests/test_post_v16_a0.py::test_gate_passes_only_when_everything_matches
-FAILED byop/tests/test_post_v16_a0.py::test_gate_refuses_wrong_head_dirty_tree_and_changed_code
-FAILED byop/tests/test_post_v16_a0.py::test_gate_lp_n_needs_lp_r_result_pass_not_only_log
-4 failed, 210 passed, 85 warnings in 219.58s (0:03:39)
-rc=1
+214 passed, 85 warnings in 213.46s (0:03:33)
+rc=0

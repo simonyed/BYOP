@@ -1,0 +1,32 @@
+2026-10-23T03:33:05Z start python -W ignore /datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/run/post_v16_a1.py --base /datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc --threads 16 --gate --lp R
+{
+ "approved": false,
+ "reasons": [
+  "run_authorization=NOT_APPROVED",
+  "approved_by missing",
+  "approved_git_sha missing"
+ ],
+ "head": "7865fc5d230cbb3541ea8f3d8981b6f4e6364dc7",
+ "approved_git_sha": null,
+ "stage": "LP_R_H_RESOURCE",
+ "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+ "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a1.yaml"
+}
+2026-10-23T03:33:05Z end rc=0
+2026-10-23T03:33:05Z start python -W ignore /datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/run/post_v16_a1.py --base /datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc --threads 16 --gate --lp N
+{
+ "approved": false,
+ "reasons": [
+  "run_authorization=NOT_APPROVED",
+  "approved_by missing",
+  "approved_git_sha missing",
+  "LP_N_H_NETWORK needs a PASSED LP_R_H_RESOURCE first: LP_R_H_RESOURCE has no ledger row"
+ ],
+ "head": "7865fc5d230cbb3541ea8f3d8981b6f4e6364dc7",
+ "approved_git_sha": null,
+ "stage": "LP_N_H_NETWORK",
+ "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc",
+ "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a1.yaml"
+}
+2026-10-23T03:33:06Z end rc=0
+rc=0

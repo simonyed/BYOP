@@ -1,0 +1,119 @@
+{
+ "windows": [
+  {
+   "window": "W_SUMMER_PEAK_20250818",
+   "events": [
+    "SUMMER_LOAD_PEAK",
+    "SUMMER_OBSERVED_NET_PEAK"
+   ],
+   "role": "same 72 h window counted once",
+   "source_rows": [
+    5471,
+    5542
+   ],
+   "hours": 72,
+   "first_HE": "08/17/2025 01:00",
+   "last_HE": "08/19/2025 24:00",
+   "dates": [
+    "2025-08-17",
+    "2025-08-18",
+    "2025-08-19"
+   ],
+   "dst_extra_hours": 0,
+   "hour_ending_contiguous": true,
+   "model_3h_steps": [
+    1823,
+    1847
+   ],
+   "native_load_peak_MW": 83679.001697,
+   "native_load_MWh": 4962685.420658,
+   "observed_wind_MWh": 662059.794837,
+   "observed_solar_MWh": 710501.978171
+  },
+  {
+   "window": "W_WINTER_PEAK_20250220",
+   "events": [
+    "WINTER_LOAD_PEAK"
+   ],
+   "role": "winter peak = annual observed residual peak",
+   "source_rows": [
+    1176,
+    1247
+   ],
+   "hours": 72,
+   "first_HE": "02/19/2025 01:00",
+   "last_HE": "02/21/2025 24:00",
+   "dates": [
+    "2025-02-19",
+    "2025-02-20",
+    "2025-02-21"
+   ],
+   "dst_extra_hours": 0,
+   "hour_ending_contiguous": true,
+   "model_3h_steps": [
+    392,
+    415
+   ],
+   "native_load_peak_MW": 80524.699422,
+   "native_load_MWh": 5065777.035279,
+   "observed_wind_MWh": 743170.1181920001,
+   "observed_solar_MWh": 380881.3066
+  },
+  {
+   "window": "W_SUMMER_DISJOINT_20250730",
+   "events": [
+    "SUMMER_NET_PEAK_DISJOINT_DAY"
+   ],
+   "role": "limited hold-out (not unseen by the v1.6 annual calibration)",
+   "source_rows": [
+    5015,
+    5086
+   ],
+   "hours": 72,
+   "first_HE": "07/29/2025 01:00",
+   "last_HE": "07/31/2025 24:00",
+   "dates": [
+    "2025-07-29",
+    "2025-07-30",
+    "2025-07-31"
+   ],
+   "dst_extra_hours": 0,
+   "hour_ending_contiguous": true,
+   "model_3h_steps": [
+    1671,
+    1695
+   ],
+   "native_load_peak_MW": 81706.531132,
+   "native_load_MWh": 4904751.099516,
+   "observed_wind_MWh": 618643.7193550001,
+   "observed_solar_MWh": 852415.6430569999
+  }
+ ],
+ "solver_calls": 0,
+ "load": {
+  "source": "derived/ERCOT_2025_OBSERVED_LOAD_WIND_SOLAR_1H.csv (Native Load 2025, 8 weather zones; = ERCOT Native_Load_2025.xlsx)",
+  "unit": "MW hourly average (= MWh per hour)",
+  "regional_split": "weather zone -> bus: v1.6 COUNTY_TO_BUS_SHARES (lpf x substation share)",
+  "demand_concept": "ERCOT native load (actual 2025), not CDR firm load"
+ },
+ "renewables": {
+  "model_input": "v1.6 network p_max_pu (PyPSA-USA profiles) of the 3 h step containing each source row, held for 3 h",
+  "observed_output": "derived settlement wind / solar = ACTUAL OUTPUT incl. curtailment, used only for QA and event choice, NOT as p_max_pu",
+  "same_weather_year": false,
+  "note": "model profiles are not the 2025 weather; load and renewables are a cross-year stress combination"
+ },
+ "time": {
+  "label": "ERCOT source HE labels (Central prevailing time as published); no UTC conversion claimed; no DST hour fabricated",
+  "resampling": "none (1 h source rows); the 3 h step index is only used to pick p_max_pu",
+  "model_snapshot": "period = block x window (1..6), timestep = source date + HE hours (label only)"
+ },
+ "thermal_availability": "v1.6 template p_max_pu; MORA outage quantiles NOT applied (ex-ante marginals, not joint; not authorised)",
+ "power_energy_units": "MW for power, MWh for energy, 1 h snapshots, weight 1",
+ "load_vs_v16_3h_p_set_max_abs_MW": 1.8189894035458565e-12,
+ "load_vs_v16_3h_compared_complete_steps": 70,
+ "v16_network": {
+  "buses": 63,
+  "lines": 162,
+  "sha256": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16"
+ }
+}
