@@ -1,7 +1,7 @@
 {
  "work_package": "BYOP_NEXT_07",
  "status": "PROPOSED (not written to the A3-gated S0_SCIENTIFIC_STATUS.json)",
- "S0_RELIABILITY_VERDICT_PROPOSED": "BASELINE_RELIABILITY_UNRESOLVED",
+ "S0_RELIABILITY_VERDICT_PROPOSED": "METHOD_BUG_CONFIRMED_REPAIR_REQUIRED (pending researcher confirmation; loss basis to be chosen; gated status file unchanged)",
  "allowed_values": [
   "BASELINE_RELIABILITY_UNRESOLVED",
   "METHOD_BUG_CONFIRMED_REPAIR_REQUIRED",
@@ -16,5 +16,6 @@
  "optimizer_calls": 1,
  "decided_by": null,
  "W2_class": "RESERVE_REQUIREMENT_NOT_PRIMARY_IN_THIS_COUNTERFACTUAL",
- "open_question": "why the v1.6 LP2 2025 check served the same pocket hours: night-time West mesh flow pattern (fleet / DWB / load growth / chronology / TL43 effective limit) - read-only comparison possible"
+ "open_question": "researcher choice of one loss basis for calibration + S0-S3; optional confirming lossless S0 probe (1 call) before the paired S0/S1 rerun",
+ "W5_finding": "loss-basis mismatch: mainline S0 solved with transmission_losses=2 (inherited from config.default.yaml), v1.6 calibration LP1/LP2 lossless; TL35 loses 49.5 MW (12 %) and delivers 387.6 of 461.9 MW, TL43 delivers 113.2 of 118.98 MW -> ~80 MW pocket deliverability lost > 24 MW mean / 98 MW peak shed"
 }

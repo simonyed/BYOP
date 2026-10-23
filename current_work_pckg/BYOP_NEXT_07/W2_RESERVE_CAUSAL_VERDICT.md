@@ -1,5 +1,7 @@
 # W2_RESERVE_CAUSAL_VERDICT (NEXT-07): the reserve-RHS probe
 
+> **Erratum (W5, same day):** TL35 and TL43 are both at their *loss-limited* maximum (|s| + loss = rating; S0 is solved with transmission losses, LP2 was not). TL35's 387.63 MW is what it delivers after a 49.5 MW loss; it is not a KVL share below rating. See `W5_LP2_VS_S0_MESH_FLOW_EXPLANATION.md`. The class below is unaffected.
+
 **Class (pre-registered): `RESERVE_REQUIREMENT_NOT_PRIMARY_IN_THIS_COUNTERFACTUAL`.** Removing the 3,000 MW system reserve requirement does not change the 2026 Far West nightly shed:
 
 | | Original S0 | Probe | Change |

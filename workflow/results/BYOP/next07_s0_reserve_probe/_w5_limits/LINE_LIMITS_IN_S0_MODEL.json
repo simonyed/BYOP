@@ -1,0 +1,478 @@
+{
+ "Line-fix-s-lower:TL43": {
+  "rhs_unique": [
+   -118.979
+  ],
+  "coeff_unique": [
+   -1.0,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-fix-s-lower:TL35": {
+  "rhs_unique": [
+   -461.9037
+  ],
+  "coeff_unique": [
+   -1.0,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-fix-s-lower:TL36": {
+  "rhs_unique": [
+   -137.4925
+  ],
+  "coeff_unique": [
+   -1.0,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-fix-s-lower:TL44": {
+  "rhs_unique": [
+   -68.6
+  ],
+  "coeff_unique": [
+   -1.0,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-fix-s-lower:TL12": {
+  "rhs_unique": [
+   -251.1245
+  ],
+  "coeff_unique": [
+   -1.0,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-fix-s-lower:TL13": {
+  "rhs_unique": [
+   -636.882
+  ],
+  "coeff_unique": [
+   -1.0,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-fix-s-lower:TL133": {
+  "rhs_unique": [
+   -3243.5004
+  ],
+  "coeff_unique": [
+   -1.0,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-fix-s-upper:TL43": {
+  "rhs_unique": [
+   118.979
+  ],
+  "coeff_unique": [
+   1.0
+  ],
+  "sign": "<="
+ },
+ "Line-fix-s-upper:TL35": {
+  "rhs_unique": [
+   461.9037
+  ],
+  "coeff_unique": [
+   1.0
+  ],
+  "sign": "<="
+ },
+ "Line-fix-s-upper:TL36": {
+  "rhs_unique": [
+   137.4925
+  ],
+  "coeff_unique": [
+   1.0
+  ],
+  "sign": "<="
+ },
+ "Line-fix-s-upper:TL44": {
+  "rhs_unique": [
+   68.6
+  ],
+  "coeff_unique": [
+   1.0
+  ],
+  "sign": "<="
+ },
+ "Line-fix-s-upper:TL12": {
+  "rhs_unique": [
+   251.1245
+  ],
+  "coeff_unique": [
+   1.0
+  ],
+  "sign": "<="
+ },
+ "Line-fix-s-upper:TL13": {
+  "rhs_unique": [
+   636.882
+  ],
+  "coeff_unique": [
+   1.0
+  ],
+  "sign": "<="
+ },
+ "Line-fix-s-upper:TL133": {
+  "rhs_unique": [
+   3243.5004
+  ],
+  "coeff_unique": [
+   1.0
+  ],
+  "sign": "<="
+ },
+ "Line-loss_upper:TL43": {
+  "rhs_unique": [
+   4.1334
+  ],
+  "coeff_unique": [
+   1.0
+  ],
+  "sign": "<="
+ },
+ "Line-loss_upper:TL35": {
+  "rhs_unique": [
+   63.0275
+  ],
+  "coeff_unique": [
+   1.0
+  ],
+  "sign": "<="
+ },
+ "Line-loss_upper:TL36": {
+  "rhs_unique": [
+   3.3931
+  ],
+  "coeff_unique": [
+   1.0
+  ],
+  "sign": "<="
+ },
+ "Line-loss_upper:TL44": {
+  "rhs_unique": [
+   1.1151
+  ],
+  "coeff_unique": [
+   1.0
+  ],
+  "sign": "<="
+ },
+ "Line-loss_upper:TL12": {
+  "rhs_unique": [
+   84.2647
+  ],
+  "coeff_unique": [
+   1.0
+  ],
+  "sign": "<="
+ },
+ "Line-loss_upper:TL13": {
+  "rhs_unique": [
+   95.0098
+  ],
+  "coeff_unique": [
+   1.0
+  ],
+  "sign": "<="
+ },
+ "Line-loss_upper:TL133": {
+  "rhs_unique": [
+   57.1339
+  ],
+  "coeff_unique": [
+   1.0
+  ],
+  "sign": "<="
+ },
+ "Line-loss_tangents-1--1:TL43": {
+  "rhs_unique": [
+   -1.0334
+  ],
+  "coeff_unique": [
+   -0.034741,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-1--1:TL35": {
+  "rhs_unique": [
+   -15.7569
+  ],
+  "coeff_unique": [
+   -0.136452,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-1--1:TL36": {
+  "rhs_unique": [
+   -0.8483
+  ],
+  "coeff_unique": [
+   -0.024679,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-1--1:TL44": {
+  "rhs_unique": [
+   -0.2788
+  ],
+  "coeff_unique": [
+   -0.016255,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-1--1:TL12": {
+  "rhs_unique": [
+   -21.0662
+  ],
+  "coeff_unique": [
+   -0.33555,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-1--1:TL13": {
+  "rhs_unique": [
+   -23.7525
+  ],
+  "coeff_unique": [
+   -0.14918,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-1--1:TL133": {
+  "rhs_unique": [
+   -14.2835
+  ],
+  "coeff_unique": [
+   -0.017615,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-1-1:TL43": {
+  "rhs_unique": [
+   -1.0334
+  ],
+  "coeff_unique": [
+   0.034741,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-1-1:TL35": {
+  "rhs_unique": [
+   -15.7569
+  ],
+  "coeff_unique": [
+   0.136452,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-1-1:TL36": {
+  "rhs_unique": [
+   -0.8483
+  ],
+  "coeff_unique": [
+   0.024679,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-1-1:TL44": {
+  "rhs_unique": [
+   -0.2788
+  ],
+  "coeff_unique": [
+   0.016255,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-1-1:TL12": {
+  "rhs_unique": [
+   -21.0662
+  ],
+  "coeff_unique": [
+   0.33555,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-1-1:TL13": {
+  "rhs_unique": [
+   -23.7525
+  ],
+  "coeff_unique": [
+   0.14918,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-1-1:TL133": {
+  "rhs_unique": [
+   -14.2835
+  ],
+  "coeff_unique": [
+   0.017615,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-2--1:TL43": {
+  "rhs_unique": [
+   -4.1334
+  ],
+  "coeff_unique": [
+   -0.069482,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-2--1:TL35": {
+  "rhs_unique": [
+   -63.0275
+  ],
+  "coeff_unique": [
+   -0.272903,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-2--1:TL36": {
+  "rhs_unique": [
+   -3.3931
+  ],
+  "coeff_unique": [
+   -0.049357,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-2--1:TL44": {
+  "rhs_unique": [
+   -1.1151
+  ],
+  "coeff_unique": [
+   -0.032511,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-2--1:TL12": {
+  "rhs_unique": [
+   -84.2647
+  ],
+  "coeff_unique": [
+   -0.671099,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-2--1:TL13": {
+  "rhs_unique": [
+   -95.0098
+  ],
+  "coeff_unique": [
+   -0.298359,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-2--1:TL133": {
+  "rhs_unique": [
+   -57.1339
+  ],
+  "coeff_unique": [
+   -0.03523,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-2-1:TL43": {
+  "rhs_unique": [
+   -4.1334
+  ],
+  "coeff_unique": [
+   0.069482,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-2-1:TL35": {
+  "rhs_unique": [
+   -63.0275
+  ],
+  "coeff_unique": [
+   0.272903,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-2-1:TL36": {
+  "rhs_unique": [
+   -3.3931
+  ],
+  "coeff_unique": [
+   0.049357,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-2-1:TL44": {
+  "rhs_unique": [
+   -1.1151
+  ],
+  "coeff_unique": [
+   0.032511,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-2-1:TL12": {
+  "rhs_unique": [
+   -84.2647
+  ],
+  "coeff_unique": [
+   0.671099,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-2-1:TL13": {
+  "rhs_unique": [
+   -95.0098
+  ],
+  "coeff_unique": [
+   0.298359,
+   1.0
+  ],
+  "sign": ">="
+ },
+ "Line-loss_tangents-2-1:TL133": {
+  "rhs_unique": [
+   -57.1339
+  ],
+  "coeff_unique": [
+   0.03523,
+   1.0
+  ],
+  "sign": ">="
+ }
+}

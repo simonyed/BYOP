@@ -1,0 +1,56 @@
+{
+ "work_package": "BYOP_NEXT_07",
+ "step": "W5 LP2 vs S0 mesh flows",
+ "optimizer_calls": 0,
+ "hours": 42,
+ "sub_pocket": [
+  "p620 6",
+  "p620 7"
+ ],
+ "sub_pocket_cut": {
+  "TL43": 118.97897413246488,
+  "TL36": 137.49249980550974,
+  "sum": 256.4714739379746,
+  "same_in_S0": true
+ },
+ "lines_with_different_limits_in_west": [],
+ "at_s0_shed_hours": {
+  "LP2_TL43_into_p620_6": 109.69166666666668,
+  "LP2_TL36_into_p620_7": 107.00261904761904,
+  "LP2_TL35_into_p610_4": 402.105,
+  "LP2_TL44_p620_6_to_7": 0.8564285714285711,
+  "LP2_sub_pocket_import": 216.6942857142857,
+  "LP2_TL43_loading": 0.9219416074687429,
+  "LP2_TL36_loading": 0.7782433165371186,
+  "LP2_TL44_loading": 0.20023948354852147,
+  "LP2_TL35_loading": 0.8705385106534296,
+  "S0_TL43_into_p620_6": 117.04699999999998,
+  "S0_TL36_into_p620_7": 82.65116428571429,
+  "S0_TL35_into_p610_4": 378.8262380952381,
+  "S0_TL44_p620_6_to_7": 21.70716880952381,
+  "S0_sub_pocket_import": 199.69816428571426,
+  "S0_TL43_loading": 0.9837620542070405,
+  "S0_TL36_loading": 0.6011321665009264,
+  "S0_TL44_loading": 0.3164310322088019,
+  "S0_TL35_loading": 0.8201410803344151,
+  "LP2_sub_pocket_load": 217.66927266226685,
+  "S0_sub_pocket_load": 219.69947396838785,
+  "S0_sub_pocket_shed": 24.20097885946172,
+  "LP2_sub_pocket_shed": 0.0,
+  "p610_4_load_S0": 300.788202757946,
+  "LP2_theta_p620_0_minus_p620_4_mrad": -787.7243092044048,
+  "S0_theta_p620_0_minus_p620_4_mrad": -811.8808884469382
+ },
+ "lp2_full_year": {
+  "snapshots": 2920,
+  "TL43_at_limit": 1493,
+  "TL36_at_limit": 525,
+  "both_at_limit": 0,
+  "import_max": 244.86,
+  "load_2025_max": 247.860919580888,
+  "load_2026_max": 250.17271837781897,
+  "snapshots_load_2025_above_cut": 0,
+  "snapshots_load_2026_above_cut": 0
+ },
+ "binding_lines_S0": []
+}
