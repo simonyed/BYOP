@@ -1,0 +1,33 @@
+# BYOP NEXT-07 W5 follow-up (2026-10-23): ONE confirming diagnostic LP - the formal multi-year S0 (2026-2031, 26 sample weeks + B7 stress
+# days, 3,000 MW reserve, every post-v1.6 row) solved with transmission_losses = 0 instead of the baseline-meta value 2. This is the
+# loss basis of the v1.6 calibration (LP1 / LP2). Question: does the 2026 Far West shed largely disappear without the loss terms
+# (W5_LP2_VS_S0_MESH_FLOW_EXPLANATION.md)? Diagnostic only - NOT a formal S0, does not replace POST_V16_A2_S0S1, does not choose the
+# study's loss basis. This file is a REQUEST: only the researcher authorises it (three fields below, config-only commit).
+post_v16:
+  run_authorization: NOT_APPROVED
+  approved_git_sha: null
+  approved_by: null
+  authorization_source: current_work_pckg/BYOP_NEXT_07/BYOP_NEXT_07_S0_Reserve_Causal_Diagnostic_and_A3_Readiness_2026-10-23.md
+  authorization_source_sha256: dec9259865f687c0a13ebbc4fb4c125dc06a69a94dc7afbfaed3ac18d1f3d3c5   # LF content SHA
+  manifest: current_work_pckg/BYOP_NEXT_07/N07_LOSSLESS_PROBE_PRE_RUN_MANIFEST.json
+  stage: A2
+  stages: [S0]
+  max_scenario_attempts: 1
+  max_top_level_optimizer_calls: 1
+  optimizer_call_plan: {S0: [S0_COST]}
+  max_retries: 0
+  mainline_config: config/config.byop_ercot_mainline_geo_dynamic_v1_baseline_v16.yaml
+  out_dir: results/BYOP/next07_s0_lossless_probe
+  run_args: {start: 2026, end: 2031, sample_weeks: 26, scenarios: [S0]}
+  diagnostic:
+    kind: S0_TRANSMISSION_LOSSLESS
+    transmission_losses: 0
+  baseline:
+    path: workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc   # L2 only, no fallback
+    sha256: a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16
+  design:
+    purpose: "W5 confirmation only (label DIAGNOSTIC_LOSSLESS_NOT_THE_FORMAL_LOSS_BASIS)"
+    unchanged: "3,000 MW reserve with online-capacity / min-load rows, segment SOC, linearized_unit_commitment (baseline meta), committed DWB / PBRP, COD-lagged paid expansion, no-harm off for S0, sampling"
+    compare_with: "results/BYOP/post_v16_a2/POST_V16_A2_S0S1 (formal S0, losses 2) and results/BYOP/next07_s0_reserve_probe; same snapshot index"
+  solver: gurobi
+  acceptance: {termination: optimal, balance_residual_MW_max: 1.0e-3, reserve_slack_MW_min: -1.0e-3}

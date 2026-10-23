@@ -1725,7 +1725,7 @@ def a3_guard(a):
     if reasons:
         print(json.dumps(dict(POST_V16_A3_GUARD='REFUSED', reasons=reasons), indent=1))
         raise SystemExit(3)
-    return dict(g, a3=True, firm_rule=c['firm_rule'], reference_dir=c['reference']['dir'], diagnostic_reserve_MW=None)
+    return dict(g, a3=True, firm_rule=c['firm_rule'], reference_dir=c['reference']['dir'], diagnostic_reserve_MW=None, diagnostic=None)
 
 
 def post_v16_guard(a):
@@ -1765,15 +1765,16 @@ def post_v16_guard(a):
     reasons += g['reasons']
     import post_v16_mainline as PM
     try:                                                      # NEXT-07: only the exact reserve-probe config may change the RHS
+        spec = PM.diagnostic_spec(c, cfgp)
         rdiag = PM.diagnostic_reserve_rhs(c, cfgp)
     except ValueError as e:
-        rdiag = None
+        spec = rdiag = None
         if not any(str(e) in r for r in reasons):
             reasons.append(f'diagnostic config refused: {e}')
     if reasons:
         print(json.dumps(dict(POST_V16_GUARD='REFUSED', reasons=reasons), indent=1))
         raise SystemExit(3)
-    return dict(g, diagnostic_reserve_MW=rdiag)
+    return dict(g, diagnostic_reserve_MW=rdiag, diagnostic=spec)
 
 
 PV16_LOCK = dict(inside=False, armed=False)
@@ -1821,6 +1822,18 @@ def _arm_post_v16_optimizer_lock():
     PV16_LOCK['gurobipy_locked'] = False     # by design: explicit instrumentation in lex_presolve, not a monkey patch
 
 
+def pv16_solve_config(config, state=None):
+    """NEXT-07 W5: the solve config of one A2-type solve. Unchanged (same object) unless the validated lossless probe is active;
+    then a deep copy with solving.options.transmission_losses set from the gate (the baseline meta itself is never modified)."""
+    state = STATE if state is None else state
+    tl = state.get('pv16_transmission_losses')
+    if tl is None:
+        return config
+    cfg = copy.deepcopy(config)
+    cfg['solving']['options']['transmission_losses'] = int(tl)
+    return cfg
+
+
 def post_v16_solve_wrapper(solve0, a, out, cfg_path=None, gate_fn=None, state=None):
     """every A2 scenario attempt: gate re-check -> parent STARTED row (persisted) -> solve (each top-level optimizer call is a
     child row, STARTED before the call) -> acceptance (incl. child-call completeness, strict no-harm reference, S1 speed levels)
@@ -1844,7 +1857,7 @@ def post_v16_solve_wrapper(solve0, a, out, cfg_path=None, gate_fn=None, state=No
         t0 = time.time()
         try:
             PV16_LOCK['inside'] = True
-            res = solve0(config, tag, out_, n, *args_, **kw_)
+            res = solve0(pv16_solve_config(config, state), tag, out_, n, *args_, **kw_)
         except BaseException as e:
             PV16_LOCK['inside'] = False
             A2G.close_open_children(aid, f'parent failed: {e.__class__.__name__}: {e}')
@@ -1876,11 +1889,11 @@ def post_v16_solve_wrapper(solve0, a, out, cfg_path=None, gate_fn=None, state=No
                 acc['values']['speed_levels'] = rows
                 acc['checks']['no_harm_row_present'] = 'D24-no_harm_existing_customers' in n.model.constraints
             acc['PASS'] = all(v is True for v in acc['checks'].values())
-            diag = state.get('pv16_reserve_rhs_MW')
-            if diag is not None:                               # NEXT-07 probe: checked against its own RHS, never a formal 3 GW result
-                acc['values']['reserve_req_rhs_MW'] = diag
-                acc['diagnostic'] = dict(kind=PM.RESERVE_PROBE['kind'], reserve_requirement_MW=diag, label=PM.RESERVE_PROBE['label'],
-                                         formal_requirement_MW=PM.POST_V16['reserve_MW'])
+            diag = state.get('pv16_diagnostic')
+            if diag is not None:                               # NEXT-07 probes: labelled, never a formal result, no no-harm reference
+                acc['diagnostic'] = dict(diag, formal_requirement_MW=PM.POST_V16['reserve_MW'])
+                if state.get('pv16_reserve_rhs_MW') is not None:
+                    acc['values']['reserve_req_rhs_MW'] = state['pv16_reserve_rhs_MW']
             if tag == 'S0' and acc['PASS'] and diag is None:
                 acc['no_harm_reference'] = A2G.write_no_harm_reference(n, out_dir)
         except Exception as e:
@@ -2197,6 +2210,8 @@ def main():
         GCFG.update(s0_calibrate=False, s0_cal_file=None, no_harm=True)
         # NEXT-07: per-build reserve RHS from the validated gate (None = formal 3,000 MW); POST_V16 itself is never changed
         STATE['pv16_reserve_rhs_MW'] = (pv16_gate or {}).get('diagnostic_reserve_MW')
+        STATE['pv16_diagnostic'] = spec_ = (pv16_gate or {}).get('diagnostic')         # validated by the guard (diagnostic_spec)
+        STATE['pv16_transmission_losses'] = int(spec_['value']) if spec_ and spec_['key'] == 'transmission_losses' else None
         if (pv16_gate or {}).get('a3'):           # NEXT-07 W4: A3 pilot - own gate / ledgers, conservative firm rule in S2 and S3
             import post_v16_a3_runtime as RT
             STATE['pv16_firm_rule'] = pv16_gate['firm_rule']

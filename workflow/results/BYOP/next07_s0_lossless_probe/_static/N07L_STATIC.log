@@ -1,0 +1,106 @@
+2026-10-23T17:12:35Z start python -W ignore byop/tests/structural_n07_lossless_probe.py --out results/BYOP/next07_s0_lossless_probe/_static
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:pypsa.optimization.window:Building the multi-period model over a MultiIndex `snapshot`. Opt into the flat representation via `pypsa.options.optimization.model_snapshot_index = 'flat'`.
+INFO:opts.bidirectional_link:Added 324 bidirectional link constraints
+INFO:opts.sector:Demand response not enabled
+REF {'nvars': 2660074, 'ncons': 7107710, 'nnz': 35171029, 'has_line_loss': True, 'reserve_rhs': [3000.0], 'seconds': 35.1, 'peak_rss_GB': 1.98}
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:opts.bidirectional_link:Added 324 bidirectional link constraints
+INFO:opts.sector:Demand response not enabled
+PROBE {'nvars': 2527882, 'ncons': 6446750, 'nnz': 33452533, 'has_line_loss': False, 'reserve_rhs': [3000.0], 'seconds': 34.5, 'peak_rss_GB': 3.49}
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:opts.bidirectional_link:Added 324 bidirectional link constraints
+INFO:opts.sector:Demand response not enabled
+REF2 {'nvars': 2660074, 'ncons': 7107710, 'nnz': 35171029, 'has_line_loss': True, 'reserve_rhs': [3000.0], 'seconds': 36.0, 'peak_rss_GB': 4.42}
+{
+ "work_package": "BYOP_NEXT_07",
+ "step": "W5 lossless probe static proof",
+ "verdict": "W5P_STATIC_PASS",
+ "solver_executions": 0,
+ "solver_calls_intercepted": 3,
+ "checks": {
+  "probe_value_is_0": true,
+  "formal_configs_have_no_diagnostic": true,
+  "baseline_meta_losses_is_2": true,
+  "ref_has_line_loss": true,
+  "probe_has_no_line_loss": true,
+  "only_line_loss_variable_removed": true,
+  "only_line_loss_constraints_removed": true,
+  "every_other_row_identical_after_dropping_loss_terms": true,
+  "reserve_row_3000_in_both": true,
+  "ref2_identical_to_ref": true,
+  "no_solver_called": true
+ },
+ "pre": {
+  "probe_transmission_losses": 0,
+  "probe_reserve_rhs": null,
+  "baseline_meta_transmission_losses": 2,
+  "baseline_meta_linearized_unit_commitment": true,
+  "formal_a2": null,
+  "n06": null
+ },
+ "sizes": {
+  "REF": {
+   "nvars": 2660074,
+   "ncons": 7107710,
+   "nnz": 35171029,
+   "has_line_loss": true,
+   "reserve_rhs": [
+    3000.0
+   ],
+   "seconds": 35.1,
+   "peak_rss_GB": 1.98
+  },
+  "PROBE": {
+   "nvars": 2527882,
+   "ncons": 6446750,
+   "nnz": 33452533,
+   "has_line_loss": false,
+   "reserve_rhs": [
+    3000.0
+   ],
+   "seconds": 34.5,
+   "peak_rss_GB": 3.49
+  },
+  "REF2": {
+   "nvars": 2660074,
+   "ncons": 7107710,
+   "nnz": 35171029,
+   "has_line_loss": true,
+   "reserve_rhs": [
+    3000.0
+   ],
+   "seconds": 36.0,
+   "peak_rss_GB": 4.42
+  }
+ },
+ "removed_constraints": [
+  "Line-loss_tangents-1--1",
+  "Line-loss_tangents-1-1",
+  "Line-loss_tangents-2--1",
+  "Line-loss_tangents-2-1",
+  "Line-loss_upper"
+ ],
+ "rows_that_held_loss_terms_and_are_otherwise_identical": [
+  "Bus-meshed-30-nodal_balance",
+  "Bus-nodal_balance",
+  "Line-fix-s-lower",
+  "Line-fix-s-upper"
+ ],
+ "unexpected_differences": [],
+ "differences_REF_vs_REF2": 0,
+ "tolerance": 1e-10,
+ "seconds": 119.4,
+ "method": "variables / rows compared by canonical key (variable name, flat position) because removing Line-loss shifts labels; REF rows compared after dropping their Line-loss terms; network inputs by per-component SHA"
+}
+2026-10-23T17:14:37Z end rc=0

@@ -10,6 +10,9 @@
 #   bash byop/run/run_post_v16_a2.sh n07_manifest / n07_gate
 #   bash byop/run/run_post_v16_a2.sh n07_reserve_probe  NEXT-07 W2: ONE S0 LP with PV16M-reserve_req RHS 0 MW, 2026-2031, 26 weeks -
 #                                                 GATED by config.byop_post_v16_n07_reserve_probe.yaml (1 call, 0 retries)
+#   bash byop/run/run_post_v16_a2.sh n07l_static / n07l_manifest / n07l_gate   NEXT-07 W5 lossless probe: solver-free diff, manifest, gate
+#   bash byop/run/run_post_v16_a2.sh n07l_lossless_probe  ONE S0 LP with transmission_losses 0 (else formal), 2026-2031, 26 weeks -
+#                                                 GATED by config.byop_post_v16_n07_lossless_probe.yaml (1 call, 0 retries)
 #   bash byop/run/run_post_v16_a2.sh a3_manifest / a3_gate   NEXT-07 W4: A3 pre-run manifest / gate verdict (no solver)
 #   bash byop/run/run_post_v16_a2.sh a3_e2e       NEXT-07 W4: zero-solver A3 end-to-end dry run (injected gate, scratch ledgers)
 #   bash byop/run/run_post_v16_a2.sh s0s1         S0 then S1_EARLIEST - GATED (separate researcher approval of
@@ -40,8 +43,12 @@ case "${1:-}" in
   n07_manifest) run python byop/build/build_post_v16_a2_manifest.py config/config.byop_post_v16_n07_reserve_probe.yaml ;;
   n07_gate)   run python -c "import sys, json; sys.path.insert(0, 'byop/model'); import post_v16_a2_gate as G; print(json.dumps(G.check('S0', '$BASE', cfg_path='config/config.byop_post_v16_n07_reserve_probe.yaml'), indent=1))" ;;
   n07_reserve_probe) run python -W ignore $W/byop/model/rearch_mech.py --mainline --post-v16 --a2-config config/config.byop_post_v16_n07_reserve_probe.yaml --config $CFG --base $BASE --case-id NEXT07_S0_RESERVE_PROBE --out $W/results/BYOP/next07_s0_reserve_probe --start 2026 --end 2031 --sample-weeks 26 --threads ${THREADS:-16} --scenarios S0 ;;
+  n07l_static) run python -W ignore byop/tests/structural_n07_lossless_probe.py --out results/BYOP/next07_s0_lossless_probe/_static ;;
+  n07l_manifest) run python byop/build/build_post_v16_a2_manifest.py config/config.byop_post_v16_n07_lossless_probe.yaml ;;
+  n07l_gate)  run python -c "import sys, json; sys.path.insert(0, 'byop/model'); import post_v16_a2_gate as G; print(json.dumps(G.check('S0', '$BASE', cfg_path='config/config.byop_post_v16_n07_lossless_probe.yaml'), indent=1))" ;;
+  n07l_lossless_probe) run python -W ignore $W/byop/model/rearch_mech.py --mainline --post-v16 --a2-config config/config.byop_post_v16_n07_lossless_probe.yaml --config $CFG --base $BASE --case-id NEXT07_S0_LOSSLESS_PROBE --out $W/results/BYOP/next07_s0_lossless_probe --start 2026 --end 2031 --sample-weeks 26 --threads ${THREADS:-16} --scenarios S0 ;;
   a3_manifest) run python byop/build/build_post_v16_a2_manifest.py config/config.byop_post_v16_a3.yaml ;;
   a3_gate)    run python -c "import sys, json; sys.path.insert(0, 'byop/model'); import post_v16_a3_gate as G; print(json.dumps({s: G.check(s, '$BASE') for s in ['S0', 'S3']}, indent=1))" ;;
   a3_e2e)     PYTHONPATH=byop/tests run python -W ignore byop/tests/structural_n07_a3_e2e.py --out results/BYOP/next07_s0_reserve_probe/_a3_e2e ;;
-  *)          echo "usage: $0 tests|structural|manifest|gate|s0s1|n06_manifest|n06_gate|n06_diag|n07_tests|n07_static|n07_manifest|n07_gate|n07_reserve_probe|a3_manifest|a3_gate|a3_e2e"; exit 2 ;;
+  *)          echo "usage: $0 tests|structural|manifest|gate|s0s1|n06_manifest|n06_gate|n06_diag|n07_tests|n07_static|n07_manifest|n07_gate|n07_reserve_probe|n07l_static|n07l_manifest|n07l_gate|n07l_lossless_probe|a3_manifest|a3_gate|a3_e2e"; exit 2 ;;
 esac

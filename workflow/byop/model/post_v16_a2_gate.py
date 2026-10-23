@@ -116,7 +116,7 @@ def check(stage, base_path, scenarios=None, cfg_path=CFG, root=ROOT, git_fn=G.gi
         reasons.append(f"config stage {c.get('stage')} is not A2 (an A1 approval never carries over)")
     try:                                     # NEXT-07: a `diagnostic` block is valid only in the exact reserve-probe config
         import post_v16_mainline as PM
-        PM.diagnostic_reserve_rhs(c, cfg_path)
+        PM.diagnostic_spec(c, cfg_path)
     except ValueError as e:
         reasons.append(f'diagnostic config refused: {e}')
     head = git_fn('rev-parse', 'HEAD').stdout.strip()

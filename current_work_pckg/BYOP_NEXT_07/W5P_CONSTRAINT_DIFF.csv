@@ -1,0 +1,7 @@
+pair,kind,name,field,detail
+REF_vs_PROBE,variable,Line-loss,presence,REF=True PROBE=False (expected)
+REF_vs_PROBE,constraint,Line-loss_tangents-1--1,presence,REF=True PROBE=False (expected)
+REF_vs_PROBE,constraint,Line-loss_tangents-1-1,presence,REF=True PROBE=False (expected)
+REF_vs_PROBE,constraint,Line-loss_tangents-2--1,presence,REF=True PROBE=False (expected)
+REF_vs_PROBE,constraint,Line-loss_tangents-2-1,presence,REF=True PROBE=False (expected)
+REF_vs_PROBE,constraint,Line-loss_upper,presence,REF=True PROBE=False (expected)

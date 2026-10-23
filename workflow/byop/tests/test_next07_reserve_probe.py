@@ -187,3 +187,60 @@ def test_reserve_solution_frames_from_injected_solution():
     assert np.allclose(r.reserve_total_MW, 200.0) and np.allclose(r.reserve_req_rhs_MW, 0.0)          # 2 thermal units x 100
     assert np.allclose(r.shortfall_vs_formal_MW, 2800.0) and (r.formal_requirement_MW == 3000.0).all()
     assert set(f) >= {'thermal_online_cap', 'thermal_reserve', 'thermal_available_cap', 'bess_reserve'}
+
+
+# ------------------------------------------------------------------------------------------------ NEXT-07 W5: lossless probe
+LOSSLESS = WF / 'config/config.byop_post_v16_n07_lossless_probe.yaml'
+
+
+def test_lossless_config_is_locked_and_pinned():
+    import post_v16_a2_gate as A2G
+    import post_v16_mainline as PM
+    c = A2G.load(LOSSLESS)
+    assert c['run_authorization'] == 'NOT_APPROVED' and c['approved_by'] is None and c['approved_git_sha'] is None
+    assert A2G.budgets(c) == (1, 1) and c['optimizer_call_plan'] == {'S0': ['S0_COST']} and c['stages'] == ['S0'] and c['max_retries'] == 0
+    assert c['run_args'] == {'start': 2026, 'end': 2031, 'sample_weeks': 26, 'scenarios': ['S0']}
+    assert PM.diagnostic_spec(c, LOSSLESS)['kind'] == 'S0_TRANSMISSION_LOSSLESS'
+    assert PM.diagnostic_transmission_losses(c, LOSSLESS) == 0 and PM.diagnostic_reserve_rhs(c, LOSSLESS) is None   # reserve stays 3 GW
+    assert PM.diagnostic_transmission_losses(A2G.load(PROBE), PROBE) is None
+    others = [A2G.load(), A2G.load(N06), A2G.load(PROBE)]
+    assert all(c['out_dir'] != o['out_dir'] and c['manifest'] != o['manifest'] for o in others)
+    g = A2G.check('S0', None, cfg_path=LOSSLESS)
+    assert not g['approved'] and 'run_authorization=NOT_APPROVED' in g['reasons'] and not [r for r in g['reasons'] if 'diagnostic' in r]
+
+
+@pytest.mark.parametrize('change, msg', [
+    (dict(diagnostic={'kind': 'S0_TRANSMISSION_LOSSLESS', 'transmission_losses': 1}), 'transmission_losses 1'),
+    (dict(diagnostic={'kind': 'S0_TRANSMISSION_LOSSLESS', 'transmission_losses': 0, 'reserve_requirement_MW': 0.0}), 'exactly kind'),
+    (dict(out_dir='results/BYOP/next07_s0_reserve_probe'), 'own out_dir'),
+    (dict(run_args={'start': 2026, 'end': 2026, 'sample_weeks': 0, 'scenarios': ['S0']}), 'run_args'),
+])
+def test_tampered_lossless_is_refused(tmp_path, change, msg):
+    import post_v16_a2_gate as A2G
+    import post_v16_mainline as PM
+    p = tampered(tmp_path, src=LOSSLESS, **change)
+    with pytest.raises(ValueError, match=msg):
+        PM.diagnostic_spec(A2G.load(p), p)
+    assert any(r.startswith('diagnostic config refused') for r in A2G.check('S0', None, cfg_path=p)['reasons'])
+
+
+def test_lossless_kind_only_in_its_own_file(tmp_path):
+    import post_v16_a2_gate as A2G
+    import post_v16_mainline as PM
+    for src in (PROBE, N06):
+        p = tampered(tmp_path, src=src, diagnostic={'kind': 'S0_TRANSMISSION_LOSSLESS', 'transmission_losses': 0})
+        with pytest.raises(ValueError, match='only allowed in'):
+            PM.diagnostic_spec(A2G.load(p), p)
+
+
+def test_solve_config_override_is_per_solve_copy():
+    import rearch_mech as R
+    cfg = {'solving': {'options': {'transmission_losses': 2, 'linearized_unit_commitment': True}}}
+    assert R.pv16_solve_config(cfg, {}) is cfg                                       # formal: untouched, same object
+    c0 = R.pv16_solve_config(cfg, {'pv16_transmission_losses': 0})
+    assert c0 is not cfg and c0['solving']['options']['transmission_losses'] == 0
+    assert c0['solving']['options']['linearized_unit_commitment'] is True            # everything else formal
+    assert cfg['solving']['options']['transmission_losses'] == 2                      # the baseline meta copy is never modified
+    src = Path(R.__file__).read_text(encoding='utf-8')
+    assert 'res = solve0(pv16_solve_config(config, state), tag, out_, n, *args_, **kw_)' in src
+    assert "STATE['pv16_transmission_losses'] = int(spec_['value']) if spec_ and spec_['key'] == 'transmission_losses' else None" in src

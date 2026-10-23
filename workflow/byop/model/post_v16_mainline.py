@@ -58,33 +58,61 @@ def _grid(index, bus):
 # NEXT-07 W1: the ONLY admissible diagnostic of the reserve rule - the RHS of PV16M-reserve_req set to 0 MW in one SHA-pinned
 # config (own out_dir / ledger / manifest / run_args, 1 S0_COST call); every other row of add_operating_reserve is kept.
 # The value is passed per model build (never written into POST_V16), so the formal A2 / NEXT-06 / A3 paths stay at 3,000 MW.
-RESERVE_PROBE = dict(config_name='config.byop_post_v16_n07_reserve_probe.yaml', kind='S0_RESERVE_REQ_RHS_ONLY', reserve_requirement_MW=0.0,
-                     stages=['S0'], out_dir='results/BYOP/next07_s0_reserve_probe',
-                     run_args={'start': 2026, 'end': 2031, 'sample_weeks': 26, 'scenarios': ['S0']},
-                     label='DIAGNOSTIC_NONCOMPLIANT_WITH_FORMAL_3GW_REQUIREMENT')
+DIAGNOSTICS = {        # NEXT-07: the only admissible diagnostics, each pinned to ONE config file, ONE value and its own out_dir
+    'S0_RESERVE_REQ_RHS_ONLY': dict(config_name='config.byop_post_v16_n07_reserve_probe.yaml', key='reserve_requirement_MW', value=0.0,
+                                    out_dir='results/BYOP/next07_s0_reserve_probe', label='DIAGNOSTIC_NONCOMPLIANT_WITH_FORMAL_3GW_REQUIREMENT'),
+    # NEXT-07 W5: the formal S0 (3 GW reserve, every other rule) solved WITHOUT transmission losses (the v1.6 calibration basis);
+    # applied per solve to a copy of the solve config (rearch_mech.pv16_solve_config), never to the baseline meta
+    'S0_TRANSMISSION_LOSSLESS': dict(config_name='config.byop_post_v16_n07_lossless_probe.yaml', key='transmission_losses', value=0,
+                                     out_dir='results/BYOP/next07_s0_lossless_probe', label='DIAGNOSTIC_LOSSLESS_NOT_THE_FORMAL_LOSS_BASIS'),
+}
+DIAG_STAGES = ['S0']
+DIAG_RUN_ARGS = {'start': 2026, 'end': 2031, 'sample_weeks': 26, 'scenarios': ['S0']}
+RESERVE_PROBE = dict(kind='S0_RESERVE_REQ_RHS_ONLY', reserve_requirement_MW=0.0, stages=DIAG_STAGES, run_args=DIAG_RUN_ARGS,
+                     **{k: v for k, v in DIAGNOSTICS['S0_RESERVE_REQ_RHS_ONLY'].items() if k not in ('key', 'value')})
 
 
-def diagnostic_reserve_rhs(c, cfg_path):
-    """reserve RHS (MW) a gate config asks for: None (formal 3,000 MW) when it has no `diagnostic` block; 0.0 only for the exact
-    NEXT-07 probe config (name, kind, value, S0 only, own out_dir, pinned run_args, budget 1 / 1); anything else -> ValueError"""
+def diagnostic_spec(c, cfg_path):
+    """the diagnostic a gate config asks for: None when it has no `diagnostic` block; otherwise the registry entry, but only for the
+    exact config file of that kind, the exact value, S0 only, its own out_dir, the pinned run_args and a 1 / 1 budget; else ValueError"""
     d = c.get('diagnostic')
     if d is None:
         return None
     from pathlib import Path as _P
-    rp, bad = RESERVE_PROBE, []
-    if _P(cfg_path).name != rp['config_name']:
-        bad.append(f"diagnostic block only allowed in {rp['config_name']}")
-    if not isinstance(d, dict) or set(d) != {'kind', 'reserve_requirement_MW'} or d.get('kind') != rp['kind']:
-        bad.append(f'diagnostic must be exactly kind={rp["kind"]} + reserve_requirement_MW')
-    elif float(d['reserve_requirement_MW']) != rp['reserve_requirement_MW']:
-        bad.append(f"diagnostic reserve_requirement_MW {d['reserve_requirement_MW']} != {rp['reserve_requirement_MW']}")
-    if list(c.get('stages') or []) != rp['stages'] or c.get('out_dir') != rp['out_dir'] or (c.get('run_args') or {}) != rp['run_args']:
+    bad = []
+    kind = d.get('kind') if isinstance(d, dict) else None
+    spec = DIAGNOSTICS.get(kind)
+    if spec is None:
+        names = sorted({s['config_name'] for s in DIAGNOSTICS.values()})
+        if _P(cfg_path).name not in names:
+            bad.append(f'diagnostic block only allowed in {names}')
+        bad.append(f'diagnostic must be exactly kind={sorted(DIAGNOSTICS)} + its one key')
+        raise ValueError('; '.join(bad))
+    if _P(cfg_path).name != spec['config_name']:
+        bad.append(f"diagnostic block only allowed in {spec['config_name']}")
+    if set(d) != {'kind', spec['key']}:
+        bad.append(f"diagnostic must be exactly kind={kind} + {spec['key']}")
+    elif float(d[spec['key']]) != float(spec['value']):
+        bad.append(f"diagnostic {spec['key']} {d[spec['key']]} != {spec['value']}")
+    if list(c.get('stages') or []) != DIAG_STAGES or c.get('out_dir') != spec['out_dir'] or (c.get('run_args') or {}) != DIAG_RUN_ARGS:
         bad.append('diagnostic config must pin stages [S0], its own out_dir and run_args 2026-2031 / 26 weeks / [S0]')
     if int(c.get('max_scenario_attempts', 0)) != 1 or int(c.get('max_top_level_optimizer_calls', 0)) != 1 or c.get('optimizer_call_plan') != {'S0': ['S0_COST']}:
         bad.append('diagnostic config budget must be 1 attempt / 1 S0_COST call')
     if bad:
         raise ValueError('; '.join(bad))
-    return float(d['reserve_requirement_MW'])
+    return dict(kind=kind, key=spec['key'], value=spec['value'], label=spec['label'])
+
+
+def diagnostic_reserve_rhs(c, cfg_path):
+    """reserve RHS (MW) a gate config asks for: None (formal 3,000 MW) unless it is the validated reserve probe"""
+    s = diagnostic_spec(c, cfg_path)
+    return float(s['value']) if s and s['key'] == 'reserve_requirement_MW' else None
+
+
+def diagnostic_transmission_losses(c, cfg_path):
+    """transmission_losses a gate config asks for: None (formal: the baseline meta value) unless it is the validated lossless probe"""
+    s = diagnostic_spec(c, cfg_path)
+    return int(s['value']) if s and s['key'] == 'transmission_losses' else None
 
 
 def add_operating_reserve(n, snapshots, reserve_MW=None):
