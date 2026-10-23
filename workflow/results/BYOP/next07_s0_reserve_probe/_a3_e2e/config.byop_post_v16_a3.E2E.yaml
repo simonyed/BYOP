@@ -1,0 +1,62 @@
+post_v16:
+  approved_by: null
+  approved_git_sha: null
+  authorization_source: current_work_pckg/BYOP_NEXT_07/BYOP_NEXT_07_S0_Reserve_Causal_Diagnostic_and_A3_Readiness_2026-10-23.md
+  authorization_source_sha256: dec9259865f687c0a13ebbc4fb4c125dc06a69a94dc7afbfaed3ac18d1f3d3c5
+  baseline:
+    path: workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc
+    sha256: a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16
+  firm_rule: CONSERVATIVE_FIRM_SCREENING
+  mainline_config: config/config.byop_ercot_mainline_geo_dynamic_v1_baseline_v16.yaml
+  manifest: current_work_pckg/BYOP_NEXT_07/A3_PRE_RUN_MANIFEST.json
+  max_retries: 0
+  max_scenario_attempts: 7
+  max_top_level_optimizer_calls: 30
+  optimizer_call_plan:
+    S0:
+      S0_COST: 1
+    S1_EARLIEST:
+      S1_COST: 1
+      S1_SPEED_HIERARCHY: 1
+    S2_IT1:
+      S2_DEV_COST: 1
+      S2_DEV_LEX: 6
+      S2_PUBLIC: 1
+    S2_IT2:
+      S2_DEV_COST: 1
+      S2_DEV_LEX: 6
+      S2_PUBLIC: 1
+    S2_IT3:
+      S2_DEV_COST: 1
+      S2_DEV_LEX: 6
+      S2_PUBLIC: 1
+    S3:
+      S3_COST: 1
+    S3_mS2:
+      S3_MS2_COST: 1
+  optional_stages:
+  - S2_IT2
+  - S2_IT3
+  out_dir: /datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/next07_s0_reserve_probe/_a3_e2e/ledgers
+  prerequisites:
+  - allowed:
+    - CALIBRATED_PASS
+    - PHYSICAL_SCARCITY_VALIDATED_WITH_LIMITS
+    field: S0_RELIABILITY_VERDICT
+    file: current_work_pckg/BYOP_NEXT_06/S0_SCIENTIFIC_STATUS.json
+  reference:
+    dir: results/BYOP/post_v16_a2/POST_V16_A2_S0S1
+    sha256:
+      S0_NO_HARM_REFERENCE.csv: 617da93b6a8336e35bac9f4baa101f13a39c53d9db0164252fe5105a71666d3a
+      S0_RESULT.json: d42b841c35a152a220baf41009e7d78892677c910fb26e8bfe21361cf2f1dbd5
+      S1_EARLIEST_RESULT.json: 548e95d67af14fd368b0493155b3c6550eb3f045346a14a6e3d6e1798e5e4252
+  run_authorization: NOT_APPROVED
+  stage: A3
+  stages:
+  - S0
+  - S1_EARLIEST
+  - S3
+  - S2_IT1
+  - S2_IT2
+  - S2_IT3
+  - S3_mS2

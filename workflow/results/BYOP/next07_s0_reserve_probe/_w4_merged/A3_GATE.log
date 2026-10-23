@@ -1,0 +1,34 @@
+2026-10-23T16:12:09Z start python -c import sys, json; sys.path.insert(0, 'byop/model'); import post_v16_a3_gate as G; print(json.dumps({s: G.check(s, '/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc') for s in ['S0', 'S3']}, indent=1))
+{
+ "S0": {
+  "approved": false,
+  "reasons": [
+   "run_authorization=NOT_APPROVED",
+   "approved_by missing",
+   "approved_git_sha missing",
+   "prerequisite current_work_pckg/BYOP_NEXT_06/S0_SCIENTIFIC_STATUS.json:S0_RELIABILITY_VERDICT = BASELINE_RELIABILITY_UNRESOLVED not in ['CALIBRATED_PASS', 'PHYSICAL_SCARCITY_VALIDATED_WITH_LIMITS']"
+  ],
+  "head": "4edf7bace43677e7c73c3c4d057945e95e66779f",
+  "stage": "S0",
+  "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a3.yaml",
+  "ledger": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/post_v16_a3/POST_V16_A3_PILOT/A3_SOLVE_LOG.csv",
+  "child_ledger": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/post_v16_a3/POST_V16_A3_PILOT/A3_OPTIMIZER_CALL_LOG.csv"
+ },
+ "S3": {
+  "approved": false,
+  "reasons": [
+   "run_authorization=NOT_APPROVED",
+   "approved_by missing",
+   "approved_git_sha missing",
+   "prerequisite current_work_pckg/BYOP_NEXT_06/S0_SCIENTIFIC_STATUS.json:S0_RELIABILITY_VERDICT = BASELINE_RELIABILITY_UNRESOLVED not in ['CALIBRATED_PASS', 'PHYSICAL_SCARCITY_VALIDATED_WITH_LIMITS']",
+   "S3 needs a PASSED S0 first",
+   "S3 needs a PASSED S1_EARLIEST first"
+  ],
+  "head": "4edf7bace43677e7c73c3c4d057945e95e66779f",
+  "stage": "S3",
+  "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_post_v16_a3.yaml",
+  "ledger": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/post_v16_a3/POST_V16_A3_PILOT/A3_SOLVE_LOG.csv",
+  "child_ledger": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/post_v16_a3/POST_V16_A3_PILOT/A3_OPTIMIZER_CALL_LOG.csv"
+ }
+}
+2026-10-23T16:12:10Z end rc=0

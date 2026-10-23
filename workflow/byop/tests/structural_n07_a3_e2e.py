@@ -65,6 +65,7 @@ def main():
     cfgp.write_text(yaml.safe_dump(raw), encoding='utf-8')
     c = A3G.load(cfgp)
     STATE['pv16_firm_rule'] = c['firm_rule']
+    R.ML['gate'] = dict(approved=True, reasons=['E2E_INJECTED_GATE'])      # the mainline E1 re-check (_require_gate), injected too
     RT.arm(cfgp, None, gate_fn=lambda st: dict(approved=True, reasons=['E2E_INJECTED_GATE']))
     R.PV16_LOCK['armed'] = False
     R._arm_post_v16_optimizer_lock()                    # wraps the intercepting solve: a call outside a stage is refused
