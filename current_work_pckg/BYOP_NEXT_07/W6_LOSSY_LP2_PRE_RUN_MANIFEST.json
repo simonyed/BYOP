@@ -153,9 +153,9 @@
   },
   "workflow/byop/run/loss_basis_lp2.py": {
    "text": true,
-   "raw": "3978bca42ecf06882b17a0f218519b8535eab5c1816a26bcce0c79bbe47e9cf4",
-   "lf": "3978bca42ecf06882b17a0f218519b8535eab5c1816a26bcce0c79bbe47e9cf4",
-   "crlf": "85f9e2067261661ad12c01805a5b9851fab462a4186a833691844f84fff69e55"
+   "raw": "5a750038d1c884f5af0cc364a4790f19a326f86c9c8a9a731a64b0e5f6e842d8",
+   "lf": "88bfe7b86aadc86810ada435a0c63eff9b45cec3c70ee66f7d7798f6f71cadce",
+   "crlf": "5a750038d1c884f5af0cc364a4790f19a326f86c9c8a9a731a64b0e5f6e842d8"
   },
   "workflow/byop/run/post_v16_a1.py": {
    "text": true,
@@ -1600,7 +1600,7 @@
    "crlf": "64e5522fb9ae716aa5775dd2d6ad41c29f39e8d0cdb61d4e1621c00fefedc56b"
   }
  },
- "head_when_built": "4ab5b88d54a5940f5a4a383bca53b47a4fe068eb",
- "built_utc": "2026-10-23T18:18:41+00:00",
+ "head_when_built": "9fcd19aae8b6decf2e2693f005a16e40cb9b828d",
+ "built_utc": "2026-10-23T18:42:07+00:00",
  "note": "verification: post_v16_a2_gate.manifest_mismatches; A1 manifest / gate untouched"
 }
