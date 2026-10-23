@@ -164,8 +164,17 @@ def interval_start_soc(n, snapshots, S):
                    spill_term='omitted (conservative)')
 
 
-def add_re_bess_firm_certificate(n, snapshots, dc_rows, stress_mask_fn):
-    """dc_rows: STATE['dc'] entries (zone, period, S, pue); adds RF certificate rows and the F / PUE term in M2-serve_cap"""
+FIRM_RULES = (None, 'CONSERVATIVE_FIRM_SCREENING')
+
+
+def add_re_bess_firm_certificate(n, snapshots, dc_rows, stress_mask_fn, firm_rule=None):
+    """dc_rows: STATE['dc'] entries (zone, period, S, pue); adds RF certificate rows and the F / PUE term in M2-serve_cap.
+    NEXT-07 W4.2 firm_rule='CONSERVATIVE_FIRM_SCREENING' (A3, S2 and S3 alike, set once per run): the certificate rows are still
+    built (audit), but F has upper bound 0 - dedicated BYOP RE + BESS earns NO full-year firm IT credit until a 48 / 72 h contiguous
+    same-SOC certificate exists (not implemented; a sampling change is a separate decision). Wind / PV / BESS keep dispatching
+    (energy, non-firm service); qualified firm terms of M2-serve_cap (RICE, SOFC, aero, firm import) are unchanged."""
+    if firm_rule not in FIRM_RULES:
+        raise ValueError(f'firm_rule {firm_rule!r} not implemented (allowed: {FIRM_RULES})')
     m = n.model
     g, su = n.generators, n.storage_units
     smask = stress_mask_fn(snapshots)
@@ -179,7 +188,7 @@ def add_re_bess_firm_certificate(n, snapshots, dc_rows, stress_mask_fn):
         sns = snapshots[(per == p) & smask]
         if not (re or ba) or not len(sns):
             continue
-        F = m.add_variables(lower=0.0, name=f'A2-F_cert_{s}_{p}')
+        F = m.add_variables(lower=0.0, upper=0.0 if firm_rule == 'CONSERVATIVE_FIRM_SCREENING' else np.inf, name=f'A2-F_cert_{s}_{p}')
         supply = 0
         if re:
             supply = m['Generator-p'].sel(name=re, snapshot=sns).sum('name')
@@ -203,7 +212,8 @@ def add_re_bess_firm_certificate(n, snapshots, dc_rows, stress_mask_fn):
             lhs, rhs = c_.lhs - F * (1.0 / d['pue']), c_.rhs
             m.remove_constraints(nm)
             m.add_constraints(lhs <= rhs, name=nm)
-        made.append(dict(site=s, period=p, re_units=len(re), bess_units=len(ba), stress_snapshots=len(sns)))
+        made.append(dict(site=s, period=p, re_units=len(re), bess_units=len(ba), stress_snapshots=len(sns),
+                         firm_rule=firm_rule or 'LEGACY_24H_CERTIFICATE', firm_credit_allowed=firm_rule != 'CONSERVATIVE_FIRM_SCREENING'))
     return made
 
 
