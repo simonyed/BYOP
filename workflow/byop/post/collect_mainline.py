@@ -319,7 +319,7 @@ def collect(out):
     else:
         chk['SCIENTIFIC_USE'] = 'ALLOWED' if phase == 'CORE' else 'PARTIAL_PILOT (S0 / S1 only: no M2 / M4 conclusion)'
     # Stage B2.5: S0CAL flow export (written per scenario by rearch_mech), cost books, layered status
-    fl_parts = [f for f in sorted(out.glob('scenarios/*/s0cal_line_flows.csv')) if f.stat().st_size > 0]   # post-v1.6: no S0CAL -> empty files
+    fl_parts = [f for f in sorted(out.glob('scenarios/*/s0cal_line_flows.csv')) if f.stat().st_size > 2]   # post-v1.6: no S0CAL -> empty (newline-only) files
     if fl_parts:
         w(pd.concat([pd.read_csv(f) for f in fl_parts], ignore_index=True), 'STAGE_B3_S0CAL_LINE_FLOW_UTILISATION.csv')
     cb = cost_book_decomposition(summ)
