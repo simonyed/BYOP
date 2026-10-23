@@ -1,0 +1,149 @@
+{
+ "work_package": "BYOP_NEXT_07",
+ "step": "W1.3",
+ "verdict": "W1_STATIC_PASS",
+ "W2_RHS_CHANGED_ONLY": "YES",
+ "solver_executions": 0,
+ "solver_calls_intercepted": 3,
+ "checks": {
+  "exactly_one_constraint_rhs_changed": true,
+  "reserve_req_rows_all_changed_3000_to_0": true,
+  "reserve_req_coeffs_sign_coords_identical": true,
+  "required_reserve_rows_present_in_both": true,
+  "ref2_identical_to_ref": true,
+  "default_rhs_restored_ref2": true,
+  "post_v16_reserve_MW_unchanged": true,
+  "n06_fullyear_and_formal_a2_configs_have_no_diagnostic": true,
+  "probe_config_rhs_is_0": true,
+  "no_solver_called": true
+ },
+ "pre": {
+  "probe_config_rhs": 0.0,
+  "n06_fullyear_config_rhs": null,
+  "formal_a2_config_rhs": null,
+  "POST_V16_reserve_MW_before": 3000.0
+ },
+ "reserve_req_rhs_values": {
+  "REF": [
+   3000.0
+  ],
+  "PROBE": [
+   -0.0
+  ],
+  "REF2": [
+   3000.0
+  ]
+ },
+ "reserve_req_rows": 816,
+ "required_rows_present": {
+  "REF": {
+   "PV16M-online_cap_fixed": true,
+   "PV16M-online_cap_ext": true,
+   "PV16M-online_max_p": true,
+   "PV16M-online_min": true,
+   "PV16M-res_thermal_head": true,
+   "PV16M-res_ramp": true,
+   "PV16M-res_su_energy": true,
+   "PV16M-res_su_energy_start": true,
+   "PV16M-reserve_req": true,
+   "A2F08-seg_soc_*": 35
+  },
+  "PROBE": {
+   "PV16M-online_cap_fixed": true,
+   "PV16M-online_cap_ext": true,
+   "PV16M-online_max_p": true,
+   "PV16M-online_min": true,
+   "PV16M-res_thermal_head": true,
+   "PV16M-res_ramp": true,
+   "PV16M-res_su_energy": true,
+   "PV16M-res_su_energy_start": true,
+   "PV16M-reserve_req": true,
+   "A2F08-seg_soc_*": 35
+  },
+  "REF2": {
+   "PV16M-online_cap_fixed": true,
+   "PV16M-online_cap_ext": true,
+   "PV16M-online_max_p": true,
+   "PV16M-online_min": true,
+   "PV16M-res_thermal_head": true,
+   "PV16M-res_ramp": true,
+   "PV16M-res_su_energy": true,
+   "PV16M-res_su_energy_start": true,
+   "PV16M-reserve_req": true,
+   "A2F08-seg_soc_*": 35
+  }
+ },
+ "reserve_info": {
+  "REF": {
+   "eligible_thermal": 239,
+   "eligible_thermal_ext": 112,
+   "storage": 693,
+   "reserve_req_rhs_MW": 3000.0
+  },
+  "PROBE": {
+   "eligible_thermal": 239,
+   "eligible_thermal_ext": 112,
+   "storage": 693,
+   "reserve_req_rhs_MW": 0.0
+  },
+  "REF2": {
+   "eligible_thermal": 239,
+   "eligible_thermal_ext": 112,
+   "storage": 693,
+   "reserve_req_rhs_MW": 3000.0
+  }
+ },
+ "model_size": {
+  "REF": {
+   "nvars": 2660074,
+   "ncons": 7107710,
+   "nnz": 35171029,
+   "variables": 13,
+   "constraints": 1015
+  },
+  "PROBE": {
+   "nvars": 2660074,
+   "ncons": 7107710,
+   "nnz": 35171029,
+   "variables": 13,
+   "constraints": 1015
+  },
+  "REF2": {
+   "nvars": 2660074,
+   "ncons": 7107710,
+   "nnz": 35171029,
+   "variables": 13,
+   "constraints": 1015
+  }
+ },
+ "snapshot_weight_sum_h": {
+  "2026": 8760.0,
+  "2027": 8760.0,
+  "2028": 8760.0,
+  "2029": 8760.0,
+  "2030": 8760.0,
+  "2031": 8760.0
+ },
+ "stores_weight_h": [
+  3.0
+ ],
+ "differences_REF_vs_PROBE": 1,
+ "differences_REF_vs_REF2": 0,
+ "unexpected_differences": [],
+ "build_seconds": {
+  "REF": 45.8,
+  "PROBE": 39.0,
+  "REF2": 59.5
+ },
+ "peak_rss_GB_after_build": {
+  "REF": 1.66,
+  "PROBE": 3.0,
+  "REF2": 3.83
+ },
+ "siting": "dynamic_pnnl_v1",
+ "tech_version": "TECH_COMP_2",
+ "base_sha256": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16",
+ "tolerance": 1e-10,
+ "seconds": 159.9,
+ "method": "labels / bounds / coefficients / RHS compared array-wise per variable and constraint name (label arrays identical => canonical alignment); network inputs by per-component SHA (public_inputs_fingerprint) + snapshot index / weightings"
+}

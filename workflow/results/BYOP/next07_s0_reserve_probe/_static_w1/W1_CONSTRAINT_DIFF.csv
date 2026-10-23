@@ -1,0 +1,2 @@
+pair,kind,name,field,detail
+REF_vs_PROBE,constraint,PV16M-reserve_req,rhs,"{'rows': 816, 'rows_changed': 816, 'a_values': [3000.0], 'b_values': [-0.0]}"
