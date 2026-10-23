@@ -6,9 +6,9 @@
 # The candidate NetCDF is a NEW file in out_dir; the frozen v1.6 NetCDFs are never written. This file is a REQUEST: only the
 # researcher authorises it (three fields below, config-only commit).
 post_v16:                                       # key shared with the A2-type manifest builder; gate = loss_basis_lp1.check
-  run_authorization: NOT_APPROVED
-  approved_git_sha: null
-  approved_by: null
+  run_authorization: APPROVED
+  approved_git_sha: 219bf3e9b7f08c9bc65f69276a2635a37fe8c47c
+  approved_by: sw2434@cornell.edu
   authorization_source: current_work_pckg/BYOP_NEXT_08_LOSSY_LP1_AND_BRANCHES/NEXT_08_PROMPT.md
   authorization_source_sha256: 0d5b277d0b0fe15d937fb6bb29b575c339ce3299d791943e04d7ea862cd7de6e   # LF content SHA
   manifest: current_work_pckg/BYOP_NEXT_08_LOSSY_LP1_AND_BRANCHES/LOSSY_LP1_PRE_RUN_MANIFEST.json
