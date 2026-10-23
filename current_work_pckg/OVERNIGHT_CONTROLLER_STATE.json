@@ -1,6 +1,6 @@
 {
- "phase": "H3_S0S1_RUNNING",
- "updated": "2026-10-23 ~00:55 EDT",
+ "phase": "STOPPED_BEFORE_A3",
+ "updated": "2026-10-23 ~04:45 EDT",
  "code_sha": {
   "a1_rerun_approved": "07c881a4c643a800dfc55257716671e2791a48ab",
   "a2_approved": "cdfdea06146a6fe73df89cb410d6a88cb5fda306",
@@ -15,18 +15,18 @@
   "LP_N": "INFEASIBLE network side"
  },
  "a1_g2": "A1_FIXED_NETWORK_EXCEPTION",
- "a2_parent_calls": 1,
- "a2_child_calls": 1,
+ "a2_parent_calls": 2,
+ "a2_child_calls": 3,
  "a3_child_calls": 0,
  "remaining_budget": {
   "a1_rerun1": 0,
-  "a2_scenario_attempts": 1,
-  "a2_top_level_calls": 2,
+  "a2_scenario_attempts": 0,
+  "a2_top_level_calls": 0,
   "a3_top_level_calls": 30
  },
- "current_process": "L2: THREADS=10 run_post_v16_a2.sh s0s1 (S0#1 STARTED 04:50:00Z, child S0_COST STARTED 04:50:40Z, 2,660,074 x 7,107,710)",
- "last_pass": "H2 revalidation 248/0 + 75/75",
- "blocker": null,
- "next_safe_command": "wait for results/BYOP/post_v16_a2/A2_RUN.done; never re-run s0s1 (zero retries)",
+ "current_process": "none",
+ "last_pass": "S0 PASS + S1_EARLIEST PASS (3 top-level calls)",
+ "blocker": "A3: no independent A3 gate / call plan / ledger implemented; S0 reliability flag (54,206 MWh existing shed, 94% in 2026 Far West) awaits researcher review; 48/72 h firm and S2 developer-LP instrumentation not built",
+ "next_safe_command": "researcher review of S0_S1_MAINLINE_FINDINGS.md; then (separate work package) build + test the A3 gate before any S2/S3 solve",
  "known_gap": "mainline does not persist solved network / SOC time series -> post-solve SOC segment audit not derivable from this run"
 }
