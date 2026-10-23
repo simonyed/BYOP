@@ -61,6 +61,49 @@ def labels(v):
     return set(np.asarray(v.labels.values).ravel()) - {-1}
 
 
+def next02_audits(tag, n, m):
+    """NEXT-02 A2-FIX-01..05 structural evidence on the built model (no solver)"""
+    obj = PM.objective_coefficients(m)
+    ay = dict(STATE.get('approval_year', {}))
+    pa = PM.expansion_pair_audit(n, m, corridors=STATE.get('corridors'), approval_year=ay, obj=obj)
+    pa.insert(0, 'scenario', tag); pa.to_csv(OUT / f'EXPANSION_PAIR_AUDIT_{tag}.csv', index=False)
+    check('QA-PAIR', f'{tag}: every AC_exp fwd / rev pair tied by M2-line_sym (rev-only and fwd-only rejected), fwd priced once, corridor cap',
+          len(pa) > 0 and bool(pa.PASS.all()), dict(pairs=len(pa), fail=int((~pa.PASS.astype(bool)).sum()) if len(pa) else None))
+    ca = PM.committed_links_audit(n, m)
+    ca.insert(0, 'scenario', tag); ca.to_csv(OUT / f'COMMITTED_LINKS_AUDIT_{tag}.csv', index=False)
+    check('QA-PAIR', f'{tag}: committed DWB / PBRP links fixed, cost-free in the LP, outside every expansion row', len(ca) >= 2 and bool(ca.PASS.all()), len(ca))
+    co = PM.cod_activity_audit(n, m, approval_year=ay, obj=obj)
+    co.insert(0, 'scenario', tag); co.to_csv(OUT / f'COD_ACTIVITY_AUDIT_{tag}.csv', index=False)
+    check('QA-COD', f'{tag}: every public candidate inactive before its build year, priced in the objective, approval <= build',
+          len(co) > 0 and bool(co.PASS.all()), dict(n=len(co), fail=int((~co.PASS.astype(bool)).sum())))
+    ce = co[(co.approval_year == 2027) & (co.build_year == 2029)]
+    check('QA-COD', f'{tag}: counter-example 2027 order / 2029 COD exists and is unavailable in 2027-28 (same rule in S0 and S1)',
+          len(ce) > 0 and not ce.active_before_build.any(), dict(n=len(ce), example=ce.name.iloc[0] if len(ce) else None))
+    sw = n.snapshot_weightings
+    check('QA-SOC', f'{tag}: storage SOC advances by the elapsed 3 h (stores weighting) while objective / generators keep the sample weight',
+          np.allclose(sw.stores.values, M.SNAP_HOURS) and float(sw.generators.sum()) > 8000, dict(stores=sorted(set(np.round(sw.stores, 3)))[:3], gen_sum=float(sw.generators.sum())))
+    cons = set(m.constraints)
+    ok_start = 'PV16M-res_su_energy_start' in cons
+    if ok_start:
+        e = m.constraints['PV16M-res_su_energy_start'].lhs
+        v_ = set(np.asarray(e.vars.values).ravel()) - {-1}
+        ok_start = bool(v_ & labels(m['StorageUnit-p_dispatch'])) and bool(v_ & labels(m['StorageUnit-p_store'])) and bool(v_ & labels(m['StorageUnit-state_of_charge']))
+    check('QA-SOC', f'{tag}: reserve energy also bounded at the START of each snapshot (dispatch SOC + same-snapshot flows, no shadow SOC)', ok_start)
+    check('QA-RES', f'{tag}: reserve rows tie thermal r to online capacity - dispatch, ramp and min-load on the same online variable',
+          {'PV16M-res_thermal_head', 'PV16M-res_ramp', 'PV16M-online_min', 'PV16M-online_max_p'} <= cons)
+    nh = PM.no_harm_qa(n, m, tag)
+    nh.to_csv(OUT / f'NATIVE_LOAD_NO_HARM_QA_{tag}.csv', index=False)
+    if tag == 'S1_EARLIEST':
+        ls = nh[nh.carrier == 'load_shed']
+        check('QA-NOHARM', 'S1_EARLIEST: every existing-customer shed unit (native + inherited ramp) in the D24 no-harm row',
+              len(ls) == 1 and int(ls.units.iloc[0]) == int(ls.in_no_harm_row.iloc[0]) > 0, ls.to_dict('records'))
+        check('QA-NOHARM', 'S1_EARLIEST: no study-AIDC unserved / interruption unit inside the no-harm row',
+              int(nh[nh.carrier != 'load_shed'].in_no_harm_row.sum()) == 0)
+    if tag in ('S0', 'S1_EARLIEST'):
+        check('QA-F5', f'{tag}: no RE+BESS firm certificate rows (A2-FIX-05: S0 / S1 do not rely on BYOP RE+BESS firm)',
+              not [x for x in m.variables if x.startswith('A2-F_cert_')])
+
+
 def main():
     global CONFIG, OUT
     ap = argparse.ArgumentParser(); ap.add_argument('--out', required=True)
@@ -93,7 +136,13 @@ def main():
     for tag, scen, kw in (('S0', 'S0', {}), ('S1_EARLIEST', 'S', {}), ('S3', 'S', dict(byop=list(R.ML_TECHS), reuse_dedicated=True))):
         STATE['firm_strict'] = True; STATE['lex'] = None
         STATE.pop('v2_pool_candidates', None); STATE.pop('byop_cod', None); STATE.pop('pv16m_re_firm', None)
+        if tag == 'S1_EARLIEST':      # NEXT-02: a SYNTHETIC zero S0 shed reference, only so the D24 no-harm row is built and inspected
+            n0_ = res['S0']['n']
+            sc0 = n0_.generators.index[n0_.generators.carrier == 'load_shed']
+            STATE['shed_S0'] = pd.DataFrame(0.0, index=n0_.snapshots, columns=sc0)
         n, m = build_model(tag, scen, **kw)
+        if tag == 'S1_EARLIEST':
+            STATE['shed_S0'] = None
         if tag == 'S3':
             res[tag] = dict(n=n, m=m, byop_cod=dict(STATE.get('byop_cod', {})), re_firm=list(STATE.get('pv16m_re_firm') or []))
         names = list(m.variables); cons = list(m.constraints)
@@ -111,13 +160,23 @@ def main():
         el = list(m['PV16M-res_thermal'].coords['name'].values)
         check('QA-RES', f'{tag}: reserve-eligible units exclude DC-bus BYOP and load_shed', not any(str(n.generators.bus[x]).startswith('DC_') or n.generators.carrier[x] == 'load_shed' for x in el), len(el))
         check('QA-RES', f'{tag}: extendable public thermal candidates carry reserve via p_nom (online_cap_ext)', 'PV16M-online_cap_ext' in cons)
-        led = PM.public_expansion_ledger(n, M.periods())
+        led = PM.public_expansion_ledger(n, M.periods(), m=m)
         led.assign(scenario=tag).to_csv(OUT / f'PUBLIC_EXPANSION_LEDGER_{tag}.csv', index=False)
-        check('QA-PUBLIC', f'{tag}: no free endogenous public expansion; S0CAL absent', not (led.status == 'FREE_FORBIDDEN').any() and not (led.status == 'S0CAL_FORBIDDEN').any(),
-              led.status.value_counts().to_dict())
+        check('QA-PUBLIC', f'{tag}: no free endogenous public expansion; S0CAL absent; every rev priced via a verified fwd equality',
+              not led.status.isin(['FREE_FORBIDDEN', 'S0CAL_FORBIDDEN', 'PAIR_UNVERIFIED']).any(), led.status.value_counts().to_dict())
+        next02_audits(tag, n, m)
         check('QA-PUBLIC', f'{tag}: committed TPIT / PBRP links listed as sunk common assets', (led.status.str.startswith('COMMITTED')).sum() >= 2, int(led.status.str.startswith('COMMITTED').sum()))
         res[tag]['ledger'] = led
     n0, n1, m1 = res['S0']['n'], res['S1_EARLIEST']['n'], res['S1_EARLIEST']['m']
+    f0, f1 = PM.public_inputs_fingerprint(n0), PM.public_inputs_fingerprint(n1)
+    same_parts = {k: f0[k]['sha256'] == f1[k]['sha256'] for k in f0}
+    (OUT / 'S0_S1_IDENTICAL_PUBLIC_INPUTS.json').write_text(json.dumps(dict(
+        rule='S0 and S1_EARLIEST share every non-DC-bus component, profile, line, native / inherited load, weighting and cost; '
+             'only the study-AIDC rows at DC_ buses (and their POI links) differ', S0=f0, S1_EARLIEST=f1, identical=same_parts,
+        all_identical=all(same_parts.values()), committed_assets=sorted(n0.links.index[n0.links.carrier.isin(['AC_base_committed', 'AC_committed'])]),
+        reserve=STATE.get('pv16m_reserve'), committed_cost_ledger=PM.committed_cost_ledger('base').to_dict('records')), indent=1, default=str))
+    check('QA-S0S1', 'NEXT-02: S0 / S1_EARLIEST public inputs identical (hash per component table)', all(same_parts.values()),
+          [k for k, v in same_parts.items() if not v])
     # S0 vs S1 common initial assets (non-DC)
     def common(n):
         g = n.generators[~n.generators.bus.astype(str).str.startswith('DC_') & (n.generators.carrier != 'load_shed')]

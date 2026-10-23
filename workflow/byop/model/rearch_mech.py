@@ -254,6 +254,11 @@ def ml_base_build(config):
     for j, i in enumerate(keep):
         w.iloc[j] = M.SNAP_HOURS if i in ex else (hours - M.SNAP_HOURS * len(ex)) / len(base) / 1.0
     n.snapshot_weightings = pd.DataFrame({c: w.values for c in sw0.columns}, index=n.snapshots)
+    import post_v16_mainline as PM
+    if PM.POST_V16['on'] and PM.POST_V16['stores_elapsed_h']:
+        # NEXT-02 A2-FIX-03: the SOC balance must advance by the elapsed snapshot duration (3 h), not by the ~77 h a sampled
+        # base snapshot represents in the annual energy / cost sums (objective and generators weightings keep that weight)
+        n.snapshot_weightings['stores'] = M.SNAP_HOURS
     STATE['stress_ts'] = {ts[i] for i in sidx}
     STATE['stress_sample'] = dict(days=STATE.get('stress_days'), snapshots=len(sidx), added_outside_sample=len(extra),
                                   weight_total_h=float(w.sum()))
@@ -1646,8 +1651,11 @@ POST_V16_LEGACY_FLAGS = ('calibrate', 'erm_cal', 's0_calibrate', 's0_cal_file')
 
 
 def post_v16_guard(a):
-    """post-v1.6 package v1.1 (A0): the new main line uses only the SHA-pinned v1.6 baseline, never ERM-02 B or free S0CAL,
-    and stays refused until the A2 reserve-rule implementation and approval exist. Returns only through SystemExit."""
+    """post-v1.6 main line (NEXT-02 A2-FIX-07): only the SHA-pinned v1.6 baseline, never ERM-02 B / free S0CAL / legacy ERM, and
+    only through the independent A2 gate (byop/model/post_v16_a2_gate.py: own config, manifest, ledger, 2-call budget, S0 before
+    S1_EARLIEST). Fail-closed: any reason -> SystemExit(3). Returns the approved gate dict otherwise."""
+    import post_v16_a2_gate as A2G
+    c = A2G.load()
     reasons = [f'legacy flag --{f.replace("_", "-")} not allowed' for f in POST_V16_LEGACY_FLAGS if getattr(a, f, None)]
     if not a.base:
         reasons.append('--base missing (no fallback to the pre-v1.6 baseline)')
@@ -1655,10 +1663,96 @@ def post_v16_guard(a):
         reasons.append(f'--base {a.base} is not the v1.6 baseline')
     elif not Path(a.base).exists() or M.sha(a.base) != BP.BASE_TAMU_V16_SHA256:
         reasons.append('v1.6 baseline missing or SHA differs from the pinned v1.6 SHA')
-    reasons.append('POST_V16_MAINLINE_NOT_READY: the 3,000 MW / 1 h reserve rule (INV-N1) replacing the 15 % ERM is not yet '
-                   'in the multi-period mainline (A2 implementation item; A2 needs a separate approval)')
-    print(json.dumps(dict(POST_V16_GUARD='REFUSED', reasons=reasons), indent=1))
-    raise SystemExit(3)
+    if not a.mainline:
+        reasons.append('--post-v16 needs --mainline')
+    if a.config is None or Path(a.config).as_posix() != c['mainline_config']:
+        reasons.append(f"--config must be {c['mainline_config']}")
+    if a.out is None or Path(a.out).resolve() != (A2G.WF / c['out_dir']).resolve():
+        reasons.append(f"--out must be {c['out_dir']} (the A2 ledger directory)")
+    if a.no_harm != 'on':
+        reasons.append('--no-harm off is not allowed on the post-v1.6 line')
+    if a.attribution or a.relax:
+        reasons.append('--attribution / --relax are not part of A2 (no extra solves)')
+    sc = list(a.scenarios)
+    if sc not in (['S0'], ['S0', 'S1_EARLIEST'], ['S1_EARLIEST']):
+        reasons.append(f'--scenarios {sc}: A2 runs only S0, then S1_EARLIEST (S2 / S3 / attribution need a separate A3 approval)')
+    g = A2G.check(sc[0] if sc else 'S0', a.base) if not reasons else dict(approved=False, reasons=[])
+    reasons += g['reasons']
+    if reasons:
+        print(json.dumps(dict(POST_V16_GUARD='REFUSED', reasons=reasons), indent=1))
+        raise SystemExit(3)
+    return g
+
+
+PV16_LOCK = dict(inside=False, armed=False)
+
+
+def _arm_post_v16_optimizer_lock():
+    """A2: an optimizer call is allowed only inside post_v16_solve_wrapper (ledgered + gated); anything else is refused"""
+    import linopy
+    if PV16_LOCK['armed']:
+        return
+    s0 = linopy.Model.solve
+
+    def _solve(self, *a_, **k_):
+        if not PV16_LOCK['inside']:
+            raise SystemExit('POST_V16_A2: optimizer call outside a ledgered A2 solve refused (linopy.Model.solve)')
+        return s0(self, *a_, **k_)
+    linopy.Model.solve = _solve
+    try:                                    # gurobipy.Model is an extension type: patching may be impossible (then only linopy is locked;
+        import gurobipy                     # the only direct gurobipy call, lex_presolve, runs inside the wrapper)
+        o0 = gurobipy.Model.optimize
+
+        def _opt(self, *a_, **k_):
+            if not PV16_LOCK['inside']:
+                raise SystemExit('POST_V16_A2: optimizer call outside a ledgered A2 solve refused (gurobipy.Model.optimize)')
+            return o0(self, *a_, **k_)
+        gurobipy.Model.optimize = _opt
+        PV16_LOCK['gurobipy_locked'] = True
+    except Exception:
+        PV16_LOCK['gurobipy_locked'] = False
+    PV16_LOCK['armed'] = True
+
+
+def post_v16_solve_wrapper(solve0, a, out):
+    """every A2 optimizer call: gate re-check for this stage -> STARTED row (persisted) -> solve -> acceptance -> <stage>_RESULT.json
+    -> DONE / ERROR row. A failed acceptance or any exception stops the run (no retry, no parameter change)."""
+    import post_v16_a2_gate as A2G
+    c, out_dir, log = A2G.paths()
+
+    def _solve(config, tag, out_, n, *args_, **kw_):
+        g = A2G.check(tag, a.base)
+        if not g['approved']:
+            raise SystemExit('POST_V16_A2_GATE REFUSED: ' + json.dumps(g['reasons']))
+        man_sha = M.sha(A2G.ROOT / c['manifest'])
+        aid = A2G.start_attempt(log, tag, man_sha, c['baseline']['sha256'])
+        t0 = time.time()
+        try:
+            PV16_LOCK['inside'] = True
+            res = solve0(config, tag, out_, n, *args_, **kw_)
+        except BaseException as e:
+            PV16_LOCK['inside'] = False
+            A2G.finish_attempt(log, aid, state='ERROR', status='exception', failure_class=e.__class__.__name__, seconds=round(time.time() - t0, 1),
+                               **{'pass': False}, note=str(e)[:300])
+            raise
+        PV16_LOCK['inside'] = False
+        try:
+            acc = A2G.acceptance(n, tag, res, STATE.get('shed_S0'))
+            if tag == 'S1_EARLIEST':
+                lx = STATE.get('lex_log') or {}
+                acc['checks']['lex_presolve_optimal'] = bool(lx.get('optimal'))
+                acc['values']['lex_status'] = lx.get('status_name')
+                acc['checks']['no_harm_row_present'] = 'D24-no_harm_existing_customers' in n.model.constraints
+                acc['PASS'] = all(acc['checks'].values())
+        except Exception as e:
+            acc = dict(PASS=False, checks=dict(acceptance_computed=False), values=dict(error=repr(e)))
+        (out_dir / f'{tag}_RESULT.json').write_text(json.dumps(dict(stage=tag, result=res, acceptance=acc, gate=g), indent=1, default=str))
+        A2G.finish_attempt(log, aid, state='DONE', status=res.get('status'), termination=res.get('termination'),
+                           failure_class='' if acc['PASS'] else 'ACCEPTANCE_FAILED', seconds=round(time.time() - t0, 1), **{'pass': acc['PASS']})
+        if not acc['PASS']:
+            raise SystemExit(f'POST_V16_A2 {tag} acceptance FAILED (STOP, no retry): ' + json.dumps(acc['checks']))
+        return res
+    return _solve
 
 
 def extra_rights(n, snapshots):
@@ -1811,12 +1905,13 @@ def main():
     ap.add_argument('--post-v16', action='store_true', help='post-v1.6 main line (execution package v1.1): v1.6 base only, no ERM-02 B / S0CAL')
     a = ap.parse_args()
     a.case_group = a.case_group or a.case_id
-    if a.post_v16:      # post-v1.6 guard BEFORE the legacy gate: wrong base or legacy calibration flags are refused, and the
-        post_v16_guard(a)   # mainline itself is not yet post-v1.6 ready (reserve rule INV-N1 is an A2 item) -> exit 3
+    pv16_gate = None
+    if a.post_v16:      # NEXT-02 A2 gate BEFORE anything is built or solved (fail-closed, exit 3); replaces the legacy E1 gate
+        pv16_gate = post_v16_guard(a)
     if a.mainline:      # E1 run gate BEFORE anything is built or solved
         ML.update(on=True, stress_days=a.stress_days, stress_line_derate=a.stress_line_derate)
         ml_select_siting(a.config)                       # siting variant inputs fixed before the gate hashes them
-        ML['gate'] = mainline_gate(a.config)
+        ML['gate'] = pv16_gate if pv16_gate is not None else mainline_gate(a.config)
         Path(a.out).mkdir(parents=True, exist_ok=True)
         (Path(a.out) / 'RUN_GATE.json').write_text(json.dumps(ML['gate'], indent=1))
         if not ML['gate']['approved']:
@@ -1825,7 +1920,7 @@ def main():
         a.setting, a.competing, a.regional_dc = 'G-REAL', 0.0, 'off'
         if a.byop_techs == ['RICE', 'SOFC_NG']:
             a.byop_techs = list(ML_TECHS)
-        if a.scenarios == ['S0', 'S1_EARLIEST', 'S1_ECON', 'S1_zero', 'S3', 'S3_mS1', 'S2', 'S2_off', 'S3_mS2']:
+        if a.scenarios == ['S0', 'S1_EARLIEST', 'S1_ECON', 'S1_zero', 'S3', 'S3_mS1', 'S2', 'S2_off', 'S3_mS2'] and not a.post_v16:
             a.scenarios = ml_config_scenarios(a.config)      # audit P0-2: the config list (incl. S3_mS2) is the run list
     global BASE_TAMU
     if a.base:
@@ -1854,6 +1949,15 @@ def main():
             _require_gate('M.solve')
             return _solve0(*args_, **kw_)
         M.solve = _gated_solve
+    if a.post_v16:          # NEXT-02 A2: post-v1.6 rules on, ledgered / accepted solves, and no optimizer call outside them
+        import post_v16_mainline as PM
+        PM.POST_V16['on'] = True
+        w2.POST_V16_NO_ERM['on'] = True
+        GCFG.update(s0_calibrate=False, s0_cal_file=None, no_harm=True)
+        M.solve = post_v16_solve_wrapper(M.solve, a, out)
+        _arm_post_v16_optimizer_lock()
+        if a.scenarios == ['S1_EARLIEST']:      # S0 solved in an earlier process: the frozen no-harm reference comes from disk
+            STATE['shed_S0'] = pd.read_csv(out / 'S0_shed_by_snapshot_frozen.csv.gz', index_col=[0, 1], parse_dates=[1])
     M.extra = extra_rearch
     w2.store_ERM_duals = V.store_erm_duals_tx
     V.GCFG.update(erm_scope='tx')
