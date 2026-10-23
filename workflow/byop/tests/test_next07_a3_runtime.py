@@ -263,3 +263,14 @@ def test_a3_reference_pins():
     c = A3G.load()
     assert set(c['reference']['sha256']) == {'S0_RESULT.json', 'S1_EARLIEST_RESULT.json', 'S0_NO_HARM_REFERENCE.csv'}
     assert A3G.reference_problems(dict(c, reference=dict(dir=c['reference']['dir'], sha256={'S0_RESULT.json': '0' * 64})))
+
+
+def test_developer_network_has_no_system_reserve_row(monkeypatch):
+    """the S2 developer LP is a private DC-bus network: the system reserve row would read 0 >= 3000 (build error found by the
+    NEXT-07 E2E dry run); it is skipped there only, explicitly flagged, and restored for every other build"""
+    import rearch_mech as R
+    src = Path(R.__file__).read_text(encoding='utf-8')
+    dj = src[src.index('def developer_joint_build'):src.index('def _require_gate')]
+    assert "STATE['developer_build'] = True" in dj and "finally:\n        STATE['developer_build'] = False" in dj
+    ex = src[src.index('def extra_rearch'):src.index('def lex_presolve')]
+    assert "if STATE.get('developer_build'):" in ex

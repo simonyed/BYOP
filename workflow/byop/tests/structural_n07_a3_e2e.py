@@ -112,6 +112,8 @@ def main():
     STATE['reuse'] = sv_r; STATE['corridors'] = sv_c; M.STATE['erm'] = True
     fv, ok = firm_rows_ok(dn)
     check('S2 developer LP: RE+BESS firm rows with upper bound 0 (same rule as S3)', bool(fv) and ok, (len(fv), ok))
+    check('S2 developer LP builds (no system reserve row on the private DC-bus network)', 'PV16M-reserve_req' not in dn.model.constraints
+          and exc['S2_DEV'] == 'StopBeforeSolve', exc['S2_DEV'])
     s_dev = {(d['zone'], d['period']): 0.0 for d in STATE['dc']}
     STATE['rights'] = {k: dict(firm=0.0, cond=0.0, S=0.0, mode='GO_F') for k in s_dev}
     STATE['s_upper_only'] = True
@@ -120,6 +122,8 @@ def main():
     M.extra = R.extra_rearch
     STATE['s_upper_only'] = False; STATE['rights'] = None
     fv, ok = firm_rows_ok(nets['S2'][0])
+    check('S2 public LP keeps the 3,000 MW system reserve row', 'PV16M-reserve_req' in nets['S2'][0].model.constraints and
+          np.allclose(nets['S2'][0].model.constraints['PV16M-reserve_req'].rhs.values, 3000.0))
     check('S2 public LP: RE+BESS firm rows with upper bound 0', (not fv) or ok, (len(fv), ok))
     if RT.ACCT['parent']:
         RT.end('ERROR', note='E2E: intercepted', **{'pass': False})

@@ -1111,7 +1111,12 @@ def extra_rearch(n, snapshots):
         ml_space(n, m)
     import post_v16_mainline as PM
     if PM.POST_V16['on']:                       # NEXT-01 A2-static: 3 GW operating reserve + RE/BESS firm certificate (build only)
-        STATE['pv16m_reserve'] = PM.add_operating_reserve(n, snapshots, reserve_MW=STATE.get('pv16_reserve_rhs_MW'))
+        # NEXT-07 W4: the S2 developer LP is a private network of DC buses only (no grid unit can hold system reserve, the row
+        # would read 0 >= 3000); the 3 GW system requirement binds on the grid in the S2 public LP and in S3
+        if STATE.get('developer_build'):
+            STATE['pv16m_reserve'] = dict(skipped='S2 developer LP: private DC-bus network, no grid reserve units')
+        else:
+            STATE['pv16m_reserve'] = PM.add_operating_reserve(n, snapshots, reserve_MW=STATE.get('pv16_reserve_rhs_MW'))
         if PM.POST_V16['soc_segments']:         # NEXT-03 A2-FIX-08: no net SOC transfer across sampled-segment gaps / periods
             STATE['pv16m_soc_segments'] = PM.add_segment_soc_neutrality(n, snapshots)
         if PM.POST_V16['re_firm'] and STATE.get('dc'):
@@ -1619,7 +1624,11 @@ def developer_joint_build(s1_net, v_priv, mult):
     sv_reuse = STATE.get('reuse', []); STATE['reuse'] = []
     sv_corr = STATE.get('corridors', []); STATE['corridors'] = []
     m = n.optimize.create_model(multi_investment_periods=True)
-    extra_rearch(n, n.snapshots)
+    STATE['developer_build'] = True              # NEXT-07 W4: no system reserve row on the private developer network
+    try:
+        extra_rearch(n, n.snapshots)
+    finally:
+        STATE['developer_build'] = False
     return n, m, (sv_reuse, sv_corr)
 
 
