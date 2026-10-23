@@ -1,0 +1,7 @@
+{
+ "S0_RELIABILITY_VERDICT": "BASELINE_RELIABILITY_UNRESOLVED",
+ "set_by": "NEXT-06 W1/W2 (executor; researcher decision pending)",
+ "date": "2026-10-23",
+ "basis": "W1_S0_RELIABILITY_ROOT_CAUSE.md: no input error; 94 % of shed = 2026 sampled-week nightly Far West shed x 25.86; driver most likely the post-v1.6 formulation (component unresolved)",
+ "unblock": "W2 diagnostic (full-year 2026) result + researcher decision -> CALIBRATED_PASS or PHYSICAL_SCARCITY_VALIDATED_WITH_LIMITS"
+}
