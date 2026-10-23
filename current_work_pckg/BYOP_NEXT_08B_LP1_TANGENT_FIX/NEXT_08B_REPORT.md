@@ -3,7 +3,7 @@
 **Result.** The four-tangent LP1 removes the bias on average, but not point-wise. The recommended and implemented minimal fix is **reference-capacity tangents (v2)**: LP1 builds exactly the two tangent rows that LP2 / S0–S3 build for a line of the reference capacity, and the existing outer iteration updates that reference together with r.
 - **Formulation:** still an LP, same model size as v1, no new solve batch.
 - **Static proof:** passed on the real model.
-- **Status:** NOT_APPROVED; approval request in `NEXT_08B_APPROVAL_REQUEST.md`.
+- **Status:** approved and run on 2026-10-23 (3 calls): LP2 EENS 817 MWh PASS, largest gap 107.4 MW FAIL; see `LOSSY_LP1_V2_RESULTS.md`.
 
 **Unchanged:** the NEXT-08 ledger, candidate NetCDF, approval SHA and results (18 sealed files and the candidate re-verified by SHA), G1–G3, and the LP2 reliability criteria. LP2 and S0–S3 keep `transmission_losses: 2`.
 

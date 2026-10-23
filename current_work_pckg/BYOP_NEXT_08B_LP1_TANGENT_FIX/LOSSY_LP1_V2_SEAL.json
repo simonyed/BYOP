@@ -1,0 +1,48 @@
+{
+ "work_package": "BYOP_NEXT_08B",
+ "step": "lossy LP1 v2 (reference-capacity loss tangents) chain seal",
+ "solved_code_sha": "5cb7889e7144e488ea346d7bd36e050c17d0d1b2",
+ "approval_commit": "d5f40f794490ec1024fe184429d82c3779e28423",
+ "results_commit": "812cd2ef",
+ "approved_by": "sw2434@cornell.edu",
+ "optimizer_calls": 3,
+ "retries": 0,
+ "threads": 11,
+ "run_window_EDT": "2026-10-23 18:05-19:39",
+ "stages": {
+  "LP1_LOSSY_IT1": "optimal, not r-converged (max r gap 22.1 %, 14 lines)",
+  "LP1_LOSSY_IT2": "optimal, r-converged (max r gap 2.4 %), G1-G3 PASS, candidate written",
+  "LP2_LOSSY_CANDIDATE": "optimal, acceptance FAIL (EENS 817.4 MWh pass, max gap 107.4 MW > 83.7)"
+ },
+ "candidate_nc": "results/BYOP/next08b_lp1_tangent_fix/baseline_2025_tamu_lossy_candidate.nc (L2 only; .nc not in git)",
+ "candidate_sha256": "717268802706534365601018547bcf56057ca32488b4a4206b5424bff365f1f4",
+ "candidate_status": "NOT ADOPTED (researcher: no baseline adoption, no S0-S3)",
+ "frozen_inputs_rehashed_after_run": {
+  "v16 prepared.nc": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16",
+  "v16 raw_uncalibrated.nc": "eb659f9b1ba06b5e37a162b7173c36d07a6a19a92ae016d3cf3568905077a97f",
+  "NEXT-08 v1 candidate.nc": "4720185461d3204a3d40f46dc58ecd5ae760dd2f771943c8fb8bb5b0a96dc491"
+ },
+ "files_root": "workflow/results/BYOP/next08b_lp1_tangent_fix",
+ "files_sha256_on_L2": {
+  "LOSSY_LP1_SOLVE_LOG.csv": "1345297d07a5669c6bec5e07c0e628023e8678e0d8042851c7629403deaa416e",
+  "LP1R_CHAIN_RUN.log": "14b76f536289c33acdb17222b27291dd28476489e9b572da1767143f5c52f310",
+  "LP1_LOSSY_IT1/LOSSY_LP1_QA.json": "2f54ca99bb15ab9ca7dfefdd4fb25cd106d1309a8dbe3b2d9c8aefffed8e3189",
+  "LP1_LOSSY_IT1/LP1_LINE_SOLUTION.csv": "fd65674e517764922b678e0a96e9bfec7468a61503ad0be9175bd4c511263fe4",
+  "LP1_LOSSY_IT1/line_loss.csv.gz": "d68f28fa454802e392012e1d8cca704f75d0aa27c823e28ac640806e82787646",
+  "LP1_LOSSY_IT1/shed_by_bus.csv.gz": "dcdadd693d4d7ce8c29460b0c6577fa688415fceeaa90b3444d955c75a7f8717",
+  "LP1_LOSSY_IT1/shedding_events.csv": "ccb28b91e01b0b1aa0f0f3da3b93bfacf7e3c1d8505ab5a2246cca833ab982ee",
+  "LP1_LOSSY_IT2/LOSSY_LP1_QA.json": "084191f976a17fb6fc9733ab69f27151a15b1cb1be3da3c872abbb87c1d39de0",
+  "LP1_LOSSY_IT2/LP1_LINE_SOLUTION.csv": "3bf9be4ab4b28505bb82887f188ef7985910cbeafa27a1e51bcc9b04360566b1",
+  "LP1_LOSSY_IT2/line_loss.csv.gz": "80a7866d90373f790e344e409e18d82997eef75929e77509224a509a12b806a0",
+  "LP1_LOSSY_IT2/shed_by_bus.csv.gz": "f0398efb24c5d1a502c396196a8178cbb2ac98ed5f9ba68348e721010b42d162",
+  "LP1_LOSSY_IT2/shedding_events.csv": "ea929ebd0044afcf9298100d104bb619e4ea6d3c018d9348da11c42e82f1d14c",
+  "LP2_LOSSY_CANDIDATE/LOSS_BASIS_LP2_QA.json": "6caf8f7cc863ed1c864bd2cd88758c6eba8c15c523c6c8a082d1cf5c42d2f25c",
+  "LP2_LOSSY_CANDIDATE/generation_by_carrier.csv": "b0d21650c786c4dedaa3919fcb8d3e7962ff3f34196055b8bf41373ae9d2039d",
+  "LP2_LOSSY_CANDIDATE/line_flow_p0.csv.gz": "c66ee6926114e193b59a49c61c81aa35214738fbea4d019c0695869e8a4ba51f",
+  "LP2_LOSSY_CANDIDATE/line_loss.csv.gz": "73f2141ae558592c18246ae794c4bdaab4862f0798a880229c3489f7dc10a1f1",
+  "LP2_LOSSY_CANDIDATE/lines.csv": "47b0bd28f6e3bbbb4626d2f12f3bc18d0ccff0752eb84b49545ffe4291462c1f",
+  "LP2_LOSSY_CANDIDATE/shed_by_bus.csv.gz": "af268756943c7834dab446412285359d295a3e5e9a36019d89f5904939246a64",
+  "LP2_LOSSY_CANDIDATE/shedding_events.csv": "9882589614944c50adad284f7f026e789b30e42f3c9022e0e10b1d730e88efc5",
+  "W8B_LP2_SHED_DIAGNOSTIC.json": "ff4f82c8919b4041036d944d63164d11aed656ff217c443bd7f768f8a0d5e754"
+ }
+}

@@ -1,6 +1,6 @@
 # NEXT_08B_APPROVAL_REQUEST: lossy 2025 LP1 v2 (reference-capacity loss tangents)
 
-**Status: NOT_APPROVED. No optimizer call has been made in NEXT-08b.**
+**Status (updated 2026-10-23): APPROVED by sw2434@cornell.edu at `5cb7889e` (commit `d5f40f79`), executed (3 calls, 0 retries), approval CLOSED. Results: `LOSSY_LP1_V2_RESULTS.md`; seal: `LOSSY_LP1_V2_SEAL.json`.** The text below is the request as it was frozen.
 
 | Item | Value |
 |---|---|

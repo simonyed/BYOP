@@ -5,9 +5,9 @@
 # model of that capacity uses (loss_tangent_reference: s_ref). Same model size, still an LP. Own out_dir / ledger / manifest / budget;
 # the NEXT-08 v1 ledger, candidate and results are never touched. This file is a REQUEST: only the researcher authorises it.
 post_v16:                                       # key shared with the A2-type manifest builder; gate = loss_basis_lp1.check
-  run_authorization: APPROVED
-  approved_git_sha: 5cb7889e7144e488ea346d7bd36e050c17d0d1b2
-  approved_by: sw2434@cornell.edu
+  run_authorization: NOT_APPROVED   # CLOSED 2026-10-23 after the 3 approved calls (approval history: commit d5f40f79, ledger)
+  approved_git_sha: null
+  approved_by: null
   authorization_source: current_work_pckg/BYOP_NEXT_08B_LP1_TANGENT_FIX/NEXT_08B_INSTRUCTION_RECORD.md
   authorization_source_sha256: c4d4d7b6b4e89bf69855063f9cf6e74cc81883ba5d9c1ae3a0474b39408a8564   # LF content SHA
   manifest: current_work_pckg/BYOP_NEXT_08B_LP1_TANGENT_FIX/LOSSY_LP1_V2_PRE_RUN_MANIFEST.json
