@@ -1,0 +1,16 @@
+  
+  The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+
+workflow/byop/tests/test_p0_units.py::test_no_harm_existing_customers
+workflow/byop/tests/test_p0_units.py::test_earliest_ge_econ_and_maxmin
+workflow/byop/tests/test_p0_units.py::test_earliest_ge_econ_and_maxmin
+workflow/byop/tests/test_p0_units.py::test_earliest_monotone_in_options
+workflow/byop/tests/test_p0_units.py::test_earliest_monotone_in_options
+workflow/byop/tests/test_p0_units.py::test_ineligible_site_does_not_lock_maxmin
+  /datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/tests/test_p0_units.py:79: FutureWarning:
+  
+  The default value of `include_objective_constant` will change from True to False in version 2.0. Set `include_objective_constant` explicitly to suppress this warning. Using False improves LP numerical conditioning by not including the objective constant as a variable.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+290 passed, 104 warnings in 236.21s (0:03:56)
+290 passed, 104 warnings in 236.21s (0:03:56)

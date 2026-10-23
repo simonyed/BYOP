@@ -1,0 +1,42 @@
+{
+ "work_package": "BYOP_NEXT_07",
+ "step": "W4 A3 end-to-end dry run",
+ "solver_executions": 0,
+ "solver_calls_intercepted": 6,
+ "exceptions": {
+  "S0": "StopBeforeSolve",
+  "S1_EARLIEST": "StopBeforeSolve",
+  "S3": "StopBeforeSolve",
+  "S2_DEV": "StopBeforeSolve",
+  "S2_PUBLIC": "StopBeforeSolve",
+  "S3_mS2": "StopBeforeSolve"
+ },
+ "n_checks": 13,
+ "n_pass": 13,
+ "n_fail": 0,
+ "model_size": {
+  "S0": {
+   "nvars": 2660074,
+   "ncons": 7107710
+  },
+  "S1_EARLIEST": {
+   "nvars": 2712538,
+   "ncons": 7296046
+  },
+  "S3": {
+   "nvars": 2991110,
+   "ncons": 7918775
+  },
+  "S2": {
+   "nvars": 2990618,
+   "ncons": 7930802
+  },
+  "S3_mS2": {
+   "nvars": 2991110,
+   "ncons": 7918775
+  }
+ },
+ "gate": "INJECTED (approved) - real gate refuses: NOT_APPROVED + S0 verdict",
+ "ledgers": "results/BYOP/next07_s0_reserve_probe/_a3_e2e/ledgers",
+ "seconds": 734.2
+}

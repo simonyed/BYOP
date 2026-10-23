@@ -1,0 +1,14 @@
+check,result,detail
+S0: no RE+BESS firm rows,PASS,
+S1_EARLIEST: no RE+BESS firm rows,PASS,
+S3: RE+BESS firm certificate rows built with upper bound 0 (conservative rule),PASS,"(96, True)"
+S3: certificate records say firm_credit_allowed False,PASS,
+S2 developer LP: RE+BESS firm rows with upper bound 0 (same rule as S3),PASS,"(96, True)"
+S2 developer LP builds (no system reserve row on the private DC-bus network),PASS,StopBeforeSolve
+"S2 public LP keeps the 3,000 MW system reserve row",PASS,
+S2 public LP: RE+BESS firm rows with upper bound 0,PASS,"(96, True)"
+S3_mS2: RE+BESS firm rows with upper bound 0,PASS,"(96, True)"
+every A3 stage routed through the A3 parent ledger in plan order,PASS,"['S0', 'S1_EARLIEST', 'S3', 'S2_IT1', 'S3_mS2']"
+"child rows: one per stage, of the planned kind, STARTED before the call and ERROR after the intercepted call",PASS,"[('S0_COST', 'ERROR'), ('S1_SPEED_HIERARCHY', 'ERROR'), ('S3_COST', 'ERROR'), ('S2_DEV_LEX', 'ERROR'), ('S2_PUBLIC', 'ERROR'), ('S3_MS2_COST', 'ERROR')]"
+"every parent closed ERROR (no silent pass, no retry)",PASS,"['ERROR', 'ERROR', 'ERROR', 'ERROR', 'ERROR']"
+0 solver executions (every call intercepted),PASS,"['refused', 'refused', 'refused', 'refused', 'refused', 'refused']"

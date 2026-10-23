@@ -1,10 +1,39 @@
-# W4_A3_STATIC_READINESS (NEXT-07), 0 optimizer calls
+# W4_A3_STATIC_READINESS (NEXT-07), 0 optimizer calls for A3
 
-**W4_A3_RUNTIME_STATIC: PARTIAL.** The wiring, the conservative firm rule and the audits are built and tested. A3 is **`NOT_APPROVED / STATIC_READY_BUT_BLOCKED`**, blocked by the S0 verdict (`BASELINE_RELIABILITY_UNRESOLVED`). PARTIAL means two items remain: an end-to-end A3 build dry-run, and the post-W2 merge plus A3 manifest rebuild (see the gaps below).
+**W4_A3_RUNTIME_STATIC: PASS (static scope).** A3 is **`NOT_APPROVED / STATIC_READY_BUT_BLOCKED`**: the S0 verdict is still `BASELINE_RELIABILITY_UNRESOLVED`, and you have not authorised an A3 solve.
 
 **Where the work is:**
-- Branch `work/next07-a3-static` at `79134c9fc3499e923240e1ed537ef2d8b87dc5da`, on GitHub as its own branch.
-- **Not merged into `main` and not on the L2 checkout**, so the W2 approvable SHA `5df4dda7` does not drift. It merges only after W2 is run or declined. The A3 manifest is then rebuilt on the merged code, and the static regressions are re-run.
+- Branch `work/next07-a3-static` was **merged into `main` after the W2 probe was solved and sealed** (merge `1d05a03e`), as you authorised.
+- The A3 manifest was rebuilt on L2 on the merged code (`4edf7bac`): **151 code + 110 input files, 0 mismatches**.
+- The A3 gate now refuses only on:
+  - the three approval fields;
+  - the S0 verdict prerequisite;
+  - stage order (S3 needs a passed S0 / S1).
+
+**Tests on the merged code:**
+- L2 full suite: **290 passed / 0 failed**.
+- **Zero-solver A3 end-to-end dry run: 13 / 13 PASS**, 0 solver executions. Report: `workflow/results/BYOP/next07_s0_reserve_probe/_a3_e2e/E2E_A3_REPORT.json`; ledgers: `E2E_A3_*_LOG.csv`.
+  - **What it ran:** the real models of S0, S1_EARLIEST, S3, the S2 developer LP, the S2 public LP and S3_mS2, built through the real A3 wrapper, linopy lock and lex instrumentation. The gate was injected as approved, with scratch ledgers. The real A3 ledgers are untouched.
+  - **What it showed:**
+    - one child row of the planned kind per stage, in plan order: `S0_COST`, `S1_SPEED_HIERARCHY`, `S3_COST`, `S2_DEV_LEX`, `S2_PUBLIC`, `S3_MS2_COST`;
+    - each row STARTED before the call and ERROR after the intercepted call;
+    - every parent closed ERROR, with no retry;
+    - the conservative firm rule (A2-F_cert ≤ 0) in S3, the S2 developer LP, the S2 public LP and S3_mS2;
+    - the 3,000 MW reserve row kept in the S2 public LP.
+  - **Model sizes:**
+
+    | Stage | Variables | Constraints |
+    |---|---:|---:|
+    | S0 | 2.66 M | 7.11 M |
+    | S1 | 2.71 M | 7.30 M |
+    | S3 / S3_mS2 | 2.99 M | 7.92 M |
+    | S2 public | 2.99 M | 7.93 M |
+    | S2 developer | 0.32 M | 0.72 M |
+
+**Bug found and fixed by the dry run (needs your review).** With the post-v1.6 rules on, the **S2 developer LP could not be built**:
+- `extra_rearch` added the 3 GW system reserve row to the developer's private network of DC buses. That network has no grid unit, so the row read `0 >= 3000` and linopy raised. A3 would have failed at its first S2 stage.
+- **Fix (commit `caa428ab`):** the system reserve row is skipped only for the developer network, through an explicit flag set inside `developer_joint_build` and reset in `finally`. The 3 GW requirement stays on the grid in the S2 public LP and in S3 (verified in the dry run). Segment-SOC and firm-certificate rows still apply to the developer LP.
+- This is a modelling rule: the developer is not the system operator. Please confirm it before any A3 approval request.
 
 ## What was built (package W4.1 / W4.2)
 
@@ -23,8 +52,8 @@
 
 ## Remaining gaps (in order)
 
-1. **Merge after W2.** Merge `work/next07-a3-static` into `main` only after the W2 run is sealed or declined. Then rebuild `current_work_pckg/BYOP_NEXT_07/A3_PRE_RUN_MANIFEST.json` on L2 and re-run the full suite. The A3 config now points to that manifest; it does not exist yet, so the gate refuses.
-2. **End-to-end A3 build dry run.** Run S0, S1_EARLIEST, S3, the S2 developer and public LPs, and S3_mS2 through the real wrapper with every solve intercepted. Today the wrapper is tested with fakes and the CLI only up to the guard. This needs an injected-gate structural harness (zero solve) before any A3 approval request.
-3. **Runtime check of the S2 developer supply-pool rows.** This is the NEXT-06 parity gap and still holds.
+1. **S0 scientific verdict.** It must be `CALIBRATED_PASS` or `PHYSICAL_SCARCITY_VALIDATED_WITH_LIMITS`, decided by you. W2 has ruled out the reserve rule; the residual question is why the LP2 2025 check had no shed (`W3_S0_SCIENTIFIC_DECISION.md` §5). Until then A3 stays locked.
+2. **Your confirmation of the developer-LP reserve rule** described above.
+3. **Runtime check of the S2 developer supply-pool rows.** This is the NEXT-06 parity gap. It is visible only on a solved developer LP.
 4. **48/72 h contiguous RE+BESS certificate.** Not implemented, by design. A sampling change is a separate package; until then the conservative rule gives zero firm credit.
-5. **S0 scientific verdict.** It must be `CALIBRATED_PASS` or `PHYSICAL_SCARCITY_VALIDATED_WITH_LIMITS`, decided by the researcher. Until then A3 stays locked.
+5. **A3 approval request.** Only after 1–2: the approvable SHA, up to 29 calls, 0 retries. **Not authorised now.**

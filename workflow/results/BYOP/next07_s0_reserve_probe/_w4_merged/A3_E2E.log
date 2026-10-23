@@ -1,4 +1,4 @@
-2026-10-23T16:06:00Z start python -W ignore byop/tests/structural_n07_a3_e2e.py --out results/BYOP/next07_s0_reserve_probe/_a3_e2e
+2026-10-23T16:13:14Z start python -W ignore byop/tests/structural_n07_a3_e2e.py --out results/BYOP/next07_s0_reserve_probe/_a3_e2e
 INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
 INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
 INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
@@ -42,5 +42,74 @@ Index(['DC_p600 0', 'DC_p610 2', 'DC_p630 10', 'DC_p630 2', 'DC_p630 3',
        'DC_p670 4'],
       dtype='object', name='name')
 WARNING:pypsa.optimization.constraints:StorageUnits ['DC_p600 0 BYOP BESS q2026', 'DC_p600 0 BYOP BESS q2027', 'DC_p600 0 BYOP BESS q2028', 'DC_p600 0 BYOP BESS q2029', 'DC_p600 0 BYOP BESS q2030', 'DC_p600 0 BYOP BESS q2031', 'DC_p610 2 BYOP BESS q2026', 'DC_p610 2 BYOP BESS q2027', 'DC_p610 2 BYOP BESS q2028', 'DC_p610 2 BYOP BESS q2029', 'DC_p610 2 BYOP BESS q2030', 'DC_p610 2 BYOP BESS q2031', 'DC_p630 10 BYOP BESS q2026', 'DC_p630 10 BYOP BESS q2027', 'DC_p630 10 BYOP BESS q2028', 'DC_p630 10 BYOP BESS q2029', 'DC_p630 10 BYOP BESS q2030', 'DC_p630 10 BYOP BESS q2031', 'DC_p630 2 BYOP BESS q2026', 'DC_p630 2 BYOP BESS q2027', 'DC_p630 2 BYOP BESS q2028', 'DC_p630 2 BYOP BESS q2029', 'DC_p630 2 BYOP BESS q2030', 'DC_p630 2 BYOP BESS q2031', 'DC_p630 3 BYOP BESS q2026', 'DC_p630 3 BYOP BESS q2027', 'DC_p630 3 BYOP BESS q2028', 'DC_p630 3 BYOP BESS q2029', 'DC_p630 3 BYOP BESS q2030', 'DC_p630 3 BYOP BESS q2031', 'DC_p630 4 BYOP BESS q2026', 'DC_p630 4 BYOP BESS q2027', 'DC_p630 4 BYOP BESS q2028', 'DC_p630 4 BYOP BESS q2029', 'DC_p630 4 BYOP BESS q2030', 'DC_p630 4 BYOP BESS q2031', 'DC_p630 5 BYOP BESS q2026', 'DC_p630 5 BYOP BESS q2027', 'DC_p630 5 BYOP BESS q2028', 'DC_p630 5 BYOP BESS q2029', 'DC_p630 5 BYOP BESS q2030', 'DC_p630 5 BYOP BESS q2031', 'DC_p630 6 BYOP BESS q2026', 'DC_p630 6 BYOP BESS q2027', 'DC_p630 6 BYOP BESS q2028', 'DC_p630 6 BYOP BESS q2029', 'DC_p630 6 BYOP BESS q2030', 'DC_p630 6 BYOP BESS q2031', 'DC_p630 8 BYOP BESS q2026', 'DC_p630 8 BYOP BESS q2027', 'DC_p630 8 BYOP BESS q2028', 'DC_p630 8 BYOP BESS q2029', 'DC_p630 8 BYOP BESS q2030', 'DC_p630 8 BYOP BESS q2031', 'DC_p630 9 BYOP BESS q2026', 'DC_p630 9 BYOP BESS q2027', 'DC_p630 9 BYOP BESS q2028', 'DC_p630 9 BYOP BESS q2029', 'DC_p630 9 BYOP BESS q2030', 'DC_p630 9 BYOP BESS q2031', 'DC_p640 1 BYOP BESS q2026', 'DC_p640 1 BYOP BESS q2027', 'DC_p640 1 BYOP BESS q2028', 'DC_p640 1 BYOP BESS q2029', 'DC_p640 1 BYOP BESS q2030', 'DC_p640 1 BYOP BESS q2031', 'DC_p650 0 BYOP BESS q2026', 'DC_p650 0 BYOP BESS q2027', 'DC_p650 0 BYOP BESS q2028', 'DC_p650 0 BYOP BESS q2029', 'DC_p650 0 BYOP BESS q2030', 'DC_p650 0 BYOP BESS q2031', 'DC_p650 7 BYOP BESS q2026', 'DC_p650 7 BYOP BESS q2027', 'DC_p650 7 BYOP BESS q2028', 'DC_p650 7 BYOP BESS q2029', 'DC_p650 7 BYOP BESS q2030', 'DC_p650 7 BYOP BESS q2031', 'DC_p670 0 BYOP BESS q2026', 'DC_p670 0 BYOP BESS q2027', 'DC_p670 0 BYOP BESS q2028', 'DC_p670 0 BYOP BESS q2029', 'DC_p670 0 BYOP BESS q2030', 'DC_p670 0 BYOP BESS q2031', 'DC_p670 1 BYOP BESS q2026', 'DC_p670 1 BYOP BESS q2027', 'DC_p670 1 BYOP BESS q2028', 'DC_p670 1 BYOP BESS q2029', 'DC_p670 1 BYOP BESS q2030', 'DC_p670 1 BYOP BESS q2031', 'DC_p670 4 BYOP BESS q2026', 'DC_p670 4 BYOP BESS q2027', 'DC_p670 4 BYOP BESS q2028', 'DC_p670 4 BYOP BESS q2029', 'DC_p670 4 BYOP BESS q2030', 'DC_p670 4 BYOP BESS q2031']: Per-period cyclic (cyclic_state_of_charge_per_period=True) overrides global cyclic (cyclic_state_of_charge=True). Storage will cycle within each investment period, not across the entire horizon.
-RUN_GATE: solver call refused (developer_joint lex): RUN_AUTHORIZATION not APPROVED
-2026-10-23T16:12:09Z end rc=1
+WARNING:pypsa.consistency:The following buses have carriers which are not defined. Run n.sanitize() to add them. Components with undefined carriers:
+Index(['DC_p600 0', 'DC_p610 2', 'DC_p630 10', 'DC_p630 2', 'DC_p630 3',
+       'DC_p630 4', 'DC_p630 5', 'DC_p630 6', 'DC_p630 8', 'DC_p630 9',
+       'DC_p640 1', 'DC_p650 0', 'DC_p650 7', 'DC_p670 0', 'DC_p670 1',
+       'DC_p670 4'],
+      dtype='object', name='name')
+WARNING:pypsa.optimization.constraints:StorageUnits ['DC_p600 0 BYOP BESS q2026', 'DC_p600 0 BYOP BESS q2027', 'DC_p600 0 BYOP BESS q2028', 'DC_p600 0 BYOP BESS q2029', 'DC_p600 0 BYOP BESS q2030', 'DC_p600 0 BYOP BESS q2031', 'DC_p610 2 BYOP BESS q2026', 'DC_p610 2 BYOP BESS q2027', 'DC_p610 2 BYOP BESS q2028', 'DC_p610 2 BYOP BESS q2029', 'DC_p610 2 BYOP BESS q2030', 'DC_p610 2 BYOP BESS q2031', 'DC_p630 10 BYOP BESS q2026', 'DC_p630 10 BYOP BESS q2027', 'DC_p630 10 BYOP BESS q2028', 'DC_p630 10 BYOP BESS q2029', 'DC_p630 10 BYOP BESS q2030', 'DC_p630 10 BYOP BESS q2031', 'DC_p630 2 BYOP BESS q2026', 'DC_p630 2 BYOP BESS q2027', 'DC_p630 2 BYOP BESS q2028', 'DC_p630 2 BYOP BESS q2029', 'DC_p630 2 BYOP BESS q2030', 'DC_p630 2 BYOP BESS q2031', 'DC_p630 3 BYOP BESS q2026', 'DC_p630 3 BYOP BESS q2027', 'DC_p630 3 BYOP BESS q2028', 'DC_p630 3 BYOP BESS q2029', 'DC_p630 3 BYOP BESS q2030', 'DC_p630 3 BYOP BESS q2031', 'DC_p630 4 BYOP BESS q2026', 'DC_p630 4 BYOP BESS q2027', 'DC_p630 4 BYOP BESS q2028', 'DC_p630 4 BYOP BESS q2029', 'DC_p630 4 BYOP BESS q2030', 'DC_p630 4 BYOP BESS q2031', 'DC_p630 5 BYOP BESS q2026', 'DC_p630 5 BYOP BESS q2027', 'DC_p630 5 BYOP BESS q2028', 'DC_p630 5 BYOP BESS q2029', 'DC_p630 5 BYOP BESS q2030', 'DC_p630 5 BYOP BESS q2031', 'DC_p630 6 BYOP BESS q2026', 'DC_p630 6 BYOP BESS q2027', 'DC_p630 6 BYOP BESS q2028', 'DC_p630 6 BYOP BESS q2029', 'DC_p630 6 BYOP BESS q2030', 'DC_p630 6 BYOP BESS q2031', 'DC_p630 8 BYOP BESS q2026', 'DC_p630 8 BYOP BESS q2027', 'DC_p630 8 BYOP BESS q2028', 'DC_p630 8 BYOP BESS q2029', 'DC_p630 8 BYOP BESS q2030', 'DC_p630 8 BYOP BESS q2031', 'DC_p630 9 BYOP BESS q2026', 'DC_p630 9 BYOP BESS q2027', 'DC_p630 9 BYOP BESS q2028', 'DC_p630 9 BYOP BESS q2029', 'DC_p630 9 BYOP BESS q2030', 'DC_p630 9 BYOP BESS q2031', 'DC_p640 1 BYOP BESS q2026', 'DC_p640 1 BYOP BESS q2027', 'DC_p640 1 BYOP BESS q2028', 'DC_p640 1 BYOP BESS q2029', 'DC_p640 1 BYOP BESS q2030', 'DC_p640 1 BYOP BESS q2031', 'DC_p650 0 BYOP BESS q2026', 'DC_p650 0 BYOP BESS q2027', 'DC_p650 0 BYOP BESS q2028', 'DC_p650 0 BYOP BESS q2029', 'DC_p650 0 BYOP BESS q2030', 'DC_p650 0 BYOP BESS q2031', 'DC_p650 7 BYOP BESS q2026', 'DC_p650 7 BYOP BESS q2027', 'DC_p650 7 BYOP BESS q2028', 'DC_p650 7 BYOP BESS q2029', 'DC_p650 7 BYOP BESS q2030', 'DC_p650 7 BYOP BESS q2031', 'DC_p670 0 BYOP BESS q2026', 'DC_p670 0 BYOP BESS q2027', 'DC_p670 0 BYOP BESS q2028', 'DC_p670 0 BYOP BESS q2029', 'DC_p670 0 BYOP BESS q2030', 'DC_p670 0 BYOP BESS q2031', 'DC_p670 1 BYOP BESS q2026', 'DC_p670 1 BYOP BESS q2027', 'DC_p670 1 BYOP BESS q2028', 'DC_p670 1 BYOP BESS q2029', 'DC_p670 1 BYOP BESS q2030', 'DC_p670 1 BYOP BESS q2031', 'DC_p670 4 BYOP BESS q2026', 'DC_p670 4 BYOP BESS q2027', 'DC_p670 4 BYOP BESS q2028', 'DC_p670 4 BYOP BESS q2029', 'DC_p670 4 BYOP BESS q2030', 'DC_p670 4 BYOP BESS q2031']: Per-period cyclic (cyclic_state_of_charge_per_period=True) overrides global cyclic (cyclic_state_of_charge=True). Storage will cycle within each investment period, not across the entire horizon.
+[PASS] S2 developer LP: RE+BESS firm rows with upper bound 0 (same rule as S3) 
+[PASS] S2 developer LP builds (no system reserve row on the private DC-bus network) 
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+WARNING:pypsa.optimization.constraints:StorageUnits ['DC_p600 0 BYOP BESS q2026', 'DC_p600 0 BYOP BESS q2027', 'DC_p600 0 BYOP BESS q2028', 'DC_p600 0 BYOP BESS q2029', 'DC_p600 0 BYOP BESS q2030', 'DC_p600 0 BYOP BESS q2031', 'DC_p610 2 BYOP BESS q2026', 'DC_p610 2 BYOP BESS q2027', 'DC_p610 2 BYOP BESS q2028', 'DC_p610 2 BYOP BESS q2029', 'DC_p610 2 BYOP BESS q2030', 'DC_p610 2 BYOP BESS q2031', 'DC_p630 10 BYOP BESS q2026', 'DC_p630 10 BYOP BESS q2027', 'DC_p630 10 BYOP BESS q2028', 'DC_p630 10 BYOP BESS q2029', 'DC_p630 10 BYOP BESS q2030', 'DC_p630 10 BYOP BESS q2031', 'DC_p630 2 BYOP BESS q2026', 'DC_p630 2 BYOP BESS q2027', 'DC_p630 2 BYOP BESS q2028', 'DC_p630 2 BYOP BESS q2029', 'DC_p630 2 BYOP BESS q2030', 'DC_p630 2 BYOP BESS q2031', 'DC_p630 3 BYOP BESS q2026', 'DC_p630 3 BYOP BESS q2027', 'DC_p630 3 BYOP BESS q2028', 'DC_p630 3 BYOP BESS q2029', 'DC_p630 3 BYOP BESS q2030', 'DC_p630 3 BYOP BESS q2031', 'DC_p630 4 BYOP BESS q2026', 'DC_p630 4 BYOP BESS q2027', 'DC_p630 4 BYOP BESS q2028', 'DC_p630 4 BYOP BESS q2029', 'DC_p630 4 BYOP BESS q2030', 'DC_p630 4 BYOP BESS q2031', 'DC_p630 5 BYOP BESS q2026', 'DC_p630 5 BYOP BESS q2027', 'DC_p630 5 BYOP BESS q2028', 'DC_p630 5 BYOP BESS q2029', 'DC_p630 5 BYOP BESS q2030', 'DC_p630 5 BYOP BESS q2031', 'DC_p630 6 BYOP BESS q2026', 'DC_p630 6 BYOP BESS q2027', 'DC_p630 6 BYOP BESS q2028', 'DC_p630 6 BYOP BESS q2029', 'DC_p630 6 BYOP BESS q2030', 'DC_p630 6 BYOP BESS q2031', 'DC_p630 8 BYOP BESS q2026', 'DC_p630 8 BYOP BESS q2027', 'DC_p630 8 BYOP BESS q2028', 'DC_p630 8 BYOP BESS q2029', 'DC_p630 8 BYOP BESS q2030', 'DC_p630 8 BYOP BESS q2031', 'DC_p630 9 BYOP BESS q2026', 'DC_p630 9 BYOP BESS q2027', 'DC_p630 9 BYOP BESS q2028', 'DC_p630 9 BYOP BESS q2029', 'DC_p630 9 BYOP BESS q2030', 'DC_p630 9 BYOP BESS q2031', 'DC_p640 1 BYOP BESS q2026', 'DC_p640 1 BYOP BESS q2027', 'DC_p640 1 BYOP BESS q2028', 'DC_p640 1 BYOP BESS q2029', 'DC_p640 1 BYOP BESS q2030', 'DC_p640 1 BYOP BESS q2031', 'DC_p650 0 BYOP BESS q2026', 'DC_p650 0 BYOP BESS q2027', 'DC_p650 0 BYOP BESS q2028', 'DC_p650 0 BYOP BESS q2029', 'DC_p650 0 BYOP BESS q2030', 'DC_p650 0 BYOP BESS q2031', 'DC_p650 7 BYOP BESS q2026', 'DC_p650 7 BYOP BESS q2027', 'DC_p650 7 BYOP BESS q2028', 'DC_p650 7 BYOP BESS q2029', 'DC_p650 7 BYOP BESS q2030', 'DC_p650 7 BYOP BESS q2031', 'DC_p670 0 BYOP BESS q2026', 'DC_p670 0 BYOP BESS q2027', 'DC_p670 0 BYOP BESS q2028', 'DC_p670 0 BYOP BESS q2029', 'DC_p670 0 BYOP BESS q2030', 'DC_p670 0 BYOP BESS q2031', 'DC_p670 1 BYOP BESS q2026', 'DC_p670 1 BYOP BESS q2027', 'DC_p670 1 BYOP BESS q2028', 'DC_p670 1 BYOP BESS q2029', 'DC_p670 1 BYOP BESS q2030', 'DC_p670 1 BYOP BESS q2031', 'DC_p670 4 BYOP BESS q2026', 'DC_p670 4 BYOP BESS q2027', 'DC_p670 4 BYOP BESS q2028', 'DC_p670 4 BYOP BESS q2029', 'DC_p670 4 BYOP BESS q2030', 'DC_p670 4 BYOP BESS q2031']: Per-period cyclic (cyclic_state_of_charge_per_period=True) overrides global cyclic (cyclic_state_of_charge=True). Storage will cycle within each investment period, not across the entire horizon.
+INFO:opts.bidirectional_link:Added 324 bidirectional link constraints
+INFO:opts.sector:Demand response not enabled
+[PASS] S2 public LP keeps the 3,000 MW system reserve row 
+[PASS] S2 public LP: RE+BESS firm rows with upper bound 0 
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+WARNING:pypsa.optimization.constraints:StorageUnits ['DC_p600 0 BYOP BESS q2026', 'DC_p600 0 BYOP BESS q2027', 'DC_p600 0 BYOP BESS q2028', 'DC_p600 0 BYOP BESS q2029', 'DC_p600 0 BYOP BESS q2030', 'DC_p600 0 BYOP BESS q2031', 'DC_p610 2 BYOP BESS q2026', 'DC_p610 2 BYOP BESS q2027', 'DC_p610 2 BYOP BESS q2028', 'DC_p610 2 BYOP BESS q2029', 'DC_p610 2 BYOP BESS q2030', 'DC_p610 2 BYOP BESS q2031', 'DC_p630 10 BYOP BESS q2026', 'DC_p630 10 BYOP BESS q2027', 'DC_p630 10 BYOP BESS q2028', 'DC_p630 10 BYOP BESS q2029', 'DC_p630 10 BYOP BESS q2030', 'DC_p630 10 BYOP BESS q2031', 'DC_p630 2 BYOP BESS q2026', 'DC_p630 2 BYOP BESS q2027', 'DC_p630 2 BYOP BESS q2028', 'DC_p630 2 BYOP BESS q2029', 'DC_p630 2 BYOP BESS q2030', 'DC_p630 2 BYOP BESS q2031', 'DC_p630 3 BYOP BESS q2026', 'DC_p630 3 BYOP BESS q2027', 'DC_p630 3 BYOP BESS q2028', 'DC_p630 3 BYOP BESS q2029', 'DC_p630 3 BYOP BESS q2030', 'DC_p630 3 BYOP BESS q2031', 'DC_p630 4 BYOP BESS q2026', 'DC_p630 4 BYOP BESS q2027', 'DC_p630 4 BYOP BESS q2028', 'DC_p630 4 BYOP BESS q2029', 'DC_p630 4 BYOP BESS q2030', 'DC_p630 4 BYOP BESS q2031', 'DC_p630 5 BYOP BESS q2026', 'DC_p630 5 BYOP BESS q2027', 'DC_p630 5 BYOP BESS q2028', 'DC_p630 5 BYOP BESS q2029', 'DC_p630 5 BYOP BESS q2030', 'DC_p630 5 BYOP BESS q2031', 'DC_p630 6 BYOP BESS q2026', 'DC_p630 6 BYOP BESS q2027', 'DC_p630 6 BYOP BESS q2028', 'DC_p630 6 BYOP BESS q2029', 'DC_p630 6 BYOP BESS q2030', 'DC_p630 6 BYOP BESS q2031', 'DC_p630 8 BYOP BESS q2026', 'DC_p630 8 BYOP BESS q2027', 'DC_p630 8 BYOP BESS q2028', 'DC_p630 8 BYOP BESS q2029', 'DC_p630 8 BYOP BESS q2030', 'DC_p630 8 BYOP BESS q2031', 'DC_p630 9 BYOP BESS q2026', 'DC_p630 9 BYOP BESS q2027', 'DC_p630 9 BYOP BESS q2028', 'DC_p630 9 BYOP BESS q2029', 'DC_p630 9 BYOP BESS q2030', 'DC_p630 9 BYOP BESS q2031', 'DC_p640 1 BYOP BESS q2026', 'DC_p640 1 BYOP BESS q2027', 'DC_p640 1 BYOP BESS q2028', 'DC_p640 1 BYOP BESS q2029', 'DC_p640 1 BYOP BESS q2030', 'DC_p640 1 BYOP BESS q2031', 'DC_p650 0 BYOP BESS q2026', 'DC_p650 0 BYOP BESS q2027', 'DC_p650 0 BYOP BESS q2028', 'DC_p650 0 BYOP BESS q2029', 'DC_p650 0 BYOP BESS q2030', 'DC_p650 0 BYOP BESS q2031', 'DC_p650 7 BYOP BESS q2026', 'DC_p650 7 BYOP BESS q2027', 'DC_p650 7 BYOP BESS q2028', 'DC_p650 7 BYOP BESS q2029', 'DC_p650 7 BYOP BESS q2030', 'DC_p650 7 BYOP BESS q2031', 'DC_p670 0 BYOP BESS q2026', 'DC_p670 0 BYOP BESS q2027', 'DC_p670 0 BYOP BESS q2028', 'DC_p670 0 BYOP BESS q2029', 'DC_p670 0 BYOP BESS q2030', 'DC_p670 0 BYOP BESS q2031', 'DC_p670 1 BYOP BESS q2026', 'DC_p670 1 BYOP BESS q2027', 'DC_p670 1 BYOP BESS q2028', 'DC_p670 1 BYOP BESS q2029', 'DC_p670 1 BYOP BESS q2030', 'DC_p670 1 BYOP BESS q2031', 'DC_p670 4 BYOP BESS q2026', 'DC_p670 4 BYOP BESS q2027', 'DC_p670 4 BYOP BESS q2028', 'DC_p670 4 BYOP BESS q2029', 'DC_p670 4 BYOP BESS q2030', 'DC_p670 4 BYOP BESS q2031']: Per-period cyclic (cyclic_state_of_charge_per_period=True) overrides global cyclic (cyclic_state_of_charge=True). Storage will cycle within each investment period, not across the entire horizon.
+INFO:opts.bidirectional_link:Added 324 bidirectional link constraints
+INFO:opts.sector:Demand response not enabled
+[PASS] S3_mS2: RE+BESS firm rows with upper bound 0 
+[PASS] every A3 stage routed through the A3 parent ledger in plan order 
+[PASS] child rows: one per stage, of the planned kind, STARTED before the call and ERROR after the intercepted call 
+[PASS] every parent closed ERROR (no silent pass, no retry) 
+[PASS] 0 solver executions (every call intercepted) 
+{
+ "work_package": "BYOP_NEXT_07",
+ "step": "W4 A3 end-to-end dry run",
+ "solver_executions": 0,
+ "solver_calls_intercepted": 6,
+ "exceptions": {
+  "S0": "StopBeforeSolve",
+  "S1_EARLIEST": "StopBeforeSolve",
+  "S3": "StopBeforeSolve",
+  "S2_DEV": "StopBeforeSolve",
+  "S2_PUBLIC": "StopBeforeSolve",
+  "S3_mS2": "StopBeforeSolve"
+ },
+ "n_checks": 13,
+ "n_pass": 13,
+ "n_fail": 0,
+ "model_size": {
+  "S0": {
+   "nvars": 2660074,
+   "ncons": 7107710
+  },
+  "S1_EARLIEST": {
+   "nvars": 2712538,
+   "ncons": 7296046
+  },
+  "S3": {
+   "nvars": 2991110,
+   "ncons": 7918775
+  },
+  "S2": {
+   "nvars": 2990618,
+   "ncons": 7930802
+  },
+  "S3_mS2": {
+   "nvars": 2991110,
+   "ncons": 7918775
+  }
+ },
+ "gate": "INJECTED (approved) - real gate refuses: NOT_APPROVED + S0 verdict",
+ "ledgers": "results/BYOP/next07_s0_reserve_probe/_a3_e2e/ledgers",
+ "seconds": 734.2
+}
+2026-10-23T16:25:31Z end rc=0
