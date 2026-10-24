@@ -142,8 +142,10 @@ def main():
     d_swap = S.diff(fp['V16'], fp['V17L'], 'V16', 'V17L')
     d_back = S.diff(fp['V16'], fp['V16B'], 'V16', 'V16B')
     lc = line_changes(det['V16'], det['V17L'])
+    cc, cor_ok = corridor_changes(cor['V16'], cor['V17L'], changed)
     admissible = lambda r: (r['kind'] == 'constraint' and r['name'].startswith('Line-') and r['field'] in ('rhs', 'coeffs')) or \
-        (r['kind'] == 'network_input' and r['name'] == 'lines')
+        (r['kind'] == 'network_input' and r['name'] in ('lines', 'links')) or \
+        (r['kind'] == 'constraint' and r['field'] == 'rhs' and (r['name'].startswith('M2-line_cap_L') or r['name'] == 'Link-ext-p_nom-upper'))
     unexpected = [r for r in d_swap if not admissible(r)]
     lines_hit = sorted({r['line'] for r in lc})
     checks = dict(

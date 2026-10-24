@@ -6,7 +6,7 @@
  "sha256": "f9aa87aea496f7c07ea4aca0439a703e7eaa90d08cb66c5bc6f149ea60eeefb6",
  "source": "workflow/results/BYOP/next08b_lp1_loss_upper_fix/baseline_2025_tamu_lossy_candidate.nc",
  "source_sha256": "f9aa87aea496f7c07ea4aca0439a703e7eaa90d08cb66c5bc6f149ea60eeefb6",
- "copied_now": true,
+ "copied_now": false,
  "solved_code_sha": "d4fd5340945e50c86859024e2ecec86597b630dd",
  "seal": "current_work_pckg/BYOP_NEXT_08B_LP1_TANGENT_FIX/LOSSY_LP1_V3_SEAL.json",
  "seal_sha256": "20e70aef2b19757feb501350f83a2ce9c86feb10375edeb08a0b74af48929387",
@@ -107,6 +107,6 @@
   "frozen_files_unchanged": true,
   "registry_not_adopted_by_this_script": true
  },
- "built_utc": "2026-10-24T03:17:14+00:00",
+ "built_utc": "2026-10-24T03:29:54+00:00",
  "verdict": "FREEZE_PASS"
 }
