@@ -11,9 +11,9 @@
 # Approval: researcher chat instruction of 2026-10-24 (authorization_source); set only in a config-only commit after the reference
 # SHAs and the A3 manifest are frozen.
 post_v16:
-  run_authorization: NOT_APPROVED
-  approved_git_sha: null
-  approved_by: null
+  run_authorization: APPROVED   # researcher chat authorization 2026-10-24 of the NEXT-10U new version (authorization_source); see NEXT10U_APPROVAL_RECORD.md
+  approved_git_sha: 2a1bb0b09c8b25d01070d6f744a69a5bee61387f
+  approved_by: sw2434@cornell.edu
   authorization_source: current_work_pckg/BYOP_NEXT_10U/NEXT_10U_INSTRUCTION_RECORD.md
   authorization_source_sha256: d02c7fdf7fa71963a0320b0fbe938e7607506ff11bd0dbbe7efda16f2c2f8a53   # LF content SHA
   manifest: current_work_pckg/BYOP_NEXT_10U/NEXT10U_A3_PRE_RUN_MANIFEST.json
