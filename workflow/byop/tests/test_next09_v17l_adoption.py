@@ -52,7 +52,10 @@ def test_registry_pins_match_paths_and_seal():
     r = BR.load()
     v16, v17 = r['baselines']['v16'], r['baselines']['v17l']
     assert r['previous_formal'] == 'v16' and r['candidate'] == 'v17l'
-    assert r['adoption'] == dict(adoption_status='NOT_ADOPTED', adopted_git_sha=None, adopted_by=None)      # researcher only
+    # adopted by the researcher (config-only commit 7f4e27cb, 2026-10-24); formal = v1.7L with no adoption problems
+    assert r['adoption'] == dict(adoption_status='ADOPTED', adopted_git_sha='c0b29f34709ed88229b42d7fd368ddd6370b5301',
+                                 adopted_by='sw2434@cornell.edu')
+    assert BR.formal(r)[0] == 'v17l' and BR.formal(r)[2] == []
     assert v16['sha256'] == BP.BASE_TAMU_V16_SHA256
     assert (WF.parent / v16['path']).resolve() == BP.BASE_TAMU_V16.resolve()
     assert (WF.parent / v17['path']).resolve() == BR.BASE_TAMU_V17L.resolve() and v17['sha256'] == BR.BASE_TAMU_V17L_SHA256
@@ -155,14 +158,15 @@ def test_run_entry_v17l():
 
 
 # ------------------------------------------------------------------------------------------------ gates
-def test_s0s1_gate_refuses_now():
+def test_s0s1_gate_refuses_until_approved():
+    """v1.7L is ADOPTED; the S0 / S1 config is still NOT_APPROVED (researcher: do not run S0 / S1 yet)"""
     g = A2G.check('S0', str(BR.BASE_TAMU_V17L), cfg_path=CFG17)
     r = g['reasons']
     assert not g['approved'] and 'run_authorization=NOT_APPROVED' in r and 'approved_by missing' in r
-    assert any('v17l is not the formal baseline (not ADOPTED)' in x for x in r)
+    assert not any('formal' in x or 'loss-basis' in x for x in r)
 
 
-def test_guard_refuses_v17l_before_adoption(capsys):
+def test_guard_refuses_v17l_until_approved(capsys):
     import rearch_mech as R
     a = SimpleNamespace(a2_config=str(CFG17), a3_config=None, base=str(BR.BASE_TAMU_V17L), mainline=True,
                         config='config/config.byop_ercot_mainline_geo_dynamic_v1_baseline_v17l.yaml', out=str(WF / 'results/BYOP/post_v17l_s0s1/POST_V17L_S0S1'),
@@ -171,7 +175,7 @@ def test_guard_refuses_v17l_before_adoption(capsys):
     with pytest.raises(SystemExit) as e:
         R.post_v16_guard(a)
     o = capsys.readouterr().out
-    assert e.value.code == 3 and 'not ADOPTED' in o and 'run_authorization=NOT_APPROVED' in o
+    assert e.value.code == 3 and 'not ADOPTED' not in o and 'run_authorization=NOT_APPROVED' in o
 
 
 def test_old_configs_refused_after_adoption(monkeypatch, tmp_path):
