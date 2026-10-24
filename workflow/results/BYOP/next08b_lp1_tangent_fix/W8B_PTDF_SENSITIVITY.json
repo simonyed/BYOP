@@ -1,0 +1,1211 @@
+{
+ "step": "NEXT-08b zero-solver PTDF sensitivity of the residual p610 1 shed",
+ "solver_calls": 0,
+ "slack_bus": "p600 0",
+ "conventions": "(PyPSA 1.3, transmission_losses = 2 tangents):\n  * Line-s = s (bus0 -> bus1); bus balance withdraws loss/2 at each end, so p0 = s + loss/2 and s = p0 - loss/2.\n  * Rating row |s| + loss <= s_max_pu s_nom; tangents loss >= 2 r_pu p_k |s| - r_pu p_k^2, p_k = k/2 s_max_pu s_ref;\n    loss <= r_pu (s_max_pu s_ref)^2 (loss_upper); loss >= 0; r_pu = r / v_nom^2.\n  * KVL: s = PTDF @ (K s), K = bus x line incidence (+1 bus0, -1 bus1), PTDF from x_pu_eff with the PyPSA slack bus;\n    a balanced transfer (+1 at A, -1 spread over a sink pattern w) is reference-independent: PTDF @ (e_A - w).\n  * Binding: |s| + loss >= 0.995 x rating. Relief on a binding line = reduction of |s| (sign taken from the LP2 flow).",
+ "T0_ptdf_reproduces_lp2_flows": {
+  "max_abs_err_MW": 0.0163608120697063,
+  "pass_": true
+ },
+ "T1_objective_consistency": {
+  "v16_lossless_control": {
+   "lp1_objective": 17867480779.532787,
+   "lp1_uplift_MVA": 5151.833600032188,
+   "lp1_capex": 10303667200.064375,
+   "lp1_eens_MWh": 102.20432200937113,
+   "lp1_operating_ex_shed": 7461609257.459042,
+   "lp2_objective": 7464688967.632855,
+   "lp2_eens_MWh": 111.78866694649071,
+   "lp2_operating_ex_shed": 7460699789.05287,
+   "lp1_dispatch_at_lp2_prices": 7465256418.689946,
+   "diff_vs_lp2_optimum": 567451.0570907593,
+   "verdict": "consistent (LP2 optimum <= LP1 dispatch)"
+  },
+  "next08_v1": {
+   "lp1_objective": 19301160471.4914,
+   "lp1_uplift_MVA": 5816.595670039927,
+   "lp1_capex": 11633191340.079855,
+   "lp1_eens_MWh": 110.89310329735667,
+   "lp1_operating_ex_shed": 7557076028.11419,
+   "lp2_objective": 7672659746.182726,
+   "lp2_eens_MWh": 1657.1364089370986,
+   "lp2_operating_ex_shed": 7613524833.429806,
+   "lp1_dispatch_at_lp2_prices": 7561033248.505356,
+   "diff_vs_lp2_optimum": -111626497.67737007,
+   "verdict": "LP1 dispatch NOT feasible in LP2"
+  },
+  "next08b_v2": {
+   "lp1_objective": 19428105303.051136,
+   "lp1_uplift_MVA": 5856.356724182902,
+   "lp1_capex": 11712713448.365805,
+   "lp1_eens_MWh": 109.67919052638507,
+   "lp1_operating_ex_shed": 7605712664.158946,
+   "lp2_objective": 7638948645.531138,
+   "lp2_eens_MWh": 817.419843589207,
+   "lp2_operating_ex_shed": 7609779018.412658,
+   "lp1_dispatch_at_lp2_prices": 7609626566.07288,
+   "diff_vs_lp2_optimum": -29322079.45825863,
+   "verdict": "LP1 dispatch NOT feasible in LP2"
+  },
+  "prices": {
+   "uplift_USD_per_MVA": 2000000.0,
+   "lp1_shed_USD_MWh": 1000000.0,
+   "lp2_voll_USD_MWh": 35685.0,
+   "tolerance_USD": 100000.0,
+   "period_objective_weight": 1.0
+  }
+ },
+ "steps": {
+  "2030-08-28 06:00:00": {
+   "binding": [
+    "TL119",
+    "TL12",
+    "TL129",
+    "TL26",
+    "TL63",
+    "TL67",
+    "TL68",
+    "TL69",
+    "TL94"
+   ],
+   "shed_at_p610_1_MW": 18.88,
+   "T2_r_tangent": {
+    "extra_loss_total_MW": 2.14,
+    "extra_loss_on_binding_MW": {
+     "TL119": 0.0,
+     "TL12": 0.4266,
+     "TL129": 0.0,
+     "TL26": 0.0031,
+     "TL63": -0.0013,
+     "TL67": 0.0149,
+     "TL68": 0.1036,
+     "TL69": 0.3445,
+     "TL94": 0.0
+    },
+    "by_sink": {
+     "slack": {
+      "relief_per_MW_shed": {
+       "TL119": 0.0015,
+       "TL12": 0.0036,
+       "TL129": 0.0003,
+       "TL26": 0.1339,
+       "TL63": 0.0032,
+       "TL67": -0.0101,
+       "TL68": 0.0218,
+       "TL69": 0.0266,
+       "TL94": 0.0001
+      },
+      "tightening_MW": {
+       "TL119": 0.0099,
+       "TL12": 0.4848,
+       "TL129": 0.0006,
+       "TL26": 0.0247,
+       "TL63": 0.0329,
+       "TL67": -0.0015,
+       "TL68": 0.1415,
+       "TL69": 0.3901,
+       "TL94": 0.0008
+      },
+      "single_control_shed_MW": 135.2381997252818,
+      "lines_not_relievable_by_p610_1_shed": []
+     },
+     "thermal_capacity": {
+      "relief_per_MW_shed": {
+       "TL119": 0.0734,
+       "TL12": 0.0027,
+       "TL129": 0.0302,
+       "TL26": 0.1381,
+       "TL63": -0.0063,
+       "TL67": -0.0052,
+       "TL68": 0.0338,
+       "TL69": 0.0418,
+       "TL94": 0.0042
+      },
+      "tightening_MW": {
+       "TL119": 0.1638,
+       "TL12": 0.483,
+       "TL129": 0.0646,
+       "TL26": 0.0338,
+       "TL63": 0.0127,
+       "TL67": 0.0091,
+       "TL68": 0.1672,
+       "TL69": 0.4226,
+       "TL94": 0.0096
+      },
+      "single_control_shed_MW": Infinity,
+      "lines_not_relievable_by_p610_1_shed": [
+       "TL63",
+       "TL67"
+      ]
+     },
+     "load_at_step": {
+      "relief_per_MW_shed": {
+       "TL119": 0.0538,
+       "TL12": -0.0002,
+       "TL129": 0.0189,
+       "TL26": 0.1364,
+       "TL63": -0.0101,
+       "TL67": -0.007,
+       "TL68": 0.031,
+       "TL69": 0.0384,
+       "TL94": 0.0036
+      },
+      "tightening_MW": {
+       "TL119": 0.1219,
+       "TL12": 0.4767,
+       "TL129": 0.0405,
+       "TL26": 0.0302,
+       "TL63": 0.0045,
+       "TL67": 0.0053,
+       "TL68": 0.1613,
+       "TL69": 0.4153,
+       "TL94": 0.0082
+      },
+      "single_control_shed_MW": Infinity,
+      "lines_not_relievable_by_p610_1_shed": [
+       "TL12",
+       "TL63",
+       "TL67"
+      ]
+     },
+     "wind_available_at_step": {
+      "relief_per_MW_shed": {
+       "TL119": -0.0103,
+       "TL12": 0.0216,
+       "TL129": 0.038,
+       "TL26": 0.1369,
+       "TL63": -0.0143,
+       "TL67": -0.0083,
+       "TL68": 0.0269,
+       "TL69": 0.0334,
+       "TL94": -0.0003
+      },
+      "tightening_MW": {
+       "TL119": -0.0152,
+       "TL12": 0.5233,
+       "TL129": 0.0814,
+       "TL26": 0.0313,
+       "TL63": -0.0044,
+       "TL67": 0.0024,
+       "TL68": 0.1525,
+       "TL69": 0.4047,
+       "TL94": -0.0001
+      },
+      "single_control_shed_MW": Infinity,
+      "lines_not_relievable_by_p610_1_shed": [
+       "TL67"
+      ]
+     }
+    }
+   },
+   "T3_loss_upper": {
+    "lp1_excess_over_1p05_lp2_upper_MW": 1459.2,
+    "by_line": {
+     "TL102": {
+      "MW": 165.9,
+      "bus0": "p640 1",
+      "bus1": "p640 2"
+     },
+     "TL104": {
+      "MW": 40.9,
+      "bus0": "p640 1",
+      "bus1": "p640 4"
+     },
+     "TL106": {
+      "MW": 47.5,
+      "bus0": "p640 2",
+      "bus1": "p640 4"
+     },
+     "TL107": {
+      "MW": 59.0,
+      "bus0": "p640 2",
+      "bus1": "p650 0"
+     },
+     "TL11": {
+      "MW": 44.1,
+      "bus0": "p600 1",
+      "bus1": "p600 3"
+     },
+     "TL16": {
+      "MW": 66.4,
+      "bus0": "p600 3",
+      "bus1": "p610 2"
+     },
+     "TL18": {
+      "MW": 14.2,
+      "bus0": "p600 4",
+      "bus1": "p610 2"
+     },
+     "TL29": {
+      "MW": 154.1,
+      "bus0": "p610 2",
+      "bus1": "p630 2"
+     },
+     "TL30": {
+      "MW": 450.5,
+      "bus0": "p610 2",
+      "bus1": "p630 4"
+     },
+     "TL31": {
+      "MW": 179.6,
+      "bus0": "p610 2",
+      "bus1": "p630 5"
+     },
+     "TL32": {
+      "MW": 157.6,
+      "bus0": "p610 3",
+      "bus1": "p640 2"
+     },
+     "TL68": {
+      "MW": 9.8,
+      "bus0": "p630 13",
+      "bus1": "p640 1"
+     },
+     "TL69": {
+      "MW": 20.3,
+      "bus0": "p630 13",
+      "bus1": "p640 2"
+     },
+     "TL7": {
+      "MW": 49.1,
+      "bus0": "p600 0",
+      "bus1": "p610 2"
+     }
+    },
+    "flow_effect_on_binding": {
+     "wind_available_at_step": {
+      "relief_from_lp1_excess_sinks_MW": {
+       "TL119": -1.07,
+       "TL12": -22.38,
+       "TL129": -55.25,
+       "TL26": 19.61,
+       "TL63": 0.17,
+       "TL67": 4.27,
+       "TL68": 0.52,
+       "TL69": 1.34,
+       "TL94": -0.82
+      },
+      "relief_from_95MW_shed_MW": {
+       "TL119": -0.98,
+       "TL12": 2.05,
+       "TL129": 3.62,
+       "TL26": 13.02,
+       "TL63": -1.36,
+       "TL67": -0.79,
+       "TL68": 2.56,
+       "TL69": 3.18,
+       "TL94": -0.03
+      }
+     },
+     "thermal_capacity": {
+      "relief_from_lp1_excess_sinks_MW": {
+       "TL119": -123.13,
+       "TL12": 5.13,
+       "TL129": -43.8,
+       "TL26": 17.86,
+       "TL63": -11.5,
+       "TL67": -0.27,
+       "TL68": -9.52,
+       "TL69": -10.82,
+       "TL94": -7.47
+      },
+      "relief_from_95MW_shed_MW": {
+       "TL119": 6.98,
+       "TL12": 0.26,
+       "TL129": 2.87,
+       "TL26": 13.14,
+       "TL63": -0.6,
+       "TL67": -0.5,
+       "TL68": 3.21,
+       "TL69": 3.97,
+       "TL94": 0.4
+      }
+     },
+     "load_at_step": {
+      "relief_from_lp1_excess_sinks_MW": {
+       "TL119": -94.58,
+       "TL12": 9.43,
+       "TL129": -27.37,
+       "TL26": 20.34,
+       "TL63": -5.87,
+       "TL67": 2.31,
+       "TL68": -5.5,
+       "TL69": -5.85,
+       "TL94": -6.49
+      },
+      "relief_from_95MW_shed_MW": {
+       "TL119": 5.12,
+       "TL12": -0.02,
+       "TL129": 1.8,
+       "TL26": 12.98,
+       "TL63": -0.96,
+       "TL67": -0.66,
+       "TL68": 2.95,
+       "TL69": 3.65,
+       "TL94": 0.34
+      }
+     }
+    }
+   }
+  },
+  "2030-08-28 09:00:00": {
+   "binding": [
+    "TL129",
+    "TL15",
+    "TL26",
+    "TL34",
+    "TL35",
+    "TL38",
+    "TL39",
+    "TL41",
+    "TL42",
+    "TL63",
+    "TL67",
+    "TL68",
+    "TL69"
+   ],
+   "shed_at_p610_1_MW": 95.15,
+   "T2_r_tangent": {
+    "extra_loss_total_MW": 3.211,
+    "extra_loss_on_binding_MW": {
+     "TL129": 0.0,
+     "TL15": -0.0037,
+     "TL26": 0.0031,
+     "TL34": 0.0,
+     "TL35": 0.0346,
+     "TL38": 0.1608,
+     "TL39": 0.0241,
+     "TL41": 0.0951,
+     "TL42": 0.132,
+     "TL63": -0.0013,
+     "TL67": 0.0149,
+     "TL68": 0.1036,
+     "TL69": 0.3445
+    },
+    "by_sink": {
+     "slack": {
+      "relief_per_MW_shed": {
+       "TL129": 0.0003,
+       "TL15": -0.0019,
+       "TL26": 0.1339,
+       "TL34": -0.0,
+       "TL35": 0.0019,
+       "TL38": 0.0043,
+       "TL39": 0.0027,
+       "TL41": 0.0043,
+       "TL42": 0.003,
+       "TL63": 0.0032,
+       "TL67": -0.0101,
+       "TL68": 0.0218,
+       "TL69": 0.0266
+      },
+      "tightening_MW": {
+       "TL129": 0.0016,
+       "TL15": -0.0701,
+       "TL26": 0.0438,
+       "TL34": -0.0001,
+       "TL35": 0.1236,
+       "TL38": 0.5181,
+       "TL39": 0.279,
+       "TL41": 0.3245,
+       "TL42": 0.3026,
+       "TL63": 0.0352,
+       "TL67": 0.0144,
+       "TL68": 0.1546,
+       "TL69": 0.4061
+      },
+      "single_control_shed_MW": Infinity,
+      "lines_not_relievable_by_p610_1_shed": [
+       "TL67"
+      ]
+     },
+     "thermal_capacity": {
+      "relief_per_MW_shed": {
+       "TL129": 0.0302,
+       "TL15": -0.0015,
+       "TL26": 0.1381,
+       "TL34": 0.0012,
+       "TL35": 0.0015,
+       "TL38": 0.0034,
+       "TL39": -0.001,
+       "TL41": 0.0034,
+       "TL42": 0.0026,
+       "TL63": -0.0063,
+       "TL67": -0.0052,
+       "TL68": 0.0338,
+       "TL69": 0.0418
+      },
+      "tightening_MW": {
+       "TL129": 0.0975,
+       "TL15": -0.0689,
+       "TL26": 0.0575,
+       "TL34": 0.0037,
+       "TL35": 0.1224,
+       "TL38": 0.5152,
+       "TL39": 0.267,
+       "TL41": 0.3216,
+       "TL42": 0.3014,
+       "TL63": 0.0048,
+       "TL67": 0.0302,
+       "TL68": 0.1931,
+       "TL69": 0.4547
+      },
+      "single_control_shed_MW": Infinity,
+      "lines_not_relievable_by_p610_1_shed": [
+       "TL39",
+       "TL63",
+       "TL67"
+      ]
+     },
+     "load_at_step": {
+      "relief_per_MW_shed": {
+       "TL129": 0.0197,
+       "TL15": -0.0057,
+       "TL26": 0.1367,
+       "TL34": 0.0009,
+       "TL35": -0.0051,
+       "TL38": -0.0147,
+       "TL39": -0.0118,
+       "TL41": -0.0007,
+       "TL42": -0.0018,
+       "TL63": -0.0103,
+       "TL67": -0.0068,
+       "TL68": 0.0313,
+       "TL69": 0.0387
+      },
+      "tightening_MW": {
+       "TL129": 0.0637,
+       "TL15": -0.0822,
+       "TL26": 0.0528,
+       "TL34": 0.003,
+       "TL35": 0.1011,
+       "TL38": 0.4573,
+       "TL39": 0.2323,
+       "TL41": 0.3085,
+       "TL42": 0.2874,
+       "TL63": -0.0082,
+       "TL67": 0.0252,
+       "TL68": 0.1851,
+       "TL69": 0.4448
+      },
+      "single_control_shed_MW": Infinity,
+      "lines_not_relievable_by_p610_1_shed": [
+       "TL35",
+       "TL38",
+       "TL39",
+       "TL41",
+       "TL42",
+       "TL67"
+      ]
+     },
+     "wind_available_at_step": {
+      "relief_per_MW_shed": {
+       "TL129": -0.0017,
+       "TL15": -0.0009,
+       "TL26": 0.1378,
+       "TL34": 0.0014,
+       "TL35": 0.0009,
+       "TL38": -0.0012,
+       "TL39": -0.0021,
+       "TL41": -0.0012,
+       "TL42": -0.0007,
+       "TL63": -0.0189,
+       "TL67": -0.0083,
+       "TL68": 0.0264,
+       "TL69": 0.0327
+      },
+      "tightening_MW": {
+       "TL129": -0.0048,
+       "TL15": -0.067,
+       "TL26": 0.0563,
+       "TL34": 0.0045,
+       "TL35": 0.1205,
+       "TL38": 0.5005,
+       "TL39": 0.2635,
+       "TL41": 0.3069,
+       "TL42": 0.2907,
+       "TL63": -0.0359,
+       "TL67": 0.0203,
+       "TL68": 0.1696,
+       "TL69": 0.4258
+      },
+      "single_control_shed_MW": Infinity,
+      "lines_not_relievable_by_p610_1_shed": [
+       "TL38",
+       "TL39",
+       "TL41",
+       "TL42",
+       "TL67"
+      ]
+     }
+    }
+   },
+   "T3_loss_upper": {
+    "lp1_excess_over_1p05_lp2_upper_MW": 1235.6,
+    "by_line": {
+     "TL102": {
+      "MW": 165.9,
+      "bus0": "p640 1",
+      "bus1": "p640 2"
+     },
+     "TL106": {
+      "MW": 47.5,
+      "bus0": "p640 2",
+      "bus1": "p640 4"
+     },
+     "TL107": {
+      "MW": 59.0,
+      "bus0": "p640 2",
+      "bus1": "p650 0"
+     },
+     "TL108": {
+      "MW": 1.9,
+      "bus0": "p640 2",
+      "bus1": "p650 2"
+     },
+     "TL16": {
+      "MW": 66.4,
+      "bus0": "p600 3",
+      "bus1": "p610 2"
+     },
+     "TL29": {
+      "MW": 154.1,
+      "bus0": "p610 2",
+      "bus1": "p630 2"
+     },
+     "TL30": {
+      "MW": 450.5,
+      "bus0": "p610 2",
+      "bus1": "p630 4"
+     },
+     "TL31": {
+      "MW": 179.6,
+      "bus0": "p610 2",
+      "bus1": "p630 5"
+     },
+     "TL32": {
+      "MW": 95.1,
+      "bus0": "p610 3",
+      "bus1": "p640 2"
+     },
+     "TL7": {
+      "MW": 15.4,
+      "bus0": "p600 0",
+      "bus1": "p610 2"
+     }
+    },
+    "flow_effect_on_binding": {
+     "wind_available_at_step": {
+      "relief_from_lp1_excess_sinks_MW": {
+       "TL129": 2.35,
+       "TL15": -0.56,
+       "TL26": 18.3,
+       "TL34": -2.9,
+       "TL35": 0.56,
+       "TL38": 4.65,
+       "TL39": 4.59,
+       "TL41": 4.65,
+       "TL42": 3.1,
+       "TL63": 4.8,
+       "TL67": 1.82,
+       "TL68": 2.47,
+       "TL69": 3.65
+      },
+      "relief_from_95MW_shed_MW": {
+       "TL129": -0.16,
+       "TL15": -0.09,
+       "TL26": 13.1,
+       "TL34": 0.13,
+       "TL35": 0.09,
+       "TL38": -0.12,
+       "TL39": -0.2,
+       "TL41": -0.12,
+       "TL42": -0.07,
+       "TL63": -1.8,
+       "TL67": -0.79,
+       "TL68": 2.51,
+       "TL69": 3.11
+      }
+     },
+     "thermal_capacity": {
+      "relief_from_lp1_excess_sinks_MW": {
+       "TL129": -37.02,
+       "TL15": 0.16,
+       "TL26": 17.83,
+       "TL34": -2.6,
+       "TL35": -0.16,
+       "TL38": -1.01,
+       "TL39": 3.25,
+       "TL41": -1.01,
+       "TL42": -1.01,
+       "TL63": -10.85,
+       "TL67": -1.99,
+       "TL68": -6.59,
+       "TL69": -7.5
+      },
+      "relief_from_95MW_shed_MW": {
+       "TL129": 2.87,
+       "TL15": -0.14,
+       "TL26": 13.14,
+       "TL34": 0.11,
+       "TL35": 0.14,
+       "TL38": 0.32,
+       "TL39": -0.09,
+       "TL41": 0.32,
+       "TL42": 0.25,
+       "TL63": -0.6,
+       "TL67": -0.5,
+       "TL68": 3.21,
+       "TL69": 3.97
+      }
+     },
+     "load_at_step": {
+      "relief_from_lp1_excess_sinks_MW": {
+       "TL129": -24.02,
+       "TL15": 5.3,
+       "TL26": 19.65,
+       "TL34": -2.33,
+       "TL35": 8.01,
+       "TL38": 21.29,
+       "TL39": 16.58,
+       "TL41": 4.01,
+       "TL42": 4.36,
+       "TL63": -5.85,
+       "TL67": -0.05,
+       "TL68": -3.52,
+       "TL69": -3.7
+      },
+      "relief_from_95MW_shed_MW": {
+       "TL129": 1.87,
+       "TL15": -0.54,
+       "TL26": 13.0,
+       "TL34": 0.09,
+       "TL35": -0.49,
+       "TL38": -1.4,
+       "TL39": -1.12,
+       "TL41": -0.07,
+       "TL42": -0.17,
+       "TL63": -0.98,
+       "TL67": -0.65,
+       "TL68": 2.97,
+       "TL69": 3.68
+      }
+     }
+    }
+   }
+  },
+  "2030-09-12 06:00:00": {
+   "binding": [
+    "TL119",
+    "TL129",
+    "TL26",
+    "TL63",
+    "TL67",
+    "TL68",
+    "TL69",
+    "TL94"
+   ],
+   "shed_at_p610_1_MW": 10.29,
+   "T2_r_tangent": {
+    "extra_loss_total_MW": 3.21,
+    "extra_loss_on_binding_MW": {
+     "TL119": 0.0,
+     "TL129": 0.0,
+     "TL26": 0.0031,
+     "TL63": -0.0013,
+     "TL67": 0.0149,
+     "TL68": 0.1036,
+     "TL69": 0.3445,
+     "TL94": 0.0
+    },
+    "by_sink": {
+     "slack": {
+      "relief_per_MW_shed": {
+       "TL119": 0.0015,
+       "TL129": 0.0003,
+       "TL26": 0.1339,
+       "TL63": 0.0032,
+       "TL67": -0.0101,
+       "TL68": 0.0218,
+       "TL69": 0.0266,
+       "TL94": 0.0001
+      },
+      "tightening_MW": {
+       "TL119": 0.0114,
+       "TL129": 0.0016,
+       "TL26": 0.0438,
+       "TL63": 0.0352,
+       "TL67": 0.0144,
+       "TL68": 0.1546,
+       "TL69": 0.4061,
+       "TL94": 0.0009
+      },
+      "single_control_shed_MW": Infinity,
+      "lines_not_relievable_by_p610_1_shed": [
+       "TL67"
+      ]
+     },
+     "thermal_capacity": {
+      "relief_per_MW_shed": {
+       "TL119": 0.0734,
+       "TL129": 0.0302,
+       "TL26": 0.1381,
+       "TL63": -0.0063,
+       "TL67": -0.0052,
+       "TL68": 0.0338,
+       "TL69": 0.0418,
+       "TL94": 0.0042
+      },
+      "tightening_MW": {
+       "TL119": 0.2422,
+       "TL129": 0.0975,
+       "TL26": 0.0575,
+       "TL63": 0.0048,
+       "TL67": 0.0302,
+       "TL68": 0.1931,
+       "TL69": 0.4547,
+       "TL94": 0.0141
+      },
+      "single_control_shed_MW": Infinity,
+      "lines_not_relievable_by_p610_1_shed": [
+       "TL63",
+       "TL67"
+      ]
+     },
+     "load_at_step": {
+      "relief_per_MW_shed": {
+       "TL119": 0.0553,
+       "TL129": 0.0213,
+       "TL26": 0.1363,
+       "TL63": -0.0103,
+       "TL67": -0.007,
+       "TL68": 0.0311,
+       "TL69": 0.0385,
+       "TL94": 0.0036
+      },
+      "tightening_MW": {
+       "TL119": 0.1841,
+       "TL129": 0.069,
+       "TL26": 0.0516,
+       "TL63": -0.0081,
+       "TL67": 0.0246,
+       "TL68": 0.1846,
+       "TL69": 0.4442,
+       "TL94": 0.0122
+      },
+      "single_control_shed_MW": Infinity,
+      "lines_not_relievable_by_p610_1_shed": [
+       "TL67"
+      ]
+     },
+     "wind_available_at_step": {
+      "relief_per_MW_shed": {
+       "TL119": -0.0059,
+       "TL129": 0.058,
+       "TL26": 0.1344,
+       "TL63": -0.0066,
+       "TL67": -0.0117,
+       "TL68": 0.0226,
+       "TL69": 0.0281,
+       "TL94": -0.0002
+      },
+      "tightening_MW": {
+       "TL119": -0.0123,
+       "TL129": 0.1868,
+       "TL26": 0.0457,
+       "TL63": 0.0038,
+       "TL67": 0.0093,
+       "TL68": 0.1573,
+       "TL69": 0.4107,
+       "TL94": -0.0001
+      },
+      "single_control_shed_MW": Infinity,
+      "lines_not_relievable_by_p610_1_shed": [
+       "TL63",
+       "TL67"
+      ]
+     }
+    }
+   },
+   "T3_loss_upper": {
+    "lp1_excess_over_1p05_lp2_upper_MW": 545.2,
+    "by_line": {
+     "TL16": {
+      "MW": 66.4,
+      "bus0": "p600 3",
+      "bus1": "p610 2"
+     },
+     "TL29": {
+      "MW": 154.1,
+      "bus0": "p610 2",
+      "bus1": "p630 2"
+     },
+     "TL30": {
+      "MW": 138.7,
+      "bus0": "p610 2",
+      "bus1": "p630 4"
+     },
+     "TL31": {
+      "MW": 179.6,
+      "bus0": "p610 2",
+      "bus1": "p630 5"
+     },
+     "TL68": {
+      "MW": 6.4,
+      "bus0": "p630 13",
+      "bus1": "p640 1"
+     }
+    },
+    "flow_effect_on_binding": {
+     "wind_available_at_step": {
+      "relief_from_lp1_excess_sinks_MW": {
+       "TL119": 3.87,
+       "TL129": -31.39,
+       "TL26": 13.17,
+       "TL63": -9.23,
+       "TL67": 2.13,
+       "TL68": 0.48,
+       "TL69": 0.34,
+       "TL94": 0.15
+      },
+      "relief_from_95MW_shed_MW": {
+       "TL119": -0.56,
+       "TL129": 5.52,
+       "TL26": 12.78,
+       "TL63": -0.63,
+       "TL67": -1.12,
+       "TL68": 2.15,
+       "TL69": 2.67,
+       "TL94": -0.02
+      }
+     },
+     "thermal_capacity": {
+      "relief_from_lp1_excess_sinks_MW": {
+       "TL119": -39.36,
+       "TL129": -16.23,
+       "TL26": 11.16,
+       "TL63": -9.4,
+       "TL67": -1.43,
+       "TL68": -5.6,
+       "TL69": -7.13,
+       "TL94": -2.26
+      },
+      "relief_from_95MW_shed_MW": {
+       "TL119": 6.98,
+       "TL129": 2.87,
+       "TL26": 13.14,
+       "TL63": -0.6,
+       "TL67": -0.5,
+       "TL68": 3.21,
+       "TL69": 3.97,
+       "TL94": 0.4
+      }
+     },
+     "load_at_step": {
+      "relief_from_lp1_excess_sinks_MW": {
+       "TL119": -29.49,
+       "TL129": -11.38,
+       "TL26": 12.17,
+       "TL63": -7.21,
+       "TL67": -0.46,
+       "TL68": -4.15,
+       "TL69": -5.34,
+       "TL94": -1.94
+      },
+      "relief_from_95MW_shed_MW": {
+       "TL119": 5.26,
+       "TL129": 2.03,
+       "TL26": 12.96,
+       "TL63": -0.98,
+       "TL67": -0.66,
+       "TL68": 2.96,
+       "TL69": 3.66,
+       "TL94": 0.35
+      }
+     }
+    }
+   }
+  },
+  "2030-09-13 09:00:00": {
+   "binding": [
+    "TL119",
+    "TL129",
+    "TL26",
+    "TL41",
+    "TL63",
+    "TL67",
+    "TL68",
+    "TL69"
+   ],
+   "shed_at_p610_1_MW": 10.51,
+   "T2_r_tangent": {
+    "extra_loss_total_MW": 3.022,
+    "extra_loss_on_binding_MW": {
+     "TL119": 0.0,
+     "TL129": 0.0,
+     "TL26": 0.0031,
+     "TL41": 0.0951,
+     "TL63": -0.0013,
+     "TL67": 0.0149,
+     "TL68": 0.1036,
+     "TL69": 0.3445
+    },
+    "by_sink": {
+     "slack": {
+      "relief_per_MW_shed": {
+       "TL119": 0.0015,
+       "TL129": 0.0003,
+       "TL26": 0.1339,
+       "TL41": 0.0043,
+       "TL63": 0.0032,
+       "TL67": -0.0101,
+       "TL68": 0.0218,
+       "TL69": 0.0266
+      },
+      "tightening_MW": {
+       "TL119": 0.0112,
+       "TL129": 0.0015,
+       "TL26": 0.0437,
+       "TL41": 0.2919,
+       "TL63": 0.0349,
+       "TL67": 0.0135,
+       "TL68": 0.1539,
+       "TL69": 0.4052
+      },
+      "single_control_shed_MW": Infinity,
+      "lines_not_relievable_by_p610_1_shed": [
+       "TL67"
+      ]
+     },
+     "thermal_capacity": {
+      "relief_per_MW_shed": {
+       "TL119": 0.0734,
+       "TL129": 0.0302,
+       "TL26": 0.1381,
+       "TL41": 0.0034,
+       "TL63": -0.0063,
+       "TL67": -0.0052,
+       "TL68": 0.0338,
+       "TL69": 0.0418
+      },
+      "tightening_MW": {
+       "TL119": 0.2285,
+       "TL129": 0.0918,
+       "TL26": 0.0566,
+       "TL41": 0.2892,
+       "TL63": 0.0063,
+       "TL67": 0.0284,
+       "TL68": 0.1901,
+       "TL69": 0.451
+      },
+      "single_control_shed_MW": Infinity,
+      "lines_not_relievable_by_p610_1_shed": [
+       "TL63",
+       "TL67"
+      ]
+     },
+     "load_at_step": {
+      "relief_per_MW_shed": {
+       "TL119": 0.0564,
+       "TL129": 0.021,
+       "TL26": 0.1365,
+       "TL41": -0.001,
+       "TL63": -0.0103,
+       "TL67": -0.0069,
+       "TL68": 0.0312,
+       "TL69": 0.0386
+      },
+      "tightening_MW": {
+       "TL119": 0.1771,
+       "TL129": 0.0639,
+       "TL26": 0.0517,
+       "TL41": 0.2759,
+       "TL63": -0.0057,
+       "TL67": 0.0235,
+       "TL68": 0.1824,
+       "TL69": 0.4414
+      },
+      "single_control_shed_MW": Infinity,
+      "lines_not_relievable_by_p610_1_shed": [
+       "TL41",
+       "TL67"
+      ]
+     },
+     "wind_available_at_step": {
+      "relief_per_MW_shed": {
+       "TL119": 0.0032,
+       "TL129": 0.0319,
+       "TL26": 0.1377,
+       "TL41": -0.0084,
+       "TL63": -0.006,
+       "TL67": -0.0104,
+       "TL68": 0.0229,
+       "TL69": 0.0282
+      },
+      "tightening_MW": {
+       "TL119": 0.0165,
+       "TL129": 0.0969,
+       "TL26": 0.0552,
+       "TL41": 0.2538,
+       "TL63": 0.0071,
+       "TL67": 0.0128,
+       "TL68": 0.1572,
+       "TL69": 0.4099
+      },
+      "single_control_shed_MW": Infinity,
+      "lines_not_relievable_by_p610_1_shed": [
+       "TL41",
+       "TL63",
+       "TL67"
+      ]
+     }
+    }
+   },
+   "T3_loss_upper": {
+    "lp1_excess_over_1p05_lp2_upper_MW": 205.0,
+    "by_line": {
+     "TL29": {
+      "MW": 154.1,
+      "bus0": "p610 2",
+      "bus1": "p630 2"
+     },
+     "TL31": {
+      "MW": 50.9,
+      "bus0": "p610 2",
+      "bus1": "p630 5"
+     }
+    },
+    "flow_effect_on_binding": {
+     "wind_available_at_step": {
+      "relief_from_lp1_excess_sinks_MW": {
+       "TL119": -0.29,
+       "TL129": -6.44,
+       "TL26": 4.45,
+       "TL41": 2.24,
+       "TL63": -10.21,
+       "TL67": 0.42,
+       "TL68": 0.41,
+       "TL69": 0.46
+      },
+      "relief_from_95MW_shed_MW": {
+       "TL119": 0.31,
+       "TL129": 3.03,
+       "TL26": 13.09,
+       "TL41": -0.8,
+       "TL63": -0.57,
+       "TL67": -0.99,
+       "TL68": 2.17,
+       "TL69": 2.68
+      }
+     },
+     "thermal_capacity": {
+      "relief_from_lp1_excess_sinks_MW": {
+       "TL119": -14.67,
+       "TL129": -6.1,
+       "TL26": 4.35,
+       "TL41": -0.17,
+       "TL63": -10.16,
+       "TL67": -0.64,
+       "TL68": -1.82,
+       "TL69": -2.33
+      },
+      "relief_from_95MW_shed_MW": {
+       "TL119": 6.98,
+       "TL129": 2.87,
+       "TL26": 13.14,
+       "TL41": 0.32,
+       "TL63": -0.6,
+       "TL67": -0.5,
+       "TL68": 3.21,
+       "TL69": 3.97
+      }
+     },
+     "load_at_step": {
+      "relief_from_lp1_excess_sinks_MW": {
+       "TL119": -11.19,
+       "TL129": -4.2,
+       "TL26": 4.69,
+       "TL41": 0.73,
+       "TL63": -9.34,
+       "TL67": -0.3,
+       "TL68": -1.3,
+       "TL69": -1.68
+      },
+      "relief_from_95MW_shed_MW": {
+       "TL119": 5.36,
+       "TL129": 1.99,
+       "TL26": 12.98,
+       "TL41": -0.1,
+       "TL63": -0.98,
+       "TL67": -0.65,
+       "TL68": 2.97,
+       "TL69": 3.67
+      }
+     }
+    }
+   }
+  }
+ },
+ "T3_year": {
+  "next08_v1": {
+   "lp1_loss_TWh": 3.8963352989999995,
+   "cells_over_lp2_upper": 2738,
+   "MWh_over_lp2_upper": 421393.49138969555,
+   "MWh_over_1p05_lp2_upper": 411836.66275760485,
+   "max_step_MW_over_1p05": 1270.4614842684182,
+   "lp1_within_own_upper": true,
+   "top_lines_MWh_over_1p05": {
+    "TL27": 100966.2,
+    "TL28": 94974.7,
+    "TL24": 54582.8,
+    "TL13": 32268.9,
+    "TL148": 31143.0,
+    "TL22": 30723.2,
+    "TL23": 22175.6,
+    "TL31": 8432.8,
+    "TL29": 7318.1,
+    "TL131": 6633.0,
+    "TL30": 5036.0,
+    "TL67": 4265.7
+   }
+  },
+  "next08b_v2": {
+   "lp1_loss_TWh": 5.674328087999999,
+   "cells_over_lp2_upper": 2615,
+   "MWh_over_lp2_upper": 407396.71700665704,
+   "MWh_over_1p05_lp2_upper": 397934.98156392097,
+   "max_step_MW_over_1p05": 1459.1947878458855,
+   "lp1_within_own_upper": true,
+   "top_lines_MWh_over_1p05": {
+    "TL28": 98471.0,
+    "TL27": 93992.2,
+    "TL24": 51279.8,
+    "TL13": 34521.0,
+    "TL148": 30602.8,
+    "TL22": 26789.4,
+    "TL23": 20018.5,
+    "TL29": 8184.0,
+    "TL31": 6889.2,
+    "TL30": 5006.5,
+    "TL131": 4767.2,
+    "TL67": 3890.7
+   }
+  }
+ },
+ "T4_lp2_above_envelope": {
+  "lp2_loss_TWh": 5.322222804,
+  "envelope_TWh": 5.072681781032277,
+  "above_envelope_TWh": 0.24964445789638026,
+  "cells_at_loss_upper": 3086,
+  "top_lines_above_MWh": {
+   "TL24": 75182.0,
+   "TL28": 43309.0,
+   "TL27": 30048.0,
+   "TL13": 23754.0,
+   "TL23": 22736.0,
+   "TL30": 10074.0,
+   "TL22": 9921.0,
+   "TL148": 9066.0
+  }
+ }
+}
