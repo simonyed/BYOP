@@ -6,9 +6,9 @@ baseline_registry:
   previous_formal: v16
   candidate: v17l
   adoption:
-    adoption_status: NOT_ADOPTED
-    adopted_git_sha: null
-    adopted_by: null
+    adoption_status: ADOPTED   # researcher chat approval 2026-10-24 (NEXT-09)
+    adopted_git_sha: c0b29f34709ed88229b42d7fd368ddd6370b5301
+    adopted_by: sw2434@cornell.edu
   authorization_source: current_work_pckg/BYOP_NEXT_09_V17L_BASELINE_ADOPTION/NEXT_09_ADOPTION_INSTRUCTION_RECORD.md
   authorization_source_sha256: 37a489e7c8f4d980343ccfaaab66c79b2d503b1d2a68ec702af546120dca4c46   # LF content SHA
   baselines:
