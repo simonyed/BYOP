@@ -7,9 +7,9 @@
 # converged. Own out_dir / ledger / manifest / budget; every earlier ledger, candidate and result is untouched.
 # This file is a REQUEST: only the researcher authorises it.
 post_v16:                                       # key shared with the A2-type manifest builder; gate = loss_basis_lp1.check
-  run_authorization: APPROVED
-  approved_git_sha: d4fd5340945e50c86859024e2ecec86597b630dd
-  approved_by: sw2434@cornell.edu
+  run_authorization: NOT_APPROVED   # CLOSED 2026-10-23 after the 3 approved calls (approval history: commit 2c2c64a2, ledger)
+  approved_git_sha: null
+  approved_by: null
   authorization_source: current_work_pckg/BYOP_NEXT_08B_LP1_TANGENT_FIX/NEXT_08B_LOSS_UPPER_INSTRUCTION_RECORD.md
   authorization_source_sha256: 82982f38fff56107ee18a625ad669649c11e8b9a465eed8d6f910af2cb128a93   # LF content SHA
   manifest: current_work_pckg/BYOP_NEXT_08B_LP1_TANGENT_FIX/LOSSY_LP1_V3_PRE_RUN_MANIFEST.json
