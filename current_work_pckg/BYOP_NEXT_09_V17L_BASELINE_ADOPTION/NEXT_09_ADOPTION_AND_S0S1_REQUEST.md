@@ -1,6 +1,8 @@
 # NEXT-09: v1.7L lossy 2025 baseline, adoption plan and paired S0 / S1 rerun (preparation only)
 
-**Status: PREPARED. Not adopted, not approved. 0 optimizer calls in NEXT-09.**
+**Status (2026-10-24): v1.7L ADOPTED (config-only commit `7f4e27cb`). S0 / S1 stays NOT_APPROVED: the researcher asked not to run S0 / S1 yet. 0 optimizer calls in NEXT-09. See `NEXT_09_ADOPTION_RECORD.md`.**
+
+*(Preparation status, kept for history: PREPARED, not adopted, not approved.)*
 - **Instruction:** `NEXT_09_ADOPTION_INSTRUCTION_RECORD.md` (verbatim, 2026-10-23 23:05 EDT).
 - **Approvable code SHA:** `c0b29f34709ed88229b42d7fd368ddd6370b5301` (GitHub `main` = L2 `byop`; adds the S0 / S1 manifest built on L2 at `86c483cd`).
 
