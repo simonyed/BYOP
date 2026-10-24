@@ -1,0 +1,47 @@
+# BYOP NEXT-10U (2026-10-24): mainline model version engineering_cost_v1 on the ADOPTED v1.7L lossy 2025 baseline (f9aa87ae).
+# Identical to config.byop_ercot_mainline_geo_dynamic_v1_baseline_v17l.yaml (dynamic_pnnl_v1 siting, AIDC cohorts, inherited ramp, gas,
+# costs, VOLL, network) except: mainline.poi_model = engineering_cost_v1 (byop/build/build_engineering_poi_v1.py inputs replace the
+# uniform 3 y / 2,000 MW / 2028 POI proxy and its E0 schedule), inputs.poi / inputs.poi_equipment, case_id and the stage label.
+# Only used through the post-v1.6 gates (config.byop_next10u_s0s1.yaml, config.byop_next10u_a3.yaml); the `mainline:` approval fields
+# below belong to the legacy mainline gate, which the post-v1.6 path never uses.
+mainline:
+  run_authorization: NOT_APPROVED
+  approved_git_sha: null
+  approved_by: null   # never approved; any solve of this geography needs a new researcher SHA approval
+  manifest: current_work_pckg/S0_S1_BASELINE_V16_PREPARED_MANIFEST.json
+  stage: NEXT10U_ENGINEERING_COST_V1  # documentation label only (no behaviour)
+  tech_version: TECH_COMP_2       # A0.2: BYOP technology v2.0 (byop/inputs/tech_calibrated_v2); legacy configs stay legacy-v13
+  siting_variant: dynamic_pnnl_v1  # byop/build/build_dynamic_siting_inputs.py + inputs/dc/MAINLINE_SITING_SCENARIO_DYNAMIC_V1.yaml
+  poi_model: engineering_cost_v1   # NEXT-10U: known equipment + rights + site/class/year candidates (rearch_mech POI_MODELS)
+  # E3 the only formal run (Stage B)
+  case_id: NEXT10U_ENGINEERING_COST_V1_BASEV17L_MID
+  setting: G-REAL
+  demand_scenario: mid
+  start: 2026
+  end: 2031
+  sample_weeks: 26                # weeks 0 and 26 of the 2025 weather / load year, 3 h snapshots
+  stress_days: 3                  # B7: low West wind + high load, max net load, winter peak (added to every period)
+  stress_line_derate: 1.0         # B7 optional interface derate at stress snapshots (PROXY lever, 1.0 = off)
+  poi_case: base                  # not read by engineering_cost_v1 (base transformer lead fixed in ENG_POI_CANDIDATES.csv)
+  gas_case: base
+  byop_techs: [RICE, SOFC_NG, OCGT_aero, WIND, PV, BESS]   # D2 / D15; SOFC fast slots = 0 (D14), R pool empty (D14)
+  scenarios: [S0, S1_EARLIEST, S3, S2, S3_mS2]             # S3_mS2 = S3 at the S2 service trajectory (M4 matched service, mandatory)
+  attribution: true               # B8 single-factor relaxations on S1_EARLIEST: xPOI xUP xRA xPROC xALL
+  tariff: energy
+  threads: 6
+  step0:                          # Stage B step 0 (solver, gated): re-derive the common baselines with the G-REAL background
+    erm_calibration: true         #   ERM-02 B on the existing + committed fleet incl. the inherited ramp
+    s0_min_uplift_calibration: true
+inputs:
+  research_cohorts: byop/inputs/dc/MAINLINE_RESEARCH_COHORTS_TAMU64_GEO_DYNAMIC_V1.csv
+  inherited_ramp: byop/inputs/dc/MAINLINE_INHERITED_RAMP_2025.csv
+  reconciliation: byop/inputs/dc/MAINLINE_AIDC_RECONCILIATION_GEO_DYNAMIC_V1.csv
+  poi: byop/inputs/poi_eng/ENG_POI_SITES.csv
+  poi_equipment: byop/inputs/poi_eng/ENG_POI_EQUIPMENT_KNOWN.csv
+  poi_candidates: byop/inputs/poi_eng/ENG_POI_CANDIDATES.csv
+  poi_visibility: byop/inputs/poi_eng/ENG_POI_VISIBILITY.csv
+  reuse_pool: byop/inputs/poi/GREAL_R_ASSET_POOL.csv
+  renewable_potential: byop/inputs/grid/ERCOT_WIND_SOLAR_POTENTIAL.csv
+  tech: byop/inputs/tech/MAINLINE_V13_TECH_DEFAULTS.csv
+  gas: byop/inputs/tech/MAINLINE_V13_GAS_PRICES_2026_2031.csv
+  baseline: results/BYOP/baseline_2025_tamu_v17_lossy/baseline_2025_tamu_v17_lossy_prepared.nc

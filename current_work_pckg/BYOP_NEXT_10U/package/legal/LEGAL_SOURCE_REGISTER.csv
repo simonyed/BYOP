@@ -1,0 +1,6 @@
+source_id,jurisdiction,legal_status,publication_date,checked_date,url,modeling_interpretation
+TX_SB6_2025,Texas,LAW,2025,2026-10-24,https://capitol.texas.gov/,Statutory basis for large-load uniform financial commitments; verify exact sections
+TX_25_194_ADOPTED,Texas ERCOT,ADOPTED_RULE,2026-10-02,2026-10-24,https://www.sos.state.tx.us/texreg/archive/October22026/Adopted%20Rules/16.ECONOMIC%20REGULATION.html,Single-site >=75 MW applicability and exceptions; $100k study fee unused refund; $50k/MW security; SLLIA allocated upgrades security; direct CIAC
+TX_25_192_193_252_JUL_PROPOSAL,Texas ERCOT,PROPOSED_RULE,2026-07-24,2026-10-24,https://www.sos.state.tx.us/texreg/archive/July242026/Proposed%20Rules/16.ECONOMIC%20REGULATION.html,12CP/minimum billing demand/20-year provisions are proposals unless later adopted text verified
+ERCOT_LARGE_LOAD,Texas ERCOT,PRACTICE,2026,2026-10-24,https://www.ercot.com/services/rq/large-load-integration,"Batch Zero process, studies and permissions; study stage not proof of energization"
+FERC_LARGE_LOAD_2026,FERC RTOs excluding ERCOT,POLICY_PROCEEDING,2026-06,2026-10-24,https://www.ferc.gov/cost-transparency-customer-protection,Show-cause and transparency/cost-recovery reforms; not current ERCOT tariff

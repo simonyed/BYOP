@@ -407,11 +407,17 @@ def speed_levels_hold(levels, served_by_year, tol_abs=1e-3, tol_rel=1e-6):
     return bool(rows) and all(x['ok'] for x in rows), rows
 
 
-def acceptance(n, tag, res, shed_S0=None, tol_balance=1e-3, tol_reserve=1e-3, tol_noharm=1e-3, out_dir=None):
-    """post-solve acceptance of one A2 scenario (pure: works on any solved network); every check must be True"""
+def acceptance(n, tag, res, shed_S0=None, tol_balance=1e-3, tol_reserve=1e-3, tol_noharm=1e-3, out_dir=None, science=None):
+    """post-solve acceptance of one A2 scenario (pure: works on any solved network); every check must be True. NEXT-10U: with a
+    config `s0_science_gate` block (science) the S0 also has to pass the scientific reliability gate (next10u_s0_science)"""
     import numpy as np
     m = n.model
     chk, val = {}, {}
+    if tag == 'S0' and science is not None:
+        import next10u_s0_science as SC
+        sv = SC.evaluate(n, science)
+        chk['s0_science_pass'] = sv['PASS']
+        val['s0_science'] = sv
     chk['status_ok'] = res.get('status', 'ok') == 'ok'
     chk['termination_optimal'] = str(res.get('termination')) == 'optimal'
     chk['no_integer_vars'] = int(res.get('integer_vars', 0)) == 0

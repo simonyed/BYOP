@@ -1,0 +1,47 @@
+# BYOP NEXT-10U (2026-10-24): S0 (No New AIDC) -> S1_EARLIEST (Grid-Only) of model version engineering_cost_v1 on the ADOPTED v1.7L
+# lossy 2025 baseline. ERCOT 16 research buses, 2026-2031, mid demand, single frozen weather year, LP only. Same A2 rules, call plan and
+# technical acceptance as config.byop_post_v17l_s0s1.yaml (NEXT-09, kept NOT_APPROVED and unchanged), plus:
+#   - the engineering POI model (mainline config below; inputs from byop/build/build_engineering_poi_v1.py), and
+#   - the S0 scientific reliability gate (s0_science_gate, fixed BEFORE the solve): S0 PASSes only if every model year meets both
+#     thresholds; otherwise S1 is refused by the stage rule (needs a PASSED S0 with every acceptance check true).
+# Nothing is carried over from NEXT-09 or v1.6: S1's no-harm reference is the S0 of THIS out_dir, solved on v1.7L under THIS config.
+# Approval: researcher chat instruction of 2026-10-24 (forward authorization of this package's new version, authorization_source);
+# the three fields are set only in a config-only commit after the static freeze, never inferred from package text.
+post_v16:
+  run_authorization: NOT_APPROVED
+  approved_git_sha: null
+  approved_by: null
+  authorization_source: current_work_pckg/BYOP_NEXT_10U/NEXT_10U_INSTRUCTION_RECORD.md
+  authorization_source_sha256: d02c7fdf7fa71963a0320b0fbe938e7607506ff11bd0dbbe7efda16f2c2f8a53   # LF content SHA
+  manifest: current_work_pckg/BYOP_NEXT_10U/NEXT10U_S0S1_PRE_RUN_MANIFEST.json
+  stage: A2
+  model_version: engineering_cost_v1
+  stages: [S0, S1_EARLIEST]        # order fixed: S1_EARLIEST only after S0 PASSED (technical AND scientific)
+  max_scenario_attempts: 2           # parent rows in A2_SOLVE_LOG.csv: S0, S1_EARLIEST
+  max_top_level_optimizer_calls: 3   # child rows in A2_OPTIMIZER_CALL_LOG.csv: S0_COST, S1_SPEED_HIERARCHY, S1_COST
+  optimizer_call_plan: {S0: [S0_COST], S1_EARLIEST: [S1_SPEED_HIERARCHY, S1_COST]}
+  max_retries: 0
+  program_budget: "NEXT-10U total <= 40 top-level optimizer calls: this config <= 3 + config.byop_next10u_a3.yaml <= 30 (+ <= 7 reserve, unused unless a separate config is frozen)"
+  mainline_config: config/config.byop_ercot_mainline_engineering_cost_v1.yaml
+  out_dir: results/BYOP/next10u_engineering_cost_v1/S0S1
+  baseline:
+    path: workflow/results/BYOP/baseline_2025_tamu_v17_lossy/baseline_2025_tamu_v17_lossy_prepared.nc   # L2 only, no fallback
+    sha256: f9aa87aea496f7c07ea4aca0439a703e7eaa90d08cb66c5bc6f149ea60eeefb6
+  loss_basis: "transmission_losses 2 in the v1.7L calibration (NEXT-08b v3) AND in this solve (baseline meta; registry loss-basis rule)"
+  s0_science_gate:                   # next10u_s0_science.py; research proxies, not ERCOT rules; never relaxed after a result
+    eens_share_max: 1.0e-5           # EENS_y / existing-customer annual load_y, every model year
+    max_shed_to_peak_max: 1.0e-3     # max snapshot existing-customer shed_y / existing-customer peak_y, every model year
+    far_west_buses: ['p610 4', 'p620 6', 'p620 7']   # NEXT-06 W1 pocket (reported, not a separate threshold)
+  design:
+    snapshots: "3 h; sample_weeks 26 (weeks 0 and 26) + B7 stress days; stores weighting = elapsed 3 h (NEXT-02 A2-FIX-03)"
+    reserve: {requirement_MW: 3000, tau_h: 1, response_window_min: 10, storage_energy: "end AND start of every snapshot on the dispatch SOC"}
+    soc_segments: "NEXT-03 A2-FIX-08: every contiguous segment (sampled week / stress event) ends at >= the SOC PyPSA carries into it -> no net energy across time gaps or periods"
+    no_harm: "S1 existing-customer shed <= frozen S0 shed of THIS run per load_shed unit x snapshot + 0.001 MW (D24)"
+    public_expansion: "AC_exp fwd / rev equal capacity (M2-line_sym), fwd priced once, corridor cumulative cap (M2-line_cap)"
+    committed_assets: "DWB Stage 2 + PBRP-765-A/B fixed in S0-S3; absolute cost ledger outside the objective (inputs/grid/COMMITTED_PUBLIC_ASSET_COSTS.csv)"
+    poi: "engineering_cost_v1: known E0/E1 equipment (own COD), RIGHTED / NEW_REQUEST candidates U[s,class,q], COD = max(q + NEMA transformer lead, Batch Zero 2028 floor), cumulative + disclosure caps (ENG-cum / ENG-vis); LOCAL disabled"
+    legacy_off: [ERM-02 B, 15 % snapshot ERM, shadow SOC, S0CAL, uniform 3 y / 2000 MW POI proxy]
+  solver: gurobi
+  solver_options: "as rearch_mech / v240 M.solve (Method 2 barrier; Crossover per the existing mainline path); threads from THREADS"
+  acceptance: {termination: optimal, balance_residual_MW_max: 1.0e-3, reserve_slack_MW_min: -1.0e-3, no_harm_excess_MW_max: 2.0e-3, no_harm_reference: 'S0_NO_HARM_REFERENCE.csv of THIS out_dir (SHA in S0_RESULT.json, no fill)',
+               expansion_pair_max_abs_diff_MW: 1.0e-3, free_public_links_built_MW_max: 1.0e-3, s0_science: 's0_science_gate above (S0 only)'}

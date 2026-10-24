@@ -1,0 +1,15 @@
+source_table,source_field,model_object,model_constraint,note
+poi_equipment_proxy_schedule.csv,equipment_mw / cod_decimal,SITES[s].E0rows (pre=True),POI-eq (firm_frac: full years only),"equipment, not rights"
+GALAXY_Q2_2026.html,"Phase II 260 MW IT, deliveries from Q2 2027",E1 known equipment p600 0,POI-eq,MW via Phase I gross/IT ratio
+poi_site_release_parameters.csv,approved_capacity_proxy_mw,cap_RIGHTED,ENG-cum_RIGHTED,right residual after known equipment
+poi_site_release_parameters.csv,site_equipment_cumulative_cap_mw,"cap_total, cap_NEW_REQUEST",ENG-cum_site / ENG-cum_NEW_REQUEST,minus known equipment
+poi_site_release_parameters.csv,local_route_enabled (0),LOCAL candidates,not created (upper bound 0),policy
+poi_demand_visibility.csv,"announcement_year, facility_envelope_mw","visible_new_order_cap_MW[s,Q]",ENG-vis,minus known equipment
+poi_engineering_parameters.csv,cost_base_2025USD_kW (GRID_DEPENDENT),POIup capital_cost,"objective (resource cost, social r)",research proxy 160 USD/kW; class A direct interconnection
+poi_engineering_parameters.csv,lead_base_y (4 y GRID_DEPENDENT),NOT USED,-,replaced by the NEMA transformer component (doc 01: no unevidenced uniform 4 y)
+poi_investment_candidates.csv,lead_y / equipment_cod / capacity_upper_mw,NOT USED (cross-check only),-,uniform 4 y lead; rebuilt from components here
+poi_e0_evidence_classified.csv,public_claim_kind,rights vs equipment split,-,APPROVED_RIGHT_NOT_EQUIPMENT never becomes equipment; UNVERIFIED_PLANNED dropped
+Batch_Zero_Readiness_FAQs_V8.1.xlsx,study years 2028-2032,procedural_floor NEW_REQUEST,"COD = max(q + lead, 2028)",non-binding in base
+NEMA_2026_10.pdf,120-210 weeks large transformers,transformer_lead_y,COD = q + lead,base 165 weeks
+GREAL_POI_ASSUMPTIONS_GEO_DYNAMIC_V1.csv,"pclr_conditional_MW, pclr_conditional_COD_offset_y, gas_evidence_level, gas_MDQ_MMBtu_d, gas_lateral_lead_y_low, gas_lateral_lead_y_base, gas_lateral_lead_y_high, gas_lateral_cost_USD_kW_low, gas_lateral_cost_USD_kW_base, gas_lateral_cost_USD_kW_high, gas_note, onsite_renewable_cap_MW",gas lateral / MDQ / PCLR / on-site RE,unchanged,non-POI columns only
+GREAL_POI_ASSUMPTIONS_GEO_DYNAMIC_V1.csv,"poi_upgrade_max_MW, poi_upgrade_lead_y_low, poi_upgrade_lead_y_base, poi_upgrade_lead_y_high, poi_upgrade_cost_USD_kW_low, poi_upgrade_cost_USD_kW_base, poi_upgrade_cost_USD_kW_high, earliest_grid_COD_low, earliest_grid_COD_base, earliest_grid_COD_high",NOT READ in engineering_cost_v1,-,legacy_proxy branch only

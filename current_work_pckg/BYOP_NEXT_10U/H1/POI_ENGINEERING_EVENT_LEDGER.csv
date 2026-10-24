@@ -1,0 +1,161 @@
+site_id,event,status,date_or_rule,evidence,model_version
+p600 0,application/site_control,OBSERVED,,approved right,engineering_cost_v1
+p600 0,study,COMPLETED_LEGACY_LLIS,,E1 approval,engineering_cost_v1
+p600 0,transformer_order,MODELLED,commitment year q,NEMA 120-210 weeks,engineering_cost_v1
+p600 0,substation_bay,UNKNOWN,,no site-specific bay evidence (LOCAL disabled),engineering_cost_v1
+p600 0,ROW/permit,UNKNOWN,,not in the package,engineering_cost_v1
+p600 0,construction,OBSERVED,2026-04 (Helios Phase II),Galaxy Q2 2026,engineering_cost_v1
+p600 0,utility_COD,OBSERVED_LOWER_BOUND,EQUIPMENT_PROXY_p600_0@2026.5;EQUIPMENT_E1_p600_0_HELIOS_I_PHASE_II@2027.5,equipment schedule,engineering_cost_v1
+p600 0,grid_ready,ENDOGENOUS,,"common KCL network, reserve and no-harm constraints of the LP (no headroom number)",engineering_cost_v1
+p600 0,gas_ready,INHERITED,,gas evidence level / lateral lead from the mainline POI table,engineering_cost_v1
+p600 0,environment_permit,INHERITED,,TECH_COMP permit-to-COD audit of the mainline (BYOP techs),engineering_cost_v1
+p610 2,application/site_control,OBSERVED,,approved right,engineering_cost_v1
+p610 2,study,COMPLETED_LEGACY_LLIS,,E1 approval,engineering_cost_v1
+p610 2,transformer_order,MODELLED,commitment year q,NEMA 120-210 weeks,engineering_cost_v1
+p610 2,substation_bay,UNKNOWN,,no site-specific bay evidence (LOCAL disabled),engineering_cost_v1
+p610 2,ROW/permit,UNKNOWN,,not in the package,engineering_cost_v1
+p610 2,construction,MODELLED_PARALLEL,,parallel with equipment lead,engineering_cost_v1
+p610 2,utility_COD,MODELLED,q + 3.16,transformer lead,engineering_cost_v1
+p610 2,grid_ready,ENDOGENOUS,,"common KCL network, reserve and no-harm constraints of the LP (no headroom number)",engineering_cost_v1
+p610 2,gas_ready,INHERITED,,gas evidence level / lateral lead from the mainline POI table,engineering_cost_v1
+p610 2,environment_permit,INHERITED,,TECH_COMP permit-to-COD audit of the mainline (BYOP techs),engineering_cost_v1
+p630 10,application/site_control,UNKNOWN,,no public request evidence (E4 forecast cohort),engineering_cost_v1
+p630 10,study,MODELLED_BATCH_ZERO,2028-2032 window,ERCOT Batch Zero FAQ v8.1,engineering_cost_v1
+p630 10,transformer_order,MODELLED,commitment year q,NEMA 120-210 weeks,engineering_cost_v1
+p630 10,substation_bay,UNKNOWN,,no site-specific bay evidence (LOCAL disabled),engineering_cost_v1
+p630 10,ROW/permit,UNKNOWN,,not in the package,engineering_cost_v1
+p630 10,construction,MODELLED_PARALLEL,,parallel with equipment lead,engineering_cost_v1
+p630 10,utility_COD,MODELLED,q + 3.16,transformer lead,engineering_cost_v1
+p630 10,grid_ready,ENDOGENOUS,,"common KCL network, reserve and no-harm constraints of the LP (no headroom number)",engineering_cost_v1
+p630 10,gas_ready,INHERITED,,gas evidence level / lateral lead from the mainline POI table,engineering_cost_v1
+p630 10,environment_permit,INHERITED,,TECH_COMP permit-to-COD audit of the mainline (BYOP techs),engineering_cost_v1
+p630 2,application/site_control,UNKNOWN,,no public request evidence (E4 forecast cohort),engineering_cost_v1
+p630 2,study,MODELLED_BATCH_ZERO,2028-2032 window,ERCOT Batch Zero FAQ v8.1,engineering_cost_v1
+p630 2,transformer_order,MODELLED,commitment year q,NEMA 120-210 weeks,engineering_cost_v1
+p630 2,substation_bay,UNKNOWN,,no site-specific bay evidence (LOCAL disabled),engineering_cost_v1
+p630 2,ROW/permit,UNKNOWN,,not in the package,engineering_cost_v1
+p630 2,construction,MODELLED_PARALLEL,,parallel with equipment lead,engineering_cost_v1
+p630 2,utility_COD,MODELLED,q + 3.16,transformer lead,engineering_cost_v1
+p630 2,grid_ready,ENDOGENOUS,,"common KCL network, reserve and no-harm constraints of the LP (no headroom number)",engineering_cost_v1
+p630 2,gas_ready,INHERITED,,gas evidence level / lateral lead from the mainline POI table,engineering_cost_v1
+p630 2,environment_permit,INHERITED,,TECH_COMP permit-to-COD audit of the mainline (BYOP techs),engineering_cost_v1
+p630 3,application/site_control,UNKNOWN,,no public request evidence (E4 forecast cohort),engineering_cost_v1
+p630 3,study,MODELLED_BATCH_ZERO,2028-2032 window,ERCOT Batch Zero FAQ v8.1,engineering_cost_v1
+p630 3,transformer_order,MODELLED,commitment year q,NEMA 120-210 weeks,engineering_cost_v1
+p630 3,substation_bay,UNKNOWN,,no site-specific bay evidence (LOCAL disabled),engineering_cost_v1
+p630 3,ROW/permit,UNKNOWN,,not in the package,engineering_cost_v1
+p630 3,construction,MODELLED_PARALLEL,,parallel with equipment lead,engineering_cost_v1
+p630 3,utility_COD,MODELLED,q + 3.16,transformer lead,engineering_cost_v1
+p630 3,grid_ready,ENDOGENOUS,,"common KCL network, reserve and no-harm constraints of the LP (no headroom number)",engineering_cost_v1
+p630 3,gas_ready,INHERITED,,gas evidence level / lateral lead from the mainline POI table,engineering_cost_v1
+p630 3,environment_permit,INHERITED,,TECH_COMP permit-to-COD audit of the mainline (BYOP techs),engineering_cost_v1
+p630 4,application/site_control,UNKNOWN,,no public request evidence (E4 forecast cohort),engineering_cost_v1
+p630 4,study,MODELLED_BATCH_ZERO,2028-2032 window,ERCOT Batch Zero FAQ v8.1,engineering_cost_v1
+p630 4,transformer_order,MODELLED,commitment year q,NEMA 120-210 weeks,engineering_cost_v1
+p630 4,substation_bay,UNKNOWN,,no site-specific bay evidence (LOCAL disabled),engineering_cost_v1
+p630 4,ROW/permit,UNKNOWN,,not in the package,engineering_cost_v1
+p630 4,construction,MODELLED_PARALLEL,,parallel with equipment lead,engineering_cost_v1
+p630 4,utility_COD,MODELLED,q + 3.16,transformer lead,engineering_cost_v1
+p630 4,grid_ready,ENDOGENOUS,,"common KCL network, reserve and no-harm constraints of the LP (no headroom number)",engineering_cost_v1
+p630 4,gas_ready,INHERITED,,gas evidence level / lateral lead from the mainline POI table,engineering_cost_v1
+p630 4,environment_permit,INHERITED,,TECH_COMP permit-to-COD audit of the mainline (BYOP techs),engineering_cost_v1
+p630 5,application/site_control,UNKNOWN,,no public request evidence (E4 forecast cohort),engineering_cost_v1
+p630 5,study,MODELLED_BATCH_ZERO,2028-2032 window,ERCOT Batch Zero FAQ v8.1,engineering_cost_v1
+p630 5,transformer_order,MODELLED,commitment year q,NEMA 120-210 weeks,engineering_cost_v1
+p630 5,substation_bay,UNKNOWN,,no site-specific bay evidence (LOCAL disabled),engineering_cost_v1
+p630 5,ROW/permit,UNKNOWN,,not in the package,engineering_cost_v1
+p630 5,construction,MODELLED_PARALLEL,,parallel with equipment lead,engineering_cost_v1
+p630 5,utility_COD,MODELLED,q + 3.16,transformer lead,engineering_cost_v1
+p630 5,grid_ready,ENDOGENOUS,,"common KCL network, reserve and no-harm constraints of the LP (no headroom number)",engineering_cost_v1
+p630 5,gas_ready,INHERITED,,gas evidence level / lateral lead from the mainline POI table,engineering_cost_v1
+p630 5,environment_permit,INHERITED,,TECH_COMP permit-to-COD audit of the mainline (BYOP techs),engineering_cost_v1
+p630 6,application/site_control,OBSERVED,,approved right,engineering_cost_v1
+p630 6,study,COMPLETED_LEGACY_LLIS,,E1 approval,engineering_cost_v1
+p630 6,transformer_order,MODELLED,commitment year q,NEMA 120-210 weeks,engineering_cost_v1
+p630 6,substation_bay,UNKNOWN,,no site-specific bay evidence (LOCAL disabled),engineering_cost_v1
+p630 6,ROW/permit,UNKNOWN,,not in the package,engineering_cost_v1
+p630 6,construction,MODELLED_PARALLEL,,parallel with equipment lead,engineering_cost_v1
+p630 6,utility_COD,OBSERVED_LOWER_BOUND,EQUIPMENT_PROXY_p630_6@2026.0,equipment schedule,engineering_cost_v1
+p630 6,grid_ready,ENDOGENOUS,,"common KCL network, reserve and no-harm constraints of the LP (no headroom number)",engineering_cost_v1
+p630 6,gas_ready,INHERITED,,gas evidence level / lateral lead from the mainline POI table,engineering_cost_v1
+p630 6,environment_permit,INHERITED,,TECH_COMP permit-to-COD audit of the mainline (BYOP techs),engineering_cost_v1
+p630 8,application/site_control,UNKNOWN,,no public request evidence (E4 forecast cohort),engineering_cost_v1
+p630 8,study,MODELLED_BATCH_ZERO,2028-2032 window,ERCOT Batch Zero FAQ v8.1,engineering_cost_v1
+p630 8,transformer_order,MODELLED,commitment year q,NEMA 120-210 weeks,engineering_cost_v1
+p630 8,substation_bay,UNKNOWN,,no site-specific bay evidence (LOCAL disabled),engineering_cost_v1
+p630 8,ROW/permit,UNKNOWN,,not in the package,engineering_cost_v1
+p630 8,construction,MODELLED_PARALLEL,,parallel with equipment lead,engineering_cost_v1
+p630 8,utility_COD,MODELLED,q + 3.16,transformer lead,engineering_cost_v1
+p630 8,grid_ready,ENDOGENOUS,,"common KCL network, reserve and no-harm constraints of the LP (no headroom number)",engineering_cost_v1
+p630 8,gas_ready,INHERITED,,gas evidence level / lateral lead from the mainline POI table,engineering_cost_v1
+p630 8,environment_permit,INHERITED,,TECH_COMP permit-to-COD audit of the mainline (BYOP techs),engineering_cost_v1
+p630 9,application/site_control,OBSERVED,,approved right,engineering_cost_v1
+p630 9,study,COMPLETED_LEGACY_LLIS,,E1 approval,engineering_cost_v1
+p630 9,transformer_order,MODELLED,commitment year q,NEMA 120-210 weeks,engineering_cost_v1
+p630 9,substation_bay,UNKNOWN,,no site-specific bay evidence (LOCAL disabled),engineering_cost_v1
+p630 9,ROW/permit,UNKNOWN,,not in the package,engineering_cost_v1
+p630 9,construction,MODELLED_PARALLEL,,parallel with equipment lead,engineering_cost_v1
+p630 9,utility_COD,OBSERVED_LOWER_BOUND,EQUIPMENT_PROXY_p630_9@2026.0,equipment schedule,engineering_cost_v1
+p630 9,grid_ready,ENDOGENOUS,,"common KCL network, reserve and no-harm constraints of the LP (no headroom number)",engineering_cost_v1
+p630 9,gas_ready,INHERITED,,gas evidence level / lateral lead from the mainline POI table,engineering_cost_v1
+p630 9,environment_permit,INHERITED,,TECH_COMP permit-to-COD audit of the mainline (BYOP techs),engineering_cost_v1
+p640 1,application/site_control,UNKNOWN,,no public request evidence (E4 forecast cohort),engineering_cost_v1
+p640 1,study,MODELLED_BATCH_ZERO,2028-2032 window,ERCOT Batch Zero FAQ v8.1,engineering_cost_v1
+p640 1,transformer_order,MODELLED,commitment year q,NEMA 120-210 weeks,engineering_cost_v1
+p640 1,substation_bay,UNKNOWN,,no site-specific bay evidence (LOCAL disabled),engineering_cost_v1
+p640 1,ROW/permit,UNKNOWN,,not in the package,engineering_cost_v1
+p640 1,construction,MODELLED_PARALLEL,,parallel with equipment lead,engineering_cost_v1
+p640 1,utility_COD,MODELLED,q + 3.16,transformer lead,engineering_cost_v1
+p640 1,grid_ready,ENDOGENOUS,,"common KCL network, reserve and no-harm constraints of the LP (no headroom number)",engineering_cost_v1
+p640 1,gas_ready,INHERITED,,gas evidence level / lateral lead from the mainline POI table,engineering_cost_v1
+p640 1,environment_permit,INHERITED,,TECH_COMP permit-to-COD audit of the mainline (BYOP techs),engineering_cost_v1
+p650 0,application/site_control,OBSERVED,,approved right,engineering_cost_v1
+p650 0,study,COMPLETED_LEGACY_LLIS,,E1 approval,engineering_cost_v1
+p650 0,transformer_order,MODELLED,commitment year q,NEMA 120-210 weeks,engineering_cost_v1
+p650 0,substation_bay,UNKNOWN,,no site-specific bay evidence (LOCAL disabled),engineering_cost_v1
+p650 0,ROW/permit,UNKNOWN,,not in the package,engineering_cost_v1
+p650 0,construction,MODELLED_PARALLEL,,parallel with equipment lead,engineering_cost_v1
+p650 0,utility_COD,OBSERVED_LOWER_BOUND,EQUIPMENT_PROXY_p650_0@2026.0,equipment schedule,engineering_cost_v1
+p650 0,grid_ready,ENDOGENOUS,,"common KCL network, reserve and no-harm constraints of the LP (no headroom number)",engineering_cost_v1
+p650 0,gas_ready,INHERITED,,gas evidence level / lateral lead from the mainline POI table,engineering_cost_v1
+p650 0,environment_permit,INHERITED,,TECH_COMP permit-to-COD audit of the mainline (BYOP techs),engineering_cost_v1
+p650 7,application/site_control,UNKNOWN,,no public request evidence (E4 forecast cohort),engineering_cost_v1
+p650 7,study,MODELLED_BATCH_ZERO,2028-2032 window,ERCOT Batch Zero FAQ v8.1,engineering_cost_v1
+p650 7,transformer_order,MODELLED,commitment year q,NEMA 120-210 weeks,engineering_cost_v1
+p650 7,substation_bay,UNKNOWN,,no site-specific bay evidence (LOCAL disabled),engineering_cost_v1
+p650 7,ROW/permit,UNKNOWN,,not in the package,engineering_cost_v1
+p650 7,construction,MODELLED_PARALLEL,,parallel with equipment lead,engineering_cost_v1
+p650 7,utility_COD,MODELLED,q + 3.16,transformer lead,engineering_cost_v1
+p650 7,grid_ready,ENDOGENOUS,,"common KCL network, reserve and no-harm constraints of the LP (no headroom number)",engineering_cost_v1
+p650 7,gas_ready,INHERITED,,gas evidence level / lateral lead from the mainline POI table,engineering_cost_v1
+p650 7,environment_permit,INHERITED,,TECH_COMP permit-to-COD audit of the mainline (BYOP techs),engineering_cost_v1
+p670 0,application/site_control,UNKNOWN,,no public request evidence (E4 forecast cohort),engineering_cost_v1
+p670 0,study,MODELLED_BATCH_ZERO,2028-2032 window,ERCOT Batch Zero FAQ v8.1,engineering_cost_v1
+p670 0,transformer_order,MODELLED,commitment year q,NEMA 120-210 weeks,engineering_cost_v1
+p670 0,substation_bay,UNKNOWN,,no site-specific bay evidence (LOCAL disabled),engineering_cost_v1
+p670 0,ROW/permit,UNKNOWN,,not in the package,engineering_cost_v1
+p670 0,construction,MODELLED_PARALLEL,,parallel with equipment lead,engineering_cost_v1
+p670 0,utility_COD,MODELLED,q + 3.16,transformer lead,engineering_cost_v1
+p670 0,grid_ready,ENDOGENOUS,,"common KCL network, reserve and no-harm constraints of the LP (no headroom number)",engineering_cost_v1
+p670 0,gas_ready,INHERITED,,gas evidence level / lateral lead from the mainline POI table,engineering_cost_v1
+p670 0,environment_permit,INHERITED,,TECH_COMP permit-to-COD audit of the mainline (BYOP techs),engineering_cost_v1
+p670 1,application/site_control,UNKNOWN,,no public request evidence (E4 forecast cohort),engineering_cost_v1
+p670 1,study,MODELLED_BATCH_ZERO,2028-2032 window,ERCOT Batch Zero FAQ v8.1,engineering_cost_v1
+p670 1,transformer_order,MODELLED,commitment year q,NEMA 120-210 weeks,engineering_cost_v1
+p670 1,substation_bay,UNKNOWN,,no site-specific bay evidence (LOCAL disabled),engineering_cost_v1
+p670 1,ROW/permit,UNKNOWN,,not in the package,engineering_cost_v1
+p670 1,construction,MODELLED_PARALLEL,,parallel with equipment lead,engineering_cost_v1
+p670 1,utility_COD,MODELLED,q + 3.16,transformer lead,engineering_cost_v1
+p670 1,grid_ready,ENDOGENOUS,,"common KCL network, reserve and no-harm constraints of the LP (no headroom number)",engineering_cost_v1
+p670 1,gas_ready,INHERITED,,gas evidence level / lateral lead from the mainline POI table,engineering_cost_v1
+p670 1,environment_permit,INHERITED,,TECH_COMP permit-to-COD audit of the mainline (BYOP techs),engineering_cost_v1
+p670 4,application/site_control,UNKNOWN,,no public request evidence (E4 forecast cohort),engineering_cost_v1
+p670 4,study,MODELLED_BATCH_ZERO,2028-2032 window,ERCOT Batch Zero FAQ v8.1,engineering_cost_v1
+p670 4,transformer_order,MODELLED,commitment year q,NEMA 120-210 weeks,engineering_cost_v1
+p670 4,substation_bay,UNKNOWN,,no site-specific bay evidence (LOCAL disabled),engineering_cost_v1
+p670 4,ROW/permit,UNKNOWN,,not in the package,engineering_cost_v1
+p670 4,construction,MODELLED_PARALLEL,,parallel with equipment lead,engineering_cost_v1
+p670 4,utility_COD,MODELLED,q + 3.16,transformer lead,engineering_cost_v1
+p670 4,grid_ready,ENDOGENOUS,,"common KCL network, reserve and no-harm constraints of the LP (no headroom number)",engineering_cost_v1
+p670 4,gas_ready,INHERITED,,gas evidence level / lateral lead from the mainline POI table,engineering_cost_v1
+p670 4,environment_permit,INHERITED,,TECH_COMP permit-to-COD audit of the mainline (BYOP techs),engineering_cost_v1

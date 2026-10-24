@@ -1,0 +1,13 @@
+source,sha256,root
+processed/poi_e0_evidence_classified.csv,316bc3b83cec84df61c8b325ab2e5d28cbef0bd3659a2a94fd6805fa042beacb,"data/byop/engineering_v1 (local + L2, never in git)"
+processed/poi_equipment_proxy_schedule.csv,3945e8c47d435af54bd57b25cfcecdcf4101fe650caf5d09f2ba424af413edf8,"data/byop/engineering_v1 (local + L2, never in git)"
+processed/poi_site_release_parameters.csv,47ef8278b64049e94ba17ea4e20709c9d4381ba08d02d6d4afb364d0ac8b204b,"data/byop/engineering_v1 (local + L2, never in git)"
+processed/poi_engineering_parameters.csv,db080871569ed6a6a9e55ed770977f45944b69c60cf9b1ecec391fe8443e7e15,"data/byop/engineering_v1 (local + L2, never in git)"
+processed/poi_demand_visibility.csv,f90c9e4cae47c46ca8806d17969eed5fed5d3f4bd0f01fa8643d8eba7dc2788b,"data/byop/engineering_v1 (local + L2, never in git)"
+processed/poi_investment_candidates.csv,1f19bcd41fb47e0d932cc7508f9d903a4ccb3a1448ab61edc48eab9496e848ab,"data/byop/engineering_v1 (local + L2, never in git)"
+reference/config/engineering_baseline.json,ead0f51c961bedae283e1c37b194df63f8f26e2969e5225e40d53492f56cc801,"data/byop/engineering_v1 (local + L2, never in git)"
+raw/engineering/NEMA_2026_10.pdf,9e6f755bff05a4b753fc3890b6daf31db4c6182b212cc3e5f41bf9b93c8ac4e5,"data/byop/engineering_v1 (local + L2, never in git)"
+raw/ercot/Batch_Zero_Readiness_FAQs_V8.1.xlsx,f73b83879302766a9bdeadb991c8ae865bfcbd69d6b9e3dc0ae9ffcaa0565abb,"data/byop/engineering_v1 (local + L2, never in git)"
+raw/ercot/BatchZero-Timeline-and-Communications.pptx,ce7d3784f5df886c3c3964541f727017fc2f38e538b7d3cca4cc622355cd6926,"data/byop/engineering_v1 (local + L2, never in git)"
+raw/ercot/13-Far-West-Load-Growth-and-Transmission-Timing-Issues.pdf,7eb9d4a530613466c7ddbb70fea13dee337bf16702283a2485896edb4ab20eb8,"data/byop/engineering_v1 (local + L2, never in git)"
+raw/pages/GALAXY_Q2_2026.html,54e180f2a3e2b3e5143d22cea45d556f172ad8bca6af269f856deb4dfd1ca2ba,"data/byop/engineering_v1 (local + L2, never in git)"

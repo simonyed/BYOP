@@ -1,0 +1,100 @@
+[
+  {
+    "filename": "poi_e0_evidence_classified.csv",
+    "match_count": 1,
+    "matches": [
+      {
+        "path": "processed/poi_e0_evidence_classified.csv",
+        "sha256": "316bc3b83cec84df61c8b325ab2e5d28cbef0bd3659a2a94fd6805fa042beacb",
+        "rows": 12,
+        "columns": 12,
+        "header": "evidence_id,bus,site,MW,COD,preapproved,evidence_class,basis,source,public_claim_kind,newly_primary_verified,evidence_scope_warning"
+      }
+    ],
+    "historical_rows": null
+  },
+  {
+    "filename": "poi_equipment_proxy_schedule.csv",
+    "match_count": 1,
+    "matches": [
+      {
+        "path": "processed/poi_equipment_proxy_schedule.csv",
+        "sha256": "3945e8c47d435af54bd57b25cfcecdcf4101fe650caf5d09f2ba424af413edf8",
+        "rows": 4,
+        "columns": 7,
+        "header": "site_id,asset_id,equipment_mw,cod_decimal,firm_first_full_year,evidence_status,allocation_scope"
+      }
+    ],
+    "historical_rows": null
+  },
+  {
+    "filename": "poi_site_release_parameters.csv",
+    "match_count": 1,
+    "matches": [
+      {
+        "path": "processed/poi_site_release_parameters.csv",
+        "sha256": "47ef8278b64049e94ba17ea4e20709c9d4381ba08d02d6d4afb364d0ac8b204b",
+        "rows": 16,
+        "columns": 18,
+        "header": "site_id,bus,latitude,longitude,research_it_mw_2026_2035,peak_pue_bound,facility_capacity_envelope_mw,existing_equipment_proxy_mw,approved_capacity_proxy_mw,site_equipment_cumulative_cap_mw,local_candidate_potential_proxy_mw,local_route_enabled,local_route_disabled_reason,grid_route_cumulative_cap_mw,unknown_capacity_status,cap_evidence,shared_group_id,shared_group_status"
+      }
+    ],
+    "historical_rows": 16
+  },
+  {
+    "filename": "poi_engineering_parameters.csv",
+    "match_count": 1,
+    "matches": [
+      {
+        "path": "processed/poi_engineering_parameters.csv",
+        "sha256": "db080871569ed6a6a9e55ed770977f45944b69c60cf9b1ecec391fe8443e7e15",
+        "rows": 2,
+        "columns": 11,
+        "header": "engineering_type,lead_low_y,lead_base_y,lead_high_y,cost_low_2025USD_kW,cost_base_2025USD_kW,cost_high_2025USD_kW,lifetime_y,lead_evidence,cost_evidence,source_id"
+      }
+    ],
+    "historical_rows": null
+  },
+  {
+    "filename": "poi_demand_visibility.csv",
+    "match_count": 1,
+    "matches": [
+      {
+        "path": "processed/poi_demand_visibility.csv",
+        "sha256": "f90c9e4cae47c46ca8806d17969eed5fed5d3f4bd0f01fa8643d8eba7dc2788b",
+        "rows": 160,
+        "columns": 11,
+        "header": "cohort_id,site_id,request_year,increment_it_mw,facility_envelope_mw,announcement_year,information_class,known_approved_component_it_mw,planning_visibility_y,source_id,warning"
+      }
+    ],
+    "historical_rows": 160
+  },
+  {
+    "filename": "poi_investment_candidates.csv",
+    "match_count": 1,
+    "matches": [
+      {
+        "path": "processed/poi_investment_candidates.csv",
+        "sha256": "1f19bcd41fb47e0d932cc7508f9d903a4ccb3a1448ab61edc48eab9496e848ab",
+        "rows": 320,
+        "columns": 14,
+        "header": "candidate_id,site_id,bus,engineering_type,commitment_year,lead_y,equipment_cod,firm_first_full_year,capacity_upper_mw,unit_capex_2025USD_per_mw,lifetime_y,capacity_evidence,cost_scope,upstream_dependency_mode"
+      }
+    ],
+    "historical_rows": 320
+  },
+  {
+    "filename": "engineering_baseline.json",
+    "match_count": 1,
+    "matches": [
+      {
+        "path": "reference/config/engineering_baseline.json",
+        "sha256": "ead0f51c961bedae283e1c37b194df63f8f26e2969e5225e40d53492f56cc801",
+        "rows": -1,
+        "columns": 15,
+        "header": "version,basis_commit,status,decision_year,annual_commitment_years,planning_visibility_years,regional_annual_poi_mw_cap_enabled,unknown_existing_capacity_policy,local_route_policy,ready_equipment_policy,upstream_policy,financial,time_convention,information_policy,horizon_policy"
+      }
+    ],
+    "historical_rows": null
+  }
+]

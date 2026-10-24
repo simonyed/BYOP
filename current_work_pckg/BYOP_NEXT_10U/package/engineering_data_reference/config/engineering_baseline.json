@@ -1,0 +1,32 @@
+{
+  "version": "ENGINEERING_DATA_V1_2026_10_23",
+  "basis_commit": "e3544cd7dd550b8a08f1b7bdff603153bb5923bd",
+  "status": "RUNNABLE_RESEARCH_BASELINE_NOT_UTILITY_CERTIFICATION",
+  "decision_year": 2026,
+  "annual_commitment_years": [
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031,
+    2032,
+    2033,
+    2034,
+    2035
+  ],
+  "planning_visibility_years": 3,
+  "regional_annual_poi_mw_cap_enabled": false,
+  "unknown_existing_capacity_policy": "no_automatic_free_equipment; unknown_remains_unknown_in_evidence",
+  "local_route_policy": "disabled_until_site_specific_spare_equipment_evidence; zero_upper_bound_is_policy_not_observation",
+  "ready_equipment_policy": "observed_delivery_lower_bound_or_inherited_operating_proxy; approved_right_not_ready_equipment",
+  "upstream_policy": "existing_model_network_constraints; no_generic_headroom_or_automatic_MVA_to_FirmMW",
+  "financial": {
+    "currency": "real_2025_USD",
+    "poi_costs": "research_proxy_40_300_USD_kW; not_MISO-derived",
+    "atb_currency": "2023USD: retain_existing_model_costs_until_explicit_deflator_crosswalk"
+  },
+  "time_convention": "calendar_decimal_dates; Firm credit only full years; no COD before commitment+lead",
+  "information_policy": "v1_known_capacity_cumulative_release_gate; not_a_full_nonanticipative_rolling_controller",
+  "horizon_policy": "prototype_2026_2031; full_2026_2035_then_2040_2045_2050; new_AIDC_after2035=0"
+}

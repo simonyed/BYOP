@@ -75,7 +75,7 @@ STATE = M.STATE
 # mainline.siting_variant) with one aggregated POI per bus (D12), D11 inherited ramp as background,
 # G-REAL (no competing queue, no regional_dc), v1.3 techs and yearly gas, approval-cohort COD (D1), stress snapshots in
 # the firm LP (B7), one joint developer LP (D13), run gate (E1). Default off: v1.0 behaviour unchanged.
-ML = dict(on=False, stress_days=3, stress_line_derate=1.0, gate=None)
+ML = dict(on=False, stress_days=3, stress_line_derate=1.0, gate=None, poi_model='legacy_proxy')
 ML_POI = BP.INPUTS / 'poi/GREAL_POI_ASSUMPTIONS.csv'
 ML_E0 = BP.INPUTS / 'poi/GREAL_POI_E0_SCHEDULE.csv'
 ML_RPOOL = BP.INPUTS / 'poi/GREAL_R_ASSET_POOL.csv'
@@ -96,6 +96,17 @@ MAINLINE_GUROBI_LP_OPTIONS = dict(Method=2, Crossover=0, BarConvTol=1e-5, Feasib
 ML_VOLL = dict(F2_mainline_VOLL_USD_MWh=35685.0, VOLL_source='Brattle 2024, Value of Lost Load Study for the ERCOT Region, Table 17',
                VOLL_source_year=2024, VOLL_duration_basis='1h ERCOT-wide outage; planning proxy for 3-h snapshots')
 ML_INPUTS = [ML_POI, ML_E0, ML_RPOOL, ML_COH, ML_RAMP, ML_POT, ML_TECH, ML_GASP]
+# NEXT-10U (2026-10-24): POI model version, from the config key mainline.poi_model. legacy_proxy = the GREAL POI table (uniform 3 y
+# lead, 2,000 MW per approval cohort, 2028 floor; kept for reproduction only); engineering_cost_v1 = byop/build/build_engineering_poi_v1.py:
+# known E0 / E1 equipment with its own COD, approved rights vs new requests, U[site, class, commitment year] with COD = max(q + NEMA
+# transformer lead, Batch Zero floor), cumulative caps over q and the disclosure cap per commitment year (ml_eng_constraints)
+POI_MODELS = {
+    'legacy_proxy': None,
+    'engineering_cost_v1': dict(poi='byop/inputs/poi_eng/ENG_POI_SITES.csv', poi_equipment='byop/inputs/poi_eng/ENG_POI_EQUIPMENT_KNOWN.csv',
+                                candidates='byop/inputs/poi_eng/ENG_POI_CANDIDATES.csv', visibility='byop/inputs/poi_eng/ENG_POI_VISIBILITY.csv',
+                                lead='byop/inputs/poi_eng/ENG_POI_LEAD_COMPONENTS.csv', sources='byop/inputs/poi_eng/ENG_POI_SOURCE_REGISTER.csv'),
+}
+SECURITY_USD_PER_MW = 50000.0     # 16 TAC 25.194 (adopted, Texas Register 2026-10-02): financial security floor, USD per MW (not per kW)
 # AIDC geospatial v1 (2026-10-22): research-bus siting variants. epoch8_legacy = the frozen B3 inputs (default when the
 # config names no variant); dynamic_pnnl_v1 = Epoch + PNNL dynamic weights (byop/build/build_dynamic_siting_inputs.py).
 # Only the research cohorts and the aggregated POI table change; E0, D11 ramp, network, techs, ERM, VOLL are shared.
@@ -109,25 +120,121 @@ SITING_VARIANTS = {
 def ml_select_siting(cfg_path):
     """set the research cohort / POI inputs of the configured siting variant BEFORE the run gate hashes the inputs;
     a config path that disagrees with the registered variant files is refused (no silent mix of geographies)"""
-    global ML_COH, ML_POI, ML_INPUTS
+    global ML_COH, ML_POI, ML_E0, ML_INPUTS
     import yaml
     c = yaml.safe_load(Path(cfg_path).read_text(encoding='utf-8'))
     var = str((c.get('mainline') or {}).get('siting_variant') or 'epoch8_legacy')
     if var not in SITING_VARIANTS:
         raise SystemExit(f'unknown mainline.siting_variant {var}; known: {sorted(SITING_VARIANTS)}')
-    reg = SITING_VARIANTS[var]
+    pm = str((c.get('mainline') or {}).get('poi_model') or 'legacy_proxy')
+    if pm not in POI_MODELS:
+        raise SystemExit(f'unknown mainline.poi_model {pm}; known: {sorted(POI_MODELS)}')
+    reg = dict(SITING_VARIANTS[var])
+    eng = POI_MODELS[pm]
+    if eng:                  # NEXT-10U: the engineering POI tables replace the GREAL POI table and its E0 schedule (never both)
+        reg.update(poi=eng['poi'], poi_equipment=eng['poi_equipment'])
     inp = c.get('inputs') or {}
-    for k in ('research_cohorts', 'poi'):
-        if k in inp and str(inp[k]) != reg[k]:
-            raise SystemExit(f'config inputs.{k}={inp[k]} disagrees with siting_variant {var} ({reg[k]})')
+    for k in ('research_cohorts', 'poi') + (('poi_equipment',) if eng else ()):
+        if (k in inp or eng) and str(inp.get(k)) != reg[k]:
+            raise SystemExit(f'config inputs.{k}={inp.get(k)} disagrees with siting_variant {var} / poi_model {pm} ({reg[k]})')
     wf = Path(__file__).resolve().parents[2]
     ML_COH, ML_POI = wf / reg['research_cohorts'], wf / reg['poi']
-    ML_INPUTS = [ML_POI, ML_E0, ML_RPOOL, ML_COH, ML_RAMP, ML_POT, ML_TECH, ML_GASP]
-    ML['siting'] = dict(variant=var, research_cohorts=reg['research_cohorts'], poi=reg['poi'],
+    ML_E0 = wf / eng['poi_equipment'] if eng else BP.INPUTS / 'poi/GREAL_POI_E0_SCHEDULE.csv'
+    ML_INPUTS = [ML_POI, ML_E0, ML_RPOOL, ML_COH, ML_RAMP, ML_POT, ML_TECH, ML_GASP] + \
+        ([wf / eng[k] for k in ('candidates', 'visibility', 'lead', 'sources')] if eng else [])
+    ML['poi_model'] = pm
+    ML['siting'] = dict(variant=var, research_cohorts=reg['research_cohorts'], poi=reg['poi'], poi_model=pm,
                         research_cohorts_sha256=M.sha(ML_COH), poi_sha256=M.sha(ML_POI))
+    if eng:
+        ML['siting'].update(poi_equipment=reg['poi_equipment'], poi_equipment_sha256=M.sha(ML_E0),
+                            engineering_inputs_sha256={eng[k]: M.sha(wf / eng[k]) for k in ('candidates', 'visibility', 'lead', 'sources')})
     return ML['siting']
 GAS_CARRIERS = {'CCGT', 'OCGT', 'gas_steam', 'reuse_pub', 'byop_R'} | {f'byop_{c}' for c in GAS_FIRED}
 RE_CAR = {'WIND': 'onwind', 'PV': 'solar'}
+
+
+def ml_eng_sites(n0, reg, kn):
+    """NEXT-10U engineering_cost_v1: SITES from ENG_POI_SITES (gas / PCLR / on-site RE carried from the mainline table; no POI-proxy
+    column exists there), known equipment rows (E0 / E1, each with its own COD, never an approved right) and the enabled site / class /
+    commitment-year candidates with their cumulative and disclosure caps"""
+    wf = Path(__file__).resolve().parents[2]
+    eng = POI_MODELS['engineering_cost_v1']
+    cand = pd.read_csv(wf / eng['candidates'])
+    vis = pd.read_csv(wf / eng['visibility'])
+    for r in reg.itertuples():
+        assert r.bus in n0.buses.index, f'research bus {r.bus} not in the TAMU network'
+        lvl = r.gas_evidence_level
+        mdq = float(r.gas_MDQ_MMBtu_d) if lvl == 'L0' else MDQ_PROXY.get(lvl, MDQ_PROXY['L2'])
+        rows = [dict(MW=float(x.MW), cod=float(x.COD), pre=True, site=x.asset_id, evidence=x.evidence_level)
+                for x in kn[kn.site_id == r.site_id].itertuples()]
+        cs = cand[(cand.site_id == r.site_id) & (cand.enabled == 1)]
+        SITES[r.site_id] = dict(
+            site=r.site_id, name=r.site_name, bus=r.bus, substation=None, sub_dist_deg=0.0, parent_rule='RESEARCH_BUS (D12)', lat=r.lat, lon=r.lon,
+            E0=sum(x['MW'] for x in rows), cod0=min((x['cod'] for x in rows), default=None), preapproved=True, E0rows=rows,
+            U_max=float(r.new_equipment_cap_MW), U_lead=float(r.transformer_lead_y_base), U_cost=float(r.poi_unit_capex_2025USD_per_MW),
+            proc=float(r.procedural_floor_new_request), pclr=float(r.pclr_conditional_MW), pclr_off=float(r.pclr_conditional_COD_offset_y),
+            gas_level=lvl, mdq=mdq, lat_lead=float(getattr(r, f"gas_lateral_lead_y_{GCFG['gas_case']}")),
+            lat_cost=float(getattr(r, f"gas_lateral_cost_USD_kW_{GCFG['gas_case']}")) * 1000, onsite_re=float(r.onsite_renewable_cap_MW),
+            profile='MAINLINE_RESEARCH_COHORT', confidence=r.confidence, poi_model='engineering_cost_v1',
+            eng=[dict(cls=x.engineering_class, q=int(x.commitment_year), cod=float(x.equipment_COD), cap=float(x.class_cumulative_cap_MW),
+                      cost=float(x.unit_capex_2025USD_per_MW), life=int(x.lifetime_y), cid=x.candidate_id) for x in cs.itertuples()],
+            eng_caps=dict(RIGHTED=float(r.cap_RIGHTED_MW), NEW_REQUEST=float(r.cap_NEW_REQUEST_MW), total=float(r.new_equipment_cap_MW)),
+            eng_vis={int(v_.commitment_year): float(v_.visible_new_order_cap_MW) for v_ in vis[vis.site_id == r.site_id].itertuples()},
+            approved_right_MW=float(r.approved_capacity_right_MW))
+
+
+def ml_eng_constraints(n, m, lnom):
+    """NEXT-10U engineering_cost_v1 (public LPs only; the developer LP has no POI links): per site
+      ENG-cum_<class>   sum_q U[s, class, q] <= class cap          (RIGHTED: approved right - known equipment; NEW_REQUEST: the rest)
+      ENG-cum_site      sum_{class, q} U[s, class, q] <= site cap  (site cumulative cap - known equipment: never re-buy known equipment)
+      ENG-vis_<Q>       sum_{class, q <= Q} U <= disclosed facility envelope by Q - known equipment   (no order for undisclosed cohorts)
+    The per-link p_nom_max is the class cap; these rows stop any repetition of that cap over commitment years."""
+    present = set(n.links.index[n.links.p_nom_extendable])
+    rows = []
+    for s, site in SITES.items():
+        lst = [(nm, e) for nm, e in STATE.get('poi_eng', {}).items() if e['site'] == s and nm in present]
+        if not lst:
+            continue
+        for cls in ('RIGHTED', 'NEW_REQUEST'):
+            names = [nm for nm, e in lst if e['cls'] == cls]
+            if names:
+                m.add_constraints(lnom.sel(name=names).sum() <= site['eng_caps'][cls], name=f'ENG-cum_{cls}_{s}')
+                rows.append(dict(site=s, row=f'ENG-cum_{cls}', n_links=len(names), rhs_MW=site['eng_caps'][cls]))
+        m.add_constraints(lnom.sel(name=[nm for nm, _ in lst]).sum() <= site['eng_caps']['total'], name=f'ENG-cum_site_{s}')
+        rows.append(dict(site=s, row='ENG-cum_site', n_links=len(lst), rhs_MW=site['eng_caps']['total']))
+        for Q, cap in sorted(site['eng_vis'].items()):
+            nq = [nm for nm, e in lst if e['q'] <= Q]
+            if nq:
+                m.add_constraints(lnom.sel(name=nq).sum() <= cap, name=f'ENG-vis_{s}_{Q}')
+                rows.append(dict(site=s, row=f'ENG-vis_{Q}', n_links=len(nq), rhs_MW=cap))
+    STATE['eng_rows'] = rows
+    return rows
+
+
+def ml_eng_tables(n, tag):
+    """NEXT-10U: per solved public scenario, every engineering candidate link (built MW, COD, first full firm year, class) and the
+    engineering cap rows with their duals (binding = |dual| > 1e-6); empty frames for the developer network / S0"""
+    inv = []
+    for nm, e in STATE.get('poi_eng', {}).items():
+        if nm not in n.links.index:
+            continue
+        inv.append(dict(scenario=tag, link=nm, candidate_id=e['cid'], site=e['site'], engineering_class=e['cls'], commitment_year=e['q'],
+                        equipment_COD=e['cod'], build_period=e['build_period'], firm_first_full_year=int(math.ceil(e['cod'] - 1e-9)),
+                        class_cap_MW=e['cap'], unit_capex_USD_per_MW=e['cost'], lifetime_y=e['life'], built_MW=float(n.links.p_nom_opt[nm]),
+                        asset_class='A_DC_DIRECT_INTERCONNECTION'))
+    bnd = []
+    cons = getattr(getattr(n, 'model', None), 'constraints', None)
+    for r in STATE.get('eng_rows', []):
+        nm = f"{r['row']}_{r['site']}" if not r['row'].startswith('ENG-vis') else f"ENG-vis_{r['site']}_{r['row'].split('_')[-1]}"
+        dual = float('nan')
+        try:
+            if cons is not None and nm in cons:
+                dual = float(np.asarray(cons[nm].dual).ravel()[0])
+        except Exception:
+            pass
+        bnd.append(dict(scenario=tag, row=nm, site=r['site'], rhs_MW=r['rhs_MW'], n_links=r['n_links'], dual=dual,
+                        binding=bool(np.isfinite(dual) and abs(dual) > 1e-6)))
+    return {'eng_poi_investment': pd.DataFrame(inv), 'eng_poi_binding': pd.DataFrame(bnd)}
 
 
 def configure_mainline(out):
@@ -152,7 +259,9 @@ def configure_mainline(out):
     reg = pd.read_csv(ML_POI)
     e0 = pd.read_csv(ML_E0)
     k = GCFG['case']
-    for r in reg.itertuples():
+    if ML['poi_model'] == 'engineering_cost_v1':
+        ml_eng_sites(n0, reg, e0)
+    for r in (reg.itertuples() if ML['poi_model'] == 'legacy_proxy' else []):
         assert r.bus in n0.buses.index, f'Epoch bus {r.bus} not in the TAMU network'
         lvl = r.gas_evidence_level
         mdq = float(r.gas_MDQ_MMBtu_d) if lvl == 'L0' else MDQ_PROXY.get(lvl, MDQ_PROXY['L2'])
@@ -766,7 +875,22 @@ def add_dc_poi(n, dem, v, mult, byop=None, byop_fixed=None, price=None, s_fixed=
                   interconnect='dc_facility', nerc_reg='DC')
         cond_on = (mode in ('GO_C', 'GF')) if price is not None else bool(STATE.get('cond_public', {}).get(s, False))
         # POI upgrade candidates (public LPs only; the developer receives an offer instead)
-        if price is None and 'POI' not in set(GCFG['relax']) and site['U_max'] > 0 and s not in STATE['poi_up'] and ML['on']:
+        if price is None and 'POI' not in set(GCFG['relax']) and site.get('eng') is not None and s not in STATE['poi_up'] and ML['on']:
+            # NEXT-10U engineering_cost_v1: one link per enabled site / class / commitment year (COD from the candidate table)
+            STATE['poi_up'][s] = []
+            for e in site['eng']:
+                bp = M.first_period(e['cod'])
+                if bp is None:
+                    continue
+                nm = f"POIup {s} {e['cls']} q{e['q']}"
+                cc = e['cost'] * M.crf(M.CFG['social_r'], e['life']) * M.tv_factor(bp, e['life'], 'public')
+                n.add('Link', nm, bus0=site['bus'], bus1=dc, carrier='POI_upgrade', p_nom_extendable=True, p_nom_max=e['cap'],
+                      capital_cost=cc, p_max_pu=0.0, p_min_pu=0.0, build_year=bp, lifetime=e['life'], efficiency=1.0)
+                STATE['poi_up'][s].append((nm, bp, e['cod']))
+                STATE.setdefault('approval_year', {})[nm] = e['q']
+                STATE.setdefault('poi_eng', {})[nm] = dict(site=s, cls=e['cls'], q=e['q'], cod=e['cod'], cap=e['cap'], cost=e['cost'],
+                                                           life=e['life'], cid=e['cid'], build_period=bp)
+        elif price is None and 'POI' not in set(GCFG['relax']) and site['U_max'] > 0 and s not in STATE['poi_up'] and ML['on'] and site.get('eng') is None:
             # D1: POI upgrade approved in year q is energized at COD(q) = max(q + lead, procedural earliest grid COD)
             STATE['poi_up'][s] = []
             for qa, cod_u, q in M.approval_cohorts(site['U_lead'], floor=site['proc']):
@@ -791,9 +915,11 @@ def add_dc_poi(n, dem, v, mult, byop=None, byop_fixed=None, price=None, s_fixed=
         elif price is None and s in STATE['poi_up']:
             for nm, q, cod_u in STATE['poi_up'][s]:
                 if nm not in n.links.index:
-                    cc = site['U_cost'] * M.crf(M.CFG['social_r'], UPGRADE_LIFE) * M.tv_factor(q, UPGRADE_LIFE, 'public')
-                    n.add('Link', nm, bus0=site['bus'], bus1=dc, carrier='POI_upgrade', p_nom_extendable=True, p_nom_max=site['U_max'],
-                          capital_cost=cc, p_max_pu=0.0, p_min_pu=0.0, build_year=q, lifetime=UPGRADE_LIFE, efficiency=1.0)
+                    e = STATE.get('poi_eng', {}).get(nm)      # NEXT-10U: an engineering link keeps its own cap / cost / life
+                    life = e['life'] if e else UPGRADE_LIFE
+                    cc = (e['cost'] if e else site['U_cost']) * M.crf(M.CFG['social_r'], life) * M.tv_factor(q, life, 'public')
+                    n.add('Link', nm, bus0=site['bus'], bus1=dc, carrier='POI_upgrade', p_nom_extendable=True, p_nom_max=e['cap'] if e else site['U_max'],
+                          capital_cost=cc, p_max_pu=0.0, p_min_pu=0.0, build_year=q, lifetime=life, efficiency=1.0)
         for r in dem[dem.zone == s].itertuples():
             p = r.period
             pue = float(pue_t[(pue_t.st == 'TX') & (pue_t.year == min(p, 2035))].pue.iloc[0])
@@ -856,8 +982,13 @@ def add_dc_poi(n, dem, v, mult, byop=None, byop_fixed=None, price=None, s_fixed=
                 firm_mw = 0.0 if mode == 'IS' else off['firm']
                 cond_mw = off['cond'] if cond_on else 0.0
                 gname = f'{dc} grid{p}'
-                n.add('Generator', gname, bus=dc, carrier='grid_purchase', p_nom=firm_mw, p_nom_extendable=False,
-                      build_year=p, lifetime=Y, marginal_cost=0.0)
+                ciac = STATE.get('ciac_rate', {}).get((s, p), 0.0) if site.get('eng') is not None else 0.0
+                if ciac > 0 and firm_mw > 1e-6:     # NEXT-10U: the firm import right is bought at its non-refundable CIAC + security financing
+                    n.add('Generator', gname, bus=dc, carrier='grid_purchase', p_nom_extendable=True, p_nom_min=0.0, p_nom_max=firm_mw,
+                          capital_cost=ciac, build_year=p, lifetime=Y, marginal_cost=0.0)
+                else:
+                    n.add('Generator', gname, bus=dc, carrier='grid_purchase', p_nom=firm_mw, p_nom_extendable=False,
+                          build_year=p, lifetime=Y, marginal_cost=0.0)
                 n.generators_t.marginal_cost[gname] = price[s].values
                 if ML['on'] and firm_mw > 1e-6:     # P0-4: firm purchase at stress snapshots <= stress-certified offer
                     fr = min(1.0, off.get('firm_stress', firm_mw) / firm_mw)
@@ -1093,6 +1224,8 @@ def extra_rearch(n, snapshots):
         for a_, b_ in zip(lst[:-1], lst[1:]):
             drop = max(0.0, a_['D'] - b_['D'])
             m.add_constraints(pnom.sel(name=b_['S']) - pnom.sel(name=a_['S']) >= -drop, name=f"P01-online_monotone_{b_['S']}")
+    if ML['on'] and ML['poi_model'] == 'engineering_cost_v1' and lnom is not None and STATE.get('poi_eng'):
+        ml_eng_constraints(n, m, lnom)        # NEXT-10U: cumulative and disclosure caps of the engineering POI candidates
     g_sh = n.generators[n.generators.carrier == 'load_shed']    # background shed and competing-queue curtailment
     if STATE.get('no_harm_now') and len(g_sh) and 'Generator-p' in m.variables:   # D2.4 shed <= frozen S0 per generator (+0.001 MW)
         sh0 = STATE['shed_S0']
@@ -1135,6 +1268,18 @@ def independent_it(s, p, pue):
         return float('inf')
     fixed, _ = eq_terms(s, p)
     ups = 0.0
+    if d.get('eng') is not None:          # NEXT-10U: class caps reachable by p, bounded by the site cap and the disclosure cap
+        frac, q_last = {}, None
+        for nm, q, cod in STATE.get('poi_up', {}).get(s, []):
+            e = STATE.get('poi_eng', {}).get(nm)
+            f = M.firm_frac(q, cod, p) if (e is not None and q <= p) else 0.0
+            if f > 0:
+                frac[e['cls']] = max(frac.get(e['cls'], 0.0), f)
+                q_last = e['q'] if q_last is None else max(q_last, e['q'])
+        ups = sum(d['eng_caps'][c] * f for c, f in frac.items())
+        if q_last is not None:
+            ups = min(ups, d['eng_caps']['total'], d['eng_vis'].get(q_last, ups))
+        return (fixed + ups) / pue
     for nm, q, cod in STATE.get('poi_up', {}).get(s, []):
         if q <= p:
             ups = max(ups, d['U_max'] * M.avail_frac(q, cod, p))
@@ -1351,6 +1496,37 @@ def s1_offer(n1):
         offer[(s, p)] = dict(firm=firm, cond=cond, firm_stress=min(firm, firm_st))
         rows.append(dict(site=s, year=p, offer_firm_MW=firm, offer_firm_stress_certified_MW=min(firm, firm_st), offer_cond_MW=cond, equipment_MW=eq, S1_served_MW_IT=float(n1.generators.p_nom_opt[d['S']])))
     return offer, pd.DataFrame(rows)
+
+
+def ml_eng_ciac(n1):
+    """NEXT-10U engineering_cost_v1: private price of a firm import right in the S2 developer LP, USD per MW-yr of right in year p:
+    (share of NEW POI equipment in the S1 equipment at (s, p)) x [non-refundable CIAC of the direct interconnection facility, annuitised
+    at the private WACC + financing cost of the 16 TAC 25.194 security (50,000 USD/MW, refundable principal, held from commitment to
+    COD), annuitised]. Known E0 / E1 equipment carries no new CIAC (already delivered / contracted). The resource cost of the POI
+    equipment stays in the public LPs (social r); the CIAC is a transfer and is never added to a social objective."""
+    rate, rows = {}, []
+    r = M.CFG['private_wacc']
+    a = M.crf(r, UPGRADE_LIFE)
+    for d in STATE.get('dc', []):
+        s, p = d['zone'], d['period']
+        site = SITES[s]
+        if site.get('eng') is None:
+            continue
+        fixed, ups = eq_terms(s, p)
+        built = {u: float(n1.links.p_nom_opt[u]) for u, _ in ups if u in n1.links.index}
+        new = sum(c_ * built.get(u, 0.0) for u, c_ in ups)
+        tot = fixed + new
+        share = new / tot if tot > 1e-6 else 0.0
+        hold = [STATE['poi_eng'][u]['cod'] - STATE['poi_eng'][u]['q'] for u in built if built[u] > 1e-3 and u in STATE.get('poi_eng', {})]
+        hold_y = max(hold) if hold else 0.0
+        ciac_ann, sec_ann = site['U_cost'] * a, SECURITY_USD_PER_MW * r * hold_y * a
+        rate[(s, p)] = share * (ciac_ann + sec_ann)
+        rows.append(dict(site=s, year=p, known_equipment_MW=fixed, new_poi_equipment_MW=new, new_share=share, ciac_unit_USD_per_MW=site['U_cost'],
+                         ciac_annuity_USD_per_MW_yr=ciac_ann, security_USD_per_MW=SECURITY_USD_PER_MW, security_hold_y=hold_y,
+                         security_financing_annuity_USD_per_MW_yr=sec_ann, private_wacc=r, right_price_USD_per_MW_yr=rate[(s, p)],
+                         legal_basis='16 TAC 25.194 (ADOPTED, TexReg 2026-10-02): direct interconnection = CIAC; system-upgrade security refundable'))
+    STATE['ciac_rate'] = rate
+    return pd.DataFrame(rows)
 
 
 def select_triggers(n1):
@@ -1878,7 +2054,12 @@ def post_v16_solve_wrapper(solve0, a, out, cfg_path=None, gate_fn=None, state=No
         except Exception as e:
             saved = dict(error=repr(e)[:300])
         try:
-            acc = A2G.acceptance(n, tag, res, out_dir=out_dir if tag != 'S0' else None)
+            acc = A2G.acceptance(n, tag, res, out_dir=out_dir if tag != 'S0' else None,
+                                 science=c.get('s0_science_gate') if tag == 'S0' else None)      # NEXT-10U G2 S0 scientific gate
+            if tag == 'S0' and 's0_science' in acc['values']:
+                sv = acc['values']['s0_science']
+                (out_dir / 'S0_SCIENCE_VERDICT.json').write_text(json.dumps(dict(S0_SCIENCE_VERDICT=sv['verdict'], parent_attempt_id=aid,
+                                                                                config=str(cfg_path), **sv), indent=1, default=str), encoding='utf-8')
             ok_c, calls = A2G.children_complete(aid, tag)
             acc['checks']['optimizer_calls_complete'] = ok_c
             acc['values']['optimizer_calls'] = calls
@@ -2103,12 +2284,15 @@ def upgrade_ledger(n, tag, case_id):
             MW = float(n.links.p_nom_opt[nm])
             if MW < 0.5:
                 continue
-            ann = SITES[s]['U_cost'] * M.crf(M.CFG['social_r'], UPGRADE_LIFE)
+            e = STATE.get('poi_eng', {}).get(nm)       # NEXT-10U: engineering candidate (class A direct interconnection facility)
+            ann = (e['cost'] * M.crf(M.CFG['social_r'], e['life'])) if e else SITES[s]['U_cost'] * M.crf(M.CFG['social_r'], UPGRADE_LIFE)
+            extra_ = dict(engineering_class=e['cls'], commitment_year=e['q'], candidate_id=e['cid'], overnight_capex_USD_per_MW=e['cost'],
+                          asset_class='A_DC_DIRECT_INTERCONNECTION') if e else {}
             for p in P:
                 if p >= q:
                     rows.append(dict(case_id=case_id, scenario=tag, asset_id=nm, component='Link', carrier='POI_upgrade',
                                      asset_boundary='UTILITY_POI', resource_path='public', zone=s, build_period=q, COD=cod, year=p,
-                                     capacity_MW=MW, social_annuity_USD_per_MW_yr=ann, resource_capex_PV_USD=ann * MW * ws[p]))
+                                     capacity_MW=MW, social_annuity_USD_per_MW_yr=ann, resource_capex_PV_USD=ann * MW * ws[p], **extra_))
     return pd.DataFrame(rows)
 
 
@@ -2371,6 +2555,9 @@ def main():
         pd.DataFrame([summ]).to_csv(ck / 'scenario_summary.csv', index=False)
         for nm, df_ in (('ledger', led), ('service', svc), ('poi_ledger', pl), ('poi_upgrade_ledger', upl), ('duals', DUA[-1])):
             df_.to_csv(ck / f'{nm}.csv', index=False)
+        if ML['on'] and ML['poi_model'] == 'engineering_cost_v1':
+            for nm, df_ in ml_eng_tables(n, tag).items():      # NEXT-10U: candidate investment + binding engineering rows
+                df_.to_csv(ck / f'{nm}.csv', index=False)
         (ck / 'solve.json').write_text(json.dumps(dict(case_id=a.case_id, case_group=a.case_group, run_id=run_id, scenario=tag,
                                                        relax=GCFG['relax'], setting=GCFG['setting'], solve=res,
                                                        timestamp_utc=datetime.now(timezone.utc).isoformat()), indent=1, default=str))
@@ -2412,6 +2599,8 @@ def main():
         STATE['triggers'] = select_triggers(n1)
         STATE['offer'], off = s1_offer(n1)
         off.to_csv(out / 'S1_GRID_OFFER.csv', index=False)
+        if ML['on'] and ML['poi_model'] == 'engineering_cost_v1':     # NEXT-10U: CIAC + security price of the S2 import right
+            ml_eng_ciac(n1).to_csv(out / 'S2_PRIVATE_GRID_RIGHT_CHARGES.csv', index=False)
         pd.DataFrame([dict(site=s, year=p, n_trigger_snapshots=len(v_), first=str(v_[0]) if v_ else None)
                       for (s, p), v_ in STATE['triggers'].items()]).to_csv(out / 'PCLR_TRIGGERS.csv', index=False)
         n1_keep = n1

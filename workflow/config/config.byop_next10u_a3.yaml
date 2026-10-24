@@ -1,0 +1,46 @@
+# BYOP NEXT-10U (2026-10-24): A3 of model version engineering_cost_v1 = S3 (coordinated social optimum) / S2 (developer-led BYOP,
+# speed-first then private cost, 1-3 iterations) / S3_mS2 (S3 at the S2_final service, matched-service audit) on the ADOPTED v1.7L
+# lossy 2025 baseline, ERCOT 16 research buses, 2026-2031, mid demand, LP only.
+# Routed through post_v16_a3_gate / post_v16_a3_runtime (rearch_mech --post-v16 --a3-config ...). S2 needs the solved S1 network in
+# memory, so the A3 process re-solves S0 and S1_EARLIEST first; they must reproduce the accepted NEXT-10U S0 / S1 results
+# (reference below, SHA-pinned after those solves) at the same thread count, or A3 stops. Later no-harm rows use the SHA-pinned
+# NEXT-10U S0 reference, never the re-solve, never v1.6 / NEXT-09.
+# Same physical feasible set in S2 and S3 (one network build path, same engineering POI candidates, leads, caps, gas / permit
+# evidence, firm rule). S2 private cost adds the CIAC + 25.194 security financing of its firm import right (S2_PRIVATE_GRID_RIGHT_CHARGES);
+# S3 / S2-public / S3_mS2 objectives carry real resource cost only (no CIAC, no security principal).
+# Approval: researcher chat instruction of 2026-10-24 (authorization_source); set only in a config-only commit after the reference
+# SHAs and the A3 manifest are frozen.
+post_v16:
+  run_authorization: NOT_APPROVED
+  approved_git_sha: null
+  approved_by: null
+  authorization_source: current_work_pckg/BYOP_NEXT_10U/NEXT_10U_INSTRUCTION_RECORD.md
+  authorization_source_sha256: d02c7fdf7fa71963a0320b0fbe938e7607506ff11bd0dbbe7efda16f2c2f8a53   # LF content SHA
+  manifest: current_work_pckg/BYOP_NEXT_10U/NEXT10U_A3_PRE_RUN_MANIFEST.json
+  stage: A3
+  model_version: engineering_cost_v1
+  stages: [S0, S1_EARLIEST, S3, S2_IT1, S2_IT2, S2_IT3, S3_mS2]
+  optional_stages: [S2_IT2, S2_IT3]          # only if the previous S2 iteration is not consistent (public delivery < developer plan)
+  max_scenario_attempts: 7
+  max_top_level_optimizer_calls: 30
+  program_budget: "NEXT-10U total <= 40 top-level optimizer calls: config.byop_next10u_s0s1.yaml <= 3 + this config <= 30"
+  optimizer_call_plan:                       # {stage: {kind: max count}}; Gurobi hierarchy passes are metadata, not calls
+    S0: {S0_COST: 1}
+    S1_EARLIEST: {S1_SPEED_HIERARCHY: 1, S1_COST: 1}
+    S3: {S3_COST: 1}
+    S2_IT1: {S2_DEV_LEX: 6, S2_DEV_COST: 1, S2_PUBLIC: 1}
+    S2_IT2: {S2_DEV_LEX: 6, S2_DEV_COST: 1, S2_PUBLIC: 1}
+    S2_IT3: {S2_DEV_LEX: 6, S2_DEV_COST: 1, S2_PUBLIC: 1}
+    S3_mS2: {S3_MS2_COST: 1}
+  max_retries: 0
+  prerequisites:                             # the NEXT-10U S0 scientific verdict of the formal S0 / S1 run
+    - {file: workflow/results/BYOP/next10u_engineering_cost_v1/S0S1/S0_SCIENCE_VERDICT.json, field: S0_SCIENCE_VERDICT, allowed: [S0_SCIENCE_PASS]}
+  firm_rule: CONSERVATIVE_FIRM_SCREENING     # NEXT-07 W4.2: dedicated RE + BESS earns no full-year firm IT credit (S2 developer, S2 public, S3, S3_mS2)
+  reference:                                 # the accepted NEXT-10U S0 / S1_EARLIEST results (SHAs pinned after those solves)
+    dir: results/BYOP/next10u_engineering_cost_v1/S0S1
+    sha256: {}
+  mainline_config: config/config.byop_ercot_mainline_engineering_cost_v1.yaml
+  out_dir: results/BYOP/next10u_engineering_cost_v1/A3
+  baseline:
+    path: workflow/results/BYOP/baseline_2025_tamu_v17_lossy/baseline_2025_tamu_v17_lossy_prepared.nc
+    sha256: f9aa87aea496f7c07ea4aca0439a703e7eaa90d08cb66c5bc6f149ea60eeefb6

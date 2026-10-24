@@ -1,0 +1,14 @@
+# NEXT-10U 最终执行报告（执行方填写）
+- GitHub main HEAD / L2 HEAD / protected baseline SHA / engineering data manifest SHA:
+- Original user-chat authorization provenance, gate verdict, approval commit(s):
+- Solver call budget used / STARTED-DONE-FAIL rows / zero retries check:
+- H0/H1/H2/H3/H4 per-stage status and evidence:
+- Fixed 3-year POI prohibited in formal model? (exact code proof):
+- S0 science verdict and native EENS per year:
+- S1 earliest by site / cause-specific delay, submitted vs delivered MW IT:
+- S2 BYOP candidate types and time advantages / private costs:
+- S3 and S3_mS2 cost/social-resource comparison:
+- Direct CIAC / upstream security / ultimate recovered payments verified vs unknown:
+- Δ Public resource S1−S0, S2−S1, S2−S3 matched service:
+- Known failures or scientific limitations (no inferred data called empirical):
+- Remaining work and STOP decisions:
