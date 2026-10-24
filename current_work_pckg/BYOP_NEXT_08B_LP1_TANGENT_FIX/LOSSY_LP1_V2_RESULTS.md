@@ -1,5 +1,11 @@
 # LOSSY_LP1_V2_RESULTS: NEXT-08b lossy 2025 LP1 v2 (reference-capacity loss tangents)
 
+> **Update (2026-10-23, `NEXT_08B_PTDF_DIAGNOSTIC.md`): §3 below is superseded.**
+> - **Missed difference:** the "excluded" list overlooked one row. LP1's loss ceiling sits at the 2× cap, while LP2's sits at the actual rating.
+> - **What LP1 does with it:** LP1 uses up to 1.46 GW of non-physical dissipation at the shed steps, about 0.4 TWh a year, which LP2 forbids. This is proven with a zero-solver objective-consistency test, PTDF-located on the lines around p610 1.
+> - **Hypothesis rejected as main cause:** the resistance and tangent residual adds only 2–3 MW of loss.
+> - **Recommendation:** A.
+
 **Verdict.** The approved chain ran completely: 3 optimizer calls, 0 retries, all optimal. LP1 converged and passed G1–G3.
 - **LP2 on the v2 candidate:** EENS **817.4 MWh** (PASS, limit 4,882). Largest gap **107.4 MW** (**FAIL**, limit 83.7 MW).
 - **Against NEXT-08 v1:** EENS halved and the gap fell by 25 MW, but the gap criterion is still not met.

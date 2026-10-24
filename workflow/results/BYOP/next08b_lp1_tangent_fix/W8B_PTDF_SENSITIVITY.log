@@ -1,0 +1,142 @@
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+{
+ "T0_ptdf_reproduces_lp2_flows": {
+  "max_abs_err_MW": 0.0163608120697063,
+  "pass_": true
+ },
+ "T1_objective_consistency": {
+  "v16_lossless_control": {
+   "lp1_objective": 17867480779.532787,
+   "lp1_uplift_MVA": 5151.833600032188,
+   "lp1_capex": 10303667200.064375,
+   "lp1_eens_MWh": 102.20432200937113,
+   "lp1_operating_ex_shed": 7461609257.459042,
+   "lp2_objective": 7464688967.632855,
+   "lp2_eens_MWh": 111.78866694649071,
+   "lp2_operating_ex_shed": 7460699789.05287,
+   "lp1_dispatch_at_lp2_prices": 7465256418.689946,
+   "diff_vs_lp2_optimum": 567451.0570907593,
+   "verdict": "consistent (LP2 optimum <= LP1 dispatch)"
+  },
+  "next08_v1": {
+   "lp1_objective": 19301160471.4914,
+   "lp1_uplift_MVA": 5816.595670039927,
+   "lp1_capex": 11633191340.079855,
+   "lp1_eens_MWh": 110.89310329735667,
+   "lp1_operating_ex_shed": 7557076028.11419,
+   "lp2_objective": 7672659746.182726,
+   "lp2_eens_MWh": 1657.1364089370986,
+   "lp2_operating_ex_shed": 7613524833.429806,
+   "lp1_dispatch_at_lp2_prices": 7561033248.505356,
+   "diff_vs_lp2_optimum": -111626497.67737007,
+   "verdict": "LP1 dispatch NOT feasible in LP2"
+  },
+  "next08b_v2": {
+   "lp1_objective": 19428105303.051136,
+   "lp1_uplift_MVA": 5856.356724182902,
+   "lp1_capex": 11712713448.365805,
+   "lp1_eens_MWh": 109.67919052638507,
+   "lp1_operating_ex_shed": 7605712664.158946,
+   "lp2_objective": 7638948645.531138,
+   "lp2_eens_MWh": 817.419843589207,
+   "lp2_operating_ex_shed": 7609779018.412658,
+   "lp1_dispatch_at_lp2_prices": 7609626566.07288,
+   "diff_vs_lp2_optimum": -29322079.45825863,
+   "verdict": "LP1 dispatch NOT feasible in LP2"
+  },
+  "prices": {
+   "uplift_USD_per_MVA": 2000000.0,
+   "lp1_shed_USD_MWh": 1000000.0,
+   "lp2_voll_USD_MWh": 35685.0,
+   "tolerance_USD": 100000.0,
+   "period_objective_weight": 1.0
+  }
+ },
+ "T3_year": {
+  "next08_v1": {
+   "lp1_loss_TWh": 3.8963352989999995,
+   "cells_over_lp2_upper": 2738,
+   "MWh_over_lp2_upper": 421393.49138969555,
+   "MWh_over_1p05_lp2_upper": 411836.66275760485,
+   "max_step_MW_over_1p05": 1270.4614842684182,
+   "lp1_within_own_upper": true,
+   "top_lines_MWh_over_1p05": {
+    "TL27": 100966.2,
+    "TL28": 94974.7,
+    "TL24": 54582.8,
+    "TL13": 32268.9,
+    "TL148": 31143.0,
+    "TL22": 30723.2,
+    "TL23": 22175.6,
+    "TL31": 8432.8,
+    "TL29": 7318.1,
+    "TL131": 6633.0,
+    "TL30": 5036.0,
+    "TL67": 4265.7
+   }
+  },
+  "next08b_v2": {
+   "lp1_loss_TWh": 5.674328087999999,
+   "cells_over_lp2_upper": 2615,
+   "MWh_over_lp2_upper": 407396.71700665704,
+   "MWh_over_1p05_lp2_upper": 397934.98156392097,
+   "max_step_MW_over_1p05": 1459.1947878458855,
+   "lp1_within_own_upper": true,
+   "top_lines_MWh_over_1p05": {
+    "TL28": 98471.0,
+    "TL27": 93992.2,
+    "TL24": 51279.8,
+    "TL13": 34521.0,
+    "TL148": 30602.8,
+    "TL22": 26789.4,
+    "TL23": 20018.5,
+    "TL29": 8184.0,
+    "TL31": 6889.2,
+    "TL30": 5006.5,
+    "TL131": 4767.2,
+    "TL67": 3890.7
+   }
+  }
+ },
+ "T4_lp2_above_envelope": {
+  "lp2_loss_TWh": 5.322222804,
+  "envelope_TWh": 5.072681781032277,
+  "above_envelope_TWh": 0.24964445789638026,
+  "cells_at_loss_upper": 3086,
+  "top_lines_above_MWh": {
+   "TL24": 75182.0,
+   "TL28": 43309.0,
+   "TL27": 30048.0,
+   "TL13": 23754.0,
+   "TL23": 22736.0,
+   "TL30": 10074.0,
+   "TL22": 9921.0,
+   "TL148": 9066.0
+  }
+ }
+}
+2030-08-28 06:00:00 shed 18.88 binding ['TL119', 'TL12', 'TL129', 'TL26', 'TL63', 'TL67', 'TL68', 'TL69', 'TL94']
+  T2 extra loss MW 2.14 {'slack': (135.238, []), 'thermal_capacity': (inf, ['TL63', 'TL67']), 'load_at_step': (inf, ['TL12', 'TL63', 'TL67']), 'wind_available_at_step': (inf, ['TL67'])}
+  T3 excess MW 1459.2 {'TL102': {'MW': 165.9, 'bus0': 'p640 1', 'bus1': 'p640 2'}, 'TL104': {'MW': 40.9, 'bus0': 'p640 1', 'bus1': 'p640 4'}, 'TL106': {'MW': 47.5, 'bus0': 'p640 2', 'bus1': 'p640 4'}, 'TL107': {'MW': 59.0, 'bus0': 'p640 2', 'bus1': 'p650 0'}, 'TL11': {'MW': 44.1, 'bus0': 'p600 1', 'bus1': 'p600 3'}, 'TL16': {'MW': 66.4, 'bus0': 'p600 3', 'bus1': 'p610 2'}, 'TL18': {'MW': 14.2, 'bus0': 'p600 4', 'bus1': 'p610 2'}, 'TL29': {'MW': 154.1, 'bus0': 'p610 2', 'bus1': 'p630 2'}, 'TL30': {'MW': 450.5, 'bus0': 'p610 2', 'bus1': 'p630 4'}, 'TL31': {'MW': 179.6, 'bus0': 'p610 2', 'bus1': 'p630 5'}, 'TL32': {'MW': 157.6, 'bus0': 'p610 3', 'bus1': 'p640 2'}, 'TL68': {'MW': 9.8, 'bus0': 'p630 13', 'bus1': 'p640 1'}, 'TL69': {'MW': 20.3, 'bus0': 'p630 13', 'bus1': 'p640 2'}, 'TL7': {'MW': 49.1, 'bus0': 'p600 0', 'bus1': 'p610 2'}}
+    wind_available_at_step sinks {'TL119': -1.07, 'TL12': -22.38, 'TL129': -55.25, 'TL26': 19.61, 'TL63': 0.17, 'TL67': 4.27, 'TL68': 0.52, 'TL69': 1.34, 'TL94': -0.82} | shed {'TL119': -0.98, 'TL12': 2.05, 'TL129': 3.62, 'TL26': 13.02, 'TL63': -1.36, 'TL67': -0.79, 'TL68': 2.56, 'TL69': 3.18, 'TL94': -0.03}
+    thermal_capacity sinks {'TL119': -123.13, 'TL12': 5.13, 'TL129': -43.8, 'TL26': 17.86, 'TL63': -11.5, 'TL67': -0.27, 'TL68': -9.52, 'TL69': -10.82, 'TL94': -7.47} | shed {'TL119': 6.98, 'TL12': 0.26, 'TL129': 2.87, 'TL26': 13.14, 'TL63': -0.6, 'TL67': -0.5, 'TL68': 3.21, 'TL69': 3.97, 'TL94': 0.4}
+    load_at_step sinks {'TL119': -94.58, 'TL12': 9.43, 'TL129': -27.37, 'TL26': 20.34, 'TL63': -5.87, 'TL67': 2.31, 'TL68': -5.5, 'TL69': -5.85, 'TL94': -6.49} | shed {'TL119': 5.12, 'TL12': -0.02, 'TL129': 1.8, 'TL26': 12.98, 'TL63': -0.96, 'TL67': -0.66, 'TL68': 2.95, 'TL69': 3.65, 'TL94': 0.34}
+2030-08-28 09:00:00 shed 95.15 binding ['TL129', 'TL15', 'TL26', 'TL34', 'TL35', 'TL38', 'TL39', 'TL41', 'TL42', 'TL63', 'TL67', 'TL68', 'TL69']
+  T2 extra loss MW 3.211 {'slack': (inf, ['TL67']), 'thermal_capacity': (inf, ['TL39', 'TL63', 'TL67']), 'load_at_step': (inf, ['TL35', 'TL38', 'TL39', 'TL41', 'TL42', 'TL67']), 'wind_available_at_step': (inf, ['TL38', 'TL39', 'TL41', 'TL42', 'TL67'])}
+  T3 excess MW 1235.6 {'TL102': {'MW': 165.9, 'bus0': 'p640 1', 'bus1': 'p640 2'}, 'TL106': {'MW': 47.5, 'bus0': 'p640 2', 'bus1': 'p640 4'}, 'TL107': {'MW': 59.0, 'bus0': 'p640 2', 'bus1': 'p650 0'}, 'TL108': {'MW': 1.9, 'bus0': 'p640 2', 'bus1': 'p650 2'}, 'TL16': {'MW': 66.4, 'bus0': 'p600 3', 'bus1': 'p610 2'}, 'TL29': {'MW': 154.1, 'bus0': 'p610 2', 'bus1': 'p630 2'}, 'TL30': {'MW': 450.5, 'bus0': 'p610 2', 'bus1': 'p630 4'}, 'TL31': {'MW': 179.6, 'bus0': 'p610 2', 'bus1': 'p630 5'}, 'TL32': {'MW': 95.1, 'bus0': 'p610 3', 'bus1': 'p640 2'}, 'TL7': {'MW': 15.4, 'bus0': 'p600 0', 'bus1': 'p610 2'}}
+    wind_available_at_step sinks {'TL129': 2.35, 'TL15': -0.56, 'TL26': 18.3, 'TL34': -2.9, 'TL35': 0.56, 'TL38': 4.65, 'TL39': 4.59, 'TL41': 4.65, 'TL42': 3.1, 'TL63': 4.8, 'TL67': 1.82, 'TL68': 2.47, 'TL69': 3.65} | shed {'TL129': -0.16, 'TL15': -0.09, 'TL26': 13.1, 'TL34': 0.13, 'TL35': 0.09, 'TL38': -0.12, 'TL39': -0.2, 'TL41': -0.12, 'TL42': -0.07, 'TL63': -1.8, 'TL67': -0.79, 'TL68': 2.51, 'TL69': 3.11}
+    thermal_capacity sinks {'TL129': -37.02, 'TL15': 0.16, 'TL26': 17.83, 'TL34': -2.6, 'TL35': -0.16, 'TL38': -1.01, 'TL39': 3.25, 'TL41': -1.01, 'TL42': -1.01, 'TL63': -10.85, 'TL67': -1.99, 'TL68': -6.59, 'TL69': -7.5} | shed {'TL129': 2.87, 'TL15': -0.14, 'TL26': 13.14, 'TL34': 0.11, 'TL35': 0.14, 'TL38': 0.32, 'TL39': -0.09, 'TL41': 0.32, 'TL42': 0.25, 'TL63': -0.6, 'TL67': -0.5, 'TL68': 3.21, 'TL69': 3.97}
+    load_at_step sinks {'TL129': -24.02, 'TL15': 5.3, 'TL26': 19.65, 'TL34': -2.33, 'TL35': 8.01, 'TL38': 21.29, 'TL39': 16.58, 'TL41': 4.01, 'TL42': 4.36, 'TL63': -5.85, 'TL67': -0.05, 'TL68': -3.52, 'TL69': -3.7} | shed {'TL129': 1.87, 'TL15': -0.54, 'TL26': 13.0, 'TL34': 0.09, 'TL35': -0.49, 'TL38': -1.4, 'TL39': -1.12, 'TL41': -0.07, 'TL42': -0.17, 'TL63': -0.98, 'TL67': -0.65, 'TL68': 2.97, 'TL69': 3.68}
+2030-09-12 06:00:00 shed 10.29 binding ['TL119', 'TL129', 'TL26', 'TL63', 'TL67', 'TL68', 'TL69', 'TL94']
+  T2 extra loss MW 3.21 {'slack': (inf, ['TL67']), 'thermal_capacity': (inf, ['TL63', 'TL67']), 'load_at_step': (inf, ['TL67']), 'wind_available_at_step': (inf, ['TL63', 'TL67'])}
+  T3 excess MW 545.2 {'TL16': {'MW': 66.4, 'bus0': 'p600 3', 'bus1': 'p610 2'}, 'TL29': {'MW': 154.1, 'bus0': 'p610 2', 'bus1': 'p630 2'}, 'TL30': {'MW': 138.7, 'bus0': 'p610 2', 'bus1': 'p630 4'}, 'TL31': {'MW': 179.6, 'bus0': 'p610 2', 'bus1': 'p630 5'}, 'TL68': {'MW': 6.4, 'bus0': 'p630 13', 'bus1': 'p640 1'}}
+    wind_available_at_step sinks {'TL119': 3.87, 'TL129': -31.39, 'TL26': 13.17, 'TL63': -9.23, 'TL67': 2.13, 'TL68': 0.48, 'TL69': 0.34, 'TL94': 0.15} | shed {'TL119': -0.56, 'TL129': 5.52, 'TL26': 12.78, 'TL63': -0.63, 'TL67': -1.12, 'TL68': 2.15, 'TL69': 2.67, 'TL94': -0.02}
+    thermal_capacity sinks {'TL119': -39.36, 'TL129': -16.23, 'TL26': 11.16, 'TL63': -9.4, 'TL67': -1.43, 'TL68': -5.6, 'TL69': -7.13, 'TL94': -2.26} | shed {'TL119': 6.98, 'TL129': 2.87, 'TL26': 13.14, 'TL63': -0.6, 'TL67': -0.5, 'TL68': 3.21, 'TL69': 3.97, 'TL94': 0.4}
+    load_at_step sinks {'TL119': -29.49, 'TL129': -11.38, 'TL26': 12.17, 'TL63': -7.21, 'TL67': -0.46, 'TL68': -4.15, 'TL69': -5.34, 'TL94': -1.94} | shed {'TL119': 5.26, 'TL129': 2.03, 'TL26': 12.96, 'TL63': -0.98, 'TL67': -0.66, 'TL68': 2.96, 'TL69': 3.66, 'TL94': 0.35}
+2030-09-13 09:00:00 shed 10.51 binding ['TL119', 'TL129', 'TL26', 'TL41', 'TL63', 'TL67', 'TL68', 'TL69']
+  T2 extra loss MW 3.022 {'slack': (inf, ['TL67']), 'thermal_capacity': (inf, ['TL63', 'TL67']), 'load_at_step': (inf, ['TL41', 'TL67']), 'wind_available_at_step': (inf, ['TL41', 'TL63', 'TL67'])}
+  T3 excess MW 205.0 {'TL29': {'MW': 154.1, 'bus0': 'p610 2', 'bus1': 'p630 2'}, 'TL31': {'MW': 50.9, 'bus0': 'p610 2', 'bus1': 'p630 5'}}
+    wind_available_at_step sinks {'TL119': -0.29, 'TL129': -6.44, 'TL26': 4.45, 'TL41': 2.24, 'TL63': -10.21, 'TL67': 0.42, 'TL68': 0.41, 'TL69': 0.46} | shed {'TL119': 0.31, 'TL129': 3.03, 'TL26': 13.09, 'TL41': -0.8, 'TL63': -0.57, 'TL67': -0.99, 'TL68': 2.17, 'TL69': 2.68}
+    thermal_capacity sinks {'TL119': -14.67, 'TL129': -6.1, 'TL26': 4.35, 'TL41': -0.17, 'TL63': -10.16, 'TL67': -0.64, 'TL68': -1.82, 'TL69': -2.33} | shed {'TL119': 6.98, 'TL129': 2.87, 'TL26': 13.14, 'TL41': 0.32, 'TL63': -0.6, 'TL67': -0.5, 'TL68': 3.21, 'TL69': 3.97}
+    load_at_step sinks {'TL119': -11.19, 'TL129': -4.2, 'TL26': 4.69, 'TL41': 0.73, 'TL63': -9.34, 'TL67': -0.3, 'TL68': -1.3, 'TL69': -1.68} | shed {'TL119': 5.36, 'TL129': 1.99, 'TL26': 12.98, 'TL41': -0.1, 'TL63': -0.98, 'TL67': -0.65, 'TL68': 2.97, 'TL69': 3.67}
