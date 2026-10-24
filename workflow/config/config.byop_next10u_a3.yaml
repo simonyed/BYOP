@@ -38,7 +38,10 @@ post_v16:
   firm_rule: CONSERVATIVE_FIRM_SCREENING     # NEXT-07 W4.2: dedicated RE + BESS earns no full-year firm IT credit (S2 developer, S2 public, S3, S3_mS2)
   reference:                                 # the accepted NEXT-10U S0 / S1_EARLIEST results (SHAs pinned after those solves)
     dir: results/BYOP/next10u_engineering_cost_v1/S0S1
-    sha256: {}
+    sha256:                                  # pinned 2026-10-24 after S0 #1 / S1_EARLIEST #1 PASSED (3 calls)
+      S0_RESULT.json: 8bc50378509337de90d9110813d869f0211cb14e60c4af9a0f461ad1747b63f2
+      S1_EARLIEST_RESULT.json: 44270331a07f5737578698ccbf49ea50a631af2e1eea9f8e8cdf641bc915bef4
+      S0_NO_HARM_REFERENCE.csv: b9290ec3cd5f71014c25b0c5f9d7e04245449e99cda43ac248bdb269a6e43626
   mainline_config: config/config.byop_ercot_mainline_engineering_cost_v1.yaml
   out_dir: results/BYOP/next10u_engineering_cost_v1/A3
   baseline:

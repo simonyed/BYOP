@@ -1,0 +1,6 @@
+attempt_id,stage,attempt,state,started_utc,finished_utc,status,termination,failure_class,pass,seconds,manifest_sha256,base_sha256,note
+S0#1,S0,1,ERROR,2026-10-24T10:58:55+00:00,2026-10-24T10:59:22+00:00,exception,,StopBeforeSolve,False,27.0,,f9aa87aea496f7c07ea4aca0439a703e7eaa90d08cb66c5bc6f149ea60eeefb6,
+S1_EARLIEST#1,S1_EARLIEST,1,ERROR,2026-10-24T10:59:50+00:00,2026-10-24T11:01:09+00:00,exception,,StopBeforeSolve,False,79.7,,f9aa87aea496f7c07ea4aca0439a703e7eaa90d08cb66c5bc6f149ea60eeefb6,
+S3#1,S3,1,ERROR,2026-10-24T11:02:11+00:00,2026-10-24T11:04:17+00:00,exception,,StopBeforeSolve,False,126.3,,f9aa87aea496f7c07ea4aca0439a703e7eaa90d08cb66c5bc6f149ea60eeefb6,
+S2_IT1#1,S2_IT1,1,ERROR,2026-10-24T11:04:17+00:00,2026-10-24T11:11:26+00:00,exception,,StopBeforeSolve,False,125.2,,f9aa87aea496f7c07ea4aca0439a703e7eaa90d08cb66c5bc6f149ea60eeefb6,
+S3_mS2#1,S3_mS2,1,ERROR,2026-10-24T11:12:26+00:00,2026-10-24T11:14:31+00:00,exception,,StopBeforeSolve,False,124.9,,f9aa87aea496f7c07ea4aca0439a703e7eaa90d08cb66c5bc6f149ea60eeefb6,

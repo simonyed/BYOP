@@ -1,0 +1,15 @@
+check,result,detail
+engineering_cost_v1 POI model on the v1.7L baseline,PASS,
+formal NEXT-10U S0 no-harm reference readable (pinned dir),PASS,results/BYOP/next10u_engineering_cost_v1/S0S1
+S3: ENG cumulative / disclosure rows present,PASS,
+S1 offer table built for every DC site-year,PASS,"(96, 96)"
+"ml_eng_ciac: one row per engineering site-year, positive right price where new POI equipment exists",PASS,"[{'site': 'p600 0', 'year': 2026, 'new_share': 0.0, 'right_price_USD_per_MW_yr': 0.0}, {'site': 'p600 0', 'year': 2027, 'new_share': 0.0, 'right_price_USD_per_MW_yr': 0.0}, {'site': 'p600 0', 'year': 2028, 'new_share': 0.0, 'right_price_USD_per_MW_yr': 0.0}, {'site': 'p600 0', 'year': 2029, 'new_share': 0.0, 'right_price_USD_per_MW_yr': 0.0}, {'site': 'p600 0', 'year': 2030, 'new_share': 0.0780031"
+ml_eng_ciac: security hold = (COD - q) + 2 y on the built candidates,PASS,
+S2 developer LP reaches the (intercepted) solve,PASS,StopBeforeSolve
+S2 developer LP: grid_purchase import right extendable and priced (CIAC + security) exactly where ml_eng_ciac is positive,PASS,"(96, 32, 32)"
+S2 developer LP: no POI / POI_upgrade links and no ENG rows (the developer receives an offer),PASS,
+"S2 public LP: ENG rows present, no grid_purchase (no CIAC in a public objective)",PASS,
+"S3_mS2: ENG rows present, no grid_purchase",PASS,
+every A3 stage routed through the A3 parent ledger in plan order,PASS,"['S0', 'S1_EARLIEST', 'S3', 'S2_IT1', 'S3_mS2']"
+"child rows: one per stage, of the planned kind, ERROR after the intercepted call",PASS,"[('S0_COST', 'ERROR'), ('S1_SPEED_HIERARCHY', 'ERROR'), ('S3_COST', 'ERROR'), ('S2_DEV_LEX', 'ERROR'), ('S2_PUBLIC', 'ERROR'), ('S3_MS2_COST', 'ERROR')]"
+0 solver executions (every call intercepted),PASS,"['refused', 'refused', 'refused', 'refused', 'refused', 'refused']"

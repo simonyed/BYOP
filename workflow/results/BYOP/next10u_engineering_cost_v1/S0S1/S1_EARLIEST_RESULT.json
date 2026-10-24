@@ -1,0 +1,131 @@
+{
+ "stage": "S1_EARLIEST",
+ "parent_attempt_id": "S1_EARLIEST#1",
+ "result": {
+  "tag": "S1_EARLIEST",
+  "status": "ok",
+  "termination": "optimal",
+  "objective": 33387743798.333927,
+  "seconds": 13673.8,
+  "n_vars": 2713357,
+  "n_cons": 7297322,
+  "integer_vars": 0,
+  "erm_dc_mode": "B",
+  "erm_poi_coeff_snapshot0": null
+ },
+ "acceptance": {
+  "PASS": true,
+  "checks": {
+   "status_ok": true,
+   "termination_optimal": true,
+   "no_integer_vars": true,
+   "balance_residual_ok": true,
+   "reserve_ok": true,
+   "reserve_soc_ok": true,
+   "no_harm_reference_sha_ok": true,
+   "no_harm_units_match": true,
+   "no_harm_snapshots_match": true,
+   "no_harm_ok": true,
+   "no_harm_row_built_from_reference": true,
+   "soc_segment_rows_present": true,
+   "expansion_pairs_equal": true,
+   "no_free_public_expansion": true,
+   "optimizer_calls_complete": true,
+   "lex_presolve_optimal": true,
+   "speed_levels_hold_in_cost_stage": true,
+   "no_harm_row_present": true
+  },
+  "values": {
+   "balance_residual_MW_max": 0.0004305940856283996,
+   "reserve_slack_MW_min": 1.5684918253100477e-07,
+   "reserve_soc_slack_MWh_min": -1.93072656444628e-06,
+   "existing_shed_MWh": 405.07103241564914,
+   "no_harm_max_excess_MW": 0.0010000001633576616,
+   "no_harm_row_vs_reference_max_abs": 4.434870248815059e-09,
+   "expansion_pair_max_abs_diff_MW": 0.0,
+   "free_public_links_built_MW": 0.0,
+   "optimizer_calls": [
+    {
+     "kind": "S1_SPEED_HIERARCHY",
+     "state": "DONE",
+     "status": "ok",
+     "termination": "optimal",
+     "n_objectives": "12"
+    },
+    {
+     "kind": "S1_COST",
+     "state": "DONE",
+     "status": "ok",
+     "termination": "optimal",
+     "n_objectives": "1"
+    }
+   ],
+   "lex_status": "OPTIMAL",
+   "gurobi_hierarchy_objectives": 12,
+   "speed_levels": [
+    {
+     "year": 2026,
+     "level": 30.750400000000003,
+     "served": 30.75040000197038,
+     "ok": true
+    },
+    {
+     "year": 2027,
+     "level": 330.8993750695801,
+     "served": 330.89937507220964,
+     "ok": true
+    },
+    {
+     "year": 2028,
+     "level": 456.9524148950927,
+     "served": 456.9524148977182,
+     "ok": true
+    },
+    {
+     "year": 2029,
+     "level": 457.4320701311106,
+     "served": 457.43207013373575,
+     "ok": true
+    },
+    {
+     "year": 2030,
+     "level": 2428.101604478944,
+     "served": 2428.101604493055,
+     "ok": true
+    },
+    {
+     "year": 2031,
+     "level": 3074.2393791901927,
+     "served": 3074.239391677207,
+     "ok": true
+    }
+   ]
+  }
+ },
+ "gate": {
+  "approved": true,
+  "reasons": [],
+  "head": "9134a198a9399a8810867177acce07aaa71f3e3c",
+  "approved_git_sha": "34a27ee6bb6e585c7b71c07571e133b48cd35807",
+  "stage": "S1_EARLIEST",
+  "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v17_lossy/baseline_2025_tamu_v17_lossy_prepared.nc",
+  "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_next10u_s0s1.yaml",
+  "ledger": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/next10u_engineering_cost_v1/S0S1/A2_SOLVE_LOG.csv"
+ },
+ "saved_solution": {
+  "storage_soc.csv.gz": "cd249eca585a55fa9bd20726d0bee29fee253bd11dd06ec408096d8695a60496",
+  "storage_p_store.csv.gz": "8383886c6a55eeab3adeaaf1c48d397cd432d03f69637d218e14f2e8c0469669",
+  "storage_p_dispatch.csv.gz": "82476d5cac2450d004b9f58af3f429ea9c64ffba4a8477e911f7bb7f7afc6985",
+  "line_p0.csv.gz": "081c46564b1a4ce64e1f73eb12724fceff65c72d1c7a6fc72595dced890a8ccd",
+  "link_p0.csv.gz": "163edd35ff2e36711466da1b58597d1d5589e4724e5a2eba42068232c8b3861a",
+  "generator_p.csv.gz": "833d545b3cd1282a41960d4f347e00c941698fe0bc9359ad389e074ce87eafd2",
+  "bus_marginal_price.csv.gz": "a2679f0ba0808c873ec0cfd338ef31987c2c74076572944c7ba7842c1d09fd0b",
+  "snapshot_weightings.csv.gz": "78199b482e5de1de00e5bcd696c3a52320c82a601529fd0a5ba634ab406c827f",
+  "SOC_SEGMENT_POSTSOLVE_AUDIT.csv": "d75f46c0626374217f1d345388d4266d8aea12fe8ecc462e19240cc124030049",
+  "reserve_by_snapshot.csv.gz": "3b1be46125d1031da4cafa87015dc4f0efe7f2f8b90da0504bb06b8a598159fb",
+  "thermal_online_cap.csv.gz": "33b199e94ea87fb3fc338b183896443ca25a1bcc63bffc7db0283182db0cecc0",
+  "thermal_reserve.csv.gz": "31c857d8de0381d4cd023fa06ab85e7fa9743db1aaff0d2273777bd1903a5329",
+  "thermal_available_cap.csv.gz": "f52330beeead5932656f0ff728e7d1cd280bf0df1b7976ff2e2a3eefc64ed19d",
+  "bess_reserve.csv.gz": "4f327ed745faac769d0f66507fdbd45df0d096e1892b6eef8067a558e2c110a8"
+ }
+}

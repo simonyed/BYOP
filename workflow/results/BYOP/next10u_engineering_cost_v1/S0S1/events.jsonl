@@ -1,0 +1,2 @@
+{"timestamp_utc": "2026-10-24T07:01:42.582565+00:00", "run_id": "rearch_NEXT10U_S0S1_20261024T062039Z", "case_id": "NEXT10U_S0S1", "event": "optimization_solved", "status": "SOLVER_OPTIMAL", "message": "obj 4.988636e+10; vars 2660074; int 0; 2446s", "scenario": "S0"}
+{"timestamp_utc": "2026-10-24T10:55:52.983150+00:00", "run_id": "rearch_NEXT10U_S0S1_20261024T062039Z", "case_id": "NEXT10U_S0S1", "event": "optimization_solved", "status": "SOLVER_OPTIMAL", "message": "obj 3.338774e+10; vars 2713357; int 0; 14050s", "scenario": "S1_EARLIEST"}

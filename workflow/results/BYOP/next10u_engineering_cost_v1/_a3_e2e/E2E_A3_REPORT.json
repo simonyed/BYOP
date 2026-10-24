@@ -1,0 +1,41 @@
+{
+ "work_package": "BYOP_NEXT_10U",
+ "step": "A3 end-to-end dry run (engineering_cost_v1)",
+ "solver_executions": 0,
+ "solver_calls_intercepted": 6,
+ "exceptions": {
+  "S0": "StopBeforeSolve",
+  "S1_EARLIEST": "StopBeforeSolve",
+  "S3": "StopBeforeSolve",
+  "S2_DEV": "StopBeforeSolve",
+  "S2_PUBLIC": "StopBeforeSolve",
+  "S3_mS2": "StopBeforeSolve"
+ },
+ "n_checks": 14,
+ "n_pass": 14,
+ "n_fail": 0,
+ "model_size": {
+  "S0": {
+   "nvars": 2660074,
+   "ncons": 7107710
+  },
+  "S1_EARLIEST": {
+   "nvars": 2713357,
+   "ncons": 7297813
+  },
+  "S3": {
+   "nvars": 3004985,
+   "ncons": 7959710
+  },
+  "S2": {
+   "nvars": 3004493,
+   "ncons": 7984793
+  },
+  "S3_mS2": {
+   "nvars": 3004985,
+   "ncons": 7959710
+  }
+ },
+ "gate": "INJECTED (approved) in a scratch ledger",
+ "seconds": 968.5
+}

@@ -1,0 +1,2490 @@
+{
+ "manifest": {
+  "run_id": "rearch_NEXT10U_S0S1_20261024T062039Z",
+  "case_id": "NEXT10U_S0S1",
+  "case_group": "NEXT10U_S0S1",
+  "gcfg": {
+   "regional_dc": "off",
+   "regional_dc_scenario": "mid",
+   "competing_voll": null,
+   "s0_calibrate": false,
+   "s0_cal_file": null,
+   "interrupt_cap": 0.005,
+   "no_harm": true,
+   "base_assets": "main",
+   "setting": "G-REAL",
+   "relax": [],
+   "case": "base",
+   "gas_case": "base",
+   "pclr_hours": 200.0,
+   "pclr_max_consec_h": 12.0,
+   "s2_iter": 3,
+   "competing": 0.0,
+   "line_lead": null,
+   "offer_tol": 0.001,
+   "clusters": "64s",
+   "s2_modes": [
+    "GO_F",
+    "GO_C",
+    "GF",
+    "IS"
+   ]
+  },
+  "cfg": {
+   "bg_traj": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/inputs/load/background_load_growth_states_AEO2023_reference.csv",
+   "tv_share_byop": 1.0,
+   "tv_share_public": 1.0,
+   "periods": "annual",
+   "start": 2026,
+   "end": 2031,
+   "decision_year": 2026,
+   "years": 1,
+   "cost_basis": "repaired",
+   "public_subsidy": "without",
+   "tariff": "energy",
+   "reuse": "on",
+   "reuse_case": "base",
+   "frac_cod": true,
+   "flex": false,
+   "poi_lead": 0,
+   "byop_case": "base",
+   "public_case": "base",
+   "byop_techs": [
+    "RICE",
+    "SOFC_NG",
+    "OCGT_aero",
+    "WIND",
+    "PV",
+    "BESS"
+   ],
+   "sample_weeks": 26,
+   "bg_growth": 0.0,
+   "line_exp": true,
+   "erm15": false,
+   "threads": 12,
+   "social_r": 0.02,
+   "private_wacc": 0.07,
+   "v": 2800000.0,
+   "v_private": null,
+   "dem_scale": 1.0,
+   "smoke": false,
+   "gas_by_year": {
+    "2026": 3.738,
+    "2027": 3.513,
+    "2028": 3.576,
+    "2029": 3.768,
+    "2030": 4.443,
+    "2031": 4.857
+   },
+   "tech_v13": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/inputs/tech/MAINLINE_V13_TECH_DEFAULTS.csv",
+   "firm_full_year": true,
+   "tech_version": "TECH_COMP_2"
+  },
+  "argv": [
+   "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/model/rearch_mech.py",
+   "--mainline",
+   "--post-v16",
+   "--config",
+   "config/config.byop_ercot_mainline_engineering_cost_v1.yaml",
+   "--base",
+   "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v17_lossy/baseline_2025_tamu_v17_lossy_prepared.nc",
+   "--start",
+   "2026",
+   "--end",
+   "2031",
+   "--sample-weeks",
+   "26",
+   "--threads",
+   "12",
+   "--a2-config",
+   "config/config.byop_next10u_s0s1.yaml",
+   "--case-id",
+   "NEXT10U_S0S1",
+   "--out",
+   "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/next10u_engineering_cost_v1/S0S1",
+   "--scenarios",
+   "S0",
+   "S1_EARLIEST"
+  ],
+  "checks": {
+   "true_LP": true,
+   "all_optimal": true,
+   "S1_zero_equals_S0": null,
+   "no_load_shed": false,
+   "served_le_requested": true,
+   "dc_energy_balance": true,
+   "S2_off_equals_S1": null,
+   "online_IT_monotone": true,
+   "no_harm_existing_customers": true,
+   "interruption_within_cap": true,
+   "lex_presolve_optimal": true,
+   "poi_flow_le_equipment": true,
+   "no_service_before_grid_or_byop": true,
+   "s2_consistent": true,
+   "s2_converged": null,
+   "private_stage_LP": null
+  },
+  "solves": {
+   "S0": {
+    "tag": "S0",
+    "status": "ok",
+    "termination": "optimal",
+    "objective": 49886358370.52666,
+    "seconds": 2378.6,
+    "n_vars": 2660074,
+    "n_cons": 7107166,
+    "integer_vars": 0,
+    "erm_dc_mode": "B",
+    "erm_poi_coeff_snapshot0": null,
+    "F2_load_shed_mc": {
+     "n": 68,
+     "min": 35685.0,
+     "max": 35685.0,
+     "n_inherited": 5,
+     "n_not_at_VOLL": 0
+    }
+   },
+   "S1_EARLIEST": {
+    "tag": "S1_EARLIEST",
+    "status": "ok",
+    "termination": "optimal",
+    "objective": 33387743798.333927,
+    "seconds": 13673.8,
+    "n_vars": 2713357,
+    "n_cons": 7297322,
+    "integer_vars": 0,
+    "erm_dc_mode": "B",
+    "erm_poi_coeff_snapshot0": null,
+    "lex": {
+     "tag": "S1_EARLIEST",
+     "status": 2,
+     "status_name": "OPTIMAL",
+     "optimal": true,
+     "seconds": 6783.3,
+     "levels": [
+      {
+       "stage": "A1",
+       "year": 2026,
+       "value": 30.750400000000003
+      },
+      {
+       "stage": "A2",
+       "year": 2026,
+       "value": 1.0
+      },
+      {
+       "stage": "A1",
+       "year": 2027,
+       "value": 330.8993750695801
+      },
+      {
+       "stage": "A2",
+       "year": 2027,
+       "value": 1.0
+      },
+      {
+       "stage": "A1",
+       "year": 2028,
+       "value": 456.9524148950927
+      },
+      {
+       "stage": "A2",
+       "year": 2028,
+       "value": 1.0
+      },
+      {
+       "stage": "A1",
+       "year": 2029,
+       "value": 457.4320701311106
+      },
+      {
+       "stage": "A2",
+       "year": 2029,
+       "value": 1.0
+      },
+      {
+       "stage": "A1",
+       "year": 2030,
+       "value": 2428.101604478944
+      },
+      {
+       "stage": "A2",
+       "year": 2030,
+       "value": 1.0
+      },
+      {
+       "stage": "A1",
+       "year": 2031,
+       "value": 3074.2393791901927
+      },
+      {
+       "stage": "A2",
+       "year": 2031,
+       "value": 1.0
+      }
+     ],
+     "eligibility": [
+      {
+       "year": 2026,
+       "R": {
+        "p600 0": 0.0,
+        "p610 2": 0.0,
+        "p630 10": 0.0,
+        "p630 2": 0.0,
+        "p630 3": 0.0,
+        "p630 4": 0.0,
+        "p630 5": 0.0,
+        "p630 6": 8.847,
+        "p630 8": 0.0,
+        "p630 9": 16.75,
+        "p640 1": 0.0,
+        "p650 0": 5.154,
+        "p650 7": 0.0,
+        "p670 0": 0.0,
+        "p670 1": 0.0,
+        "p670 4": 0.0
+       },
+       "eligible": [
+        "p630 6",
+        "p630 9",
+        "p650 0"
+       ]
+      },
+      {
+       "year": 2027,
+       "R": {
+        "p600 0": 87.084,
+        "p610 2": 0.0,
+        "p630 10": 0.0,
+        "p630 2": 0.0,
+        "p630 3": 0.0,
+        "p630 4": 0.0,
+        "p630 5": 0.0,
+        "p630 6": 51.841,
+        "p630 8": 0.0,
+        "p630 9": 131.888,
+        "p640 1": 0.0,
+        "p650 0": 60.087,
+        "p650 7": 0.0,
+        "p670 0": 0.0,
+        "p670 1": 0.0,
+        "p670 4": 0.0
+       },
+       "eligible": [
+        "p600 0",
+        "p630 6",
+        "p630 9",
+        "p650 0"
+       ]
+      },
+      {
+       "year": 2028,
+       "R": {
+        "p600 0": 132.0,
+        "p610 2": 0.0,
+        "p630 10": 0.0,
+        "p630 2": 0.0,
+        "p630 3": 0.0,
+        "p630 4": 0.0,
+        "p630 5": 0.0,
+        "p630 6": 69.187,
+        "p630 8": 0.0,
+        "p630 9": 195.596,
+        "p640 1": 0.0,
+        "p650 0": 60.17,
+        "p650 7": 0.0,
+        "p670 0": 0.0,
+        "p670 1": 0.0,
+        "p670 4": 0.0
+       },
+       "eligible": [
+        "p600 0",
+        "p630 6",
+        "p630 9",
+        "p650 0"
+       ]
+      },
+      {
+       "year": 2029,
+       "R": {
+        "p600 0": 132.0,
+        "p610 2": 0.0,
+        "p630 10": 0.0,
+        "p630 2": 0.0,
+        "p630 3": 0.0,
+        "p630 4": 0.0,
+        "p630 5": 0.0,
+        "p630 6": 69.289,
+        "p630 8": 0.0,
+        "p630 9": 195.884,
+        "p640 1": 0.0,
+        "p650 0": 60.259,
+        "p650 7": 0.0,
+        "p670 0": 0.0,
+        "p670 1": 0.0,
+        "p670 4": 0.0
+       },
+       "eligible": [
+        "p600 0",
+        "p630 6",
+        "p630 9",
+        "p650 0"
+       ]
+      },
+      {
+       "year": 2030,
+       "R": {
+        "p600 0": 187.897,
+        "p610 2": 798.475,
+        "p630 10": 85.789,
+        "p630 2": 107.273,
+        "p630 3": 193.926,
+        "p630 4": 214.882,
+        "p630 5": 21.859,
+        "p630 6": 82.361,
+        "p630 8": 83.431,
+        "p630 9": 220.441,
+        "p640 1": 69.795,
+        "p650 0": 275.168,
+        "p650 7": 16.06,
+        "p670 0": 16.793,
+        "p670 1": 32.786,
+        "p670 4": 21.164
+       },
+       "eligible": [
+        "p600 0",
+        "p610 2",
+        "p630 10",
+        "p630 2",
+        "p630 3",
+        "p630 4",
+        "p630 5",
+        "p630 6",
+        "p630 8",
+        "p630 9",
+        "p640 1",
+        "p650 0",
+        "p650 7",
+        "p670 0",
+        "p670 1",
+        "p670 4"
+       ]
+      },
+      {
+       "year": 2031,
+       "R": {
+        "p600 0": 236.924,
+        "p610 2": 812.791,
+        "p630 10": 130.004,
+        "p630 2": 127.991,
+        "p630 3": 287.994,
+        "p630 4": 435.002,
+        "p630 5": 23.404,
+        "p630 6": 85.42,
+        "p630 8": 122.139,
+        "p630 9": 227.143,
+        "p640 1": 100.979,
+        "p650 0": 356.755,
+        "p650 7": 22.706,
+        "p670 0": 24.248,
+        "p670 1": 49.847,
+        "p670 4": 30.894
+       },
+       "eligible": [
+        "p600 0",
+        "p610 2",
+        "p630 10",
+        "p630 2",
+        "p630 3",
+        "p630 4",
+        "p630 5",
+        "p630 6",
+        "p630 8",
+        "p630 9",
+        "p640 1",
+        "p650 0",
+        "p650 7",
+        "p670 0",
+        "p670 1",
+        "p670 4"
+       ]
+      }
+     ],
+     "solver_params": {
+      "Method": 2,
+      "Crossover": 0,
+      "BarConvTol": 1e-05,
+      "FeasibilityTol": 0.001,
+      "OptimalityTol": 0.0001,
+      "BarHomogeneous": 1,
+      "Threads": 12
+     },
+     "objective_values": [
+      {
+       "index": 0,
+       "name": "A1_2026",
+       "ObjNVal": 30.750400000000003
+      },
+      {
+       "index": 1,
+       "name": "A2_2026",
+       "ObjNVal": 1.0
+      },
+      {
+       "index": 2,
+       "name": "A1_2027",
+       "ObjNVal": 330.8993750695801
+      },
+      {
+       "index": 3,
+       "name": "A2_2027",
+       "ObjNVal": 1.0
+      },
+      {
+       "index": 4,
+       "name": "A1_2028",
+       "ObjNVal": 456.9524148950927
+      },
+      {
+       "index": 5,
+       "name": "A2_2028",
+       "ObjNVal": 1.0
+      },
+      {
+       "index": 6,
+       "name": "A1_2029",
+       "ObjNVal": 457.43207013111055
+      },
+      {
+       "index": 7,
+       "name": "A2_2029",
+       "ObjNVal": 1.0
+      },
+      {
+       "index": 8,
+       "name": "A1_2030",
+       "ObjNVal": 2428.101604478943
+      },
+      {
+       "index": 9,
+       "name": "A2_2030",
+       "ObjNVal": 1.0
+      },
+      {
+       "index": 10,
+       "name": "A1_2031",
+       "ObjNVal": 3074.239379190193
+      },
+      {
+       "index": 11,
+       "name": "A2_2031",
+       "ObjNVal": 1.0
+      }
+     ],
+     "violations": {
+      "ConstrVio": 2.4374458007514477e-10,
+      "BoundVio": 0.0,
+      "ObjVal": 30.750400000000003
+     },
+     "n_rows": 7297860,
+     "n_cols": 2713363,
+     "n_int": 0,
+     "n_objectives": 12
+    },
+    "lex_audit_all_satisfied": true,
+    "F2_load_shed_mc": {
+     "n": 68,
+     "min": 35685.0,
+     "max": 35685.0,
+     "n_inherited": 5,
+     "n_not_at_VOLL": 0
+    }
+   }
+  },
+  "s2_selection": null,
+  "scenarios_requested": [
+   "S0",
+   "S1_EARLIEST"
+  ],
+  "status": "CASE_CHECK_FAIL",
+  "sites": {
+   "p600 0": {
+    "site": "p600 0",
+    "name": "p600 0 aggregated POI (Coreweave Helios)",
+    "bus": "p600 0",
+    "substation": null,
+    "sub_dist_deg": 0.0,
+    "parent_rule": "RESEARCH_BUS (D12)",
+    "lat": 33.780639,
+    "lon": -100.867099,
+    "E0": 591.0,
+    "cod0": 2026.5,
+    "preapproved": true,
+    "E0rows": [
+     {
+      "MW": 200.0,
+      "cod": 2026.5,
+      "pre": true,
+      "site": "EQUIPMENT_PROXY_p600_0",
+      "evidence": "E0"
+     },
+     {
+      "MW": 391.0,
+      "cod": 2027.5,
+      "pre": true,
+      "site": "EQUIPMENT_E1_p600_0_HELIOS_I_PHASE_II",
+      "evidence": "E1"
+     }
+    ],
+    "U_max": 1039.0,
+    "U_lead": 3.1622,
+    "U_cost": 160000.0,
+    "proc": 2028.0,
+    "pclr": 81.6,
+    "pclr_off": 0.0,
+    "gas_level": "L2",
+    "mdq": 100000.0,
+    "lat_lead": 3.0,
+    "lat_cost": 100000.0,
+    "onsite_re": 272.1,
+    "profile": "MAINLINE_RESEARCH_COHORT",
+    "confidence": "C",
+    "poi_model": "engineering_cost_v1",
+    "eng": [
+     {
+      "cls": "RIGHTED",
+      "q": 2026,
+      "cod": 2029.1622,
+      "cap": 1039.0,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p600_0_RIGHTED_q2026"
+     },
+     {
+      "cls": "RIGHTED",
+      "q": 2027,
+      "cod": 2030.1622,
+      "cap": 1039.0,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p600_0_RIGHTED_q2027"
+     },
+     {
+      "cls": "RIGHTED",
+      "q": 2028,
+      "cod": 2031.1622,
+      "cap": 1039.0,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p600_0_RIGHTED_q2028"
+     }
+    ],
+    "eng_caps": {
+     "RIGHTED": 1039.0,
+     "NEW_REQUEST": 0.0,
+     "total": 1039.0
+    },
+    "eng_vis": {
+     "2026": 0.0,
+     "2027": 0.0,
+     "2028": 0.0,
+     "2029": 0.0,
+     "2030": 0.0,
+     "2031": 0.0
+    },
+    "approved_right_MW": 1630.0,
+    "county_fips": "48125",
+    "proc0": 2028.0
+   },
+   "p610 2": {
+    "site": "p610 2",
+    "name": "p610 2 aggregated POI (OpenAI Stargate Abilene; Crusoe Abilene Expansion)",
+    "bus": "p610 2",
+    "substation": null,
+    "sub_dist_deg": 0.0,
+    "parent_rule": "RESEARCH_BUS (D12)",
+    "lat": 32.494232,
+    "lon": -99.800907,
+    "E0": 0,
+    "cod0": null,
+    "preapproved": true,
+    "E0rows": [],
+    "U_max": 1031.7325800873048,
+    "U_lead": 3.1622,
+    "U_cost": 160000.0,
+    "proc": 2028.0,
+    "pclr": 280.0,
+    "pclr_off": 0.0,
+    "gas_level": "L1",
+    "mdq": 250000.0,
+    "lat_lead": 1.0,
+    "lat_cost": 30000.0,
+    "onsite_re": 933.4,
+    "profile": "MAINLINE_RESEARCH_COHORT",
+    "confidence": "C",
+    "poi_model": "engineering_cost_v1",
+    "eng": [
+     {
+      "cls": "RIGHTED",
+      "q": 2026,
+      "cod": 2029.1622,
+      "cap": 955.6,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p610_2_RIGHTED_q2026"
+     },
+     {
+      "cls": "RIGHTED",
+      "q": 2027,
+      "cod": 2030.1622,
+      "cap": 955.6,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p610_2_RIGHTED_q2027"
+     },
+     {
+      "cls": "RIGHTED",
+      "q": 2028,
+      "cod": 2031.1622,
+      "cap": 955.6,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p610_2_RIGHTED_q2028"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2026,
+      "cod": 2029.1622,
+      "cap": 76.1326,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p610_2_NEW_REQUEST_q2026"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2027,
+      "cod": 2030.1622,
+      "cap": 76.1326,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p610_2_NEW_REQUEST_q2027"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2028,
+      "cod": 2031.1622,
+      "cap": 76.1326,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p610_2_NEW_REQUEST_q2028"
+     }
+    ],
+    "eng_caps": {
+     "RIGHTED": 955.6,
+     "NEW_REQUEST": 76.13258008730475,
+     "total": 1031.7325800873048
+    },
+    "eng_vis": {
+     "2026": 918.3258,
+     "2027": 937.6758,
+     "2028": 937.6758,
+     "2029": 950.6145,
+     "2030": 987.499,
+     "2031": 1014.22
+    },
+    "approved_right_MW": 955.6,
+    "county_fips": "48441",
+    "proc0": 2028.0
+   },
+   "p630 10": {
+    "site": "p630 10",
+    "name": "p630 10 PNNL candidate research bus (no Epoch site; PNNL_ATLAS; PNNL_PROJECTED)",
+    "bus": "p630 10",
+    "substation": null,
+    "sub_dist_deg": 0.0,
+    "parent_rule": "RESEARCH_BUS (D12)",
+    "lat": 33.41814,
+    "lon": -97.39079,
+    "E0": 0,
+    "cod0": null,
+    "preapproved": true,
+    "E0rows": [],
+    "U_max": 304.3601271348354,
+    "U_lead": 3.1622,
+    "U_cost": 160000.0,
+    "proc": 2028.0,
+    "pclr": 56.6,
+    "pclr_off": 0.0,
+    "gas_level": "L2",
+    "mdq": 100000.0,
+    "lat_lead": 3.0,
+    "lat_cost": 100000.0,
+    "onsite_re": 188.6,
+    "profile": "MAINLINE_RESEARCH_COHORT",
+    "confidence": "D",
+    "poi_model": "engineering_cost_v1",
+    "eng": [
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2026,
+      "cod": 2029.1622,
+      "cap": 304.3601,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_10_NEW_REQUEST_q2026"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2027,
+      "cod": 2030.1622,
+      "cap": 304.3601,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_10_NEW_REQUEST_q2027"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2028,
+      "cod": 2031.1622,
+      "cap": 304.3601,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_10_NEW_REQUEST_q2028"
+     }
+    ],
+    "eng_caps": {
+     "RIGHTED": 0.0,
+     "NEW_REQUEST": 304.3601271348354,
+     "total": 304.3601271348354
+    },
+    "eng_vis": {
+     "2026": 98.6662,
+     "2027": 149.2963,
+     "2028": 189.0714,
+     "2029": 231.2485,
+     "2030": 264.9836,
+     "2031": 289.423
+    },
+    "approved_right_MW": 0.0,
+    "county_fips": "",
+    "proc0": 2028.0
+   },
+   "p630 2": {
+    "site": "p630 2",
+    "name": "p630 2 aggregated POI (Google Red Oak)",
+    "bus": "p630 2",
+    "substation": null,
+    "sub_dist_deg": 0.0,
+    "parent_rule": "RESEARCH_BUS (D12)",
+    "lat": 32.529976,
+    "lon": -96.799788,
+    "E0": 0,
+    "cod0": null,
+    "preapproved": true,
+    "E0rows": [],
+    "U_max": 211.6359296666602,
+    "U_lead": 3.1622,
+    "U_cost": 160000.0,
+    "proc": 2028.0,
+    "pclr": 49.5,
+    "pclr_off": 0.0,
+    "gas_level": "L2",
+    "mdq": 100000.0,
+    "lat_lead": 3.0,
+    "lat_cost": 100000.0,
+    "onsite_re": 164.9,
+    "profile": "MAINLINE_RESEARCH_COHORT",
+    "confidence": "C",
+    "poi_model": "engineering_cost_v1",
+    "eng": [
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2026,
+      "cod": 2029.1622,
+      "cap": 211.6359,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_2_NEW_REQUEST_q2026"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2027,
+      "cod": 2030.1622,
+      "cap": 211.6359,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_2_NEW_REQUEST_q2027"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2028,
+      "cod": 2031.1622,
+      "cap": 211.6359,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_2_NEW_REQUEST_q2028"
+     }
+    ],
+    "eng_caps": {
+     "RIGHTED": 0.0,
+     "NEW_REQUEST": 211.6359296666602,
+     "total": 211.6359296666602
+    },
+    "eng_vis": {
+     "2026": 123.3752,
+     "2027": 146.9854,
+     "2028": 165.5336,
+     "2029": 180.5453,
+     "2030": 194.8183,
+     "2031": 205.1583
+    },
+    "approved_right_MW": 0.0,
+    "county_fips": "48139",
+    "proc0": 2028.0
+   },
+   "p630 3": {
+    "site": "p630 3",
+    "name": "p630 3 PNNL candidate research bus (no Epoch site; PNNL_ATLAS; PNNL_PROJECTED)",
+    "bus": "p630 3",
+    "substation": null,
+    "sub_dist_deg": 0.0,
+    "parent_rule": "RESEARCH_BUS (D12)",
+    "lat": 33.082218,
+    "lon": -96.83937,
+    "E0": 0,
+    "cod0": null,
+    "preapproved": true,
+    "E0rows": [],
+    "U_max": 644.5899534220446,
+    "U_lead": 3.1622,
+    "U_cost": 160000.0,
+    "proc": 2028.0,
+    "pclr": 124.3,
+    "pclr_off": 0.0,
+    "gas_level": "L2",
+    "mdq": 100000.0,
+    "lat_lead": 3.0,
+    "lat_cost": 100000.0,
+    "onsite_re": 414.3,
+    "profile": "MAINLINE_RESEARCH_COHORT",
+    "confidence": "D",
+    "poi_model": "engineering_cost_v1",
+    "eng": [
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2026,
+      "cod": 2029.1622,
+      "cap": 644.59,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_3_NEW_REQUEST_q2026"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2027,
+      "cod": 2030.1622,
+      "cap": 644.59,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_3_NEW_REQUEST_q2027"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2028,
+      "cod": 2031.1622,
+      "cap": 644.59,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_3_NEW_REQUEST_q2028"
+     }
+    ],
+    "eng_caps": {
+     "RIGHTED": 0.0,
+     "NEW_REQUEST": 644.5899534220446,
+     "total": 644.5899534220446
+    },
+    "eng_vis": {
+     "2026": 223.0346,
+     "2027": 330.7318,
+     "2028": 415.339,
+     "2029": 499.1496,
+     "2030": 566.1849,
+     "2031": 614.7487
+    },
+    "approved_right_MW": 0.0,
+    "county_fips": "",
+    "proc0": 2028.0
+   },
+   "p630 4": {
+    "site": "p630 4",
+    "name": "p630 4 aggregated POI (OpenAI Stargate Shackelford)",
+    "bus": "p630 4",
+    "substation": null,
+    "sub_dist_deg": 0.0,
+    "parent_rule": "RESEARCH_BUS (D12)",
+    "lat": 32.54088,
+    "lon": -99.54544,
+    "E0": 0,
+    "cod0": null,
+    "preapproved": true,
+    "E0rows": [],
+    "U_max": 842.5299454117985,
+    "U_lead": 3.1622,
+    "U_cost": 160000.0,
+    "proc": 2028.0,
+    "pclr": 212.6,
+    "pclr_off": 0.0,
+    "gas_level": "L1",
+    "mdq": 250000.0,
+    "lat_lead": 1.0,
+    "lat_cost": 60000.0,
+    "onsite_re": 708.6,
+    "profile": "MAINLINE_RESEARCH_COHORT",
+    "confidence": "C",
+    "poi_model": "engineering_cost_v1",
+    "eng": [
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2026,
+      "cod": 2029.1622,
+      "cap": 842.5299,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_4_NEW_REQUEST_q2026"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2027,
+      "cod": 2030.1622,
+      "cap": 842.5299,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_4_NEW_REQUEST_q2027"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2028,
+      "cod": 2031.1622,
+      "cap": 842.5299,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_4_NEW_REQUEST_q2028"
+     }
+    ],
+    "eng_caps": {
+     "RIGHTED": 0.0,
+     "NEW_REQUEST": 842.5299454117985,
+     "total": 842.5299454117985
+    },
+    "eng_vis": {
+     "2026": 247.1363,
+     "2027": 499.5559,
+     "2028": 709.8838,
+     "2029": 762.4587,
+     "2030": 798.0318,
+     "2031": 823.8028
+    },
+    "approved_right_MW": 0.0,
+    "county_fips": "48417",
+    "proc0": 2028.0
+   },
+   "p630 5": {
+    "site": "p630 5",
+    "name": "p630 5 aggregated POI (Meta Temple)",
+    "bus": "p630 5",
+    "substation": null,
+    "sub_dist_deg": 0.0,
+    "parent_rule": "RESEARCH_BUS (D12)",
+    "lat": 31.127901,
+    "lon": -97.359168,
+    "E0": 0,
+    "cod0": null,
+    "preapproved": true,
+    "E0rows": [],
+    "U_max": 42.66130651269171,
+    "U_lead": 3.1622,
+    "U_cost": 160000.0,
+    "proc": 2028.0,
+    "pclr": 8.4,
+    "pclr_off": 0.0,
+    "gas_level": "L2",
+    "mdq": 100000.0,
+    "lat_lead": 3.0,
+    "lat_cost": 100000.0,
+    "onsite_re": 28.1,
+    "profile": "MAINLINE_RESEARCH_COHORT",
+    "confidence": "C",
+    "poi_model": "engineering_cost_v1",
+    "eng": [
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2026,
+      "cod": 2029.1622,
+      "cap": 42.6613,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_5_NEW_REQUEST_q2026"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2027,
+      "cod": 2030.1622,
+      "cap": 42.6613,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_5_NEW_REQUEST_q2027"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2028,
+      "cod": 2031.1622,
+      "cap": 42.6613,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_5_NEW_REQUEST_q2028"
+     }
+    ],
+    "eng_caps": {
+     "RIGHTED": 0.0,
+     "NEW_REQUEST": 42.66130651269171,
+     "total": 42.66130651269171
+    },
+    "eng_vis": {
+     "2026": 25.1405,
+     "2027": 26.8771,
+     "2028": 28.2414,
+     "2029": 31.1704,
+     "2030": 36.523,
+     "2031": 40.4008
+    },
+    "approved_right_MW": 0.0,
+    "county_fips": "48027",
+    "proc0": 2028.0
+   },
+   "p630 6": {
+    "site": "p630 6",
+    "name": "p630 6 aggregated POI (Google Midlothian)",
+    "bus": "p630 6",
+    "substation": null,
+    "sub_dist_deg": 0.0,
+    "parent_rule": "RESEARCH_BUS (D12)",
+    "lat": 32.44757,
+    "lon": -97.055726,
+    "E0": 79.8,
+    "cod0": 2026.0,
+    "preapproved": true,
+    "E0rows": [
+     {
+      "MW": 79.8,
+      "cod": 2026.0,
+      "pre": true,
+      "site": "EQUIPMENT_PROXY_p630_6",
+      "evidence": "E0"
+     }
+    ],
+    "U_max": 32.9029988780956,
+    "U_lead": 3.1622,
+    "U_cost": 160000.0,
+    "proc": 2028.0,
+    "pclr": 30.1,
+    "pclr_off": 0.0,
+    "gas_level": "L2",
+    "mdq": 100000.0,
+    "lat_lead": 3.0,
+    "lat_cost": 100000.0,
+    "onsite_re": 100.2,
+    "profile": "MAINLINE_RESEARCH_COHORT",
+    "confidence": "C",
+    "poi_model": "engineering_cost_v1",
+    "eng": [
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2026,
+      "cod": 2029.1622,
+      "cap": 32.903,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_6_NEW_REQUEST_q2026"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2027,
+      "cod": 2030.1622,
+      "cap": 32.903,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_6_NEW_REQUEST_q2027"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2028,
+      "cod": 2031.1622,
+      "cap": 32.903,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_6_NEW_REQUEST_q2028"
+     }
+    ],
+    "eng_caps": {
+     "RIGHTED": 0.0,
+     "NEW_REQUEST": 32.9029988780956,
+     "total": 32.9029988780956
+    },
+    "eng_vis": {
+     "2026": 14.9236,
+     "2027": 18.2964,
+     "2028": 20.9462,
+     "2029": 23.8304,
+     "2030": 27.9782,
+     "2031": 30.983
+    },
+    "approved_right_MW": 79.8,
+    "county_fips": "48139",
+    "proc0": 2028.0
+   },
+   "p630 8": {
+    "site": "p630 8",
+    "name": "p630 8 PNNL candidate research bus (no Epoch site; PNNL_ATLAS; PNNL_PROJECTED)",
+    "bus": "p630 8",
+    "substation": null,
+    "sub_dist_deg": 0.0,
+    "parent_rule": "RESEARCH_BUS (D12)",
+    "lat": 32.76024375,
+    "lon": -97.0245625,
+    "E0": 0,
+    "cod0": null,
+    "preapproved": true,
+    "E0rows": [],
+    "U_max": 264.30891413281586,
+    "U_lead": 3.1622,
+    "U_cost": 160000.0,
+    "proc": 2028.0,
+    "pclr": 52.4,
+    "pclr_off": 0.0,
+    "gas_level": "L2",
+    "mdq": 100000.0,
+    "lat_lead": 3.0,
+    "lat_cost": 100000.0,
+    "onsite_re": 174.6,
+    "profile": "MAINLINE_RESEARCH_COHORT",
+    "confidence": "D",
+    "poi_model": "engineering_cost_v1",
+    "eng": [
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2026,
+      "cod": 2029.1622,
+      "cap": 264.3089,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_8_NEW_REQUEST_q2026"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2027,
+      "cod": 2030.1622,
+      "cap": 264.3089,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_8_NEW_REQUEST_q2027"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2028,
+      "cod": 2031.1622,
+      "cap": 264.3089,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_8_NEW_REQUEST_q2028"
+     }
+    ],
+    "eng_caps": {
+     "RIGHTED": 0.0,
+     "NEW_REQUEST": 264.30891413281586,
+     "total": 264.30891413281586
+    },
+    "eng_vis": {
+     "2026": 95.9543,
+     "2027": 140.265,
+     "2028": 175.0756,
+     "2029": 207.678,
+     "2030": 233.7548,
+     "2031": 252.6462
+    },
+    "approved_right_MW": 0.0,
+    "county_fips": "",
+    "proc0": 2028.0
+   },
+   "p630 9": {
+    "site": "p630 9",
+    "name": "p630 9 aggregated POI (CoreWeave Denton TX)",
+    "bus": "p630 9",
+    "substation": null,
+    "sub_dist_deg": 0.0,
+    "parent_rule": "RESEARCH_BUS (D12)",
+    "lat": 33.219574,
+    "lon": -97.19708,
+    "E0": 225.6,
+    "cod0": 2026.0,
+    "preapproved": true,
+    "E0rows": [
+     {
+      "MW": 225.6,
+      "cod": 2026.0,
+      "pre": true,
+      "site": "EQUIPMENT_PROXY_p630_9",
+      "evidence": "E0"
+     }
+    ],
+    "U_max": 69.0037385773725,
+    "U_lead": 3.1622,
+    "U_cost": 160000.0,
+    "proc": 2028.0,
+    "pclr": 79.4,
+    "pclr_off": 0.0,
+    "gas_level": "L2",
+    "mdq": 100000.0,
+    "lat_lead": 3.0,
+    "lat_cost": 100000.0,
+    "onsite_re": 264.8,
+    "profile": "MAINLINE_RESEARCH_COHORT",
+    "confidence": "C",
+    "poi_model": "engineering_cost_v1",
+    "eng": [
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2026,
+      "cod": 2029.1622,
+      "cap": 69.0037,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_9_NEW_REQUEST_q2026"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2027,
+      "cod": 2030.1622,
+      "cap": 69.0037,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_9_NEW_REQUEST_q2027"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2028,
+      "cod": 2031.1622,
+      "cap": 69.0037,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p630_9_NEW_REQUEST_q2028"
+     }
+    ],
+    "eng_caps": {
+     "RIGHTED": 0.0,
+     "NEW_REQUEST": 69.0037385773725,
+     "total": 69.0037385773725
+    },
+    "eng_vis": {
+     "2026": 27.929,
+     "2027": 35.2507,
+     "2028": 40.5502,
+     "2029": 46.9385,
+     "2030": 57.0011,
+     "2031": 64.2908
+    },
+    "approved_right_MW": 225.6,
+    "county_fips": "48121",
+    "proc0": 2028.0
+   },
+   "p640 1": {
+    "site": "p640 1",
+    "name": "p640 1 PNNL candidate research bus (no Epoch site; PNNL_ATLAS; PNNL_PROJECTED)",
+    "bus": "p640 1",
+    "substation": null,
+    "sub_dist_deg": 0.0,
+    "parent_rule": "RESEARCH_BUS (D12)",
+    "lat": 30.252684091,
+    "lon": -97.804122727,
+    "E0": 0,
+    "cod0": null,
+    "preapproved": true,
+    "E0rows": [],
+    "U_max": 212.26699533686,
+    "U_lead": 3.1622,
+    "U_cost": 160000.0,
+    "proc": 2028.0,
+    "pclr": 43.1,
+    "pclr_off": 0.0,
+    "gas_level": "L2",
+    "mdq": 100000.0,
+    "lat_lead": 3.0,
+    "lat_cost": 100000.0,
+    "onsite_re": 143.6,
+    "profile": "MAINLINE_RESEARCH_COHORT",
+    "confidence": "D",
+    "poi_model": "engineering_cost_v1",
+    "eng": [
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2026,
+      "cod": 2029.1622,
+      "cap": 212.267,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p640_1_NEW_REQUEST_q2026"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2027,
+      "cod": 2030.1622,
+      "cap": 212.267,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p640_1_NEW_REQUEST_q2027"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2028,
+      "cod": 2031.1622,
+      "cap": 212.267,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p640_1_NEW_REQUEST_q2028"
+     }
+    ],
+    "eng_caps": {
+     "RIGHTED": 0.0,
+     "NEW_REQUEST": 212.26699533686,
+     "total": 212.26699533686
+    },
+    "eng_vis": {
+     "2026": 80.2708,
+     "2027": 115.9639,
+     "2028": 144.0046,
+     "2029": 168.9301,
+     "2030": 188.8666,
+     "2031": 203.3096
+    },
+    "approved_right_MW": 0.0,
+    "county_fips": "",
+    "proc0": 2028.0
+   },
+   "p650 0": {
+    "site": "p650 0",
+    "name": "p650 0 aggregated POI (Vantage TX1; Microsoft SAT40; Microsoft SAT14)",
+    "bus": "p650 0",
+    "substation": null,
+    "sub_dist_deg": 0.0,
+    "parent_rule": "RESEARCH_BUS (D12)",
+    "lat": 29.435516667,
+    "lon": -98.752879,
+    "E0": 69.4,
+    "cod0": 2026.0,
+    "preapproved": true,
+    "E0rows": [
+     {
+      "MW": 69.4,
+      "cod": 2026.0,
+      "pre": true,
+      "site": "EQUIPMENT_PROXY_p650_0",
+      "evidence": "E0"
+     }
+    ],
+    "U_max": 610.2234897159134,
+    "U_lead": 3.1622,
+    "U_cost": 160000.0,
+    "proc": 2028.0,
+    "pclr": 143.8,
+    "pclr_off": 0.0,
+    "gas_level": "L2",
+    "mdq": 100000.0,
+    "lat_lead": 3.0,
+    "lat_cost": 100000.0,
+    "onsite_re": 479.3,
+    "profile": "MAINLINE_RESEARCH_COHORT",
+    "confidence": "C",
+    "poi_model": "engineering_cost_v1",
+    "eng": [
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2026,
+      "cod": 2029.1622,
+      "cap": 610.2235,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p650_0_NEW_REQUEST_q2026"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2027,
+      "cod": 2030.1622,
+      "cap": 610.2235,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p650_0_NEW_REQUEST_q2027"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2028,
+      "cod": 2031.1622,
+      "cap": 610.2235,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p650_0_NEW_REQUEST_q2028"
+     }
+    ],
+    "eng_caps": {
+     "RIGHTED": 0.0,
+     "NEW_REQUEST": 610.2234897159134,
+     "total": 610.2234897159134
+    },
+    "eng_vis": {
+     "2026": 247.0712,
+     "2027": 340.2977,
+     "2028": 411.365,
+     "2029": 481.4045,
+     "2030": 540.6709,
+     "2031": 583.6065
+    },
+    "approved_right_MW": 69.4,
+    "county_fips": "48029",
+    "proc0": 2028.0
+   },
+   "p650 7": {
+    "site": "p650 7",
+    "name": "p650 7 PNNL candidate research bus (no Epoch site; PNNL_ATLAS; PNNL_PROJECTED)",
+    "bus": "p650 7",
+    "substation": null,
+    "sub_dist_deg": 0.0,
+    "parent_rule": "RESEARCH_BUS (D12)",
+    "lat": 29.446785714,
+    "lon": -98.469,
+    "E0": 0,
+    "cod0": null,
+    "preapproved": true,
+    "E0rows": [],
+    "U_max": 44.92942990059782,
+    "U_lead": 3.1622,
+    "U_cost": 160000.0,
+    "proc": 2028.0,
+    "pclr": 9.6,
+    "pclr_off": 0.0,
+    "gas_level": "L2",
+    "mdq": 100000.0,
+    "lat_lead": 3.0,
+    "lat_cost": 100000.0,
+    "onsite_re": 32.0,
+    "profile": "MAINLINE_RESEARCH_COHORT",
+    "confidence": "D",
+    "poi_model": "engineering_cost_v1",
+    "eng": [
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2026,
+      "cod": 2029.1622,
+      "cap": 44.9294,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p650_7_NEW_REQUEST_q2026"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2027,
+      "cod": 2030.1622,
+      "cap": 44.9294,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p650_7_NEW_REQUEST_q2027"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2028,
+      "cod": 2031.1622,
+      "cap": 44.9294,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p650_7_NEW_REQUEST_q2028"
+     }
+    ],
+    "eng_caps": {
+     "RIGHTED": 0.0,
+     "NEW_REQUEST": 44.92942990059782,
+     "total": 44.92942990059782
+    },
+    "eng_vis": {
+     "2026": 18.4707,
+     "2027": 26.0751,
+     "2028": 32.0492,
+     "2029": 36.7451,
+     "2030": 40.5011,
+     "2031": 43.2221
+    },
+    "approved_right_MW": 0.0,
+    "county_fips": "",
+    "proc0": 2028.0
+   },
+   "p670 0": {
+    "site": "p670 0",
+    "name": "p670 0 PNNL candidate research bus (no Epoch site; PNNL_ATLAS; PNNL_PROJECTED)",
+    "bus": "p670 0",
+    "substation": null,
+    "sub_dist_deg": 0.0,
+    "parent_rule": "RESEARCH_BUS (D12)",
+    "lat": 30.077628571,
+    "lon": -95.526371429,
+    "E0": 0,
+    "cod0": null,
+    "preapproved": true,
+    "E0rows": [],
+    "U_max": 50.716271248320815,
+    "U_lead": 3.1622,
+    "U_cost": 160000.0,
+    "proc": 2028.0,
+    "pclr": 10.3,
+    "pclr_off": 0.0,
+    "gas_level": "L2",
+    "mdq": 100000.0,
+    "lat_lead": 3.0,
+    "lat_cost": 100000.0,
+    "onsite_re": 34.5,
+    "profile": "MAINLINE_RESEARCH_COHORT",
+    "confidence": "D",
+    "poi_model": "engineering_cost_v1",
+    "eng": [
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2026,
+      "cod": 2029.1622,
+      "cap": 50.7163,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p670_0_NEW_REQUEST_q2026"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2027,
+      "cod": 2030.1622,
+      "cap": 50.7163,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p670_0_NEW_REQUEST_q2027"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2028,
+      "cod": 2031.1622,
+      "cap": 50.7163,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p670_0_NEW_REQUEST_q2028"
+     }
+    ],
+    "eng_caps": {
+     "RIGHTED": 0.0,
+     "NEW_REQUEST": 50.716271248320815,
+     "total": 50.716271248320815
+    },
+    "eng_vis": {
+     "2026": 19.3136,
+     "2027": 27.8461,
+     "2028": 34.5493,
+     "2029": 40.4519,
+     "2030": 45.173,
+     "2031": 48.5933
+    },
+    "approved_right_MW": 0.0,
+    "county_fips": "",
+    "proc0": 2028.0
+   },
+   "p670 1": {
+    "site": "p670 1",
+    "name": "p670 1 PNNL candidate research bus (no Epoch site; PNNL_PROJECTED)",
+    "bus": "p670 1",
+    "substation": null,
+    "sub_dist_deg": 0.0,
+    "parent_rule": "RESEARCH_BUS (D12)",
+    "lat": 29.542091176,
+    "lon": -95.026032353,
+    "E0": 0,
+    "cod0": null,
+    "preapproved": true,
+    "E0rows": [],
+    "U_max": 117.5238793375079,
+    "U_lead": 3.1622,
+    "U_cost": 160000.0,
+    "proc": 2028.0,
+    "pclr": 21.7,
+    "pclr_off": 0.0,
+    "gas_level": "L2",
+    "mdq": 100000.0,
+    "lat_lead": 3.0,
+    "lat_cost": 100000.0,
+    "onsite_re": 72.4,
+    "profile": "MAINLINE_RESEARCH_COHORT",
+    "confidence": "D",
+    "poi_model": "engineering_cost_v1",
+    "eng": [
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2026,
+      "cod": 2029.1622,
+      "cap": 117.5239,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p670_1_NEW_REQUEST_q2026"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2027,
+      "cod": 2030.1622,
+      "cap": 117.5239,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p670_1_NEW_REQUEST_q2027"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2028,
+      "cod": 2031.1622,
+      "cap": 117.5239,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p670_1_NEW_REQUEST_q2028"
+     }
+    ],
+    "eng_caps": {
+     "RIGHTED": 0.0,
+     "NEW_REQUEST": 117.5238793375079,
+     "total": 117.5238793375079
+    },
+    "eng_vis": {
+     "2026": 37.7069,
+     "2027": 57.2439,
+     "2028": 72.5921,
+     "2029": 89.0316,
+     "2030": 102.1805,
+     "2031": 111.7063
+    },
+    "approved_right_MW": 0.0,
+    "county_fips": "",
+    "proc0": 2028.0
+   },
+   "p670 4": {
+    "site": "p670 4",
+    "name": "p670 4 PNNL candidate research bus (no Epoch site; PNNL_ATLAS; PNNL_PROJECTED)",
+    "bus": "p670 4",
+    "substation": null,
+    "sub_dist_deg": 0.0,
+    "parent_rule": "RESEARCH_BUS (D12)",
+    "lat": 29.6231,
+    "lon": -95.638996,
+    "E0": 0,
+    "cod0": null,
+    "preapproved": true,
+    "E0rows": [],
+    "U_max": 66.38612182441891,
+    "U_lead": 3.1622,
+    "U_cost": 160000.0,
+    "proc": 2028.0,
+    "pclr": 13.2,
+    "pclr_off": 0.0,
+    "gas_level": "L2",
+    "mdq": 100000.0,
+    "lat_lead": 3.0,
+    "lat_cost": 100000.0,
+    "onsite_re": 44.1,
+    "profile": "MAINLINE_RESEARCH_COHORT",
+    "confidence": "D",
+    "poi_model": "engineering_cost_v1",
+    "eng": [
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2026,
+      "cod": 2029.1622,
+      "cap": 66.3861,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p670_4_NEW_REQUEST_q2026"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2027,
+      "cod": 2030.1622,
+      "cap": 66.3861,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p670_4_NEW_REQUEST_q2027"
+     },
+     {
+      "cls": "NEW_REQUEST",
+      "q": 2028,
+      "cod": 2031.1622,
+      "cap": 66.3861,
+      "cost": 160000.0,
+      "life": 40,
+      "cid": "ENG_p670_4_NEW_REQUEST_q2028"
+     }
+    ],
+    "eng_caps": {
+     "RIGHTED": 0.0,
+     "NEW_REQUEST": 66.38612182441891,
+     "total": 66.38612182441891
+    },
+    "eng_vis": {
+     "2026": 24.3411,
+     "2027": 35.4786,
+     "2028": 44.2283,
+     "2029": 52.3228,
+     "2030": 58.7971,
+     "2031": 63.4875
+    },
+    "approved_right_MW": 0.0,
+    "county_fips": "",
+    "proc0": 2028.0
+   }
+  },
+  "erm_cal": null,
+  "baseline": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v17_lossy/baseline_2025_tamu_v17_lossy_prepared.nc",
+  "baseline_sha256": "f9aa87aea496f7c07ea4aca0439a703e7eaa90d08cb66c5bc6f149ea60eeefb6",
+  "inputs_sha256": {
+   "POI_REGISTER.csv": "d2f37909d559e16526ca47fb0794ecbe0cc1ae4c4ff0913afadb32fbef70a1f3",
+   "POI_REQUESTS.csv": "737d808551f9220ef0dc5ff4ff1fbffef9731659829a619c2737568688a692dd",
+   "GRID_PROJECTS.csv": "bb05fdc16768852436e792186067b88e931f9055fd35674b5394e5ba13c5e5d8",
+   "TECH-01_technologies_DRAFT.csv": "127e5a97b5177eb4242d4df33c516ddf09d480a4d5d1da4523dd75605ab99eea",
+   "state_pue_2022_2050.csv": "2a2c2453b3dfdfbea09e955e7b510d1f47fb5ef36d685966a709b1f9ef4cfa74",
+   "yearly_task_parameters_2022_2050.csv": "8a0bdeb02bd32efcbc1d1c6b759e56336d9c8db7be857db9920c2a9a89c1c9d4",
+   "ENG_POI_SITES.csv": "892c1df40c78de0eaf4f7c9c5936099887dd1484162225e0c0c0dfa0a4c7c57f",
+   "ENG_POI_EQUIPMENT_KNOWN.csv": "5a1e29abeedebc8271383add03fd89c69805387768b035e5e690da0c0f371052",
+   "GREAL_R_ASSET_POOL.csv": "62d4979eaee408b7beda9c15bdad9a0fbd7518c814a9beeac82cc1214a270340",
+   "MAINLINE_RESEARCH_COHORTS_TAMU64_GEO_DYNAMIC_V1.csv": "0338df13e931081ab5f5d36a46b9eb8c23fee8c87ec7e97472b325952c3cac41",
+   "MAINLINE_INHERITED_RAMP_2025.csv": "15c3501df57835381346ef8eff42b3b2201dbd32393ca46161852076e2682a4e",
+   "ERCOT_WIND_SOLAR_POTENTIAL.csv": "aba7a41e4fbd0a51e22f41231c1d054bf3e260415bd282dd470c83e87f763b56",
+   "MAINLINE_V13_TECH_DEFAULTS.csv": "b2fb58e38fcb61f4ab9d3868d195a9de5c9d3c0c2171bdaff09c3465cf691752",
+   "MAINLINE_V13_GAS_PRICES_2026_2031.csv": "d57aafea4808de4789da0c4ff27c4bf3c564ced64927efe050f6d55e839efa9e",
+   "ENG_POI_CANDIDATES.csv": "b1e37ede395a542563b673776daa8a62b6054865ef1b9d488671b028290fa65f",
+   "ENG_POI_VISIBILITY.csv": "92e2e7d7a8d816c5505309abc1f99526202321875179e9832649d70ab074397c",
+   "ENG_POI_LEAD_COMPONENTS.csv": "5a76f5b935fbde6d5a58841b437a0c3f1356efdca5b2826556ad8e69edd0c320",
+   "ENG_POI_SOURCE_REGISTER.csv": "ec6d9a9a78d641d6eeddbe4f4cb6051a0e31963d5d7f2e13f0ab85862987f925"
+  },
+  "mainline": {
+   "gate": {
+    "approved": true,
+    "reasons": [],
+    "head": "9134a198a9399a8810867177acce07aaa71f3e3c",
+    "approved_git_sha": "34a27ee6bb6e585c7b71c07571e133b48cd35807",
+    "stage": "S0",
+    "base": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/baseline_2025_tamu_v17_lossy/baseline_2025_tamu_v17_lossy_prepared.nc",
+    "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_next10u_s0s1.yaml",
+    "ledger": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/next10u_engineering_cost_v1/S0S1/A2_SOLVE_LOG.csv",
+    "diagnostic_reserve_MW": null,
+    "diagnostic": null
+   },
+   "siting": {
+    "variant": "dynamic_pnnl_v1",
+    "research_cohorts": "byop/inputs/dc/MAINLINE_RESEARCH_COHORTS_TAMU64_GEO_DYNAMIC_V1.csv",
+    "poi": "byop/inputs/poi_eng/ENG_POI_SITES.csv",
+    "poi_model": "engineering_cost_v1",
+    "research_cohorts_sha256": "0338df13e931081ab5f5d36a46b9eb8c23fee8c87ec7e97472b325952c3cac41",
+    "poi_sha256": "892c1df40c78de0eaf4f7c9c5936099887dd1484162225e0c0c0dfa0a4c7c57f",
+    "poi_equipment": "byop/inputs/poi_eng/ENG_POI_EQUIPMENT_KNOWN.csv",
+    "poi_equipment_sha256": "5a1e29abeedebc8271383add03fd89c69805387768b035e5e690da0c0f371052",
+    "engineering_inputs_sha256": {
+     "byop/inputs/poi_eng/ENG_POI_CANDIDATES.csv": "b1e37ede395a542563b673776daa8a62b6054865ef1b9d488671b028290fa65f",
+     "byop/inputs/poi_eng/ENG_POI_VISIBILITY.csv": "92e2e7d7a8d816c5505309abc1f99526202321875179e9832649d70ab074397c",
+     "byop/inputs/poi_eng/ENG_POI_LEAD_COMPONENTS.csv": "5a76f5b935fbde6d5a58841b437a0c3f1356efdca5b2826556ad8e69edd0c320",
+     "byop/inputs/poi_eng/ENG_POI_SOURCE_REGISTER.csv": "ec6d9a9a78d641d6eeddbe4f4cb6051a0e31963d5d7f2e13f0ab85862987f925"
+    }
+   },
+   "research_buses": [
+    "p600 0",
+    "p610 2",
+    "p630 10",
+    "p630 2",
+    "p630 3",
+    "p630 4",
+    "p630 5",
+    "p630 6",
+    "p630 8",
+    "p630 9",
+    "p640 1",
+    "p650 0",
+    "p650 7",
+    "p670 0",
+    "p670 1",
+    "p670 4"
+   ],
+   "model_years": [
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031
+   ],
+   "byop_re_profile_missing": [],
+   "stress": {
+    "days": [
+     {
+      "kind": "LOW_WEST_WIND_HIGH_LOAD",
+      "day": "2030-09-15",
+      "mean_load_MW": 63239.71282116667,
+      "mean_west_wind_MW": 950.3244609442138,
+      "max_net_load_MW": 65158.20282384675
+     },
+     {
+      "kind": "MAX_NET_LOAD",
+      "day": "2030-07-31",
+      "mean_load_MW": 68550.57724258333,
+      "mean_west_wind_MW": 2871.7953701675624,
+      "max_net_load_MW": 70034.39255869575
+     },
+     {
+      "kind": "WINTER_PEAK",
+      "day": "2030-02-19",
+      "mean_load_MW": 72103.14446870833,
+      "mean_west_wind_MW": 10326.103225332596,
+      "max_net_load_MW": 65200.97673388451
+     }
+    ],
+    "snapshots": 24,
+    "added_outside_sample": 24,
+    "weight_total_h": 8760.0
+   },
+   "inherited_ramp": {
+    "file": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/byop/inputs/dc/MAINLINE_INHERITED_RAMP_2025.csv",
+    "sha256": "15c3501df57835381346ef8eff42b3b2201dbd32393ca46161852076e2682a4e",
+    "buses": [
+     {
+      "bus": "p610 2",
+      "IT_MW": 180.77,
+      "facility_MW_peak": 209.09665900000002
+     },
+     {
+      "bus": "p630 2",
+      "IT_MW": 49.79,
+      "facility_MW_peak": 57.592093000000006
+     },
+     {
+      "bus": "p630 5",
+      "IT_MW": 142.42,
+      "facility_MW_peak": 164.737214
+     },
+     {
+      "bus": "p630 9",
+      "IT_MW": 62.13,
+      "facility_MW_peak": 71.86577100000001
+     },
+     {
+      "bus": "p650 0",
+      "IT_MW": 25.62,
+      "facility_MW_peak": 29.634654
+     }
+    ],
+    "IT_MW": 460.73
+   },
+   "gas": {
+    "n": 215,
+    "by_year": {
+     "2026": 3.738,
+     "2027": 3.513,
+     "2028": 3.576,
+     "2029": 3.768,
+     "2030": 4.443,
+     "2031": 4.857
+    },
+    "flat_reference": 3.19
+   },
+   "voll": {
+    "F2_mainline_VOLL_USD_MWh": 35685.0,
+    "VOLL_source": "Brattle 2024, Value of Lost Load Study for the ERCOT Region, Table 17",
+    "VOLL_source_year": 2024,
+    "VOLL_duration_basis": "1h ERCOT-wide outage; planning proxy for 3-h snapshots",
+    "SHED_COST_used": 35685.0
+   },
+   "gurobi_lp_options": {
+    "Method": 2,
+    "Crossover": 0,
+    "BarConvTol": 1e-05,
+    "FeasibilityTol": 0.001,
+    "OptimalityTol": 0.0001,
+    "BarHomogeneous": 1
+   }
+  },
+  "code_sha256": {
+   "rearch_mech.py": "3f0d9c6e3d14e516b8b246d5d51d4489c7b6fa89cb063f050eceb78413afc8ac",
+   "v240_mech.py": "728346fbeb5d651ab9d47c6b7f8419a3b0aa7e6c1aaca55d244f183ab3c6b925",
+   "v250_mech.py": "60e98be4b883d843c7eca63fd109b982c8d3bb47785cac11a8f030578a0360a1",
+   "wp2_ercot_s0_s1.py": "099fcb43dd0f124c6f13a4aab3c80813307ff790c5506f25615db1fb009b5339",
+   "wp2_ercot_s1_real.py": "df5765cfc61016c78088178e42172a4ac828f5cff332d9fc6b254cc8173e08e8"
+  },
+  "code_sha256_basis": "hashed at process start",
+  "interrupt_price": {
+   "p600 0|2026": {
+    "e_unit_MWh_per_MW_IT": 4953.4561100310575,
+    "c_interrupt_USD_MWh": 565.2618975122896,
+    "v": 2800000.0
+   },
+   "p600 0|2027": {
+    "e_unit_MWh_per_MW_IT": 4860.360465946414,
+    "c_interrupt_USD_MWh": 576.0889587547869,
+    "v": 2800000.0
+   },
+   "p600 0|2028": {
+    "e_unit_MWh_per_MW_IT": 4770.759261365302,
+    "c_interrupt_USD_MWh": 586.9086756640687,
+    "v": 2800000.0
+   },
+   "p600 0|2029": {
+    "e_unit_MWh_per_MW_IT": 4677.5520516287515,
+    "c_interrupt_USD_MWh": 598.6037074723782,
+    "v": 2800000.0
+   },
+   "p600 0|2030": {
+    "e_unit_MWh_per_MW_IT": 4593.861861491202,
+    "c_interrupt_USD_MWh": 609.5089674923527,
+    "v": 2800000.0
+   },
+   "p600 0|2031": {
+    "e_unit_MWh_per_MW_IT": 4512.809908205704,
+    "c_interrupt_USD_MWh": 620.4560034555681,
+    "v": 2800000.0
+   },
+   "p610 2|2026": {
+    "e_unit_MWh_per_MW_IT": 4953.4561100310575,
+    "c_interrupt_USD_MWh": 565.2618975122896,
+    "v": 2800000.0
+   },
+   "p610 2|2027": {
+    "e_unit_MWh_per_MW_IT": 4860.360465946414,
+    "c_interrupt_USD_MWh": 576.0889587547869,
+    "v": 2800000.0
+   },
+   "p610 2|2028": {
+    "e_unit_MWh_per_MW_IT": 4770.759261365302,
+    "c_interrupt_USD_MWh": 586.9086756640687,
+    "v": 2800000.0
+   },
+   "p610 2|2029": {
+    "e_unit_MWh_per_MW_IT": 4677.5520516287515,
+    "c_interrupt_USD_MWh": 598.6037074723782,
+    "v": 2800000.0
+   },
+   "p610 2|2030": {
+    "e_unit_MWh_per_MW_IT": 4593.861861491202,
+    "c_interrupt_USD_MWh": 609.5089674923527,
+    "v": 2800000.0
+   },
+   "p610 2|2031": {
+    "e_unit_MWh_per_MW_IT": 4512.809908205704,
+    "c_interrupt_USD_MWh": 620.4560034555681,
+    "v": 2800000.0
+   },
+   "p630 10|2026": {
+    "e_unit_MWh_per_MW_IT": 4953.4561100310575,
+    "c_interrupt_USD_MWh": 565.2618975122896,
+    "v": 2800000.0
+   },
+   "p630 10|2027": {
+    "e_unit_MWh_per_MW_IT": 4860.360465946414,
+    "c_interrupt_USD_MWh": 576.0889587547869,
+    "v": 2800000.0
+   },
+   "p630 10|2028": {
+    "e_unit_MWh_per_MW_IT": 4770.759261365302,
+    "c_interrupt_USD_MWh": 586.9086756640687,
+    "v": 2800000.0
+   },
+   "p630 10|2029": {
+    "e_unit_MWh_per_MW_IT": 4677.5520516287515,
+    "c_interrupt_USD_MWh": 598.6037074723782,
+    "v": 2800000.0
+   },
+   "p630 10|2030": {
+    "e_unit_MWh_per_MW_IT": 4593.861861491202,
+    "c_interrupt_USD_MWh": 609.5089674923527,
+    "v": 2800000.0
+   },
+   "p630 10|2031": {
+    "e_unit_MWh_per_MW_IT": 4512.809908205704,
+    "c_interrupt_USD_MWh": 620.4560034555681,
+    "v": 2800000.0
+   },
+   "p630 2|2026": {
+    "e_unit_MWh_per_MW_IT": 4953.4561100310575,
+    "c_interrupt_USD_MWh": 565.2618975122896,
+    "v": 2800000.0
+   },
+   "p630 2|2027": {
+    "e_unit_MWh_per_MW_IT": 4860.360465946414,
+    "c_interrupt_USD_MWh": 576.0889587547869,
+    "v": 2800000.0
+   },
+   "p630 2|2028": {
+    "e_unit_MWh_per_MW_IT": 4770.759261365302,
+    "c_interrupt_USD_MWh": 586.9086756640687,
+    "v": 2800000.0
+   },
+   "p630 2|2029": {
+    "e_unit_MWh_per_MW_IT": 4677.5520516287515,
+    "c_interrupt_USD_MWh": 598.6037074723782,
+    "v": 2800000.0
+   },
+   "p630 2|2030": {
+    "e_unit_MWh_per_MW_IT": 4593.861861491202,
+    "c_interrupt_USD_MWh": 609.5089674923527,
+    "v": 2800000.0
+   },
+   "p630 2|2031": {
+    "e_unit_MWh_per_MW_IT": 4512.809908205704,
+    "c_interrupt_USD_MWh": 620.4560034555681,
+    "v": 2800000.0
+   },
+   "p630 3|2026": {
+    "e_unit_MWh_per_MW_IT": 4953.4561100310575,
+    "c_interrupt_USD_MWh": 565.2618975122896,
+    "v": 2800000.0
+   },
+   "p630 3|2027": {
+    "e_unit_MWh_per_MW_IT": 4860.360465946414,
+    "c_interrupt_USD_MWh": 576.0889587547869,
+    "v": 2800000.0
+   },
+   "p630 3|2028": {
+    "e_unit_MWh_per_MW_IT": 4770.759261365302,
+    "c_interrupt_USD_MWh": 586.9086756640687,
+    "v": 2800000.0
+   },
+   "p630 3|2029": {
+    "e_unit_MWh_per_MW_IT": 4677.5520516287515,
+    "c_interrupt_USD_MWh": 598.6037074723782,
+    "v": 2800000.0
+   },
+   "p630 3|2030": {
+    "e_unit_MWh_per_MW_IT": 4593.861861491202,
+    "c_interrupt_USD_MWh": 609.5089674923527,
+    "v": 2800000.0
+   },
+   "p630 3|2031": {
+    "e_unit_MWh_per_MW_IT": 4512.809908205704,
+    "c_interrupt_USD_MWh": 620.4560034555681,
+    "v": 2800000.0
+   },
+   "p630 4|2026": {
+    "e_unit_MWh_per_MW_IT": 4953.4561100310575,
+    "c_interrupt_USD_MWh": 565.2618975122896,
+    "v": 2800000.0
+   },
+   "p630 4|2027": {
+    "e_unit_MWh_per_MW_IT": 4860.360465946414,
+    "c_interrupt_USD_MWh": 576.0889587547869,
+    "v": 2800000.0
+   },
+   "p630 4|2028": {
+    "e_unit_MWh_per_MW_IT": 4770.759261365302,
+    "c_interrupt_USD_MWh": 586.9086756640687,
+    "v": 2800000.0
+   },
+   "p630 4|2029": {
+    "e_unit_MWh_per_MW_IT": 4677.5520516287515,
+    "c_interrupt_USD_MWh": 598.6037074723782,
+    "v": 2800000.0
+   },
+   "p630 4|2030": {
+    "e_unit_MWh_per_MW_IT": 4593.861861491202,
+    "c_interrupt_USD_MWh": 609.5089674923527,
+    "v": 2800000.0
+   },
+   "p630 4|2031": {
+    "e_unit_MWh_per_MW_IT": 4512.809908205704,
+    "c_interrupt_USD_MWh": 620.4560034555681,
+    "v": 2800000.0
+   },
+   "p630 5|2026": {
+    "e_unit_MWh_per_MW_IT": 4953.4561100310575,
+    "c_interrupt_USD_MWh": 565.2618975122896,
+    "v": 2800000.0
+   },
+   "p630 5|2027": {
+    "e_unit_MWh_per_MW_IT": 4860.360465946414,
+    "c_interrupt_USD_MWh": 576.0889587547869,
+    "v": 2800000.0
+   },
+   "p630 5|2028": {
+    "e_unit_MWh_per_MW_IT": 4770.759261365302,
+    "c_interrupt_USD_MWh": 586.9086756640687,
+    "v": 2800000.0
+   },
+   "p630 5|2029": {
+    "e_unit_MWh_per_MW_IT": 4677.5520516287515,
+    "c_interrupt_USD_MWh": 598.6037074723782,
+    "v": 2800000.0
+   },
+   "p630 5|2030": {
+    "e_unit_MWh_per_MW_IT": 4593.861861491202,
+    "c_interrupt_USD_MWh": 609.5089674923527,
+    "v": 2800000.0
+   },
+   "p630 5|2031": {
+    "e_unit_MWh_per_MW_IT": 4512.809908205704,
+    "c_interrupt_USD_MWh": 620.4560034555681,
+    "v": 2800000.0
+   },
+   "p630 6|2026": {
+    "e_unit_MWh_per_MW_IT": 4953.4561100310575,
+    "c_interrupt_USD_MWh": 565.2618975122896,
+    "v": 2800000.0
+   },
+   "p630 6|2027": {
+    "e_unit_MWh_per_MW_IT": 4860.360465946414,
+    "c_interrupt_USD_MWh": 576.0889587547869,
+    "v": 2800000.0
+   },
+   "p630 6|2028": {
+    "e_unit_MWh_per_MW_IT": 4770.759261365302,
+    "c_interrupt_USD_MWh": 586.9086756640687,
+    "v": 2800000.0
+   },
+   "p630 6|2029": {
+    "e_unit_MWh_per_MW_IT": 4677.5520516287515,
+    "c_interrupt_USD_MWh": 598.6037074723782,
+    "v": 2800000.0
+   },
+   "p630 6|2030": {
+    "e_unit_MWh_per_MW_IT": 4593.861861491202,
+    "c_interrupt_USD_MWh": 609.5089674923527,
+    "v": 2800000.0
+   },
+   "p630 6|2031": {
+    "e_unit_MWh_per_MW_IT": 4512.809908205704,
+    "c_interrupt_USD_MWh": 620.4560034555681,
+    "v": 2800000.0
+   },
+   "p630 8|2026": {
+    "e_unit_MWh_per_MW_IT": 4953.4561100310575,
+    "c_interrupt_USD_MWh": 565.2618975122896,
+    "v": 2800000.0
+   },
+   "p630 8|2027": {
+    "e_unit_MWh_per_MW_IT": 4860.360465946414,
+    "c_interrupt_USD_MWh": 576.0889587547869,
+    "v": 2800000.0
+   },
+   "p630 8|2028": {
+    "e_unit_MWh_per_MW_IT": 4770.759261365302,
+    "c_interrupt_USD_MWh": 586.9086756640687,
+    "v": 2800000.0
+   },
+   "p630 8|2029": {
+    "e_unit_MWh_per_MW_IT": 4677.5520516287515,
+    "c_interrupt_USD_MWh": 598.6037074723782,
+    "v": 2800000.0
+   },
+   "p630 8|2030": {
+    "e_unit_MWh_per_MW_IT": 4593.861861491202,
+    "c_interrupt_USD_MWh": 609.5089674923527,
+    "v": 2800000.0
+   },
+   "p630 8|2031": {
+    "e_unit_MWh_per_MW_IT": 4512.809908205704,
+    "c_interrupt_USD_MWh": 620.4560034555681,
+    "v": 2800000.0
+   },
+   "p630 9|2026": {
+    "e_unit_MWh_per_MW_IT": 4953.4561100310575,
+    "c_interrupt_USD_MWh": 565.2618975122896,
+    "v": 2800000.0
+   },
+   "p630 9|2027": {
+    "e_unit_MWh_per_MW_IT": 4860.360465946414,
+    "c_interrupt_USD_MWh": 576.0889587547869,
+    "v": 2800000.0
+   },
+   "p630 9|2028": {
+    "e_unit_MWh_per_MW_IT": 4770.759261365302,
+    "c_interrupt_USD_MWh": 586.9086756640687,
+    "v": 2800000.0
+   },
+   "p630 9|2029": {
+    "e_unit_MWh_per_MW_IT": 4677.5520516287515,
+    "c_interrupt_USD_MWh": 598.6037074723782,
+    "v": 2800000.0
+   },
+   "p630 9|2030": {
+    "e_unit_MWh_per_MW_IT": 4593.861861491202,
+    "c_interrupt_USD_MWh": 609.5089674923527,
+    "v": 2800000.0
+   },
+   "p630 9|2031": {
+    "e_unit_MWh_per_MW_IT": 4512.809908205704,
+    "c_interrupt_USD_MWh": 620.4560034555681,
+    "v": 2800000.0
+   },
+   "p640 1|2026": {
+    "e_unit_MWh_per_MW_IT": 4953.4561100310575,
+    "c_interrupt_USD_MWh": 565.2618975122896,
+    "v": 2800000.0
+   },
+   "p640 1|2027": {
+    "e_unit_MWh_per_MW_IT": 4860.360465946414,
+    "c_interrupt_USD_MWh": 576.0889587547869,
+    "v": 2800000.0
+   },
+   "p640 1|2028": {
+    "e_unit_MWh_per_MW_IT": 4770.759261365302,
+    "c_interrupt_USD_MWh": 586.9086756640687,
+    "v": 2800000.0
+   },
+   "p640 1|2029": {
+    "e_unit_MWh_per_MW_IT": 4677.5520516287515,
+    "c_interrupt_USD_MWh": 598.6037074723782,
+    "v": 2800000.0
+   },
+   "p640 1|2030": {
+    "e_unit_MWh_per_MW_IT": 4593.861861491202,
+    "c_interrupt_USD_MWh": 609.5089674923527,
+    "v": 2800000.0
+   },
+   "p640 1|2031": {
+    "e_unit_MWh_per_MW_IT": 4512.809908205704,
+    "c_interrupt_USD_MWh": 620.4560034555681,
+    "v": 2800000.0
+   },
+   "p650 0|2026": {
+    "e_unit_MWh_per_MW_IT": 4953.4561100310575,
+    "c_interrupt_USD_MWh": 565.2618975122896,
+    "v": 2800000.0
+   },
+   "p650 0|2027": {
+    "e_unit_MWh_per_MW_IT": 4860.360465946414,
+    "c_interrupt_USD_MWh": 576.0889587547869,
+    "v": 2800000.0
+   },
+   "p650 0|2028": {
+    "e_unit_MWh_per_MW_IT": 4770.759261365302,
+    "c_interrupt_USD_MWh": 586.9086756640687,
+    "v": 2800000.0
+   },
+   "p650 0|2029": {
+    "e_unit_MWh_per_MW_IT": 4677.5520516287515,
+    "c_interrupt_USD_MWh": 598.6037074723782,
+    "v": 2800000.0
+   },
+   "p650 0|2030": {
+    "e_unit_MWh_per_MW_IT": 4593.861861491202,
+    "c_interrupt_USD_MWh": 609.5089674923527,
+    "v": 2800000.0
+   },
+   "p650 0|2031": {
+    "e_unit_MWh_per_MW_IT": 4512.809908205704,
+    "c_interrupt_USD_MWh": 620.4560034555681,
+    "v": 2800000.0
+   },
+   "p650 7|2026": {
+    "e_unit_MWh_per_MW_IT": 4953.4561100310575,
+    "c_interrupt_USD_MWh": 565.2618975122896,
+    "v": 2800000.0
+   },
+   "p650 7|2027": {
+    "e_unit_MWh_per_MW_IT": 4860.360465946414,
+    "c_interrupt_USD_MWh": 576.0889587547869,
+    "v": 2800000.0
+   },
+   "p650 7|2028": {
+    "e_unit_MWh_per_MW_IT": 4770.759261365302,
+    "c_interrupt_USD_MWh": 586.9086756640687,
+    "v": 2800000.0
+   },
+   "p650 7|2029": {
+    "e_unit_MWh_per_MW_IT": 4677.5520516287515,
+    "c_interrupt_USD_MWh": 598.6037074723782,
+    "v": 2800000.0
+   },
+   "p650 7|2030": {
+    "e_unit_MWh_per_MW_IT": 4593.861861491202,
+    "c_interrupt_USD_MWh": 609.5089674923527,
+    "v": 2800000.0
+   },
+   "p650 7|2031": {
+    "e_unit_MWh_per_MW_IT": 4512.809908205704,
+    "c_interrupt_USD_MWh": 620.4560034555681,
+    "v": 2800000.0
+   },
+   "p670 0|2026": {
+    "e_unit_MWh_per_MW_IT": 4953.4561100310575,
+    "c_interrupt_USD_MWh": 565.2618975122896,
+    "v": 2800000.0
+   },
+   "p670 0|2027": {
+    "e_unit_MWh_per_MW_IT": 4860.360465946414,
+    "c_interrupt_USD_MWh": 576.0889587547869,
+    "v": 2800000.0
+   },
+   "p670 0|2028": {
+    "e_unit_MWh_per_MW_IT": 4770.759261365302,
+    "c_interrupt_USD_MWh": 586.9086756640687,
+    "v": 2800000.0
+   },
+   "p670 0|2029": {
+    "e_unit_MWh_per_MW_IT": 4677.5520516287515,
+    "c_interrupt_USD_MWh": 598.6037074723782,
+    "v": 2800000.0
+   },
+   "p670 0|2030": {
+    "e_unit_MWh_per_MW_IT": 4593.861861491202,
+    "c_interrupt_USD_MWh": 609.5089674923527,
+    "v": 2800000.0
+   },
+   "p670 0|2031": {
+    "e_unit_MWh_per_MW_IT": 4512.809908205704,
+    "c_interrupt_USD_MWh": 620.4560034555681,
+    "v": 2800000.0
+   },
+   "p670 1|2026": {
+    "e_unit_MWh_per_MW_IT": 4953.4561100310575,
+    "c_interrupt_USD_MWh": 565.2618975122896,
+    "v": 2800000.0
+   },
+   "p670 1|2027": {
+    "e_unit_MWh_per_MW_IT": 4860.360465946414,
+    "c_interrupt_USD_MWh": 576.0889587547869,
+    "v": 2800000.0
+   },
+   "p670 1|2028": {
+    "e_unit_MWh_per_MW_IT": 4770.759261365302,
+    "c_interrupt_USD_MWh": 586.9086756640687,
+    "v": 2800000.0
+   },
+   "p670 1|2029": {
+    "e_unit_MWh_per_MW_IT": 4677.5520516287515,
+    "c_interrupt_USD_MWh": 598.6037074723782,
+    "v": 2800000.0
+   },
+   "p670 1|2030": {
+    "e_unit_MWh_per_MW_IT": 4593.861861491202,
+    "c_interrupt_USD_MWh": 609.5089674923527,
+    "v": 2800000.0
+   },
+   "p670 1|2031": {
+    "e_unit_MWh_per_MW_IT": 4512.809908205704,
+    "c_interrupt_USD_MWh": 620.4560034555681,
+    "v": 2800000.0
+   },
+   "p670 4|2026": {
+    "e_unit_MWh_per_MW_IT": 4953.4561100310575,
+    "c_interrupt_USD_MWh": 565.2618975122896,
+    "v": 2800000.0
+   },
+   "p670 4|2027": {
+    "e_unit_MWh_per_MW_IT": 4860.360465946414,
+    "c_interrupt_USD_MWh": 576.0889587547869,
+    "v": 2800000.0
+   },
+   "p670 4|2028": {
+    "e_unit_MWh_per_MW_IT": 4770.759261365302,
+    "c_interrupt_USD_MWh": 586.9086756640687,
+    "v": 2800000.0
+   },
+   "p670 4|2029": {
+    "e_unit_MWh_per_MW_IT": 4677.5520516287515,
+    "c_interrupt_USD_MWh": 598.6037074723782,
+    "v": 2800000.0
+   },
+   "p670 4|2030": {
+    "e_unit_MWh_per_MW_IT": 4593.861861491202,
+    "c_interrupt_USD_MWh": 609.5089674923527,
+    "v": 2800000.0
+   },
+   "p670 4|2031": {
+    "e_unit_MWh_per_MW_IT": 4512.809908205704,
+    "c_interrupt_USD_MWh": 620.4560034555681,
+    "v": 2800000.0
+   }
+  },
+  "s0_calibration": null,
+  "base_assets": [
+   {
+    "asset": "DWB_Stage_2",
+    "case": "MAIN",
+    "bus0": "p620 4",
+    "bus1": "p620 0",
+    "ISD": 2026.49,
+    "MW": 1000.0,
+    "build_period": 2026,
+    "status": "COMMON_BASELINE_ASSET",
+    "tpit": "69709;102815"
+   }
+  ],
+  "grid_projects": [
+   {
+    "project": "PBRP-765-A",
+    "name": "Bell County East - Big Hill - Sand Lake 765 kV import path",
+    "bus0": "p630 5",
+    "bus1": "p620 1",
+    "ISD": 2031.0,
+    "MW": 2400.0,
+    "build_period": 2031,
+    "status": "COMMITTED_IN_MODEL",
+    "cost_treatment": "sunk/committed in every scenario (excluded from S-differences)"
+   },
+   {
+    "project": "PBRP-765-B",
+    "name": "Howard - Solstice 765 kV import path",
+    "bus0": "p650 7",
+    "bus1": "p610 4",
+    "ISD": 2031.5,
+    "MW": 2400.0,
+    "build_period": 2031,
+    "status": "COMMITTED_IN_MODEL",
+    "cost_treatment": "sunk/committed in every scenario (excluded from S-differences)"
+   }
+  ],
+  "competing": null,
+  "pypsa": "1.3.0",
+  "timestamp_utc": "2026-10-24T10:55:53.527988+00:00"
+ },
+ "phase": "PARTIAL_PILOT",
+ "s2_selection": {},
+ "scientific_use": "BLOCKED: no_load_shed",
+ "checks": {
+  "true_LP": true,
+  "all_optimal": true,
+  "S1_zero_equals_S0": null,
+  "no_load_shed": false,
+  "served_le_requested": true,
+  "dc_energy_balance": true,
+  "S2_off_equals_S1": null,
+  "online_IT_monotone": true,
+  "no_harm_existing_customers": true,
+  "interruption_within_cap": true,
+  "lex_presolve_optimal": true,
+  "poi_flow_le_equipment": true,
+  "no_service_before_grid_or_byop": true,
+  "s2_consistent": true,
+  "s2_converged": null,
+  "private_stage_LP": null,
+  "selected_S2_iteration": null,
+  "phase": "PARTIAL_PILOT",
+  "SCIENTIFIC_USE": "BLOCKED: no_load_shed",
+  "cost_book_identities": true,
+  "lex_audit_all_satisfied": true,
+  "TECHNICAL_GATE": "PASS",
+  "METHOD_FLAGS": "ERM_FIRST_YEAR_METHOD_FLAG=OFF;S0_RELIABILITY_REVIEW_REQUIRED=ON (total 406.0 MWh, bus peak 22.8 MW, inherited max 0.00 MWh/yr);S0CAL_LINE_FLOWS=PENDING_DIAGNOSTIC_EXPORT",
+  "EXPLORATORY_USE": "PERMITTED_WITH_METHOD_FLAGS",
+  "FINAL_SCIENTIFIC_USE": "PENDING_METHOD_VALIDATION",
+  "SCIENTIFIC_USE_LEGACY_MAPPING": "SCIENTIFIC_USE keeps the B0 rule (any False check -> BLOCKED)"
+ },
+ "technical_gate": "PASS",
+ "exploratory_use": "PERMITTED_WITH_METHOD_FLAGS",
+ "final_scientific_use": "PENDING_METHOD_VALIDATION",
+ "method_flags": "ERM_FIRST_YEAR_METHOD_FLAG=OFF;S0_RELIABILITY_REVIEW_REQUIRED=ON (total 406.0 MWh, bus peak 22.8 MW, inherited max 0.00 MWh/yr);S0CAL_LINE_FLOWS=PENDING_DIAGNOSTIC_EXPORT",
+ "produced": [
+  "MAINLINE_SCENARIO_SUMMARY.csv",
+  "MAINLINE_BUS_DELIVERY_AND_DELAY.csv",
+  "MAINLINE_PUBLIC_INVESTMENT_DELTA.csv",
+  "MAINLINE_ASSET_COMMITMENT_LEDGER.csv",
+  "MAINLINE_COST_BOOK_DECOMPOSITION.csv",
+  "MAINLINE_GATE_CHECKS.csv",
+  "speed_to_power_delivery.png",
+  "public_grid_investment_feedback.png"
+ ]
+}

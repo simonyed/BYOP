@@ -1,0 +1,61 @@
+post_v16:
+  approved_by: null
+  approved_git_sha: null
+  authorization_source: current_work_pckg/BYOP_NEXT_10U/NEXT_10U_INSTRUCTION_RECORD.md
+  authorization_source_sha256: d02c7fdf7fa71963a0320b0fbe938e7607506ff11bd0dbbe7efda16f2c2f8a53
+  baseline:
+    path: workflow/results/BYOP/baseline_2025_tamu_v17_lossy/baseline_2025_tamu_v17_lossy_prepared.nc
+    sha256: f9aa87aea496f7c07ea4aca0439a703e7eaa90d08cb66c5bc6f149ea60eeefb6
+  firm_rule: CONSERVATIVE_FIRM_SCREENING
+  mainline_config: config/config.byop_ercot_mainline_engineering_cost_v1.yaml
+  manifest: current_work_pckg/BYOP_NEXT_10U/NEXT10U_A3_PRE_RUN_MANIFEST.json
+  max_retries: 0
+  max_scenario_attempts: 7
+  max_top_level_optimizer_calls: 30
+  model_version: engineering_cost_v1
+  optimizer_call_plan:
+    S0:
+      S0_COST: 1
+    S1_EARLIEST:
+      S1_COST: 1
+      S1_SPEED_HIERARCHY: 1
+    S2_IT1:
+      S2_DEV_COST: 1
+      S2_DEV_LEX: 6
+      S2_PUBLIC: 1
+    S2_IT2:
+      S2_DEV_COST: 1
+      S2_DEV_LEX: 6
+      S2_PUBLIC: 1
+    S2_IT3:
+      S2_DEV_COST: 1
+      S2_DEV_LEX: 6
+      S2_PUBLIC: 1
+    S3:
+      S3_COST: 1
+    S3_mS2:
+      S3_MS2_COST: 1
+  optional_stages:
+  - S2_IT2
+  - S2_IT3
+  out_dir: /datasets/prgm/BYOP_impact/pypsa-usa/workflow/results/BYOP/next10u_engineering_cost_v1/_a3_e2e/ledgers
+  prerequisites:
+  - allowed:
+    - S0_SCIENCE_PASS
+    field: S0_SCIENCE_VERDICT
+    file: workflow/results/BYOP/next10u_engineering_cost_v1/S0S1/S0_SCIENCE_VERDICT.json
+  program_budget: 'NEXT-10U total <= 40 top-level optimizer calls: config.byop_next10u_s0s1.yaml
+    <= 3 + this config <= 30'
+  reference:
+    dir: results/BYOP/next10u_engineering_cost_v1/S0S1
+    sha256: {}
+  run_authorization: NOT_APPROVED
+  stage: A3
+  stages:
+  - S0
+  - S1_EARLIEST
+  - S3
+  - S2_IT1
+  - S2_IT2
+  - S2_IT3
+  - S3_mS2
