@@ -1,5 +1,7 @@
 # LOSSY_LP1_V3_RESULTS: NEXT-08b lossy 2025 LP1 v3 (loss-upper fix)
 
+> **Update (2026-10-23, NEXT-09):** the candidate is frozen byte for byte as baseline version **v1.7L** (`baseline_2025_tamu_v17_lossy/`, same SHA). Adoption and the paired S0 / S1 rerun are prepared but not approved: see `../BYOP_NEXT_09_V17L_BASELINE_ADOPTION/NEXT_09_ADOPTION_AND_S0S1_REQUEST.md`.
+
 **Verdict: PASS.** The approved chain ran completely: 3 optimizer calls, 0 retries, all optimal. LP1 converged in IT2 with no line on a trust floor and passed G1–G3.
 - **LP2 on the v3 candidate:** EENS **140.2 MWh** (limit 4,882) and largest gap **27.76 MW** (limit 83.7 MW, not relaxed). Both criteria pass.
 - **Against v1.6 (lossless):** the lossy pair now reproduces v1.6's shed pattern. The largest gap is at the same step and bus (07-14 09:00, p620 1) and is within 0.6 MW of v1.6.

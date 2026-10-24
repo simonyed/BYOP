@@ -2,7 +2,7 @@
 
 **Status: PREPARED. Not adopted, not approved. 0 optimizer calls in NEXT-09.**
 - **Instruction:** `NEXT_09_ADOPTION_INSTRUCTION_RECORD.md` (verbatim, 2026-10-23 23:05 EDT).
-- **Approvable code SHA:** `__APPROVABLE_SHA__` (GitHub `main` = L2 `byop`; the commit that adds the S0 / S1 manifest).
+- **Approvable code SHA:** `c0b29f34709ed88229b42d7fd368ddd6370b5301` (GitHub `main` = L2 `byop`; adds the S0 / S1 manifest built on L2 at `86c483cd`).
 
 ## 1. The frozen baseline v1.7L
 
@@ -52,7 +52,7 @@ The full inventory of every config, script and gate that names a 2025 baseline, 
 | Config | `workflow/config/config.byop_post_v17l_s0s1.yaml` (`NOT_APPROVED / null / null`). It equals the consumed A2 config except: baseline, mainline config, out_dir, manifest, authorization source, and the no-harm reference wording. Same stage rules, call plan, budgets and acceptance. |
 | Mainline config | `config.byop_ercot_mainline_geo_dynamic_v1_baseline_v17l.yaml`. Equals the v1.6 one except `case_id`, `inputs.baseline` and the stage label. Siting, AIDC, POI, gas, costs and VOLL are unchanged. |
 | Output / ledgers | `workflow/results/BYOP/post_v17l_s0s1/POST_V17L_S0S1/`, with a new `A2_SOLVE_LOG.csv` and `A2_OPTIMIZER_CALL_LOG.csv`. The v1.6 A2 directory is never touched. |
-| Manifest | `V17L_S0S1_PRE_RUN_MANIFEST.json`, L2-built at the approvable SHA. |
+| Manifest | `V17L_S0S1_PRE_RUN_MANIFEST.json`: L2-built at `86c483cd`, committed in `c0b29f34`. It pins 154 code + 110 input files (0 mismatches), the v1.7L SHA and the registry normalised SHA `b7ab7c6f…`. |
 | Run order | `S0` (1 call: `S0_COST`). Then `S1_EARLIEST`, only after S0 PASSED with its own no-harm reference (2 calls: `S1_SPEED_HIERARCHY`, `S1_COST`). |
 | Budget | ≤ 2 scenario attempts, **≤ 3 top-level optimizer calls, 0 retries**. STOP on any non-optimal result or failed acceptance. |
 | Command (L2, `workflow/`) | `THREADS=<B> bash byop/run/run_post_v16_a2.sh v17l_s0s1`, with B measured at launch. On v1.6, S0 took 39 min and S1 2 h 54 min (NEXT-05). |
@@ -62,7 +62,13 @@ The full inventory of every config, script and gate that names a 2025 baseline, 
 
 ## 4. Static validation (L2, 0 optimizer calls)
 
-__SWAP_SECTION__
+| Check | Result |
+|---|---|
+| Freeze (`v17l_freeze`, `BASELINE_V17L_RECORD.json`) | **FREEZE_PASS.** Five SHA pins agree (source, seal, IT2 QA, registry, module constant). Copy = source. Only `Line.s_nom` / `Line.r` differ from v1.6 (21 lines). `x` unchanged. Meta `transmission_losses` 2. The frozen files re-hash unchanged. |
+| Baseline swap, S0 build on v1.6 → v1.7L → v1.6 (`structural_n09_v17l_swap.py`, `V17L_SWAP_MODEL_DIFF.json`) | **SWAP_PASS** (3 builds, solver intercepted: 0 calls).<br>• Same model size: 2,660,074 variables / 7,107,710 rows / 35.17 M non-zeros. The objective is identical, and rebuilding v1.6 afterwards leaves no difference (no leftover state).<br>• **Line rows:** only the Line-* families (fix-s upper / lower, the 4 loss-tangent families, loss upper) change, 219 rows, all on the 21 changed lines, and every changed line reaches the model.<br>• **LINE-01 corridor bounds:** the only other change is derived from the base rating (cap = 100 % of the 2025 transfer rating, `add_line_expansion_tamu`): 21 `M2-line_cap` rows and 84 expansion-link `p_nom_max` bounds. They are on the same 21 corridors and each equals the v1.7L rating exactly. This is the same rule v1.6's uplift already fed. |
+| Gate, as committed (`v17l_gate`) | S0 is refused **only** on: the three approval fields, v17l not ADOPTED, and the v1.6 loss-basis rule. The manifest, clean tree, authorization source and approved-SHA checks pass. S1 is also refused on its stage rule (no PASSED S0 of its own). |
+| Simulated adoption + approval in one config-only commit (scratch clone on L2, deleted afterwards; guard and gate only, no build) | S0 gate: **no reasons**. `post_v16_guard`: **APPROVED**. S1: refused only until its own S0 passes. The old v1.6 A2 config: refused as *superseded*. The A3 config: refused. Negative control: editing any other registry field after the approved SHA is refused (changed since the approved commit, and registry ≠ manifest). |
+| Tests | `test_next09_v17l_adoption.py` 15 / 15. Full L2 suite **347 passed / 0 failed**. The closed A1 manifest stays current: `byop_paths.py` was not changed, and the v1.7L constants live in `baseline_registry.py`. One A0 test's expected wording was updated to the registry message. |
 
 ## 5. A3 after S0 / S1 (not prepared now)
 
@@ -76,6 +82,6 @@ The NEXT-07 developer-reserve review remains open for A3.
 
 ## 6. Approval (one config-only commit can carry both; the registry and the S0 / S1 config only)
 
-> I adopt v1.7L (f9aa87ae) as the formal lossy 2025 baseline and approve the NEXT-09 paired S0/S1 rerun on it at approved_git_sha __APPROVABLE_SHA__: S0 then S1_EARLIEST; at most 3 optimizer calls; 0 retries; no A3/S2/S3; approved_by: <your identifier>.
+> I adopt v1.7L (f9aa87ae) as the formal lossy 2025 baseline and approve the NEXT-09 paired S0/S1 rerun on it at approved_git_sha c0b29f34709ed88229b42d7fd368ddd6370b5301: S0 then S1_EARLIEST; at most 3 optimizer calls; 0 retries; no A3/S2/S3; approved_by: <your identifier>.
 
 You can also adopt now and approve S0 / S1 later: the S0 / S1 gate refuses until its own three fields are set.
