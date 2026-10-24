@@ -25,7 +25,10 @@ NO_GIT = lambda *a: SimpleNamespace(returncode=1, stdout='', stderr='')
 
 
 def reg():
-    return copy.deepcopy(BR.load())
+    """a copy of the live registry reset to NOT_ADOPTED (the live file is ADOPTED since 7f4e27cb); adopt() re-adopts it"""
+    r = copy.deepcopy(BR.load())
+    r['adoption'].update(adoption_status='NOT_ADOPTED', adopted_git_sha=None, adopted_by=None)
+    return r
 
 
 def adopt(r, **kw):

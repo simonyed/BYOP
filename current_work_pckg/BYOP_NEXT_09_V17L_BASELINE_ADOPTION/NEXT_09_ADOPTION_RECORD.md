@@ -19,7 +19,7 @@ The second message takes precedence for anything that runs the solver. So:
 | Baseline adoption | **Done.** Config-only commit `7f4e27cb` edits only the three adoption fields of `workflow/config/config.byop_baseline_registry.yaml`: `adoption_status: ADOPTED`, `adopted_git_sha: c0b29f34709ed88229b42d7fd368ddd6370b5301`, `adopted_by: sw2434@cornell.edu`. The registry normalised SHA is unchanged (`b7ab7c6f…`), so the S0 / S1 manifest stays current. |
 | S0 / S1 approval fields | **Not set.** `config.byop_post_v17l_s0s1.yaml` stays `NOT_APPROVED / null / null`. The approval sentence above is recorded here. The fields are set in a config-only commit only after the researcher lifts the hold in chat. |
 | Optimizer calls | **None.** Nothing was launched, and no L2 solve process was started. |
-| Tests | `2d61c015` (tests only, outside `CLEAN_PATHS`) updates the three tests that read the live registry to its adopted state. |
+| Tests | Tests-only commits (outside `CLEAN_PATHS`) bring the tests in line with the adopted registry:<br>• `2d61c015`: three tests that read the live registry.<br>• the follow-up commit: the synthetic fixture `reg()` resets its copy to NOT_ADOPTED, and the A0 wording test reads the formal id.<br>Full L2 suite after adoption: 344 passed, 3 failed (fixture assumptions only). After the fix those two files pass 45/45, so **347/347**. |
 
 Since `c0b29f34`, the only change in the gate's `CLEAN_PATHS` is the adoption-only registry edit, which the approved-SHA rule tolerates. So `c0b29f34` remains a valid approved SHA when the hold is lifted.
 

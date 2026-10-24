@@ -489,7 +489,8 @@ def test_rearch_post_v16_refuses_legacy_flags(tmp_path):
     assert (led.read_bytes() if led.exists() else None) == before          # refused before any ledger row / build
     r = subprocess.run([sys.executable, '-W', 'ignore', str(BY / 'model/rearch_mech.py'), '--post-v16', '--case-id', 't', '--out', str(tmp_path),
                         '--base', str(BP.BASE_TAMU_DIR / 'baseline_2025_tamu_prepared.nc')], cwd=str(WF), capture_output=True, text=True)
-    assert r.returncode == 3 and 'is not the formal 2025 baseline v16' in r.stdout      # NEXT-09: registry wording
+    import baseline_registry as BR
+    assert r.returncode == 3 and f'is not the formal 2025 baseline {BR.formal()[0]}' in r.stdout      # NEXT-09: registry wording
 
 
 # ------------------------------------------------------------------------------------------------ v1.6 network (L2 only)
