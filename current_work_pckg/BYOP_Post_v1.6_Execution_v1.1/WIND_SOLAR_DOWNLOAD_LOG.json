@@ -1,0 +1,20 @@
+[
+  {
+    "file": "ERCOT_2025_Hourly_WindSolar_Output.xlsx",
+    "bytes": 3204693,
+    "url": "https://www.ercot.com/misdownload/servlets/mirDownload?doclookupId=1182433954",
+    "status": "downloaded"
+  },
+  {
+    "file": "ERCOT_2024_Hourly_WindSolar_Output.xlsx",
+    "bytes": 3211502,
+    "url": "https://www.ercot.com/misdownload/servlets/mirDownload?doclookupId=1068801799",
+    "status": "downloaded"
+  },
+  {
+    "file": "ERCOT_2023_Hourly_WindSolar_Output.xlsx",
+    "bytes": 3192046,
+    "url": "https://www.ercot.com/misdownload/servlets/mirDownload?doclookupId=971575038",
+    "status": "downloaded"
+  }
+]

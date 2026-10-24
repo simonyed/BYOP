@@ -1,0 +1,8 @@
+anchor,value,unit,scope,source_file,source_printed_page,interpretation_guardrail
+2025 lowest observed Physical Responsive Capability,4607,MW,Annual actual operating observations,IMM_2025_State_of_Market.pdf,107,PRC is not identical to deterministic LP reserve and is not local connection capacity
+2025 additional-load comparative assessment,3,GW_more_than,IMM one-to-one PRC reduction against historical shortage-frequency norm,IMM_2025_State_of_Market.pdf,27,External sanity reference; not a target to fit or a guarantee at all buses and all hours
+2025 wind curtailment approximate share,4.7,percent,Annual wind curtailment context,IMM_2025_State_of_Market.pdf,17,Keep report denominator; do not force exact agreement with a different synthetic fleet
+2025 solar curtailment approximate share,6,percent,Annual solar curtailment context,IMM_2025_State_of_Market.pdf,18,Keep report denominator; do not treat actual output as uncurtailed potential
+Typical online upward reserve range lower,3000,MW,ELCC study ancillary-service modeling reference,ERCOT_ELCC_Study_2024_Revised.pdf,35,Candidate proxy reference; not a mandated planning reserve margin or current AS procurement rule
+Typical online upward reserve range upper,4000,MW,ELCC study ancillary-service modeling reference,ERCOT_ELCC_Study_2024_Revised.pdf,35,Candidate sensitivity; not a LOLE certificate
+Far West North and South import GTC start,2025-09-15,date,Effective operating constraint introduction,ERCOT_FarWest_GTC_Notice_2025.html,not_applicable,Limits are calculated in real time; exact definitions are ECEII

@@ -1,0 +1,3 @@
+timestamp_utc,stage,attempt,counted_as,status,termination,seconds,note
+2026-10-22T19:54:20+00:00,LP1_MIN_THERMAL_UPLIFT,1,effective,ok,optimal,1565.6,builder total 1598s
+2026-10-22T19:59:15+00:00,LP2_RELOADED_FIXED_ASSET,1,effective,ok,optimal,257.4,
