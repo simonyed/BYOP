@@ -4,6 +4,7 @@
 - **Formulation:** still an LP, same model size as v1, no new solve batch.
 - **Static proof:** passed on the real model.
 - **Status:** approved and run on 2026-10-23 (3 calls): LP2 EENS 817 MWh PASS, largest gap 107.4 MW FAIL; see `LOSSY_LP1_V2_RESULTS.md`.
+- **Follow-up (v3, loss-upper fix):** approved and run on 2026-10-23 (3 calls): LP2 EENS 140.2 MWh PASS, largest gap 27.76 MW PASS; candidate `f9aa87ae…` NOT ADOPTED; see `LOSSY_LP1_V3_RESULTS.md`.
 
 **Unchanged:** the NEXT-08 ledger, candidate NetCDF, approval SHA and results (18 sealed files and the candidate re-verified by SHA), G1–G3, and the LP2 reliability criteria. LP2 and S0–S3 keep `transmission_losses: 2`.
 

@@ -1,6 +1,6 @@
 # NEXT_08B_LOSS_UPPER_APPROVAL_REQUEST: lossy 2025 LP1 v3 (loss-upper fix)
 
-**Status: NOT_APPROVED. No optimizer call has been made for v3.**
+**Status (updated 2026-10-23): APPROVED by sw2434@cornell.edu at `d4fd5340` (commit `2c2c64a2`), executed (3 calls, 0 retries), approval CLOSED (commit `6a55c8ab`). LP2 PASS: EENS 140.2 MWh, largest gap 27.76 MW. Results: `LOSSY_LP1_V3_RESULTS.md`; seal: `LOSSY_LP1_V3_SEAL.json`.** The text below is the request as it was frozen.
 
 | Item | Value |
 |---|---|
