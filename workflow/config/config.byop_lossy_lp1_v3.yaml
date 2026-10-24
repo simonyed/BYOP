@@ -1,0 +1,46 @@
+# BYOP NEXT-08b loss-upper fix (2026-10-23): lossy 2025 LP1 calibration v3 - identical to v2 (config.byop_lossy_lp1_v2.yaml: same raw
+# network, fleet, load, objective, prices, losses 2, cap 2 x v1.6, parallel-circuit r proxy fixed per LP, convergence thresholds,
+# guards G1-G3, LP2 check and acceptance, tangents at 1/2 and 1 x s_max_pu x S_ref) EXCEPT the loss upper bound (loss_upper:
+# affine_s_ref): loss <= r_pu (2 R_ref R - R_ref^2), R = s_max_pu s_nom (variable), R_ref = s_max_pu S_ref - the affine tangent of the
+# LP2 bound r_pu R^2 at S_ref (equal to LP2 at s_nom = S_ref; never above r_pu R^2; never limits a flow the rating row allows for
+# s_nom >= 0.75 S_ref) - plus the explicit trust floor s_nom >= max(raw, 0.75 S_ref); a line ending on a floor above raw is not
+# converged. Own out_dir / ledger / manifest / budget; every earlier ledger, candidate and result is untouched.
+# This file is a REQUEST: only the researcher authorises it.
+post_v16:                                       # key shared with the A2-type manifest builder; gate = loss_basis_lp1.check
+  run_authorization: NOT_APPROVED
+  approved_git_sha: null
+  approved_by: null
+  authorization_source: current_work_pckg/BYOP_NEXT_08B_LP1_TANGENT_FIX/NEXT_08B_LOSS_UPPER_INSTRUCTION_RECORD.md
+  authorization_source_sha256: 82982f38fff56107ee18a625ad669649c11e8b9a465eed8d6f910af2cb128a93   # LF content SHA
+  manifest: current_work_pckg/BYOP_NEXT_08B_LP1_TANGENT_FIX/LOSSY_LP1_V3_PRE_RUN_MANIFEST.json
+  stage: A2                                     # manifest-builder compatibility only
+  stages: [LP1_LOSSY_IT1, LP1_LOSSY_IT2, LP2_LOSSY_CANDIDATE]
+  max_lp_calls: 3
+  max_scenario_attempts: 3
+  max_top_level_optimizer_calls: 3
+  optimizer_call_plan: {LP1_LOSSY_IT1: [LP1_COST], LP1_LOSSY_IT2: [LP1_COST], LP2_LOSSY_CANDIDATE: [LP2_COST]}
+  max_retries: 0
+  transmission_losses: 2
+  loss_tangent_reference: s_ref                 # v2: tangents at 1/2, 1 x s_max_pu x S_ref (= the fixed-capacity LP2 / S0-S3 rows of S_ref)
+  loss_upper: affine_s_ref                      # v3: loss <= r_pu (2 R_ref R - R_ref^2) + trust floor max(raw, 0.75 S_ref) (loss_basis_lp1.apply_affine_loss_upper)
+  cap_factor: 2.0                               # s_nom_max = 2 x v1.6 prepared s_nom: tangents at 1/2 and 1 x cap -> exact at the v1.6 rating
+  r_tol: 0.05                                   # |r_used / r_implied - 1| per line
+  s_tol_MVA: 10.0                               # or |s_opt - s_ref| per line
+  guards:                                       # pre-registered, checked on the converged LP1 BEFORE any LP2
+    G1_factor: 1.5                              # total uplift over raw <= 1.5 x v1.6 total (5,151.8 -> <= 7,727.8 MVA)
+    G3_max_MVA: 1000.0                          # uplift on lines NOT uplifted in v1.6, in total
+  mainline_config: config/config.byop_baseline_v16_calibration.yaml   # pinned as input (v1.6 C1 rules, solver options, acceptance)
+  out_dir: results/BYOP/next08b_lp1_loss_upper_fix
+  baseline:                                     # the v1.6 prepared baseline (capacities used for s_ref / caps; never written)
+    path: workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc
+    sha256: a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16
+  raw_baseline:                                 # the v1.6 pre-calibration network LP1 starts from (never written)
+    path: workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_raw_uncalibrated.nc
+    sha256: eb659f9b1ba06b5e37a162b7173c36d07a6a19a92ae016d3cf3568905077a97f
+  acceptance: "LP2: v1.6 tolerances unchanged (EENS <= 4,882 MWh, max gap <= 83.7 MW)"
+  static_reference:                             # used by --build only (read-only static proof inputs: the sealed NEXT-08b v2 chain)
+    lp1_solution: workflow/results/BYOP/next08b_lp1_tangent_fix/LP1_LOSSY_IT2/LP1_LINE_SOLUTION.csv
+    lp1_line_loss: workflow/results/BYOP/next08b_lp1_tangent_fix/LP1_LOSSY_IT2/line_loss.csv.gz
+    candidate: workflow/results/BYOP/next08b_lp1_tangent_fix/baseline_2025_tamu_lossy_candidate.nc
+    candidate_sha256: 717268802706534365601018547bcf56057ca32488b4a4206b5424bff365f1f4
+    v2_build_json: workflow/results/BYOP/next08b_lp1_tangent_fix/LOSSY_LP1_BUILD.json
