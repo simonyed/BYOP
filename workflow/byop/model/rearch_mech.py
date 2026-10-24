@@ -107,6 +107,11 @@ POI_MODELS = {
                                 lead='byop/inputs/poi_eng/ENG_POI_LEAD_COMPONENTS.csv', sources='byop/inputs/poi_eng/ENG_POI_SOURCE_REGISTER.csv'),
 }
 SECURITY_USD_PER_MW = 50000.0     # 16 TAC 25.194 (adopted, Texas Register 2026-10-02): financial security floor, USD per MW (not per kW)
+# 25.194 adoption preamble: 20 % of the security is returned at energization, the rest in 20 % milestone increments (milestone timing not
+# observed -> one increment per year after COD: 0.8 + 0.6 + 0.4 + 0.2 = 2.0 full-principal years after COD); cash collateral earns at least
+# the one-month T-bill rate -> financing cost = (private WACC - T-bill) x principal x holding years (EXECUTOR_ASSUMPTION: T-bill 4 %)
+SECURITY_POST_COD_Y = 2.0
+SECURITY_TBILL = 0.04
 # AIDC geospatial v1 (2026-10-22): research-bus siting variants. epoch8_legacy = the frozen B3 inputs (default when the
 # config names no variant); dynamic_pnnl_v1 = Epoch + PNNL dynamic weights (byop/build/build_dynamic_siting_inputs.py).
 # Only the research cohorts and the aggregated POI table change; E0, D11 ramp, network, techs, ERM, VOLL are shared.
@@ -1501,8 +1506,8 @@ def s1_offer(n1):
 def ml_eng_ciac(n1):
     """NEXT-10U engineering_cost_v1: private price of a firm import right in the S2 developer LP, USD per MW-yr of right in year p:
     (share of NEW POI equipment in the S1 equipment at (s, p)) x [non-refundable CIAC of the direct interconnection facility, annuitised
-    at the private WACC + financing cost of the 16 TAC 25.194 security (50,000 USD/MW, refundable principal, held from commitment to
-    COD), annuitised]. Known E0 / E1 equipment carries no new CIAC (already delivered / contracted). The resource cost of the POI
+    at the private WACC + financing cost of the 16 TAC 25.194 security (50,000 USD/MW, refundable principal held from commitment to COD
+    and returned in 20 % steps from energization; carry = private WACC - T-bill interest on the cash collateral), annuitised]. Known E0 / E1 equipment carries no new CIAC (already delivered / contracted). The resource cost of the POI
     equipment stays in the public LPs (social r); the CIAC is a transfer and is never added to a social objective."""
     rate, rows = {}, []
     r = M.CFG['private_wacc']
@@ -1518,8 +1523,8 @@ def ml_eng_ciac(n1):
         tot = fixed + new
         share = new / tot if tot > 1e-6 else 0.0
         hold = [STATE['poi_eng'][u]['cod'] - STATE['poi_eng'][u]['q'] for u in built if built[u] > 1e-3 and u in STATE.get('poi_eng', {})]
-        hold_y = max(hold) if hold else 0.0
-        ciac_ann, sec_ann = site['U_cost'] * a, SECURITY_USD_PER_MW * r * hold_y * a
+        hold_y = (max(hold) + SECURITY_POST_COD_Y) if hold else 0.0
+        ciac_ann, sec_ann = site['U_cost'] * a, SECURITY_USD_PER_MW * max(0.0, r - SECURITY_TBILL) * hold_y * a
         rate[(s, p)] = share * (ciac_ann + sec_ann)
         rows.append(dict(site=s, year=p, known_equipment_MW=fixed, new_poi_equipment_MW=new, new_share=share, ciac_unit_USD_per_MW=site['U_cost'],
                          ciac_annuity_USD_per_MW_yr=ciac_ann, security_USD_per_MW=SECURITY_USD_PER_MW, security_hold_y=hold_y,

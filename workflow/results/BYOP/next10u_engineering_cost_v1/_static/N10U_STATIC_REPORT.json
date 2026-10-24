@@ -1,0 +1,41 @@
+{
+ "stage": "NEXT10U_H3_STATIC",
+ "solver_executions": 0,
+ "solver_calls_intercepted": 3,
+ "poi_model": "engineering_cost_v1",
+ "siting": {
+  "variant": "dynamic_pnnl_v1",
+  "research_cohorts": "byop/inputs/dc/MAINLINE_RESEARCH_COHORTS_TAMU64_GEO_DYNAMIC_V1.csv",
+  "poi": "byop/inputs/poi_eng/ENG_POI_SITES.csv",
+  "poi_model": "engineering_cost_v1",
+  "research_cohorts_sha256": "0338df13e931081ab5f5d36a46b9eb8c23fee8c87ec7e97472b325952c3cac41",
+  "poi_sha256": "892c1df40c78de0eaf4f7c9c5936099887dd1484162225e0c0c0dfa0a4c7c57f",
+  "poi_equipment": "byop/inputs/poi_eng/ENG_POI_EQUIPMENT_KNOWN.csv",
+  "poi_equipment_sha256": "5a1e29abeedebc8271383add03fd89c69805387768b035e5e690da0c0f371052",
+  "engineering_inputs_sha256": {
+   "byop/inputs/poi_eng/ENG_POI_CANDIDATES.csv": "b1e37ede395a542563b673776daa8a62b6054865ef1b9d488671b028290fa65f",
+   "byop/inputs/poi_eng/ENG_POI_VISIBILITY.csv": "92e2e7d7a8d816c5505309abc1f99526202321875179e9832649d70ab074397c",
+   "byop/inputs/poi_eng/ENG_POI_LEAD_COMPONENTS.csv": "5a76f5b935fbde6d5a58841b437a0c3f1356efdca5b2826556ad8e69edd0c320",
+   "byop/inputs/poi_eng/ENG_POI_SOURCE_REGISTER.csv": "ec6d9a9a78d641d6eeddbe4f4cb6051a0e31963d5d7f2e13f0ab85862987f925"
+  }
+ },
+ "n_checks": 29,
+ "n_pass": 29,
+ "n_fail": 0,
+ "n_vars": {
+  "S0": 2660074,
+  "S1_EARLIEST": 2713357,
+  "S3": 2978873
+ },
+ "n_cons": {
+  "S0": 7107710,
+  "S1_EARLIEST": 7297813,
+  "S3": 7825790
+ },
+ "poi_links_S1": 51,
+ "eng_rows_S1": 129,
+ "seconds": 276.9,
+ "base_sha256": "f9aa87aea496f7c07ea4aca0439a703e7eaa90d08cb66c5bc6f149ea60eeefb6",
+ "tech_version": "TECH_COMP_2",
+ "verdict": "STATIC_PASS"
+}

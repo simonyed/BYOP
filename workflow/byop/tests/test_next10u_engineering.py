@@ -173,7 +173,7 @@ def test_ciac_right_price():
     n1 = SimpleNamespace(links=pd.DataFrame(dict(p_nom_opt=[300.0]), index=['POIup s1 NEW_REQUEST q2026']))
     df = R.ml_eng_ciac(n1)
     a = M.crf(0.07, R.UPGRADE_LIFE)
-    want = 300.0 / 400.0 * (160000.0 * a + R.SECURITY_USD_PER_MW * 0.07 * (2029.1622 - 2026) * a)
+    want = 300.0 / 400.0 * (160000.0 * a + R.SECURITY_USD_PER_MW * (0.07 - R.SECURITY_TBILL) * (2029.1622 - 2026 + R.SECURITY_POST_COD_Y) * a)
     assert abs(R.STATE['ciac_rate'][('s1', 2030)] - want) < 1e-6 and abs(df.new_share.iloc[0] - 0.75) < 1e-12
     assert R.SECURITY_USD_PER_MW == 50000.0        # USD per MW, not per kW
 

@@ -1,0 +1,30 @@
+qa,check,result,detail
+QA-BASE,v1.7L ADOPTED formal baseline file and SHA,PASS,
+QA-BASE,baseline meta transmission_losses = registry (2),PASS,[]
+QA-VERSION,poi_model engineering_cost_v1 selected by the config,PASS,
+QA-NEG,legacy POI proxy table and E0 schedule NOT among the model inputs,PASS,"['ENG_POI_SITES.csv', 'ENG_POI_EQUIPMENT_KNOWN.csv', 'GREAL_R_ASSET_POOL.csv', 'MAINLINE_RESEARCH_COHORTS_TAMU64_GEO_DYNAMIC_V1.csv', 'MAINLINE_INHERITED_RAMP_2025.csv', 'ERCOT_WIND_SOLAR_POTENTIAL.csv', 'MAINLINE_V13_TECH_DEFAULTS.csv', 'MAINLINE_V13_GAS_PRICES_2026_2031.csv', 'ENG_POI_CANDIDATES.csv', 'ENG_POI_VISIBILITY.csv', 'ENG_POI_LEAD_COMPONENTS.csv', 'ENG_POI_SOURCE_REGISTER.csv']"
+QA-NEG,engineering site table has no poi_upgrade_* / earliest_grid_COD_* / E0_total column,PASS,
+QA-NEG,"no SITES entry carries a 2,000 MW per-cohort cap or a 3 y lead",PASS,
+QA-SPACE,16 research buses,PASS,16
+QA-E0,"known equipment rows only (E0 / E1 from ENG_POI_EQUIPMENT_KNOWN), every row pre-energized evidence with its own COD",PASS,"{'p600 0': 2, 'p630 6': 1, 'p630 9': 1, 'p650 0': 1}"
+QA-E0,approved rights are not equipment: Abilene (p610 2) has an approved right but no known equipment,PASS,
+QA-E0,Helios known equipment = 200 MW (2026.5) + Phase II 391 MW (2027.5) <= Helios I 800 MW approval,PASS,
+QA-LP,S0: continuous LP (no integer / binary),PASS,
+QA-LP,S1_EARLIEST: continuous LP (no integer / binary),PASS,
+QA-LP,S3: continuous LP (no integer / binary),PASS,
+QA-S0,"S0: no DC bus, no POI / POI_upgrade link, no compute_IT unit, no ENG row",PASS,
+QA-POI,S1: one POI_upgrade link per enabled site / class / commitment year (exactly the candidate table),PASS,"{'n_links': 51, 'n_expected': 51, 'extra': [], 'missing': []}"
+QA-POI,"S1: link p_nom_max = class cumulative cap, build year = first period of the equipment COD",PASS,
+QA-POI,"S1: no legacy approval-cohort link (POIup <site> q<year> without class) and no 2,000 MW cap",PASS,
+QA-POI,S1: no LOCAL_POI_UPGRADE link (policy upper bound 0),PASS,
+QA-POI,S1: every POI_upgrade link is priced (capital_cost > 0) and carries no flow (p_max_pu = 0),PASS,
+QA-ENG,"S1: cumulative (per class, per site) and disclosure rows present for every site with candidates",PASS,[]
+QA-ENG,S1: disclosure-row RHS = announced facility envelope by Q - known equipment (ENG_POI_VISIBILITY),PASS,
+QA-ENG,S1: site cumulative-row RHS = site cap - known equipment (never re-buy known equipment),PASS,
+QA-COD,"Helios: 0 MW firm equipment in 2026 (COD 2026.5), 200 in 2027, 591 from 2028",PASS,"{2026: 0.0, 2027: 200.0, 2028: 591.0, 2029: 591.0, 2030: 591.0, 2031: 591.0}"
+QA-COD,E4 sites: no fixed equipment and no upgrade term before 2030 (COD 2029.16 -> first full firm year 2030),PASS,
+QA-COD,S1: POI-eq rows for every site-year,PASS,"(96, 96)"
+QA-S2S3,"S3: identical POI candidate set, caps and costs as S1 (one build path for S1 / S2-public / S3 / S3_mS2)",PASS,
+QA-S2S3,S3: identical ENG cumulative / disclosure rows as S1,PASS,
+QA-S2S3,S3: no CIAC / security term in the social objective (grid_purchase only exists in the developer LP),PASS,
+QA-LP,no solver was called (only intercepted model calls),PASS,"['refused', 'refused', 'refused']"

@@ -25,8 +25,9 @@ import pandas as pd
 
 WF = Path(__file__).resolve().parents[2]
 COMMITTED = WF / 'byop/inputs/grid/COMMITTED_PUBLIC_ASSET_COSTS.csv'
-STUDY_FEE_USD = 100000.0          # 25.194 intermediate agreement study fee per request (unused balance refundable: refund not observed)
+STUDY_FEE_USD = 100000.0          # 25.194 intermediate agreement study fee per request (flat fee; unused balance returned: refund not observed)
 SECURITY_USD_PER_MW = 50000.0     # 25.194 financial security floor, USD per MW (not per kW)
+SECURITY_POST_COD_Y, SECURITY_TBILL = 2.0, 0.04   # 20 % returned at energization, then 20 % steps (one per year assumed); collateral earns T-bill
 LEGAL = dict(rule='16 TAC 25.194', status='ADOPTED_RULE', publication='Texas Register 2026-10-02', checked='2026-10-24',
              url='https://www.sos.state.tx.us/texreg/archive/October22026/Adopted%20Rules/16.ECONOMIC%20REGULATION.html',
              proposed_not_applied='25.192 / 25.193 12CP and minimum billing demand, 25.252 large-load tariff (TexReg 2026-07-24, PROPOSED)')
@@ -155,8 +156,9 @@ def payment_book(scen, res, charges, private_wacc=0.07):
                              study_fee_paid_USD=STUDY_FEE_USD if new_req_mw > 1e-3 else 0.0, study_fee_refund_USD=np.nan,
                              study_fee_refund_status='UNKNOWN (unused balance refundable)', CIAC_paid_USD_nominal_2025=ciac, CIAC_resource_PV_USD=ciac_pv,
                              system_upgrade_security_posted_USD=sec, security_kind='refundable financial security (floor 50,000 USD/MW x contracted new MW; allocated system-upgrade share UNRESOLVED)',
-                             security_returned_USD=sec, security_return_status='ASSUMED_RETURNED_AT_ENERGIZATION (no forfeiture modelled)',
-                             security_forfeited_USD=0.0, security_hold_y=hold, security_financing_cost_USD=sec * private_wacc * hold,
+                             security_returned_USD=sec, security_return_status='RETURNED 20 % AT ENERGIZATION + 20 % MILESTONE STEPS (one per year assumed); no withdrawal -> no 20 % / 50 % retention',
+                             security_forfeited_USD=0.0, security_hold_y=hold + SECURITY_POST_COD_Y if len(built) else 0.0,
+                             security_financing_cost_USD=sec * max(0.0, private_wacc - SECURITY_TBILL) * (hold + SECURITY_POST_COD_Y) if len(built) else 0.0,
                              new_poi_MW=new_mw, new_request_MW=new_req_mw, peak_served_IT_MW=peak_it,
                              network_service_charge='energy purchases at the parent-bus LMP (scenario transfer book, not a resource cost)',
                              unrecovered_cost_USD=np.nan, payer='DEVELOPER (CIAC, study fee, security financing)', beneficiary='AIDC site',
