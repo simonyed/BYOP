@@ -79,8 +79,28 @@ The rows common to LP1 and LP2 are loss ≥ E(|s|) (the tangents) and |s| + loss
 
 - **At the fixed point:** v3 allows exactly LP2's dissipation room. v2 allowed r·((0.7·cap)² − R_ref²) more on every line.
 - **More room needs more capacity:** U(R) − U(R_ref) = 2r·R_ref·0.7 × (s_nom − S_ref) MW per line. That room must be bought at 2 × 10⁶ USD per MVA and counts against G1.
-- **Real-network numbers** (max rate per MVA; v2 dissipation the v3 bound forbids) are in `results/BYOP/next08b_lp1_loss_upper_fix/LOSSY_LP1_BUILD.json`, reported in §5.
 
-## 5. Static validation
+**Real network** (`results/BYOP/next08b_lp1_loss_upper_fix/LOSSY_LP1_BUILD.json`):
 
-Filled from the L2 run; see `NEXT_08B_LOSS_UPPER_APPROVAL_REQUEST.md`.
+| | v2 (as solved) | **v3** |
+|---|---:|---:|
+| Room above the LP2 bound at s_nom = S_ref, summed over lines (MW per step) | **13,613** | **0** |
+| Sealed v2 LP1 losses the v3 bound forbids at the v2 capacities | — | **407.4 GWh**; 2,615 line-steps; up to **1,485 MW** in one step |
+| Extra room per MVA built (largest rate) | — | 0.324 MW (TL19); p95 0.148 |
+
+- **The v2 dissipation is excluded.** At the v2 capacities, every MWh of the v2 LP1's excess dissipation (TL28 100 GWh, TL27 96, TL24 53, …) is infeasible under v3.
+- **Getting it back is uneconomic and breaks G1.** Re-creating even 0.85 GW of sinks would take at least 2,600 MVA on the most favourable line. That is ≥ USD 5.2 bn, more than the whole USD 0.82 bn value of the LP2 shed at the LP1 price, and above G1's 1,871 MVA headroom.
+- **Most important:** P3 holds on every line. Whatever capacity LP1 chooses, LP2 at that same capacity allows at least as much room (r·R² ≥ U(R)). After convergence, LP1 can no longer use a capability that LP2 lacks.
+
+## 5. Static validation (all on L2, 0 optimizer calls)
+
+| Check | Result |
+|---|---|
+| Real build, IT1 (S_ref = v1.6) and a second IT2-like reference (S_ref = the sealed v2 solution), rows read back from linopy (`LOSSY_LP1_BUILD.json`) | **All PASS.** 2,093,803 variables / 6,902,966 constraints (= v2). `Line-loss_upper`: 473,040 rows, sign ≤, slope and offset exact (deviation 0). Tangents = the S_ref rows (≤ 3e-14). `Line-ext-s_nom-upper` = cap. `Line-ext-s_nom-lower` = max(raw, 0.75·S_ref); floor above raw on 15 / 16 lines. Rating rows unchanged (s ± loss ∓ 0.7·s_nom, rhs 0). |
+| Fixed point vs a real fixed-capacity LP2 model (the v1.6 capacities, and the sealed v2 candidate NetCDF) | **Identical:** loss upper ≤ 9e-16 relative; tangents ≤ 1.4e-14; rating rows ≤ 1.8e-12 MW; r and s_nom identical |
+| Domain [floor, cap], every line, 402 points, from the built rows | margin over the envelope ≥ −1.2e-15 relative (no hidden cap); U ≤ r·R² (≤ 6e-16); U ≥ 0.5·r·R_ref² > 0 |
+| Representative points: floor, 0.9·S_ref, S_ref, midpoint, cap; both flow directions | **0 failures:** (A) largest rating-feasible flow is feasible; (B) a slightly larger flow violates only the rating row; (C) dissipation up to U is allowed and U + ε is cut; (D) the only capacity floor is the explicit floor row |
+| Small network (`test_next08b_loss_upper.py`, 9 tests) | Pass, including two **negative controls**: the naive fix makes `Line-loss_upper` the flow limit above S_ref (caught), and the affine bound without the floor produces a hidden cap / implied floor (caught) |
+| Zero-solver chain on the real networks (`_zero_solver_chain/NEXT08B_V3_ZERO_SOLVER_CHAIN.json`) | **PASS.** Fixed-point path: IT1 converged → candidate → IT2 refused → LP2. Floor path: IT1 not converged → IT2 not converged → LP2 refused. Frozen v1.6 files and the NEXT-08 / NEXT-08b ledgers unchanged; the real v3 ledger never written |
+| Full L2 suite (`N08B3_TESTS.log`) | **332 passed / 0 failed** |
+| Pre-run manifest (`LOSSY_LP1_V3_PRE_RUN_MANIFEST.json`) | Built on L2 at `b2f93b5d`: 153 code + 110 input files, 0 mismatches. Gate refuses IT1 only on the three approval fields. |
