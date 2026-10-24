@@ -1,0 +1,631 @@
+{
+ "step": "NEXT-08 lossy LP1 static build",
+ "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_lossy_lp1_v3.yaml",
+ "tangent_reference": "s_ref",
+ "solver_calls": 0,
+ "gate": {
+  "LP1_LOSSY_IT1": {
+   "approved": false,
+   "reasons": [
+    "run_authorization=NOT_APPROVED",
+    "approved_by missing",
+    "approved_git_sha missing",
+    "manifest missing: current_work_pckg/BYOP_NEXT_08B_LP1_TANGENT_FIX/LOSSY_LP1_V3_PRE_RUN_MANIFEST.json"
+   ],
+   "head": "d7b9c7a5d9c4d673f5014ae2f3f4f42ab3682dbf",
+   "approved_git_sha": null,
+   "stage": "LP1_LOSSY_IT1"
+  },
+  "LP1_LOSSY_IT2": {
+   "approved": false,
+   "reasons": [
+    "run_authorization=NOT_APPROVED",
+    "approved_by missing",
+    "approved_git_sha missing",
+    "manifest missing: current_work_pckg/BYOP_NEXT_08B_LP1_TANGENT_FIX/LOSSY_LP1_V3_PRE_RUN_MANIFEST.json",
+    "LP1_LOSSY_IT2 only after an optimal LP1_LOSSY_IT1 that is NOT r-converged"
+   ],
+   "head": "d7b9c7a5d9c4d673f5014ae2f3f4f42ab3682dbf",
+   "approved_git_sha": null,
+   "stage": "LP1_LOSSY_IT2"
+  },
+  "LP2_LOSSY_CANDIDATE": {
+   "approved": false,
+   "reasons": [
+    "run_authorization=NOT_APPROVED",
+    "approved_by missing",
+    "approved_git_sha missing",
+    "manifest missing: current_work_pckg/BYOP_NEXT_08B_LP1_TANGENT_FIX/LOSSY_LP1_V3_PRE_RUN_MANIFEST.json",
+    "LP2_LOSSY_CANDIDATE only after an optimal, r-converged LP1 whose expansion guards all pass",
+    "candidate network baseline_2025_tamu_lossy_candidate.nc missing"
+   ],
+   "head": "d7b9c7a5d9c4d673f5014ae2f3f4f42ab3682dbf",
+   "approved_git_sha": null,
+   "stage": "LP2_LOSSY_CANDIDATE"
+  }
+ },
+ "LP1_LOSSY_IT1": {
+  "n_vars": 2093803,
+  "n_cons": 6902966,
+  "has_line_loss": true,
+  "has_line_s_nom": true,
+  "loss_rows": [
+   "Line-loss_tangents-1--1",
+   "Line-loss_tangents-1-1",
+   "Line-loss_tangents-2--1",
+   "Line-loss_tangents-2-1",
+   "Line-loss_upper"
+  ],
+  "lines": 162,
+  "all_lines_extendable": true,
+  "s_nom_max_finite": true,
+  "cap_over_v16_prepared": 2.0,
+  "s_nom_min_equals_raw": true,
+  "capital_cost_unique": [
+   2000000.0
+  ],
+  "x_equals_raw": true,
+  "r_scaled_lines": 18,
+  "r_sum_ohm": 1680.474292335671,
+  "generators": 264,
+  "shed_units": 63,
+  "storage_units": 43,
+  "snapshots": 2920,
+  "committable": 0,
+  "tangent_reference": "s_ref",
+  "tangent_rows_vs_reference": {
+   "1-": {
+    "offset_max_abs_dev": 7.105427357601002e-15,
+    "slope_max_abs_dev": 0.0
+   },
+   "1+": {
+    "offset_max_abs_dev": 7.105427357601002e-15,
+    "slope_max_abs_dev": 0.0
+   },
+   "2-": {
+    "offset_max_abs_dev": 2.842170943040401e-14,
+    "slope_max_abs_dev": 0.0
+   },
+   "2+": {
+    "offset_max_abs_dev": 2.842170943040401e-14,
+    "slope_max_abs_dev": 0.0
+   }
+  },
+  "tangent_rows_match": true,
+  "capacity_row_rhs_equals_cap": true
+ },
+ "v3_static": {
+  "it1": {
+   "n_vars": 2093803,
+   "n_cons": 6902966,
+   "rows": {
+    "loss_upper": {
+     "rows": 473040,
+     "sign": [
+      "<="
+     ],
+     "other_terms": 0,
+     "slope_max_abs_dev": 0.0,
+     "offset_max_abs_dev": 0.0,
+     "loss_coef_unique": [
+      1.0
+     ]
+    },
+    "loss_tangents": {
+     "1-": {
+      "offset_max_abs_dev": 7.105427357601002e-15,
+      "slope_max_abs_dev": 0.0
+     },
+     "1+": {
+      "offset_max_abs_dev": 7.105427357601002e-15,
+      "slope_max_abs_dev": 0.0
+     },
+     "2-": {
+      "offset_max_abs_dev": 2.842170943040401e-14,
+      "slope_max_abs_dev": 0.0
+     },
+     "2+": {
+      "offset_max_abs_dev": 2.842170943040401e-14,
+      "slope_max_abs_dev": 0.0
+     }
+    },
+    "s_nom_upper": {
+     "sign": [
+      "<="
+     ],
+     "rhs_max_abs_dev": 0.0
+    },
+    "s_nom_lower": {
+     "sign": [
+      ">="
+     ],
+     "rhs_max_abs_dev": 0.0,
+     "lines_floor_above_raw": 15
+    },
+    "rating_rows": {
+     "upper": {
+      "sign": [
+       "<="
+      ],
+      "other_terms": 0,
+      "s_coef": [
+       1.0
+      ],
+      "loss_coef": [
+       1.0
+      ],
+      "s_nom_coef_max_abs_dev": 0.0,
+      "rhs_max_abs": 0.0
+     },
+     "lower": {
+      "sign": [
+       ">="
+      ],
+      "other_terms": 0,
+      "s_coef": [
+       1.0
+      ],
+      "loss_coef": [
+       -1.0
+      ],
+      "s_nom_coef_max_abs_dev": 0.0,
+      "rhs_max_abs": 0.0
+     }
+    },
+    "domain": {
+     "lines": 162,
+     "worst_margin": {
+      "margin": -1.1368683772161603e-13,
+      "line": "TL24",
+      "R_over_Rref": 1.5650000000000004
+     },
+     "min_margin_rel": -1.2004438982325052e-15,
+     "max_U_minus_rR2_rel": 6.1775431949589465e-16,
+     "min_U_rel": 0.4999999999999996,
+     "fixed_point_max_dev_rel": 6.1775431949589465e-16
+    }
+   },
+   "s_nom_min_equals_floor_and_floor_ge_raw": true,
+   "lines_floor_above_raw": {
+    "TL12": {
+     "raw": 108.8,
+     "floor": 269.1,
+     "s_ref": 358.7
+    },
+    "TL13": {
+     "raw": 610.5,
+     "floor": 682.4,
+     "s_ref": 909.8
+    },
+    "TL15": {
+     "raw": 108.8,
+     "floor": 328.4,
+     "s_ref": 437.8
+    },
+    "TL26": {
+     "raw": 98.0,
+     "floor": 109.0,
+     "s_ref": 145.4
+    },
+    "TL35": {
+     "raw": 117.3,
+     "floor": 494.9,
+     "s_ref": 659.9
+    },
+    "TL36": {
+     "raw": 90.2,
+     "floor": 147.3,
+     "s_ref": 196.4
+    },
+    "TL37": {
+     "raw": 468.0,
+     "floor": 798.0,
+     "s_ref": 1063.9
+    },
+    "TL38": {
+     "raw": 729.3,
+     "floor": 1348.1,
+     "s_ref": 1797.5
+    },
+    "TL39": {
+     "raw": 450.0,
+     "floor": 935.9,
+     "s_ref": 1247.9
+    },
+    "TL40": {
+     "raw": 98.0,
+     "floor": 194.2,
+     "s_ref": 259.0
+    },
+    "TL41": {
+     "raw": 221.0,
+     "floor": 269.7,
+     "s_ref": 359.6
+    },
+    "TL42": {
+     "raw": 163.9,
+     "floor": 292.4,
+     "s_ref": 389.8
+    },
+    "TL43": {
+     "raw": 98.0,
+     "floor": 127.5,
+     "s_ref": 170.0
+    },
+    "TL63": {
+     "raw": 374.0,
+     "floor": 397.6,
+     "s_ref": 530.1
+    },
+    "TL69": {
+     "raw": 132.5,
+     "floor": 144.3,
+     "s_ref": 192.4
+    }
+   },
+   "dissipation_room": {
+    "rate_MW_per_MVA_max": 0.32443019842143866,
+    "rate_line": "TL19",
+    "rate_MW_per_MVA_p95": 0.14812013606468935,
+    "v2_room_at_s_ref_total_MW": 13612.967984696603,
+    "v3_room_at_s_ref_total_MW": 0.0,
+    "v3_room_if_every_line_at_cap_total_MW": 9075.311989797734,
+    "v3_room_per_1000_MVA_built_on_the_best_line_MW": 324.43019842143866,
+    "top_rate_lines": {
+     "TL19": 0.32443,
+     "TL52": 0.29769,
+     "TL23": 0.27659,
+     "TL25": 0.1915,
+     "TL94": 0.19016,
+     "TL5": 0.18674
+    }
+   },
+   "representative_points": {
+    "lines": 162,
+    "levels": [
+     "floor",
+     "s_ref",
+     "mid",
+     "cap",
+     "0.9_s_ref"
+    ],
+    "failures": {
+     "A": 0,
+     "B": 0,
+     "C": 0,
+     "D": 0
+    },
+    "examples": {}
+   },
+   "fixed_point_vs_lp2": {
+    "s_nom_dev": 0.0,
+    "r_dev": 0.0,
+    "loss_upper_max_abs_dev": 2.842170943040401e-14,
+    "loss_upper_rel_dev": 6.1775431949589465e-16,
+    "tangent_1-_rhs_dev": 0.0,
+    "tangent_1-_slope_dev": 0.0,
+    "tangent_1+_rhs_dev": 0.0,
+    "tangent_1+_slope_dev": 0.0,
+    "tangent_2-_rhs_dev": 0.0,
+    "tangent_2-_slope_dev": 0.0,
+    "tangent_2+_rhs_dev": 0.0,
+    "tangent_2+_slope_dev": 0.0,
+    "rating_upper_rhs_dev": 0.0,
+    "rating_upper_coef_dev": 0.0,
+    "rating_lower_rhs_dev": 0.0,
+    "rating_lower_coef_dev": 0.0
+   }
+  },
+  "reference2": {
+   "n_vars": 2093803,
+   "n_cons": 6902966,
+   "rows": {
+    "loss_upper": {
+     "rows": 473040,
+     "sign": [
+      "<="
+     ],
+     "other_terms": 0,
+     "slope_max_abs_dev": 0.0,
+     "offset_max_abs_dev": 0.0,
+     "loss_coef_unique": [
+      1.0
+     ]
+    },
+    "loss_tangents": {
+     "1-": {
+      "offset_max_abs_dev": 7.105427357601002e-15,
+      "slope_max_abs_dev": 0.0
+     },
+     "1+": {
+      "offset_max_abs_dev": 7.105427357601002e-15,
+      "slope_max_abs_dev": 0.0
+     },
+     "2-": {
+      "offset_max_abs_dev": 2.842170943040401e-14,
+      "slope_max_abs_dev": 0.0
+     },
+     "2+": {
+      "offset_max_abs_dev": 2.842170943040401e-14,
+      "slope_max_abs_dev": 0.0
+     }
+    },
+    "s_nom_upper": {
+     "sign": [
+      "<="
+     ],
+     "rhs_max_abs_dev": 0.0
+    },
+    "s_nom_lower": {
+     "sign": [
+      ">="
+     ],
+     "rhs_max_abs_dev": 0.0,
+     "lines_floor_above_raw": 16
+    },
+    "rating_rows": {
+     "upper": {
+      "sign": [
+       "<="
+      ],
+      "other_terms": 0,
+      "s_coef": [
+       1.0
+      ],
+      "loss_coef": [
+       1.0
+      ],
+      "s_nom_coef_max_abs_dev": 0.0,
+      "rhs_max_abs": 0.0
+     },
+     "lower": {
+      "sign": [
+       ">="
+      ],
+      "other_terms": 0,
+      "s_coef": [
+       1.0
+      ],
+      "loss_coef": [
+       -1.0
+      ],
+      "s_nom_coef_max_abs_dev": 0.0,
+      "rhs_max_abs": 0.0
+     }
+    },
+    "domain": {
+     "lines": 162,
+     "worst_margin": {
+      "margin": -1.1368683772161603e-13,
+      "line": "TL24",
+      "R_over_Rref": 1.5650000000000004
+     },
+     "min_margin_rel": -1.2004438982325052e-15,
+     "max_U_minus_rR2_rel": 6.1775431949589465e-16,
+     "min_U_rel": 0.4999999999999997,
+     "fixed_point_max_dev_rel": 6.1775431949589465e-16
+    }
+   },
+   "s_nom_min_equals_floor_and_floor_ge_raw": true,
+   "lines_floor_above_raw": {
+    "TL12": {
+     "raw": 108.8,
+     "floor": 298.4,
+     "s_ref": 397.9
+    },
+    "TL13": {
+     "raw": 610.5,
+     "floor": 774.1,
+     "s_ref": 1032.1
+    },
+    "TL15": {
+     "raw": 108.8,
+     "floor": 328.6,
+     "s_ref": 438.1
+    },
+    "TL35": {
+     "raw": 117.3,
+     "floor": 518.2,
+     "s_ref": 690.9
+    },
+    "TL36": {
+     "raw": 90.2,
+     "floor": 156.1,
+     "s_ref": 208.1
+    },
+    "TL37": {
+     "raw": 468.0,
+     "floor": 843.1,
+     "s_ref": 1124.1
+    },
+    "TL38": {
+     "raw": 729.3,
+     "floor": 1425.9,
+     "s_ref": 1901.2
+    },
+    "TL39": {
+     "raw": 450.0,
+     "floor": 970.8,
+     "s_ref": 1294.4
+    },
+    "TL40": {
+     "raw": 98.0,
+     "floor": 204.5,
+     "s_ref": 272.7
+    },
+    "TL41": {
+     "raw": 221.0,
+     "floor": 290.9,
+     "s_ref": 387.8
+    },
+    "TL42": {
+     "raw": 163.9,
+     "floor": 319.1,
+     "s_ref": 425.5
+    },
+    "TL43": {
+     "raw": 98.0,
+     "floor": 131.2,
+     "s_ref": 174.9
+    },
+    "TL63": {
+     "raw": 374.0,
+     "floor": 399.6,
+     "s_ref": 532.9
+    },
+    "TL68": {
+     "raw": 132.5,
+     "floor": 139.5,
+     "s_ref": 186.0
+    },
+    "TL69": {
+     "raw": 132.5,
+     "floor": 171.9,
+     "s_ref": 229.2
+    },
+    "TL73": {
+     "raw": 999.0,
+     "floor": 1040.5,
+     "s_ref": 1387.3
+    }
+   },
+   "dissipation_room": {
+    "rate_MW_per_MVA_max": 0.32443019842143866,
+    "rate_line": "TL19",
+    "rate_MW_per_MVA_p95": 0.14812013606468935,
+    "v2_room_at_s_ref_total_MW": 13492.737729818593,
+    "v3_room_at_s_ref_total_MW": 0.0,
+    "v3_room_if_every_line_at_cap_total_MW": 9022.873591748608,
+    "v3_room_per_1000_MVA_built_on_the_best_line_MW": 324.43019842143866,
+    "top_rate_lines": {
+     "TL19": 0.32443,
+     "TL52": 0.29769,
+     "TL23": 0.27659,
+     "TL25": 0.1915,
+     "TL94": 0.19016,
+     "TL5": 0.18674
+    }
+   },
+   "representative_points": {
+    "lines": 162,
+    "levels": [
+     "floor",
+     "s_ref",
+     "mid",
+     "cap",
+     "0.9_s_ref"
+    ],
+    "failures": {
+     "A": 0,
+     "B": 0,
+     "C": 0,
+     "D": 0
+    },
+    "examples": {}
+   },
+   "fixed_point_vs_lp2": {
+    "s_nom_dev": 1.8189894035458565e-12,
+    "r_dev": 3.552713678800501e-15,
+    "loss_upper_max_abs_dev": 2.842170943040401e-14,
+    "loss_upper_rel_dev": 8.76219733386565e-16,
+    "tangent_1-_rhs_dev": 3.552713678800501e-15,
+    "tangent_1-_slope_dev": 1.3877787807814457e-17,
+    "tangent_1+_rhs_dev": 3.552713678800501e-15,
+    "tangent_1+_slope_dev": 1.3877787807814457e-17,
+    "tangent_2-_rhs_dev": 1.4210854715202004e-14,
+    "tangent_2-_slope_dev": 2.7755575615628914e-17,
+    "tangent_2+_rhs_dev": 1.4210854715202004e-14,
+    "tangent_2+_slope_dev": 2.7755575615628914e-17,
+    "rating_upper_rhs_dev": 1.8189894035458565e-12,
+    "rating_upper_coef_dev": 0.0,
+    "rating_lower_rhs_dev": 1.8189894035458565e-12,
+    "rating_lower_coef_dev": 0.0
+   },
+   "sealed_v2_lp1_loss_forbidden_by_v3": {
+    "MWh": 407396.52717697003,
+    "cells": 2615,
+    "max_step_MW": 1484.5622429701655,
+    "top_lines_MWh": {
+     "TL28": 100409.8,
+     "TL27": 95696.6,
+     "TL24": 52895.7,
+     "TL13": 35510.1,
+     "TL148": 31126.1,
+     "TL22": 27389.5,
+     "TL23": 21108.2,
+     "TL29": 8340.7
+    }
+   }
+  },
+  "checks": {
+   "it1_loss_upper_rows_affine_at_s_ref": true,
+   "it1_tangent_rows_at_s_ref": true,
+   "it1_s_nom_upper_is_cap": true,
+   "it1_s_nom_lower_is_floor": true,
+   "it1_rating_rows_unchanged_form": true,
+   "it1_no_hidden_flow_cap_on_floor_to_cap": true,
+   "it1_bound_never_above_r_R2": true,
+   "it1_bound_nonnegative": true,
+   "it1_fixed_point_equals_r_Rref2": true,
+   "it1_fixed_point_equals_lp2_rows": true,
+   "it1_same_model_size_as_v2": true,
+   "it1_representative_points_ABCD": true,
+   "reference2_loss_upper_rows_affine_at_s_ref": true,
+   "reference2_tangent_rows_at_s_ref": true,
+   "reference2_s_nom_upper_is_cap": true,
+   "reference2_s_nom_lower_is_floor": true,
+   "reference2_rating_rows_unchanged_form": true,
+   "reference2_no_hidden_flow_cap_on_floor_to_cap": true,
+   "reference2_bound_never_above_r_R2": true,
+   "reference2_bound_nonnegative": true,
+   "reference2_fixed_point_equals_r_Rref2": true,
+   "reference2_fixed_point_equals_lp2_rows": true,
+   "reference2_same_model_size_as_v2": true,
+   "reference2_representative_points_ABCD": true,
+   "v2_lp1_dissipation_forbidden_by_v3_GWh_ge_300": true
+  }
+ },
+ "candidate_from_v16_capacities": {
+  "r_sum_ohm": 1680.474292335671,
+  "s_nom_sum": 282879.1893143179,
+  "x_equals_raw": true
+ },
+ "checks": {
+  "loss_terms": true,
+  "capacity_variables": true,
+  "finite_caps": true,
+  "cap_factor_respected": true,
+  "lp1_like_v16": true,
+  "x_unchanged": true,
+  "r_scaled_on_v16_uplifted_lines": true,
+  "no_committable": true,
+  "tangent_rows_match_reference": true,
+  "capacity_row_is_guard_cap": true,
+  "no_solver_called": true,
+  "it1_loss_upper_rows_affine_at_s_ref": true,
+  "it1_tangent_rows_at_s_ref": true,
+  "it1_s_nom_upper_is_cap": true,
+  "it1_s_nom_lower_is_floor": true,
+  "it1_rating_rows_unchanged_form": true,
+  "it1_no_hidden_flow_cap_on_floor_to_cap": true,
+  "it1_bound_never_above_r_R2": true,
+  "it1_bound_nonnegative": true,
+  "it1_fixed_point_equals_r_Rref2": true,
+  "it1_fixed_point_equals_lp2_rows": true,
+  "it1_same_model_size_as_v2": true,
+  "it1_representative_points_ABCD": true,
+  "reference2_loss_upper_rows_affine_at_s_ref": true,
+  "reference2_tangent_rows_at_s_ref": true,
+  "reference2_s_nom_upper_is_cap": true,
+  "reference2_s_nom_lower_is_floor": true,
+  "reference2_rating_rows_unchanged_form": true,
+  "reference2_no_hidden_flow_cap_on_floor_to_cap": true,
+  "reference2_bound_never_above_r_R2": true,
+  "reference2_bound_nonnegative": true,
+  "reference2_fixed_point_equals_r_Rref2": true,
+  "reference2_fixed_point_equals_lp2_rows": true,
+  "reference2_same_model_size_as_v2": true,
+  "reference2_representative_points_ABCD": true,
+  "v2_lp1_dissipation_forbidden_by_v3_GWh_ge_300": true
+ }
+}

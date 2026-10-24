@@ -1,0 +1,220 @@
+{
+ "step": "NEXT-08b LP1 v3 zero-solver chain on the real v1.6 networks",
+ "config": "/datasets/prgm/BYOP_impact/pypsa-usa/workflow/config/config.byop_lossy_lp1_v3.yaml",
+ "real_solver_calls": 0,
+ "a_fixed_point": {
+  "stages": {
+   "LP1_LOSSY_IT1": {
+    "status": "ok",
+    "termination": "optimal",
+    "n_vars": 2093803,
+    "n_cons": 6902966,
+    "r_converged": true,
+    "candidate_written": true,
+    "acceptance_pass": null,
+    "convergence": {
+     "max_rel_r_gap": 0.0,
+     "lines_not_converged": 0,
+     "worst": {},
+     "lines_at_trust_floor": [],
+     "trust_floor_lines": 15
+    },
+    "guards": {
+     "G1": true,
+     "G2": true,
+     "G3": true,
+     "all_pass": true,
+     "total_uplift_MVA": 5151.833600032188
+    },
+    "files": [
+     "LOSSY_LP1_QA.json",
+     "LP1_LINE_SOLUTION.csv",
+     "line_loss.csv.gz",
+     "shed_by_bus.csv.gz",
+     "shedding_events.csv"
+    ]
+   },
+   "LP1_LOSSY_IT2": {
+    "refused": [
+     "LP1_LOSSY_IT2 only after an optimal LP1_LOSSY_IT1 that is NOT r-converged"
+    ]
+   },
+   "LP2_LOSSY_CANDIDATE": {
+    "status": "ok",
+    "termination": "optimal",
+    "n_vars": 2093640,
+    "n_cons": 6902642,
+    "r_converged": null,
+    "candidate_written": null,
+    "acceptance_pass": false,
+    "files": [
+     "LOSS_BASIS_LP2_QA.json",
+     "generation_by_carrier.csv",
+     "line_flow_p0.csv.gz",
+     "line_loss.csv.gz",
+     "lines.csv",
+     "shed_by_bus.csv.gz",
+     "shedding_events.csv"
+    ]
+   }
+  },
+  "ledger": [
+   {
+    "stage": "LP1_LOSSY_IT1",
+    "state": "DONE",
+    "r_converged": "True",
+    "guards_pass": "True"
+   },
+   {
+    "stage": "LP2_LOSSY_CANDIDATE",
+    "state": "DONE",
+    "r_converged": "",
+    "guards_pass": ""
+   }
+  ]
+ },
+ "b_trust_floor": {
+  "stages": {
+   "LP1_LOSSY_IT1": {
+    "status": "ok",
+    "termination": "optimal",
+    "n_vars": 2093803,
+    "n_cons": 6902966,
+    "r_converged": false,
+    "candidate_written": false,
+    "acceptance_pass": null,
+    "convergence": {
+     "max_rel_r_gap": 0.2500000000000001,
+     "lines_not_converged": 18,
+     "worst": {
+      "TL13": 0.25,
+      "TL39": 0.25,
+      "TL43": 0.25,
+      "TL36": 0.25,
+      "TL12": 0.25,
+      "TL15": 0.25,
+      "TL37": 0.25,
+      "TL35": 0.25
+     },
+     "lines_at_trust_floor": [
+      "TL12",
+      "TL13",
+      "TL15",
+      "TL26",
+      "TL35",
+      "TL36",
+      "TL37",
+      "TL38",
+      "TL39",
+      "TL40",
+      "TL41",
+      "TL42",
+      "TL43",
+      "TL63",
+      "TL69"
+     ],
+     "trust_floor_lines": 15
+    },
+    "guards": {
+     "G1": true,
+     "G2": true,
+     "G3": true,
+     "all_pass": true,
+     "total_uplift_MVA": 2670.5176892325944
+    },
+    "files": [
+     "LOSSY_LP1_QA.json",
+     "LP1_LINE_SOLUTION.csv",
+     "line_loss.csv.gz",
+     "shed_by_bus.csv.gz",
+     "shedding_events.csv"
+    ]
+   },
+   "LP1_LOSSY_IT2": {
+    "status": "ok",
+    "termination": "optimal",
+    "n_vars": 2093803,
+    "n_cons": 6902966,
+    "r_converged": false,
+    "candidate_written": false,
+    "acceptance_pass": null,
+    "convergence": {
+     "max_rel_r_gap": 0.2500000000000001,
+     "lines_not_converged": 15,
+     "worst": {
+      "TL15": 0.25,
+      "TL12": 0.25,
+      "TL35": 0.25,
+      "TL37": 0.25,
+      "TL36": 0.25,
+      "TL39": 0.25,
+      "TL38": 0.25,
+      "TL40": 0.25
+     },
+     "lines_at_trust_floor": [
+      "TL12",
+      "TL15",
+      "TL35",
+      "TL36",
+      "TL37",
+      "TL38",
+      "TL39",
+      "TL40",
+      "TL42"
+     ],
+     "trust_floor_lines": 9
+    },
+    "guards": {
+     "G1": true,
+     "G2": true,
+     "G3": true,
+     "all_pass": true,
+     "total_uplift_MVA": 1272.0281987165595
+    },
+    "files": [
+     "LOSSY_LP1_QA.json",
+     "LP1_LINE_SOLUTION.csv",
+     "line_loss.csv.gz",
+     "shed_by_bus.csv.gz",
+     "shedding_events.csv"
+    ]
+   },
+   "LP2_LOSSY_CANDIDATE": {
+    "refused": [
+     "LP2_LOSSY_CANDIDATE only after an optimal, r-converged LP1 whose expansion guards all pass",
+     "candidate network baseline_2025_tamu_lossy_candidate.nc missing"
+    ]
+   }
+  },
+  "ledger": [
+   {
+    "stage": "LP1_LOSSY_IT1",
+    "state": "DONE",
+    "r_converged": "False",
+    "guards_pass": "True"
+   },
+   {
+    "stage": "LP1_LOSSY_IT2",
+    "state": "DONE",
+    "r_converged": "False",
+    "guards_pass": "True"
+   }
+  ]
+ },
+ "fake_solve_calls": 4,
+ "checks": {
+  "a_it1_converged_no_floor_candidate": true,
+  "a_it2_refused": true,
+  "a_lp2_ran": true,
+  "a_candidate_file": true,
+  "b_it1_floor_not_converged": true,
+  "b_it2_not_converged_no_candidate": true,
+  "b_lp2_refused": true,
+  "b_no_candidate_file": true,
+  "lp1_files": true,
+  "frozen_v16_files_unchanged": true,
+  "earlier_ledgers_unchanged": true,
+  "real_v3_ledger_untouched": true
+ },
+ "verdict": "ZERO_SOLVER_CHAIN_PASS"
+}
