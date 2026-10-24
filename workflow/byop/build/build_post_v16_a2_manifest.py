@@ -17,6 +17,7 @@ WF = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(WF / 'byop/model'))
 import post_v16_a2_gate as A2G  # noqa: E402
 import post_v16_gate as G  # noqa: E402
+import baseline_registry as BR  # noqa: E402
 
 ROOT = WF.parent
 
@@ -44,6 +45,8 @@ def main():
                max_retries=c['max_retries'], config=Path(cfgp).resolve().relative_to(ROOT.resolve()).as_posix(),
                config_sha256_normalised=G.config_sha(cfgp),
                baseline=dict(path=c['baseline']['path'], sha256=A2G.file_shas(base)['raw'] if base.exists() else None),
+               baseline_registry=BR.REGISTRY_REL, baseline_registry_normalised_sha256=BR.normalised_sha(),   # NEXT-09 (adoption fields blanked)
+               formal_baseline_when_built=BR.summary()['formal'],
                code={p: rec(p) for p in code}, inputs={p: rec(p) for p in inputs},
                head_when_built=head, built_utc=datetime.now(timezone.utc).isoformat(timespec='seconds'),
                note='verification: post_v16_a2_gate.manifest_mismatches; A1 manifest / gate untouched')

@@ -1,0 +1,32 @@
+# BYOP NEXT-09 (2026-10-23): the formal 2025 baseline of every post-v1.6 S0-S3 gate (byop/model/baseline_registry.py).
+# The researcher alone sets adoption_status ADOPTED, adopted_git_sha and adopted_by (config-only commit). Until then the formal
+# baseline stays previous_formal (v1.6) - which the loss-basis rule refuses for S0-S3 - and the v1.7L configs are refused.
+# Both NetCDFs are kept unchanged on L2; this file only says which one is formal. Pinned in the manifests by its normalised SHA.
+baseline_registry:
+  previous_formal: v16
+  candidate: v17l
+  adoption:
+    adoption_status: NOT_ADOPTED
+    adopted_git_sha: null
+    adopted_by: null
+  authorization_source: current_work_pckg/BYOP_NEXT_09_V17L_BASELINE_ADOPTION/NEXT_09_ADOPTION_INSTRUCTION_RECORD.md
+  authorization_source_sha256: 37a489e7c8f4d980343ccfaaab66c79b2d503b1d2a68ec702af546120dca4c46   # LF content SHA
+  baselines:
+    v16:
+      label: v1.6 calibration close-out (lossless LP1 / LP2; report 0b417903)
+      path: workflow/results/BYOP/baseline_2025_tamu_v16/baseline_2025_tamu_prepared.nc
+      sha256: a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16
+      calibration_transmission_losses: 0
+      meta_transmission_losses: 2
+      status: frozen; formal until v17l is ADOPTED, then superseded (never modified or deleted)
+    v17l:
+      label: v1.7L lossy 2025 baseline = NEXT-08b LP1 v3 candidate (IT2 r-converged, G1-G3 PASS; LP2 EENS 140.2 MWh, gap 27.76 MW)
+      path: workflow/results/BYOP/baseline_2025_tamu_v17_lossy/baseline_2025_tamu_v17_lossy_prepared.nc
+      sha256: f9aa87aea496f7c07ea4aca0439a703e7eaa90d08cb66c5bc6f149ea60eeefb6
+      source: workflow/results/BYOP/next08b_lp1_loss_upper_fix/baseline_2025_tamu_lossy_candidate.nc   # byte copy (same SHA)
+      solved_code_sha: d4fd5340945e50c86859024e2ecec86597b630dd
+      seal: current_work_pckg/BYOP_NEXT_08B_LP1_TANGENT_FIX/LOSSY_LP1_V3_SEAL.json
+      record: workflow/results/BYOP/baseline_2025_tamu_v17_lossy/BASELINE_V17L_RECORD.json
+      calibration_transmission_losses: 2
+      meta_transmission_losses: 2
+      status: frozen; PREPARED, formal only after ADOPTED

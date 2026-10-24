@@ -130,6 +130,7 @@ def check(stage, base_path, scenarios=None, cfg_path=CFG, root=ROOT, git_fn=G.gi
         since = set(git_fn('diff', '--name-only', asha, 'HEAD', '--', *G.CLEAN_PATHS).stdout.split())
         cp, rp = Path(cfg_path).resolve(), Path(root).resolve()
         cfg_rel = cp.relative_to(rp).as_posix() if cp.is_relative_to(rp) else None
+        since -= registry_adoption_only_change(root / c['manifest'])
         if not anc:
             reasons.append(f'approved_git_sha {asha} is not HEAD {head} or an ancestor of it')
         elif since - {cfg_rel}:
@@ -150,6 +151,10 @@ def check(stage, base_path, scenarios=None, cfg_path=CFG, root=ROOT, git_fn=G.gi
         reasons += manifest_mismatches(man, root)
         if man.get('config_sha256_normalised') != G.config_sha(cfg_path):
             reasons.append('config differs from the manifest (normalised SHA)')
+        reasons += registry_manifest_problems(man)
+    import baseline_registry as BR                      # NEXT-09: only the formal 2025 baseline (re-checked before every solve)
+    reasons += [r for r in BR.baseline_problems(c.get('baseline'), base_path, root=root, git_fn=git_fn, loss_basis='diagnostic' not in c)
+                if r not in reasons and not (r.startswith('no --base') and not base_path)]
     want = (root / c['baseline']['path']).resolve()
     got = Path(base_path).resolve() if base_path else None
     if got is None:
@@ -187,6 +192,7 @@ def check(stage, base_path, scenarios=None, cfg_path=CFG, root=ROOT, git_fn=G.gi
             if fails:
                 reasons.append('S1_EARLIEST needs a PASSED S0 first: ' + '; '.join(fails))
             reasons += no_harm_reference_problems(out)
+            reasons += reference_binding_problems(out, lg, c, cfg_path)
     return dict(approved=not reasons, reasons=reasons, head=head, approved_git_sha=asha or None, stage=stage, base=str(base_path),
                 config=str(cfg_path), ledger=str(log))
 
@@ -318,6 +324,42 @@ def no_harm_reference_problems(out_dir):
     if rec.get('sha256') != file_shas(f)['raw']:
         return [f'S0 no-harm reference SHA differs from S0_RESULT.json ({rec.get("sha256")})']
     return []
+
+
+def registry_adoption_only_change(man_p):
+    """NEXT-09: {registry path} when the baseline registry differs from the manifest-pinned one only in its three adoption fields
+    (so the researcher can adopt in the same config-only commit as the stage approval), else the empty set"""
+    import baseline_registry as BR
+    try:
+        pinned = json.loads(Path(man_p).read_text(encoding='utf-8')).get('baseline_registry_normalised_sha256')
+    except Exception:
+        return set()
+    return {BR.REGISTRY_REL} if pinned and pinned == BR.normalised_sha() else set()
+
+
+def registry_manifest_problems(man):
+    """a manifest that pins the registry must match it (normalised: adoption fields blanked)"""
+    import baseline_registry as BR
+    pinned = man.get('baseline_registry_normalised_sha256')
+    if pinned is None:
+        return []
+    return [] if pinned == BR.normalised_sha() else ['baseline registry differs from the manifest (normalised SHA)']
+
+
+def reference_binding_problems(out_dir, lg, c, cfg_path):
+    """NEXT-09: the S0 reference S1 reads must be the S0 of THIS config, solved on THIS config's baseline (an old S0 reference copied
+    in from another run, e.g. the v1.6 A2 one, is refused)"""
+    bad = []
+    s0 = lg[(lg.stage == 'S0') & (lg.state == 'DONE')]
+    if len(s0) and str(s0.base_sha256.iloc[-1]) != str(c['baseline']['sha256']):
+        bad.append(f"S0 reference solved on baseline {s0.base_sha256.iloc[-1][:12]}, not this config's {str(c['baseline']['sha256'])[:12]}")
+    try:
+        g = json.loads((Path(out_dir) / 'S0_RESULT.json').read_text(encoding='utf-8')).get('gate') or {}
+    except Exception:
+        return bad + ['S0_RESULT.json unreadable for the reference binding']
+    if not g.get('config') or Path(g['config']).resolve() != Path(cfg_path).resolve():
+        bad.append(f"S0_RESULT.json was written under config {g.get('config')}, not {cfg_path}")
+    return bad
 
 
 def no_harm_check(n, out_dir, tol=1e-3):

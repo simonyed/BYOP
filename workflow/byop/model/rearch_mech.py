@@ -1688,6 +1688,14 @@ def mainline_gate(cfg_path):
 POST_V16_LEGACY_FLAGS = ('calibrate', 'erm_cal', 's0_calibrate', 's0_cal_file')
 
 
+def formal_baseline_problems(c, base):
+    """NEXT-09: the stage config must pin the formal 2025 baseline of config/config.byop_baseline_registry.yaml and --base must be
+    that file (v1.7L only once ADOPTED; v1.6 is refused for formal runs by the loss-basis rule; diagnostic configs are exempt from
+    the loss-basis rule only)"""
+    import baseline_registry as BR
+    return BR.baseline_problems(c.get('baseline'), base, loss_basis='diagnostic' not in c)
+
+
 def a3_guard(a):
     """NEXT-07 W4: the A3 pilot (S0 -> S1_EARLIEST -> S3 -> S2 [1-3 iterations] -> S3_mS2) only through the independent A3 gate
     (post_v16_a3_gate.py: own config / manifest / ledgers / per-kind call plan, S0 scientific-verdict prerequisite). Fail-closed:
@@ -1700,8 +1708,8 @@ def a3_guard(a):
     reasons = [f'legacy flag --{f.replace("_", "-")} not allowed' for f in POST_V16_LEGACY_FLAGS if getattr(a, f, None)]
     if getattr(a, 'a2_config', None):
         reasons.append('--a2-config and --a3-config are exclusive')
-    if not a.base or Path(a.base).resolve() != BP.BASE_TAMU_V16.resolve():
-        reasons.append('--base must be the v1.6 baseline')
+    if not a.base:
+        reasons.append('--base missing (no fallback)')
     if not a.mainline:
         reasons.append('--post-v16 needs --mainline')
     if a.config is None or Path(a.config).as_posix() != c['mainline_config']:
@@ -1722,6 +1730,7 @@ def a3_guard(a):
     reasons += ref
     g = A3G.check('S0', a.base, cfg_path=cfgp) if not reasons else dict(approved=False, reasons=[])
     reasons += g['reasons']
+    reasons += [r for r in formal_baseline_problems(c, a.base) if r not in reasons]     # NEXT-09: only the formal 2025 baseline
     if reasons:
         print(json.dumps(dict(POST_V16_A3_GUARD='REFUSED', reasons=reasons), indent=1))
         raise SystemExit(3)
@@ -1740,10 +1749,6 @@ def post_v16_guard(a):
     reasons = [f'legacy flag --{f.replace("_", "-")} not allowed' for f in POST_V16_LEGACY_FLAGS if getattr(a, f, None)]
     if not a.base:
         reasons.append('--base missing (no fallback to the pre-v1.6 baseline)')
-    elif Path(a.base).resolve() != BP.BASE_TAMU_V16.resolve():
-        reasons.append(f'--base {a.base} is not the v1.6 baseline')
-    elif not Path(a.base).exists() or M.sha(a.base) != BP.BASE_TAMU_V16_SHA256:
-        reasons.append('v1.6 baseline missing or SHA differs from the pinned v1.6 SHA')
     if not a.mainline:
         reasons.append('--post-v16 needs --mainline')
     if a.config is None or Path(a.config).as_posix() != c['mainline_config']:
@@ -1763,6 +1768,7 @@ def post_v16_guard(a):
             reasons.append(f'--{k.replace("_", "-")} {got} differs from the config run_args {v}')
     g = A2G.check(sc[0] if sc else 'S0', a.base, cfg_path=cfgp) if not reasons else dict(approved=False, reasons=[])
     reasons += g['reasons']
+    reasons += [r for r in formal_baseline_problems(c, a.base) if r not in reasons]     # NEXT-09: only the formal 2025 baseline
     import post_v16_mainline as PM
     try:                                                      # NEXT-07: only the exact reserve-probe config may change the RHS
         spec = PM.diagnostic_spec(c, cfgp)
@@ -2229,6 +2235,12 @@ def main():
     w2.PREP = str(BASE_TAMU)
     w2.PUE = pd.read_csv(w2.PUE_CSV)
     config = pypsa.Network(str(BASE_TAMU)).meta
+    if a.post_v16:          # NEXT-09: the solve config read from the formal baseline carries the registry loss basis
+        import baseline_registry as BR
+        bad = BR.meta_loss_problems(config)
+        if bad:
+            print(json.dumps(dict(POST_V16_GUARD='REFUSED', reasons=bad), indent=1))
+            raise SystemExit(3)
     v = a.v
     events, RES, LED, SVC, SUM, DUA, POIL, UPL = [], {}, [], [], [], [], [], []
 

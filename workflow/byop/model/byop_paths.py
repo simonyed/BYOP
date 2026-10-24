@@ -63,6 +63,12 @@ BASE_TAMU_V16_DIR = RESULTS / 'baseline_2025_tamu_v16'
 BASE_TAMU_V16 = BASE_TAMU_V16_DIR / 'baseline_2025_tamu_prepared.nc'
 BASE_TAMU_V16_SHA256 = 'a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16'   # v1.6 report 0b417903
 
+# NEXT-09 (2026-10-23): v1.7L lossy 2025 baseline = byte copy of the NEXT-08b LP1 v3 candidate (byop/build/freeze_baseline_v17l.py);
+# formal only once config/config.byop_baseline_registry.yaml says ADOPTED (byop/model/baseline_registry.py)
+BASE_TAMU_V17L_DIR = RESULTS / 'baseline_2025_tamu_v17_lossy'
+BASE_TAMU_V17L = BASE_TAMU_V17L_DIR / 'baseline_2025_tamu_v17_lossy_prepared.nc'
+BASE_TAMU_V17L_SHA256 = 'f9aa87aea496f7c07ea4aca0439a703e7eaa90d08cb66c5bc6f149ea60eeefb6'   # NEXT-08b v3 seal (LOSSY_LP1_V3_SEAL.json)
+
 # post-v1.6 execution package v1.1 (2026-10-22): staged research data (raw local + L2 only; derived tracked) and A0/A1 outputs
 POST_V16_PACKAGE = WORKFLOW.parent / 'current_work_pckg/_completed/BYOP_Post_v1.6_Execution_v1.1_A0/BYOP_Post_v1.6_Execution_v1.1'
 POST_V16_RAW = DATA / 'post_v16_execution_v11/raw'

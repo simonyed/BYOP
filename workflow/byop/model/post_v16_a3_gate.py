@@ -73,6 +73,15 @@ def reference_problems(c, root=ROOT):
     for f in ('S0_RESULT.json', 'S1_EARLIEST_RESULT.json', A2G.NO_HARM_REF):
         if f not in r['sha256']:
             bad.append(f'reference {f} not pinned')
+    lg, prob = G.solve_log_rows(root / 'workflow' / r['dir'] / 'A2_SOLVE_LOG.csv')       # NEXT-09: reference on THIS baseline only
+    if prob or lg is None or not len(lg):
+        bad.append('reference ledger A2_SOLVE_LOG.csv missing or unreadable')
+    else:
+        for st in ('S0', 'S1_EARLIEST'):
+            row = lg[(lg.stage == st) & (lg.state == 'DONE')]
+            if not len(row) or str(row.base_sha256.iloc[-1]) != str(c['baseline']['sha256']):
+                bad.append(f"reference {st} was not solved on this config's baseline {str(c['baseline']['sha256'])[:12]} "
+                           f"(ledger: {row.base_sha256.iloc[-1][:12] if len(row) else 'none'})")
     return bad
 
 
@@ -96,6 +105,7 @@ def check(stage, base_path, cfg_path=CFG, root=ROOT, git_fn=G.git):
         since = set(git_fn('diff', '--name-only', asha, 'HEAD', '--', *G.CLEAN_PATHS).stdout.split())
         cp, rp = Path(cfg_path).resolve(), Path(root).resolve()
         cfg_rel = cp.relative_to(rp).as_posix() if cp.is_relative_to(rp) else None
+        since -= A2G.registry_adoption_only_change(root / c['manifest'])
         if not anc:
             reasons.append(f'approved_git_sha {asha} is not HEAD or an ancestor of it')
         elif since - {cfg_rel}:
@@ -115,9 +125,14 @@ def check(stage, base_path, cfg_path=CFG, root=ROOT, git_fn=G.git):
         reasons += A2G.manifest_mismatches(man, root)
         if man.get('config_sha256_normalised') != G.config_sha(cfg_path):
             reasons.append('config differs from the manifest (normalised SHA)')
+        if (man.get('baseline') or {}).get('sha256') != c['baseline']['sha256']:     # NEXT-09: a manifest of another baseline is void
+            reasons.append('A3 manifest was built for another baseline - rebuild it')
+        reasons += A2G.registry_manifest_problems(man)
     want = (root / c['baseline']['path']).resolve()
     if base_path is None or Path(base_path).resolve() != want or not want.exists() or A2G.file_shas(want)['raw'] != c['baseline']['sha256']:
         reasons.append('baseline missing / not the pinned v1.6 file')
+    import baseline_registry as BR                      # NEXT-09: only the formal 2025 baseline
+    reasons += [r for r in BR.baseline_problems(c.get('baseline'), base_path, root=root, git_fn=git_fn) if r not in reasons]
     reasons += prerequisite_problems(c, root)
     reasons += reference_problems(c, root)
     stages = list(c['stages'])
