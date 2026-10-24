@@ -1,0 +1,72 @@
+2026-10-24T03:41:42Z start python -W ignore byop/tests/structural_n09_v17l_swap.py --out results/BYOP/post_v17l_s0s1/_static_swap
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:pypsa.optimization.window:Building the multi-period model over a MultiIndex `snapshot`. Opt into the flat representation via `pypsa.options.optimization.model_snapshot_index = 'flat'`.
+INFO:opts.bidirectional_link:Added 324 bidirectional link constraints
+INFO:opts.sector:Demand response not enabled
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:opts.bidirectional_link:Added 324 bidirectional link constraints
+INFO:opts.sector:Demand response not enabled
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:pypsa.network.io:New version 1.4.0 available! (Current: 1.3.0)
+INFO:pypsa.network.io:Imported network 'Unnamed Network' has buses, carriers, generators, global_constraints, lines, loads, storage_units, sub_networks
+INFO:solve_network:No expandable lines found. Skipping iterative solving.
+INFO:opts.bidirectional_link:Added 324 bidirectional link constraints
+INFO:opts.sector:Demand response not enabled
+{
+ "verdict": "SWAP_PASS",
+ "checks": {
+  "no_solver_called": true,
+  "loss_basis_2_in_both": true,
+  "swap_leaves_no_state": true,
+  "only_line_rows_and_line_inputs_differ": true,
+  "changed_rows_only_on_changed_lines": true,
+  "corridor_bounds_only_on_changed_lines_and_equal_new_rating": true,
+  "every_changed_line_reaches_the_model": true,
+  "same_model_size": true,
+  "objective_identical": true
+ },
+ "unexpected": [],
+ "families": [
+  "Line-fix-s-lower",
+  "Line-fix-s-upper",
+  "Line-loss_tangents-1--1",
+  "Line-loss_tangents-1-1",
+  "Line-loss_tangents-2--1",
+  "Line-loss_tangents-2-1",
+  "Line-loss_upper"
+ ],
+ "lines_hit": 21,
+ "models": {
+  "V16": {
+   "nvars": 2660074,
+   "ncons": 7107710,
+   "nnz": 35171029
+  },
+  "V17L": {
+   "nvars": 2660074,
+   "ncons": 7107710,
+   "nnz": 35171029
+  },
+  "V16B": {
+   "nvars": 2660074,
+   "ncons": 7107710,
+   "nnz": 35171029
+  }
+ }
+}
+2026-10-24T03:47:13Z end rc=0
