@@ -1,0 +1,112 @@
+{
+ "step": "NEXT-09 v1.7L lossy 2025 baseline freeze (no solver)",
+ "version": "v1.7L",
+ "status": "FROZEN_PREPARED (adoption: registry, researcher only)",
+ "path": "workflow/results/BYOP/baseline_2025_tamu_v17_lossy/baseline_2025_tamu_v17_lossy_prepared.nc",
+ "sha256": "f9aa87aea496f7c07ea4aca0439a703e7eaa90d08cb66c5bc6f149ea60eeefb6",
+ "source": "workflow/results/BYOP/next08b_lp1_loss_upper_fix/baseline_2025_tamu_lossy_candidate.nc",
+ "source_sha256": "f9aa87aea496f7c07ea4aca0439a703e7eaa90d08cb66c5bc6f149ea60eeefb6",
+ "copied_now": true,
+ "solved_code_sha": "d4fd5340945e50c86859024e2ecec86597b630dd",
+ "seal": "current_work_pckg/BYOP_NEXT_08B_LP1_TANGENT_FIX/LOSSY_LP1_V3_SEAL.json",
+ "seal_sha256": "20e70aef2b19757feb501350f83a2ce9c86feb10375edeb08a0b74af48929387",
+ "approval_commit": "2c2c64a2f831b18ecc0082abf5db424bd8648b5b",
+ "loss_basis": {
+  "calibration_transmission_losses": 2,
+  "meta_transmission_losses": 2
+ },
+ "lp1_it2": {
+  "r_converged": true,
+  "max_rel_r_gap": 0.02182419963692006,
+  "lines_at_trust_floor": [],
+  "guards": {
+   "G1": true,
+   "G2": true,
+   "G3": true,
+   "total_uplift_MVA": 5875.064177174074,
+   "G1_limit_MVA": 7727.750400048282
+  }
+ },
+ "lp2_acceptance": {
+  "eens_MWh": 140.2302330090944,
+  "max_gap_MW": 27.755196652124965,
+  "eens_pass": true,
+  "max_gap_pass": true,
+  "shed_buses": [
+   "p600 2",
+   "p620 1",
+   "p620 2",
+   "p620 3",
+   "p620 5",
+   "p620 6",
+   "p620 7",
+   "p630 14",
+   "p630 2",
+   "p640 7",
+   "p670 8"
+  ],
+  "max_gap_step": "(2030, Timestamp('2030-07-14 09:00:00'))"
+ },
+ "lp2_losses_TWh": 5.289754160048098,
+ "diff_vs_v16": {
+  "rows": [
+   {
+    "component": "meta",
+    "field": "baseline",
+    "kind": "meta_label",
+    "n": 1,
+    "examples": "baseline only in v16: Rearchitecture WP-A 2025 actual ERCOT (ReEDS) on TAMU 64s backbone (reeds_sum)"
+   },
+   {
+    "component": "Line",
+    "field": "r",
+    "kind": "static",
+    "n": 21,
+    "examples": [
+     "TL114",
+     "TL12",
+     "TL13",
+     "TL15",
+     "TL154",
+     "TL26"
+    ]
+   },
+   {
+    "component": "Line",
+    "field": "s_nom",
+    "kind": "static",
+    "n": 21,
+    "examples": [
+     "TL114",
+     "TL12",
+     "TL13",
+     "TL15",
+     "TL154",
+     "TL26"
+    ]
+   }
+  ],
+  "lines_changed": 21,
+  "s_nom_delta_sum_MVA": 723.2305771418868,
+  "line_table": "LINE_DIFF_VS_V16.csv"
+ },
+ "frozen_sha256": {
+  "v16 prepared.nc": "a623fb6dd1bbcde444e089667f6e5a612ff5a8067f7afe5907ea218585747d16",
+  "v16 raw_uncalibrated.nc": "eb659f9b1ba06b5e37a162b7173c36d07a6a19a92ae016d3cf3568905077a97f",
+  "NEXT-08 v1 candidate.nc": "4720185461d3204a3d40f46dc58ecd5ae760dd2f771943c8fb8bb5b0a96dc491",
+  "NEXT-08b v2 candidate.nc": "717268802706534365601018547bcf56057ca32488b4a4206b5424bff365f1f4",
+  "NEXT-08b v3 ledger": "e8319e69e3e32b02cd01abb69bfce6e8ea40835244b050214b71d0079efc080a"
+ },
+ "checks": {
+  "sha_pins_agree": true,
+  "copy_sha_equals_source": true,
+  "v3_chain_passed": true,
+  "only_line_s_nom_and_r_differ": true,
+  "x_unchanged": true,
+  "meta_transmission_losses_2": true,
+  "frozen_files_unchanged": true,
+  "registry_not_adopted_by_this_script": true
+ },
+ "built_utc": "2026-10-24T03:17:14+00:00",
+ "verdict": "FREEZE_PASS"
+}

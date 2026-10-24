@@ -25,6 +25,11 @@ WF = ROOT / 'workflow'
 REGISTRY = WF / 'config/config.byop_baseline_registry.yaml'
 REGISTRY_REL = 'workflow/config/config.byop_baseline_registry.yaml'
 ADOPTION_FIELDS = ('adoption_status', 'adopted_git_sha', 'adopted_by')
+# v1.7L lossy 2025 baseline = byte copy of the NEXT-08b LP1 v3 candidate (byop/build/freeze_baseline_v17l.py); kept here, not in
+# byop_paths.py, so the closed A1 manifest (which pins byop_paths.py) stays current
+BASE_TAMU_V17L_DIR = WF / 'results/BYOP/baseline_2025_tamu_v17_lossy'
+BASE_TAMU_V17L = BASE_TAMU_V17L_DIR / 'baseline_2025_tamu_v17_lossy_prepared.nc'
+BASE_TAMU_V17L_SHA256 = 'f9aa87aea496f7c07ea4aca0439a703e7eaa90d08cb66c5bc6f149ea60eeefb6'   # NEXT-08b v3 seal (LOSSY_LP1_V3_SEAL.json)
 
 
 def _git(*args):

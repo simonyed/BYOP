@@ -1,0 +1,515 @@
+{
+ "step": "NEXT-09 v1.6 -> v1.7L baseline swap, S0 build (no solver)",
+ "baseline_v17l_sha256": "f9aa87aea496f7c07ea4aca0439a703e7eaa90d08cb66c5bc6f149ea60eeefb6",
+ "models": {
+  "V16": {
+   "nvars": 2660074,
+   "ncons": 7107710,
+   "nnz": 35171029
+  },
+  "V17L": {
+   "nvars": 2660074,
+   "ncons": 7107710,
+   "nnz": 35171029
+  },
+  "V16B": {
+   "nvars": 2660074,
+   "ncons": 7107710,
+   "nnz": 35171029
+  }
+ },
+ "seconds": {
+  "V16": 49.7,
+  "V17L": 53.5,
+  "V16B": 51.8
+ },
+ "transmission_losses_from_meta": {
+  "V16": 2,
+  "V17L": 2,
+  "V16B": 2
+ },
+ "swap_diff": [
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "Line-fix-s-lower",
+   "field": "rhs",
+   "detail": "{'rows': 132192, 'rows_changed': 17136, 'a_values': [-7693.593741, -5369.993265, -5328.475674, -4592.0], 'b_values': [-7693.593741, -5369.993265, -5328.475674, -4592.0]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "Line-fix-s-upper",
+   "field": "rhs",
+   "detail": "{'rows': 132192, 'rows_changed': 17136, 'a_values': [24.546366, 35.451932, 53.901406, 68.6], 'b_values': [24.546366, 35.451932, 54.03709, 68.6]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "Line-loss_tangents-1--1",
+   "field": "coeffs",
+   "detail": "0.23382386306865216"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "Line-loss_tangents-1--1",
+   "field": "rhs",
+   "detail": "{'rows': 132192, 'rows_changed': 17136, 'a_values': [-48.607083, -42.400299, -38.181366, -28.350217], 'b_values': [-48.607083, -42.400299, -38.181366, -28.350217]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "Line-loss_tangents-1-1",
+   "field": "coeffs",
+   "detail": "0.23382386306865216"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "Line-loss_tangents-1-1",
+   "field": "rhs",
+   "detail": "{'rows': 132192, 'rows_changed': 17136, 'a_values': [-48.607083, -42.400299, -38.181366, -28.350217], 'b_values': [-48.607083, -42.400299, -38.181366, -28.350217]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "Line-loss_tangents-2--1",
+   "field": "coeffs",
+   "detail": "0.4676477261373043"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "Line-loss_tangents-2--1",
+   "field": "rhs",
+   "detail": "{'rows': 132192, 'rows_changed': 17136, 'a_values': [-194.42833, -169.601195, -152.725465, -113.400866], 'b_values': [-194.42833, -169.601195, -152.725465, -113.400866]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "Line-loss_tangents-2-1",
+   "field": "coeffs",
+   "detail": "0.4676477261373043"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "Line-loss_tangents-2-1",
+   "field": "rhs",
+   "detail": "{'rows': 132192, 'rows_changed': 17136, 'a_values': [-194.42833, -169.601195, -152.725465, -113.400866], 'b_values': [-194.42833, -169.601195, -152.725465, -113.400866]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "Line-loss_upper",
+   "field": "rhs",
+   "detail": "{'rows': 132192, 'rows_changed': 17136, 'a_values': [0.23892, 0.674739, 0.788791, 1.115124], 'b_values': [0.23892, 0.674739, 0.788791, 1.115124]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "Link-ext-p_nom-upper",
+   "field": "rhs",
+   "detail": "{'rows': 648, 'rows_changed': 84, 'a_values': [24.546366, 35.451932, 53.901406, 68.6], 'b_values': [24.546366, 35.451932, 54.03709, 68.6]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL114",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [53.901406], 'b_values': [54.03709]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL12",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [251.124535], 'b_values': [274.378565]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL13",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [636.881986], 'b_values': [722.059004]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL15",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [306.488381], 'b_values': [307.235574]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL154",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [172.9], 'b_values': [175.372277]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL26",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [101.750687], 'b_values': [107.715034]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL3",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [141.855812], 'b_values': [152.16259]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL35",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [461.903747], 'b_values': [483.06706]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL36",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [137.4925], 'b_values': [145.14787]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL37",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [744.758927], 'b_values': [786.847777]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL38",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [1258.239422], 'b_values': [1330.36577]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL39",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [873.5468], 'b_values': [905.756595]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL40",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [181.284607], 'b_values': [190.882528]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL41",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [251.741819], 'b_values': [270.985886]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL42",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [272.876545], 'b_values': [297.481354]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL43",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [118.978974], 'b_values': [123.486576]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL63",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [371.077931], 'b_values': [371.116747]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL67",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [68.6], 'b_values': [71.605326]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL68",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [108.489939], 'b_values': [127.457018]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL69",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [134.694011], 'b_values': [159.67245]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL73",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [883.847139], 'b_values': [981.863482]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "network_input",
+   "name": "lines",
+   "field": "sha256",
+   "detail": "('221ff71e614b93fb1fe204a853ada67321e9600534eaff69369357d3310b41c7', '3771cba681feac81c01061464b57ead28e71985d3f528c251669d696b62e6e36')"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "network_input",
+   "name": "links",
+   "field": "sha256",
+   "detail": "('7f5cac8fba778016fd027d5b7859159ef6726964d9cd261f3f93ac501dd8be13', 'd821275686793b3a96770cb4dce5e3d786e8e4805df1e7c7626372fb743cb24b')"
+  }
+ ],
+ "rebuild_diff": [],
+ "unexpected": [
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "Link-ext-p_nom-upper",
+   "field": "rhs",
+   "detail": "{'rows': 648, 'rows_changed': 84, 'a_values': [24.546366, 35.451932, 53.901406, 68.6], 'b_values': [24.546366, 35.451932, 54.03709, 68.6]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL114",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [53.901406], 'b_values': [54.03709]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL12",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [251.124535], 'b_values': [274.378565]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL13",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [636.881986], 'b_values': [722.059004]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL15",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [306.488381], 'b_values': [307.235574]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL154",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [172.9], 'b_values': [175.372277]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL26",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [101.750687], 'b_values': [107.715034]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL3",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [141.855812], 'b_values': [152.16259]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL35",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [461.903747], 'b_values': [483.06706]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL36",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [137.4925], 'b_values': [145.14787]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL37",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [744.758927], 'b_values': [786.847777]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL38",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [1258.239422], 'b_values': [1330.36577]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL39",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [873.5468], 'b_values': [905.756595]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL40",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [181.284607], 'b_values': [190.882528]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL41",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [251.741819], 'b_values': [270.985886]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL42",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [272.876545], 'b_values': [297.481354]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL43",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [118.978974], 'b_values': [123.486576]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL63",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [371.077931], 'b_values': [371.116747]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL67",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [68.6], 'b_values': [71.605326]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL68",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [108.489939], 'b_values': [127.457018]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL69",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [134.694011], 'b_values': [159.67245]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "constraint",
+   "name": "M2-line_cap_LTL73",
+   "field": "rhs",
+   "detail": "{'rows': 1, 'rows_changed': 1, 'a_values': [883.847139], 'b_values': [981.863482]}"
+  },
+  {
+   "pair": "V16_vs_V17L",
+   "kind": "network_input",
+   "name": "links",
+   "field": "sha256",
+   "detail": "('7f5cac8fba778016fd027d5b7859159ef6726964d9cd261f3f93ac501dd8be13', 'd821275686793b3a96770cb4dce5e3d786e8e4805df1e7c7626372fb743cb24b')"
+  }
+ ],
+ "line_rows_changed": 219,
+ "lines_hit": [
+  "TL114",
+  "TL12",
+  "TL13",
+  "TL15",
+  "TL154",
+  "TL26",
+  "TL3",
+  "TL35",
+  "TL36",
+  "TL37",
+  "TL38",
+  "TL39",
+  "TL40",
+  "TL41",
+  "TL42",
+  "TL43",
+  "TL63",
+  "TL67",
+  "TL68",
+  "TL69",
+  "TL73"
+ ],
+ "lines_changed_in_record": [
+  "TL114",
+  "TL12",
+  "TL13",
+  "TL15",
+  "TL154",
+  "TL26",
+  "TL3",
+  "TL35",
+  "TL36",
+  "TL37",
+  "TL38",
+  "TL39",
+  "TL40",
+  "TL41",
+  "TL42",
+  "TL43",
+  "TL63",
+  "TL67",
+  "TL68",
+  "TL69",
+  "TL73"
+ ],
+ "families_hit": [
+  "Line-fix-s-lower",
+  "Line-fix-s-upper",
+  "Line-loss_tangents-1--1",
+  "Line-loss_tangents-1-1",
+  "Line-loss_tangents-2--1",
+  "Line-loss_tangents-2-1",
+  "Line-loss_upper"
+ ],
+ "checks": {
+  "no_solver_called": true,
+  "loss_basis_2_in_both": true,
+  "swap_leaves_no_state": true,
+  "only_line_rows_and_line_inputs_differ": false,
+  "changed_rows_only_on_changed_lines": true,
+  "every_changed_line_reaches_the_model": true,
+  "same_model_size": true,
+  "objective_identical": true
+ },
+ "solver_calls": [
+  "refused",
+  "refused",
+  "refused"
+ ],
+ "wall_s": 157.8,
+ "verdict": "SWAP_REVIEW"
+}

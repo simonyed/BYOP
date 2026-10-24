@@ -90,11 +90,11 @@ def main():
     lp2 = json.loads((SRC_DIR / 'LP2_LOSSY_CANDIDATE/LOSS_BASIS_LP2_QA.json').read_text(encoding='utf-8'))
     dst = ROOT / e['path']
     src_sha = BR._sha_raw(SRC)
-    pins = dict(source=src_sha, seal=seal['candidate_sha256'], it2_qa=it2.get('candidate_sha256'), registry=e['sha256'], byop_paths=BP.BASE_TAMU_V17L_SHA256)
+    pins = dict(source=src_sha, seal=seal['candidate_sha256'], it2_qa=it2.get('candidate_sha256'), registry=e['sha256'], registry_module=BR.BASE_TAMU_V17L_SHA256)
     if len(set(pins.values())) != 1:
         raise SystemExit(f'STOP: candidate SHA pins disagree {pins}')
-    if Path(dst).resolve() != BP.BASE_TAMU_V17L.resolve() or (ROOT / e['source']).resolve() != SRC.resolve():
-        raise SystemExit('STOP: registry path / source disagree with byop_paths')
+    if Path(dst).resolve() != BR.BASE_TAMU_V17L.resolve() or (ROOT / e['source']).resolve() != SRC.resolve():
+        raise SystemExit('STOP: registry path / source disagree with baseline_registry constants')
     if not (lp2.get('acceptance_pass') is True and it2.get('r_converged') is True and it2['guards']['all_pass'] is True
             and it2['convergence'].get('lines_at_trust_floor') == []):
         raise SystemExit('STOP: the v3 chain did not pass (IT2 converged + guards + no floor line + LP2 acceptance)')

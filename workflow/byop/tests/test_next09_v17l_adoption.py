@@ -55,7 +55,7 @@ def test_registry_pins_match_paths_and_seal():
     assert r['adoption'] == dict(adoption_status='NOT_ADOPTED', adopted_git_sha=None, adopted_by=None)      # researcher only
     assert v16['sha256'] == BP.BASE_TAMU_V16_SHA256
     assert (WF.parent / v16['path']).resolve() == BP.BASE_TAMU_V16.resolve()
-    assert (WF.parent / v17['path']).resolve() == BP.BASE_TAMU_V17L.resolve() and v17['sha256'] == BP.BASE_TAMU_V17L_SHA256
+    assert (WF.parent / v17['path']).resolve() == BR.BASE_TAMU_V17L.resolve() and v17['sha256'] == BR.BASE_TAMU_V17L_SHA256
     seal = json.loads((WF.parent / v17['seal']).read_text(encoding='utf-8'))
     assert seal['candidate_sha256'] == v17['sha256'] and seal['solved_code_sha'] == v17['solved_code_sha']
     assert (v16['calibration_transmission_losses'], v16['meta_transmission_losses']) == (0, 2)
@@ -156,7 +156,7 @@ def test_run_entry_v17l():
 
 # ------------------------------------------------------------------------------------------------ gates
 def test_s0s1_gate_refuses_now():
-    g = A2G.check('S0', str(BP.BASE_TAMU_V17L), cfg_path=CFG17)
+    g = A2G.check('S0', str(BR.BASE_TAMU_V17L), cfg_path=CFG17)
     r = g['reasons']
     assert not g['approved'] and 'run_authorization=NOT_APPROVED' in r and 'approved_by missing' in r
     assert any('v17l is not the formal baseline (not ADOPTED)' in x for x in r)
@@ -164,7 +164,7 @@ def test_s0s1_gate_refuses_now():
 
 def test_guard_refuses_v17l_before_adoption(capsys):
     import rearch_mech as R
-    a = SimpleNamespace(a2_config=str(CFG17), a3_config=None, base=str(BP.BASE_TAMU_V17L), mainline=True,
+    a = SimpleNamespace(a2_config=str(CFG17), a3_config=None, base=str(BR.BASE_TAMU_V17L), mainline=True,
                         config='config/config.byop_ercot_mainline_geo_dynamic_v1_baseline_v17l.yaml', out=str(WF / 'results/BYOP/post_v17l_s0s1/POST_V17L_S0S1'),
                         no_harm='on', attribution=False, relax=[], scenarios=['S0', 'S1_EARLIEST'], start=2026, end=2031, sample_weeks=26,
                         calibrate=False, erm_cal=None, s0_calibrate=False, s0_cal_file=None)
@@ -200,7 +200,7 @@ def test_a3_reference_must_be_on_the_config_baseline(tmp_path):
     c = A3G.load()
     old = A3G.reference_problems(c)                                   # the real v1.6 A2 reference: consistent with the v1.6 A3 config
     assert not any('was not solved on' in x for x in old)
-    c17 = dict(c, baseline=dict(path=BR.load()['baselines']['v17l']['path'], sha256=BP.BASE_TAMU_V17L_SHA256))
+    c17 = dict(c, baseline=dict(path=BR.load()['baselines']['v17l']['path'], sha256=BR.BASE_TAMU_V17L_SHA256))
     bad = A3G.reference_problems(c17)
     assert sum('was not solved on' in x for x in bad) == 2
 
